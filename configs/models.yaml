@@ -1,0 +1,18 @@
+# 被测模型清单（Oct 11, 2026 实测确定，见 Spec「被测模型与对比设计」）
+# 所有模型经百炼 OpenAI 兼容接口调用；有带日期快照的一律用快照。
+
+main:                 # 横评主实验：关闭思考
+  - {id: qwen3.8-max-0902,     vendor: qwen,     tier: large}
+  - {id: qwen3.7-plus,         vendor: qwen,     tier: medium}
+  - {id: qwen3.8-flash,        vendor: qwen,     tier: small}
+  - {id: deepseek-v4-pro-0813, vendor: deepseek, tier: large}
+  - {id: deepseek-v4.1-flash,  vendor: deepseek, tier: small}
+  - {id: glm-5.2,              vendor: zhipu}
+  - {id: kimi-k3,              vendor: moonshot}
+
+thinking_only:        # 只能开启思考，仅参与思考模式对照实验的上线形态排名
+  - {id: glm-5.3,              vendor: zhipu}
+
+modes:                # 键名必须加引号：YAML 1.1 会把裸写的 on/off 解析成布尔值
+  "off": {enable_thinking: false, temperature: 0}
+  "on":  {enable_thinking: true}   # 采样参数用各厂商推荐值，正式实验前补齐

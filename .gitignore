@@ -1,0 +1,15 @@
+# 密钥
+.env
+
+# 原始数据不重新分发（TeleQnA / TeleLogs 需同意使用条件）
+data/raw/
+
+# 运行产物：原始请求与响应体积大，只在本地保留
+results/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.ipynb_checkpoints/
+.DS_Store

@@ -1,0 +1,15 @@
+[project]
+name = "telecom-om-llm-eval"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "datasketch>=2.0.0",
+    "evalscope>=1.12.0",
+    "numpy>=2.4.6",
+    "openai>=3.28.0",
+    "pandas>=3.0.6",
+    "python-dotenv>=1.2.4",
+    "pyyaml>=6.0.3",
+    "scipy>=1.17.1",
+    "statsmodels>=0.15.0",
+]
