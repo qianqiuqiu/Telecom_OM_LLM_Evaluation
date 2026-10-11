@@ -133,6 +133,20 @@ def load_labels(by_id, sh):
     return labels
 
 
+def load_answer_check():
+    """读取答案核验的人工决定与“已确认正确”的题。文件不存在时返回空。"""
+    decisions, verified = {}, set()
+    dpath = ROOT / "data/processed/teleqna_answer_decisions.csv"
+    if dpath.exists():
+        with dpath.open(encoding="utf-8") as f:
+            decisions = {r["id"]: r for r in csv.DictReader(f)}
+    rpath = ROOT / "data/processed/teleqna_answer_check_result.csv"
+    if rpath.exists():
+        with rpath.open(encoding="utf-8") as f:
+            verified = {r["id"] for r in csv.DictReader(f) if r["status"] in ("correct", "screen_pass")}
+    return decisions, verified
+
+
 class UnionFind:
     def __init__(self):
         self.parent = {}
@@ -223,19 +237,31 @@ def main():
         for other in ids[1:]:
             uf.union(ids[0], other)
 
+    # 6. 答案核验结论（analysis/answer_check.py 与人工决定）：修正答案或剔除
+    decisions, verified = load_answer_check()
     for it in items:
-        rep = uf.find(it["id"])
-        it["dup_of"] = "" if rep == it["id"] else rep
-        it["near_dup_conflict"] = it["id"] in conflict_ids
-        it["drop_reason"] = ("dup" if it["dup_of"] else
+        d = decisions.get(it["id"])
+        it["gold_fixed"] = d["new_gold"] if d and d["action"] == "fix" else ""
+        it["static_drop"] = ("answer_check" if d and d["action"] == "drop" else
                              "too_few_options" if it["n_options"] < 4 else
                              "context_ref" if it["context_ref"] else "")
+
+    # 每个重复簇选一题保留：优先未被剔除的，其次经答案核验确认正确的，最后编号最小的
+    clusters = defaultdict(list)
+    for it in items:
+        clusters[uf.find(it["id"])].append(it)
+    for members in clusters.values():
+        rep = min(members, key=lambda m: (bool(m["static_drop"]), m["id"] not in verified, m["num"]))
+        for it in members:
+            it["dup_of"] = "" if it is rep else rep["id"]
+            it["near_dup_conflict"] = it["id"] in conflict_ids
+            it["drop_reason"] = it["static_drop"] or ("dup" if it["dup_of"] else "")
 
     # 输出：每题标记（无原文）
     out_csv = ROOT / "data/processed/teleqna_items.csv"
     cols = ["id", "category", "release", "n_options", "answer_idx", "shuffle_policy",
             "has_position_ref", "has_index_ref", "answer_is_ref", "pinned_not_last",
-            "context_ref", "dup_of", "near_dup_conflict", "drop_reason"]
+            "context_ref", "dup_of", "near_dup_conflict", "gold_fixed", "drop_reason"]
     with out_csv.open("w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=cols)
         w.writeheader()
@@ -267,7 +293,7 @@ def write_report(items, pairs, exact_key, labels):
     nopt = Counter(it["n_options"] for it in items)
     policy = Counter(it["shuffle_policy"] for it in items)
     exact_extra = sum(len(v) - 1 for v in exact_key.values() if len(v) > 1)
-    dropped_dup = sum(1 for it in items if it["dup_of"])
+    dropped_dup = sum(1 for it in items if it["drop_reason"] == "dup")
     clusters = Counter(it["dup_of"] for it in items if it["dup_of"])
     too_few = sum(1 for it in items if it["n_options"] < 4 and not it["dup_of"])
     kept = sum(1 for it in items if not it["drop_reason"])
@@ -361,9 +387,12 @@ def write_report(items, pairs, exact_key, labels):
     lines += [
         "## 汇总",
         "",
-        f"- 重复剔除：{pct(dropped_dup)}",
-        f"- 选项少于 4 个而剔除（不含已因重复剔除的）：{pct(too_few)}",
-        f"- 题干引用不可见原文而剔除（不含前两项已剔除的）：{pct(sum(it['drop_reason'] == 'context_ref' for it in items))}",
+        f"- 重复剔除：{pct(sum(it['drop_reason'] == 'dup' for it in items))}",
+        f"- 选项少于 4 个而剔除：{pct(sum(it['drop_reason'] == 'too_few_options' for it in items))}",
+        f"- 题干引用不可见原文而剔除：{pct(sum(it['drop_reason'] == 'context_ref' for it in items))}",
+        f"- 答案核验后剔除（判错且无正确选项、有歧义、无法核实）：{pct(sum(it['drop_reason'] == 'answer_check' for it in items))}，"
+        "仅覆盖抽样题，详见 `teleqna_answer_check.md`",
+        f"- 答案核验后修正标准答案：{sum(bool(it['gold_fixed']) for it in items)} 题",
         f"- 保留：{pct(kept)}",
         "",
     ]

@@ -1,0 +1,308 @@
+id,category,source,gold,qwen_choice
+question 4406,Lexicon,random,4,1
+question 35,Lexicon,random,3,3
+question 8013,Lexicon,random,5,5
+question 536,Lexicon,random,3,3
+question 9,Lexicon,random,2,2
+question 460,Lexicon,random,3,3
+question 5722,Lexicon,random,5,5
+question 8275,Lexicon,random,2,2
+question 7840,Lexicon,random,3,3
+question 5438,Lexicon,random,4,4
+question 6789,Lexicon,random,3,3
+question 776,Lexicon,random,1,1
+question 9947,Lexicon,random,1,1
+question 2387,Lexicon,random,5,5
+question 4292,Lexicon,random,4,4
+question 1816,Lexicon,random,4,4
+question 2445,Lexicon,random,2,2
+question 5646,Lexicon,random,3,3
+question 9274,Lexicon,random,2,2
+question 9065,Lexicon,random,4,4
+question 5709,Lexicon,random,2,2
+question 2532,Lexicon,random,2,2
+question 802,Lexicon,random,1,1
+question 6075,Lexicon,random,3,3
+question 5585,Lexicon,random,4,4
+question 9420,Lexicon,random,5,5
+question 6583,Lexicon,random,4,4
+question 3299,Lexicon,random,2,2
+question 4594,Lexicon,random,4,4
+question 1224,Lexicon,random,5,5
+question 7639,Lexicon,random,2,2
+question 5530,Lexicon,random,4,4
+question 1365,Lexicon,random,4,4
+question 957,Lexicon,random,3,3
+question 9038,Lexicon,random,4,4
+question 3674,Lexicon,random,5,5
+question 8720,Lexicon,random,1,1
+question 2856,Lexicon,random,3,3
+question 5999,Lexicon,random,5,5
+question 5855,Lexicon,random,4,4
+question 7213,Lexicon,random,1,1
+question 6534,Lexicon,random,2,2
+question 4676,Lexicon,random,3,3
+question 6509,Standards overview,random,2,2
+question 557,Standards overview,random,5,5
+question 2938,Standards overview,random,3,3
+question 7409,Standards overview,random,1,1
+question 7650,Standards overview,random,1,2
+question 835,Standards overview,random,5,5
+question 783,Standards overview,random,4,4
+question 3934,Standards overview,random,4,4
+question 8654,Standards overview,random,4,4
+question 4683,Standards overview,random,1,1
+question 5745,Standards overview,random,3,3
+question 9037,Standards overview,random,1,3
+question 3252,Standards overview,random,3,4
+question 624,Standards overview,random,3,3
+question 2939,Standards overview,random,3,3
+question 6425,Standards overview,random,3,4
+question 319,Standards overview,random,4,4
+question 37,Standards overview,random,3,4
+question 9845,Standards overview,random,1,1
+question 7764,Standards overview,random,4,4
+question 1184,Standards overview,random,3,3
+question 4058,Standards overview,random,4,4
+question 3157,Standards overview,random,4,4
+question 5911,Standards overview,random,2,2
+question 5540,Standards overview,random,1,1
+question 1505,Standards overview,random,5,4
+question 4093,Standards overview,random,1,1
+question 4842,Standards overview,random,4,4
+question 7421,Standards overview,random,1,1
+question 9333,Standards overview,random,2,2
+question 648,Standards overview,random,4,4
+question 2943,Standards overview,random,2,2
+question 8658,Standards overview,random,3,3
+question 5285,Standards overview,random,1,1
+question 368,Standards overview,random,5,5
+question 9162,Standards overview,random,2,2
+question 4034,Standards overview,random,4,4
+question 5437,Standards overview,random,1,1
+question 2549,Standards overview,random,1,1
+question 7346,Standards overview,random,1,1
+question 688,Standards overview,random,2,2
+question 2252,Standards overview,random,4,4
+question 3139,Standards overview,random,3,3
+question 1959,Standards overview,random,1,1
+question 8603,Standards overview,random,3,3
+question 8263,Standards overview,random,1,1
+question 534,Standards overview,random,3,3
+question 959,Standards overview,random,2,2
+question 3512,Standards overview,random,4,4
+question 4263,Standards overview,random,1,1
+question 5541,Standards overview,random,3,3
+question 9602,Standards overview,random,1,1
+question 7410,Standards overview,random,1,1
+question 5057,Standards overview,random,4,4
+question 1861,Standards overview,random,2,2
+question 3297,Standards overview,random,3,2
+question 9043,Standards overview,random,1,1
+question 9318,Standards overview,random,2,2
+question 4099,Standards overview,random,2,2
+question 1687,Standards overview,random,2,2
+question 7569,Standards overview,random,5,5
+question 5105,Standards overview,random,2,2
+question 5099,Standards overview,random,1,1
+question 9907,Standards overview,random,2,2
+question 1909,Standards overview,random,4,4
+question 6310,Standards overview,random,1,1
+question 714,Standards overview,random,3,3
+question 3851,Standards overview,random,2,3
+question 759,Standards overview,random,4,1
+question 5991,Standards overview,random,4,3
+question 5359,Standards overview,random,2,2
+question 797,Standards overview,random,4,4
+question 192,Standards overview,random,3,3
+question 9786,Standards overview,random,3,3
+question 8950,Standards overview,random,1,2
+question 1642,Standards overview,random,1,4
+question 2304,Standards overview,random,4,4
+question 1374,Standards overview,random,5,1
+question 2659,Standards overview,random,4,4
+question 4912,Standards overview,random,4,4
+question 4642,Standards overview,random,1,1
+question 2550,Standards overview,random,4,4
+question 177,Standards overview,random,3,1
+question 7815,Standards overview,random,5,5
+question 1491,Standards overview,random,4,4
+question 2243,Standards overview,random,1,1
+question 8601,Standards specifications,random,2,2
+question 4524,Standards specifications,random,2,2
+question 295,Standards specifications,random,1,1
+question 4920,Standards specifications,random,1,1
+question 6100,Standards specifications,random,1,1
+question 108,Standards specifications,random,4,4
+question 2412,Standards specifications,random,2,2
+question 7868,Standards specifications,random,4,4
+question 7622,Standards specifications,random,5,4
+question 8200,Standards specifications,random,4,2
+question 1191,Standards specifications,random,3,3
+question 8405,Standards specifications,random,4,1
+question 636,Standards specifications,random,3,3
+question 1703,Standards specifications,random,1,1
+question 149,Standards specifications,random,4,4
+question 1383,Standards specifications,random,2,2
+question 2079,Standards specifications,random,3,3
+question 7873,Standards specifications,random,3,3
+question 8634,Standards specifications,random,1,1
+question 8054,Standards specifications,random,4,4
+question 4333,Standards specifications,random,1,1
+question 9513,Standards specifications,random,2,2
+question 1847,Standards specifications,random,2,2
+question 5263,Standards specifications,random,3,3
+question 60,Standards specifications,random,2,1
+question 9656,Standards specifications,random,5,5
+question 6463,Standards specifications,random,5,5
+question 5832,Standards specifications,random,1,1
+question 6204,Standards specifications,random,1,1
+question 3377,Standards specifications,random,1,1
+question 1785,Standards specifications,random,4,4
+question 7681,Standards specifications,random,4,4
+question 6912,Standards specifications,random,2,2
+question 2367,Standards specifications,random,3,2
+question 6339,Standards specifications,random,1,1
+question 7478,Standards specifications,random,3,3
+question 8627,Standards specifications,random,1,1
+question 8841,Standards specifications,random,3,2
+question 5608,Standards specifications,random,4,1
+question 4530,Standards specifications,random,1,1
+question 2637,Standards specifications,random,3,3
+question 3884,Standards specifications,random,4,4
+question 9377,Standards specifications,random,1,1
+question 4759,Standards specifications,random,5,3
+question 1497,Standards specifications,random,3,3
+question 5947,Standards specifications,random,2,2
+question 3673,Standards specifications,random,5,5
+question 4,Standards specifications,random,2,2
+question 1019,Standards specifications,random,3,3
+question 2082,Standards specifications,random,4,4
+question 8347,Standards specifications,random,3,3
+question 146,Standards specifications,random,3,3
+question 6097,Standards specifications,random,1,1
+question 2185,Standards specifications,random,5,5
+question 8403,Standards specifications,random,3,3
+question 4620,Standards specifications,random,4,3
+question 7173,Standards specifications,random,2,5
+question 5791,Standards specifications,random,5,5
+question 8076,Standards specifications,random,3,3
+question 4782,Standards specifications,random,3,3
+question 8570,Standards specifications,random,3,3
+question 1640,Standards specifications,random,5,2
+question 3519,Standards specifications,random,1,1
+question 6040,Standards specifications,random,1,1
+question 7804,Standards specifications,random,2,2
+question 4351,Standards specifications,random,5,5
+question 9547,Standards specifications,random,3,3
+question 4894,Standards specifications,random,3,3
+question 9487,Standards specifications,random,1,1
+question 7035,Standards specifications,random,2,2
+question 6099,Standards specifications,random,5,5
+question 9061,Standards specifications,random,3,1
+question 3430,Standards specifications,random,3,3
+question 4279,Standards specifications,random,5,5
+question 388,Standards specifications,random,2,2
+question 9091,Standards specifications,random,5,5
+question 1321,Standards specifications,random,1,3
+question 7095,Standards specifications,random,4,4
+question 1030,Standards specifications,random,3,1
+question 9549,Standards specifications,random,2,1
+question 4585,Standards specifications,random,2,2
+question 1736,Standards specifications,random,2,3
+question 8959,Standards specifications,random,1,2
+question 2430,Standards specifications,random,3,3
+question 8965,Standards specifications,random,1,1
+question 4970,Standards specifications,random,5,2
+question 185,Standards specifications,random,2,2
+question 7773,Standards specifications,random,4,4
+question 1207,Standards specifications,random,3,3
+question 5370,Standards specifications,random,2,2
+question 4282,Standards specifications,random,1,2
+question 886,Standards specifications,random,3,3
+question 7881,Standards specifications,random,4,3
+question 2018,Standards specifications,random,2,2
+question 1029,Standards specifications,random,1,3
+question 966,Standards specifications,random,2,2
+question 2542,Standards specifications,random,1,1
+question 6286,Standards specifications,random,4,4
+question 44,Standards specifications,random,4,1
+question 9781,Standards specifications,random,3,1
+question 717,Standards specifications,random,1,2
+question 6109,Standards specifications,random,4,4
+question 1318,Standards specifications,random,5,5
+question 8912,Standards specifications,random,2,2
+question 6296,Standards specifications,random,5,4
+question 4873,Standards specifications,random,3,1
+question 3704,Standards specifications,random,5,5
+question 6561,Standards specifications,random,3,3
+question 5231,Standards specifications,random,2,2
+question 8695,Standards specifications,random,3,3
+question 325,Standards specifications,random,2,2
+question 5341,Standards specifications,random,1,1
+question 5982,Standards specifications,random,4,4
+question 9533,Standards specifications,random,2,4
+question 3838,Standards specifications,random,2,2
+question 6714,Standards specifications,random,2,2
+question 2205,Standards specifications,random,2,2
+question 6175,Standards specifications,random,1,1
+question 7275,Standards specifications,random,2,4
+question 135,Standards specifications,random,5,3
+question 3931,Standards specifications,random,1,1
+question 4378,Standards specifications,random,4,4
+question 5923,Standards specifications,random,3,3
+question 2996,Standards specifications,random,2,2
+question 7657,Standards specifications,random,2,4
+question 5467,Standards specifications,random,3,
+question 4688,Standards specifications,random,3,1
+question 7370,Standards specifications,random,3,
+question 616,Standards specifications,random,2,
+question 3610,Standards specifications,random,2,2
+question 5706,Standards specifications,random,2,2
+question 1673,Standards specifications,random,3,3
+question 7853,Standards specifications,random,4,4
+question 3604,Standards specifications,random,4,
+question 6059,Standards specifications,random,4,
+question 1288,Standards specifications,random,2,2
+question 8880,Standards specifications,random,1,
+question 7767,Standards specifications,random,2,2
+question 9344,Standards specifications,random,4,
+question 5912,Standards specifications,random,4,4
+question 8657,Standards specifications,random,3,3
+question 5632,Standards specifications,random,1,1
+question 1274,Standards specifications,random,3,
+question 2461,Standards specifications,random,4,4
+question 7071,Standards specifications,random,1,
+question 8988,Standards specifications,random,1,
+question 188,Standards specifications,random,4,
+question 6750,Standards specifications,random,5,
+question 3854,Standards specifications,random,3,3
+question 1581,Standards specifications,random,1,1
+question 3066,Standards specifications,random,4,
+question 4548,Standards specifications,random,5,
+question 2224,Standards specifications,random,1,
+question 8620,Standards specifications,random,5,
+question 2442,Standards specifications,random,2,
+question 855,Standards specifications,random,1,
+question 5463,Standards specifications,random,2,
+question 6300,Standards specifications,random,4,
+question 6337,Standards specifications,random,5,
+question 8096,Standards specifications,random,1,
+question 3325,Standards specifications,random,2,
+question 6599,Standards specifications,random,2,
+question 3615,Standards specifications,random,1,
+question 1273,Standards specifications,random,3,
+question 7775,Standards specifications,random,2,
+question 8795,Standards specifications,random,1,
+question 2633,Standards specifications,random,3,
+question 2835,Standards specifications,random,1,
+question 1160,Standards specifications,random,2,
+question 7640,Standards specifications,random,2,
+question 1751,Standards specifications,random,5,
+question 1143,Standards specifications,conflict,5,
+question 3663,Standards overview,conflict,1,
+question 4450,Lexicon,conflict,1,
+question 4536,Standards specifications,conflict,2,
+question 4588,Standards specifications,conflict,2,
+question 7935,Standards specifications,conflict,4,
+question 9424,Standards specifications,conflict,2,
