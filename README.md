@@ -33,3 +33,16 @@ cp .env.example .env   # 填入百炼工作空间的 LLM_BASE_URL 与 LLM_API_KE
 ```bash
 uv run python scripts/probe_models.py   # 检查被测模型可用性与思考开关
 ```
+
+TeleQnA 审计（选项结构 + 近重复），按顺序执行：
+
+```bash
+uv run python scripts/audit_teleqna.py               # 选项结构、字面近重复候选
+uv run python scripts/embed_teleqna.py               # 题干 embedding（语义候选）
+uv run python scripts/adjudicate_pairs.py            # LLM 裁决候选对
+uv run python scripts/build_pair_validation.py       # 分层抽样，生成盲标批次
+uv run python analysis/pair_adjudicator_agreement.py # 裁决器与盲标的一致性
+uv run python scripts/audit_teleqna.py               # 汇总，生成最终标记与报告
+```
+
+盲标结果存于 `data/processed/teleqna_pair_validation.csv`（由 Claude 子 agent 标注，非脚本产出）。
