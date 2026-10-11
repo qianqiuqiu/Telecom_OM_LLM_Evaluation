@@ -1,458 +1,458 @@
-id,kind,annotator,choice,confidence,verdict,correct_option,evidence,source
-question 4406,solve,claude,1,low,,,,
-question 35,solve,claude,3,high,,,,
-question 8013,solve,claude,5,medium,,,,
-question 536,solve,claude,3,high,,,,
-question 9,solve,claude,2,high,,,,
-question 460,solve,claude,3,high,,,,
-question 5722,solve,claude,5,high,,,,
-question 8275,solve,claude,2,high,,,,
-question 7840,solve,claude,3,high,,,,
-question 5438,solve,claude,4,high,,,,
-question 6789,solve,claude,3,high,,,,
-question 776,solve,claude,1,high,,,,
-question 9947,solve,claude,1,high,,,,
-question 2387,solve,claude,5,high,,,,
-question 4292,solve,claude,4,high,,,,
-question 1816,solve,claude,4,high,,,,
-question 2445,solve,claude,2,medium,,,,
-question 5646,solve,claude,3,high,,,,
-question 9274,solve,claude,2,high,,,,
-question 9065,solve,claude,4,high,,,,
-question 4406,verdict,inv1,,,wrong,1,"TS 23.251 §3.1 defines a conventional network as a PLMN with its own RAN and core network. In it, only one serving operator serves its own subscribers, and other operators' subscribers get service only through national and international roaming. Option 4 (the marked answer) reverses this, because the definition is centred on serving the operator's own subscribers. Option 2 is the definition of 'Core network operator' in a shared network. Option 1 is the only option that uses the definition's own roaming wording, so it is the best match, although it is a partial paraphrase. If option 1's incompleteness counts against it, 'ambiguous' is defensible.","3GPP TS 23.251 §3.1, via the itecspec.com/3gpp/23.251/s/3.1 mirror and a search summary that also cited SP-040527. The 3GPP text itself was not opened."
-question 4406,verdict,inv2,,,wrong,1,"TS 23.251 clause 3.1 defines a conventional network as a PLMN made of a RAN and a core network, through which only one serving operator serves its own subscribers. Subscribers of other operators may get service through national or international roaming. Option 1 (supports national and international roaming) is the option that matches this definition. Option 4 (provides services to subscribers of other operators) misses the defining point that a single serving operator serves its own subscribers; other operators' subscribers are reached only through roaming. Options 2 and 5 describe shared networks, and option 3 is wrong because the definition includes a RAN. Option 1 is not a full paraphrase either, but it is the best fit. This is a TeleQnA-style option set built from the definition text, so the call leans toward 1 rather than ambiguous.",3GPP TS 23.251 clause 3.1 (https://www.itecspec.com/3gpp/23.251/s/3.1; Rel-6 text in SP-040527)
-question 5709,solve,claude,2,high,,,,
-question 2532,solve,claude,2,high,,,,
-question 802,solve,claude,1,high,,,,
-question 6075,solve,claude,3,high,,,,
-question 5585,solve,claude,4,high,,,,
-question 9420,solve,claude,5,high,,,,
-question 6583,solve,claude,4,high,,,,
-question 3299,solve,claude,2,high,,,,
-question 4594,solve,claude,4,high,,,,
-question 1224,solve,claude,5,high,,,,
-question 7639,solve,claude,2,high,,,,
-question 5530,solve,claude,4,high,,,,
-question 1365,solve,claude,4,high,,,,
-question 957,solve,claude,3,high,,,,
-question 9038,solve,claude,4,high,,,,
-question 3674,solve,claude,5,high,,,,
-question 8720,solve,claude,1,high,,,,
-question 2856,solve,claude,3,high,,,,
-question 5999,solve,claude,5,high,,,,
-question 5855,solve,claude,4,high,,,,
-question 7213,solve,claude,1,high,,,,
-question 6534,solve,claude,2,low,,,,
-question 4676,solve,claude,3,high,,,,
-question 6509,solve,claude,2,high,,,,
-question 557,solve,claude,5,high,,,,
-question 2938,solve,claude,3,high,,,,
-question 7409,solve,claude,1,high,,,,
-question 7650,solve,claude,2,low,,,,
-question 835,solve,claude,5,high,,,,
-question 783,solve,claude,4,high,,,,
-question 3934,solve,claude,4,high,,,,
-question 8654,solve,claude,4,medium,,,,
-question 4683,solve,claude,1,medium,,,,
-question 5745,solve,claude,3,high,,,,
-question 9037,solve,claude,1,medium,,,,
-question 3252,solve,claude,4,low,,,,
-question 624,solve,claude,3,high,,,,
-question 2939,solve,claude,3,medium,,,,
-question 6425,solve,claude,3,low,,,,
-question 319,solve,claude,4,high,,,,
-question 7650,verdict,inv1,,,correct,1,"In NSSAA (TS 23.501 5.15.10, TS 33.501 Annex/16), the slice-specific User ID (EAP identity) plus credentials, distinct from the 3GPP SUPI, is used by the AAA-S to authenticate and authorize the UE for a given S-NSSAI. Option 2 paraphrases the generic 'User Identity' text of TS 22.261 and is not the NSSAA purpose.",own knowledge (TS 23.501 cl. 5.15.10; TS 33.501 cl. 16)
-question 9037,verdict,inv1,,,ambiguous,,"TS 22.125 lists the data the 3GPP system forwards to the UTM for remote ID. UAV data matches option 1 and UAV-controller data matches option 2. The question asks about 'UAS nodes', which covers both, so option 1 is only part of the answer and option 2 is equally defensible.",own knowledge (3GPP TS 22.125 cl. 5.1)
-question 3252,verdict,inv1,,,ambiguous,,"1000BASE-T sends data in both directions on all four pairs (1-2, 3-6, 4-5, 7-8). Options 2, 3 and 4 are each one of those bidirectional pairs, so none is uniquely right. Pins 3 and 6 is the 10/100BASE-T receive-pair answer, not something specific to Gigabit. The question is flawed.","own knowledge (IEEE 802.3 Clause 40, 1000BASE-T)"
-question 6425,verdict,inv1,,,correct,3,"The Rel-17 SON enhancement adds PSCell information to UE History Information for EN-DC, so the network can detect and avoid ping-pong of the SN/PSCell during mobility. Option 4 (mobility optimization) overlaps in general terms, but ping-pong avoidance is the specific stated purpose.",own knowledge (TR 21.917 SON/MDT enhancements; TS 37.340/36.300 UE History Information)
-question 7650,verdict,inv2,,,correct,1,"In NSSAA (TS 22.261/23.501 Rel-16) the User ID/EAP identity is the identifier used with the AAA-S to authenticate and authorize the UE for a specific S-NSSAI. It is separate from the 3GPP subscription identifiers. Option 2, which says it identifies existing identifiers, garbles that distinction and is not a purpose. Options 3-5 describe other functions.",own knowledge (TS 23.501 cl. 5.15.10; TS 22.261 Rel-16)
-question 9037,verdict,inv2,,,ambiguous,,"TS 22.125 (Rel-16 remote identification of UAS) requires the 3GPP system to forward UAV data to the UTM: identity, UE capability, make/model, serial number, take-off weight, position, owner info, take-off location, mission type, route data and operating status. It also requires forwarding UAV controller data: identity, UE capability, position, owner/operator/pilot info and flight plan. Option 1 and option 2 are therefore both forwarded information. The question does not say which entity it means.","own knowledge (3GPP TS 22.125 Rel-16, remote identification requirements; TR 21.916)"
-question 3252,verdict,inv2,,,ambiguous,,"1000BASE-T (IEEE 802.3 Clause 40) sends data bidirectionally on all four pairs (pins 1-2, 3-6, 4-5 and 7-8) at once. Pins 1/2, 3/6 and 7/8 are therefore all equally valid. Option 1 (5 and 6) is not a pair. The marked answer, 3 and 6, is no more correct than options 2 or 4. The question appears to mix up 1000BASE-T with 10/100BASE-T pinouts.","own knowledge (IEEE 802.3 Clause 40, 1000BASE-T)"
-question 6425,verdict,inv2,,,correct,3,"Rel-17 SON/MDT added PSCell information to the UE History Information for EN-DC/MR-DC. Its stated use is to detect and avoid ping-pong, here of SN/PSCell changes, the same way UHI stay-times are used to limit handover ping-pong. Option 4, 'improve mobility optimization', is broadly related but generic. Option 3 is the specific purpose that the standard and release summary describe.",own knowledge; 3GPP RAN3 Rel-17 UHI CRs (e.g. https://www.3gpp.org/FTP/tsg_ran/WG3_Iu/TSGR3_117bis-e/Inbox/Drafts/CB%20%23%205_UHI/Phase%202/R3-226012%20rev%20of%20R3-225732%20UHI%20CR%2038300.docx)
-question 37,solve,claude,3,medium,,,,
-question 9845,solve,claude,1,high,,,,
-question 7764,solve,claude,4,high,,,,
-question 1184,solve,claude,3,high,,,,
-question 4058,solve,claude,4,high,,,,
-question 3157,solve,claude,4,medium,,,,
-question 5911,solve,claude,2,high,,,,
-question 5540,solve,claude,1,medium,,,,
-question 1505,solve,claude,2,low,,,,
-question 4093,solve,claude,1,medium,,,,
-question 4842,solve,claude,4,high,,,,
-question 7421,solve,claude,1,high,,,,
-question 9333,solve,claude,2,high,,,,
-question 648,solve,claude,4,low,,,,
-question 2943,solve,claude,2,low,,,,
-question 8658,solve,claude,3,high,,,,
-question 5285,solve,claude,1,high,,,,
-question 368,solve,claude,5,high,,,,
-question 9162,solve,claude,2,medium,,,,
-question 4034,solve,claude,2,medium,,,,
-question 37,verdict,inv1,,,ambiguous,,"Options 1 and 4 are S1AP procedures, not NGAP. NGAP carries inter-system SON and load-balancing information in both directions: the NG-RAN node sends it in Uplink RAN Configuration Transfer and receives it in Downlink RAN Configuration Transfer. That makes both option 2 and option 3 defensible. The marked option 3 is plausible because the NG-RAN node starts the exchange, but it is not the only right answer.",own knowledge (3GPP TS 38.413 Rel-17 clause 8.16; TS 38.300 inter-system load balancing)
-question 1505,verdict,inv1,,,wrong,2,"The US FCC U-NII-3 band (5725-5850 MHz) allows 1 W of conducted power, which is 30 dBm; this is the standard 30 dBm figure. Europe (ETSI) does not allow 30 dBm in this band: SRD use there is about 25 mW (14 dBm), and BFWA uses a different EIRP limit. So the marked option 5 (Europe) is wrong. Canada and Brazil follow US-like rules, so option 2 is not perfectly unique, but it is the best answer.",own knowledge (FCC 47 CFR 15.407; ETSI EN 300 440 / EN 302 502)
-question 4034,verdict,inv1,,,correct,4,"The ETSI MEC automotive and edge material links tight MEC-cloud integration to three things: saving back-haul capacity, letting developers who already program client-server cloud applications build for MEC, and reliable connection to the backend systems of car makers and suppliers. Since all three options are valid reasons, 'All of the above' (option 4) is the best answer. Not checked against the exact source text.",own knowledge (ETSI MEC white papers)
-question 37,verdict,inv2,,,correct,3,"Options 1 and 4 are S1AP procedures, not NGAP. In NGAP (TS 38.413), the NG-RAN node starts inter-system SON/load-balancing information exchange, such as the inter-system resource status request/report toward E-UTRAN, with the Uplink RAN Configuration Transfer procedure. The AMF then delivers it with Downlink RAN Configuration Transfer. The uplink procedure is the initiating one and the best answer, but the downlink procedure is also involved, so there is slight ambiguity.","own knowledge (3GPP TS 38.413 Rel-17, Uplink/Downlink RAN Configuration Transfer; TS 38.300 inter-system load balancing)"
-question 1505,verdict,inv2,,,ambiguous,,"At 5725-5850 MHz the US (FCC 15.247/15.407) allows 1 W (30 dBm) conducted output. Canada (RSS-247) and Brazil (Anatel) set the same 1 W limit, and China allows about 33 dBm EIRP. Europe does not generally allow 30 dBm in this band (SRD at 25 mW, or BFWA under EN 302 502 at a higher EIRP). So several options are defensible, and the marked 'Europe' is doubtful. The answer depends on an unknown source table.","own knowledge (FCC 47 CFR 15.247/15.407, ISED RSS-247, ETSI EN 300 440 / EN 302 502)"
-question 4034,verdict,inv2,,,ambiguous,,"The question's wording closely matches an ETSI MEC white-paper statement giving one specific reason for seamless and elastic MEC-cloud integration: attracting the large community of developers already used to cloud client-server programming (option 2). Options 1 (saving backhaul) and 3 (connection to car makers' backends) are general MEC/automotive benefits, so 'All of the above' (marked) could be argued from an automotive-context source. I could not confirm the exact source passage, so neither answer is clearly uniquely right. I lean toward option 2.",own knowledge (ETSI MEC white papers; source passage not verified)
-question 5437,solve,claude,3,low,,,,
-question 2549,solve,claude,1,high,,,,
-question 7346,solve,claude,1,high,,,,
-question 688,solve,claude,2,medium,,,,
-question 2252,solve,claude,4,medium,,,,
-question 3139,solve,claude,3,high,,,,
-question 1959,solve,claude,1,high,,,,
-question 8603,solve,claude,3,high,,,,
-question 8263,solve,claude,1,high,,,,
-question 534,solve,claude,3,medium,,,,
-question 959,solve,claude,2,medium,,,,
-question 3512,solve,claude,4,high,,,,
-question 4263,solve,claude,1,high,,,,
-question 5541,solve,claude,3,high,,,,
-question 9602,solve,claude,1,medium,,,,
-question 7410,solve,claude,1,medium,,,,
-question 5057,solve,claude,4,high,,,,
-question 1861,solve,claude,2,high,,,,
-question 3297,solve,claude,3,medium,,,,
-question 9043,solve,claude,1,high,,,,
-question 5437,verdict,inv1,,,correct,1,"The question comes from Wang, Yang, Ding and Poor, 'Secure Short-Packet Communications for Mission-Critical IoT Applications' (IEEE TWC 2019). For the single-antenna AP case, the paper gives a closed-form approximation of the average secrecy throughput and derives an optimal blocklength that maximizes it. The 2021 survey (arXiv 2107.05966) shows a figure where T first increases and then decreases as N grows. So option 1 is right.","https://arxiv.org/abs/1903.01433 ; https://arxiv.org/pdf/2107.05966 (I saw only search-result summaries, not the full text)"
-question 3297,verdict,inv1,,,correct,3,"In Release 15, 5GS-EPS interworking (TS 23.501 clause 5.17.2) is designed so the UE can move between 5GC and EPC while keeping its IP address and session continuity. The Release 15 descriptions call this mobility with minimal impact on the user experience. 'No impact' (option 2) goes too far, because interworking without N26 can cause service interruption and IP-address preservation is not always possible. Option 3 is the best choice. I did not check this one against a source, so the wording match is from memory.",own knowledge (3GPP TS 23.501 Rel-15 clause 5.17.2; TR 21.915)
-question 5437,verdict,inv2,,,correct,1,"The question comes from Wang, Yang, Ding and Poor, 'Secure Short-Packet Communications for Mission-Critical IoT Applications' (arXiv:1903.01433). For the single-antenna AP case, the paper approximates the average secrecy throughput in closed form and derives an optimal blocklength that maximizes it, even without reliability or latency constraints. A finite optimal N means T rises and then falls as N grows, so option 1 is right. Larger N lowers the decoding-error penalty but also lowers the rate per channel use, which explains the trade-off. I confirmed this from the search snippets and my own knowledge, not from the paper's figures.","https://arxiv.org/abs/1903.01433 (Wang et al., IEEE TWC 2019)"
-question 3297,verdict,inv2,,,correct,3,"TS 22.261 (Release 15) states as a requirement that the 5G system shall support mobility between a 5G core network and an EPC with minimal impact to the user experience (e.g., QoS, QoE). This matches option 3, 'Minimal impact'. Option 2, 'No impact', overstates the requirement.",3GPP TS 22.261 Rel-15 (own knowledge)
-question 9318,solve,claude,2,high,,,,
-question 4099,solve,claude,2,low,,,,
-question 1687,solve,claude,2,high,,,,
-question 7569,solve,claude,5,high,,,,
-question 5105,solve,claude,2,high,,,,
-question 5099,solve,claude,1,medium,,,,
-question 9907,solve,claude,2,medium,,,,
-question 1909,solve,claude,4,high,,,,
-question 6310,solve,claude,1,high,,,,
-question 714,solve,claude,3,high,,,,
-question 3851,solve,claude,3,medium,,,,
-question 759,solve,claude,1,medium,,,,
-question 5991,solve,claude,4,medium,,,,
-question 5359,solve,claude,2,medium,,,,
-question 797,solve,claude,4,high,,,,
-question 192,solve,claude,3,high,,,,
-question 9786,solve,claude,3,high,,,,
-question 8950,solve,claude,1,medium,,,,
-question 1642,solve,claude,4,medium,,,,
-question 2304,solve,claude,4,low,,,,
-question 3851,verdict,inv1,,,wrong,3,"IGMP snooping is a Layer-2 switch feature: the switch listens to IGMP messages so it can forward multicast frames only to ports with interested receivers instead of flooding them. Option 3 says this. Mapping multicast IP addresses to MAC addresses (the marked option 2) is the fixed IP-to-MAC mapping in RFC 1112, not IGMP snooping. Option 5 is generic and also true in a loose sense, but option 3 is the clearly best answer.",own knowledge (RFC 4541; RFC 1112 sec. 6.4)
-question 759,verdict,inv1,,,ambiguous,,"Under O-RAN, the Near-RT RIC controls E2 nodes (O-CU/O-DU) over the E2 interface, so option 1 holds in general. Options 2 and 3 (a user categorization module, a MAP vector per O-RU) only make sense in one particular research paper's design, and the question gives no context for them. The marked option 4, 'All of the above', depends on that missing context; from the standard alone, option 1 is the defensible answer.",own knowledge (O-RAN.WG1 Architecture Description; O-RAN.WG3 E2 specs)
-question 5991,verdict,inv1,,,correct,4,"MulteFire runs LTE alone in unlicensed spectrum. It is marketed as giving better capacity, coverage and range, and data performance than Wi-Fi, along with LTE-grade mobility/handover management and security. The 'All of the above' answer fits the usual MulteFire claims. The higher-data-rate claim is the weakest of the three but is commonly stated.",own knowledge (MulteFire Alliance overview material)
-question 8950,verdict,inv1,,,correct,1,"The 3GPP Rel-14 LTE V2X description names two high-level deployment configurations. In Configuration 1, vehicles schedule and manage interference for V2V traffic using distributed algorithms over PC5 (sidelink, without network assistance). In Configuration 2, the eNB assists via Uu signalling. The marked option 1 is therefore right.","own knowledge (3GPP TR 21.914 Rel-14 description, LTE V2X section; 3gpp.org 'V2X' overview)"
-question 3851,verdict,inv2,,,wrong,3,"IGMP snooping lets a Layer-2 switch listen to IGMP messages and forward or filter multicast frames only to ports with interested receivers, so it filters multicast in L2 networks. Mapping multicast IP addresses to MAC addresses (the marked option 2) is a fixed address mapping defined in RFC 1112, not what IGMP snooping does.",RFC 4541 (IGMP/MLD snooping considerations); own knowledge
-question 759,verdict,inv2,,,ambiguous,,"The standard role of the Near-RT RIC is to control E2 nodes (O-CU/O-DU) over the E2 interface, which is option 1. Options 2 and 3 (user categorization, MAP vector per O-RU) describe xApp functions from a specific paper, not the Near-RT RIC in general. 'All of the above' may match the source paper, but on general knowledge option 1 is the defensible answer, so neither option is uniquely right.",O-RAN.WG1 architecture description; own knowledge
-question 5991,verdict,inv2,,,correct,4,"MulteFire runs LTE technology on its own in unlicensed spectrum. Typical claims for it versus Wi-Fi are better capacity, coverage and data efficiency, plus LTE-style mobility management and security. 'All of the above' is the intended and most defensible answer, although the data-rate claim is weaker than the other two.",MulteFire Alliance overview; own knowledge
-question 8950,verdict,inv2,,,correct,1,"In the Rel-14 V2X description, Configuration 1 is PC5-based V2V, where scheduling and interference management rely on distributed algorithms run between the vehicles. Configuration 2 relies on the eNB over Uu, or on eNB-assisted scheduling.","3GPP TR 21.914 (Rel-14 description), LTE V2X section; TR 36.885; own knowledge"
-question 1642,verdict,inv1,,,unverifiable,,"I could not find the 'definitive cases' of UE-initiated inter-slice switching in any 3GPP text I checked. The related material in TR 23.700-41 (clause 6.42) and TR 23.700-40 (clause 6.44.3) describes network-controlled slice replacement. There, if the alternative S-NSSAI is not in the Allowed NSSAI, the UE first registers to it. That clause does not use a definitive/tentative split. The marked option 1 says the UE switches definitively whether or not an alternative slice is in the Allowed NSSAI. It is oddly specific, which suggests it may have been copied from the source text, where a 'tentative' case would be the opposite. The blind answers' option 4 (the alternative slice is already in the Allowed NSSAI) also sounds plausible. Without the primary source I can't confidently say which one is right.",https://www.itecspec.com/3gpp/23.700-41/s/6.42.2 ; https://www.itecspec.com/3gpp/23.700-40/s/6.44.3 ; web searches found no text using the 'definitive cases' wording
-question 1642,verdict,inv2,,,correct,1,"The question follows the framing in the arXiv paper on inter-slice mobility. The paper splits UE-initiated switching into tentative and definitive cases. In the definitive case, the UE decides to switch slices for good and leaves the current slice whether or not a suitable alternate slice is in the Allowed NSSAI. That is option 1. Option 4, an alternate slice already in the Allowed NSSAI, is only one sub-case of the definitive case. Options 2 and 5 describe the tentative case. Option 3 is a consequence, not the defining feature. This rests on a search-result summary of the paper; the PDF was not opened.","arXiv:2003.11343, 'Inter-Slice Mobility Management in 5G: Motivations, Standard Principles, Challenges and Research Directions' (https://arxiv.org/pdf/2003.11343)"
-question 1374,solve,claude,1,low,,,,
-question 2659,solve,claude,4,high,,,,
-question 4912,solve,claude,4,medium,,,,
-question 4642,solve,claude,1,high,,,,
-question 2550,solve,claude,4,high,,,,
-question 177,solve,claude,2,medium,,,,
-question 7815,solve,claude,5,high,,,,
-question 1491,solve,claude,4,high,,,,
-question 2243,solve,claude,1,high,,,,
-question 8601,solve,claude,2,medium,,,,
-question 4524,solve,claude,3,low,,,,
-question 295,solve,claude,1,high,,,,
-question 4920,solve,claude,1,high,,,,
-question 6100,solve,claude,1,high,,,,
-question 108,solve,claude,4,low,,,,
-question 2412,solve,claude,2,medium,,,,
-question 7868,solve,claude,4,high,,,,
-question 7622,solve,claude,5,medium,,,,
-question 8200,solve,claude,1,medium,,,,
-question 1191,solve,claude,3,high,,,,
-question 1374,verdict,inv1,,,ambiguous,,"The TCP sliding window is used for flow control. It limits how much unacknowledged data can be outstanding, based on the receiver's buffer space. None of the options states this cleanly. 'Organize the data stream' (marked 5) is vague. 'Reserve buffer space' (1) is also arguable, since the advertised window reflects the receiver's buffer. The question is poorly worded and no single option is clearly best.",own knowledge (RFC 793 flow control / window semantics)
-question 177,verdict,inv1,,,ambiguous,,"Duplication lowers jitter mainly because retransmissions are avoided: the first copy to arrive is used, which cuts latency spikes. Option 2 gives that mechanism. Option 3 ('minimizing variance in latency') is close to the definition of reduced jitter. Option 1 (diversity) is the underlying cause of the reliability gain. More than one option is defensible.",own knowledge (3GPP URLLC / PDCP duplication literature)
-question 4524,verdict,inv1,,,ambiguous,,"TS 23.501 (prioritized services such as MPS/MCS) exempts these services from both mobility management and session management congestion controls (NAS-level MM and SM back-off). So option 2 (marked) and option 3 are equally supported. Checked from memory only, not against the spec text.",own knowledge (3GPP TS 23.501 clause 5.16.5 / 5.19)
-question 7622,verdict,inv1,,,correct,5,"The LCS requirements say that when the application makes an event-based or time-based decision (for example periodic or area-event reporting handled by the application), the operator may reduce network traffic further without reducing QoS. The other options are service types or the privacy list, not scenarios for reducing traffic. Moderate confidence, based on memory only.",own knowledge (3GPP TS 22.071)
-question 1374,verdict,inv2,,,ambiguous,,"TCP's sliding window does flow control: the receiver advertises how many octets it can still buffer (RFC 793). None of the options says 'flow control'. 'Organize the data stream' (marked option 5) is vague, and 'reserve buffer space' (option 1) is at least as defensible, because the window reflects receiver buffer space. No single option is clearly right.",own knowledge (RFC 793 window semantics)
-question 177,verdict,inv2,,,ambiguous,,"Duplication sends the same packet over independent paths or carriers (diversity), which avoids retransmissions and so reduces latency variance. Option 3 describes the effect, and options 1 and 2 describe the mechanism. The question asks 'how', so options 1 and 2 are as defensible as the marked option 3.","own knowledge (PDCP duplication, 3GPP URLLC studies)"
-question 4524,verdict,inv2,,,ambiguous,,"TS 23.501 (MPS/prioritized services) says prioritized services are exempted from both Mobility Management and Session Management congestion controls. Option 2 (SM) and option 3 (MM) are each half of that statement, so both are defensible.","own knowledge (3GPP TS 23.501, priority/MPS and congestion control clauses)"
-question 7622,verdict,inv2,,,correct,5,"TS 22.071 (LCS) says that in some cases (an event-based or time-based decision process by the application), the operator may reduce network traffic further without reducing QoS. This matches option 5. Periodic reporting (option 4) is the related context, not the scenario the text names.","own knowledge (3GPP TS 22.071), not checked against the spec"
-question 8200,verdict,inv1,,,ambiguous,,"Rel-18 time-sensitive/time synchronization text in TS 23.501 §5.27.1 and TS 23.502 says that during registration, AM policy modification and handover, the AMF gives NG-RAN the 5G access stratum time distribution indication, the Uu time synchronization error budget and (Rel-18) the clock quality detail level. That makes options 1, 2 and 3 the information items sent, and they arrive inside different NGAP messages: Initial Context Setup or Registration Accept N2 for registration, Handover Request for handover, and UE Context Modification Request only for AM policy modification. Option 4 is only one of those carrier messages, so it is not uniquely right, and more than one other option can be defended. The question looks auto-generated and flawed.","own knowledge (3GPP TS 23.501 §5.27.1.x; TS 23.502 §4.2.4 / §4.15.9, Rel-18)"
-question 8200,verdict,inv2,,,ambiguous,,"TS 23.501 5.27.1.9 (Rel-18) says the AMF may give NG-RAN both the 5G access stratum time distribution indication and the Uu time synchronization error budget during handover, service request, mobility registration and AM policy modification. The clause does not name UE Context Modification Request (the marked option 4). In those procedures this information would travel in different N2 messages, for example Handover Request during handover. So the marked answer has no direct support. The question was probably built from this clause, which makes option 1 the likely intended answer. But option 2 is also sent in the same procedures, so no single option is uniquely correct. The question itself is flawed: it asks for a 'message' while the options mix information elements with NGAP messages.","3GPP TS 23.501 clause 5.27.1.9 and 5.27.1.11, plus TS 23.502 4.28.2.1. Read through the mirrors https://www.itecspec.com/3gpp/23.501/s/5.27.1.9 and https://itecspec.com/3gpp/23.501/s/5.27.1.11"
-question 8405,solve,claude,1,medium,,,,
-question 636,solve,claude,4,medium,,,,
-question 1703,solve,claude,1,high,,,,
-question 149,solve,claude,4,high,,,,
-question 1383,solve,claude,2,low,,,,
-question 2079,solve,claude,3,medium,,,,
-question 7873,solve,claude,3,low,,,,
-question 8634,solve,claude,5,medium,,,,
-question 8054,solve,claude,4,low,,,,
-question 4333,solve,claude,1,high,,,,
-question 9513,solve,claude,2,medium,,,,
-question 1847,solve,claude,2,high,,,,
-question 5263,solve,claude,3,high,,,,
-question 60,solve,claude,2,medium,,,,
-question 9656,solve,claude,5,high,,,,
-question 6463,solve,claude,5,high,,,,
-question 5832,solve,claude,1,low,,,,
-question 6204,solve,claude,1,high,,,,
-question 3377,solve,claude,1,high,,,,
-question 1785,solve,claude,4,high,,,,
-question 8405,verdict,inv1,,,ambiguous,,"In TS 23.548 the AF requests DNAI information by invoking the NEF service Nnef_DNAIMapping_Subscribe. Options 1 and 4 name that same service, with and without the words ""NEF service"", so both are correct. The marked option 4 is right, but it is not the only right answer.","own knowledge (3GPP TS 23.548 Rel-18, DNAI mapping procedure)"
-question 636,verdict,inv1,,,ambiguous,,"Release 16 NWDAF collected UPF data through the SMF. Release 17/18 added UPF event exposure (Nupf_EventExposure), so in TS 23.288 / TS 23.502 the NWDAF can collect UPF data directly or through the SMF. With a Release 18 tag, both option 3 (via SMF, the marked one) and option 4 (directly from UPF) are defensible.","own knowledge (3GPP TS 23.288 clause 6.2.2, TS 23.502 clause 4.15.4.5)"
-question 8634,verdict,inv1,,,correct,,"In the 802.11 Triggered Reporting definition, the Average trigger fires when the number of MSDUs for the TC/TS discarded out of the preceding Measurement Count MSDUs reaches or exceeds the Average Error Threshold. Option 1 describes this condition. Option 5 names only the threshold field, which is part of the condition, so option 1 is the best answer. Option 2 is the Consecutive trigger and option 3 is the Delay trigger.","own knowledge (IEEE 802.11, Transmit Stream/Category Measurement Request, Triggered Reporting subelement)"
-question 60,verdict,inv1,,,correct,,"In TS 38.213 Rel-17 (NR MBS), DCI formats with CRC scrambled by MCCH-RNTI or G-RNTI for broadcast reception are called broadcast DCI formats. MCCH-RNTI is used only for broadcast MCCH. Multicast DCI formats use G-RNTI or G-CS-RNTI for multicast sessions.",own knowledge (3GPP TS 38.213 Rel-17 clause 10.1 / MBS broadcast)
-question 8405,verdict,inv2,,,ambiguous,,"Options 1 ('NEF service Nnef_DNAIMapping_Subscribe') and 4 ('Nnef_DNAIMapping_Subscribe') name the same NEF service operation; both are equally correct, so the marked option 4 is not uniquely right.",own knowledge (3GPP TS 23.548 / TS 23.502 Rel-18 NEF DNAI mapping service)
-question 636,verdict,inv2,,,ambiguous,,"In Rel-17/18 TS 23.288, the NWDAF can collect UPF data either via the SMF (SMF-mediated UPF event exposure) or directly from the UPF (Nupf_EventExposure subscription). Both options 3 and 4 are defensible.",own knowledge (3GPP TS 23.288 Rel-18 clause 6.2.2 data collection; TS 23.502 UPF event exposure)
-question 8634,verdict,inv2,,,correct,1,"IEEE 802.11 Triggered Transmit Stream/Category Measurement, Average trigger: a report is generated when the number of MSDUs for the TC/TS discarded out of the preceding Measurement Count MSDUs is >= the Average Error Threshold. Option 1 restates this condition almost word for word. Option 5 names only the threshold field, so it is a weaker partial answer.","own knowledge (IEEE 802.11-2020, Triggered Reporting subelement for Transmit Stream/Category Measurement)"
-question 60,verdict,inv2,,,correct,2,"In TS 38.213 Rel-17 MBS clauses, broadcast MBS uses MCCH-RNTI (MCCH) and G-RNTI (MTCH). DCI formats with CRC scrambled by these are called broadcast DCI formats. Multicast uses G-RNTI/G-CS-RNTI and needs no MCCH-RNTI.","own knowledge (3GPP TS 38.213 Rel-17, MBS broadcast/multicast clauses)"
-question 7681,solve,claude,4,medium,,,,
-question 6912,solve,claude,1,high,,,,
-question 2367,solve,claude,4,medium,,,,
-question 6339,solve,claude,1,medium,,,,
-question 7478,solve,claude,2,low,,,,
-question 8627,solve,claude,1,high,,,,
-question 8841,solve,claude,2,low,,,,
-question 5608,solve,claude,1,medium,,,,
-question 4530,solve,claude,1,high,,,,
-question 2637,solve,claude,3,high,,,,
-question 3884,solve,claude,4,medium,,,,
-question 9377,solve,claude,1,high,,,,
-question 4759,solve,claude,3,high,,,,
-question 1497,solve,claude,3,high,,,,
-question 5947,solve,claude,2,high,,,,
-question 3673,solve,claude,2,medium,,,,
-question 4,solve,claude,2,high,,,,
-question 1019,solve,claude,3,medium,,,,
-question 2082,solve,claude,3,low,,,,
-question 8347,solve,claude,1,low,,,,
-question 6912,verdict,inv1,,,ambiguous,,"TS 38.211 clause 4.3.2 says OFDM symbols in a slot can be classified as 'downlink', 'flexible' or 'uplink' (option 1). The next sentence says that in a slot in a downlink frame, the UE assumes downlink transmissions only occur in 'downlink' or 'flexible' symbols (option 2). Read literally, the question asks for the classifications, which points to option 1. The marked option 2 matches the downlink-frame sentence instead, so the wording mixes the two statements.",own knowledge (3GPP TS 38.211 clause 4.3.2; TS 38.213 clause 11.1)
-question 2367,verdict,inv1,,,ambiguous,,"TS 22.261 clause 8.3 says the 5G network shall support a '3GPP supported mechanism' to authenticate legacy non-3GPP devices for 5G LAN-VN access. It does not say '3GPP credentials', and legacy non-3GPP devices normally have no 3GPP credentials. Option 3 looks like a garbled version of 'a 3GPP supported mechanism'. Options 4 and 5 reflect nearby requirements in the same clause about EAP and non-3GPP credentials for non-public networks. No option matches the source text exactly.",3GPP TS 22.261 clause 8.3 (seen as a third-party mirror via search results: https://www.itecspec.com/3gpp/22.261/s/8.3)
-question 7478,verdict,inv1,,,correct,3,TS 23.548 clause 6.8.2: the NEF first determines the DNN/S-NSSAI and subscribes to the UDR. The UDR notifies the NEF with the matching DNAI mapping information. The NEF then determines the suitable DNAI(s) from that mapping information and only after that reports them to the AF. So option 3 is the step that directly follows receiving the mapping.,3GPP TS 23.548 clause 6.8.2 (seen as a third-party mirror via search results: https://itecspec.com/3gpp/23.548/s/6.8.2)
-question 8841,verdict,inv1,,,ambiguous,,"IEEE C95.1 defines SAR as the rate of RF energy absorption per unit mass (option 3). A note adds that under perfect adiabatic conditions (no heat loss), SAR = c·dT/dt, so it is tied to the rate of temperature rise (option 2, though that option leaves out the specific heat c). The phrase 'in perfect adiabatic conditions' points the question toward option 2, while option 3 is the general definition and is always true. Both options can be defended.",own knowledge (IEEE Std C95.1-2019 SAR definition and note)
-question 6912,verdict,inv2,,,wrong,1,"TS 38.211 clause 4.3.2 says OFDM symbols in a slot can be classified as 'downlink', 'flexible', or 'uplink'. The phrase 'downlink' or 'flexible' comes from the next sentence: in a slot in a downlink frame, the UE assumes DL transmissions occur only in downlink or flexible symbols. That sentence is about where DL transmissions happen, not about the set of classifications. So the question as written asks for the classification set, which is option 1.","own knowledge (3GPP TS 38.211 Rel-17, clause 4.3.2)"
-question 2367,verdict,inv2,,,ambiguous,,"TS 22.261 clause 8.3 requires the 5G network to support 'a 3GPP supported mechanism to authenticate legacy non-3GPP devices for 5G LAN-VN access'. It does not say 3GPP credentials. A separate requirement in the same clause covers an EAP-like framework with non-3GPP identities and credentials and alternative methods for NPN access. Option 3 is a loose paraphrase of the spec, and options 4 and 5 are also arguable, so no single option clearly matches.",https://www.itecspec.com/3gpp/22.261/s/8.3
-question 7478,verdict,inv2,,,correct,3,"TS 23.548 clause 6.8.2 (AF request for DNAI): after the UDR returns the DNAI mapping information, the NEF determines the suitable DNAI(s) using that information. It then notifies the DNAI(s) to the AF. Determining the DNAIs is the step that comes right after receiving the mapping.",https://www.itecspec.com/3gpp/23.548/s/6.8.2
-question 8841,verdict,inv2,,,ambiguous,,"Option 3 (rate of RF energy absorption) is SAR's general definition and holds regardless of conditions. The phrase 'in perfect adiabatic conditions' points to the C95.1 note relating SAR to the rate of temperature rise (SAR = c dT/dt), which suggests option 2 is the intended answer. Option 1 (rate of heat production) is also defensible under adiabatic conditions. SAR is proportional to dT/dt rather than equal to it, so no single option is clearly the unique answer.",own knowledge of IEEE C95.1 SAR definition; FCC SAR appendices (fcc.report) on SAR = c dT/dt
-question 5608,verdict,inv1,,,ambiguous,,"TS 22.173 clause 8.1 says each supplementary service gives a short definition and a description of normal operation. Where relevant it also covers exceptional or unsuccessful operation, interactions with other IMS supplementary services, and consideration for interworking with CS mobile and fixed services. Options 1 and 4 both appear in the spec text, and option 2 roughly matches too, so the marked option 4 is not the only right answer.",3GPP TS 22.173 clause 8.1 (itecspec.com/3gpp/22.173/s/8.1)
-question 4759,verdict,inv1,,,ambiguous,,"TS 32.240 (Fig. 4.2.2.1 NOTE): Gz is functionally equivalent to Ga for the Legacy PS domain and to one of Ga or Rf for the Evolved PS domain, and Ga/Rf are used throughout for offline charging. That makes both Ga (marked) and Rf defensible. 'Gzn' does not appear to be a real reference point. The Claude/Qwen blind answer of option 3 is not supported.",3GPP TS 32.240 clause 4.2.2 (itecspec.com/3gpp/32.240/s/4.2.2)
-question 3673,verdict,inv1,,,correct,5,"In TS 32.240 terms, intra-level correlation aggregates charging events that belong to the same charging session, for example over a time period, which produces partial CDRs. Inter-level correlation is the one that combines events of the same service generated by different CTFs (that is option 2). IOI-related options describe something else.",own knowledge (3GPP TS 32.240 charging correlation definitions)
-question 2082,verdict,inv1,,,ambiguous,,"TS 38.300/38.331: a UE in RRC_INACTIVE starts RRC resume (sending RRCResumeRequest) because of RAN-based paging, a periodic or RNA-based update, or UL data/signalling arrival. RAN paging (marked option 4) is a valid trigger, but so are RNA update (option 1) and UL data arrival (option 3). DL data reaches the UE only through RAN paging. The question does not single out one trigger.","own knowledge (3GPP TS 38.300 clause 9.2.2, TS 38.331 clause 5.3.13)"
-question 5608,verdict,inv2,,,correct,,"TS 22.173 (IMS Multimedia Telephony service and supplementary services) introduces each supplementary service with a short service definition, a description of normal operation, and considerations for interworking with CS mobile and fixed services. Option 4 uses that wording. Option 3 is close but is not the spec's phrasing. This is recalled, not checked against the text.",3GPP TS 22.173 (own knowledge)
-question 4759,verdict,inv2,,,correct,,"TS 32.240/32.251 state that the Gz reference point is functionally equivalent to Ga and is replaced by Ga within the common charging architecture. Gzn is not a real reference point, and Ro/Rf/Gy are online or Diameter offline interfaces, not the replacement.",3GPP TS 32.240 / TS 32.251 (own knowledge)
-question 3673,verdict,inv2,,,correct,,"TS 32.240 defines intra-level correlation as aggregating charging events of the same charging session (e.g. over a time period) into a series of CDRs. Option 2 (combining events of the same service from different CTFs) is inter-level correlation, and options 1/3/4 describe IOI. So option 5 is right.",3GPP TS 32.240 charging correlation (own knowledge)
-question 2082,verdict,inv2,,,ambiguous,,"Per TS 38.300/38.331, a UE in RRC_INACTIVE sends RRCResumeRequest on RAN-based paging (option 4), on UL data arrival (option 3) and on periodic or moving RNA update (option 1). DL data triggers paging rather than the request directly. Three options are valid triggers, so the marked option 4 is not uniquely right.",3GPP TS 38.300 clause 9.2.2 / TS 38.331 clause 5.3.13 (own knowledge)
-question 8347,verdict,inv1,,,correct,3,"TS 36.104 Annex C (Characteristics of the interfering signals) says the interfering signal for E-UTRA is a PUSCH containing data and reference symbols, and for standalone NB-IoT it is an NPUSCH containing data and reference symbols. Option 3 matches that text. Option 2 (PUSCH) is the E-UTRA case, not NB-IoT. This is from my own knowledge of the spec; I did not open the document to check.",3GPP TS 36.104 Annex C (own knowledge)
-question 8347,verdict,inv2,,,correct,3,"In the 3GPP specs, Annex C of TS 36.104/36.141 and Annex E of TS 36.181 define the interferer for standalone NB-IoT as an NPUSCH containing data and reference symbols (normal CP, modulated per TS 36.211 clause 10.1). Only E-UTRA and in-band/guard-band NB-IoT use a PUSCH interferer. That makes option 1 (PDSCH) wrong.",https://itecspec.com/3gpp/36.104/s/annex-c ; https://www.itecspec.com/3gpp/36.181/s/annex-e
-question 146,solve,claude,3,high,,,,
-question 6097,solve,claude,1,medium,,,,
-question 2185,solve,claude,5,high,,,,
-question 8403,solve,claude,3,medium,,,,
-question 4620,solve,claude,3,low,,,,
-question 7173,solve,claude,2,high,,,,
-question 5791,solve,claude,5,low,,,,
-question 8076,solve,claude,3,high,,,,
-question 4782,solve,claude,3,medium,,,,
-question 8570,solve,claude,3,medium,,,,
-question 1640,solve,claude,5,medium,,,,
-question 3519,solve,claude,1,medium,,,,
-question 6040,solve,claude,1,low,,,,
-question 7804,solve,claude,2,high,,,,
-question 4351,solve,claude,5,high,,,,
-question 9547,solve,claude,3,high,,,,
-question 4894,solve,claude,3,high,,,,
-question 9487,solve,claude,1,high,,,,
-question 7035,solve,claude,2,medium,,,,
-question 6099,solve,claude,5,medium,,,,
-question 4620,verdict,inv1,,,correct,,"In the GLR architecture (TS 23.119 / TS 23.002 annex), GLf is the SMS-GMSC to GLR interface used to forward short messages when SMS is transferred over GPRS. GLg is the non-GPRS SMS path to the IM_MSC, and GLe carries PDU notification. That supports marked option 4.",Web search over TS 23.119 / TS 23.002 annex (SP-99546; itecspec.com/3gpp/23.119); the current spec text was not fetched
-question 7173,verdict,inv1,,,correct,,TS 22.071 (LCS) says location requests for emergency services are handled with the highest priority. Options 4 and 5 are garbled distractors.,own knowledge (3GPP TS 22.071)
-question 1640,verdict,inv1,,,correct,,"In NR SDT (TS 38.300/38.331), if SDT fails (for example T319a expiry or failed resume), the UE goes to RRC_IDLE. RRC_CONNECTED happens only when the network moves the UE out of SDT. That is not a failure.",own knowledge (3GPP TS 38.300 / 38.331 Rel-17/18)
-question 4620,verdict,inv2,,,correct,,"TS 23.119 (GLR) defines GLf as the interface between the SMS-GMSC and the GLR. It carries mobile-terminated short messages for SMS transfer over GPRS using MAP, and the SMS-GMSC treats the GLR as the SGSN on this link. The GLR then relays the message to the SGSN (clause 7.7.5.2). This came from a search-result summary; I could not fetch the spec text itself.",3GPP TS 23.119 (via search summaries; itecspec.com/3gpp/23.119/s/7.7.5.2)
-question 7173,verdict,inv2,,,correct,,"TS 22.071 (LCS service requirements) says location requests for emergency services are processed with the highest priority level. The other options (all requests, PLMN operator services, requests towards one's own target UE) are not given highest priority.","own knowledge (3GPP TS 22.071, priority requirements)"
-question 1640,verdict,inv2,,,correct,,"In Rel-17/18 NR SDT, if the SDT procedure fails (for example T319a expiry or a failed resume), the UE performs the actions for going to RRC_IDLE. Moving to RRC_CONNECTED is a network-triggered fallback, not a failure outcome. RRC_RELEASE and RRC_SUSPEND are not RRC states.",own knowledge (3GPP TS 38.300 clause 18 / TS 38.331 SDT procedures)
-question 9061,solve,claude,3,low,,,,
-question 3430,solve,claude,3,medium,,,,
-question 4279,solve,claude,3,low,,,,
-question 388,solve,claude,2,high,,,,
-question 9091,solve,claude,5,high,,,,
-question 1321,solve,claude,3,medium,,,,
-question 7095,solve,claude,4,medium,,,,
-question 1030,solve,claude,3,medium,,,,
-question 9549,solve,claude,1,low,,,,
-question 4585,solve,claude,2,medium,,,,
-question 1736,solve,claude,2,medium,,,,
-question 8959,solve,claude,1,high,,,,
-question 2430,solve,claude,3,high,,,,
-question 8965,solve,claude,1,low,,,,
-question 4970,solve,claude,2,low,,,,
-question 185,solve,claude,3,high,,,,
-question 7773,solve,claude,4,high,,,,
-question 1207,solve,claude,3,high,,,,
-question 5370,solve,claude,2,medium,,,,
-question 4282,solve,claude,2,low,,,,
-question 9061,verdict,inv1,,,correct,3,"In the TS 23.503 PCC rule table, the QoS-monitoring 'Direct event notification' field says that direct event notification of QoS monitoring results (UPF to local NEF/AF) is required, or that both direct notification and notification via SMF/PCF are required. Option 3 is the only option that reflects this. The other options describe the AF subscription, the monitoring parameters and N4 reporting, which are separate functions. I did not re-fetch the spec, so this rests on recall of the wording.","own knowledge (3GPP TS 23.503 Rel-18, Table 6.3.1 PCC rule information; TS 23.548)"
-question 4279,verdict,inv1,,,correct,5,"Barker/DSSS spreads with a static repeating code word. In CCK the 8-chip code word (code symbol) is chosen from the data bits, so the code symbol both carries information and spreads the signal. 'Phase angles' encode the data bits into that code symbol but do not do the spreading themselves, so option 5 is the best answer. Confidence is moderate because I did not check the exact 802.11 wording.",own knowledge (IEEE 802.11 HR/DSSS CCK clause)
-question 1321,verdict,inv1,,,ambiguous,1,"TS 23.501 clause 4.3.1 says: 'N26 interface is an inter-CN interface between the MME and 5GS AMF in order to enable interworking between EPC and the NG core... N26 supports subset of the functionalities (essential for interworking) that are supported over S10.' Options 1, 2 and 3 each come almost word for word from this passage, so all three are defensible. Option 1 states the purpose most directly, but the marked answer is not uniquely right.",3GPP TS 23.501 Rel-18 clause 4.3.1 (own knowledge of text)
-question 1030,verdict,inv1,,,correct,3,"For CLI (SRS-RSRP and CLI-RSSI) measurements by RRC_CONNECTED UEs, both periodic and event-triggered reporting are supported (TS 38.300 CLI clause; TS 38.331 ReportConfigNR cli-Periodical / cli-EventTriggered).",own knowledge (3GPP TS 38.300 / TS 38.331)
-question 9061,verdict,inv2,,,correct,3,"In TS 23.503 / TS 23.501 QoS monitoring (Rel-18), the PCF can include an indication of direct event notification in the PCC rule. It says whether QoS monitoring results go directly from the UPF to the (Local) NEF/AF, and whether both direct notification and notification via SMF/PCF are needed. The other options describe different parameters (monitoring parameters, N4 reporting activation) or the wrong actor (AF subscription). I recalled the wording and did not check it against the spec text.","own knowledge (3GPP TS 23.503 clause 6.3.1 PCC rule table, TS 23.501 clause 5.33.3)"
-question 4279,verdict,inv2,,,correct,5,"IEEE 802.11 HR/DSSS (CCK) text contrasts Barker modulation, which uses a static repeating code word, with CCK, where the code word itself carries the information while also spreading the signal. 'Code symbol' (option 5) matches that. Phase angles are the parameters that select the code word, so they are not the spreading element. Option 5 is the best fit.","own knowledge (IEEE 802.11 HR/DSSS PHY, CCK modulation clause)"
-question 1321,verdict,inv2,,,correct,1,"TS 23.501 clause 4.3.1 says N26 is an inter-CN interface between the MME and 5GS AMF 'in order to enable interworking between EPC and the NG core'. Option 3 is that description and option 2 (subset of S10 functions) is also stated there. The question asks for the purpose, which is the 'in order to' clause, so option 1 is the best answer, though options 2 and 3 are true statements.",own knowledge (3GPP TS 23.501 clause 4.3.1)
-question 1030,verdict,inv2,,,correct,3,TS 38.300 (CLI section) and TS 38.331 support both periodic and event-triggered reporting (event I1) for SRS-RSRP and CLI-RSSI measurements. 'Event triggered only' is wrong.,own knowledge (3GPP TS 38.300 CLI clause; TS 38.331 reportConfig for CLI)
-question 9549,verdict,inv1,,,correct,,"TS 23.288 Rel-18 clause 6.5.2 (NF load analytics input data) adds that, to determine NF load (e.g. UPF load per area of interest), the NWDAF may collect and take into account UE trajectory input data and MDT input data from OAM (Table 6.5.2-3). NF Instance/Set IDs are generic analytics filters, not the 'additional' Rel-18 input.",3GPP TS 23.288 clause 6.5.2 (https://www.itecspec.com/3gpp/23.288/s/6.5.2)
-question 1736,verdict,inv1,,,correct,,IEEE C95.1 (2005 rationale/annex on contact current and RF burns) notes the U.S. Navy uses 140 V rms open-circuit voltage as an interim protective limit against RF burns.,own knowledge (IEEE C95.1-2005 annex)
-question 8959,verdict,inv1,,,correct,,"IEEE 802.15.4 beacon request command clause: if a coordinator of a beacon-enabled PAN receives the beacon request command, it shall ignore the command and continue transmitting its periodic beacons as usual. Only in a nonbeacon-enabled PAN does it send a single Beacon frame using unslotted CSMA-CA.","own knowledge (IEEE 802.15.4, Beacon request command clause)"
-question 4970,verdict,inv1,,,ambiguous,2,"MR-FSK FEC text (802.15.4g, carried into 802.15.4-2015/2020) says code-bit interleaving is used 'to improve robustness against burst errors' and to break correlation of consecutive bits. That matches option 2's wording. Option 5 (mitigate fading/interference, which cause burst errors) is also defensible, so the marked option 5 is not uniquely right; option 2 is closer to the standard's text.",IEEE 802.15 doc 15-10-0182-02-004g (MR-FSK unified FEC text); https://mentor.ieee.org/802.15/dcn/12/15-12-0134-00-004k-proposal-on-fsk-phy-interleaver.pdf
-question 9549,verdict,inv2,,,correct,2,"TS 23.288 clause 6.5.2 (NF load analytics, which includes UPF load) says that, to determine NF load per area of interest, the NWDAF may also collect UE trajectory input data from the AF (Table 6.5.2-4) and MDT input data per UE from OAM (Table 6.5.2-3). NF Instance IDs and NF Set IDs are analytics filter or request parameters, not additional collected input data.",3GPP TS 23.288 clause 6.5.2 (via https://www.itecspec.com/3gpp/23.288/s/6.5.2)
-question 1736,verdict,inv2,,,correct,2,"IEEE C95.1-2005 gives a maximum suggested open-circuit contact voltage of 140 V rms (0.1 to 100 MHz) to protect against RF burns. The annex describes it as the interim limit the U.S. Navy uses. A search found the 140 V figure but no source for the Navy wording, which comes from own recollection.",IEEE C95.1-2005 (search snippets: EPRI report https://restservice.epri.com/publicdownload/000000000001017991/0/Product); own knowledge
-question 8959,verdict,inv2,,,correct,1,"IEEE 802.15.4 Beacon Request handling: in a beacon-enabled PAN the coordinator ignores the command and keeps sending periodic beacons as usual. In a nonbeacon-enabled PAN it sends a single Beacon frame using unslotted CSMA-CA, which is option 2 and the wrong case for this question.","own knowledge (IEEE 802.15.4-2011/2015, Beacon Request command clause)"
-question 4970,verdict,inv2,,,ambiguous,,"In IEEE 802.15.4 PHYs (for example LECIM DSSS and SUN modes), code-bit interleaving spreads coded bits to guard against burst errors from fading and interference, which improves robustness. Option 2 (improve robustness) and option 5 (mitigate fading and interference) describe the same purpose at different levels of detail, so both can be defended. The exact standard wording could not be checked because the web search hit its session limit.",own knowledge
-question 185,verdict,inv1,,,correct,,"TS 23.251 (network sharing): supporting UEs choose the CN operator themselves, while for non-supporting UEs the shared network picks the operator. The RAN node uses redirection or NNSF to reach a CN node of that operator. Option 3 describes how the RAN routes the UE, not how the operator is selected. Option 2 matches the spec wording best.","own knowledge (3GPP TS 23.251, clauses 4.2/7)"
-question 4282,verdict,inv1,,,correct,,"TS 22.153 and TS 23.501 5.16.5 describe MPS as giving subscribed Service Users priority (preferential) treatment so they get access to resources during congestion. Option 1 states this general purpose. Option 2 is vaguer and narrower ('MPS sessions'), and options 3-5 are mechanisms or sub-features rather than the purpose. Some overlap with option 2 remains, but option 1 is the best answer.",own knowledge (3GPP TS 22.153; TS 23.501 clause 5.16.5)
-question 185,verdict,inv2,,,correct,2,"TS 23.251 (Network Sharing) says that for non-supporting UEs the shared network selects the CN operator that serves the UE. The UE does not select it. Option 3 describes the RAN routing mechanism (NNSF) that carries out the selection, but option 2 is the answer the spec states directly.","3GPP TS 23.251 (own knowledge, not fetched)"
-question 4282,verdict,inv2,,,ambiguous,,"The question is generic. The MPS specs (TS 22.153; TS 23.501 clause 5.16.5) describe MPS both as giving Service Users subscription-based preferential treatment or priority and as giving priority access to access and core network resources for MPS sessions. Options 1 and 2 are both defensible, so the marked option 1 is not uniquely right.","3GPP TS 22.153, TS 23.501 clause 5.16.5 (own knowledge, not fetched)"
-question 886,solve,claude,3,medium,,,,
-question 7881,solve,claude,4,medium,,,,
-question 2018,solve,claude,2,high,,,,
-question 1029,solve,claude,1,high,,,,
-question 966,solve,claude,2,low,,,,
-question 2542,solve,claude,1,low,,,,
-question 6286,solve,claude,4,low,,,,
-question 44,solve,claude,4,medium,,,,
-question 9781,solve,claude,3,medium,,,,
-question 717,solve,claude,2,medium,,,,
-question 6109,solve,claude,4,medium,,,,
-question 1318,solve,claude,5,high,,,,
-question 8912,solve,claude,2,low,,,,
-question 6296,solve,claude,5,medium,,,,
-question 4873,solve,claude,3,low,,,,
-question 3704,solve,claude,5,medium,,,,
-question 6561,solve,claude,3,high,,,,
-question 5231,solve,claude,2,high,,,,
-question 8695,solve,claude,3,high,,,,
-question 325,solve,claude,2,high,,,,
-question 7881,verdict,inv1,,,correct,4,"TS 38.300 sec 10.2 says that with Semi-Persistent Scheduling (SPS) the gNB can allocate downlink resources for the initial HARQ transmissions to UEs. RRC sets the periodicity and PDCCH on CS-RNTI activates the configured assignment. So option 3 describes how SPS works, but option 4 is the wording the spec uses.",3GPP TS 38.300 sec 10.2 Downlink Scheduling (own knowledge)
-question 1029,verdict,inv1,,,correct,1,Rel-18 TS 23.503 (URSP from AF guidance) says the PCF shall not set URSP rules derived from AF guidance as a URSP rule with the 'match all' traffic descriptor. The other options are not restrictions the spec states.,"3GPP TS 23.503 Rel-18, AF guidance to URSP (own knowledge)"
-question 44,verdict,inv1,,,correct,4,"The IEEE C95.1-2019 risk profile, as shown in the ICES presentation (Chou 2019), puts RF shocks and burns first, ahead of localized heating, whole-body heating, microwave hearing and low-level effects. I take this as the most-harmful end of the profile. Shocks and burns are also the hazard with documented injuries, and the standard sets contact-current and contact-voltage limits for them.",https://ewh.ieee.org/r6/oeb/lm/previous_meetings/2019/Chou%20May%2029%202019.pdf ; IEEE C95.1-2019
-question 9781,verdict,inv1,,,correct,3,"Rel-16 RRM measurement relaxation (TS 38.304 sec 5.2.4.9, from RAN2 study TR 38.840) uses two criteria: low mobility and not-at-cell-edge. The study gave priority to these two. Serving-cell beam status, UE type and the other combinations in the options are not the Rel-16 criteria.",3GPP TS 38.304 Rel-16 sec 5.2.4.9; TR 38.840 (own knowledge)
-question 7881,verdict,inv2,,,correct,,"TS 38.300 section 10.2 says that with Semi-Persistent Scheduling (SPS) the gNB can allocate downlink resources for the initial HARQ transmissions to UEs. That is a near-verbatim match for option 4. Option 3 describes how SPS is activated (by PDCCH to CS-RNTI), so it is a lesser alternative, but the spec names SPS as the answer.","3GPP TS 38.300 section 10.2 (Downlink scheduling), from own knowledge"
-question 1029,verdict,inv2,,,correct,,"The Rel-18 URSP provisioning text (TS 23.503/23.502, AF guidance on URSP) says URSP rules generated from AF guidance shall not be set as the 'match all' URSP rule, meaning a rule with a match-all traffic descriptor. That matches option 1.","3GPP TS 23.503 Rel-18, URSP based on AF guidance, from own knowledge"
-question 44,verdict,inv2,,,correct,,"The C95.1-2019 risk profile for RF adverse effects lists RF shocks and burns first (the most hazardous), ahead of localized heating, whole-body heating and microwave hearing. No low-level effects are established. This supports option 4. I could not open the full standard text.","IEEE C95.1-2019 overview slides (Chou, 2019): https://ewh.ieee.org/r6/oeb/lm/previous_meetings/2019/Chou%20May%2029%202019.pdf"
-question 9781,verdict,inv2,,,correct,,"The Rel-16 UE power saving study (TR 38.840, RRM measurement relaxation) concluded that UE mobility status and the 'UE not at cell edge' criteria should be treated with higher priority. That matches option 3. Qwen's option 1 (serving cell beam status) was a lower-priority candidate.","3GPP TR 38.840 Rel-16, RRM relaxation section, from own knowledge"
-question 717,verdict,inv1,,,ambiguous,,"TS 23.501 cl. 5.19.7.6 says both things. The UE shall not start any data transfer via Control Plane CIoT 5GS Optimisation, with exceptions for exception reporting and paging responses; that is option 1. The AMF stores the timer per UE and does not process further Control Plane Service Requests for data transport, with the same exceptions; that is option 2, almost word for word. The notes also say the timer does not affect other MM/SM procedures or user-plane data, which partly supports options 3 and 4. Option 2 is the closest match to the spec text, and option 1 leaves out the exceptions. More than one option is defensible, so the marked answer (option 1) is not uniquely right.",3GPP TS 23.501 cl. 5.19.7.6 (https://www.itecspec.com/3gpp/23.501/s/5.19.7.6)
-question 6296,verdict,inv1,,,correct,5,"TS 23.228 is the IMS stage-2 specification and covers IMS support for 5GC (5GS IP-CAN, P-CSCF/PCF interactions). TS 23.540 covers service-based SMS, TS 23.040 covers SMS, and TS 23.273 covers 5G location services. TS 23.502 covers 5GS procedures generally. Option 5 is the best answer.",own knowledge
-question 4873,verdict,inv1,,,ambiguous,,"The question is flawed. The marked option 3, 'Uncertainty assessment', just repeats the question's own wording rather than naming a type of assessment. Options 1 and 2 (static vs. multi-path fading propagation conditions) are the real kinds of measurement-uncertainty-budget assessment in the UE RF/OTA testing TRs, so the question has no unique, meaningful answer.",own knowledge (3GPP TR 38.810-family UE RF test methodology MU budgets)
-question 717,verdict,inv2,,,ambiguous,,"The rule for the CP data back-off timer (TS 23.501 CIoT clauses, mirroring TS 23.401 4.7.7) is that, while the timer runs, the UE shall not initiate data transfer via Control Plane CIoT optimisation, except for exception reporting and responses to paging. The AMF stores the timer and rejects further CP data-transport requests from that UE, with the same exceptions. Option 1 paraphrases the UE-side rule but leaves out the exceptions. Option 2 paraphrases the network-side rule and does include them. The spec also lets the UE use User Plane Service Requests (option 3) and emergency procedures (option 4) while the timer runs. Several options are defensible, so option 1 is not uniquely right.",own knowledge (3GPP TS 23.501 Rel-18 CIoT CP data back-off; TS 23.401 4.7.7)
-question 6296,verdict,inv2,,,correct,5,"TS 23.228 (IMS Stage 2) covers IMS over 5GC, including the 5GC interworking and P-CSCF discovery aspects added from Rel-15/16 onward. The other options are about something else: TS 23.040 is SMS, TS 23.273 is 5G location services, TS 23.502 is 5GS procedures, and TS 23.540 is service-based SMS over 5GC. TS 23.501 clause 5.16.3 also describes IMS support, but it is not one of the options, so option 5 is the best answer.","own knowledge (3GPP TS 23.228, TS 23.501 5.16.3)"
-question 4873,verdict,inv2,,,ambiguous,,"The question is circular. The marked option, 'Uncertainty assessment', just repeats the question's wording. The other options (static or multipath propagation conditions, polarisation mismatch, inter-band CA) look like the different conditions or contributors that TR 38.903-style MU budgets assess. The item seems to have been generated poorly from a heading, so no option is clearly and uniquely correct.",own knowledge (3GPP TR 38.903 NR UE RF measurement uncertainty)
-question 5341,solve,claude,1,high,,,,
-question 5982,solve,claude,4,high,,,,
-question 9533,solve,claude,2,low,,,,
-question 3838,solve,claude,2,medium,,,,
-question 6714,solve,claude,2,high,,,,
-question 2205,solve,claude,2,high,,,,
-question 6175,solve,claude,1,high,,,,
-question 7275,solve,claude,2,medium,,,,
-question 135,solve,claude,5,low,,,,
-question 3931,solve,claude,1,low,,,,
-question 4378,solve,claude,4,high,,,,
-question 5923,solve,claude,3,medium,,,,
-question 2996,solve,claude,2,medium,,,,
-question 7657,solve,claude,4,low,,,,
-question 5467,solve,claude,5,low,,,,
-question 4688,solve,claude,3,high,,,,
-question 7370,solve,claude,4,medium,,,,
-question 616,solve,claude,2,low,,,,
-question 3610,solve,claude,2,medium,,,,
-question 5706,solve,claude,2,high,,,,
-question 9533,verdict,inv1,,,ambiguous,,"NR (TS 38.306) mostly defines UE capabilities through individual capability signalling rather than LTE-style categories. Both 'define UE capabilities' (option 1) and 'determine peak data rates' (option 2) are defensible readings, and option 4 overlaps with them too. No single option is clearly the uniquely right one.",own knowledge (TS 38.306 / TS 36.306 category concept); web search unavailable (session limit)
-question 7275,verdict,inv1,,,correct,2,"In IEEE 802.11ah, the S1G Sector Operation element carries information about the type of sectorization operation (group or TXOP-based sectorization). That matches option 2. Indicating the active sector ID and group ID are separate functions.","own knowledge (IEEE 802.11-2020, S1G Sector Operation element)"
-question 135,verdict,inv1,,,ambiguous,,"In TS 38.213 clause 16, the S-SS/PSBCH power is min(PCMAX, PO,S-SSB + 10log10(2^mu*11) + alpha*PL). PO is dl-P0-PSBCH-r16 (or -r17) and alpha is dl-Alpha-PSBCH, both used together when PO is provided. Otherwise the power is PCMAX. Option 5's 'r16 if provided, else dl-Alpha-PSBCH' misstates this fallback. The UE also determines several of the listed quantities, so the question is flawed.","own knowledge (3GPP TS 38.213 Rel-16/17, sidelink S-SS/PSBCH power control); web search unavailable"
-question 7657,verdict,inv1,,,unverifiable,,"TS 23.501 clause 5.16.5 on MPS splits priority handling across functions: the (R)AN handles the RRC establishment cause, the AMF/SMF apply subscription-based priority, and the PCF sets ARP/5QI for MPS QoS Flows. I could not check the exact sentence that assigns handling of requests for prioritized QoS Flows for Mobile Originations, and web search was unavailable. So I cannot confirm whether PCF (marked) or SMF is right.","own knowledge (3GPP TS 23.501 clause 5.16.5, TS 23.502); not verified against text"
-question 9533,verdict,inv2,,,ambiguous,,"In NR (TS 38.306), peak data rates come from a formula based on the capabilities the UE signals, not from LTE-style UE categories. Option 2 matches the LTE-style purpose of categories, but option 1 ('to define UE capabilities') is just as defensible. The options are vague and overlap.","own knowledge (TS 38.306, TS 36.306); web search unavailable"
-question 7275,verdict,inv2,,,correct,2,"In IEEE 802.11ah, the S1G Sector Operation element carries information about the type of sectorization (group or TXOP-based sector operation) and its parameters. Option 2 describes this. The other options each describe only a single sub-field or something unrelated.","own knowledge (IEEE 802.11-2020, S1G Sector Operation element); web search unavailable"
-question 135,verdict,inv2,,,ambiguous,,"TS 38.213 clause 16.1 says: if dl-P0-PSBCH-r16 is provided, P = min(PCMAX, P0 + 10log10(2^mu*M_RB) + alpha*PL), where alpha is dl-Alpha-PSBCH (or 1 if not provided); otherwise P = PCMAX. Option 5 ('else dl-Alpha-PSBCH') misstates the fallback, which is PCMAX. Option 3 (number of RBs, M_RB) is also an input to the formula. No option is cleanly correct.","own knowledge (3GPP TS 38.213 clause 16.1, sidelink S-SS/PSBCH power control); web search unavailable"
-question 7657,verdict,inv2,,,unverifiable,,"This appears to come from the MPS/priority-mechanism text in TS 23.501. The PCF plausibly sets the prioritized QoS (ARP/5QI) based on the MPS subscription, but the SMF could also be described as handling the request. Without checking the exact clause I cannot confirm which component the spec names. Web search was unavailable (session limit).",own knowledge (TS 23.501 clause 5.16.5 / 5.22); not verified
-question 5467,verdict,inv1,,,ambiguous,,"In Rel-18 NR SDT (TS 38.300 clause 18, TS 38.331), the SDT procedure normally ends when the network sends RRCRelease. That is option 5 (the UE stays in or goes back to RRC_INACTIVE). The SDT failure detection timer (T319a) starts when SDT begins and stops when RRCRelease arrives; if it expires, the procedure fails, so the timer only sets the failure bound. Options 3 and 5 can both be defended for 'how long can it last'. Option 5 is arguably better, since that is how the procedure normally ends. Web search was unavailable, so I could not confirm the exact source sentence.",own knowledge (3GPP TS 38.300 clause 18; TS 38.331 T319a)
-question 4688,verdict,inv1,,,correct,3,"In TS 38.300, handover with SRVCC is described under NR-UTRA mobility. Rel-16+ 5G-SRVCC supports handover from NR to UTRA FDD only. 'Inter RAT mobility' is a broader parent category, and NR-E-UTRA, intra-5GC and 5GC-to-EPC mobility do not involve SRVCC. Option 3 is the most specific and best answer.",own knowledge (3GPP TS 38.300 inter-RAT NR-UTRA mobility clause)
-question 7370,verdict,inv1,,,wrong,4,"TS 38.331 defines maxCombIDC-r16 INTEGER ::= 128, commented as the maximum number of reported MR-DC combinations for IDC. It is used by affectedCarrierFreqCombListMRDC. So the answer is 128 (option 4), not 512.","own knowledge (3GPP TS 38.331 multiplicity constants, maxCombIDC)"
-question 5467,verdict,inv2,,,ambiguous,,"Per TS 38.300 clause 18 and TS 38.331, the UE stays in RRC_INACTIVE during SDT. The network normally ends the procedure with RRCRelease. The SDT failure detection timer (T319a) starts when SDT is initiated, and if it expires the UE moves to RRC_IDLE. So both option 3 (the timer, the marked answer) and option 5 (RRCRelease) can be defended. The question does not say whether it means normal termination or the maximum duration. Web search was unavailable (session limit), so I could not confirm the exact source wording.","own knowledge (TS 38.300 cl.18, TS 38.331 T319a)"
-question 4688,verdict,inv2,,,correct,3,"TS 38.300 lists handover with SRVCC operation under inter-RAT mobility, covering NR to UTRA (5G-SRVCC from NG-RAN to UTRAN, added in Rel-16). Option 1 'Inter RAT mobility' is broader and vaguer. The specific supported case is NR-UTRA, so the marked option 3 is the best answer.",own knowledge (TS 38.300 inter-RAT mobility / SRVCC; TS 23.216 5G-SRVCC)
-question 7370,verdict,inv2,,,wrong,4,"TS 38.331 defines maxNrofCombIDC INTEGER ::= 128, with the comment 'Maximum number of reported MR-DC combinations for IDC'. That makes the answer 128 (option 4), not 512.","own knowledge (TS 38.331 multiplicity constants, maxNrofCombIDC)"
-question 1673,solve,claude,3,medium,,,,
-question 7853,solve,claude,4,medium,,,,
-question 3604,solve,claude,4,medium,,,,
-question 6059,solve,claude,4,high,,,,
-question 1288,solve,claude,2,high,,,,
-question 8880,solve,claude,1,high,,,,
-question 7767,solve,claude,2,medium,,,,
-question 9344,solve,claude,4,medium,,,,
-question 5912,solve,claude,4,high,,,,
-question 8657,solve,claude,3,medium,,,,
-question 5632,solve,claude,1,high,,,,
-question 1274,solve,claude,2,low,,,,
-question 2461,solve,claude,4,high,,,,
-question 7071,solve,claude,1,low,,,,
-question 8988,solve,claude,2,low,,,,
-question 188,solve,claude,4,medium,,,,
-question 6750,solve,claude,1,low,,,,
-question 3854,solve,claude,3,high,,,,
-question 1581,solve,claude,1,high,,,,
-question 3066,solve,claude,4,medium,,,,
-question 1274,verdict,inv1,,,ambiguous,,"The question gives two SNR assumptions in its own wording (""assuming 16 and 20 dB"") and offers both 16 dB (opt 3) and 20 dB (opt 4) as answers. No single option can be picked out from the wording, and the Rel-18 TR context it comes from is not stated. The question is malformed.",own knowledge
-question 8988,verdict,inv1,,,ambiguous,,"802.11 rate selection rules for DMG/CMMG group addressed frames usually tie the MCS to the mandatory MCS set of the control/SC mode, which supports option 2. Option 1 (an MCS common to all receivers' supported sets) is the generic group-addressed rule and is also defensible. A web search turned up only TGaj working documents, not the published clause text, so I could not settle which one is right.","Web search of IEEE 802.11 TGaj documents (e.g. 11-20-0823, 11-16-1333 MDR report); own knowledge"
-question 6750,verdict,inv1,,,correct,5,"TS 23.288 describes the NWDAF collecting service data from AFs (directly or through the NEF), while network data comes from NFs and OAM. Application ID is an input parameter, not the type of data collected. So 'Service data' is the best answer.","3GPP TS 23.288 (data collection from AF), own knowledge"
-question 1274,verdict,inv2,,,ambiguous,,"The question names the assumed SNRs (16 and 20 dB), and options 3 and 4 are exactly those two values. Options 1 and 2 (14.4 and 18.6 dB) look like derived targets. With two assumed values in the stem and a single-answer format, no one option is uniquely right. I could not find the source Rel-18 text to confirm which value the passage means.",own knowledge (no source located)
-question 8988,verdict,inv2,,,unverifiable,,"Options 1 and 2 both read like plausible 802.11 rate-selection text. Option 2's specific wording ('mandatory MCS set of the CMMG control or SC mode') matches the style of the DMG/CMMG group-addressed rules in IEEE 802.11-2020 clause 10.6, which makes the marked option 1 doubtful. A web search did not turn up the CMMG group-addressed subclause text, so I cannot confirm either option.","Web search for IEEE 802.11-2020 clause 10.6 CMMG rate selection; only 11aj comment-resolution docs found, e.g. https://bibliotheek.ehb.be:3499/802.11/dcn/20/11-20-0823-01-000m-proposed-resolution-for-cid-4505.docx"
-question 6750,verdict,inv2,,,correct,5,"In TS 23.288, input data from the AF is described as service data related to the application, for example in the Service Experience analytics input tables. An Application ID is only one field within that data, and performance or network data comes from OAM and the 5GC NFs. 'Service data' (option 5) is the best answer.","3GPP TS 23.288 (Rel-18), clause 6 data collection from AF (own knowledge)"
-question 4548,solve,claude,2,medium,,,,
-question 2224,solve,claude,4,medium,,,,
-question 8620,solve,claude,5,medium,,,,
-question 2442,solve,claude,4,low,,,,
-question 855,solve,claude,1,high,,,,
-question 5463,solve,claude,2,high,,,,
-question 6300,solve,claude,4,low,,,,
-question 6337,solve,claude,5,high,,,,
-question 8096,solve,claude,1,medium,,,,
-question 3325,solve,claude,2,medium,,,,
-question 6599,solve,claude,2,low,,,,
-question 3615,solve,claude,4,low,,,,
-question 1273,solve,claude,3,high,,,,
-question 7775,solve,claude,2,medium,,,,
-question 8795,solve,claude,1,high,,,,
-question 2633,solve,claude,3,medium,,,,
-question 2835,solve,claude,3,medium,,,,
-question 1160,solve,claude,2,low,,,,
-question 7640,solve,claude,2,medium,,,,
-question 1751,solve,claude,5,high,,,,
-question 4548,verdict,inv1,,,unverifiable,,"TR 38.859 (Rel-18 NR positioning SI) lists UE/TRP antenna PCO as one of the error sources for carrier phase positioning (sec. 6.3.1, Annex A.3, model dPCO = a*dPhi + w). The draft TR I could get has no evaluation conclusion on how large the PCO impact is. The final TR text was not reachable (3GPP/ETSI downloads blocked), so I could not confirm 'negligible' (option 5) or 'significant' (option 2).",Draft 3GPP TR 38.859 v0.2.0_r4 (RAN1#110bis-e drafts folder); final TR not accessible
-question 2224,verdict,inv1,,,ambiguous,,"In 802.11 the RA is the MAC address that identifies the intended immediate recipient STA(s), so it can be one receiver or several (group addressed). Option 1 (singular) and option 4 (plural) are near-duplicates and both defensible. The question names no frame type: for a CTS the RA is copied from the TA of the previous RTS (option 2), and for an Ack it is copied from Address 2 of the previous frame (option 3). The marked option 1 is reasonable but not uniquely right.","own knowledge (IEEE 802.11-2020 cl. 3 definitions, 9.3.1.2-9.3.1.3)"
-question 2442,verdict,inv1,,,ambiguous,,"This field is in an 802.11 location (LCI-related) error subelement and encodes a horizontal error as a power of two. Option 2 (error between the horizontal location and the Latitude/Longitude fields) and option 4 (relative horizontal error) both describe this same quantity in different words, so I cannot pick one uniquely without the exact clause text. I could not retrieve the standard text to check.",own knowledge; web search found no primary text
-question 3615,verdict,inv1,,,correct,1,"TS 22.071 V17.0.0 clause 4.1, item 9: 'It shall be possible to provide the originating party's serving cell id to the LCS client.' The distractors 'diverse positioning techniques' and 'quality of service parameters' come from item 5, which is about the location determining process, not information given to the LCS client. So 'All of the above' is wrong.","3GPP TS 22.071 V17.0.0 (22071-h00.zip), clause 4.1"
-question 4548,verdict,inv2,,,unverifiable,,"TR 38.859 (the Rel-18 positioning study) lists antenna PCO among the error sources it evaluates for carrier phase positioning. I could not find the final conclusion on how much PCO errors affect accuracy, so I can't say whether 'negligible' (5) or 'significant' (2) is right. I limited my searching on purpose to save budget.",3GPP TR 38.859 draft review documents (3gpp.org/ftp TSGR1_110b-e TR38.859_review); own knowledge
-question 2224,verdict,inv2,,,ambiguous,,"IEEE 802.11 defines the RA as the MAC address of the intended immediate recipient STA(s). Because the RA can be a group address, the plural option 4 ('receivers') is as defensible as the singular option 1, which is the marked answer. The two options differ only by number, so the marked answer can't be called uniquely right.","own knowledge (IEEE 802.11-2020, clause 3 definition of receiver address)"
-question 2442,verdict,inv2,,,unverifiable,,"I could not find this field name in an accessible source. My memory suggests a power-of-two encoded horizontal error field inside the LCI Relative Location Error subelement. If that is right, option 4 ('relative horizontal error') would fit better than the marked option 2, but I could not confirm the standard's wording.",web search (IEEE 802.11 mentor LCI submissions); own knowledge
-question 3615,verdict,inv2,,,correct,,"In TS 22.071 the emergency-call requirements (e.g. E911 Phase I) have the network provide the originating party's serving cell id to the emergency LCS client. Option 2 (positioning techniques) is not information given to the client. Option 3 (QoS) is set in the client's request, not delivered to it. So option 4 'All of the above' does not hold, and option 1 is the best answer. Confidence is moderate: I could not retrieve the exact clause.",own knowledge (3GPP TS 22.071); web search of 22.071 CRs on 3gpp.org was inconclusive
-question 2835,verdict,inv1,,,ambiguous,3,"In TS 23.288 (Rel-18) clause 6, the NWDAF interacts with different entities for different purposes: data collection, retrieving data from ADRF, analytics provisioning to consumers, exchanging analytics and input data between PLMNs (roaming), and ML model provisioning (MTLF). Every option describes a real NWDAF function, so the question has more than one defensible answer. The marked option 1 seems to come from the clause's opening sentence ('interacts with different entities...'). Still, the NWDAF's core purpose in TS 23.501 is to provide analytics to NF/AF/OAM consumers (option 3), and data collection is a means to that end. Option 3 is arguably the better answer, so the marked answer cannot be called uniquely correct.","own knowledge (3GPP TS 23.288 Rel-18, clause 6; TS 23.501, clause 6.2.18)"
-question 2835,verdict,inv2,,,ambiguous,3,"TS 23.501 clause 6.2.18 and TS 23.288 describe NWDAF as an NF that supports data collection from NFs/AFs/OAM, analytics provisioning to consumers, storing and retrieving data via ADRF, roaming (inter-PLMN) analytics exchange, and ML model provisioning (MTLF). Most options describe a real NWDAF function. The question asks for its 'purpose', and the most defensible answer to that is option 3, providing analytics to consumers. Data collection (the marked option 1) is a means to that end, not the purpose. The marked key looks like it was taken from a sentence in TS 23.288 ('NWDAF interacts with different entities for different purposes'), so it is not uniquely right; option 3 is arguably better.",3GPP TS 23.501 clause 6.2.18; 3GPP TS 23.288 clauses 4-6 (own knowledge)
-question 1143,solve,claude,2,low,,,,
-question 3663,solve,claude,1,high,,,,
-question 4450,solve,claude,1,high,,,,
-question 4536,solve,claude,2,low,,,,
-question 4588,solve,claude,2,low,,,,
-question 7935,solve,claude,4,high,,,,
-question 9424,solve,claude,2,high,,,,
-question 1143,verdict,inv1,,,ambiguous,,"Neither 3GPP TS 22.101 nor TS 21.905 seems to define 'roaming broker enabled Home Environment'. The phrase appears only in TS 22.115 clause 8 (Automatic Roaming Agreements), in a note saying such an HE should interoperate with an R99 serving network. That clause also says each Home Environment should interwork with one or more serving network operators (option 2, but this applies to every HE), that any serving network shall be capable of operating as a roaming broker (close to option 5, but it is said of serving networks, not the HE), and it covers fraud and cost control (option 3). The question was built from this clause and has no single defensible answer. Option 5 just restates the term, and option 2 is also defensible.","3GPP TS 22.115 clause 8 (https://itecspec.com/3gpp/22.115/s/8); TS 22.101 clause 3.1 checked, no definition found"
-question 3663,verdict,inv1,,,correct,1,"TCP's sliding window is a flow-control mechanism. It limits unacknowledged data in flight and works with ACKs and retransmission to give reliable delivery. TCP does not encrypt, compress or prioritise data.",own knowledge (RFC 793/9293)
-question 4450,verdict,inv1,,,correct,1,"In 3GPP (TS 38.300 / TR 21.905), NG-RAN stands for Next Generation Radio Access Network, made up of gNBs and ng-eNBs.","own knowledge (3GPP TS 38.300, TR 21.905)"
-question 4536,verdict,inv1,,,wrong,,"In IEEE C95.1-2019, DRL means 'dosimetric reference limit', the term that replaced 'basic restriction', alongside ERL (exposure reference level). 'Dose Rate Limit' (option 2) is not the expansion the standard uses. It is only the closest distractor, and none of the options is literally correct.",IEEE C95.1-2019 abstract (https://ieeexplore.ieee.org/document/8859679); IEEE ICES presentation (https://ewh.ieee.org/r6/oeb/lm/previous_meetings/2019/Chou%20May%2029%202019.pdf)
-question 1143,verdict,inv2,,,ambiguous,,"TS 22.115 clause 8 never defines 'roaming broker enabled Home Environment'. The term appears only in a note saying such an HE should interoperate with a R99 Serving Network. The phrase in option 5, 'capable of operating as a roaming broker', is said about serving networks ('any serving network shall be capable of operating as a roaming broker'), not about the HE. Option 2 (interworks with serving network operators, via a broker) is just as defensible. The question is flawed.",3GPP TS 22.115 clause 8 (https://itecspec.com/3gpp/22.115/s/8)
-question 3663,verdict,inv2,,,correct,1,"The TCP sliding window provides flow control between sender and receiver, which supports reliable delivery. The other options (encryption, compression, prioritization) are unrelated.",own knowledge (RFC 793/9293)
-question 4450,verdict,inv2,,,correct,1,"In 3GPP TS 38.300 and TR 21.905, NG-RAN stands for Next Generation Radio Access Network.",own knowledge (3GPP TS 38.300 / TR 21.905)
-question 4536,verdict,inv2,,,wrong,,"In IEEE C95.1-2019, DRL means 'dosimetric reference limit' (it replaced the older term 'basic restriction'). None of the options matches. 'Dose Rate Limit' is the closest wording but is not the standard's term.","own knowledge (IEEE Std C95.1-2019, definitions/acronyms)"
-question 4588,verdict,inv1,,,correct,2,"No standard formally defines 'roaming broker enabled Home Environment'. The phrase appears only in TS 22.115 clause 8 (Automatic Roaming Agreements). That clause says each home environment interworks with one or more serving network operators, negotiates commercial roaming agreements with them and tests the interworking, which is option 2. Option 1 contradicts the clause, which is about networks with no direct agreement. Option 3 is the cost-control requirement. Option 4 misapplies a statement about serving networks, since the clause says any serving network can act as a roaming broker. Option 5 does not match: users register with the serving network, not the HE. Option 2 is the best match, though the question rests on paraphrase rather than a formal definition.",3GPP TS 22.115 clause 8 (https://itecspec.com/3gpp/22.115/s/8)
-question 7935,verdict,inv1,,,correct,4,"In 3GPP, NG-RAN stands for Next Generation Radio Access Network (TS 38.300, TR 21.905). The other options are made up.",own knowledge (3GPP TS 38.300 / TR 21.905)
-question 9424,verdict,inv1,,,correct,2,"IEEE C95.1-2019 uses DRL for dosimetric reference limit, alongside ERL for exposure reference level. The other options are not terms used in the standard.",own knowledge (IEEE Std C95.1-2019)
-question 4588,verdict,inv2,,,ambiguous,,"Neither TS 22.115 nor TS 21.905 formally defines 'roaming broker enabled Home Environment'. The question seems to be built from TS 22.115 clause 8 (automatic roaming agreements), and every option paraphrases a different sentence of that clause. Option 2 restates the general requirement that 'each Home Environment shall interwork with one or more serving network operators' by negotiating a roaming agreement. That sentence describes any HE, not specifically a roaming-broker-enabled one. Option 4 matches the literal meaning of 'roaming broker enabled', although the source says this about serving networks. With no normative definition, the marked answer can't be called uniquely right.",3GPP TS 22.115 clause 8 (https://itecspec.com/3gpp/22.115/s/8); TS 22.115 clause 3.1 has no such definition
-question 7935,verdict,inv2,,,correct,4,"NG-RAN = Next Generation Radio Access Network (TS 38.300, TR 21.905).",own knowledge (3GPP TS 38.300 / TR 21.905)
-question 9424,verdict,inv2,,,correct,2,"IEEE C95.1-2019 defines DRL as 'dosimetric reference limit', the internal-field/SAR limit, which is distinct from the ERL (exposure reference level).",own knowledge (IEEE Std C95.1-2019)
+id,kind,annotator,choice,confidence,verdict,correct_option
+question 4406,solve,claude,1,low,,
+question 35,solve,claude,3,high,,
+question 8013,solve,claude,5,medium,,
+question 536,solve,claude,3,high,,
+question 9,solve,claude,2,high,,
+question 460,solve,claude,3,high,,
+question 5722,solve,claude,5,high,,
+question 8275,solve,claude,2,high,,
+question 7840,solve,claude,3,high,,
+question 5438,solve,claude,4,high,,
+question 6789,solve,claude,3,high,,
+question 776,solve,claude,1,high,,
+question 9947,solve,claude,1,high,,
+question 2387,solve,claude,5,high,,
+question 4292,solve,claude,4,high,,
+question 1816,solve,claude,4,high,,
+question 2445,solve,claude,2,medium,,
+question 5646,solve,claude,3,high,,
+question 9274,solve,claude,2,high,,
+question 9065,solve,claude,4,high,,
+question 4406,verdict,inv1,,,wrong,1
+question 4406,verdict,inv2,,,wrong,1
+question 5709,solve,claude,2,high,,
+question 2532,solve,claude,2,high,,
+question 802,solve,claude,1,high,,
+question 6075,solve,claude,3,high,,
+question 5585,solve,claude,4,high,,
+question 9420,solve,claude,5,high,,
+question 6583,solve,claude,4,high,,
+question 3299,solve,claude,2,high,,
+question 4594,solve,claude,4,high,,
+question 1224,solve,claude,5,high,,
+question 7639,solve,claude,2,high,,
+question 5530,solve,claude,4,high,,
+question 1365,solve,claude,4,high,,
+question 957,solve,claude,3,high,,
+question 9038,solve,claude,4,high,,
+question 3674,solve,claude,5,high,,
+question 8720,solve,claude,1,high,,
+question 2856,solve,claude,3,high,,
+question 5999,solve,claude,5,high,,
+question 5855,solve,claude,4,high,,
+question 7213,solve,claude,1,high,,
+question 6534,solve,claude,2,low,,
+question 4676,solve,claude,3,high,,
+question 6509,solve,claude,2,high,,
+question 557,solve,claude,5,high,,
+question 2938,solve,claude,3,high,,
+question 7409,solve,claude,1,high,,
+question 7650,solve,claude,2,low,,
+question 835,solve,claude,5,high,,
+question 783,solve,claude,4,high,,
+question 3934,solve,claude,4,high,,
+question 8654,solve,claude,4,medium,,
+question 4683,solve,claude,1,medium,,
+question 5745,solve,claude,3,high,,
+question 9037,solve,claude,1,medium,,
+question 3252,solve,claude,4,low,,
+question 624,solve,claude,3,high,,
+question 2939,solve,claude,3,medium,,
+question 6425,solve,claude,3,low,,
+question 319,solve,claude,4,high,,
+question 7650,verdict,inv1,,,correct,1
+question 9037,verdict,inv1,,,ambiguous,
+question 3252,verdict,inv1,,,ambiguous,
+question 6425,verdict,inv1,,,correct,3
+question 7650,verdict,inv2,,,correct,1
+question 9037,verdict,inv2,,,ambiguous,
+question 3252,verdict,inv2,,,ambiguous,
+question 6425,verdict,inv2,,,correct,3
+question 37,solve,claude,3,medium,,
+question 9845,solve,claude,1,high,,
+question 7764,solve,claude,4,high,,
+question 1184,solve,claude,3,high,,
+question 4058,solve,claude,4,high,,
+question 3157,solve,claude,4,medium,,
+question 5911,solve,claude,2,high,,
+question 5540,solve,claude,1,medium,,
+question 1505,solve,claude,2,low,,
+question 4093,solve,claude,1,medium,,
+question 4842,solve,claude,4,high,,
+question 7421,solve,claude,1,high,,
+question 9333,solve,claude,2,high,,
+question 648,solve,claude,4,low,,
+question 2943,solve,claude,2,low,,
+question 8658,solve,claude,3,high,,
+question 5285,solve,claude,1,high,,
+question 368,solve,claude,5,high,,
+question 9162,solve,claude,2,medium,,
+question 4034,solve,claude,2,medium,,
+question 37,verdict,inv1,,,ambiguous,
+question 1505,verdict,inv1,,,wrong,2
+question 4034,verdict,inv1,,,correct,4
+question 37,verdict,inv2,,,correct,3
+question 1505,verdict,inv2,,,ambiguous,
+question 4034,verdict,inv2,,,ambiguous,
+question 5437,solve,claude,3,low,,
+question 2549,solve,claude,1,high,,
+question 7346,solve,claude,1,high,,
+question 688,solve,claude,2,medium,,
+question 2252,solve,claude,4,medium,,
+question 3139,solve,claude,3,high,,
+question 1959,solve,claude,1,high,,
+question 8603,solve,claude,3,high,,
+question 8263,solve,claude,1,high,,
+question 534,solve,claude,3,medium,,
+question 959,solve,claude,2,medium,,
+question 3512,solve,claude,4,high,,
+question 4263,solve,claude,1,high,,
+question 5541,solve,claude,3,high,,
+question 9602,solve,claude,1,medium,,
+question 7410,solve,claude,1,medium,,
+question 5057,solve,claude,4,high,,
+question 1861,solve,claude,2,high,,
+question 3297,solve,claude,3,medium,,
+question 9043,solve,claude,1,high,,
+question 5437,verdict,inv1,,,correct,1
+question 3297,verdict,inv1,,,correct,3
+question 5437,verdict,inv2,,,correct,1
+question 3297,verdict,inv2,,,correct,3
+question 9318,solve,claude,2,high,,
+question 4099,solve,claude,2,low,,
+question 1687,solve,claude,2,high,,
+question 7569,solve,claude,5,high,,
+question 5105,solve,claude,2,high,,
+question 5099,solve,claude,1,medium,,
+question 9907,solve,claude,2,medium,,
+question 1909,solve,claude,4,high,,
+question 6310,solve,claude,1,high,,
+question 714,solve,claude,3,high,,
+question 3851,solve,claude,3,medium,,
+question 759,solve,claude,1,medium,,
+question 5991,solve,claude,4,medium,,
+question 5359,solve,claude,2,medium,,
+question 797,solve,claude,4,high,,
+question 192,solve,claude,3,high,,
+question 9786,solve,claude,3,high,,
+question 8950,solve,claude,1,medium,,
+question 1642,solve,claude,4,medium,,
+question 2304,solve,claude,4,low,,
+question 3851,verdict,inv1,,,wrong,3
+question 759,verdict,inv1,,,ambiguous,
+question 5991,verdict,inv1,,,correct,4
+question 8950,verdict,inv1,,,correct,1
+question 3851,verdict,inv2,,,wrong,3
+question 759,verdict,inv2,,,ambiguous,
+question 5991,verdict,inv2,,,correct,4
+question 8950,verdict,inv2,,,correct,1
+question 1642,verdict,inv1,,,unverifiable,
+question 1642,verdict,inv2,,,correct,1
+question 1374,solve,claude,1,low,,
+question 2659,solve,claude,4,high,,
+question 4912,solve,claude,4,medium,,
+question 4642,solve,claude,1,high,,
+question 2550,solve,claude,4,high,,
+question 177,solve,claude,2,medium,,
+question 7815,solve,claude,5,high,,
+question 1491,solve,claude,4,high,,
+question 2243,solve,claude,1,high,,
+question 8601,solve,claude,2,medium,,
+question 4524,solve,claude,3,low,,
+question 295,solve,claude,1,high,,
+question 4920,solve,claude,1,high,,
+question 6100,solve,claude,1,high,,
+question 108,solve,claude,4,low,,
+question 2412,solve,claude,2,medium,,
+question 7868,solve,claude,4,high,,
+question 7622,solve,claude,5,medium,,
+question 8200,solve,claude,1,medium,,
+question 1191,solve,claude,3,high,,
+question 1374,verdict,inv1,,,ambiguous,
+question 177,verdict,inv1,,,ambiguous,
+question 4524,verdict,inv1,,,ambiguous,
+question 7622,verdict,inv1,,,correct,5
+question 1374,verdict,inv2,,,ambiguous,
+question 177,verdict,inv2,,,ambiguous,
+question 4524,verdict,inv2,,,ambiguous,
+question 7622,verdict,inv2,,,correct,5
+question 8200,verdict,inv1,,,ambiguous,
+question 8200,verdict,inv2,,,ambiguous,
+question 8405,solve,claude,1,medium,,
+question 636,solve,claude,4,medium,,
+question 1703,solve,claude,1,high,,
+question 149,solve,claude,4,high,,
+question 1383,solve,claude,2,low,,
+question 2079,solve,claude,3,medium,,
+question 7873,solve,claude,3,low,,
+question 8634,solve,claude,5,medium,,
+question 8054,solve,claude,4,low,,
+question 4333,solve,claude,1,high,,
+question 9513,solve,claude,2,medium,,
+question 1847,solve,claude,2,high,,
+question 5263,solve,claude,3,high,,
+question 60,solve,claude,2,medium,,
+question 9656,solve,claude,5,high,,
+question 6463,solve,claude,5,high,,
+question 5832,solve,claude,1,low,,
+question 6204,solve,claude,1,high,,
+question 3377,solve,claude,1,high,,
+question 1785,solve,claude,4,high,,
+question 8405,verdict,inv1,,,ambiguous,
+question 636,verdict,inv1,,,ambiguous,
+question 8634,verdict,inv1,,,correct,
+question 60,verdict,inv1,,,correct,
+question 8405,verdict,inv2,,,ambiguous,
+question 636,verdict,inv2,,,ambiguous,
+question 8634,verdict,inv2,,,correct,1
+question 60,verdict,inv2,,,correct,2
+question 7681,solve,claude,4,medium,,
+question 6912,solve,claude,1,high,,
+question 2367,solve,claude,4,medium,,
+question 6339,solve,claude,1,medium,,
+question 7478,solve,claude,2,low,,
+question 8627,solve,claude,1,high,,
+question 8841,solve,claude,2,low,,
+question 5608,solve,claude,1,medium,,
+question 4530,solve,claude,1,high,,
+question 2637,solve,claude,3,high,,
+question 3884,solve,claude,4,medium,,
+question 9377,solve,claude,1,high,,
+question 4759,solve,claude,3,high,,
+question 1497,solve,claude,3,high,,
+question 5947,solve,claude,2,high,,
+question 3673,solve,claude,2,medium,,
+question 4,solve,claude,2,high,,
+question 1019,solve,claude,3,medium,,
+question 2082,solve,claude,3,low,,
+question 8347,solve,claude,1,low,,
+question 6912,verdict,inv1,,,ambiguous,
+question 2367,verdict,inv1,,,ambiguous,
+question 7478,verdict,inv1,,,correct,3
+question 8841,verdict,inv1,,,ambiguous,
+question 6912,verdict,inv2,,,wrong,1
+question 2367,verdict,inv2,,,ambiguous,
+question 7478,verdict,inv2,,,correct,3
+question 8841,verdict,inv2,,,ambiguous,
+question 5608,verdict,inv1,,,ambiguous,
+question 4759,verdict,inv1,,,ambiguous,
+question 3673,verdict,inv1,,,correct,5
+question 2082,verdict,inv1,,,ambiguous,
+question 5608,verdict,inv2,,,correct,
+question 4759,verdict,inv2,,,correct,
+question 3673,verdict,inv2,,,correct,
+question 2082,verdict,inv2,,,ambiguous,
+question 8347,verdict,inv1,,,correct,3
+question 8347,verdict,inv2,,,correct,3
+question 146,solve,claude,3,high,,
+question 6097,solve,claude,1,medium,,
+question 2185,solve,claude,5,high,,
+question 8403,solve,claude,3,medium,,
+question 4620,solve,claude,3,low,,
+question 7173,solve,claude,2,high,,
+question 5791,solve,claude,5,low,,
+question 8076,solve,claude,3,high,,
+question 4782,solve,claude,3,medium,,
+question 8570,solve,claude,3,medium,,
+question 1640,solve,claude,5,medium,,
+question 3519,solve,claude,1,medium,,
+question 6040,solve,claude,1,low,,
+question 7804,solve,claude,2,high,,
+question 4351,solve,claude,5,high,,
+question 9547,solve,claude,3,high,,
+question 4894,solve,claude,3,high,,
+question 9487,solve,claude,1,high,,
+question 7035,solve,claude,2,medium,,
+question 6099,solve,claude,5,medium,,
+question 4620,verdict,inv1,,,correct,
+question 7173,verdict,inv1,,,correct,
+question 1640,verdict,inv1,,,correct,
+question 4620,verdict,inv2,,,correct,
+question 7173,verdict,inv2,,,correct,
+question 1640,verdict,inv2,,,correct,
+question 9061,solve,claude,3,low,,
+question 3430,solve,claude,3,medium,,
+question 4279,solve,claude,3,low,,
+question 388,solve,claude,2,high,,
+question 9091,solve,claude,5,high,,
+question 1321,solve,claude,3,medium,,
+question 7095,solve,claude,4,medium,,
+question 1030,solve,claude,3,medium,,
+question 9549,solve,claude,1,low,,
+question 4585,solve,claude,2,medium,,
+question 1736,solve,claude,2,medium,,
+question 8959,solve,claude,1,high,,
+question 2430,solve,claude,3,high,,
+question 8965,solve,claude,1,low,,
+question 4970,solve,claude,2,low,,
+question 185,solve,claude,3,high,,
+question 7773,solve,claude,4,high,,
+question 1207,solve,claude,3,high,,
+question 5370,solve,claude,2,medium,,
+question 4282,solve,claude,2,low,,
+question 9061,verdict,inv1,,,correct,3
+question 4279,verdict,inv1,,,correct,5
+question 1321,verdict,inv1,,,ambiguous,1
+question 1030,verdict,inv1,,,correct,3
+question 9061,verdict,inv2,,,correct,3
+question 4279,verdict,inv2,,,correct,5
+question 1321,verdict,inv2,,,correct,1
+question 1030,verdict,inv2,,,correct,3
+question 9549,verdict,inv1,,,correct,
+question 1736,verdict,inv1,,,correct,
+question 8959,verdict,inv1,,,correct,
+question 4970,verdict,inv1,,,ambiguous,2
+question 9549,verdict,inv2,,,correct,2
+question 1736,verdict,inv2,,,correct,2
+question 8959,verdict,inv2,,,correct,1
+question 4970,verdict,inv2,,,ambiguous,
+question 185,verdict,inv1,,,correct,
+question 4282,verdict,inv1,,,correct,
+question 185,verdict,inv2,,,correct,2
+question 4282,verdict,inv2,,,ambiguous,
+question 886,solve,claude,3,medium,,
+question 7881,solve,claude,4,medium,,
+question 2018,solve,claude,2,high,,
+question 1029,solve,claude,1,high,,
+question 966,solve,claude,2,low,,
+question 2542,solve,claude,1,low,,
+question 6286,solve,claude,4,low,,
+question 44,solve,claude,4,medium,,
+question 9781,solve,claude,3,medium,,
+question 717,solve,claude,2,medium,,
+question 6109,solve,claude,4,medium,,
+question 1318,solve,claude,5,high,,
+question 8912,solve,claude,2,low,,
+question 6296,solve,claude,5,medium,,
+question 4873,solve,claude,3,low,,
+question 3704,solve,claude,5,medium,,
+question 6561,solve,claude,3,high,,
+question 5231,solve,claude,2,high,,
+question 8695,solve,claude,3,high,,
+question 325,solve,claude,2,high,,
+question 7881,verdict,inv1,,,correct,4
+question 1029,verdict,inv1,,,correct,1
+question 44,verdict,inv1,,,correct,4
+question 9781,verdict,inv1,,,correct,3
+question 7881,verdict,inv2,,,correct,
+question 1029,verdict,inv2,,,correct,
+question 44,verdict,inv2,,,correct,
+question 9781,verdict,inv2,,,correct,
+question 717,verdict,inv1,,,ambiguous,
+question 6296,verdict,inv1,,,correct,5
+question 4873,verdict,inv1,,,ambiguous,
+question 717,verdict,inv2,,,ambiguous,
+question 6296,verdict,inv2,,,correct,5
+question 4873,verdict,inv2,,,ambiguous,
+question 5341,solve,claude,1,high,,
+question 5982,solve,claude,4,high,,
+question 9533,solve,claude,2,low,,
+question 3838,solve,claude,2,medium,,
+question 6714,solve,claude,2,high,,
+question 2205,solve,claude,2,high,,
+question 6175,solve,claude,1,high,,
+question 7275,solve,claude,2,medium,,
+question 135,solve,claude,5,low,,
+question 3931,solve,claude,1,low,,
+question 4378,solve,claude,4,high,,
+question 5923,solve,claude,3,medium,,
+question 2996,solve,claude,2,medium,,
+question 7657,solve,claude,4,low,,
+question 5467,solve,claude,5,low,,
+question 4688,solve,claude,3,high,,
+question 7370,solve,claude,4,medium,,
+question 616,solve,claude,2,low,,
+question 3610,solve,claude,2,medium,,
+question 5706,solve,claude,2,high,,
+question 9533,verdict,inv1,,,ambiguous,
+question 7275,verdict,inv1,,,correct,2
+question 135,verdict,inv1,,,ambiguous,
+question 7657,verdict,inv1,,,unverifiable,
+question 9533,verdict,inv2,,,ambiguous,
+question 7275,verdict,inv2,,,correct,2
+question 135,verdict,inv2,,,ambiguous,
+question 7657,verdict,inv2,,,unverifiable,
+question 5467,verdict,inv1,,,ambiguous,
+question 4688,verdict,inv1,,,correct,3
+question 7370,verdict,inv1,,,wrong,4
+question 5467,verdict,inv2,,,ambiguous,
+question 4688,verdict,inv2,,,correct,3
+question 7370,verdict,inv2,,,wrong,4
+question 1673,solve,claude,3,medium,,
+question 7853,solve,claude,4,medium,,
+question 3604,solve,claude,4,medium,,
+question 6059,solve,claude,4,high,,
+question 1288,solve,claude,2,high,,
+question 8880,solve,claude,1,high,,
+question 7767,solve,claude,2,medium,,
+question 9344,solve,claude,4,medium,,
+question 5912,solve,claude,4,high,,
+question 8657,solve,claude,3,medium,,
+question 5632,solve,claude,1,high,,
+question 1274,solve,claude,2,low,,
+question 2461,solve,claude,4,high,,
+question 7071,solve,claude,1,low,,
+question 8988,solve,claude,2,low,,
+question 188,solve,claude,4,medium,,
+question 6750,solve,claude,1,low,,
+question 3854,solve,claude,3,high,,
+question 1581,solve,claude,1,high,,
+question 3066,solve,claude,4,medium,,
+question 1274,verdict,inv1,,,ambiguous,
+question 8988,verdict,inv1,,,ambiguous,
+question 6750,verdict,inv1,,,correct,5
+question 1274,verdict,inv2,,,ambiguous,
+question 8988,verdict,inv2,,,unverifiable,
+question 6750,verdict,inv2,,,correct,5
+question 4548,solve,claude,2,medium,,
+question 2224,solve,claude,4,medium,,
+question 8620,solve,claude,5,medium,,
+question 2442,solve,claude,4,low,,
+question 855,solve,claude,1,high,,
+question 5463,solve,claude,2,high,,
+question 6300,solve,claude,4,low,,
+question 6337,solve,claude,5,high,,
+question 8096,solve,claude,1,medium,,
+question 3325,solve,claude,2,medium,,
+question 6599,solve,claude,2,low,,
+question 3615,solve,claude,4,low,,
+question 1273,solve,claude,3,high,,
+question 7775,solve,claude,2,medium,,
+question 8795,solve,claude,1,high,,
+question 2633,solve,claude,3,medium,,
+question 2835,solve,claude,3,medium,,
+question 1160,solve,claude,2,low,,
+question 7640,solve,claude,2,medium,,
+question 1751,solve,claude,5,high,,
+question 4548,verdict,inv1,,,unverifiable,
+question 2224,verdict,inv1,,,ambiguous,
+question 2442,verdict,inv1,,,ambiguous,
+question 3615,verdict,inv1,,,correct,1
+question 4548,verdict,inv2,,,unverifiable,
+question 2224,verdict,inv2,,,ambiguous,
+question 2442,verdict,inv2,,,unverifiable,
+question 3615,verdict,inv2,,,correct,
+question 2835,verdict,inv1,,,ambiguous,3
+question 2835,verdict,inv2,,,ambiguous,3
+question 1143,solve,claude,2,low,,
+question 3663,solve,claude,1,high,,
+question 4450,solve,claude,1,high,,
+question 4536,solve,claude,2,low,,
+question 4588,solve,claude,2,low,,
+question 7935,solve,claude,4,high,,
+question 9424,solve,claude,2,high,,
+question 1143,verdict,inv1,,,ambiguous,
+question 3663,verdict,inv1,,,correct,1
+question 4450,verdict,inv1,,,correct,1
+question 4536,verdict,inv1,,,wrong,
+question 1143,verdict,inv2,,,ambiguous,
+question 3663,verdict,inv2,,,correct,1
+question 4450,verdict,inv2,,,correct,1
+question 4536,verdict,inv2,,,wrong,
+question 4588,verdict,inv1,,,correct,2
+question 7935,verdict,inv1,,,correct,4
+question 9424,verdict,inv1,,,correct,2
+question 4588,verdict,inv2,,,ambiguous,
+question 7935,verdict,inv2,,,correct,4
+question 9424,verdict,inv2,,,correct,2

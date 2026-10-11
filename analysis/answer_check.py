@@ -2,7 +2,8 @@
 
 输入：
   data/processed/teleqna_answer_check_sample.csv   抽样题、标准答案、Qwen 盲答
-  data/processed/teleqna_answer_check_votes.csv    Claude 盲答与核查者判定（kind = solve / verdict）
+  data/processed/teleqna_answer_check_votes.csv    Claude 盲答与核查者判定（kind = solve / verdict），不含证据文字
+  results/audit/answer_check/verdict_evidence.csv  核查证据与来源（可能引用题目片段，不入库）
   results/audit/answer_check/items.json            题目原文（只用于生成人工复核清单）
 输出：
   data/processed/teleqna_answer_check_result.csv   每题最终状态（无原文，可入库）
@@ -43,6 +44,16 @@ def main():
                 solves[r["id"]] = r
             else:
                 verdicts[r["id"]].append(r)
+    # 核查证据含题目片段，存于不入库的 results/ 下，只用于生成人工复核清单
+    evidence = {}
+    epath = ROOT / "results/audit/answer_check/verdict_evidence.csv"
+    if epath.exists():
+        with epath.open(encoding="utf-8") as f:
+            evidence = {(r["id"], r["annotator"]): r for r in csv.DictReader(f)}
+    for vs in verdicts.values():
+        for v in vs:
+            e = evidence.get((v["id"], v["annotator"]), {})
+            v["evidence"], v["source"] = e.get("evidence", ""), e.get("source", "")
     items = {it["id"]: it for it in json.loads(
         (ROOT / "results/audit/answer_check/items.json").read_text(encoding="utf-8"))}
 
