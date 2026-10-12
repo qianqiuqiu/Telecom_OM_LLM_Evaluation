@@ -39,3 +39,99 @@ question 8841,drop,,核查判为有歧义 / 无法核实 / 意见不一,Qianqiu�
 question 8988,drop,,核查判为有歧义 / 无法核实 / 意见不一,Qianqiu（按核查结果批量决定）,2026-10-11
 question 9037,drop,,核查判为有歧义 / 无法核实 / 意见不一,Qianqiu（按核查结果批量决定）,2026-10-11
 question 9533,drop,,核查判为有歧义 / 无法核实 / 意见不一,Qianqiu（按核查结果批量决定）,2026-10-11
+question 14,fix,1,全量核验：claude-default 复查两人均判错且正确选项一致,规则（沿用 Oct 11 人工决定口径）,2026-10-12
+question 203,drop,,全量核验：claude-default 复查判为错误无正确选项 / 有歧义 / 无法核实 / 意见不一,规则（沿用 Oct 11 人工决定口径）,2026-10-12
+question 453,drop,,全量核验：claude-default 复查判为错误无正确选项 / 有歧义 / 无法核实 / 意见不一,规则（沿用 Oct 11 人工决定口径）,2026-10-12
+question 806,drop,,全量核验：claude-default 复查判为错误无正确选项 / 有歧义 / 无法核实 / 意见不一,规则（沿用 Oct 11 人工决定口径）,2026-10-12
+question 872,drop,,全量核验：claude-default 复查判为错误无正确选项 / 有歧义 / 无法核实 / 意见不一,规则（沿用 Oct 11 人工决定口径）,2026-10-12
+question 955,drop,,全量核验：claude-default 复查判为错误无正确选项 / 有歧义 / 无法核实 / 意见不一,规则（沿用 Oct 11 人工决定口径）,2026-10-12
+question 1066,drop,,全量核验：claude-default 复查判为错误无正确选项 / 有歧义 / 无法核实 / 意见不一,规则（沿用 Oct 11 人工决定口径）,2026-10-12
+question 1134,drop,,全量核验：claude-default 复查判为错误无正确选项 / 有歧义 / 无法核实 / 意见不一,规则（沿用 Oct 11 人工决定口径）,2026-10-12
+question 1380,drop,,全量核验：claude-default 复查判为错误无正确选项 / 有歧义 / 无法核实 / 意见不一,规则（沿用 Oct 11 人工决定口径）,2026-10-12
+question 1707,drop,,全量核验：claude-default 复查判为错误无正确选项 / 有歧义 / 无法核实 / 意见不一,规则（沿用 Oct 11 人工决定口径）,2026-10-12
+question 1724,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 1770,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 2050,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 2131,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 2278,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 2355,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 2380,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 2396,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 2408,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 2608,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 2673,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 2771,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 3060,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 3132,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 3143,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 3391,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 3529,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 3585,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 3630,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 3634,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 3899,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 3946,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 4081,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 4197,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 4267,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 4328,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 4399,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 4857,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 4881,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 4949,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 4981,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 5087,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 5091,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 5159,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 5165,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 5477,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 5684,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 5710,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 5894,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 5897,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 6057,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 6061,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 6115,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 6151,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 6216,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 6239,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 6416,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 6510,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 6596,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 6597,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 6612,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 6633,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 6856,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 6935,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 6945,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 7252,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 7330,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 7385,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 7471,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 7481,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 7515,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 7614,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 8028,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 8092,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 8120,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 8265,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 8361,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 8364,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 8411,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 8441,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 8500,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 8636,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 8745,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 8770,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 8782,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 8798,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 8833,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 9014,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 9050,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 9277,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 9516,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 9664,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 9728,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 9780,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 9834,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12
+question 9953,drop,,全量核验：Haiku 5.5 ×2 + MiniMax-M3 ×2 复查中判 correct 不足 3 人,规则（Qianqiu Oct 12 选定投票规则）,2026-10-12

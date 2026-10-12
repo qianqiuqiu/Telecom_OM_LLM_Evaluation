@@ -46,3 +46,17 @@ uv run python scripts/audit_teleqna.py               # 汇总，生成最终标�
 ```
 
 盲标结果存于 `data/processed/teleqna_pair_validation.csv`（由 Claude 子 agent 标注，非脚本产出）。
+
+答案全量核验与测试子集（运维相关度 ≥ 2），按顺序执行：
+
+```bash
+uv run python scripts/answer_check_full.py           # 生成全量核验 workflow（Haiku 盲答 → 粗筛 → 默认模型复查）
+uv run python scripts/ingest_workbuddy_review.py     # 收回 WorkBuddy（MiniMax-M3）复查，校验 ID 并与默认模型校准
+uv run python scripts/ingest_haiku_review.py         # 收回 Haiku 复查（workflow 输出），校准并给出投票规则所需数据
+uv run python analysis/answer_check_full.py          # 汇总决定：默认模型复查；其余按 4 人投票（≥3 判正确保留）
+uv run python scripts/audit_teleqna.py               # 写入审计表 data/processed/teleqna_items.csv
+uv run python analysis/relevance_summary.py          # 相关度报告
+uv run python scripts/build_test_subset.py           # 最终测试子集 data/processed/teleqna_test_subset.csv
+```
+
+复查原始输出与证据文字只在 `results/audit/answer_check_full/`（不入库）。
