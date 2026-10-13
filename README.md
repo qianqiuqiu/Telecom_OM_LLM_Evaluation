@@ -1,7 +1,7 @@
 # 通信网络运维助手 · 大模型选型评测
 
 模拟运营商为网络运维助手选底座大模型：客观题横评、场景题 judge 打分与元评测、追问施压、量化精度回归。
-方案详见 [Spec](通信网络运维助手%20·%20大模型选型评测%20Spec.md)。
+方案详见 [Spec](通信网络运维助手%20·%20大模型选型评测%20Spec.md)，进展、下一步与决定日志见 [STATUS](STATUS.md)。
 
 ## 环境
 
@@ -60,6 +60,16 @@ uv run python scripts/build_test_subset.py           # 最终测试子集 data/p
 ```
 
 复查原始输出与证据文字只在 `results/audit/answer_check_full/`（不入库）。
+
+费用估算与客观题横评（7 模型 × 731 题 × 5 子集），按顺序执行：
+
+```bash
+uv run python analysis/cost_estimate.py              # 费用估算 → reports/cost_estimate.md
+uv run python scripts/build_mcq_variants.py          # 生成 5 子集变体（orig/rep/s1–s3）
+uv run python scripts/run_objective.py --limit 3 --models qwen3.8-flash   # 冒烟
+uv run python scripts/run_objective.py               # 全量（缓存补缺，结果在 results/evalscope/objective/）
+uv run python analysis/objective_analysis.py         # 分析层 → reports/objective/objective_main.md
+```
 
 场景题（45 道中文场景题 + rubric）起草与两层事实核验，按顺序执行：
 

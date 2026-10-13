@@ -1,5 +1,10 @@
 # CLAUDE.md
 
+## 接手
+
+- 先读 `STATUS.md`（现状、下一步、待定决定、决定日志、踩坑），再读 Spec（只放方案）。
+- 进展或决定有变化时更新 `STATUS.md`，不要另起状态文档。
+
 ## Subagent 模型选择
 
 - 简单任务交给 Haiku（Agent / Workflow 的 `model: "haiku"`），不要全部用默认的 Opus：
