@@ -9,20 +9,20 @@
 ```
 1 准备考卷（TeleQnA 审计与清洗）               已完成：客观题测试集 731 题
 2 客观题横评（7 模型 × 731 题 × 5 子集）        已完成：分析层 + 三方复核，reports/objective/objective_main.md
-3 出主观题（40–50 道中文场景题 + rubric）       初稿完成：45 题，两层事实核验 + TS 引用人工查证；收尾待做
+3 出主观题（40–50 道中文场景题 + rubric）       初稿完成：45 题，两层事实核验 + TS 引用人工查证；收尾已做（v3），待试跑后定稿
 4 阅卷（规则判分 + LLM judge）                 judge 工具链已就绪（见第四节第 4 项），未正式判分
-5 检验裁判（judge 元评测）                     方案已定（构造真值为主，Spec v2.4），探针待生成 ← 现在
+5 检验裁判（judge 元评测）                     探针已生成（337 个）；10 题参考答案已改，需重切 ← 现在
 6 出结论（横评、思考对照、追问施压、精度回归、选型报告） 未开始
 ```
 
-judge 元评测方案和工具链已定，下一步先生成探针，再做场景题收尾。这一段是整个项目最容易返工的地方：场景题 → 模型回答 → judge 验证 → judge 提示词 → 全量判分环环相扣，上游一改，下游作废，所以按第二节的顺序走。
+探针已生成，场景题收尾已做；下一步是天花板试跑（需先写回答生成脚本），再定稿 v1.0。这一段是整个项目最容易返工的地方：场景题 → 模型回答 → judge 验证 → judge 提示词 → 全量判分环环相扣，上游一改，下游作废，所以按第二节的顺序走。
 
 ## 二、下一步（建议顺序）
 
 每一步定稿后打 git tag，下游只认 tag。花钱或大批量调用前先列清单确认。
 
-1. **切分映射**：`scripts/build_judge_probes.py segment`（百炼 qwen3.8-max，45 题约 ¥3，需在 Mac 上跑，花钱前确认）→ `build`，得到参考答案缺口清单 `data/scenarios/judge_probes/reference_gaps.md`（冒烟时已发现 SC-D01 的参考答案没写到 P8）。
-2. **场景题收尾**：补参考答案缺口（或改 / 删要点）；37/45 题的 `unverified_residuals` 能从标准核验的补 `source_note`，不能的按 Spec「一律去掉不可核验内容」删除或降级为 constructed / common_sense。
+1. ~~**切分映射**~~（Oct 13 完成，`8acabc0`）：45/45 题映射合格，探针 337 个，参考答案缺口 10 个。
+2. ~~**场景题收尾**~~（Oct 13 完成，v3 草稿）：10 个缺口已补（见第四节第 3 项）；48 条待核验项已分诊（`data/scenarios/residuals_triage.csv`），无需删题或降级。剩两件小事：4 条进入计分的取值建议用户对照协议原文核对（表中 `建议核对`）；10 题的映射已过期，可在 Mac 上重跑 `segment`（只重切这 10 题，约 ¥0.7）→ `build`，确认缺口归零，也可等定稿后一起跑。
 3. **天花板试跑**：用 2 个便宜模型（如 qwen3.8-flash、deepseek-v4.1-flash，花费在 ¥1 以内）答 45 题，用 Haiku + 提示词 v1 粗判看分数分布。客观题已有 440/731 题全员答对；场景题如果也全员高分，排序和 judge 验证都会失效，此时调难度比事后补救便宜。（需先写回答生成脚本。）
 4. **场景题定稿 v1.0**（打 tag）。之后改题只能出勘误版本，并标出受影响的回答和判分。定稿后重跑 `segment`（只重切改过的题）与 `build`，用户填 `spotcheck_drop.csv`（约 30 条，对照文字判断「是否还写到这个要点」）。
 5. **judge 提示词迭代**：Haiku、Sonnet 各判调试集探针（约 165 个），`analysis/judge_meta.py` 出报告 → 改提示词 v2、v3（只看调试集）→ 锁定 → 留出集报最终数字，并抽一部分重复判 3 次测稳定性。
@@ -69,7 +69,7 @@ D1（judge 模型）、D2（judge 验证方式）已于 Oct 13 定下，见第�
 
 ### 3. 场景题初稿（第 3 阶段，Oct 13）
 
-- 产物：`data/scenarios/scenarios_draft.json`（45 题，稳定 ID）；分批草稿 `data/scenarios/drafts/<批次>.v{0,1,2}.json`（v2 为核验修订后版本，merge 脚本优先取 v2）。每题含 rubric_points（id / stage / text / weight / verifiability / source_note，权重和 = 100）、deductions、high_risk_actions、discriminating_trap、excluded_hypotheses、unverified_residuals。
+- 产物：`data/scenarios/scenarios_draft.json`（45 题，稳定 ID）；分批草稿 `data/scenarios/drafts/<批次>.v{0,1,2,3}.json`（v2 为核验修订后版本，v3 为定稿前修订；merge 脚本读 v1 起的最高版本）。每题含 rubric_points（id / stage / text / weight / verifiability / source_note，权重和 = 100）、deductions、high_risk_actions、discriminating_trap、excluded_hypotheses、unverified_residuals。
 - 构成：diagnosis 22 / consulting 12 / kpi 11；RAN 15、CORE 7、TRANSPORT 8、OAM 9、SERVICE 4、SECURITY 2；难度 d2 22 / d3 23；要点可核验类型 standard 64 / constructed 119 / common_sense 156；37/45 题带 `unverified_residuals`。
 - 补题：跨批查重发现 4 组重复，用 `supp-a` 新写 4 道诊断题替换（SC-D23 5G 切片 #62、SC-D24 VoLTE 上行单通、SC-D25 4G EPC S6a、SC-D26 QoS/5QI GBR），RAN 由 17 降到 15、SERVICE 由 2 升到 4。被替换题 SC-D03/D06/D09/D10 留空号不重排。
 - 两层事实核验：
@@ -82,6 +82,9 @@ D1（judge 模型）、D2（judge 验证方式）已于 Oct 13 定下，见第�
   - SC-C01 P3：MME 池负载均衡改引 TS 23.401 §4.3.7.2/§4.3.7.3，删除只适用于 GERAN/UTRAN 的 TS 23.236 NNSF。
 
   其余 5 条核对无误。
+- 收尾（Oct 13，`scripts/apply_freeze_fixes.py` 生成 v3 草稿，merge 改为读 v1 起的最高版本）：
+  - 参考答案缺口：映射发现 10 个要点在参考答案里没写到，照抄参考答案也拿不到分（6 个是后续改进 / 效果验证类：SC-D01 P8、D02 P8、D07 P8、D20 P7、C01 P8、D25 P7；4 个是机理 / 排除类：D16 P3、D23 P3、D24 P4、D26 P4）。每处在参考答案里补一两句，内容只取该要点自身的文字；要点、权重、扣分项、高危操作都没动。
+  - 待核验项分诊（48 条，37 题）：a 条款 / 取值 16、b 已声明的构造或简化 21、c 题干缺信息 10、d 区分度 1。不确定内容进入计分文字的只有 5 条：4 条是协议取值（SC-D01 T310=ms50、SC-D04 CRS 模 6 频移、SC-D07 -120 dBm、SC-K09 #26/#67），按记忆都成立，但云端会话连不上 3GPP / ETSI，没有对照原文；另 1 条（SC-C05 绕行容量）是题干写明的保守假设，结论不受影响。c 类 10 条逐条看过，要点与扣分项都不罚考生提及这些因素，题干不用改。条号凭记忆的 SC-C10 source_note 已去掉条号。`check_scenarios.py` 会检查分诊表与 `unverified_residuals` 是否逐条对应。
 - 机器校验 `scripts/check_scenarios.py`：当前 0 错 0 警。
 
 ### 4. judge 工具链（Oct 13，已冒烟测试，未正式运行）
@@ -116,6 +119,7 @@ D1（judge 模型）、D2（judge 验证方式）已于 Oct 13 定下，见第�
 | Oct 13 | judge 提示词 v1→v2→v3 迭代保留。 |
 | Oct 13 | judge 定为 Claude Haiku 5.5 / Sonnet 5.5 两档，经 Claude Code 无头模式走 Pro 订阅（D1）；另加一个百炼 judge 只判验证子集，做跨厂商对照与自家偏好实验。 |
 | Oct 13 | 不做大规模人工标注与 test-retest（缺领域知识，也无预算请人）；judge 元评测改为构造真值探针为主、judge 间一致性与 50–80 个分歧要点的人工仲裁为辅（D2）。Spec 升为 v2.4。 |
+| Oct 13 | 场景题收尾：参考答案缺口一律补参考答案（不改 / 删要点），只用要点自身文字；改动走新一层草稿 v3，保留 v1 / v2 审计痕迹。待核验项按「是否进入计分文字」分诊，不进入计分的保留说明，不删题。 |
 
 ## 六、环境、费用与账号
 
@@ -158,9 +162,10 @@ D1（judge 模型）、D2（judge 验证方式）已于 Oct 13 定下，见第�
 | `reports/audit/*.md`、`reports/cost_estimate.md` | 审计与费用报告（脚本生成） |
 | `analysis/objective_analysis.py` → `reports/objective/objective_main.md` | 横评分析层与报告（脚本生成） |
 | `data/scenarios/scenarios_draft.json` | 场景题初稿（45 题，稳定 ID，脚本生成） |
-| `data/scenarios/drafts/<批次>.v{0,1,2}.json` | 场景题分批草稿（v2 = 核验修订后） |
-| `scripts/merge_scenario_drafts.py`、`check_scenarios.py` | 合并草稿；场景题机器校验 |
-| `scripts/verify_three_vote.py`、`consolidate_verification.py`、`apply_verification_fixes.py` | 三票核验、汇总分级、应用修订 |
+| `data/scenarios/drafts/<批次>.v{0,1,2,3}.json` | 场景题分批草稿（v2 = 核验修订后，v3 = 定稿前修订） |
+| `scripts/merge_scenario_drafts.py`、`check_scenarios.py` | 合并草稿（读最高版本）；场景题机器校验 |
+| `scripts/verify_three_vote.py`、`consolidate_verification.py`、`apply_verification_fixes.py` | 三票核验、汇总分级、应用修订（→ v2） |
+| `scripts/apply_freeze_fixes.py`、`data/scenarios/residuals_triage.csv` | 定稿前修订（补参考答案缺口 → v3）；48 条待核验项分诊表 |
 | `scripts/judge_scenarios.py`、`configs/judge/judge_v1.md` | 场景题 judge（claude / bailian 两种后端）与提示词 v1 |
 | `scripts/make_judge_split.py` → `data/scenarios/judge_split.csv` | 调试集 / 留出集（按题划分，22 / 23 题） |
 | `scripts/build_judge_probes.py` → `data/scenarios/judge_probes/` | 切分映射与构造真值探针、参考答案缺口清单、drop 探针抽查表 |

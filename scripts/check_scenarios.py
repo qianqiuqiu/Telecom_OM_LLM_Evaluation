@@ -1,15 +1,17 @@
-"""场景题清单机检：结构、配比、rubric 权重、依据来源、重复根因扫描。
+"""场景题清单机检：结构、配比、rubric 权重、依据来源、重复根因扫描、待核验项分诊表是否同步。
 
 用法：uv run python scripts/check_scenarios.py [--file data/scenarios/scenarios_draft.json]
 只读，不改数据。退出码非 0 表示有硬性错误（权重不足/字段缺失/ID 重复）。
 """
 import argparse
+import csv
 import json
 from collections import Counter, defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 VERIF = {"standard", "constructed", "common_sense"}
+TRIAGE = ROOT / "data/scenarios/residuals_triage.csv"
 # 诊断题两阶段打分（Spec「Rubric 设计」）；咨询/KPI 题用 overall 单阶段。
 STAGES_BY_TYPE = {"diagnosis": {"root_cause", "action"}, "consulting": {"overall"}, "kpi": {"overall"}}
 REQ_FIELDS = ["local_idx", "type", "dimension", "difficulty", "title", "prompt",
@@ -52,6 +54,13 @@ def main():
     for qid, n in ids.items():
         if n > 1:
             errors.append(f"ID 重复: {qid} x{n}")
+    if TRIAGE.exists():  # 分诊表须与 unverified_residuals 逐条对应
+        with TRIAGE.open(encoding="utf-8") as f:
+            tri = {(r["scenario_id"], int(r["idx"])): r["residual"] for r in csv.DictReader(f)}
+        cur = {(q["id"], i): r for q in qs for i, r in enumerate(q.get("unverified_residuals", []))}
+        for k in sorted(set(cur) | set(tri)):
+            if cur.get(k) != tri.get(k):
+                warnings.append(f"{k[0]}[{k[1]}] 待核验项与 {TRIAGE.name} 不一致，需更新分诊表")
 
     print(f"总题数: {len(qs)}   唯一 ID: {len(ids)}")
     print("题型:", dict(Counter(q["type"] for q in qs)))
