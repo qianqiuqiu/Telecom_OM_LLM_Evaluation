@@ -2,7 +2,7 @@
  "items": {
   "SC-D01": {
    "ok": true,
-   "ref_sha": "8dd78edb7c72",
+   "ref_sha": "1d64bdaefcc8",
    "mapper": "bailian:qwen3.8-max-0902",
    "segments": [
     {
@@ -14,6 +14,7 @@
     {
      "text": "无线链路失败（RLF）判决过于灵敏，正常的短时衰落或遮挡也被判为 RLF，UE 随即发起 RRC 重建，部分重建落到未准备好上下文的小区被拒绝，就变成掉话。",
      "points": [
+      "P1",
       "P2"
      ]
     },
@@ -62,19 +63,23 @@
      "points": [
       "P7"
      ]
+    },
+    {
+     "text": "后续改进：RLF 类参数调整须有场景论证，先小范围试点，变更单附验证指标。",
+     "points": [
+      "P8"
+     ]
     }
    ],
-   "uncovered": [
-    "P8"
-   ],
+   "uncovered": [],
    "problems": [],
    "served_model": "qwen3.8-max-0902",
    "attempts": 1,
-   "ts": "2026-10-13 22:30:56"
+   "ts": "2026-10-13 22:56:30"
   },
   "SC-D02": {
    "ok": true,
-   "ref_sha": "28c1069408c0",
+   "ref_sha": "5bd650e8aafa",
    "mapper": "bailian:qwen3.8-max-0902",
    "segments": [
     {
@@ -146,15 +151,19 @@
      "points": [
       "P7"
      ]
+    },
+    {
+     "text": "流程上把新站开通的双向邻区核对纳入开通清单，必要时在受控范围内启用 ANR 并审核其结果。",
+     "points": [
+      "P8"
+     ]
     }
    ],
-   "uncovered": [
-    "P8"
-   ],
+   "uncovered": [],
    "problems": [],
    "served_model": "qwen3.8-max-0902",
    "attempts": 1,
-   "ts": "2026-10-13 22:31:03"
+   "ts": "2026-10-13 22:56:39"
   },
   "SC-D04": {
    "ok": true,
@@ -295,7 +304,7 @@
   },
   "SC-D07": {
    "ok": true,
-   "ref_sha": "156ef4f3faaf",
+   "ref_sha": "cf47499c9c09",
    "mapper": "bailian:qwen3.8-max-0902",
    "segments": [
     {
@@ -313,13 +322,19 @@
     {
      "text": "由于前导到达基站的接收电平≈目标接收功率、与路损基本无关，目标定得过低使近点（信号满格）与远点用户的前导都低于检测门限，故近点用户同样连不上。",
      "points": [
+      "P2",
       "P3"
      ]
     },
     {
-     "text": "证据：失败集中在 Msg1 到 RAR 阶段，Msg3 之后和核心网拒绝不变，上行 RSSI 和 PRB 都正常，未变更小区正常，可排除干扰和拥塞。",
+     "text": "证据：失败集中在 Msg1 到 RAR 阶段，Msg3 之后和核心网拒绝不变，",
      "points": [
-      "P3",
+      "P3"
+     ]
+    },
+    {
+     "text": "上行 RSSI 和 PRB 都正常，未变更小区正常，可排除干扰和拥塞。",
+     "points": [
       "P4"
      ]
     },
@@ -330,9 +345,15 @@
      ]
     },
     {
-     "text": "把初始目标功率回退到 -104 dBm，先在 1–2 个小区灰度，指标回升后再推开；",
+     "text": "把初始目标功率回退到 -104 dBm，先在 1–2 个小区灰度，指标回升后再推开，",
      "points": [
       "P6"
+     ]
+    },
+    {
+     "text": "用接入成功率、平均前导次数和上行 RSSI 的前后对比验证效果，并保留回退方案；",
+     "points": [
+      "P8"
      ]
     },
     {
@@ -342,13 +363,11 @@
      ]
     }
    ],
-   "uncovered": [
-    "P8"
-   ],
+   "uncovered": [],
    "problems": [],
    "served_model": "qwen3.8-max-0902",
    "attempts": 1,
-   "ts": "2026-10-13 22:31:21"
+   "ts": "2026-10-13 22:56:45"
   },
   "SC-D08": {
    "ok": true,
@@ -804,7 +823,7 @@
   },
   "SC-D16": {
    "ok": true,
-   "ref_sha": "70bea3b8a052",
+   "ref_sha": "566e5f530ca6",
    "mapper": "bailian:qwen3.8-max-0902",
    "segments": [
     {
@@ -832,6 +851,24 @@
      ]
     },
     {
+     "text": "排除：IPsec SA 正常且小包能通，不是隧道或 SA 故障；",
+     "points": [
+      "P3"
+     ]
+    },
+    {
+     "text": "改走原路径一切正常，不是服务器或应用故障；",
+     "points": [
+      "P3"
+     ]
+    },
+    {
+     "text": "丢包随包长阶跃（1400 以下全通、1420 以上稳定不通）而非随机出现，不是链路质量丢包。",
+     "points": [
+      "P3"
+     ]
+    },
+    {
      "text": "处置：先用 DF ping 二分确认路径 MTU，并核对两处 ICMP 计数；",
      "points": [
       "P4"
@@ -856,13 +893,11 @@
      ]
     }
    ],
-   "uncovered": [
-    "P3"
-   ],
+   "uncovered": [],
    "problems": [],
    "served_model": "qwen3.8-max-0902",
    "attempts": 1,
-   "ts": "2026-10-13 22:32:04"
+   "ts": "2026-10-13 22:56:52"
   },
   "SC-D17": {
    "ok": true,
@@ -1065,7 +1100,7 @@
   },
   "SC-D20": {
    "ok": true,
-   "ref_sha": "11f68816ba28",
+   "ref_sha": "45c1a8d2a6a5",
    "mapper": "bailian:qwen3.8-max-0902",
    "segments": [
     {
@@ -1121,15 +1156,19 @@
      "points": [
       "P6"
      ]
+    },
+    {
+     "text": "后续：路由策略变更前后增加按目的地址段的时延与重传基线监测和回归验证，把此类变更纳入影响评估。",
+     "points": [
+      "P7"
+     ]
     }
    ],
-   "uncovered": [
-    "P7"
-   ],
+   "uncovered": [],
    "problems": [],
    "served_model": "qwen3.8-max-0902",
    "attempts": 1,
-   "ts": "2026-10-13 22:32:26"
+   "ts": "2026-10-13 22:57:00"
   },
   "SC-D21": {
    "ok": true,
@@ -1236,7 +1275,7 @@
   },
   "SC-C01": {
    "ok": true,
-   "ref_sha": "db0c676d7712",
+   "ref_sha": "cbc37323fb18",
    "mapper": "bailian:qwen3.8-max-0902",
    "segments": [
     {
@@ -1311,15 +1350,19 @@
      "points": [
       "P7"
      ]
+    },
+    {
+     "text": "变更管理上，割接期间冻结同池及相关网元的其他变更，提前通知 HSS、SGW、计费、客服与值守团队，明确指挥与联络机制。",
+     "points": [
+      "P8"
+     ]
     }
    ],
-   "uncovered": [
-    "P8"
-   ],
+   "uncovered": [],
    "problems": [],
    "served_model": "qwen3.8-max-0902",
    "attempts": 1,
-   "ts": "2026-10-13 22:32:45"
+   "ts": "2026-10-13 22:57:07"
   },
   "SC-C02": {
    "ok": true,
@@ -2901,7 +2944,7 @@
   },
   "SC-D23": {
    "ok": true,
-   "ref_sha": "677e4105ce05",
+   "ref_sha": "5339ab00da6c",
    "mapper": "bailian:qwen3.8-max-0902",
    "segments": [
     {
@@ -2911,23 +2954,16 @@
      ]
     },
     {
-     "text": "依据：同一 TAC/同一 AMF 下切片 B 正常，说明不是 AMF-1 整体故障、也不是无线或覆盖问题；",
+     "text": "#62 的触发条件是注册请求的 Requested NSSAI 中没有任何一个 S-NSSAI 可用：该行业终端只请求切片 A，而 AMF-1 在本 TA 不支持切片 A，请求的切片全部不可用，所以拒绝；若只是部分请求切片不可用，AMF 应接受注册并返回不含该切片的 Allowed NSSAI，而不是拒绝。",
      "points": [
-      "P2",
-      "P4"
+      "P3"
      ]
     },
     {
-     "text": "同终端在 AMF-2/TAC-2 正常，说明不是终端或签约问题；",
+     "text": "依据：同一 TAC/同一 AMF 下切片 B 正常，说明不是 AMF-1 整体故障、也不是无线或覆盖问题；同终端在 AMF-2/TAC-2 正常，说明不是终端或签约问题；UDM 签约含切片 A 且无变更、NSSF 正常，排除签约与选片功能。",
      "points": [
       "P2",
       "P4"
-     ]
-    },
-    {
-     "text": "UDM 签约含切片 A 且无变更、NSSF 正常，排除签约与选片功能。",
-     "points": [
-      "P2"
      ]
     },
     {
@@ -2955,23 +2991,27 @@
      ]
     }
    ],
-   "uncovered": [
-    "P3"
-   ],
+   "uncovered": [],
    "problems": [],
    "served_model": "qwen3.8-max-0902",
    "attempts": 1,
-   "ts": "2026-10-13 22:35:21"
+   "ts": "2026-10-13 22:57:14"
   },
   "SC-D24": {
    "ok": true,
-   "ref_sha": "a78a8a2b74e1",
+   "ref_sha": "a0568355124f",
    "mapper": "bailian:qwen3.8-max-0902",
    "segments": [
     {
      "text": "定界结论：这是上行单通——单向语音 RTP 不通，而不是无线质差或呼叫失败。",
      "points": [
       "P1"
+     ]
+    },
+    {
+     "text": "VoLTE 的 SIP 信令走 QCI 5 承载，语音媒体（RTP）走 QCI 1 的 GBR 承载。",
+     "points": [
+      "P4"
      ]
     },
     {
@@ -3024,17 +3064,15 @@
      ]
     }
    ],
-   "uncovered": [
-    "P4"
-   ],
+   "uncovered": [],
    "problems": [],
    "served_model": "qwen3.8-max-0902",
    "attempts": 1,
-   "ts": "2026-10-13 22:35:27"
+   "ts": "2026-10-13 22:57:20"
   },
   "SC-D25": {
    "ok": true,
-   "ref_sha": "a0f7a7562b21",
+   "ref_sha": "a31a1b7a88e9",
    "mapper": "bailian:qwen3.8-max-0902",
    "segments": [
     {
@@ -3047,6 +3085,7 @@
     {
      "text": "已附着用户的数据面（S1-U/S-GW/P-GW）不经该环节，故正常。",
      "points": [
+      "P2",
       "P3"
      ]
     },
@@ -3077,29 +3116,51 @@
     {
      "text": "注意不要在业务时段直接重启 MME-A 或 HSS。",
      "points": []
+    },
+    {
+     "text": "后续：S6a 链路与 Diameter 对端增加监控告警与冗余，MME 池健康与容量纳入巡检。",
+     "points": [
+      "P7"
+     ]
     }
    ],
-   "uncovered": [
-    "P7"
-   ],
+   "uncovered": [],
    "problems": [],
    "served_model": "qwen3.8-max-0902",
    "attempts": 1,
-   "ts": "2026-10-13 22:35:33"
+   "ts": "2026-10-13 22:57:27"
   },
   "SC-D26": {
    "ok": true,
-   "ref_sha": "33d85587d588",
+   "ref_sha": "c27e78ec2153",
    "mapper": "bailian:qwen3.8-max-0902",
    "segments": [
     {
-     "text": "根因：该企业实时业务对应的 QoS Flow 未按签约映射到约定的 GBR 5QI，而是落到默认非 GBR（best-effort）5QI，GBR 保障与约定的 ARP 未生效；忙时无线资源紧张时该业务与其他 best-effort 业务一起被抢占调度，因而卡顿、时延抖动增大，闲时资源充裕则正常。",
+     "text": "根因：",
+     "points": []
+    },
+    {
+     "text": "该企业实时业务对应的 QoS Flow 未按签约映射到约定的 GBR 5QI，而是落到默认非 GBR（best-effort）5QI，GBR 保障与约定的 ARP 未生效；忙时无线资源紧张时该业务与其他 best-effort 业务一起被抢占调度，因而卡顿、时延抖动增大，闲时资源充裕则正常。",
      "points": [
       "P1"
      ]
     },
     {
-     "text": "依据：同小区其他业务正常、PRB 未持续满载、仅该企业该业务受影响，排除无线容量与普遍拥塞；",
+     "text": "背景：",
+     "points": []
+    },
+    {
+     "text": "5QI 决定资源类型（GBR/非 GBR）、优先级与时延预算；保障比特率（GFBR）只由 GBR QoS Flow 提供，非 GBR 的缺省 5QI（通常为 5QI 9）没有每流保障，只受 Session-AMBR/UE-AMBR 上限约束。",
+     "points": [
+      "P4"
+     ]
+    },
+    {
+     "text": "依据：",
+     "points": []
+    },
+    {
+     "text": "同小区其他业务正常、PRB 未持续满载、仅该企业该业务受影响，排除无线容量与普遍拥塞；",
      "points": [
       "P2"
      ]
@@ -3111,7 +3172,11 @@
      ]
     },
     {
-     "text": "处置：先只读核对该 PDU Session/QoS Flow 的签约（UDM/PCF 下发）QoS 规则、实际生效的 5QI/ARP/GBR 与约定对比，核对变更工单内容与时间；",
+     "text": "处置：",
+     "points": []
+    },
+    {
+     "text": "先只读核对该 PDU Session/QoS Flow 的签约（UDM/PCF 下发）QoS 规则、实际生效的 5QI/ARP/GBR 与约定对比，核对变更工单内容与时间；",
      "points": [
       "P5"
      ]
@@ -3123,25 +3188,31 @@
      ]
     },
     {
-     "text": "验证：忙时该业务时延/抖动/丢包与体验恢复、5QI 生效正确，且不影响同小区其他业务与小区负荷。",
+     "text": "验证：",
+     "points": []
+    },
+    {
+     "text": "忙时该业务时延/抖动/丢包与体验恢复、5QI 生效正确，且不影响同小区其他业务与小区负荷。",
      "points": [
       "P7"
      ]
     },
     {
-     "text": "后续：QoS/切片策略变更纳入影响评估与变更后业务质量回归，增加关键业务 5QI 一致性与体验监测。",
+     "text": "后续：",
+     "points": []
+    },
+    {
+     "text": "QoS/切片策略变更纳入影响评估与变更后业务质量回归，增加关键业务 5QI 一致性与体验监测。",
      "points": [
       "P8"
      ]
     }
    ],
-   "uncovered": [
-    "P4"
-   ],
+   "uncovered": [],
    "problems": [],
    "served_model": "qwen3.8-max-0902",
    "attempts": 1,
-   "ts": "2026-10-13 22:35:40"
+   "ts": "2026-10-13 22:57:35"
   }
  }
 }
