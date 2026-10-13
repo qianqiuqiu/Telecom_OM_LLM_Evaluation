@@ -2,57 +2,37 @@
 
 项目：通信网络运维助手 · 大模型选型评测。最后更新：2026-10-13。
 
-本文件是唯一的状态文档：现状、下一步、待定决定、决定日志、注意事项都在这里。方案只看 `通信网络运维助手 · 大模型选型评测 Spec.md`（v2.3），用法与命令看 `README.md`。接手顺序：本文件 → Spec → `CLAUDE.md` → `README.md`。用户用中文交流。
+本文件是唯一的状态文档：现状、下一步、待定决定、决定日志、注意事项都在这里。方案只看 `通信网络运维助手 · 大模型选型评测 Spec.md`（v2.4），用法与命令看 `README.md`。接手顺序：本文件 → Spec → `CLAUDE.md` → `README.md`。用户用中文交流。
 
 ## 一、现在在哪
 
 ```
 1 准备考卷（TeleQnA 审计与清洗）               已完成：客观题测试集 731 题
 2 客观题横评（7 模型 × 731 题 × 5 子集）        已完成：分析层 + 三方复核，reports/objective/objective_main.md
-3 出主观题（40–50 道中文场景题 + rubric）       初稿完成：45 题，两层事实核验 + TS 引用人工查证 ← 现在
-4 阅卷（规则判分 + LLM judge）                 未开始
-5 检验裁判（judge 元评测）                     未开始，验证方式待定（见第三节 D2）
+3 出主观题（40–50 道中文场景题 + rubric）       初稿完成：45 题，两层事实核验 + TS 引用人工查证；收尾待做
+4 阅卷（规则判分 + LLM judge）                 judge 工具链已就绪（见第四节第 4 项），未正式判分
+5 检验裁判（judge 元评测）                     方案已定（构造真值为主，Spec v2.4），探针待生成 ← 现在
 6 出结论（横评、思考对照、追问施压、精度回归、选型报告） 未开始
 ```
 
-第 3 阶段还差收尾（第二节第 1 步）。第 4/5 阶段在动手前要先定 judge 方案和验证方式，这是整个项目最容易返工的地方：场景题 → 模型回答 → judge 验证 → judge 提示词 → 全量判分环环相扣，上游一改，下游作废。
+judge 元评测方案和工具链已定，下一步先生成探针，再做场景题收尾。这一段是整个项目最容易返工的地方：场景题 → 模型回答 → judge 验证 → judge 提示词 → 全量判分环环相扣，上游一改，下游作废，所以按第二节的顺序走。
 
 ## 二、下一步（建议顺序）
 
-标「待定」的步骤依赖第三节的决定，定之前不动手。每一步定稿后打 git tag，下游只认 tag。
+每一步定稿后打 git tag，下游只认 tag。花钱或大批量调用前先列清单确认。
 
-1. **场景题收尾**：37/45 题仍有 `unverified_residuals`，能从标准核验的补 `source_note`，不能的按 Spec「一律去掉不可核验内容」删除或降级为 constructed / common_sense。
-2. **天花板试跑**：用 2 个便宜模型（如 qwen3.8-flash、deepseek-v4.1-flash，花费在 ¥1 以内）跑 45 题看分数分布。客观题已有 440/731 题全员答对；场景题如果也全员高分，排序和 judge 验证都会失效，此时调难度比事后补救便宜。
-3. **场景题定稿 v1.0**（打 tag）。之后改题只能出勘误版本，并标出受影响的回答和判分。
-4. **只生成、不判分**：7 模型关思考 × 45 题（约 ¥9）；思考对照的回答也可先生成（约 ¥130，花钱前确认）。判分等 judge 锁定后一次性跑，不要先用早期 judge 判一遍再全量重判。
-5. **judge**（待定，D1/D2）：judge 脚本（多后端）→ 提示词 v1→v2→v3 只在调试集上改 → 锁定 → 留出集报最终数字 → 一次性判全部回答。调试集 / 留出集按题划分（45 题按题型分层约 22/23），不按回答划分，否则同一道题的 rubric 两边都有。
-6. **不依赖 judge 的并行项**：精度回归客观题部分（门禁阈值先提交打 tag，见 D3）、污染检测 TS-Guessing、TeleLogs 子集、干扰项质量抽查（72 对选项完全相同的非重复题）。
-7. 追问施压 → 选型报告、数据卡、回归报告 → 简历 bullet 与模拟面试。
+1. **切分映射**：`scripts/build_judge_probes.py segment`（百炼 qwen3.8-max，45 题约 ¥3，需在 Mac 上跑，花钱前确认）→ `build`，得到参考答案缺口清单 `data/scenarios/judge_probes/reference_gaps.md`（冒烟时已发现 SC-D01 的参考答案没写到 P8）。
+2. **场景题收尾**：补参考答案缺口（或改 / 删要点）；37/45 题的 `unverified_residuals` 能从标准核验的补 `source_note`，不能的按 Spec「一律去掉不可核验内容」删除或降级为 constructed / common_sense。
+3. **天花板试跑**：用 2 个便宜模型（如 qwen3.8-flash、deepseek-v4.1-flash，花费在 ¥1 以内）答 45 题，用 Haiku + 提示词 v1 粗判看分数分布。客观题已有 440/731 题全员答对；场景题如果也全员高分，排序和 judge 验证都会失效，此时调难度比事后补救便宜。（需先写回答生成脚本。）
+4. **场景题定稿 v1.0**（打 tag）。之后改题只能出勘误版本，并标出受影响的回答和判分。定稿后重跑 `segment`（只重切改过的题）与 `build`，用户填 `spotcheck_drop.csv`（约 30 条，对照文字判断「是否还写到这个要点」）。
+5. **judge 提示词迭代**：Haiku、Sonnet 各判调试集探针（约 165 个），`analysis/judge_meta.py` 出报告 → 改提示词 v2、v3（只看调试集）→ 锁定 → 留出集报最终数字，并抽一部分重复判 3 次测稳定性。
+6. **生成与判分**：7 模型关思考 × 45 题（约 ¥9）；思考对照的回答（约 ¥130，花钱前确认）。用锁定的 judge 一次性判全部回答；跨厂商 judge（百炼）只判验证子集；两档 judge 分歧的要点抽 50–80 个由用户仲裁。
+7. **不依赖 judge 的并行项**：精度回归客观题部分（门禁阈值先提交打 tag，见 D3）、污染检测 TS-Guessing、TeleLogs 子集、干扰项质量抽查（72 对选项完全相同的非重复题）。
+8. 追问施压 → 选型报告、数据卡、回归报告 → 简历 bullet 与模拟面试。
 
 ## 三、待定决定（需用户拍板）
 
-**D1. judge 模型：用 Claude Haiku 5.5 / Sonnet 5.5，经 Claude Code 无头模式走 Pro 订阅（用户 Oct 13 提议）。**
-可行：`claude -p --model claude-sonnet-5-5 --tools "" --system-prompt … --json-schema … --output-format json` 可以被 Python 脚本逐条调用，走订阅登录，不花百炼预算。建议采用，附以下条件：
-- 用完整模型 ID（`claude-haiku-5-5`、`claude-sonnet-5-5`），不用 `sonnet` 这类别名，避免别名被静默更新导致复跑对不上（与百炼用快照同理）；每次记录实际返回的模型名。
-- 这两个模型不接受自定义 temperature（API 也一样），judge 自身稳定性只能测量：同一条回答重复判 3 次，报分数标准差与通过 / 不通过翻转率（Spec 已有此项）。
-- Pro 订阅有用量窗口，之前 Claude 复查 108 题就用完过额度。judge 脚本必须逐条缓存、可断点续跑，`--effort` 设 low 或 medium 省额度；约 1,500 条回答预计要分多个窗口跑完。
-- Claude 不是被测厂商，主排序不受自家偏好污染，这是优点；但 Haiku 与 Sonnet 同厂商，满足不了 Spec 的「两个不同厂商的 judge 互相对照」，也做不了「自家模型偏好」实验。补法：再加一个百炼上的便宜 judge（如 deepseek-v4.1-flash），只判验证子集，花费约几元。
-- Haiku 在 TeleQnA 答案复查上与默认模型的 kappa 只有 0.21。那是靠知识的任务，judge 有参考答案和 rubric 对照，难度低得多，但 Haiku 仍须先验证再用，不能默认可信。
-- 复现：判分原始输出全部落盘，报告数字从落盘结果复算；重跑 judge 需要 Claude 订阅或 API key，脚本留出 API 后端（按价目表 Haiku 5.5 全量判分约 1–2 美元）。
-
-**D2. judge 验证方式：不做大规模人工标注（用户 Oct 13：缺领域知识，也无预算请人）。**
-建议用两层替代：
-1. **构造真值（主要证据）**：用每道题已有的字段造出「正确得分已知」的回答变体，看 judge 能不能判对，不需要领域知识。
-   - 完整参考答案：应接近满分。
-   - 删掉某个要点：该要点应判未覆盖。
-   - 把根因换成 `excluded_hypotheses` 里的错误假设：根因要点应判未覆盖，且触发扣分项。
-   - 插入一条 `high_risk_actions`：应触发高危一票否决。
-   - 同义改写、注水加长：分数应不变（顺带完成 Spec 的长度偏差实验）。
-
-   报告指标是各类检查的检出率与误报率。变体由模型按指令生成，用户抽查约 30 条「这句话还在不在」即可，属于对照文本的检查，不需要专业判断。
-2. **真实回答上的分歧仲裁（补充证据）**：几个 judge 在真实回答上判法不一致的要点，用户对照参考答案仲裁其中 50–80 个（约 1–2 小时）。连对照参考答案都判断不了的要点本身就是结论：这类必须交给专家。
-
-局限要写进报告：构造真值只覆盖界限清楚的情况，真实回答里的模糊表述正是需要人判断的地方。Spec 的「Judge 元评测」一节和验收标准「judge 与人工的一致性在留出集上报告」需随之修订；Spec 该节已标注待修订，定了再改。
+D1（judge 模型）、D2（judge 验证方式）已于 Oct 13 定下，见第五节与 Spec v2.4。
 
 **D3. 精度回归设置**：建议三档（FP16 / INT8 / INT4）都在 AutoDL 上用同一推理引擎跑，笔记本只用来调试；否则硬件、引擎、量化格式同时变化，违背「只改精度一个变量」。门禁条件 3「高危错误率任一上升即不通过」在 45 题上多一次就触发，要么写明刻意从严，要么改为与 FP16 重跑的噪声底比较，跑之前定。
 
@@ -104,11 +84,19 @@
   其余 5 条核对无误。
 - 机器校验 `scripts/check_scenarios.py`：当前 0 错 0 警。
 
+### 4. judge 工具链（Oct 13，已冒烟测试，未正式运行）
+
+- 设计见 Spec v2.4「Judge 元评测与提示词迭代」。judge 只输出逐项判定（要点 covered / partial / missed，扣分项、高危操作是否触发，各附原文摘录），程序按权重算总分（partial 记一半，扣分下限 0，高危一票否决），诊断题另报根因 / 处置两段得分率；程序核对摘录是否在回答里，用来发现编造证据。
+- 后端：`claude:<模型 ID>`（`claude -p` 无头调用，`--json-schema` 约束输出，记录实际返回的模型名）；`bailian:<模型 ID>`（关思考、温度 0）。逐条缓存（键 = 提示词 + judge + effort + 题目评分信息 + 回答文本），可断点续跑；额度用尽或限流时自动停止，重跑同一命令续上；判定校验不通过的记录落盘、计入失败率并在下次重试。
+- 探针（每题约 7–8 个）：full、drop:Pk ×2、wrong_root（诊断题）、risk_add、risk_neg、pad、empty；45 题共约 335 个，调试集约 165 个。
+- 调试集 / 留出集已生成并入库：`data/scenarios/judge_split.csv`（种子 20261013；consulting 6/6、diagnosis 11/11、kpi 5/6）。
+- 冒烟测试（云端会话，临时目录，未入库）：Haiku 当映射模型切分 SC-D01、SC-K04 均合格，并发现 SC-D01 参考答案没写到 P8；Haiku judge 判 SC-D01 的 5 个探针，两个删要点都判出 missed，加高危建议触发一票否决，「不可取」提醒未误触发。也看到两处问题：映射模型认为参考答案写全了 P2，Haiku 只给 partial（full 探针的应得判定有软性）；同一段文字的 P4 一次 covered、一次 partial（judge 有波动）。只是流程检查，不作结论。
+
 ## 五、决定日志（按时间）
 
 | 日期 | 决定 |
 | --- | --- |
-| Oct 11 | 场景题由 60–80 压到 40–50 题，省下的时间投入人工标注（后者 Oct 13 改为待定，见 D2）。 |
+| Oct 11 | 场景题由 60–80 压到 40–50 题，省下的时间投入人工标注（人工标注 Oct 13 取消，见下方 D2 一行）。 |
 | Oct 11 | 主实验与精度回归关闭思考；另做思考模式对照（上线形态），最终推荐以开思考形态为准。 |
 | Oct 11 | 被测 7 模型 4 家厂商（Qwen 3、DeepSeek 2、智谱 glm-5.2、Kimi），全部经百炼；glm-5.3 只进思考对照。 |
 | Oct 11 | 简单的 subagent 任务交给 Haiku（写入 `CLAUDE.md`）。 |
@@ -125,7 +113,9 @@
 | Oct 13 | 仓库保持 public，不改 private、不重写历史；接受 `b64b88a` 中约 150 条核查证据文字（复述题目选项与答案）公开。 |
 | Oct 13 | `results/`、`data/raw/` 等不入库内容只在用户本地 Mac，用户知情。 |
 | Oct 13 | 状态文档合并为本文件（取代 `项目进展总结.md`、`交接文档.md`），Spec 只放方案（升为 v2.3）。 |
-| Oct 13 | judge 提示词 v1→v2→v3 迭代保留。judge 模型（D1）与验证方式（D2）待定。 |
+| Oct 13 | judge 提示词 v1→v2→v3 迭代保留。 |
+| Oct 13 | judge 定为 Claude Haiku 5.5 / Sonnet 5.5 两档，经 Claude Code 无头模式走 Pro 订阅（D1）；另加一个百炼 judge 只判验证子集，做跨厂商对照与自家偏好实验。 |
+| Oct 13 | 不做大规模人工标注与 test-retest（缺领域知识，也无预算请人）；judge 元评测改为构造真值探针为主、judge 间一致性与 50–80 个分歧要点的人工仲裁为辅（D2）。Spec 升为 v2.4。 |
 
 ## 六、环境、费用与账号
 
@@ -136,7 +126,7 @@
 - 余额（Oct 13）：学生代金券约 ¥259.7，现金 ¥9.14。主实验实际消耗远低于估算（免费额度抵了大半，代金券只扣 ¥1 多）。
 - 计费规则：免费额度优先于代金券；**代金券不能抵扣打折模型和厂商直供路由**，qwen3.7-plus 限时 8 折只扣现金（Oct 12 曾因现金欠费 ¥0.03 导致全部模型 403；再遇全模型 403 先查欠费）。不用带厂商前缀的路由（`kimi/`、`ZHIPU/` 等）。
 - 已定规模（`analysis/cost_estimate.py` → `reports/cost_estimate.md`）：主实验约 ¥36；思考对照约 ¥130（依据 10 题试跑，花 ¥3.35：多数模型每题思考 1.1k–2.2k token，qwen3.8-flash 约 4.9k，glm-5.3 约 9.7k 且 16384 上限会截断）。judge 与追问施压尚未估算，剩余预算约 ¥80；若 judge 走 Claude 订阅（D1），judge 不占百炼预算。
-- Claude 额度：Pro 订阅，额度紧张，大批量工作优先用便宜方式。
+- Claude 额度：Pro 订阅，额度紧张，大批量工作优先用便宜方式。judge 走订阅额度：冒烟实测 Haiku（effort medium）每次判定输出约 2.2k–3.5k token（含思考）、10–15 秒；调试集探针一轮约 165 次。脚本按 API 价目折算的金额只用来估算额度，订阅不按此计费。
 
 ## 七、工作约定与踩过的坑
 
@@ -150,6 +140,9 @@
 - Python 判空陷阱：`'' in 'ABCDE'` 为 True，判空必须用 `list()`（已在 `analysis/objective_analysis.py` 注释）。
 - `scripts/audit_teleqna.py` 在重复簇代表题被剔除时会改选同簇另一题；这类题（question 2745、4242）没有标注和核验，`scripts/build_test_subset.py` 会把它们排除在子集外。
 - 场景题 ID 稳定：被替换 / 删除的题留空号（当前 SC-D03/D06/D09/D10 空缺），不要重排，否则核验记录与草稿的 `source_draft` 映射会错乱。
+- judge 走 `claude -p` 时在空临时目录运行、不加载设置与 MCP，项目 CLAUDE.md 不会进入 judge 上下文；但用户级 `~/.claude/CLAUDE.md` 仍会被读入，里面不要放与评分相关的内容。云端会话里还会注入两段与评分无关的系统提醒。
+- 在云端会话里跑 judge 时，`results/judge/` 随容器回收而丢失；要么在 Mac 上跑，要么跑完把结果拷出来。
+- 映射模型不能与被检验的 judge 同一家（默认 qwen3.8-max），否则 judge 与「真值」共享同一套理解、一致率虚高。冒烟测试用 Haiku 当映射模型只为测流程，结果没有入库。
 - 温度 0 + 固定 seed 在 API 端也不可复现（Oct 11 实测），所有模型都要测噪声底。
 - 在 git worktree 里工作时，`results/`、`data/raw/`、`.env`、`.venv` 需软链到主目录（写入 `.git/info/exclude`）；worktree 里没有 `.env`，`scripts/verify_three_vote.py` 的 `load_env()` 会顺着 `.git` 文件的 gitdir 回到主目录读取，新脚本照此处理。
 
@@ -157,7 +150,7 @@
 
 | 文件 | 内容 |
 | --- | --- |
-| `通信网络运维助手 · 大模型选型评测 Spec.md` | 方案（v2.3） |
+| `通信网络运维助手 · 大模型选型评测 Spec.md` | 方案（v2.4） |
 | `configs/models.yaml` | 被测模型与思考开关参数 |
 | `data/processed/teleqna_test_subset.csv` | 客观题测试集（731 题） |
 | `data/processed/teleqna_{items,relevance,answer_decisions}.csv` | 审计标记 / 相关度 / 答案决定 |
@@ -168,4 +161,8 @@
 | `data/scenarios/drafts/<批次>.v{0,1,2}.json` | 场景题分批草稿（v2 = 核验修订后） |
 | `scripts/merge_scenario_drafts.py`、`check_scenarios.py` | 合并草稿；场景题机器校验 |
 | `scripts/verify_three_vote.py`、`consolidate_verification.py`、`apply_verification_fixes.py` | 三票核验、汇总分级、应用修订 |
+| `scripts/judge_scenarios.py`、`configs/judge/judge_v1.md` | 场景题 judge（claude / bailian 两种后端）与提示词 v1 |
+| `scripts/make_judge_split.py` → `data/scenarios/judge_split.csv` | 调试集 / 留出集（按题划分，22 / 23 题） |
+| `scripts/build_judge_probes.py` → `data/scenarios/judge_probes/` | 切分映射与构造真值探针、参考答案缺口清单、drop 探针抽查表 |
+| `analysis/judge_meta.py` → `reports/judge/` | judge 元评测报告（探针检出率、误报率、稳定性） |
 | `results/`（本地） | 横评逐题预测（`evalscope/objective/<模型>/`）、核验原始响应（`scenarios/{three_vote,perquestion}/`、`audit/`） |

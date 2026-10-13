@@ -81,4 +81,17 @@ uv run python scripts/consolidate_verification.py    # 汇总三票 + subagent �
 uv run python scripts/apply_verification_fixes.py    # 应用确认的修订，生成 v2 草稿
 ```
 
-三票核验与逐题判定的原始响应在 `results/scenarios/{three_vote,perquestion}/`（不入库）。**注意：三票在「标准条款引用」上误报率高，只作粗筛；改题前必须逐题人工/强 subagent 复核，TS 条款号需人工查证。**
+三票核验与逐题判定的原始响应在 `results/scenarios/{three_vote,perquestion}/`（不入库）。
+
+场景题 judge 与元评测（构造真值探针），按顺序执行：
+
+```bash
+uv run python scripts/make_judge_split.py            # 调试集 / 留出集（按题划分，已生成并入库，不再重抽）
+uv run python scripts/build_judge_probes.py segment  # 参考答案切分映射（百炼 qwen3.8-max，缓存增量）
+uv run python scripts/build_judge_probes.py build    # 构造探针 + 参考答案缺口清单 + drop 探针抽查表
+uv run python scripts/judge_scenarios.py --answers data/scenarios/judge_probes/probes.jsonl \
+    --judge claude:claude-haiku-5-5 --prompt v1 --run probes_v1 --split debug   # judge 判探针（订阅额度）
+uv run python analysis/judge_meta.py --run probes_v1 --split debug              # 元评测报告 → reports/judge/
+```
+
+judge 后端：`claude:<模型 ID>` 经 Claude Code 无头模式（需本机已安装并登录 `claude`），`bailian:<模型 ID>` 经百炼。加 `--dry-run` 只看发送的提示，加 `--repeats 3` 测 judge 自身稳定性。判定记录在 `results/judge/<run>/`（不入库）。**注意：三票在「标准条款引用」上误报率高，只作粗筛；改题前必须逐题人工/强 subagent 复核，TS 条款号需人工查证。**
