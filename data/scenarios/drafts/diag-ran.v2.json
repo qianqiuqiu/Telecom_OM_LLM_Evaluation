@@ -1,0 +1,808 @@
+{
+ "batch": "diag-ran",
+ "questions": [
+  {
+   "local_idx": 1,
+   "type": "diagnosis",
+   "dimension": "RAN",
+   "difficulty": 2,
+   "title": "批量参数变更后小区掉话率突升且 RRC 重建增多",
+   "prompt": "某地市 LTE FDD 网络在凌晨 02:00–03:00 的变更窗口内，对 12 个小区做了一次参数批量调整。次日 08:00 值班发现这 12 个小区的掉话率明显升高，RRC 连接重建请求次数同步增多。请定位根因并给出处置方案。\n\n观察到的现象：\n- 掉话率与 RRC 重建次数的突升时间点与变更窗口结束时间吻合，此前一周曲线平稳。\n- 同站未纳入变更的 3 个小区无异常，可作对照。\n- 12 个小区的 RSRP/SINR 分布、平均 TA、上行 RSSI 与变更前相比无明显变化。\n- 重建原因统计：reconfigurationFailure 占比与变更前持平，handoverFailure 占比与变更前持平，otherFailure（由无线链路失败 RLF 触发）占比由 38% 升至 71%。\n- 切换成功率、S1 链路、传输告警均无异常。\n\n变更单摘要（节选，仅列出本次变更的项）：\n| 参数 | 变更前 | 变更后 |\n|---|---|---|\n| 默认寻呼周期（SIB2） | rf128 | rf64 |\n| UE 非激活定时器 | 10 s | 20 s |\n| 定时器 T310 | ms1000 | ms50 |\n| 计数器 N310 | n4 | n1 |",
+   "reference_answer": "根因：这 12 个小区在凌晨变更中把 T310 由 1000ms 缩到 50ms、N310 由 n4 调到 n1，无线链路失败（RLF）判决过于灵敏，正常的短时衰落或遮挡也被判为 RLF，UE 随即发起 RRC 重建，部分重建落到未准备好上下文的小区被拒绝，就变成掉话。证据：时间点与变更窗口吻合，同站未变更小区正常，无线环境指标没变，重建原因里 RLF 触发的占比从 38% 升到 71%，切换和重配失败占比没变，可排除干扰、覆盖和邻区问题；寻呼周期和非激活定时器影响的是空闲态寻呼和 RRC 释放时机，不参与 RLF 判决。处置：先只读核对现网这几个参数与变更单、基线是否一致；确认后挑 1–2 个小区在低话务时段把 T310/N310 恢复到变更前取值，观察 RLF、重建原因占比和掉话率回落，再分批恢复其余小区，保留变更前后配置备份以便再次回退。",
+   "root_cause": "变更中把 RLF 判决相关的 T310 缩短、N310 调小，使无线链路失败判决过于灵敏，RLF 与 RRC 重建增多并带来掉话。",
+   "rubric_points": [
+    {
+     "id": "P1",
+     "stage": "root_cause",
+     "text": "指出根因是变更单中 T310 缩短（ms1000→ms50）与 N310 调小（n4→n1）这组无线链路失败（RLF）判决参数，而不是无线环境或网络侧故障。",
+     "weight": 20,
+     "verifiability": "standard",
+     "source_note": "TS 36.331 中 T310/N310/N311 与 RLF 检测机制（NR 对应 TS 38.331）"
+    },
+    {
+     "id": "P2",
+     "stage": "root_cause",
+     "text": "说明机理：连续 N310 次失步指示后启动 T310，T310 超时前未满足 N311 次同步则判 RLF 并触发 RRC 重建；阈值过严使短时衰落被误判为 RLF，重建增多，重建失败即掉话。",
+     "weight": 15,
+     "verifiability": "standard",
+     "source_note": "TS 36.331 RLF 与 RRC 连接重建流程"
+    },
+    {
+     "id": "P3",
+     "stage": "root_cause",
+     "text": "引用关键证据：突升时间与变更窗口吻合、同站未变更小区作对照正常、重建原因中 RLF 触发（otherFailure）占比升高而 handoverFailure/reconfigurationFailure 持平。",
+     "weight": 10,
+     "verifiability": "constructed",
+     "source_note": "题干给出的对照小区与重建原因统计"
+    },
+    {
+     "id": "P4",
+     "stage": "root_cause",
+     "text": "依据 RSRP/SINR、上行 RSSI 无变化及无传输告警，排除覆盖变差、上行干扰、传输问题等干扰假设。",
+     "weight": 10,
+     "verifiability": "constructed",
+     "source_note": "题干给出的无线环境与传输指标无变化"
+    },
+    {
+     "id": "P5",
+     "stage": "action",
+     "text": "先做低风险只读核查：对比变更单、现网当前配置与变更前基线，确认 T310/N310 的当前取值及是否有其他同时变更项。",
+     "weight": 15,
+     "verifiability": "common_sense",
+     "source_note": "变更类故障先核对配置与基线的运维通行做法"
+    },
+    {
+     "id": "P6",
+     "stage": "action",
+     "text": "将 T310/N310 恢复到变更前取值（或经评估的合理值），先在 1–2 个小区灰度验证，再分批推广到其余小区，并选在低话务窗口。",
+     "weight": 15,
+     "verifiability": "common_sense",
+     "source_note": "参数回退采用灰度、低话务窗口的变更管理常识"
+    },
+    {
+     "id": "P7",
+     "stage": "action",
+     "text": "回退后用 RLF/重建原因占比和掉话率前后对比验证恢复，并保留配置备份以便再次回退。",
+     "weight": 10,
+     "verifiability": "common_sense",
+     "source_note": "变更后验证与回退保护的运维常识"
+    },
+    {
+     "id": "P8",
+     "stage": "action",
+     "text": "提出变更管理改进：RLF 类参数调整需有场景论证并先小范围试点，变更单附验证指标。",
+     "weight": 5,
+     "verifiability": "common_sense",
+     "source_note": "变更管理复盘通行做法"
+    }
+   ],
+   "deductions": [
+    {
+     "text": "将根因归为干扰、弱覆盖或天线问题，并建议现场调整天线或功率",
+     "points": -15
+    },
+    {
+     "text": "根因判断为邻区漏配或切换参数不当",
+     "points": -10
+    },
+    {
+     "text": "给出回退动作但未说明灰度或验证方式",
+     "points": -5
+    }
+   ],
+   "high_risk_actions": [
+    {
+     "action": "未经灰度验证，对全网所有小区批量修改 RLF 相关参数或批量回退到未确认的值",
+     "why": "RLF 参数影响所有已连接用户，判断错误会把问题从 12 个小区放大到全网。"
+    },
+    {
+     "action": "业务时段对这 12 个小区复位或重启小区/基站来「恢复」",
+     "why": "会中断所有在线用户，且与参数根因无关，不能解决问题。"
+    },
+    {
+     "action": "在没有任何证据的情况下大幅调整天线下倾或发射功率改善「覆盖」",
+     "why": "无线环境指标并无变化，改变覆盖会引入新的邻区干扰和切换问题。"
+    }
+   ],
+   "discriminating_trap": "看到掉话率与重建同时升高，第一反应是覆盖差、干扰或邻区漏配并去调天线和功率。这是错的：无线环境指标没变，重建原因里只有 RLF 触发的占比上升，且与变更时间吻合，同站对照小区正常，指向参数而非环境。",
+   "excluded_hypotheses": [
+    "弱覆盖或覆盖空洞：RSRP/SINR 分布、TA 与变更前无差异，且同站未变更小区正常。",
+    "上行干扰：上行 RSSI 无变化。",
+    "邻区漏配导致切换失败：handoverFailure 占比持平，切换成功率正常。",
+    "传输或 S1 问题：无传输告警，S1 链路正常。"
+   ],
+   "unverified_residuals": [
+    "T310 的 ms50 取值在 LTE 的 TS 36.331 枚举中存在，建议人工对照协议复核。",
+    "重建被拒绝转为掉话的具体比例取决于邻区上下文准备情况，题中未量化，rubric 仅作定性。"
+   ]
+  },
+  {
+   "local_idx": 2,
+   "type": "diagnosis",
+   "dimension": "RAN",
+   "difficulty": 2,
+   "title": "新站开通后老站向新站方向切换失败",
+   "prompt": "某城区 LTE 同频组网，本周新开通站点 NewSite（小区 NEW-1，PCI=211）。开通后一周内，相邻老站小区 OLD-3（PCI=87）的切换指标出现恶化，用户沿主干道行驶时偶发短暂中断。请定位根因并给出处置方案。\n\n现象与数据：\n- 沿主干道从 OLD-3 向 NEW-1 方向路测：UE 的 A3 测量报告中持续出现 PCI=211，NEW-1 的 RSRP 已比 OLD-3 高 6 dB 以上，但长时间没有收到切换命令；之后 OLD-3 信号恶化，UE 发生无线链路失败并重建到 NEW-1，用户感知为一次短暂中断。\n- 反向从 NEW-1 向 OLD-3 行驶时切换正常。\n- OLD-3 → NEW-1 的切换准备请求次数为 0；OLD-3 对其他邻区（含 OLD-5）的切换成功率与开通前一致。\n- NEW-1 的 PRB 利用率和准入成功率正常，与 OLD-3 之间的 X2 链路状态正常，无相关传输告警。\n- OLD-3 与老邻区 OLD-5 之间存在约 6% 的乒乓切换比例，开通前后无变化。\n- OLD-3 所在区域的自动邻区关系（ANR）功能处于关闭状态，邻区表由规划组固定维护。\n- 变更记录：NEW-1 开通当天完成 NEW-1 自身的数据配置与开通验证，无其他站点变更。",
+   "reference_answer": "根因：OLD-3 到 NEW-1 的邻区关系漏配（单向漏配）。NEW-1 开通时只配了 NEW-1 一侧，OLD-3 的邻区表里没有 NEW-1，且该区域没开 ANR，源站收到 PCI=211 的测量报告也解析不出目标小区，不会发起切换准备，所以准备请求次数是 0，而不是失败率高；用户只能等 OLD-3 变差、掉到 RLF 再重建到 NEW-1。目标小区拥塞、X2 故障都对不上（准入正常、X2 正常、其他邻区成功率没变）；OLD-3 与 OLD-5 的乒乓比例开通前后不变，是存量问题，与这次无关。处置：先只读核对 OLD-3 的邻区表和外部小区配置，同时批量核查 NEW-1 周边所有老站是否都漏配；在低话务时段给 OLD-3 补配到 NEW-1 的邻区关系（X2 链路已存在，只需补邻区表项），参数按同类邻区规划值，先单小区操作；完成后复测，看切换准备次数和成功率，异常则删除新增邻区回退。",
+   "root_cause": "OLD-3 的邻区表中缺少到 NEW-1 的邻区关系（单向漏配），源站无法对 PCI=211 发起切换，只能等 RLF 后重建。",
+   "rubric_points": [
+    {
+     "id": "P1",
+     "stage": "root_cause",
+     "text": "指出根因是 OLD-3 侧缺少到 NEW-1 的邻区关系配置（单向漏配），NEW-1→OLD-3 方向存在配置，因而方向不对称。",
+     "weight": 20,
+     "verifiability": "standard",
+     "source_note": "TS 36.300 中切换依赖邻区关系/目标小区信息，ANR 为自动补全机制"
+    },
+    {
+     "id": "P2",
+     "stage": "root_cause",
+     "text": "说明机理：UE 虽上报了 PCI=211，但源站没有对应邻区关系、无法确定目标小区，不会发起切换准备，UE 最终因无线链路失败而重建到 NEW-1。",
+     "weight": 15,
+     "verifiability": "standard",
+     "source_note": "TS 36.300 切换流程与 TS 36.331 RRC 重建"
+    },
+    {
+     "id": "P3",
+     "stage": "root_cause",
+     "text": "抓住关键证据：OLD-3→NEW-1 的切换准备请求次数为 0（不是失败率高），且仅单方向异常、OLD-3 对其他邻区正常。",
+     "weight": 10,
+     "verifiability": "constructed",
+     "source_note": "题干给出的切换准备请求次数与方向不对称现象"
+    },
+    {
+     "id": "P4",
+     "stage": "root_cause",
+     "text": "排除干扰假设：NEW-1 准入与 PRB 正常、X2 链路正常，排除目标拥塞与传输问题；指出 OLD-3 与 OLD-5 的乒乓无变化，属存量问题，不应作为本次根因去调切换参数。",
+     "weight": 10,
+     "verifiability": "constructed",
+     "source_note": "题干给出的准入、X2 状态与乒乓比例前后不变"
+    },
+    {
+     "id": "P5",
+     "stage": "action",
+     "text": "先做只读核查：核对 OLD-3 的邻区表和外部小区配置，并批量核查 NEW-1 周边所有老站是否同样漏配双向邻区。",
+     "weight": 12,
+     "verifiability": "common_sense",
+     "source_note": "新站开通后邻区核查通行做法"
+    },
+    {
+     "id": "P6",
+     "stage": "action",
+     "text": "给 OLD-3 补配到 NEW-1 的邻区关系（外部小区及邻区表项；X2 链路已存在则复用，参数用同类邻区规划值），在低话务窗口先对单个小区操作。",
+     "weight": 15,
+     "verifiability": "common_sense",
+     "source_note": "补配邻区的变更管理常识"
+    },
+    {
+     "id": "P7",
+     "stage": "action",
+     "text": "补配后通过路测和切换统计验证 OLD-3→NEW-1 的切换尝试数与成功率，出现异常时可删除新增邻区回退。",
+     "weight": 10,
+     "verifiability": "common_sense",
+     "source_note": "变更验证与回退的运维常识"
+    },
+    {
+     "id": "P8",
+     "stage": "action",
+     "text": "提出流程补强：将新站开通的双向邻区核对纳入开通清单，必要时在受控范围内启用 ANR 并审核其结果。",
+     "weight": 8,
+     "verifiability": "common_sense",
+     "source_note": "邻区管理与 ANR 使用的行业通行做法"
+    }
+   ],
+   "deductions": [
+    {
+     "text": "将根因归为 A3 偏置、CIO、TTT 等切换参数不当，并建议先调这些参数",
+     "points": -15
+    },
+    {
+     "text": "把乒乓切换当作本次根因的一部分去处理",
+     "points": -10
+    },
+    {
+     "text": "只补配 OLD-3，未提及核查其他周边小区的双向邻区",
+     "points": -5
+    },
+    {
+     "text": "未说明验证或回退",
+     "points": -5
+    }
+   ],
+   "high_risk_actions": [
+    {
+     "action": "大幅调高 CIO 或降低 A3 门限，强制把 OLD-3 的用户推向 NEW-1",
+     "why": "没有邻区关系时仍无法切换，且会放大乒乓并可能让 NEW-1 过载，影响全部用户。"
+    },
+    {
+     "action": "删除或整体重新导入 OLD-3（或全区）邻区表",
+     "why": "导入若有误会使原有邻区切换大面积中断。"
+    },
+    {
+     "action": "业务时段闭塞或重启 OLD-3 或 NEW-1 来「刷新配置」",
+     "why": "会中断在线用户，与根因无关。"
+    }
+   ],
+   "discriminating_trap": "看到切换失败加乒乓切换，第一反应是调 A3 偏置、TTT、CIO 或去查传输与拥塞。这是错的：切换准备请求次数为 0 说明根本没有发起切换，不是参数不合适；乒乓比例开通前后没变，是存量问题。",
+   "excluded_hypotheses": [
+    "A3/TTT/CIO 配置不当：若是参数问题，切换会有尝试和失败，而此处准备请求为 0。",
+    "目标小区拥塞或准入拒绝：NEW-1 的 PRB 利用率和准入成功率正常。",
+    "X2/传输链路故障：X2 状态正常，OLD-3 对其他邻区切换成功率不变。",
+    "乒乓切换是新问题：OLD-3 与 OLD-5 的乒乓比例开通前后无变化。"
+   ],
+   "unverified_residuals": []
+  },
+  {
+   "local_idx": 3,
+   "type": "diagnosis",
+   "dimension": "RAN",
+   "difficulty": 3,
+   "title": "单扇区上行噪声底抬升且仅集中在部分频域",
+   "prompt": "某 LTE 20MHz 站点 Site-K 共 3 个扇区，近两天网管显示 K-1 扇区（朝向东南）的上行平均 RSSI 明显抬升，上行吞吐下降、边缘用户上行 BLER 升高。请定位根因并给出处置方案。\n\n数据（RSSI 单位 dBm/PRB）：\n| 项目 | K-1 | K-2 | K-3 |\n|---|---|---|---|\n| 变更前一周上行平均 RSSI | -116 | -116 | -116 |\n| 近两天上行平均 RSSI | -104 | -115 | -116 |\n| 凌晨 03:00 上行 RSSI | -104 | -116 | -116 |\n| 凌晨 03:00 PRB 利用率 | 4% | 3% | 4% |\n\n其他观察：\n- K-1 的上行 RSSI 全天基本为一条平台线，凌晨低话务时与白天几乎相同。\n- K-1 主集与分集两路接收通道的 RSSI 基本一致，相差不到 1 dB。\n- 按 PRB 观察 K-1 上行 RSSI：约 20 个相邻 PRB 抬升到约 -90 dBm，其余 PRB 仅轻微抬升，不是整个带宽平坦抬升。\n- 将 K-1 下行发射功率临时降低 3 dB 观察 30 分钟，上行 RSSI 无变化。\n- 站点及周边近期无本网配置变更，无硬件告警，无 RRU 重启记录。\n- 邻站未出现同步抬升。K-1 主瓣方向约 800 米内周边环境近期有变化，具体情况尚未排查。",
+   "reference_answer": "根因：K-1 扇区受到站外窄带干扰源的上行干扰。依据：抬升只出现在东南向这一个扇区，凌晨低话务时与白天几乎一样，不是本小区业务量造成的；干扰集中在约 20 个相邻 PRB 而不是整个带宽，主集分集两路一致，说明不是某一路接收通道或 RRU 硬件的问题；下行功率降 3 dB 上行不变，可排除与下行发射功率相关的无源互调；邻站没有同步抬升，也不像大气波导这类多站同时出现的远端干扰。处置：先不动本站参数，用频谱分析仪或定向天线在 K-1 主瓣方向多点测向、交会定位，同时核对本站及共站其他系统的设备和连接，保留按 PRB 的频谱截图、出现时间和位置等证据；确认站外来源后上报无线电管理机构，配合查处；期间可让调度尽量避开受扰 PRB，或把用户引导到其他载波，持续观察。不要靠抬高上行目标接收功率去压干扰，也不要自行去拆别人的设备。",
+   "root_cause": "K-1 扇区被站外窄带干扰源干扰，干扰落在约 20 个相邻上行 PRB，造成该扇区上行噪声底抬升。",
+   "rubric_points": [
+    {
+     "id": "P1",
+     "stage": "root_cause",
+     "text": "判断根因为站外（非本网）干扰源对 K-1 上行的窄带干扰，干扰集中在约 20 个相邻 PRB，而非整带平坦抬升。",
+     "weight": 20,
+     "verifiability": "common_sense",
+     "source_note": "外部干扰的频域窄带、持续、与话务无关的行业通用判别特征"
+    },
+    {
+     "id": "P2",
+     "stage": "root_cause",
+     "text": "指出凌晨 03:00 话务极低时 RSSI 仍与白天相同，说明抬升与本小区业务量无关，不是业务负载自身造成。",
+     "weight": 15,
+     "verifiability": "constructed",
+     "source_note": "题干给出的 03:00 PRB 利用率 4% 与 RSSI 对比"
+    },
+    {
+     "id": "P3",
+     "stage": "root_cause",
+     "text": "排除本站硬件与无源互调：主集分集两路一致说明不是单通道硬件问题；降低下行功率 3 dB 后上行不变，说明与下行发射功率无关，不是 PIM。",
+     "weight": 10,
+     "verifiability": "standard",
+     "source_note": "无源互调由下行发射信号在无源器件非线性产生，随下行功率变化"
+    },
+    {
+     "id": "P4",
+     "stage": "root_cause",
+     "text": "排除本网邻站越区与多站同时出现的远端干扰：只在单一方向的单个扇区出现，邻站无同步抬升，且无本网变更。",
+     "weight": 10,
+     "verifiability": "constructed",
+     "source_note": "题干给出的邻站无同步抬升、无变更记录"
+    },
+    {
+     "id": "P5",
+     "stage": "action",
+     "text": "先用频谱分析仪或定向天线在 K-1 主瓣方向多点测向、交会，定位干扰源方向和位置，过程中不改动本站参数。",
+     "weight": 12,
+     "verifiability": "common_sense",
+     "source_note": "干扰排查的通行做法"
+    },
+    {
+     "id": "P6",
+     "stage": "action",
+     "text": "同时核查本站及共站其他系统的设备与连接以排除自身来源，并保留按 PRB 的频谱截图、时间、位置等证据。",
+     "weight": 12,
+     "verifiability": "common_sense",
+     "source_note": "干扰取证的运维常识"
+    },
+    {
+     "id": "P7",
+     "stage": "action",
+     "text": "确认站外来源后向无线电管理机构上报并配合查处，必要时与疑似主体沟通。",
+     "weight": 12,
+     "verifiability": "common_sense",
+     "source_note": "外部干扰处置由无线电管理机构查处的通行流程"
+    },
+    {
+     "id": "P8",
+     "stage": "action",
+     "text": "给出临时缓解措施：让调度避开受扰 PRB 或把用户引导到其他载波，并持续监控，不通过大幅提高终端发射功率来压干扰。",
+     "weight": 9,
+     "verifiability": "common_sense",
+     "source_note": "干扰期间的临时缓解通行做法"
+    }
+   ],
+   "deductions": [
+    {
+     "text": "判为 RRU 或天线硬件故障并建议整站更换",
+     "points": -15
+    },
+    {
+     "text": "建议提高上行目标接收功率（如 P0）来压住干扰",
+     "points": -10
+    },
+    {
+     "text": "没有给出外部干扰的定位手段",
+     "points": -10
+    }
+   ],
+   "high_risk_actions": [
+    {
+     "action": "全网或整站提高上行目标接收功率，试图「压过」干扰",
+     "why": "会使终端发射功率整体升高，抬升邻区底噪、增加耗电，且干扰源仍在，治标不治本。"
+    },
+    {
+     "action": "业务时段为排查而直接闭塞整站或整个 K-1 扇区",
+     "why": "造成业务中断，且无助于定位站外来源。"
+    },
+    {
+     "action": "自行进入第三方场所拆除或破坏疑似干扰设备",
+     "why": "存在法律和人身风险，查处应由无线电管理机构执行。"
+    }
+   ],
+   "discriminating_trap": "看到上行噪声底抬升，第一反应是话务增长、本站 RRU/馈线硬件或 PIM，进而建议更换设备或提高功率。这是错的：低话务时同样抬升、主分集一致、降下行功率无变化、干扰只占约 20 个 PRB 且仅单扇区，指向站外窄带干扰源。",
+   "excluded_hypotheses": [
+    "业务负载造成的上行底噪抬升：03:00 PRB 利用率仅 4%，RSSI 与白天相同。",
+    "RRU/接收通道硬件故障：主集与分集两路 RSSI 基本一致，无硬件告警。",
+    "无源互调（PIM）：降低下行发射功率 3 dB 后上行 RSSI 无变化。",
+    "邻站越区或远端干扰：邻站无同步抬升，仅单一方向单扇区异常。"
+   ],
+   "unverified_residuals": [
+    "-116 dBm/PRB 的基线取值为构造数据，只用于相对判断，不代表现网标准值。"
+   ]
+  },
+  {
+   "local_idx": 4,
+   "type": "diagnosis",
+   "dimension": "RAN",
+   "difficulty": 3,
+   "title": "新站开通后重叠区下行吞吐下降",
+   "prompt": "某 LTE FDD 20MHz 同频组网，本周在商场周边新开通站点 NEW 站（小区 NEW-1）。规划时已按 PCI 规划工具完成分配并通过检查。开通后，商场东门外区域的下行吞吐明显下降。请定位根因并给出处置方案。\n\n小区信息：\n| 小区 | PCI | 位置 | 天线端口（CRS） |\n|---|---|---|---|\n| OLD-A | 157 | 商场西南 | 2 |\n| NEW-1 | 160 | 商场东，新站 | 2 |\n| OLD-C | 158 | 商场北 | 2 |\n\n现象与数据：\n- 东门外区域 UE 的服务小区为 OLD-A 或 NEW-1，RSRP 约 -85 ~ -90 dBm（较强），但 SINR 仅 0 ~ 3 dB，CQI 低，下行 MCS 低。\n- 凌晨 03:00 几乎无业务时，路测同一位置 SINR 仍只有约 3 dB。\n- 周边小区 PRB 利用率白天低于 20%，回传带宽利用率低于 30%，无拥塞告警。\n- 切换成功率正常，无 PCI 冲突或混淆告警，邻区表中无同 PCI 小区。\n- 上行 RSSI 正常，无外部干扰迹象。\n- 变更记录：仅有 NEW-1 的开通，无其他变更。",
+   "reference_answer": "根因：NEW-1（PCI 160）和 OLD-A（PCI 157）的 PCI 模 3 同余（都是 1），两者模 6 差 3，在双端口 CRS 下，一个小区端口 0 的参考信号与另一个小区端口 1 的参考信号落在同一组子载波上，重叠区互相干扰，SINR 低、MCS 掉下来。CRS 是常发的，所以凌晨无业务时 SINR 照样差。PCI 不重复、无冲突混淆告警、切换正常，可排除 PCI 冲突；回传利用率低、上行底噪正常，排除容量和外部干扰。处置：先只读导出 PCI 表，计算所有同频邻区对的模 3 关系，确认影响范围；优先给 NEW-1 换一个与 OLD-A、OLD-C 及周边同频邻区模 3 都不同的 PCI（新站用户少，代价最小），同步更新所有相关邻区和外部小区配置，选低话务窗口实施，保留原配置备份用于回退；之后复测同位置的 SINR、CQI 和吞吐，并确认邻区切换无劣化。",
+   "root_cause": "NEW-1（PCI 160）与 OLD-A（PCI 157）PCI 模 3 同余，导致重叠区 CRS 互相碰撞（模三干扰），下行 SINR 下降。",
+   "rubric_points": [
+    {
+     "id": "P1",
+     "stage": "root_cause",
+     "text": "指出根因是 NEW-1 的 PCI 160 与 OLD-A 的 PCI 157 模 3 同余（均为 1），即模三干扰，而不是 PCI 相同的冲突。",
+     "weight": 20,
+     "verifiability": "standard",
+     "source_note": "TS 36.211 中 PSS/CRS 序列与位置由 PCI 决定（PSS 对应 PCI 模 3，CRS 频移对应 PCI 模 6）"
+    },
+    {
+     "id": "P2",
+     "stage": "root_cause",
+     "text": "说明机理：双端口 CRS 下，模 3 同余使一个小区的端口 0 与另一个小区的端口 1 的 CRS 落在相同子载波，重叠区互扰；CRS 恒发，与负荷无关。",
+     "weight": 15,
+     "verifiability": "standard",
+     "source_note": "TS 36.211 CRS 资源映射，频移为 PCI 模 6，端口 0/1 相差 3 个子载波"
+    },
+    {
+     "id": "P3",
+     "stage": "root_cause",
+     "text": "用证据支撑：RSRP 强而 SINR 差、凌晨无业务时 SINR 仍差、问题集中在两小区重叠区。",
+     "weight": 10,
+     "verifiability": "constructed",
+     "source_note": "题干给出的 RSRP/SINR 数据与凌晨路测结果"
+    },
+    {
+     "id": "P4",
+     "stage": "root_cause",
+     "text": "排除干扰假设：PCI 各不相同且无冲突混淆告警（非 PCI 冲突）、凌晨 SINR 仍差（非负荷干扰）、回传利用率低（非传输瓶颈）、上行 RSSI 正常（非外部干扰）。",
+     "weight": 10,
+     "verifiability": "constructed",
+     "source_note": "题干给出的告警、负荷与回传数据"
+    },
+    {
+     "id": "P5",
+     "stage": "action",
+     "text": "先做只读核查：导出 PCI 表，计算所有同频邻区对的模 3（及模 6）关系，确认受影响范围。",
+     "weight": 10,
+     "verifiability": "common_sense",
+     "source_note": "PCI 规划核查的通行做法"
+    },
+    {
+     "id": "P6",
+     "stage": "action",
+     "text": "优先为 NEW-1 重新选择与 OLD-A、OLD-C 及周边同频邻区模 3 均不同的 PCI，并同步更新所有相关邻区和外部小区配置，避免 PCI 混淆。",
+     "weight": 15,
+     "verifiability": "common_sense",
+     "source_note": "PCI 重规划需同步邻区配置的行业常识"
+    },
+    {
+     "id": "P7",
+     "stage": "action",
+     "text": "修改 PCI 通常需要闭塞或重启小区，应在低话务窗口实施，并保留原配置备份以便回退。",
+     "weight": 10,
+     "verifiability": "common_sense",
+     "source_note": "修改 PCI 的变更窗口与回退通行做法"
+    },
+    {
+     "id": "P8",
+     "stage": "action",
+     "text": "实施后用同位置路测的 SINR/CQI/吞吐前后对比验证，并确认周边邻区切换成功率无劣化。",
+     "weight": 10,
+     "verifiability": "common_sense",
+     "source_note": "变更验证的运维常识"
+    }
+   ],
+   "deductions": [
+    {
+     "text": "把根因归为 PCI 冲突（相同 PCI）或 PCI 混淆",
+     "points": -15
+    },
+    {
+     "text": "建议提高 NEW-1 发射功率去压住 OLD-A",
+     "points": -10
+    },
+    {
+     "text": "给出换 PCI 方案但未提同步更新邻区配置",
+     "points": -10
+    }
+   ],
+   "high_risk_actions": [
+    {
+     "action": "业务高峰期同时批量修改多个相邻小区的 PCI 且不同步更新邻区",
+     "why": "会引发 PCI 混淆和大面积切换失败，并伴随小区重启造成业务中断。"
+    },
+    {
+     "action": "大幅提高 NEW-1 发射功率试图压住干扰",
+     "why": "扩大重叠区并加重对周边同频小区的干扰，吞吐问题反而扩大。"
+    },
+    {
+     "action": "为让 NEW-1 独立覆盖而直接闭塞 OLD-A",
+     "why": "商场西南会出现覆盖空洞，造成业务中断。"
+    }
+   ],
+   "discriminating_trap": "看到新站开通后吞吐下降，第一反应是 PCI 冲突、容量不足或回传瓶颈。这是错的：PCI 各不相同，回传和 PRB 利用率都很低，且凌晨无业务时 SINR 仍差，说明是常发 CRS 的互扰（模三干扰），而不是负荷问题。",
+   "excluded_hypotheses": [
+    "PCI 冲突/混淆：两小区 PCI 不同，邻区表无同 PCI 小区，无相关告警，切换正常。",
+    "邻区高负荷造成的干扰：凌晨无业务时 SINR 仍然只有约 3 dB，PRB 利用率低。",
+    "回传或容量瓶颈：回传利用率低于 30%，无拥塞告警。",
+    "外部干扰：上行 RSSI 正常。"
+   ],
+   "unverified_residuals": [
+    "「模 3 同余在双端口 CRS 下导致端口 0 与端口 1 互相碰撞」的表述建议人工对照 TS 36.211 的 CRS 频移公式复核。"
+   ]
+  },
+  {
+   "local_idx": 5,
+   "type": "diagnosis",
+   "dimension": "RAN",
+   "difficulty": 2,
+   "title": "暴雨后单端口驻波比告警与弱覆盖投诉",
+   "prompt": "某 LTE 宏站 Site-M，小区 M-2 为 2T2R，两路射频口 Port A、Port B 分别接一副双极化天线的两个极化。昨夜连续大雨后，网管出现「RRU 端口 A 驻波比超门限」告警；今早起 M-2 方向收到弱覆盖投诉，邻近小区话务上升。请定位根因并给出处置方案。\n\n数据：\n| 指标 | 昨日 | 今日 |\n|---|---|---|\n| Port A 驻波比 | 1.2 | 2.9 |\n| Port B 驻波比 | 1.2 | 1.2 |\n| 两路上行接收 RSSI 差值（A−B，空闲时段） | 约 0 dB | 约 -6 dB |\n| RRU 各端口输出功率监测 | 正常 | 正常 |\n| M-2 的 RRC 连接用户数（忙时均值） | 120 | 85 |\n\n其他信息：\n- 小区下行发射功率配置未变，天线方位角和下倾（电调读回）与工参一致，无任何参数变更。\n- 同站 M-1、M-3 同型号、同时段无驻波比告警；周边其他站点同样的天气下无异常。\n- RRU 无功放、过温、光口等告警。",
+   "reference_answer": "根因：M-2 小区 Port A 射频通路在 RRU 之外的无源部分（跳线接头、馈线接头或天线端口）因大雨进水受潮，造成失配和额外插损。依据：只有 Port A 驻波比从 1.2 升到 2.9，反射系数约 0.49、反射功率约 24%，单靠反射只损失约 1.2 dB，而上行两路差了约 6 dB，说明还有吸收损耗，与进水吻合；RRU 输出功率监测正常、无功放告警、Port B 正常，排除 RRU 本体；无参数变更、电调读回一致、同站其他扇区和周边站正常，排除参数和区域性问题。处置：先远程确认只有单端口异常，让邻区兜底；到现场前按规范闭塞对应发射并做好高空作业防护，用 DTF 或驻波比测试仪定位故障点，重做或更换进水接头并做好防水密封，必要时换跳线；修复后复测驻波比、两路 RSSI 差和用户数是否恢复。故障未排除前不要提高发射功率，也不要屏蔽驻波比保护。",
+   "root_cause": "Port A 射频通路在 RRU 之外的无源部分（接头、跳线、馈线或天线端口）进水受潮，造成失配与额外插损，使该小区覆盖缩小。",
+   "rubric_points": [
+    {
+     "id": "P1",
+     "stage": "root_cause",
+     "text": "判断根因为 Port A 通路 RRU 以外的无源部分（接头、跳线、馈线或天线端口）因进水受潮或接头失效造成的失配与插损，与大雨时间吻合。",
+     "weight": 20,
+     "verifiability": "common_sense",
+     "source_note": "驻波比告警与天馈进水的行业共识"
+    },
+    {
+     "id": "P2",
+     "stage": "root_cause",
+     "text": "用数值解释：驻波比约 2.9 时反射功率约 24%（仅约 1 dB 损失），而上行两路差约 6 dB，说明存在额外吸收衰减，与进水吻合；单路劣化使覆盖缩小并损失分集增益。",
+     "weight": 15,
+     "verifiability": "constructed",
+     "source_note": "由 VSWR 推出反射系数 (VSWR-1)/(VSWR+1)≈0.49，反射功率≈0.24"
+    },
+    {
+     "id": "P3",
+     "stage": "root_cause",
+     "text": "排除 RRU 本体故障：RRU 输出功率监测正常、无功放告警、另一端口正常，故障点在 RRU 端口之外。",
+     "weight": 10,
+     "verifiability": "constructed",
+     "source_note": "题干给出的输出功率监测与告警情况"
+    },
+    {
+     "id": "P4",
+     "stage": "root_cause",
+     "text": "排除参数、天线姿态与区域性因素：无参数变更、电调读回一致、同站其他扇区及周边站无异常。",
+     "weight": 10,
+     "verifiability": "constructed",
+     "source_note": "题干给出的变更记录与对照站点情况"
+    },
+    {
+     "id": "P5",
+     "stage": "action",
+     "text": "先做远程低风险核查：确认仅单端口异常、查看驻波比曲线和两路 RSSI 不平衡，并让邻区话务兜底。",
+     "weight": 10,
+     "verifiability": "common_sense",
+     "source_note": "天馈故障远程确认的运维常识"
+    },
+    {
+     "id": "P6",
+     "stage": "action",
+     "text": "现场处置：作业前按规范闭塞发射并做好高空安全防护，用 DTF 或驻波比测试仪定位故障点，对进水接头重做或更换并做防水密封，必要时更换跳线。",
+     "weight": 15,
+     "verifiability": "common_sense",
+     "source_note": "天馈故障定位（DTF）与处置的通行流程"
+    },
+    {
+     "id": "P7",
+     "stage": "action",
+     "text": "修复后复测 Port A 驻波比及两路 RSSI 差值，并确认覆盖与用户数恢复。",
+     "weight": 10,
+     "verifiability": "common_sense",
+     "source_note": "修复验证的运维常识"
+    },
+    {
+     "id": "P8",
+     "stage": "action",
+     "text": "明确故障未排除前不提高发射功率、不屏蔽驻波比保护，以保护功放。",
+     "weight": 10,
+     "verifiability": "common_sense",
+     "source_note": "高驻波比下提高功率会加大反射、损伤功放的射频常识"
+    }
+   ],
+   "deductions": [
+    {
+     "text": "未经排除直接判定为 RRU 故障并建议整机更换",
+     "points": -15
+    },
+    {
+     "text": "建议提高发射功率来补偿覆盖",
+     "points": -10
+    },
+    {
+     "text": "未提到驻波比定位或修复后的复测验证",
+     "points": -5
+    }
+   ],
+   "high_risk_actions": [
+    {
+     "action": "在驻波比超标时提高该小区发射功率，或屏蔽/放宽驻波比保护门限来「补覆盖」",
+     "why": "反射功率增大，可能烧毁功放或损坏器件，使故障扩大。"
+    },
+    {
+     "action": "在发射状态下拆装射频接头，或未做高空与射频安全防护即上塔作业",
+     "why": "存在人身安全和设备（含仪表）损坏风险。"
+    },
+    {
+     "action": "未做业务疏导就在业务时段闭塞整站",
+     "why": "会造成整站业务中断，远超单端口故障本身的影响。"
+    }
+   ],
+   "discriminating_trap": "看到驻波比告警加弱覆盖，第一反应是 RRU 坏了要换，或者提高发射功率去补覆盖。这是错的：RRU 输出功率监测正常且另一口正常，故障在端口之外；高驻波比下提功率只会增大反射、威胁功放。",
+   "excluded_hypotheses": [
+    "RRU 功放或本体故障：输出功率监测正常，无功放/过温告警，Port B 正常。",
+    "天线方位角或下倾被改动：电调读回与工参一致，驻波比升高也不由方位变化引起。",
+    "发射功率等参数变更：无任何参数变更，功率配置未变。",
+    "区域性天气或核心问题：同站其他扇区和周边站点同天气无异常。"
+   ],
+   "unverified_residuals": [
+    "防水密封的具体材料与工艺（如热缩套、防水胶泥）未写入 rubric，现场细节需人工结合运维规范核对。"
+   ]
+  },
+  {
+   "local_idx": 6,
+   "type": "diagnosis",
+   "dimension": "RAN",
+   "difficulty": 3,
+   "title": "回传闪断恢复后用户能连网但大包业务卡顿",
+   "prompt": "某地市 LTE 网络汇聚环下的站点 Site-P 通过以太网回传环接入，环上有主、备两条路径；备用路径需经过传输汇聚设备，并经安全网关接入核心侧。昨日 14:20 出现一次回传闪断：基站网管显示 S1 SCTP 偶联断开约 3 分钟后自动恢复，小区退服后又自动激活。此后用户投诉「手机有信号、能连上，但网页打不开、视频一直转圈，文字消息还能发」。请定位根因并给出处置方案。\n\n观察：\n- 恢复后小区状态正常，S1 偶联、X2 链路正常；接入成功率、RRC 连接建立成功率与闪断前相当；空口 BLER 与 SINR 正常。\n- 小包业务（DNS 解析、默认大小 ping、文字消息）正常；大文件下载、含图片网页、视频起播经常卡住或超时；用 IP 地址直连访问同样卡顿。\n- 运维人员从基站管理口向核心网 UPF 的 S1-U 地址发起 DF 置位的 ping：载荷 1372 字节通，载荷 1400 字节不通，且没有收到「需要分片」的 ICMP 回应；闪断前同样的测试载荷 1472 字节可通。\n- 同一回传环上另一站点 Site-Q 业务正常，其路径未发生倒换。\n- 传输侧反馈：14:20 环网发生过保护倒换，当前业务路径状态待确认；基站配置与闪断前的备份一致。",
+   "reference_answer": "根因：14:20 环网倒换后，业务走了经 IPsec 隧道的备用路径，其有效 MTU 比原主路径小，大约在 1400 字节附近；带 DF 的大包被丢弃，又没有收到需要分片的 ICMP 反馈（被过滤或设备不回），发送端不降包长，形成 PMTUD 黑洞。接入和空口 BLER 正常、同环 Site-Q 正常、直连 IP 也卡，可排除核心网、空口、DNS 和基站配置丢失。处置：先用二分法 DF ping 加路径追踪确认路径 MTU 和瓶颈段，核对主备路径的 MTU 与 IPsec 配置；短期在基站或 UPF 侧调低 MTU 或做 TCP MSS 限制到低于路径 MTU，并确认必要的 ICMP 不被过滤；同时排查主路径瞬断根因，修复后在低话务窗口回切，回切前后各做一次 DF ping 和业务拨测。全程保留 IPsec 和环网保护，变更前记录原值以便回退。",
+   "root_cause": "环网倒换后业务走了经 IPsec 隧道的备用路径，其有效 MTU 小于原主路径，大包被丢弃且无 ICMP 反馈（PMTUD 黑洞），导致大包业务卡顿。",
+   "rubric_points": [
+    {
+     "id": "P1",
+     "stage": "root_cause",
+     "text": "指出根因是保护倒换后业务走了经 IPsec 的备用路径，其有效 MTU 小于原主路径（封装开销），大包被丢弃，而不是基站、核心网或空口故障。",
+     "weight": 20,
+     "verifiability": "standard",
+     "source_note": "IPsec 封装增加报文开销，TS 33.210/TS 33.401 对回传 IPsec 保护的要求"
+    },
+    {
+     "id": "P2",
+     "stage": "root_cause",
+     "text": "说明机理：DF 置位的大包超过路径 MTU 被丢弃，且没有 ICMP 需要分片的反馈（被过滤或设备不回），发送端无法降低包长，形成路径 MTU 发现黑洞，小包正常、大包持续超时。",
+     "weight": 15,
+     "verifiability": "standard",
+     "source_note": "RFC 1191 路径 MTU 发现与 RFC 4821 对 PMTUD 黑洞的描述"
+    },
+    {
+     "id": "P3",
+     "stage": "root_cause",
+     "text": "引用 DF ping 证据：载荷 1372 通、1400 不通（对应 IP 包长 1400 与 1428），闪断前 1472 可通，说明路径 MTU 介于 1400 与 1428 字节之间，且路径发生了变化。",
+     "weight": 10,
+     "verifiability": "constructed",
+     "source_note": "题干给出的 DF ping 载荷阈值，ICMP/IP 头共 28 字节"
+    },
+    {
+     "id": "P4",
+     "stage": "root_cause",
+     "text": "排除干扰假设：接入与 BLER 正常、同环 Site-Q 正常、DNS 正常且直连 IP 同样卡顿、基站配置与备份一致，据此排除空口、核心网/UPF、DNS 与基站配置丢失。",
+     "weight": 10,
+     "verifiability": "constructed",
+     "source_note": "题干给出的接入指标、对照站点与配置核对结果"
+    },
+    {
+     "id": "P5",
+     "stage": "action",
+     "text": "先做低风险诊断：用二分法 DF ping 和路径追踪确认路径 MTU 及瓶颈段，核对主备路径的 MTU 和 IPsec 配置。",
+     "weight": 10,
+     "verifiability": "common_sense",
+     "source_note": "MTU 问题排查的通行方法"
+    },
+    {
+     "id": "P6",
+     "stage": "action",
+     "text": "给出缓解措施：在基站或 UPF 侧调低 MTU 或做 TCP MSS 限制到低于路径 MTU（或对齐设备 MTU 配置），并确保必要的 ICMP 不被过滤。",
+     "weight": 15,
+     "verifiability": "common_sense",
+     "source_note": "MTU/MSS 限制是 MTU 黑洞的通行缓解手段"
+    },
+    {
+     "id": "P7",
+     "stage": "action",
+     "text": "排查主路径瞬断根因并修复，在低话务窗口回切主路径，回切前后各做一次 DF ping 和业务拨测验证。",
+     "weight": 10,
+     "verifiability": "common_sense",
+     "source_note": "环网保护回切的运维常识"
+    },
+    {
+     "id": "P8",
+     "stage": "action",
+     "text": "明确全程保留 IPsec 加密和环网保护，变更前记录原 MTU/MSS 值以便回退。",
+     "weight": 10,
+     "verifiability": "common_sense",
+     "source_note": "安全保护与变更回退的通行要求"
+    }
+   ],
+   "deductions": [
+    {
+     "text": "把根因归为基站或小区故障，建议复位或重启基站",
+     "points": -15
+    },
+    {
+     "text": "把根因归为核心网或 UPF 故障，仅建议转单处理",
+     "points": -10
+    },
+    {
+     "text": "只说调低 MTU，未说明验证或回切方案",
+     "points": -5
+    }
+   ],
+   "high_risk_actions": [
+    {
+     "action": "关闭 IPsec 绕过隧道开销来「先恢复业务」",
+     "why": "回传明文传输，违反回传安全保护要求，用户面和信令面都会暴露。"
+    },
+    {
+     "action": "业务时段复位 S1 链路或重启基站",
+     "why": "会使所有在线用户掉线，且不能解决路径 MTU 问题。"
+    },
+    {
+     "action": "未经验证在全网统一调整 MTU 或强制回切主路径",
+     "why": "可能把黑洞扩散到其他站点，或在主路径尚不稳定时再次闪断。"
+    }
+   ],
+   "discriminating_trap": "看到回传闪断后「有信号但用不了」，第一反应是基站没恢复好、核心网异常或 DNS 问题，建议重启基站。这是错的：接入、空口和 DNS 正常，小包通大包不通，且 DF ping 阈值随闪断前后发生变化，指向路径 MTU 变小。",
+   "excluded_hypotheses": [
+    "核心网/UPF 故障：同环 Site-Q 业务正常，小包业务正常。",
+    "空口问题：接入成功率与 BLER、SINR 均正常。",
+    "DNS 故障：DNS 解析正常，直连 IP 同样卡顿。",
+    "基站配置丢失：基站配置与闪断前备份一致。"
+   ],
+   "unverified_residuals": [
+    "TS 33.210/TS 33.401 对回传 IPsec 的具体条款编号未给出，建议人工复核引用。",
+    "备用路径经 IPsec 导致 MTU 下降的具体字节数取决于加密算法与封装方式，题中仅给出 DF ping 的实测阈值。"
+   ]
+  },
+  {
+   "local_idx": 7,
+   "type": "diagnosis",
+   "dimension": "RAN",
+   "difficulty": 3,
+   "title": "随机接入参数下调后接入成功率下降",
+   "prompt": "某郊区 LTE 小区群的 6 个小区上周为「降低上行底噪」，在凌晨批量调整了随机接入相关参数。调整后第二天起，这 6 个小区的随机接入成功率和 RRC 建立成功率下降，用户反映「信号满格却连不上，要点好几次」。请定位根因并给出处置方案。\n\n变更单（节选）：\n| 参数 | 变更前 | 变更后 |\n|---|---|---|\n| preambleInitialReceivedTargetPower | -104 dBm | -120 dBm |\n| powerRampingStep | dB2 | dB2 |\n| preambleTransMax | n6 | n6 |\n| PRACH 配置索引与根序列 | 不变 | 不变 |\n\n变更前后数据：\n| 指标 | 变更前 | 变更后 |\n|---|---|---|\n| 平均每次接入的前导发送次数 | 1.2 | 4.8 |\n| 达到 preambleTransMax 仍未收到 RAR 的比例 | 2% | 19% |\n| 收到 RAR 后 Msg3 失败或竞争解决失败比例 | 约 1% | 约 1% |\n| RRC 建立后核心网拒绝次数 | 基线 | 无变化 |\n| 小区 PRB 利用率 | 低于 15% | 低于 15% |\n| 上行 RSSI | 基线 | 无明显变化 |\n\n其他观察：\n- 前导发送次数分布在各 TA 区间之间没有明显差别，近点用户同样受影响。\n- 同区域另外 2 个未纳入变更的小区指标无变化。",
+   "reference_answer": "根因：这批小区把 preambleInitialReceivedTargetPower 从 -104 dBm 下调到 -120 dBm，而 powerRampingStep和 preambleTransMax没变。前导首发功率等于目标接收功率加路损，目标低了 16 dB，前几次前导到达基站时电平低于检测所需，只能靠爬升补，最多 6 次前导（爬升 5 步，共 10 dB），很多用户在次数用完前仍未被检测到，表现为接入失败和重试变多。由于前导到达基站的接收电平≈目标接收功率、与路损基本无关，目标定得过低使近点（信号满格）与远点用户的前导都低于检测门限，故近点用户同样连不上。证据：失败集中在 Msg1 到 RAR 阶段，Msg3 之后和核心网拒绝不变，上行 RSSI 和 PRB 都正常，未变更小区正常，可排除干扰和拥塞。处置：先核对参数与变更前基线；把初始目标功率回退到 -104 dBm，先在 1–2 个小区灰度，指标回升后再推开；后续调参需联合评估初始目标、步长和最大次数。",
+   "root_cause": "随机接入前导初始接收目标功率被下调 16 dB（-104→-120 dBm），而爬升步长和最大发送次数未变，前导在次数用完前未能达到可检测电平，造成接入失败增多。",
+   "rubric_points": [
+    {
+     "id": "P1",
+     "stage": "root_cause",
+     "text": "指出根因是 preambleInitialReceivedTargetPower 由 -104 dBm 下调至 -120 dBm（下调 16 dB）过低，而不是覆盖、干扰或拥塞。",
+     "weight": 20,
+     "verifiability": "standard",
+     "source_note": "TS 36.331 RACH-ConfigCommon 中前导初始接收目标功率参数"
+    },
+    {
+     "id": "P2",
+     "stage": "root_cause",
+     "text": "说明机理：前导首发功率由目标接收功率加路损决定，目标过低使前几次前导到达电平不足，需靠 powerRampingStep 爬升，而 preambleTransMax 限制了次数，用完仍未被检测则随机接入失败。",
+     "weight": 15,
+     "verifiability": "standard",
+     "source_note": "TS 36.321 随机接入前导功率爬升与最大发送次数、TS 36.213 PRACH 功率"
+    },
+    {
+     "id": "P3",
+     "stage": "root_cause",
+     "text": "引用证据：失败集中在 Msg1 到 RAR 阶段（平均前导次数 1.2→4.8、达最大次数无 RAR 比例 2%→19%），Msg3 之后与核心网拒绝无变化，且与 TA 无关、近点用户同样受影响。",
+     "weight": 10,
+     "verifiability": "constructed",
+     "source_note": "题干给出的前导次数、RAR 与 Msg3 指标及 TA 分布"
+    },
+    {
+     "id": "P4",
+     "stage": "root_cause",
+     "text": "排除干扰假设：上行 RSSI 与 PRB 利用率无变化（非干扰、非拥塞）、Msg3/竞争解决失败不变（非前导冲突）、未变更小区无变化（非区域性或核心网问题）。",
+     "weight": 10,
+     "verifiability": "constructed",
+     "source_note": "题干给出的 Msg3 失败比例、上行 RSSI 与对照小区情况"
+    },
+    {
+     "id": "P5",
+     "stage": "action",
+     "text": "先做只读核对：确认几个相关参数的当前值与变更前基线，确认仅这组参数发生了变化。",
+     "weight": 10,
+     "verifiability": "common_sense",
+     "source_note": "变更类故障核对配置基线的通行做法"
+    },
+    {
+     "id": "P6",
+     "stage": "action",
+     "text": "把初始目标接收功率回退到变更前的 -104 dBm（或经评估的取值），先在 1–2 个小区灰度验证，指标回升后再分批推广。",
+     "weight": 15,
+     "verifiability": "common_sense",
+     "source_note": "参数回退采用灰度的变更管理常识"
+    },
+    {
+     "id": "P7",
+     "stage": "action",
+     "text": "指出后续调优须联合评估初始目标功率、爬升步长和最大发送次数，且要与上行噪声目标和 PRACH 覆盖需求一起权衡，不应单参数大幅下调。",
+     "weight": 10,
+     "verifiability": "common_sense",
+     "source_note": "随机接入功率参数联动的行业常识"
+    },
+    {
+     "id": "P8",
+     "stage": "action",
+     "text": "以接入成功率、平均前导次数和上行 RSSI 的前后对比验证效果，并保留回退方案。",
+     "weight": 10,
+     "verifiability": "common_sense",
+     "source_note": "变更验证与回退保护的运维常识"
+    }
+   ],
+   "deductions": [
+    {
+     "text": "将根因归为覆盖不足或容量拥塞，并建议扩容或调整天线",
+     "points": -15
+    },
+    {
+     "text": "仅建议增大 preambleTransMax 作为唯一措施",
+     "points": -10
+    },
+    {
+     "text": "回退时不做灰度直接全网下发，或回退到明显偏高的值",
+     "points": -10
+    }
+   ],
+   "high_risk_actions": [
+    {
+     "action": "取消灰度，在全网批量把前导初始目标功率大幅调高（如调到 -90 dBm 附近）",
+     "why": "近点用户前导功率过大，会抬升上行底噪，反而影响全网接入与上行性能。"
+    },
+    {
+     "action": "业务时段对这 6 个小区复位或重启小区",
+     "why": "会中断在线用户，且不能解决参数取值问题。"
+    },
+    {
+     "action": "在没有证据的情况下改动 PRACH 根序列或配置索引来「排查」",
+     "why": "可能引发与邻区的 PRACH 冲突并导致小区重启，使问题复杂化。"
+    }
+   ],
+   "discriminating_trap": "看到接入成功率下降加「信号满格连不上」，第一反应是容量拥塞、上行干扰或核心网拒绝，去扩容或查干扰。这是错的：PRB 和上行 RSSI 正常，Msg3 之后的指标无变化，失败集中在前导发送阶段，且与距离无关，指向前导初始目标功率被下调过低。",
+   "excluded_hypotheses": [
+    "上行干扰：上行 RSSI 无明显变化。",
+    "容量拥塞：PRB 利用率低于 15%，Msg3 之后无异常。",
+    "前导冲突：Msg3 失败或竞争解决失败比例无变化。",
+    "核心网拒绝或区域性问题：核心网拒绝次数无变化，未变更小区指标无变化。"
+   ],
+   "unverified_residuals": [
+    "前导检测所需接收电平随带宽、噪声系数与检测门限而定，题中未给具体值，rubric 仅作定性判断。",
+    "preambleInitialReceivedTargetPower 的 -120 dBm 取值在协议枚举范围内，建议人工对照 TS 36.331 复核。"
+   ]
+  }
+ ]
+}

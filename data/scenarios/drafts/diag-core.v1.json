@@ -1,0 +1,570 @@
+{
+  "batch": "diag-core",
+  "questions": [
+    {
+      "local_idx": 1,
+      "type": "diagnosis",
+      "dimension": "CORE",
+      "difficulty": 3,
+      "title": "区域停电恢复后注册失败率陡增",
+      "prompt": "某5G SA网络A市所在AMF Set在凌晨04:12起监控到注册成功率由99%以上下降到约61%。已知信息如下：\n\n| 项目 | 现象 |\n|---|---|\n| 时间线 | 03:58 A市北区电力恢复；04:05 起 Registration Request 速率约为日常同时段的 9 倍；04:12 起失败率陡增 |\n| 失败原因值（Registration Reject） | 约 93% 为 5GMM 原因值 #22（Congestion），其余为少量 #111 |\n| 失败分布 | 集中在北区 3 个 TAC，且 SUPI 号段高度集中于同一物联网专网签约 |\n| AMF | CPU 约 92%，NAS 消息处理队列持续积压；进程与 Pod 状态正常，无重启 |\n| NG 接口 | 各 gNB 的 NG 链路（SCTP 偶联）均正常，无断链告警 |\n| 认证链路 | AMF 到 AUSF/UDM 的接口时延与成功率与日常一致，鉴权失败极少 |\n| 最近变更 | 近 7 日无核心网变更 |\n\n请定位根因，并给出处置方案（含处置顺序、风险控制与后续措施）。",
+      "reference_answer": "根因：A市北区停电恢复后，大批智能电表同时开机并集中注册，注册信令速率远超AMF处理能力，AMF处于信令过载状态并以5GMM #22拒绝，属突发信令风暴，不是网元故障。依据：失败九成以上为#22；集中在三个TAC和同一物联网号段；时间与电力恢复吻合；AMF CPU高、队列积压但进程正常。排除：鉴权接口时延和成功率正常，不是AUSF/UDM问题；NG链路无断链，不是接入侧故障；近7日无变更。处置：先只读确认请求速率与集中度，不重启AMF（会丢失用户上下文并引发更大重注册）；启用或收紧过载控制，对该物联网接入以拥塞原因拒绝并下发退避定时器T3346，并可结合统一接入控制（UAC）按接入类别限制，必要时经NGAP过载指示让gNB限制接入，紧急和高优先级接入不受限；CPU回落后分批放开。后续：推动终端随机退避重注册，评估AMF Set容量与按切片门限。",
+      "root_cause": "停电恢复后海量物联网终端集中重新注册形成信令风暴，AMF NAS信令处理过载并以#22拥塞原因拒绝。",
+      "rubric_points": [
+        {
+          "id": "P1",
+          "stage": "root_cause",
+          "text": "明确指出根因是大量物联网终端在短时间内集中重新注册造成AMF信令过载/拥塞（信令风暴），而不是AMF或其他网元故障。",
+          "weight": 25,
+          "verifiability": "constructed",
+          "source_note": "题干中电力恢复时间、注册请求约9倍、AMF CPU高但进程正常直接得出。"
+        },
+        {
+          "id": "P2",
+          "stage": "root_cause",
+          "text": "引用关键依据：失败原因值集中在5GMM #22（Congestion），且失败集中于北区TAC和同一物联网签约号段。",
+          "weight": 15,
+          "verifiability": "standard",
+          "source_note": "TS 24.501 中5GMM原因值#22为拥塞，用于网络侧过载时拒绝。"
+        },
+        {
+          "id": "P3",
+          "stage": "root_cause",
+          "text": "排除认证链路（AUSF/UDM）故障，理由为接口时延与成功率正常、鉴权失败极少。",
+          "weight": 8,
+          "verifiability": "constructed",
+          "source_note": "题干表格认证链路一行直接给出。"
+        },
+        {
+          "id": "P4",
+          "stage": "root_cause",
+          "text": "排除NG接口/gNB接入侧故障或近期变更引入，理由为NG链路均正常且近7日无变更。",
+          "weight": 7,
+          "verifiability": "constructed",
+          "source_note": "题干表格NG接口与最近变更两行直接给出。"
+        },
+        {
+          "id": "P5",
+          "stage": "action",
+          "text": "先做只读确认（请求速率、失败按TAC/切片/号段的集中度），并明确不应直接重启AMF。",
+          "weight": 12,
+          "verifiability": "common_sense",
+          "source_note": "重启会丢失在网用户上下文并引发更大规模重注册，是运维共识。"
+        },
+        {
+          "id": "P6",
+          "stage": "action",
+          "text": "启用或收紧过载控制：对低优先级/物联网接入以拥塞原因拒绝并下发退避定时器（T3346），必要时通过NGAP过载指示限制gNB接入。",
+          "weight": 15,
+          "verifiability": "standard",
+          "source_note": "TS 24.501 的移动性管理退避定时器T3346；TS 38.413 的Overload Start过程；TS 23.501 过载控制相关章节。"
+        },
+        {
+          "id": "P7",
+          "stage": "action",
+          "text": "限流时保护紧急业务和高优先级接入，不做一刀切拒绝。",
+          "weight": 8,
+          "verifiability": "standard",
+          "source_note": "TS 23.501/TS 22.011 中接入控制对紧急与高优先级接入的豁免原则。"
+        },
+        {
+          "id": "P8",
+          "stage": "action",
+          "text": "负载回落后分批放开限制并持续观察，同时提出后续措施（终端随机退避重注册、容量与按切片门限评估）。",
+          "weight": 10,
+          "verifiability": "common_sense",
+          "source_note": "避免二次冲击与长期防范的运维共识。"
+        }
+      ],
+      "deductions": [
+        {
+          "text": "建议在高负载下直接重启或倒换AMF作为首要手段",
+          "points": -15
+        },
+        {
+          "text": "将根因归结为AUSF/UDM或NG链路故障，与题干指标矛盾",
+          "points": -15
+        },
+        {
+          "text": "只给出扩容建议而未给出即时的过载控制处置",
+          "points": -10
+        },
+        {
+          "text": "未提及保护紧急或高优先级业务",
+          "points": -5
+        }
+      ],
+      "high_risk_actions": [
+        {
+          "action": "在注册风暴持续期间直接重启或强制倒换AMF",
+          "why": "会清空在网用户的NAS上下文，触发全部在网终端重新注册，使过载进一步恶化并可能引发全网业务中断。"
+        },
+        {
+          "action": "关闭AMF过载保护或鉴权功能以提高注册成功率",
+          "why": "削弱网络安全与自保护能力，且并不解决请求速率过高的根本问题，可能导致AMF整体宕机。"
+        }
+      ],
+      "discriminating_trap": "第一反应是「注册失败激增=AMF/UDM故障，需要重启或倒换网元」或「简单扩容」。错误原因：#22原因值、集中的号段与TAC、正常的鉴权与NG指标说明网元本身健康，是外部突发负载；重启反而会造成二次风暴。",
+      "excluded_hypotheses": [
+        "AUSF/UDM鉴权链路故障：接口时延和成功率与日常一致，鉴权失败极少，失败原因主体为#22而非鉴权类原因值。",
+        "NG接口或gNB故障：各gNB的SCTP偶联正常且无断链告警，失败只集中在特定号段而非特定基站。",
+        "近期变更引入问题：近7日无核心网变更，且故障时间与停电恢复吻合。"
+      ],
+      "unverified_residuals": [
+        "TS 23.501 中过载控制所在的具体章节号未逐条核对，仅按「过载与拥塞控制」表述。"
+      ]
+    },
+    {
+      "local_idx": 2,
+      "type": "diagnosis",
+      "dimension": "CORE",
+      "difficulty": 2,
+      "title": "某DNN的PDU会话建立大面积失败",
+      "prompt": "某5G SA网络运维收到投诉：企业专网DNN「corp.iot」下的终端无法建立数据会话，公网DNN「internet」正常。已知信息：\n\n| 项目 | 现象 |\n|---|---|\n| PDU Session Establishment Reject | 对 corp.iot 的失败约 100%，原因值为 5GSM #26（Insufficient resources）；internet 成功率正常 |\n| SMF | 进程正常，CPU 35%，与 UDM/PCF 接口正常 |\n| N4（SMF-UPF） | 所有 UPF 的 PFCP 关联均为 Up，心跳正常 |\n| 签约与策略 | UDM 中 corp.iot 的签约数据与 PCF 策略近 30 日无变更 |\n| corp.iot 地址池 | 地址池总量 4096，SMF 侧已分配 4096（利用率 100%） |\n| 会话数核对 | SMF 记录 corp.iot 活跃会话 4096，UPF 上实际活跃会话约 1500 |\n| 最近事件 | 前日 22:30 某 UPF 与 SMF 之间 N4 链路抖动约 3 分钟后自行恢复 |\n\n请定位根因，并给出处置方案。",
+      "reference_answer": "根因：corp.iot的UE IP地址池被占满，且多为陈旧会话——前日22:30的N4抖动期间UPF侧会话已释放，SMF未收到结果，地址未回收，SMF记4096条而UPF实际约1500条，新会话因无地址被#26拒绝。排除：PFCP关联和心跳正常且internet DNN正常，不是UPF或N4故障；签约与策略近30日无变更，原因值也不是未签约类，不是签约问题；SMF的CPU和接口正常。处置：先只读核对地址池利用率及SMF与UPF按N4会话标识的差异；确认后用会话审计/对账只释放UPF上不存在的陈旧会话，不做全量清除；不能立即回收时，在变更窗口临时扩容或增加备用池并准备回退；处理后观察利用率与成功率。后续：复盘N4抖动后会话残留机制，加地址池利用率告警和周期对账。不重启SMF或UPF。",
+      "root_cause": "corp.iot的UE IP地址池被N4抖动后残留在SMF的陈旧会话占满，新会话因无地址可分配被#26拒绝。",
+      "rubric_points": [
+        {
+          "id": "P1",
+          "stage": "root_cause",
+          "text": "明确根因是corp.iot的UE IP地址池耗尽，SMF因无可分配地址拒绝新会话。",
+          "weight": 20,
+          "verifiability": "constructed",
+          "source_note": "题干中池利用率100%、原因值#26直接得出。"
+        },
+        {
+          "id": "P2",
+          "stage": "root_cause",
+          "text": "指出占满地址的主要是陈旧（残留）会话：SMF记录4096条而UPF实际约1500条，且与前日N4链路抖动相关。",
+          "weight": 20,
+          "verifiability": "constructed",
+          "source_note": "题干会话数核对一行及最近事件一行直接给出。"
+        },
+        {
+          "id": "P3",
+          "stage": "root_cause",
+          "text": "排除UPF/N4整体故障，理由为PFCP关联和心跳正常且internet DNN正常。",
+          "weight": 8,
+          "verifiability": "standard",
+          "source_note": "TS 29.244 PFCP关联与心跳机制。"
+        },
+        {
+          "id": "P4",
+          "stage": "root_cause",
+          "text": "排除签约/策略问题，理由为签约与策略无变更，且原因值为#26而非未签约或DNN未知一类原因值。",
+          "weight": 7,
+          "verifiability": "standard",
+          "source_note": "TS 24.501 5GSM原因值#26为Insufficient resources。"
+        },
+        {
+          "id": "P5",
+          "stage": "action",
+          "text": "先只读核对地址池利用率及SMF与UPF按N4会话标识的会话差异，再决定处置。",
+          "weight": 10,
+          "verifiability": "common_sense",
+          "source_note": "先低风险排查再变更的运维共识。"
+        },
+        {
+          "id": "P6",
+          "stage": "action",
+          "text": "通过会话审计/对账只释放UPF上已不存在的陈旧会话，而不是全量清除或重启网元。",
+          "weight": 15,
+          "verifiability": "common_sense",
+          "source_note": "SMF与UPF会话状态对账是常规做法，全量清除会中断在网业务。"
+        },
+        {
+          "id": "P7",
+          "stage": "action",
+          "text": "如需临时缓解，在变更窗口内扩容或增加备用地址池，并说明回退方式与验证成功率。",
+          "weight": 10,
+          "verifiability": "common_sense",
+          "source_note": "变更需窗口、回退与验证的运维共识。"
+        },
+        {
+          "id": "P8",
+          "stage": "action",
+          "text": "提出后续措施：复盘N4抖动后会话残留原因、地址池利用率告警及周期性会话对账。",
+          "weight": 10,
+          "verifiability": "common_sense",
+          "source_note": "闭环改进的运维共识。"
+        }
+      ],
+      "deductions": [
+        {
+          "text": "建议直接重启SMF或UPF来清理会话",
+          "points": -15
+        },
+        {
+          "text": "将根因归为UDM签约或PCF策略问题",
+          "points": -15
+        },
+        {
+          "text": "只建议扩容地址池，未识别陈旧会话残留这一根本原因",
+          "points": -10
+        },
+        {
+          "text": "未给出任何验证或回退说明",
+          "points": -5
+        }
+      ],
+      "high_risk_actions": [
+        {
+          "action": "在业务时段清除corp.iot DNN下全部会话或直接重启SMF/UPF",
+          "why": "会使所有正常在线的企业专网会话同时中断并触发集中重建，可能造成企业生产业务中断并引发二次拥塞。"
+        },
+        {
+          "action": "未核对即批量删除SMF会话记录",
+          "why": "可能误删UPF上仍有业务的活跃会话，导致SMF与UPF状态更加不一致。"
+        }
+      ],
+      "discriminating_trap": "第一反应是「UPF或N4故障」或「签约/DNN配置错误」。错误原因：PFCP关联和心跳正常、签约无变更、其他DNN成功，且原因值是资源不足而非未签约/DNN未知；真正线索是池利用率100%与SMF/UPF会话数不一致。",
+      "excluded_hypotheses": [
+        "UPF或N4链路故障：所有PFCP关联为Up、心跳正常，且internet DNN成功率正常。",
+        "UDM签约或PCF策略变更：近30日无变更，且拒绝原因不是未签约或DNN未知。",
+        "SMF自身处理能力不足：SMF的CPU仅35%，仅单一DNN受影响。"
+      ],
+      "unverified_residuals": []
+    },
+    {
+      "local_idx": 3,
+      "type": "diagnosis",
+      "dimension": "CORE",
+      "difficulty": 3,
+      "title": "部分用户上网时延台阶式升高",
+      "prompt": "某运营商5GC有UPF-A与UPF-B两个出口UPF，分别位于两个数据中心。凌晨传输团队完成了一次城域传输相关变更。当日起用户反馈上网时延明显变高。已知信息：\n\n| 项目 | UPF-A 锚定用户 | UPF-B 锚定用户 |\n|---|---|---|\n| 到同一境内测速节点（按IP直连）的 RTT | 约 24 ms，与基线一致 | 约 71 ms，较基线明显升高，呈台阶式 |\n| 时延升高起点 | 无 | 04:20，与传输调整完成时间一致 |\n| UPF CPU/转发包速率/队列丢包 | 正常 | 正常，丢包为 0 |\n| 同一小区内两组用户的空口侧指标 | 调度时延、PRB利用率正常，与同小区另一组相同 | 同左 |\n| UPF-B N6 出口方向 traceroute | 与基线相比多出 3 跳，且新增跳数经过另一数据中心的汇聚路由器 |  |\n| 其他 | 用户面时延只在UPF-B方向升高，DNS解析时间正常 |  |\n\n请定位根因，并给出处置方案。",
+      "reference_answer": "根因：凌晨传输/路由调整后，UPF-B的N6出口流量改走更长路径，绕行另一数据中心的汇聚路由器，多3跳，造成约47 ms（71减24）的固定时延增量，是路径变化而非网元负载问题。依据：台阶式升高并与变更完成时间一致，仅UPF-B锚定用户受影响，traceroute较基线多3跳。排除：UPF-B的CPU、包速率、丢包均正常，不是过载；同小区下UPF-A用户时延和PRB利用率正常，不是RAN拥塞；按IP直连也高且DNS正常，不是DNS问题。处置：先对比变更前后traceroute和路由表，确认新路径来源（metric、路由策略或静态路由）；联系传输和路由团队按变更流程回退或调整策略，恢复原路径后复测RTT与跳数；不能立即回退时，评估把新建会话临时引导到时延正常的UPF-A并留意容量；不重启UPF。后续：为关键出口设时延基线告警，变更后做路径验证。",
+      "root_cause": "传输/路由调整使UPF-B的N6出口路径变长（多3跳并绕行另一数据中心），造成固定时延台阶式升高。",
+      "rubric_points": [
+        {
+          "id": "P1",
+          "stage": "root_cause",
+          "text": "明确根因是传输/路由调整后UPF-B出口路径变化（变长、绕行），引入额外传播与转发时延。",
+          "weight": 25,
+          "verifiability": "constructed",
+          "source_note": "题干中traceroute多3跳、变更时间与升高起点一致直接得出。"
+        },
+        {
+          "id": "P2",
+          "stage": "root_cause",
+          "text": "引用依据：只有UPF-B锚定用户受影响、时延呈台阶式升高、时间与变更完成吻合。",
+          "weight": 10,
+          "verifiability": "constructed",
+          "source_note": "题干表格对比数据直接得出。"
+        },
+        {
+          "id": "P3",
+          "stage": "root_cause",
+          "text": "排除UPF过载，理由为CPU、包速率、丢包均正常。",
+          "weight": 8,
+          "verifiability": "constructed",
+          "source_note": "题干表格UPF指标一行直接给出。"
+        },
+        {
+          "id": "P4",
+          "stage": "root_cause",
+          "text": "排除RAN侧空口拥塞，理由为同小区下UPF-A用户时延正常、调度时延与PRB利用率相同。",
+          "weight": 8,
+          "verifiability": "constructed",
+          "source_note": "题干同小区对比一行直接给出。"
+        },
+        {
+          "id": "P5",
+          "stage": "root_cause",
+          "text": "排除DNS/应用侧问题，理由为按IP直连测速同样升高且DNS解析正常。",
+          "weight": 4,
+          "verifiability": "constructed",
+          "source_note": "题干表格第一行与其他一行直接给出。"
+        },
+        {
+          "id": "P6",
+          "stage": "action",
+          "text": "先做只读核对：对比变更前后traceroute与路由表，定位新路径的来源（路由策略/metric/静态路由）。",
+          "weight": 12,
+          "verifiability": "common_sense",
+          "source_note": "traceroute与路由对比是IP网络排障的基本方法。"
+        },
+        {
+          "id": "P7",
+          "stage": "action",
+          "text": "与传输/路由团队按变更流程回退或调整策略，恢复原路径，并用RTT与跳数复测验证。",
+          "weight": 18,
+          "verifiability": "common_sense",
+          "source_note": "变更引入问题优先回退并验证的运维共识。"
+        },
+        {
+          "id": "P8",
+          "stage": "action",
+          "text": "提出临时缓解（评估把新建会话引导到时延正常的UPF并注意容量）与后续的基线告警和变更后路径验证。",
+          "weight": 15,
+          "verifiability": "common_sense",
+          "source_note": "缓解与闭环改进的运维共识。"
+        }
+      ],
+      "deductions": [
+        {
+          "text": "将根因归为UPF负载或性能不足并建议扩容或重启UPF",
+          "points": -15
+        },
+        {
+          "text": "将根因归为RAN侧空口问题",
+          "points": -10
+        },
+        {
+          "text": "没有提及与传输/路由变更的关联或回退",
+          "points": -10
+        },
+        {
+          "text": "建议把全部用户一次性迁移到UPF-A而不考虑容量",
+          "points": -5
+        }
+      ],
+      "high_risk_actions": [
+        {
+          "action": "未与传输团队确认就在核心路由器上手工修改路由或全网回退传输配置",
+          "why": "可能导致更大范围路由震荡或黑洞，影响全部出口业务。"
+        },
+        {
+          "action": "在业务高峰期重启UPF-B或把其全部用户强制迁移",
+          "why": "会中断在网会话并造成集中重建，目标UPF可能因容量不足而过载。"
+        }
+      ],
+      "discriminating_trap": "第一反应是「用户面时延升高=UPF负载高或RAN拥塞」，建议扩容或优化无线。错误原因：UPF指标全部正常、同小区用户空口一致，时延只在UPF-B出口方向呈台阶式升高并与传输变更吻合，指向路径变化。",
+      "excluded_hypotheses": [
+        "UPF-B过载：CPU、包速率和丢包均正常，时延升高为台阶式而非随负载波动。",
+        "RAN空口拥塞：同小区下UPF-A用户时延正常，空口调度时延和PRB利用率相同。",
+        "DNS或应用侧问题：直连IP测速同样升高，DNS解析时间正常。"
+      ],
+      "unverified_residuals": []
+    },
+    {
+      "local_idx": 4,
+      "type": "diagnosis",
+      "dimension": "CORE",
+      "difficulty": 2,
+      "title": "VoLTE呼叫到某对端运营商失败",
+      "prompt": "某运营商IMS网络在一次边界会话控制器（SBC/IBCF）配置变更后，用户反馈拨打某对端运营商用户时呼叫失败，而网内互拨、拨打其他运营商均正常。已知信息：\n\n| 项目 | 现象 |\n|---|---|\n| 失败范围 | 仅本网到对端运营商X方向的呼叫，失败率约100% |\n| SIP 信令 | 本网INVITE发出后，对端边界返回 488 Not Acceptable Here，无振铃 |\n| 对端互联链路 | 到对端的SIP中继OPTIONS保活持续返回200 OK，IP链路无丢包 |\n| 本网承载/QoS | 网内VoLTE互拨成功，专有承载建立正常；无580 Precondition Failure |\n| 号码路由 | ENUM/号码分析正常，出现的响应不是404或DNS失败 |\n| 本次变更 | 当日对SBC做了「编解码策略精简」变更，仅保留AMR-WB与EVS，移除了AMR-NB且未启用转码 |\n| 同期对比 | 同一SBC上对端运营商Y方向呼叫正常 |\n| 补充信息 | 对端运营商X为存量网络，仅对外声明支持AMR-NB |\n\n请定位根因，并给出处置方案。",
+      "reference_answer": "根因：SBC编解码策略精简后，本网发往对端X的INVITE的SDP只含AMR-WB与EVS，而对端X只支持AMR-NB，且未启用转码，没有共同编解码，对端边界以488 Not Acceptable Here拒绝。排除：OPTIONS保活持续200 OK且IP无丢包，不是互联中断；网内互拨和专有承载正常、无580，不是承载或QoS问题；返回不是404或DNS失败，号码路由正常。处置：先抓取故障呼叫SIP信令，对比变更前后INVITE的SDP offer与488响应，确认编解码缺失；在变更窗口回退该编解码策略，或对该对端方向恢复AMR-NB并启用转码，先用少量测试号码试呼再放开；保持SBC拓扑隐藏与安全策略不变，不绕开SBC直连；验证拨打对端成功率与语音质量。后续：把互联对端编解码互通测试纳入变更前检查单。",
+      "root_cause": "SBC编解码策略精简后SDP只含AMR-WB与EVS且未转码，与仅支持AMR-NB的对端X没有共同编解码，被488拒绝。",
+      "rubric_points": [
+        {
+          "id": "P1",
+          "stage": "root_cause",
+          "text": "明确根因是SBC变更后向对端X提供的SDP中没有对端支持的编解码（AMR-NB被移除且未转码），导致SDP协商无共同编解码。",
+          "weight": 25,
+          "verifiability": "constructed",
+          "source_note": "题干中变更内容、对端仅支持AMR-NB与488响应直接得出。"
+        },
+        {
+          "id": "P2",
+          "stage": "root_cause",
+          "text": "说明488 Not Acceptable Here的含义是对端不接受会话描述（媒体协商失败），而非链路或路由失败。",
+          "weight": 10,
+          "verifiability": "standard",
+          "source_note": "RFC 3261中488响应码的定义；RFC 3264 SDP offer/answer模型。"
+        },
+        {
+          "id": "P3",
+          "stage": "root_cause",
+          "text": "排除互联链路/中继中断，理由为OPTIONS保活持续200 OK且IP无丢包。",
+          "weight": 7,
+          "verifiability": "constructed",
+          "source_note": "题干表格对端互联链路一行直接给出。"
+        },
+        {
+          "id": "P4",
+          "stage": "root_cause",
+          "text": "排除本网承载/QoS问题，理由为网内互拨成功且无580 Precondition Failure。",
+          "weight": 7,
+          "verifiability": "standard",
+          "source_note": "RFC 3312 前置条件机制下资源预留失败返回580。"
+        },
+        {
+          "id": "P5",
+          "stage": "root_cause",
+          "text": "排除号码路由问题，理由为响应不是404或DNS失败，ENUM/号码分析正常。",
+          "weight": 6,
+          "verifiability": "standard",
+          "source_note": "RFC 3261中404表示目的不存在；ENUM在RFC 6116。"
+        },
+        {
+          "id": "P6",
+          "stage": "action",
+          "text": "先抓取故障呼叫的SIP信令，对比变更前后INVITE的SDP offer与488响应，确认编解码缺失。",
+          "weight": 12,
+          "verifiability": "common_sense",
+          "source_note": "先取证再变更的运维共识。"
+        },
+        {
+          "id": "P7",
+          "stage": "action",
+          "text": "按变更流程回退编解码策略，或为该对端方向恢复AMR-NB并启用转码，先小范围试呼再放量。",
+          "weight": 18,
+          "verifiability": "common_sense",
+          "source_note": "变更引入问题优先回退、灰度验证的运维共识。"
+        },
+        {
+          "id": "P8",
+          "stage": "action",
+          "text": "提出验证与闭环：复测呼叫成功率与语音质量，并把互联对端编解码互通测试纳入变更前检查单。",
+          "weight": 15,
+          "verifiability": "common_sense",
+          "source_note": "闭环改进的运维共识。"
+        }
+      ],
+      "deductions": [
+        {
+          "text": "将根因归为互联链路中断或对端设备故障而不提编解码",
+          "points": -15
+        },
+        {
+          "text": "建议绕开SBC直接与对端核心网互联",
+          "points": -15
+        },
+        {
+          "text": "建议重启SBC或IMS核心网元作为首要手段",
+          "points": -10
+        },
+        {
+          "text": "未提到先小范围试呼验证或回退方案",
+          "points": -5
+        }
+      ],
+      "high_risk_actions": [
+        {
+          "action": "绕过SBC/IBCF直接开放IMS核心与对端互联或关闭SBC安全策略",
+          "why": "会暴露内部拓扑与核心网元并失去边界防护，带来安全风险且违反互联规范。"
+        },
+        {
+          "action": "业务时段重启SBC或IMS核心网元",
+          "why": "会中断正在进行的通话和注册，影响全部语音用户，且不能解决编解码缺失问题。"
+        }
+      ],
+      "discriminating_trap": "第一反应是「到对端的互联中断或对端故障」或「IMS核心网/承载问题」。错误原因：OPTIONS保活正常、网内通话正常、响应为488而非404/580/503，说明链路与路由通、问题在媒体协商，与当日的编解码变更直接对应。",
+      "excluded_hypotheses": [
+        "互联链路/SIP中继中断：OPTIONS保活持续200 OK，IP无丢包。",
+        "本网承载或QoS预留失败：网内VoLTE互拨正常，无580 Precondition Failure。",
+        "号码路由/ENUM错误：响应码不是404，也没有DNS失败。"
+      ],
+      "unverified_residuals": [
+        "不同厂商的对端边界在无共同编解码时也可能返回606或415，本题按488设定并在题干中给出。"
+      ]
+    },
+    {
+      "local_idx": 5,
+      "type": "diagnosis",
+      "dimension": "CORE",
+      "difficulty": 3,
+      "title": "核心网某网元SBI接口午夜后断链",
+      "prompt": "某5GC在午夜0点过后，运维告警显示SMF到PCF的调用全部失败，PDU会话建立随之大量失败，其他网元调用正常。已知信息：\n\n| 项目 | 现象 |\n|---|---|\n| 告警 | SMF侧：PCF服务调用 TLS handshake failure，00:00:03 起持续 |\n| 连通性 | SMF到PCF的TCP三次握手成功，PCF进程与NRF注册/心跳均正常 |\n| SMF日志 | 握手阶段错误为证书校验失败（certificate verification failed），对端为PCF服务端证书 |\n| 时钟 | SMF、PCF、AMF 与同一NTP源的偏移均在 1 秒以内，三者时间一致 |\n| 证书信息 | PCF 服务端证书有效期（notAfter）为当日 00:00:00 |\n| 影响范围 | SMF到PCF的策略获取受影响；AMF到UDM、SMF到UDM等调用正常；AMF到PCF的调用状态未提供 |\n| 最近变更 | 近 30 日无变更，无人工操作 |\n\n请定位根因，并给出处置方案。",
+      "reference_answer": "根因：PCF的SBI服务端证书在当日00:00:00到期，此后TLS握手因证书过期失败，SMF到PCF调用中断，PDU会话建立拿不到策略而失败。依据：日志为证书校验失败；TCP可通，说明失败在证书校验阶段；起点00:00:03与notAfter吻合；SMF到PCF的策略流程受影响。排除：TCP成功且PCF进程与NRF心跳正常，不是网络或进程故障；SMF、PCF、AMF与同一NTP源偏移均在1秒内，不是时钟漂移；近30日无变更。处置：先用openssl s_client等只读方式确认PCF证书有效期与证书链，并核查其他网元证书到期时间；经PKI/CA流程签发新证书，维护窗口内先单实例替换并重载，验证握手成功后再推广；保持TLS校验开启，不回拨系统时间规避。后续：建立证书到期监控并提前续期，纳入巡检。",
+      "root_cause": "PCF的SBI服务端证书在00:00:00到期，TLS握手校验失败导致SMF到PCF调用中断。",
+      "rubric_points": [
+        {
+          "id": "P1",
+          "stage": "root_cause",
+          "text": "明确根因是PCF的SBI服务端证书到期（notAfter为当日00:00:00），导致TLS握手校验失败。",
+          "weight": 25,
+          "verifiability": "constructed",
+          "source_note": "题干中证书校验失败与notAfter时间对照得出。"
+        },
+        {
+          "id": "P2",
+          "stage": "root_cause",
+          "text": "指出依据：TCP可连通、失败发生在TLS握手的证书校验阶段，故障起点与证书到期时间吻合，且仅依赖PCF的流程受影响。",
+          "weight": 12,
+          "verifiability": "standard",
+          "source_note": "TS 33.501 规定SBI接口使用TLS保护，证书校验在握手阶段完成。"
+        },
+        {
+          "id": "P3",
+          "stage": "root_cause",
+          "text": "排除网络/防火墙或网元进程故障，理由为TCP握手成功且PCF进程与NRF心跳正常。",
+          "weight": 8,
+          "verifiability": "constructed",
+          "source_note": "题干连通性一行直接给出。"
+        },
+        {
+          "id": "P4",
+          "stage": "root_cause",
+          "text": "排除时钟漂移，理由为各网元与同一NTP源偏移小于1秒且时间一致，证书到期是真实到期而非时间误判。",
+          "weight": 10,
+          "verifiability": "constructed",
+          "source_note": "题干时钟一行直接给出。"
+        },
+        {
+          "id": "P5",
+          "stage": "action",
+          "text": "先用只读方式验证PCF证书有效期与证书链，并核查其他网元证书的到期时间。",
+          "weight": 10,
+          "verifiability": "common_sense",
+          "source_note": "先低风险排查并扩展排查范围的运维共识。"
+        },
+        {
+          "id": "P6",
+          "stage": "action",
+          "text": "通过CA/PKI流程签发新证书，在维护窗口内先在单实例替换并重载，验证后再推广，并说明回退办法。",
+          "weight": 17,
+          "verifiability": "common_sense",
+          "source_note": "证书更新需灰度验证并保留旧证书回退的运维共识。"
+        },
+        {
+          "id": "P7",
+          "stage": "action",
+          "text": "明确不关闭TLS校验、不通过回拨系统时间等方式规避。",
+          "weight": 8,
+          "verifiability": "standard",
+          "source_note": "TS 33.501 要求SBI接口的TLS保护与认证，关闭校验违反安全要求。"
+        },
+        {
+          "id": "P8",
+          "stage": "action",
+          "text": "提出后续措施：证书到期监控与提前续期流程、周期巡检。",
+          "weight": 10,
+          "verifiability": "common_sense",
+          "source_note": "闭环改进的运维共识。"
+        }
+      ],
+      "deductions": [
+        {
+          "text": "建议关闭TLS校验或使用明文通信以恢复业务",
+          "points": -20
+        },
+        {
+          "text": "建议回拨系统时钟来让证书「恢复有效」",
+          "points": -15
+        },
+        {
+          "text": "将根因归为网络/防火墙或PCF进程故障而未识别证书",
+          "points": -15
+        },
+        {
+          "text": "未提到先单实例验证或回退方案",
+          "points": -5
+        }
+      ],
+      "high_risk_actions": [
+        {
+          "action": "关闭SBI接口的TLS校验或改为明文通信以先恢复业务",
+          "why": "会使核心网服务化接口失去认证与加密保护，带来严重安全风险，且违反3GPP安全要求。"
+        },
+        {
+          "action": "手工回拨核心网元系统时钟让证书看似有效",
+          "why": "会造成各网元时间不一致，引发令牌、日志与计费等一系列时间相关故障，且是掩盖问题。"
+        },
+        {
+          "action": "在业务高峰期对全部PCF实例同时替换证书并重启",
+          "why": "无灰度验证，若新证书有误会造成全部策略服务不可用，故障范围扩大。"
+        }
+      ],
+      "discriminating_trap": "第一反应是「午夜断链=网络或防火墙故障、PCF宕机」，或「时钟不同步造成校验失败」。错误原因：TCP可通、进程与心跳正常、各网元时间一致且偏移小，日志指向证书校验失败，唯一匹配的是证书notAfter已到期。",
+      "excluded_hypotheses": [
+        "网络/防火墙故障：SMF到PCF的TCP三次握手成功。",
+        "PCF进程或实例故障：PCF进程与NRF注册/心跳均正常，仅TLS握手失败。",
+        "时钟漂移：SMF、PCF、AMF与同一NTP源偏移均在1秒以内，时间一致。"
+      ],
+      "unverified_residuals": [
+        "题干未给出AMF到PCF调用的状态；若AMF与SMF使用同一PCF服务端证书，其策略调用也会受影响，需核对。"
+      ]
+    }
+  ]
+}

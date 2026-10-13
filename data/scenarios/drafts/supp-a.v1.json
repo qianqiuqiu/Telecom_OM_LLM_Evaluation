@@ -1,0 +1,458 @@
+{
+ "batch": "supp-a",
+ "note": "补题批次：替换四对跨批重复题（PMTUD 黑洞 SC-D06、站外上行干扰 SC-D03、地址池耗尽 SC-D09、N6 路径变长 SC-D10），并填补主题空白（网络切片、VoLTE/VoNR 语音、4G 核心网、QoS/5QI）。全部为 diagnosis 题型，保持 22/12/11 配比。",
+ "questions": [
+  {
+   "local_idx": 1,
+   "type": "diagnosis",
+   "dimension": "CORE",
+   "difficulty": 3,
+   "title": "某行业切片在部分区域注册被拒而其他切片正常",
+   "prompt": "某运营商 5G SA 网络为行业客户开通了一个专用切片（下称切片 A），另有面向公众的默认 eMBB 切片（下称切片 B）。近两日行业客户投诉：在甲市某片区（属同一跟踪区 TAC-1，由 AMF-1 服务）内，切片 A 的终端开机后注册失败、反复重试；同一台终端在乙片区（TAC-2，由 AMF-2 服务）注册与业务完全正常；切片 B 的公众用户在 TAC-1 内注册与上网均正常。\n\n运维团队汇总的信息如下（部分数值为构造的合成数据，仅用于研判，不代表真实网络）：\n\n| 项目 | 现象 |\n|---|---|\n| 注册失败表现 | 切片 A 终端在 TAC-1 收到 5GMM 注册拒绝，原因值为 #62（No network slices available）；重试仍失败 |\n| 对照：切片 B | 同一 AMF-1、同一 TAC-1 内，切片 B 终端注册成功率正常 |\n| 对照：其他 AMF | 切片 A 终端在 AMF-2/TAC-2 注册与业务正常 |\n| 签约（UDM/UDR） | 该行业客户终端的签约 S-NSSAI 列表包含切片 A，近 30 日无变更 |\n| NSSF | 进程与接口正常，切片 B 的选片正常 |\n| AMF-1 本地配置 | 三日前 AMF-1 做过一次扩容/版本相关的配置下发变更（工单评估为“无业务影响”）；变更后 AMF-1 在本 TAC 支持的 S-NSSAI 列表需核对 |\n| 无线 | TAC-1 内 RSRP/SINR 正常，切片 A、B 终端都能正常接入小区 |\n\n请定位根因，并给出处置方案（含先做哪些低风险核对、变更与回退、效果验证与后续改进）。",
+   "reference_answer": "根因：三日前 AMF-1 的配置变更使 AMF-1 在本 TAC 支持的 S-NSSAI 列表缺失了切片 A，导致 AMF-1 判定该切片在本跟踪区不可用，对请求切片 A 的终端以 5GMM #62（No network slices available）拒绝注册。依据：同一 TAC/同一 AMF 下切片 B 正常，说明不是 AMF-1 整体故障、也不是无线或覆盖问题；同终端在 AMF-2/TAC-2 正常，说明不是终端或签约问题；UDM 签约含切片 A 且无变更、NSSF 正常，排除签约与选片功能。处置：先只读核对 AMF-1 当前配置的 supported S-NSSAI/跟踪区切片列表，与变更前基线及签约 allowed NSSAI 比对，确认缺失项，并核对变更工单时间与故障起点是否吻合；确认后在变更窗口内补回该 S-NSSAI 配置，而不是重启 AMF，保留回退方案，可先单点验证再全量生效。验证：切片 A 终端在 TAC-1 注册与 PDU 会话恢复、#62 计数回落，切片 B 与其他区域不受影响。后续：切片配置变更纳入影响评估与变更后回归核对，增加按切片的注册成功率与 #62 告警，定期核对 AMF 支持切片列表与签约一致性。",
+   "root_cause": "AMF-1 一次配置变更后，其在本跟踪区支持的 S-NSSAI 列表缺失切片 A，AMF 判定该切片在本地不可用，对切片 A 终端以 5GMM #62（No network slices available）拒绝注册；签约、NSSF、无线与其他 AMF 均正常。",
+   "rubric_points": [
+    {
+     "id": "P1",
+     "stage": "root_cause",
+     "text": "定位根因为 AMF-1 本地支持的 S-NSSAI/跟踪区切片列表在近期变更后缺失切片 A，导致该切片在本 TAC 被判为不可用而拒绝注册。",
+     "weight": 22,
+     "verifiability": "constructed",
+     "source_note": "由题干“AMF-1 本地配置变更”“#62 拒绝”与对照现象共同得出。"
+    },
+    {
+     "id": "P2",
+     "stage": "root_cause",
+     "text": "用对照证据收敛：同 TAC 同 AMF 下切片 B 正常、切片 A 在 AMF-2/TAC-2 正常、签约含切片 A 且无变更、NSSF 正常，从而排除 AMF 整体故障、无线、终端、签约与选片，锁定为 AMF-1 本地切片配置。",
+     "weight": 16,
+     "verifiability": "constructed",
+     "source_note": "题干对照行（切片 B、其他 AMF、UDM 签约、NSSF）直接给出。"
+    },
+    {
+     "id": "P3",
+     "stage": "root_cause",
+     "text": "说明 5GMM 原因值 #62（No network slices available）的含义与触发条件：请求的 S-NSSAI 在当前跟踪区/服务 AMF 不被支持时触发。",
+     "weight": 8,
+     "verifiability": "standard",
+     "source_note": "TS 24.501 5GMM 原因值 #62；TS 23.501 关于 Configured/Allowed NSSAI 与按 TA 支持切片的机制。"
+    },
+    {
+     "id": "P4",
+     "stage": "root_cause",
+     "text": "排除无线覆盖与终端问题：切片 A、B 终端在 TAC-1 都能正常接入小区，同终端在其他 TAC 正常。",
+     "weight": 6,
+     "verifiability": "constructed",
+     "source_note": "题干“无线正常”“其他 AMF 正常”两行。"
+    },
+    {
+     "id": "P5",
+     "stage": "action",
+     "text": "先只读核对：比对 AMF-1 当前配置的 supported S-NSSAI/TA 切片列表与变更前基线、与签约 allowed NSSAI，确认缺失项，并核对变更工单时间与故障起点吻合。",
+     "weight": 12,
+     "verifiability": "common_sense",
+     "source_note": "先低风险取证、结合变更记录再变更的运维通用原则。"
+    },
+    {
+     "id": "P6",
+     "stage": "action",
+     "text": "在变更窗口内补回该 S-NSSAI 配置而不是重启 AMF，保留回退方案，可先单点/灰度验证再生效。",
+     "weight": 15,
+     "verifiability": "common_sense",
+     "source_note": "配置缺失应补配置，重启无益且中断在网业务；变更需窗口与回退的共识。"
+    },
+    {
+     "id": "P7",
+     "stage": "action",
+     "text": "验证：切片 A 终端在 TAC-1 注册与 PDU 会话恢复、#62 计数回落，且切片 B 与其他区域不受影响。",
+     "weight": 11,
+     "verifiability": "common_sense",
+     "source_note": "闭环验证的通用做法。"
+    },
+    {
+     "id": "P8",
+     "stage": "action",
+     "text": "后续改进：切片配置变更纳入影响评估与变更后回归核对，增加按切片的注册成功率/#62 告警，定期核对 AMF 支持切片列表与签约一致性。",
+     "weight": 10,
+     "verifiability": "common_sense",
+     "source_note": "变更后回归验证与基线监测的行业共识。"
+    }
+   ],
+   "deductions": [
+    {
+     "text": "建议重启 AMF-1 或做主备倒换来恢复注册。",
+     "points": -15
+    },
+    {
+     "text": "把根因归为 UDM 签约缺失或终端不支持该切片。",
+     "points": -15
+    },
+    {
+     "text": "把根因归为无线覆盖/接入问题并建议无线优化。",
+     "points": -10
+    },
+    {
+     "text": "给出补配置建议但无变更窗口、回退或验证说明。",
+     "points": -5
+    }
+   ],
+   "high_risk_actions": [
+    {
+     "action": "业务时段重启或主备倒换承载 TAC-1 的 AMF-1。",
+     "why": "会中断 AMF-1 下所有切片（含正常的切片 B）终端的注册与会话，触发大规模重附着，影响面远超故障点，且并不能修复配置缺失。"
+    },
+    {
+     "action": "未核对即在 UDM 批量修改该行业客户签约试图绕过。",
+     "why": "签约本无问题，误改会波及该切片全部用户且难以回退，并掩盖真正的 AMF 配置缺失。"
+    }
+   ],
+   "discriminating_trap": "看到注册被拒 #62，第一反应是“签约里没有这个切片/终端不支持切片”或“重启 AMF 试试”。错误在于：同 TAC 下切片 B 正常、同终端在其他 AMF 正常、签约含切片 A 且无变更，真正线索是 AMF-1 近期配置变更后本地支持切片列表缺失该 S-NSSAI。",
+   "excluded_hypotheses": [
+    "UDM 签约问题：签约 S-NSSAI 列表包含切片 A 且近 30 日无变更。",
+    "终端问题：同一终端在 AMF-2/TAC-2 注册与业务正常。",
+    "NSSF 选片故障：NSSF 进程与接口正常，切片 B 选片正常。",
+    "AMF-1 整体故障：同 AMF 下切片 B 注册与业务正常。",
+    "无线覆盖/接入：TAC-1 内 RSRP/SINR 正常，两切片终端都能正常接入小区。"
+   ],
+   "unverified_residuals": [
+    "题干中的原因值计数、AMF/切片配置项名称与变更细节为构造数据，不对应具体厂商实现。"
+   ]
+  },
+  {
+   "local_idx": 2,
+   "type": "diagnosis",
+   "dimension": "SERVICE",
+   "difficulty": 3,
+   "title": "一批 VoLTE 用户上行单通，无线与信令均正常",
+   "prompt": "某运营商近三日收到一批 VoLTE 用户投诉：通话能正常拨通、本端能听到对方声音，但对方听不到本端说话（上行单通）；同一批用户的移动数据、短信正常，且这批用户分布在多个小区、涉及多种终端型号。4G/5G 语音均可能受影响。\n\n运维团队做的分段排查结果如下（部分为构造的合成数据，仅用于研判）：\n\n| 分段 | 检查项 | 结果 |\n|---|---|---|\n| 无线 | 投诉用户所在小区 RSRP / 上行 SINR / 上行干扰 | 正常，与基线一致 |\n| 无线 | 上行 PRB 利用率 | 正常，未拥塞 |\n| 信令 | SIP INVITE / 200 OK、SDP 媒体协商 | 正常，呼叫建立成功，编解码协商一致 |\n| 承载 | QCI 5（SIP 信令）与 QCI 1（语音 RTP）专用承载 | 均建立成功 |\n| 媒体 | 下行方向 RTP（对端→本端） | 正常到达 UE，本端能听到对方 |\n| 媒体 | 上行方向 RTP（本端→对端） | UE 侧已发出，eNodeB/S1-U 上行可见，但在 IMS 媒体面入口（SBC/P-CSCF 侧）抓不到 |\n| 事件 | 三日前一次 IMS/媒体面网元（SBC/P-CSCF）的策略或版本变更 | 工单评估为“无业务影响”；变更时间与投诉起点吻合 |\n\n请给出分段定界结论与主根因，再给出处置方案（含先做哪些低风险取证、变更与回退、效果验证与后续改进）。",
+   "reference_answer": "定界结论：这是上行单通——单向语音 RTP 不通，而不是无线质差或呼叫失败。依据：呼叫能接通、SIP/SDP 协商正常，QCI 5 与 QCI 1 承载都建立成功，下行 RTP 正常到达 UE；上行 RTP 在 UE 与 eNodeB/S1-U 可见，却在 IMS 媒体面入口（SBC/P-CSCF）抓不到，说明断点在无线与承载之后的上行媒体面。无线 RSRP/上行 SINR/干扰/PRB 均正常，排除覆盖、上行干扰与容量。主根因：三日前 IMS 媒体面（SBC/P-CSCF）的策略或版本变更导致上行方向媒体转发异常，与投诉起点吻合。处置：先端到端分段抓包（UE→eNodeB→S1-U→SBC/P-CSCF→IMS）确认上行 RTP 的单向断点，核对变更工单内容与时间；随后协同 IMS/核心网团队在业务低谷窗口回退或修正该媒体面变更，保留回退方案，不要重启无线或批量调无线/承载参数。验证：双向 RTP 连通、单通比例与通话 MOS 恢复、其他区域不受影响。后续：IMS 媒体面变更纳入影响评估与变更后单通/媒体质量回归验证，增加单通比例与 RTCP 质量监测。",
+   "root_cause": "三日前 IMS 媒体面（SBC/P-CSCF）变更后上行方向语音 RTP 转发异常，形成上行单通；无线、SIP 信令、QCI 1/QCI 5 承载与下行媒体均正常，断点定位在 IMS 媒体面入口。",
+   "rubric_points": [
+    {
+     "id": "P1",
+     "stage": "root_cause",
+     "text": "判定为上行单通（单向语音 RTP 不通），而非无线质差或呼叫失败，依据呼叫能接通、本端能听对方而对方听不到本端。",
+     "weight": 18,
+     "verifiability": "constructed",
+     "source_note": "题干投诉现象与媒体分段结果直接得出。"
+    },
+    {
+     "id": "P2",
+     "stage": "root_cause",
+     "text": "用分段数据排除无线（RSRP/上行 SINR/干扰/PRB 正常）、SIP 信令（INVITE/200 OK/SDP 协商正常）、承载（QCI 1/QCI 5 建立成功）与下行媒体（下行 RTP 正常），把问题收敛到上行媒体面。",
+     "weight": 18,
+     "verifiability": "constructed",
+     "source_note": "题干分段表逐项对照。"
+    },
+    {
+     "id": "P3",
+     "stage": "root_cause",
+     "text": "抓包定位上行 RTP 断点在 IMS 媒体面入口（UE 与 eNodeB/S1-U 可见、SBC/P-CSCF 侧抓不到），并与三日前 IMS/媒体面变更时间吻合。",
+     "weight": 17,
+     "verifiability": "constructed",
+     "source_note": "题干“上行方向 RTP”一行与“事件”一行。"
+    },
+    {
+     "id": "P4",
+     "stage": "root_cause",
+     "text": "说明 VoLTE 语音媒体走 QCI 1（GBR）承载、SIP 信令走 QCI 5，媒体为 RTP；单通即单向 RTP 不通。",
+     "weight": 7,
+     "verifiability": "standard",
+     "source_note": "TS 23.203 QCI 1/QCI 5 定义；TS 24.229 IMS/SIP 与 RTP 媒体面。"
+    },
+    {
+     "id": "P5",
+     "stage": "action",
+     "text": "先低风险取证：端到端分段抓包（UE/eNodeB/S1-U/SBC/IMS）确认单向断点，核对变更工单内容与时间与投诉起点。",
+     "weight": 10,
+     "verifiability": "common_sense",
+     "source_note": "先只读取证再变更的运维通用原则。"
+    },
+    {
+     "id": "P6",
+     "stage": "action",
+     "text": "协同 IMS/核心网团队在业务低谷窗口回退或修正媒体面变更，保留回退方案；不重启无线、不批量调无线/承载参数。",
+     "weight": 13,
+     "verifiability": "common_sense",
+     "source_note": "变更管理通用做法：小范围、可回退、窗口内执行。"
+    },
+    {
+     "id": "P7",
+     "stage": "action",
+     "text": "验证：双向 RTP 连通、单通比例与通话 MOS 恢复、其他区域不受影响。",
+     "weight": 8,
+     "verifiability": "common_sense",
+     "source_note": "闭环验证的通用做法。"
+    },
+    {
+     "id": "P8",
+     "stage": "action",
+     "text": "后续改进：IMS 媒体面变更纳入影响评估与变更后单通/媒体质量回归验证，增加单通比例与 RTCP 质量监测。",
+     "weight": 9,
+     "verifiability": "common_sense",
+     "source_note": "变更后回归验证与基线监测的行业共识。"
+    }
+   ],
+   "deductions": [
+    {
+     "text": "把根因归为无线覆盖/上行干扰/容量，并建议无线优化、扩容或调参。",
+     "points": -20
+    },
+    {
+     "text": "把重启终端、重启 eNodeB 或让用户重拨作为主要处置方案。",
+     "points": -10
+    },
+    {
+     "text": "没有分段抓包定位单向断点，只凭经验断言根因。",
+     "points": -10
+    },
+    {
+     "text": "建议回退/修正变更但无变更窗口、回退或验证说明。",
+     "points": -5
+    }
+   ],
+   "high_risk_actions": [
+    {
+     "action": "业务时段批量重启 SBC/P-CSCF 或 IMS 核心网元。",
+     "why": "会中断该节点下所有 VoLTE/VoNR 通话与注册，影响面远超故障点，且未必能修复策略/配置类问题。"
+    },
+    {
+     "action": "全网批量调整无线或 QCI 承载参数试图修复单通。",
+     "why": "无线与承载本无异常，批量调参会扰动正常业务并掩盖真正的媒体面变更根因。"
+    }
+   ],
+   "discriminating_trap": "“通话质量差/听不清”的第一反应是查无线（RSRP/SINR/上行干扰）并做优化，或让用户重启手机重拨。错误在于：这是单向单通而非质差，无线、SIP 信令、QCI 1/5 承载与下行媒体都正常，必须靠端到端分段抓包把上行 RTP 断点定位到 IMS 媒体面。",
+   "excluded_hypotheses": [
+    "无线覆盖或上行干扰：RSRP/上行 SINR/干扰/PRB 与基线一致，数据业务正常。",
+    "呼叫或 SIP 信令失败：呼叫能接通，INVITE/200 OK 与 SDP 协商正常。",
+    "语音承载未建立：QCI 1 与 QCI 5 专用承载均建立成功。",
+    "编解码不匹配：SDP 媒体协商与编解码一致。",
+    "下行媒体或终端问题：下行 RTP 正常到达 UE，且涉及多小区多机型。"
+   ],
+   "unverified_residuals": [
+    "题干中的抓包结果、RTP 计数与 SBC/P-CSCF 变更细节为构造数据，不对应具体厂商实现。"
+   ]
+  },
+  {
+   "local_idx": 3,
+   "type": "diagnosis",
+   "dimension": "CORE",
+   "difficulty": 2,
+   "title": "某 MME 池区域 Attach/TAU 失败率升高",
+   "prompt": "某运营商 4G（EPC）网络某区域近数小时 Attach 与 TAU（跟踪区更新）成功率明显下降，投诉集中在“开机上不了网/无服务”，但已经附着成功的用户上网、语音正常。该区域 eNodeB 归属一个 MME 池（MME-A、MME-B）。运维汇总信息如下（部分为构造的合成数据，仅用于研判）：\n\n| 项目 | 现象 |\n|---|---|\n| 失败表现 | Attach Reject / TAU Reject 增多，多为网络失败类原因；终端反复重试 |\n| 对照：MME 选择 | 同一 eNodeB 下，因 MME 池选择落到 MME-A 的终端失败，落到 MME-B 的终端正常 |\n| 数据面 | 已附着用户的上网/语音正常，S1-U、S-GW、P-GW 无异常 |\n| S1-MME（S1AP） | eNodeB 与 MME-A、MME-B 的 S1 连接均正常 |\n| MME-A | 进程正常、CPU 未过载；到 HSS 的 S6a（Diameter）链路出现大量超时/错误计数增长 |\n| HSS | 进程正常，与 MME-B 的 S6a 正常 |\n| 事件 | 数小时前 MME-A 与 HSS 之间的一段传输/路由做过调整 |\n\n请定位根因，并给出处置方案（含先做哪些低风险核对、变更与回退、缓解与效果验证）。",
+   "reference_answer": "根因：MME-A 与 HSS 之间的 S6a（Diameter）链路因数小时前的传输/路由调整出现故障或超时，导致 Attach/TAU 过程中的鉴权与位置更新无法完成，MME-A 以网络失败类原因拒绝；已附着用户的数据面（S1-U/S-GW/P-GW）不经该环节，故正常。依据：同一 eNodeB 下落到 MME-B 的终端正常，说明不是无线、eNodeB、S1 或 HSS 整体故障；数据面正常排除 S-GW/P-GW；MME-A CPU 正常但 S6a 超时/错误计数增长，且与传输调整时间吻合，锁定 MME-A 的 S6a 控制面链路。处置：先只读核对 MME-A 的 S6a Diameter 链路状态、到 HSS 的连通性与错误计数、相关告警与传输/路由调整工单时间点；随后恢复 S6a 链路（修传输/路由或 Diameter 配置），必要时在变更窗口临时下调 MME-A 在池内的选择权重/相对容量，把新 Attach 引到 MME-B 缓解，并保留回退。验证：Attach/TAU 成功率恢复、S6a 错误计数回落、失败原因值分布回到基线。注意不要在业务时段直接重启 MME-A 或 HSS。",
+   "root_cause": "MME-A 与 HSS 间的 S6a（Diameter）链路在一次传输/路由调整后故障或超时，使落到 MME-A 的终端无法完成鉴权与位置更新，Attach/TAU 以网络失败类原因被拒；MME-B、数据面与无线均正常。",
+   "rubric_points": [
+    {
+     "id": "P1",
+     "stage": "root_cause",
+     "text": "定位根因为 MME-A 与 HSS 之间的 S6a（Diameter）链路故障/超时，导致鉴权与位置更新失败，Attach/TAU 被拒。",
+     "weight": 25,
+     "verifiability": "constructed",
+     "source_note": "题干“MME-A S6a 超时/错误计数增长”与“传输/路由调整”两行。"
+    },
+    {
+     "id": "P2",
+     "stage": "root_cause",
+     "text": "对照论证：同 eNodeB 下落到 MME-B 的终端正常、已附着用户数据面正常、S1 正常，排除无线/S1、S-GW/P-GW 数据面与 HSS 整体故障，锁定 MME-A 控制面（S6a）。",
+     "weight": 15,
+     "verifiability": "constructed",
+     "source_note": "题干 MME 选择对照、数据面、S1-MME、HSS 各行。"
+    },
+    {
+     "id": "P3",
+     "stage": "root_cause",
+     "text": "说明 Attach/TAU 需经 S6a 向 HSS 完成鉴权与取签约，S6a 不通会以网络失败类 EMM 原因拒绝，而数据面不经该环节。",
+     "weight": 10,
+     "verifiability": "standard",
+     "source_note": "TS 29.272 S6a（MME-HSS，Diameter）；TS 24.301 EMM Attach/TAU 与原因值；TS 23.401 EPC 控制面/用户面分离。"
+    },
+    {
+     "id": "P4",
+     "stage": "action",
+     "text": "先只读核对：MME-A 的 S6a 链路状态、到 HSS 的连通性与错误计数、相关告警，并核对传输/路由调整工单时间与故障起点吻合。",
+     "weight": 15,
+     "verifiability": "common_sense",
+     "source_note": "先低风险取证、结合变更记录再处置的运维通用原则。"
+    },
+    {
+     "id": "P5",
+     "stage": "action",
+     "text": "处置：恢复 S6a 链路（修传输/路由或 Diameter 配置）；必要时在变更窗口临时下调 MME-A 在池内选择权重把新 Attach 引到 MME-B 缓解，保留回退。",
+     "weight": 15,
+     "verifiability": "common_sense",
+     "source_note": "MME 池可通过权重/相对容量调整引导选择的通用做法；变更需窗口与回退。"
+    },
+    {
+     "id": "P6",
+     "stage": "action",
+     "text": "验证：Attach/TAU 成功率恢复、S6a 错误计数回落、失败原因值分布回到基线。",
+     "weight": 10,
+     "verifiability": "common_sense",
+     "source_note": "闭环验证的通用做法。"
+    },
+    {
+     "id": "P7",
+     "stage": "action",
+     "text": "后续改进：S6a 链路与 Diameter 对端增加监控告警与冗余，MME 池健康与容量纳入巡检。",
+     "weight": 10,
+     "verifiability": "common_sense",
+     "source_note": "闭环改进与冗余的行业共识。"
+    }
+   ],
+   "deductions": [
+    {
+     "text": "把根因归为无线覆盖/eNodeB 并建议无线优化。",
+     "points": -15
+    },
+    {
+     "text": "把重启 MME-A 或 HSS 作为首选处置。",
+     "points": -15
+    },
+    {
+     "text": "把根因归为 S-GW/P-GW 数据面故障。",
+     "points": -10
+    },
+    {
+     "text": "给出处置但无核对、回退或验证说明。",
+     "points": -5
+    }
+   ],
+   "high_risk_actions": [
+    {
+     "action": "业务时段直接重启 MME-A 或 HSS。",
+     "why": "MME 重启会中断其下所有终端信令并触发大规模重附着/TAU 风暴；HSS 影响范围更大。二者都不是链路故障的正确修复方式。"
+    },
+    {
+     "action": "未评估容量就把 MME 池全部新 Attach 一次性切到 MME-B。",
+     "why": "可能使 MME-B 过载，引发二次故障，扩大影响面。"
+    }
+   ],
+   "discriminating_trap": "“Attach 失败/无服务”的第一反应是查无线与 eNodeB，或怀疑 HSS 整体故障、直接重启 MME。错误在于：同区域落到 MME-B 的终端正常、数据面正常，问题是 MME-A 的 S6a 控制面链路，重启既无益又有重附着风暴风险。",
+   "excluded_hypotheses": [
+    "无线或 S1 问题：落到 MME-B 的终端正常，eNodeB 与两 MME 的 S1 连接正常。",
+    "HSS 整体故障：HSS 与 MME-B 的 S6a 正常，MME-B 下终端鉴权正常。",
+    "S-GW/P-GW 数据面故障：已附着用户上网与语音正常。",
+    "终端问题：涉及一批终端，且落到 MME-B 即正常。",
+    "MME-A 处理能力不足：MME-A 进程正常、CPU 未过载，仅 S6a 超时。"
+   ],
+   "unverified_residuals": [
+    "题干中的成功率、S6a 错误计数与网元名称为构造数据，不对应具体厂商实现。"
+   ]
+  },
+  {
+   "local_idx": 4,
+   "type": "diagnosis",
+   "dimension": "SERVICE",
+   "difficulty": 3,
+   "title": "某企业实时业务忙时卡顿，小区并未满载",
+   "prompt": "某运营商 5G 网络上一家企业客户投诉：其一项实时业务（如实时视频回传）在每日忙时出现卡顿、时延抖动增大、偶发丢包，闲时正常；同一小区内其他用户的上网、视频等业务体验正常。运维汇总信息如下（部分为构造的合成数据，仅用于研判）：\n\n| 项目 | 现象 |\n|---|---|\n| 业务表现 | 该企业实时业务忙时卡顿、时延抖动大；闲时正常 |\n| 小区负荷 | 忙时下行 PRB 利用率升高但未满载（未到持续 100%） |\n| 对照 | 同小区其他用户/其他业务忙时体验正常 |\n| 签约/策略 | 企业与运营商约定该业务使用有保障的 GBR QoS（约定 5QI 与带宽）；UDM/PCF 侧签约近 30 日无变更 |\n| 实际生效 QoS | 抓包/信令显示该业务对应 QoS Flow 实际映射到默认非 GBR 5QI（best-effort），GBR 保障未生效，ARP 与约定不符 |\n| 事件 | 数日前一次 PCF 策略/SMF 侧 QoS 规则相关的变更（工单评估为“无业务影响”），时间与忙时问题加重吻合 |\n| 无线/传输 | RSRP/SINR 正常，传输时延丢包正常 |\n\n请定位根因，并给出处置方案（含先做哪些低风险核对、变更与回退、灰度与效果验证）。",
+   "reference_answer": "根因：该企业实时业务对应的 QoS Flow 未按签约映射到约定的 GBR 5QI，而是落到默认非 GBR（best-effort）5QI，GBR 保障与约定的 ARP 未生效；忙时无线资源紧张时该业务与其他 best-effort 业务一起被抢占调度，因而卡顿、时延抖动增大，闲时资源充裕则正常。依据：同小区其他业务正常、PRB 未持续满载、仅该企业该业务受影响，排除无线容量与普遍拥塞；签约侧约定为 GBR 且无变更，但实际生效的 5QI/ARP 与约定不符，说明是策略/QoS 规则下发环节出错；与数日前 PCF 策略/SMF QoS 规则变更时间吻合。处置：先只读核对该 PDU Session/QoS Flow 的签约（UDM/PCF 下发）QoS 规则、实际生效的 5QI/ARP/GBR 与约定对比，核对变更工单内容与时间；随后在变更窗口修正 PCF 策略或 SMF/签约相关配置，使该业务正确映射到约定的 GBR 5QI 并生效，保留回退，先灰度验证再推广。验证：忙时该业务时延/抖动/丢包与体验恢复、5QI 生效正确，且不影响同小区其他业务与小区负荷。后续：QoS/切片策略变更纳入影响评估与变更后业务质量回归，增加关键业务 5QI 一致性与体验监测。",
+   "root_cause": "一次 PCF/SMF QoS 规则变更后，该企业实时业务的 QoS Flow 未映射到约定的 GBR 5QI，落到默认非 GBR（best-effort）5QI，GBR 保障未生效，忙时被抢占导致卡顿与时延抖动；无线容量与签约本身均正常。",
+   "rubric_points": [
+    {
+     "id": "P1",
+     "stage": "root_cause",
+     "text": "定位根因为该业务 QoS Flow 未映射到约定的 GBR 5QI、落到默认非 GBR（best-effort）5QI，忙时无 QoS 保障被抢占，造成卡顿与时延抖动。",
+     "weight": 22,
+     "verifiability": "constructed",
+     "source_note": "题干“实际生效 QoS”行与业务忙/闲时表现。"
+    },
+    {
+     "id": "P2",
+     "stage": "root_cause",
+     "text": "对照论证：同小区其他业务正常、PRB 未持续满载、仅该企业该业务受影响，排除无线容量不足与普遍拥塞，锁定为该业务的 QoS 配置。",
+     "weight": 15,
+     "verifiability": "constructed",
+     "source_note": "题干小区负荷、对照两行。"
+    },
+    {
+     "id": "P3",
+     "stage": "root_cause",
+     "text": "指出与数日前 PCF 策略/SMF QoS 规则变更吻合，且信令/抓包显示实际生效的 5QI/ARP 与签约约定不符（GBR 未生效），而签约本身无变更。",
+     "weight": 13,
+     "verifiability": "constructed",
+     "source_note": "题干签约/策略、实际生效 QoS、事件三行。"
+    },
+    {
+     "id": "P4",
+     "stage": "root_cause",
+     "text": "说明 5QI 决定资源类型（GBR/non-GBR）、优先级与时延预算，只有 GBR 才提供带宽保障，默认 5QI 9 为 best-effort。",
+     "weight": 8,
+     "verifiability": "standard",
+     "source_note": "TS 23.501 5QI 特性表（资源类型、优先级、时延预算）与 GBR/non-GBR、ARP 机制。"
+    },
+    {
+     "id": "P5",
+     "stage": "action",
+     "text": "先只读核对：该 PDU Session/QoS Flow 的签约（UDM/PCF）QoS 规则、实际生效的 5QI/ARP/GBR 与约定对比，核对变更工单内容与时间。",
+     "weight": 12,
+     "verifiability": "common_sense",
+     "source_note": "先低风险取证、结合变更记录再变更的运维通用原则。"
+    },
+    {
+     "id": "P6",
+     "stage": "action",
+     "text": "在变更窗口修正 PCF 策略或 SMF/签约配置，使该业务正确映射到约定 GBR 5QI 并生效，保留回退，先灰度验证再推广。",
+     "weight": 13,
+     "verifiability": "common_sense",
+     "source_note": "变更管理通用做法：小范围、可回退、灰度、窗口内执行。"
+    },
+    {
+     "id": "P7",
+     "stage": "action",
+     "text": "验证：忙时该业务时延/抖动/丢包与体验恢复、5QI 生效正确，且不影响同小区其他业务与小区负荷。",
+     "weight": 8,
+     "verifiability": "common_sense",
+     "source_note": "闭环验证的通用做法。"
+    },
+    {
+     "id": "P8",
+     "stage": "action",
+     "text": "后续改进：QoS/切片策略变更纳入影响评估与变更后业务质量回归，增加关键业务 5QI 一致性与体验监测。",
+     "weight": 9,
+     "verifiability": "common_sense",
+     "source_note": "变更后回归验证与基线监测的行业共识。"
+    }
+   ],
+   "deductions": [
+    {
+     "text": "把根因归为无线容量/覆盖不足，建议扩容、加站或调无线参数。",
+     "points": -20
+    },
+    {
+     "text": "建议对小区限流或降低其他用户 QoS 来给该业务让路。",
+     "points": -10
+    },
+    {
+     "text": "未核对签约约定与实际生效 5QI/ARP，只凭经验断言。",
+     "points": -10
+    },
+    {
+     "text": "给出修策略建议但无变更窗口、回退或验证说明。",
+     "points": -5
+    }
+   ],
+   "high_risk_actions": [
+    {
+     "action": "忙时批量重启 SMF/UPF 或对全网重下发策略。",
+     "why": "影响面远超该企业该业务，可能中断大量在网会话，且并非根因的正确修复方式。"
+    },
+    {
+     "action": "直接降低同小区其他用户/业务的 QoS 或强制限流来保障该业务。",
+     "why": "损害其他正常用户，且掩盖了该业务 5QI 映射错误这一真正根因。"
+    }
+   ],
+   "discriminating_trap": "“业务忙时卡顿”的第一反应是无线容量或覆盖不足，建议扩容或调无线参数。错误在于：PRB 未持续满载、同小区其他业务正常、仅该企业该业务受影响，真正根因是该业务 QoS Flow 的 5QI 映射错误使 GBR 保障未生效，忙时被当作 best-effort 抢占。",
+   "excluded_hypotheses": [
+    "无线容量/覆盖不足：PRB 未持续满载，RSRP/SINR 正常，同小区其他业务正常。",
+    "传输问题：传输时延与丢包正常。",
+    "签约带宽本身不足：签约约定为 GBR，只是未正确生效。",
+    "普遍拥塞：仅该企业该业务受影响，闲时正常。",
+    "终端问题：为该企业一类业务，与终端个体无关。"
+   ],
+   "unverified_residuals": [
+    "题干中的具体 5QI 值、抓包/信令字段与变更细节为构造数据，不对应具体厂商实现。"
+   ]
+  }
+ ]
+}

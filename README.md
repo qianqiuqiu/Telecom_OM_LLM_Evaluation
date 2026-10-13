@@ -60,3 +60,15 @@ uv run python scripts/build_test_subset.py           # 最终测试子集 data/p
 ```
 
 复查原始输出与证据文字只在 `results/audit/answer_check_full/`（不入库）。
+
+场景题（45 道中文场景题 + rubric）起草与两层事实核验，按顺序执行：
+
+```bash
+uv run python scripts/merge_scenario_drafts.py       # 合并 data/scenarios/drafts/*.v{1,2}.json → scenarios_draft.json（稳定 ID，被替换题留空号）
+uv run python scripts/check_scenarios.py             # 机器校验：ID/权重和/verifiability/stage/分布（0 错 0 警为通过）
+uv run python scripts/verify_three_vote.py           # 三票跨厂商事实核验（glm-5.2/kimi-k2.6/qwen3.8-27b，缓存增量）
+uv run python scripts/consolidate_verification.py    # 汇总三票 + subagent 逐题判定为分级清单
+uv run python scripts/apply_verification_fixes.py    # 应用确认的修订，生成 v2 草稿
+```
+
+三票核验与逐题判定的原始响应在 `results/scenarios/{three_vote,perquestion}/`（不入库）。**注意：三票在「标准条款引用」上误报率高，只作粗筛；改题前必须逐题人工/强 subagent 复核，TS 条款号需人工查证。**
