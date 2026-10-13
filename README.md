@@ -96,3 +96,17 @@ uv run python analysis/judge_meta.py --run probes_v1 --split debug              
 ```
 
 judge 后端：`claude:<模型 ID>` 经 Claude Code 无头模式（需本机已安装并登录 `claude`），`bailian:<模型 ID>` 经百炼。加 `--dry-run` 只看发送的提示，加 `--repeats 3` 测 judge 自身稳定性。判定记录在 `results/judge/<run>/`（不入库）。**注意：三票在「标准条款引用」上误报率高，只作粗筛；改题前必须逐题人工/强 subagent 复核，TS 条款号需人工查证。**
+
+场景题回答生成与天花板试跑（被测模型只看题干，统一用中性系统提示 `configs/assistant/system_v1.md`）：
+
+```bash
+uv run python scripts/generate_answers.py --run ceiling_pilot --model qwen3.8-flash \
+    --model deepseek-v4.1-flash --mode off --dry-run                 # 先看调用次数与粗估花费，不调用
+uv run python scripts/generate_answers.py --run ceiling_pilot --model qwen3.8-flash \
+    --model deepseek-v4.1-flash --mode off                           # 生成 → results/answers/ceiling_pilot.jsonl
+uv run python scripts/judge_scenarios.py --answers results/answers/ceiling_pilot.jsonl \
+    --judge claude:claude-haiku-5-5 --prompt v1 --run ceiling_pilot  # 判分（订阅额度）
+uv run python analysis/ceiling_pilot.py --run ceiling_pilot          # 触顶判断 → reports/scenarios/ceiling_pilot.md
+```
+
+生成脚本按调用缓存（`results/answers/raw/<模型>__<mode>.jsonl`，不入库），中断后重跑同一命令续上。题目与参数不变时已有回答直接复用，例如正式的 7 模型关思考（`--group main --mode off`）会复用试跑的 90 份；思考对照用 `--mode on --repeats 3`。
