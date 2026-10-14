@@ -18,6 +18,7 @@
 
 用法：
   uv run python analysis/judge_agreement.py --run main_off --answers results/answers/main_off.jsonl
+  ... --main bailian_deepseek-v4.1-flash --second claude_claude-haiku-5-5_medium --compare-only   # 跨厂商对照
 输出（脚本生成，请勿手改；仲裁表的 human / note 两列由用户填写，重跑不覆盖已有的仲裁表）：
   reports/judge/<run>_agreement.md                     一致性、名次、长度偏差检查、仲裁结果与最终主分
   results/judge/<run>/final_scores.csv                  最终主分（仲裁表填完后才生成）
@@ -195,6 +196,8 @@ def main():
     ap.add_argument("--answers", required=True, type=Path)
     ap.add_argument("--main", default="claude_claude-haiku-5-5_medium", help="主 judge 的日志名（不含 .jsonl）")
     ap.add_argument("--second", default="claude_claude-sonnet-5-5_medium")
+    ap.add_argument("--compare-only", action="store_true",
+                    help="只报两档对照（如跨厂商 judge 对 Haiku / Sonnet），不做长度偏差结论、仲裁抽样与最终计分")
     ap.add_argument("--scenarios", type=Path, default=SCENARIOS)
     ap.add_argument("--out", type=Path, default=OUT)
     args = ap.parse_args()
@@ -299,6 +302,15 @@ def main():
           f"（{N_PERM} 次，种子 {SEED}，n = {len(rows)}）。",
           "- 结论：" + ("**主 judge 有长度偏差**（ρ > 0 且 p < 0.05）→ 按规则排序改用第二 judge 的分数做主分。" if biased
                        else "未检出主 judge 的长度偏差（规则：ρ > 0 且 p < 0.05）→ 维持主 judge 的分数做主分。"), ""]
+
+    if args.compare_only:
+        L = L[:-2] + ["- 对照模式：只报统计量，不据此改主分。", ""]
+        REPORTS.mkdir(parents=True, exist_ok=True)
+        rep = REPORTS / f"{args.run}_agreement_{args.main}_vs_{args.second}.md"
+        rep.write_text("\n".join(L), encoding="utf-8")
+        print("\n".join(L))
+        print(f"→ {rep}")
+        return
 
     # ---------- 仲裁抽样 ----------
     rng = random.Random(SEED)
