@@ -13,7 +13,7 @@
   缓存键 = 系统提示 + 模型 + mode 参数 + max_tokens + 题干 + 重复序号的哈希，任何一项变了就重答。
   已有成功记录的直接复用：题目与参数都不变时，试跑的回答会被正式生成复用。
   报错或答案为空的调用落盘记为失败，下次运行自动重试，不会被悄悄剔除。
-- 输出：results/answers/<run>.jsonl（不入库），每行
+- 输出：results/answers/<run>.jsonl（入库：生成在 Mac 上跑，判分在云端会话里跑，靠仓库传递；raw/ 缓存不入库），每行
   {"answer_id", "scenario_id", "source", "text", "model", "mode", "repeat", "finish_reason"}，
   source = <模型>:<mode>；只含本次范围内的成功记录。截断（finish_reason = length）的回答照常导出，在汇总里计数。
 

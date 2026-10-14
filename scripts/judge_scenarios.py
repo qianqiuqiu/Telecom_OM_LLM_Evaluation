@@ -6,15 +6,16 @@ judge 只输出逐项判定（要点 covered / partial / missed、扣分项与�
 另核对 judge 给的原文摘录是否真出现在回答里，用来发现 judge 编造证据。
 
 后端（--judge）：
-  claude:<模型 ID>   经 Claude Code 无头模式（claude -p）调用，走本机登录的订阅额度；
+  claude:<模型 ID>   经 Claude Code 无头模式（claude -p）调用，走当前环境登录账号的订阅额度；
+                     正式运行统一在 Claude Code 云端会话里跑（Oct 14 决定，见 STATUS），不混用 Mac 与云端的判定。
                      用完整 ID（claude-haiku-5-5、claude-sonnet-5-5），不用会被静默更新的别名。
                      在空的临时目录里运行、不加载设置与 MCP，避免项目 CLAUDE.md 混进 judge 上下文
-                     （用户级 ~/.claude/CLAUDE.md 仍会被读入，里面不要放与评分相关的内容）。
+                     （用户级 ~/.claude/CLAUDE.md 仍会被读入，里面不要放与评分相关的内容；云端容器里没有这个文件）。
                      这两个模型不接受自定义温度，judge 自身稳定性靠 --repeats 测量。
   bailian:<模型 ID>  经百炼 OpenAI 兼容接口（.env），关思考、温度 0；用于跨厂商对照与自家偏好实验。
 
 输入：回答 JSONL，每行 {"answer_id", "scenario_id", "source", "text"}（探针由 build_judge_probes.py 生成）。
-输出（results/，不入库）：
+输出（入库，供云端判分后保存与复算；跑完一轮即提交）：
   results/judge/<run>/<judge 标签>.jsonl       每次调用一行，追加写、可断点续跑：逐项判定、校验结果、
                                               分数、证据核对、实际返回的模型名、token 用量、耗时
   results/judge/<run>/<judge 标签>.scores.csv  每个回答 × 重复序号一行的分数表（由 jsonl 重算）

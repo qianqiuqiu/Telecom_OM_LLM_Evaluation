@@ -24,7 +24,7 @@ cp .env.example .env   # 填入百炼工作空间的 LLM_BASE_URL 与 LLM_API_KE
 | `configs/` | 被测模型清单、EvalScope 任务配置 |
 | `scripts/` | 数据审计、污染检测、追问施压、模型探测 |
 | `analysis/` | 统计检验、judge 元评测、回归门禁 |
-| `results/` | 原始请求与响应（不入库） |
+| `results/` | 原始请求与响应（不入库；例外：场景题回答 `answers/<run>.jsonl` 与 judge 判定 `judge/` 入库） |
 | `reports/` | 生成的报告与图表 |
 | `docs/` | 文档与历史版本 |
 
@@ -91,11 +91,13 @@ uv run python scripts/make_judge_split.py            # 调试集 / 留出集（�
 uv run python scripts/build_judge_probes.py segment  # 参考答案切分映射（百炼 qwen3.8-max，缓存增量）
 uv run python scripts/build_judge_probes.py build    # 构造探针 + 参考答案缺口清单 + drop 探针抽查表
 uv run python scripts/judge_scenarios.py --answers data/scenarios/judge_probes/probes.jsonl \
-    --judge claude:claude-haiku-5-5 --prompt v1 --run probes_v1 --split debug   # judge 判探针（订阅额度）
+    --judge claude:claude-haiku-5-5 --prompt v1 --run probes_v1 --split debug   # judge 判探针（云端会话，订阅额度）
 uv run python analysis/judge_meta.py --run probes_v1 --split debug              # 元评测报告 → reports/judge/
 ```
 
-judge 后端：`claude:<模型 ID>` 经 Claude Code 无头模式（需本机已安装并登录 `claude`），`bailian:<模型 ID>` 经百炼。加 `--dry-run` 只看发送的提示，加 `--repeats 3` 测 judge 自身稳定性。判定记录在 `results/judge/<run>/`（不入库）。**注意：三票在「标准条款引用」上误报率高，只作粗筛；改题前必须逐题人工/强 subagent 复核，TS 条款号需人工查证。**
+judge 后端：`claude:<模型 ID>` 经 Claude Code 无头模式（`claude -p`，订阅额度），`bailian:<模型 ID>` 经百炼。加 `--dry-run` 只看发送的提示，加 `--repeats 3` 测 judge 自身稳定性。判定记录在 `results/judge/<run>/`（入库）。
+
+**运行位置（Oct 14 起）**：`claude` 后端的 judge 一律在 Claude Code 云端会话里跑（仓库已带齐探针、题目、提示词与划分，容器自带已登录的 `claude`），每跑完一轮立即把 `results/judge/<run>/` 与 `reports/judge/` 提交推送，容器回收前没提交的会丢（缓存可续跑补回）。需要百炼 key（`.env`）的步骤仍在 Mac 上跑：回答生成、`build_judge_probes.py segment`、三票核验、`bailian:` judge；生成的 `results/answers/<run>.jsonl` 提交入库后再到云端判分。`results/` 其余内容（横评、核验原始响应、`results/answers/raw/`）仍只在 Mac 本地。**注意：三票在「标准条款引用」上误报率高，只作粗筛；改题前必须逐题人工/强 subagent 复核，TS 条款号需人工查证。**
 
 场景题回答生成与天花板试跑（被测模型只看题干，统一用中性系统提示 `configs/assistant/system_v1.md`）：
 
@@ -103,9 +105,9 @@ judge 后端：`claude:<模型 ID>` 经 Claude Code 无头模式（需本机已�
 uv run python scripts/generate_answers.py --run ceiling_pilot --model qwen3.8-flash \
     --model deepseek-v4.1-flash --mode off --dry-run                 # 先看调用次数与粗估花费，不调用
 uv run python scripts/generate_answers.py --run ceiling_pilot --model qwen3.8-flash \
-    --model deepseek-v4.1-flash --mode off                           # 生成 → results/answers/ceiling_pilot.jsonl
+    --model deepseek-v4.1-flash --mode off                           # 生成（Mac）→ results/answers/ceiling_pilot.jsonl，提交入库
 uv run python scripts/judge_scenarios.py --answers results/answers/ceiling_pilot.jsonl \
-    --judge claude:claude-haiku-5-5 --prompt v1 --run ceiling_pilot  # 判分（订阅额度）
+    --judge claude:claude-haiku-5-5 --prompt v1 --run ceiling_pilot  # 判分（订阅额度；试跑当时在 Mac 上跑）
 uv run python analysis/ceiling_pilot.py --run ceiling_pilot          # 触顶判断 → reports/scenarios/ceiling_pilot.md
 ```
 

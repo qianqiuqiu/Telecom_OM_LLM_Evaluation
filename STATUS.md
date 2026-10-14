@@ -15,7 +15,7 @@
 6 出结论（横评、思考对照、追问施压、精度回归、选型报告） 未开始
 ```
 
-场景题已定稿 v1.0（Oct 14，tag `scenarios-v1.0`），之后改题只能出勘误版本。drop 探针人工抽查已完成（删要点检出改以宽松口径为主指标，见第四节第 4 项）。下一步：在 Mac 上用 Haiku、Sonnet 判调试集探针，迭代 judge 提示词。这一段是整个项目最容易返工的地方：场景题 → 模型回答 → judge 验证 → judge 提示词 → 全量判分环环相扣，上游一改，下游作废，所以按第二节的顺序走。
+场景题已定稿 v1.0（Oct 14，tag `scenarios-v1.0`），之后改题只能出勘误版本。drop 探针人工抽查已完成（删要点检出改以宽松口径为主指标，见第四节第 4 项）。下一步：在云端会话里用 Haiku、Sonnet 判调试集探针（由 Claude 执行并提交结果），迭代 judge 提示词。这一段是整个项目最容易返工的地方：场景题 → 模型回答 → judge 验证 → judge 提示词 → 全量判分环环相扣，上游一改，下游作废，所以按第二节的顺序走。
 
 ## 二、下一步（建议顺序）
 
@@ -25,8 +25,8 @@
 2. ~~**场景题收尾**~~（Oct 13 完成，v3 草稿）：10 个缺口已补（见第四节第 3 项）；48 条待核验项已分诊（`data/scenarios/residuals_triage.csv`），无需删题或降级。改过的 10 题已在 Mac 上重切（`53d5dbe`）：45/45 题映射合格，探针仍为 337 个，缺口 0，每个补写的要点都映射到了补的那句话。4 条进入计分的协议取值已于 Oct 14 对照原文核对，全部成立（见第四节第 3 项）。
 3. ~~**天花板试跑**~~（Oct 13 完成，报告 `reports/scenarios/ceiling_pilot.md`）：90 份回答（`e5c3f35`）全部判成，0 失败。触顶 **3/45**（SC-K02、SC-D26、SC-K01），未超过 15 → **照常定稿，不加难度**。均值 deepseek-v4.1-flash 62.7、qwen3.8-flash 47.9，单题 ≥85 的分别有 12 题、5 题。结论稳健：把一票否决和扣分全部去掉、只看要点原始分，触顶也只有 5 题，门槛降到 80 是 8 题，要降到 75 才到 16 题。需要留意：一票否决 22/90 条（qwen 14、deepseek 8），摘录核对找不到 19/657。这是未经验证的 Haiku v1 的判定，可能有误触发，留到第 5 步用探针检验，不据此改提示词。原计划：qwen3.8-flash、deepseek-v4.1-flash 关思考各答 45 题（`scripts/generate_answers.py`，90 次调用，粗估 ¥0.8），Haiku + 提示词 v1 判这 90 份（订阅额度），`analysis/ceiling_pilot.py` 按事先定的规则出结论：某题两个模型都 ≥ 85 分记为触顶，触顶超过 15 题（三分之一）就在定稿前给触顶题加难度，否则照常定稿（规则见第五节，跑之前入库）。Haiku v1 未经验证，只用来发现明显触顶；这批判定不拿来改 judge 提示词。客观题已有 440/731 题全员答对；场景题如果也全员高分，排序和 judge 验证都会失效，此时调难度比事后补救便宜。定稿不改题时，这 90 份回答在第 6 步直接复用。
 4. ~~**场景题定稿 v1.0**~~（Oct 14 完成，tag `scenarios-v1.0`）。之后改题只能出勘误版本，并标出受影响的回答和判分。定稿时只改了 4 条 `unverified_residuals` 的说明文字（不进 judge 缓存键与 `ref_sha`），切分与探针仍有效，不用重跑 `segment` / `build`。drop 探针人工抽查已完成（Oct 14，30 条，结果见第四节第 4 项）。
-5. **judge 提示词迭代** ← 下一步：Haiku、Sonnet 各判调试集探针（约 165 个），`analysis/judge_meta.py` 出报告 → 改提示词 v2、v3（只看调试集）→ 锁定 → 留出集报最终数字，并抽一部分重复判 3 次测稳定性。删要点检出看「判非 covered」（主指标），「判 missed」只作参考，不作为改提示词的目标。
-6. **生成与判分**：7 模型关思考 × 45 题（约 ¥9）；思考对照的回答（约 ¥130，花钱前确认）。用锁定的 judge 一次性判全部回答；跨厂商 judge（百炼）只判验证子集；两档 judge 分歧的要点抽 50–80 个由用户仲裁。
+5. **judge 提示词迭代** ← 下一步（云端会话跑，先 Haiku、出报告后再 Sonnet，每轮跑完即提交 `results/judge/<run>/` 与报告）：Haiku、Sonnet 各判调试集探针（约 165 个），`analysis/judge_meta.py` 出报告 → 改提示词 v2、v3（只看调试集）→ 锁定 → 留出集报最终数字，并抽一部分重复判 3 次测稳定性。删要点检出看「判非 covered」（主指标），「判 missed」只作参考，不作为改提示词的目标。
+6. **生成与判分**：7 模型关思考 × 45 题（约 ¥9）；思考对照的回答（约 ¥130，花钱前确认）。回答在 Mac 上生成（百炼 key 只在 `.env`），把 `results/answers/<run>.jsonl` 提交入库；用锁定的 judge 在云端会话里一次性判全部回答；跨厂商 judge（百炼）只判验证子集；两档 judge 分歧的要点抽 50–80 个由用户仲裁。
 7. **不依赖 judge 的并行项**：精度回归客观题部分（门禁阈值先提交打 tag，见 D3）、污染检测 TS-Guessing、TeleLogs 子集、干扰项质量抽查（72 对选项完全相同的非重复题）。
 8. 追问施压 → 选型报告、数据卡、回归报告 → 简历 bullet 与模拟面试。
 
@@ -136,11 +136,15 @@ D1（judge 模型）、D2（judge 验证方式）已于 Oct 13 定下，见第�
 | Oct 13 | 天花板试跑结果：触顶 3/45，按事先定的规则照常定稿，不给触顶题加难度。 |
 | Oct 14 | 4 条协议取值对照原文核对全部成立，题目与权重不改；场景题定稿 v1.0，打 tag `scenarios-v1.0`，之后改题只出勘误版本。 |
 | Oct 14 | drop 探针人工抽查 30 条：N 19、? 11、Y 0。删要点检出改以「判非 covered」为主指标，「判 missed」只作参考、不作为提示词迭代目标；不重切、不改 rubric；Spec 升为 v2.5。（「超过 3 条先查映射」的门槛是看数据前提出的，但用户填表前未确认，不算事先定的规则；映射仍逐条查过。） |
+| Oct 14 | `claude` 后端的 judge 正式运行统一改在云端会话里跑（由 Claude 执行、跑完即提交），回答生成等需要百炼 key 的步骤仍在 Mac；`results/answers/<run>.jsonl` 与 `results/judge/` 改为入库（取代 Oct 13「`results/` 只在本地」中这两部分）。 |
 
 ## 六、环境、费用与账号
 
-- 代码：GitHub `qianqiuqiu/Telecom_OM_LLM_Evaluation`（public）。场景题已合入 main（`e2855cf`）。
-- 不入库、只在用户本地 Mac 的：`results/`（全部原始请求与响应，25,585 次横评调用、核验原始输出等）、`data/raw/`（TeleQnA、TeleLogs）、`.env`、`.venv`。云端会话里没有这些，跑不了依赖它们的脚本（分析层、费用估算等），只能改代码和文档。
+- 代码：GitHub `qianqiuqiu/Telecom_OM_LLM_Evaluation`（public）。场景题 v1.0 已合入 main（tag `scenarios-v1.0`）。
+- 运行位置（Oct 14 起）：
+  - 云端会话（Claude Code on the web）：`claude` 后端的 judge（调试集 / 留出集探针、正式判分）、`analysis/judge_meta.py`、代码与文档修改。容器自带已登录的 `claude`（Oct 14 实测：Haiku 判 1 个探针成功，返回模型 claude-haiku-5-5），`uv run` 自动装依赖。容器会回收，跑完一轮立即提交推送；会话只能推自己的分支（推 main 与 tag 返回 403），合入 main 走 PR。网络只放行 GitHub 与包管理器，连不上百炼。
+  - Mac：需要百炼 key 的（回答生成、`build_judge_probes.py segment`、三票核验、`bailian:` judge）和依赖本地 `results/` 历史数据的（横评分析层、费用估算）。
+- 不入库、只在用户本地 Mac 的：`results/` 的大部分（25,585 次横评调用、核验原始输出、`results/answers/raw/` 生成缓存等）、`data/raw/`（TeleQnA、TeleLogs）、`.env`、`.venv`。云端会话里没有这些，跑不了依赖它们的脚本（横评分析层、费用估算等）。例外（Oct 14 起入库，`.gitignore` 已放行）：场景题回答 `results/answers/<run>.jsonl` 与 judge 判定 `results/judge/`。
 - 原文与证据文字只放 `results/`、`data/raw/`；`data/processed/` 只放 ID 与标签。
 - 所有被测模型经阿里云百炼 OpenAI 兼容接口（`.env` 的 `LLM_BASE_URL`、`LLM_API_KEY`）。HF token 在用户 `~/.zshrc`。
 - 余额（Oct 13）：学生代金券约 ¥259.7，现金 ¥9.14。主实验实际消耗远低于估算（免费额度抵了大半，代金券只扣 ¥1 多）。
@@ -162,7 +166,7 @@ D1（judge 模型）、D2（judge 验证方式）已于 Oct 13 定下，见第�
 - 场景题 ID 稳定：被替换 / 删除的题留空号（当前 SC-D03/D06/D09/D10 空缺），不要重排，否则核验记录与草稿的 `source_draft` 映射会错乱。
 - judge 走 `claude -p` 时在空临时目录运行、不加载设置与 MCP，项目 CLAUDE.md 不会进入 judge 上下文；但用户级 `~/.claude/CLAUDE.md` 仍会被读入，里面不要放与评分相关的内容。云端会话里还会注入两段与评分无关的系统提醒。
 - 云端会话的网络策略拦截 3gpp.org、etsi.org 及常见规范镜像站，但能访问 GitHub。需要协议原文时，从收录了 3GPP 官方文件的开源仓库取，并读文件头核对版本，例如 P1Sec/pycrate（`pycrate_asn1dir/3GPP_EUTRAN_RRC_36331/36331-h40.txt`）、open5gs/open5gs（`lib/nas/5gs/support/r17.9.0/24501-h90.docx`）、learnwithexamples/3gpp_spec（`lte/36211/36211-g20.zip`）。36.211 的公式是内嵌公式对象，要转成图片（`soffice --convert-to png`）才能读。
-- 在云端会话里跑 judge 时，`results/judge/` 随容器回收而丢失；要么在 Mac 上跑，要么跑完把结果拷出来。
+- 在云端会话里跑 judge 时，没提交的 `results/judge/` 会随容器回收丢失：每跑完一轮立即提交推送（缓存键不变，重跑同一命令只补没判的）。Mac 与云端的 `claude -p` 环境不同（云端多注入两段系统提醒、没有用户级 CLAUDE.md），元评测与正式判分必须在同一环境跑，Oct 14 起统一在云端。天花板试跑的判定是在 Mac 上跑的，只用于触顶判断，不进元评测。
 - 映射模型不能与被检验的 judge 同一家（默认 qwen3.8-max），否则 judge 与「真值」共享同一套理解、一致率虚高。冒烟测试用 Haiku 当映射模型只为测流程，结果没有入库。
 - 温度 0 + 固定 seed 在 API 端也不可复现（Oct 11 实测），所有模型都要测噪声底。
 - 在 git worktree 里工作时，`results/`、`data/raw/`、`.env`、`.venv` 需软链到主目录（写入 `.git/info/exclude`）；worktree 里没有 `.env`，`scripts/verify_three_vote.py` 的 `load_env()` 会顺着 `.git` 文件的 gitdir 回到主目录读取，新脚本照此处理。
@@ -189,4 +193,4 @@ D1（judge 模型）、D2（judge 验证方式）已于 Oct 13 定下，见第�
 | `analysis/judge_meta.py` → `reports/judge/` | judge 元评测报告（探针检出率、误报率、稳定性） |
 | `scripts/generate_answers.py`、`configs/assistant/system_v1.md` | 场景题回答生成（试跑与正式生成共用，缓存续跑）与被测模型系统提示 |
 | `analysis/ceiling_pilot.py` → `reports/scenarios/` | 天花板试跑分析（按事先定的触顶规则出结论） |
-| `results/`（本地） | 场景题回答（`answers/`）与判定（`judge/`）、横评逐题预测（`evalscope/objective/<模型>/`）、核验原始响应（`scenarios/{three_vote,perquestion}/`、`audit/`） |
+| `results/`（大部分只在本地） | 场景题回答（`answers/<run>.jsonl`，入库）与判定（`judge/`，入库）、横评逐题预测（`evalscope/objective/<模型>/`）、核验原始响应（`scenarios/{three_vote,perquestion}/`、`audit/`） |
