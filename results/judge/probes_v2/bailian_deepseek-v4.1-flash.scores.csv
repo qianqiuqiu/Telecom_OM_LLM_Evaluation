@@ -1,0 +1,173 @@
+answer_id,scenario_id,source,repeat,total,raw,deduction,veto,stage_action,stage_overall,stage_root_cause,verdicts,deductions_hit,high_risk_hit,evidence_missing,served_model
+SC-C01|drop:P5,SC-C01,probe:drop,0,79.5,79.5,0,0,,79.5,,P1=c P2=c P3=c P4=c P5=m P6=p P7=c P8=c,,,,deepseek-v4.1-flash
+SC-C01|drop:P6,SC-C01,probe:drop,0,75.0,85.0,-10,0,,85.0,,P1=c P2=c P3=c P4=c P5=c P6=m P7=c P8=c,0,,,deepseek-v4.1-flash
+SC-C01|empty,SC-C01,probe:empty,0,0.0,0.0,-18,0,,0.0,,P1=m P2=m P3=m P4=m P5=m P6=m P7=m P8=m,0 1,,,deepseek-v4.1-flash
+SC-C01|full,SC-C01,probe:full,0,100.0,100.0,0,0,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,deepseek-v4.1-flash
+SC-C01|pad,SC-C01,probe:pad,0,100.0,100.0,0,0,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,deepseek-v4.1-flash
+SC-C01|risk_add:H1,SC-C01,probe:risk_add,0,0.0,100.0,0,1,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,1,P1,deepseek-v4.1-flash
+SC-C01|risk_neg:H1,SC-C01,probe:risk_neg,0,100.0,100.0,0,0,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,P1,deepseek-v4.1-flash
+SC-C04|drop:P3,SC-C04,probe:drop,0,60.0,60.0,0,0,,60.0,,P1=p P2=m P3=m P4=c P5=c P6=c P7=c P8=p,,,,deepseek-v4.1-flash
+SC-C04|drop:P7,SC-C04,probe:drop,0,75.0,75.0,0,0,,75.0,,P1=c P2=p P3=c P4=c P5=c P6=c P7=m P8=p,,,,deepseek-v4.1-flash
+SC-C04|empty,SC-C04,probe:empty,0,0.0,0.0,0,0,,0.0,,P1=m P2=m P3=m P4=m P5=m P6=m P7=m P8=m,,,,deepseek-v4.1-flash
+SC-C04|full,SC-C04,probe:full,0,87.0,87.0,0,0,,87.0,,P1=c P2=p P3=c P4=c P5=c P6=c P7=c P8=p,,,,deepseek-v4.1-flash
+SC-C04|pad,SC-C04,probe:pad,0,87.0,87.0,0,0,,87.0,,P1=c P2=p P3=c P4=c P5=c P6=c P7=c P8=p,,,,deepseek-v4.1-flash
+SC-C04|risk_add:H1,SC-C04,probe:risk_add,0,0.0,87.0,0,1,,87.0,,P1=c P2=p P3=c P4=c P5=c P6=c P7=c P8=p,,1,,deepseek-v4.1-flash
+SC-C04|risk_neg:H1,SC-C04,probe:risk_neg,0,87.0,87.0,0,0,,87.0,,P1=c P2=p P3=c P4=c P5=c P6=c P7=c P8=p,,,,deepseek-v4.1-flash
+SC-C06|drop:P1,SC-C06,probe:drop,0,86.0,86.0,0,0,,86.0,,P1=m P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,deepseek-v4.1-flash
+SC-C06|drop:P3,SC-C06,probe:drop,0,86.0,86.0,0,0,,86.0,,P1=c P2=c P3=m P4=c P5=c P6=c P7=c P8=c,,,,deepseek-v4.1-flash
+SC-C06|empty,SC-C06,probe:empty,0,0.0,0.0,-13,0,,0.0,,P1=m P2=m P3=m P4=m P5=m P6=m P7=m P8=m,1 2,,,deepseek-v4.1-flash
+SC-C06|full,SC-C06,probe:full,0,100.0,100.0,0,0,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,deepseek-v4.1-flash
+SC-C06|pad,SC-C06,probe:pad,0,100.0,100.0,0,0,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,deepseek-v4.1-flash
+SC-C06|risk_add:H1,SC-C06,probe:risk_add,0,0.0,100.0,0,1,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,1,,deepseek-v4.1-flash
+SC-C06|risk_neg:H1,SC-C06,probe:risk_neg,0,100.0,100.0,0,0,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,deepseek-v4.1-flash
+SC-C08|drop:P1,SC-C08,probe:drop,0,85.0,85.0,0,0,,85.0,,P1=m P2=c P3=c P4=c P5=c P6=c P7=c,,,,deepseek-v4.1-flash
+SC-C08|drop:P4,SC-C08,probe:drop,0,77.5,77.5,0,0,,77.5,,P1=c P2=c P3=c P4=m P5=p P6=c P7=c,,,,deepseek-v4.1-flash
+SC-C08|empty,SC-C08,probe:empty,0,0.0,0.0,0,0,,0.0,,P1=m P2=m P3=m P4=m P5=m P6=m P7=m,,,,deepseek-v4.1-flash
+SC-C08|full,SC-C08,probe:full,0,100.0,100.0,0,0,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c,,,,deepseek-v4.1-flash
+SC-C08|pad,SC-C08,probe:pad,0,100.0,100.0,0,0,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c,,,,deepseek-v4.1-flash
+SC-C08|risk_add:H1,SC-C08,probe:risk_add,0,0.0,100.0,0,1,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c,,1,,deepseek-v4.1-flash
+SC-C08|risk_neg:H1,SC-C08,probe:risk_neg,0,100.0,100.0,0,0,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c,,,,deepseek-v4.1-flash
+SC-C10|drop:P4,SC-C10,probe:drop,0,70.0,80.0,-10,0,,80.0,,P1=c P2=c P3=c P4=m P5=c P6=c P7=p P8=c,2,,,deepseek-v4.1-flash
+SC-C10|drop:P6,SC-C10,probe:drop,0,80.0,80.0,0,0,,80.0,,P1=c P2=c P3=c P4=c P5=c P6=m P7=p P8=c,,,,deepseek-v4.1-flash
+SC-C10|empty,SC-C10,probe:empty,0,0.0,0.0,0,0,,0.0,,P1=m P2=m P3=m P4=m P5=m P6=m P7=m P8=m,,,,deepseek-v4.1-flash
+SC-C10|full,SC-C10,probe:full,0,95.0,95.0,0,0,,95.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=p P8=c,,,,deepseek-v4.1-flash
+SC-C10|pad,SC-C10,probe:pad,0,95.0,95.0,0,0,,95.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=p P8=c,,,,deepseek-v4.1-flash
+SC-C10|risk_add:H1,SC-C10,probe:risk_add,0,0.0,95.0,0,1,,95.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=p P8=c,,1,,deepseek-v4.1-flash
+SC-C10|risk_neg:H1,SC-C10,probe:risk_neg,0,95.0,95.0,0,0,,95.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=p P8=c,,,,deepseek-v4.1-flash
+SC-C11|drop:P2,SC-C11,probe:drop,0,85.0,85.0,0,0,,85.0,,P1=c P2=m P3=c P4=c P5=c P6=c P7=c P8=c,,,,deepseek-v4.1-flash
+SC-C11|drop:P3,SC-C11,probe:drop,0,85.0,85.0,0,0,,85.0,,P1=c P2=c P3=m P4=c P5=c P6=c P7=c P8=c,,,,deepseek-v4.1-flash
+SC-C11|empty,SC-C11,probe:empty,0,0.0,0.0,0,0,,0.0,,P1=m P2=m P3=m P4=m P5=m P6=m P7=m P8=m,,,,deepseek-v4.1-flash
+SC-C11|full,SC-C11,probe:full,0,100.0,100.0,0,0,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,deepseek-v4.1-flash
+SC-C11|pad,SC-C11,probe:pad,0,100.0,100.0,0,0,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,deepseek-v4.1-flash
+SC-C11|risk_add:H2,SC-C11,probe:risk_add,0,0.0,100.0,0,1,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,2,,deepseek-v4.1-flash
+SC-C11|risk_neg:H2,SC-C11,probe:risk_neg,0,100.0,100.0,0,0,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,deepseek-v4.1-flash
+SC-D01|drop:P6,SC-D01,probe:drop,0,80.0,80.0,0,0,83.3,,77.3,P1=c P2=p P3=c P4=p P5=c P6=p P7=c P8=c,,,,deepseek-v4.1-flash
+SC-D01|drop:P7,SC-D01,probe:drop,0,70.0,70.0,0,0,61.1,,77.3,P1=c P2=p P3=c P4=p P5=c P6=p P7=m P8=c,,,,deepseek-v4.1-flash
+SC-D01|empty,SC-D01,probe:empty,0,0.0,0.0,0,0,0.0,,0.0,P1=m P2=m P3=m P4=m P5=m P6=m P7=m P8=m,,,,deepseek-v4.1-flash
+SC-D01|full,SC-D01,probe:full,0,87.5,87.5,0,0,100.0,,77.3,P1=c P2=p P3=c P4=p P5=c P6=c P7=c P8=c,,,,deepseek-v4.1-flash
+SC-D01|pad,SC-D01,probe:pad,0,87.5,87.5,0,0,100.0,,77.3,P1=c P2=p P3=c P4=p P5=c P6=c P7=c P8=c,,,,deepseek-v4.1-flash
+SC-D01|risk_add:H0,SC-D01,probe:risk_add,0,0.0,87.5,0,1,100.0,,77.3,P1=c P2=p P3=c P4=p P5=c P6=c P7=c P8=c,,0,,deepseek-v4.1-flash
+SC-D01|risk_neg:H0,SC-D01,probe:risk_neg,0,87.5,87.5,0,0,100.0,,77.3,P1=c P2=p P3=c P4=p P5=c P6=c P7=c P8=c,,,,deepseek-v4.1-flash
+SC-D01|wrong_root,SC-D01,probe:wrong_root,0,30.0,45.0,-15,0,100.0,,0.0,P1=m P2=m P3=m P4=m P5=c P6=c P7=c P8=c,0,,,deepseek-v4.1-flash
+SC-D04|drop:P1,SC-D04,probe:drop,0,60.0,60.0,0,0,88.9,,36.4,P1=m P2=c P3=m P4=p P5=c P6=c P7=p P8=c,,,,deepseek-v4.1-flash
+SC-D04|drop:P6,SC-D04,probe:drop,0,70.0,80.0,-10,0,66.7,,90.9,P1=c P2=c P3=p P4=c P5=c P6=m P7=c P8=c,2,,,deepseek-v4.1-flash
+SC-D04|empty,SC-D04,probe:empty,0,0.0,0.0,0,0,0.0,,0.0,P1=m P2=m P3=m P4=m P5=m P6=m P7=m P8=m,,,,deepseek-v4.1-flash
+SC-D04|full,SC-D04,probe:full,0,95.0,95.0,0,0,100.0,,90.9,P1=c P2=c P3=p P4=c P5=c P6=c P7=c P8=c,,,,deepseek-v4.1-flash
+SC-D04|pad,SC-D04,probe:pad,0,95.0,95.0,0,0,100.0,,90.9,P1=c P2=c P3=p P4=c P5=c P6=c P7=c P8=c,,,,deepseek-v4.1-flash
+SC-D04|risk_add:H0,SC-D04,probe:risk_add,0,0.0,95.0,0,1,100.0,,90.9,P1=c P2=c P3=p P4=c P5=c P6=c P7=c P8=c,,0,,deepseek-v4.1-flash
+SC-D04|risk_neg:H0,SC-D04,probe:risk_neg,0,95.0,95.0,0,0,100.0,,90.9,P1=c P2=c P3=p P4=c P5=c P6=c P7=c P8=c,,,,deepseek-v4.1-flash
+SC-D04|wrong_root,SC-D04,probe:wrong_root,0,30.0,45.0,-15,0,100.0,,0.0,P1=m P2=m P3=m P4=m P5=c P6=c P7=c P8=c,0,,,deepseek-v4.1-flash
+SC-D05|drop:P5,SC-D05,probe:drop,0,90.0,90.0,0,0,77.8,,100.0,P1=c P2=c P3=c P4=c P5=m P6=c P7=c P8=c,,,,deepseek-v4.1-flash
+SC-D05|drop:P7,SC-D05,probe:drop,0,80.0,85.0,-5,0,66.7,,100.0,P1=c P2=c P3=c P4=c P5=p P6=c P7=m P8=c,2,,,deepseek-v4.1-flash
+SC-D05|empty,SC-D05,probe:empty,0,0.0,0.0,-5,0,0.0,,0.0,P1=m P2=m P3=m P4=m P5=m P6=m P7=m P8=m,2,,,deepseek-v4.1-flash
+SC-D05|full,SC-D05,probe:full,0,100.0,100.0,0,0,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,deepseek-v4.1-flash
+SC-D05|pad,SC-D05,probe:pad,0,100.0,100.0,0,0,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,deepseek-v4.1-flash
+SC-D05|risk_add:H2,SC-D05,probe:risk_add,0,0.0,100.0,0,1,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,2,,deepseek-v4.1-flash
+SC-D05|risk_neg:H2,SC-D05,probe:risk_neg,0,100.0,100.0,0,0,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,deepseek-v4.1-flash
+SC-D05|wrong_root,SC-D05,probe:wrong_root,0,25.0,40.0,-15,0,88.9,,0.0,P1=m P2=m P3=m P4=m P5=p P6=c P7=c P8=c,0,,,deepseek-v4.1-flash
+SC-D12|drop:P5,SC-D12,probe:drop,0,81.5,81.5,0,0,58.9,,100.0,P1=c P2=c P3=c P4=c P5=m P6=p P7=c P8=c,,,,deepseek-v4.1-flash
+SC-D12|drop:P6,SC-D12,probe:drop,0,78.0,83.0,-5,0,62.2,,100.0,P1=c P2=c P3=c P4=c P5=c P6=m P7=c P8=c,3,,,deepseek-v4.1-flash
+SC-D12|empty,SC-D12,probe:empty,0,0.0,0.0,0,0,0.0,,0.0,P1=m P2=m P3=m P4=m P5=m P6=m P7=m P8=m,,,,deepseek-v4.1-flash
+SC-D12|full,SC-D12,probe:full,0,86.5,91.5,-5,0,81.1,,100.0,P1=c P2=c P3=c P4=c P5=c P6=p P7=c P8=c,3,,,deepseek-v4.1-flash
+SC-D12|pad,SC-D12,probe:pad,0,86.5,91.5,-5,0,81.1,,100.0,P1=c P2=c P3=c P4=c P5=c P6=p P7=c P8=c,3,,,deepseek-v4.1-flash
+SC-D12|risk_add:H2,SC-D12,probe:risk_add,0,0.0,91.5,-5,1,81.1,,100.0,P1=c P2=c P3=c P4=c P5=c P6=p P7=c P8=c,3,2,,deepseek-v4.1-flash
+SC-D12|risk_neg:H2,SC-D12,probe:risk_neg,0,91.5,91.5,0,0,81.1,,100.0,P1=c P2=c P3=c P4=c P5=c P6=p P7=c P8=c,,,,deepseek-v4.1-flash
+SC-D12|wrong_root,SC-D12,probe:wrong_root,0,16.5,36.5,-20,0,81.1,,0.0,P1=m P2=m P3=m P4=m P5=c P6=p P7=c P8=c,2 3,,,deepseek-v4.1-flash
+SC-D14|drop:P5,SC-D14,probe:drop,0,82.5,82.5,0,0,61.1,,100.0,P1=c P2=c P3=c P4=p P5=m P6=c P7=c,,,,deepseek-v4.1-flash
+SC-D14|drop:P6,SC-D14,probe:drop,0,90.0,90.0,0,0,77.8,,100.0,P1=c P2=c P3=c P4=c P5=c P6=m P7=c,,,,deepseek-v4.1-flash
+SC-D14|empty,SC-D14,probe:empty,0,0.0,0.0,0,0,0.0,,0.0,P1=m P2=m P3=m P4=m P5=m P6=m P7=m,,,,deepseek-v4.1-flash
+SC-D14|full,SC-D14,probe:full,0,100.0,100.0,0,0,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c,,,,deepseek-v4.1-flash
+SC-D14|pad,SC-D14,probe:pad,0,100.0,100.0,0,0,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c,,,,deepseek-v4.1-flash
+SC-D14|risk_add:H1,SC-D14,probe:risk_add,0,0.0,100.0,0,1,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c,,1,,deepseek-v4.1-flash
+SC-D14|risk_neg:H1,SC-D14,probe:risk_neg,0,100.0,100.0,0,0,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c,,,,deepseek-v4.1-flash
+SC-D14|wrong_root,SC-D14,probe:wrong_root,0,40.0,45.0,-5,0,100.0,,0.0,P1=m P2=m P3=m P4=c P5=c P6=c P7=c,3,,,deepseek-v4.1-flash
+SC-D20|drop:P5,SC-D20,probe:drop,0,75.0,80.0,-5,0,55.6,,100.0,P1=c P2=c P3=c P4=c P5=m P6=p P7=c,3,,,deepseek-v4.1-flash
+SC-D20|drop:P7,SC-D20,probe:drop,0,85.0,85.0,0,0,66.7,,100.0,P1=c P2=c P3=c P4=c P5=c P6=p P7=m,,,,deepseek-v4.1-flash
+SC-D20|empty,SC-D20,probe:empty,0,0.0,0.0,0,0,0.0,,0.0,P1=m P2=m P3=m P4=m P5=m P6=m P7=m,,,,deepseek-v4.1-flash
+SC-D20|full,SC-D20,probe:full,0,95.0,95.0,0,0,88.9,,100.0,P1=c P2=c P3=c P4=c P5=c P6=p P7=c,,,,deepseek-v4.1-flash
+SC-D20|pad,SC-D20,probe:pad,0,95.0,95.0,0,0,88.9,,100.0,P1=c P2=c P3=c P4=c P5=c P6=p P7=c,,,,deepseek-v4.1-flash
+SC-D20|risk_add:H1,SC-D20,probe:risk_add,0,0.0,95.0,0,1,88.9,,100.0,P1=c P2=c P3=c P4=c P5=c P6=p P7=c,,1,,deepseek-v4.1-flash
+SC-D20|risk_neg:H1,SC-D20,probe:risk_neg,0,95.0,95.0,0,0,88.9,,100.0,P1=c P2=c P3=c P4=c P5=c P6=p P7=c,,,,deepseek-v4.1-flash
+SC-D20|wrong_root,SC-D20,probe:wrong_root,0,10.0,40.0,-30,0,88.9,,0.0,P1=m P2=m P3=m P4=c P5=c P6=p P7=c,0 2,,,deepseek-v4.1-flash
+SC-D21|drop:P4,SC-D21,probe:drop,0,61.0,66.0,-5,0,57.8,,72.7,P1=c P2=c P3=m P4=m P5=c P6=p P7=p,3,,,deepseek-v4.1-flash
+SC-D21|drop:P7,SC-D21,probe:drop,0,65.0,65.0,0,0,55.6,,72.7,P1=c P2=c P3=m P4=p P5=c P6=p P7=m,,,,deepseek-v4.1-flash
+SC-D21|empty,SC-D21,probe:empty,0,0.0,0.0,0,0,0.0,,0.0,P1=m P2=m P3=m P4=m P5=m P6=m P7=m,,,,deepseek-v4.1-flash
+SC-D21|full,SC-D21,probe:full,0,77.5,77.5,0,0,66.7,,86.4,P1=c P2=c P3=p P4=p P5=c P6=p P7=p,,,,deepseek-v4.1-flash
+SC-D21|pad,SC-D21,probe:pad,0,70.0,70.0,0,0,66.7,,72.7,P1=c P2=c P3=m P4=p P5=c P6=p P7=p,,,,deepseek-v4.1-flash
+SC-D21|risk_add:H0,SC-D21,probe:risk_add,0,0.0,74.0,-10,1,75.6,,72.7,P1=c P2=c P3=m P4=c P5=c P6=p P7=p,1,0,,deepseek-v4.1-flash
+SC-D21|risk_neg:H0,SC-D21,probe:risk_neg,0,74.0,74.0,0,0,75.6,,72.7,P1=c P2=c P3=m P4=c P5=c P6=p P7=p,,,,deepseek-v4.1-flash
+SC-D21|wrong_root,SC-D21,probe:wrong_root,0,14.0,34.0,-20,0,75.6,,0.0,P1=m P2=m P3=m P4=c P5=c P6=p P7=p,0,,,deepseek-v4.1-flash
+SC-D22|drop:P5,SC-D22,probe:drop,0,62.5,67.5,-5,0,44.4,,86.4,P1=c P2=c P3=p P4=c P5=m P6=p P7=p,3,,,deepseek-v4.1-flash
+SC-D22|drop:P6,SC-D22,probe:drop,0,82.5,82.5,0,0,61.1,,100.0,P1=c P2=c P3=c P4=c P5=p P6=p P7=p,,,,deepseek-v4.1-flash
+SC-D22|empty,SC-D22,probe:empty,0,0.0,0.0,0,0,0.0,,0.0,P1=m P2=m P3=m P4=m P5=m P6=m P7=m,,,,deepseek-v4.1-flash
+SC-D22|full,SC-D22,probe:full,0,82.5,82.5,0,0,61.1,,100.0,P1=c P2=c P3=c P4=c P5=p P6=p P7=p,,,P7,deepseek-v4.1-flash
+SC-D22|pad,SC-D22,probe:pad,0,82.5,82.5,0,0,61.1,,100.0,P1=c P2=c P3=c P4=c P5=p P6=p P7=p,,,P7,deepseek-v4.1-flash
+SC-D22|risk_add:H1,SC-D22,probe:risk_add,0,0.0,82.5,0,1,61.1,,100.0,P1=c P2=c P3=c P4=c P5=p P6=p P7=p,,1,P7,deepseek-v4.1-flash
+SC-D22|risk_neg:H1,SC-D22,probe:risk_neg,0,82.5,82.5,0,0,61.1,,100.0,P1=c P2=c P3=c P4=c P5=p P6=p P7=p,,,P7,deepseek-v4.1-flash
+SC-D22|wrong_root,SC-D22,probe:wrong_root,0,7.5,27.5,-20,0,61.1,,0.0,P1=m P2=m P3=m P4=c P5=p P6=p P7=p,0,,,deepseek-v4.1-flash
+SC-D23|drop:P6,SC-D23,probe:drop,0,80.0,85.0,-5,0,68.8,,100.0,P1=c P2=c P3=c P4=c P5=c P6=m P7=c P8=c,3,,,deepseek-v4.1-flash
+SC-D23|drop:P7,SC-D23,probe:drop,0,89.0,89.0,0,0,77.1,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=m P8=c,,,,deepseek-v4.1-flash
+SC-D23|empty,SC-D23,probe:empty,0,0.0,0.0,0,0,0.0,,0.0,P1=m P2=m P3=m P4=m P5=m P6=m P7=m P8=m,,,,deepseek-v4.1-flash
+SC-D23|full,SC-D23,probe:full,0,100.0,100.0,0,0,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,deepseek-v4.1-flash
+SC-D23|pad,SC-D23,probe:pad,0,100.0,100.0,0,0,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,deepseek-v4.1-flash
+SC-D23|risk_add:H1,SC-D23,probe:risk_add,0,0.0,100.0,0,1,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,1,,deepseek-v4.1-flash
+SC-D23|risk_neg:H1,SC-D23,probe:risk_neg,0,100.0,100.0,0,0,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,deepseek-v4.1-flash
+SC-D23|wrong_root,SC-D23,probe:wrong_root,0,33.0,48.0,-15,0,100.0,,0.0,P1=m P2=m P3=m P4=m P5=c P6=c P7=c P8=c,1,,,deepseek-v4.1-flash
+SC-D25|drop:P2,SC-D25,probe:drop,0,80.0,80.0,0,0,100.0,,60.0,P1=c P2=m P3=p P4=c P5=c P6=c P7=c,,,,deepseek-v4.1-flash
+SC-D25|drop:P4,SC-D25,probe:drop,0,85.0,85.0,0,0,70.0,,100.0,P1=c P2=c P3=c P4=m P5=c P6=c P7=c,,,,deepseek-v4.1-flash
+SC-D25|empty,SC-D25,probe:empty,0,0.0,0.0,0,0,0.0,,0.0,P1=m P2=m P3=m P4=m P5=m P6=m P7=m,,,,deepseek-v4.1-flash
+SC-D25|full,SC-D25,probe:full,0,100.0,100.0,0,0,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c,,,,deepseek-v4.1-flash
+SC-D25|pad,SC-D25,probe:pad,0,100.0,100.0,0,0,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c,,,,deepseek-v4.1-flash
+SC-D25|risk_add:H0,SC-D25,probe:risk_add,0,0.0,100.0,0,1,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c,,0,,deepseek-v4.1-flash
+SC-D25|risk_neg:H0,SC-D25,probe:risk_neg,0,100.0,100.0,0,0,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c,,,,deepseek-v4.1-flash
+SC-D25|wrong_root,SC-D25,probe:wrong_root,0,35.0,50.0,-15,0,100.0,,0.0,P1=m P2=m P3=m P4=c P5=c P6=c P7=c,0,,,deepseek-v4.1-flash
+SC-D26|drop:P3,SC-D26,probe:drop,0,93.5,93.5,0,0,100.0,,88.8,P1=c P2=c P3=p P4=c P5=c P6=c P7=c P8=c,,,P3,deepseek-v4.1-flash
+SC-D26|drop:P4,SC-D26,probe:drop,0,92.0,92.0,0,0,100.0,,86.2,P1=c P2=c P3=c P4=m P5=c P6=c P7=c P8=c,,,,deepseek-v4.1-flash
+SC-D26|empty,SC-D26,probe:empty,0,0.0,0.0,0,0,0.0,,0.0,P1=m P2=m P3=m P4=m P5=m P6=m P7=m P8=m,,,,deepseek-v4.1-flash
+SC-D26|full,SC-D26,probe:full,0,100.0,100.0,0,0,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,deepseek-v4.1-flash
+SC-D26|pad,SC-D26,probe:pad,0,100.0,100.0,0,0,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,deepseek-v4.1-flash
+SC-D26|risk_add:H1,SC-D26,probe:risk_add,0,0.0,100.0,-10,1,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,1,1,,deepseek-v4.1-flash
+SC-D26|risk_neg:H1,SC-D26,probe:risk_neg,0,100.0,100.0,0,0,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,deepseek-v4.1-flash
+SC-D26|wrong_root,SC-D26,probe:wrong_root,0,22.0,42.0,-20,0,100.0,,0.0,P1=m P2=m P3=m P4=m P5=c P6=c P7=c P8=c,0,,,deepseek-v4.1-flash
+SC-K05|drop:P2,SC-K05,probe:drop,0,85.0,85.0,0,0,,85.0,,P1=c P2=m P3=c P4=c P5=c P6=c P7=c,,,,deepseek-v4.1-flash
+SC-K05|drop:P5,SC-K05,probe:drop,0,90.0,90.0,0,0,,90.0,,P1=c P2=c P3=c P4=c P5=m P6=c P7=c,,,,deepseek-v4.1-flash
+SC-K05|empty,SC-K05,probe:empty,0,0.0,0.0,-5,0,,0.0,,P1=m P2=m P3=m P4=m P5=m P6=m P7=m,3,,,deepseek-v4.1-flash
+SC-K05|full,SC-K05,probe:full,0,100.0,100.0,0,0,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c,,,,deepseek-v4.1-flash
+SC-K05|pad,SC-K05,probe:pad,0,100.0,100.0,0,0,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c,,,,deepseek-v4.1-flash
+SC-K05|risk_add:H1,SC-K05,probe:risk_add,0,0.0,100.0,0,1,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c,,1,,deepseek-v4.1-flash
+SC-K05|risk_neg:H1,SC-K05,probe:risk_neg,0,100.0,100.0,0,0,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c,,,,deepseek-v4.1-flash
+SC-K06|drop:P1,SC-K06,probe:drop,0,92.5,92.5,0,0,,92.5,,P1=p P2=c P3=c P4=c P5=c P6=c P7=c,,,,deepseek-v4.1-flash
+SC-K06|drop:P6,SC-K06,probe:drop,0,85.0,85.0,0,0,,85.0,,P1=c P2=c P3=c P4=c P5=c P6=m P7=p,,,,deepseek-v4.1-flash
+SC-K06|empty,SC-K06,probe:empty,0,0.0,0.0,0,0,,0.0,,P1=m P2=m P3=m P4=m P5=m P6=m P7=m,,,,deepseek-v4.1-flash
+SC-K06|full,SC-K06,probe:full,0,100.0,100.0,0,0,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c,,,,deepseek-v4.1-flash
+SC-K06|pad,SC-K06,probe:pad,0,100.0,100.0,0,0,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c,,,,deepseek-v4.1-flash
+SC-K06|risk_add:H1,SC-K06,probe:risk_add,0,0.0,100.0,0,1,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c,,1,,deepseek-v4.1-flash
+SC-K06|risk_neg:H1,SC-K06,probe:risk_neg,0,100.0,100.0,0,0,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c,,,,deepseek-v4.1-flash
+SC-K07|drop:P3,SC-K07,probe:drop,0,82.0,82.0,0,0,,82.0,,P1=c P2=c P3=m P4=c P5=c P6=c P7=c,,,,deepseek-v4.1-flash
+SC-K07|drop:P6,SC-K07,probe:drop,0,86.0,86.0,0,0,,86.0,,P1=c P2=c P3=c P4=c P5=c P6=m P7=c,,,P4,deepseek-v4.1-flash
+SC-K07|empty,SC-K07,probe:empty,0,0.0,0.0,0,0,,0.0,,P1=m P2=m P3=m P4=m P5=m P6=m P7=m,,,,deepseek-v4.1-flash
+SC-K07|full,SC-K07,probe:full,0,100.0,100.0,0,0,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c,,,P4,deepseek-v4.1-flash
+SC-K07|pad,SC-K07,probe:pad,0,100.0,100.0,0,0,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c,,,P4,deepseek-v4.1-flash
+SC-K07|risk_add:H1,SC-K07,probe:risk_add,0,0.0,100.0,0,1,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c,,1,P4,deepseek-v4.1-flash
+SC-K07|risk_neg:H1,SC-K07,probe:risk_neg,0,100.0,100.0,0,0,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c,,,P4,deepseek-v4.1-flash
+SC-K08|drop:P2,SC-K08,probe:drop,0,55.5,55.5,0,0,,55.5,,P1=c P2=m P3=p P4=c P5=p P6=p P7=p,,,,deepseek-v4.1-flash
+SC-K08|drop:P5,SC-K08,probe:drop,0,66.5,66.5,0,0,,66.5,,P1=c P2=c P3=p P4=c P5=m P6=p P7=p,,,,deepseek-v4.1-flash
+SC-K08|empty,SC-K08,probe:empty,0,0.0,0.0,0,0,,0.0,,P1=m P2=m P3=m P4=m P5=m P6=m P7=m,,,,deepseek-v4.1-flash
+SC-K08|full,SC-K08,probe:full,0,81.0,81.0,0,0,,81.0,,P1=c P2=c P3=p P4=c P5=p P6=c P7=p,,,,deepseek-v4.1-flash
+SC-K08|pad,SC-K08,probe:pad,0,73.5,73.5,0,0,,73.5,,P1=c P2=c P3=p P4=c P5=p P6=p P7=p,,,,deepseek-v4.1-flash
+SC-K08|risk_add:H1,SC-K08,probe:risk_add,0,0.0,86.0,0,1,,86.0,,P1=c P2=c P3=c P4=c P5=p P6=c P7=p,,1,,deepseek-v4.1-flash
+SC-K08|risk_neg:H1,SC-K08,probe:risk_neg,0,86.0,86.0,0,0,,86.0,,P1=c P2=c P3=c P4=c P5=p P6=c P7=p,,,,deepseek-v4.1-flash
+SC-K10|drop:P3,SC-K10,probe:drop,0,86.0,86.0,0,0,,86.0,,P1=c P2=c P3=m P4=c P5=c P6=c P7=c P8=c,,,,deepseek-v4.1-flash
+SC-K10|drop:P7,SC-K10,probe:drop,0,88.0,88.0,0,0,,88.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=m P8=c,,,,deepseek-v4.1-flash
+SC-K10|empty,SC-K10,probe:empty,0,0.0,0.0,0,0,,0.0,,P1=m P2=m P3=m P4=m P5=m P6=m P7=m P8=m,,,,deepseek-v4.1-flash
+SC-K10|full,SC-K10,probe:full,0,100.0,100.0,0,0,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,deepseek-v4.1-flash
+SC-K10|pad,SC-K10,probe:pad,0,100.0,100.0,0,0,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,deepseek-v4.1-flash
+SC-K10|risk_add:H0,SC-K10,probe:risk_add,0,0.0,100.0,0,1,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,0,,deepseek-v4.1-flash
+SC-K10|risk_neg:H0,SC-K10,probe:risk_neg,0,100.0,100.0,0,0,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,deepseek-v4.1-flash
+SC-K11|drop:P2,SC-K11,probe:drop,0,76.0,76.0,0,0,,76.0,,P1=c P2=m P3=c P4=m P5=c P6=c P7=c P8=c,,,,deepseek-v4.1-flash
+SC-K11|drop:P4,SC-K11,probe:drop,0,76.0,76.0,0,0,,76.0,,P1=c P2=m P3=c P4=m P5=c P6=c P7=c P8=c,,,,deepseek-v4.1-flash
+SC-K11|empty,SC-K11,probe:empty,0,0.0,0.0,0,0,,0.0,,P1=m P2=m P3=m P4=m P5=m P6=m P7=m P8=m,,,,deepseek-v4.1-flash
+SC-K11|full,SC-K11,probe:full,0,100.0,100.0,0,0,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,deepseek-v4.1-flash
+SC-K11|pad,SC-K11,probe:pad,0,100.0,100.0,0,0,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,deepseek-v4.1-flash
+SC-K11|risk_add:H1,SC-K11,probe:risk_add,0,0.0,100.0,-12,1,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,0,1,,deepseek-v4.1-flash
+SC-K11|risk_neg:H1,SC-K11,probe:risk_neg,0,100.0,100.0,0,0,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,deepseek-v4.1-flash
