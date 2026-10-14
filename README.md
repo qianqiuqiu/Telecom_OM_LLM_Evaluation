@@ -91,7 +91,7 @@ uv run python scripts/make_judge_split.py            # 调试集 / 留出集（�
 uv run python scripts/build_judge_probes.py segment  # 参考答案切分映射（百炼 qwen3.8-max，缓存增量）
 uv run python scripts/build_judge_probes.py build    # 构造探针 + 参考答案缺口清单 + drop 探针抽查表
 uv run python scripts/judge_scenarios.py --answers data/scenarios/judge_probes/probes.jsonl \
-    --judge claude:claude-haiku-5-5 --prompt v1 --run probes_v1 --split debug   # judge 判探针（云端会话，订阅额度）
+    --judge claude:claude-haiku-5-5 --prompt v2 --run probes_v2 --split debug   # judge 判探针（云端会话，订阅额度；v2 已锁定）
 uv run python analysis/judge_meta.py --run probes_v1 --split debug              # 元评测报告 → reports/judge/
 ```
 
