@@ -152,6 +152,7 @@ D1（judge 模型）、D2（judge 验证方式）已于 Oct 13 定下，见第�
 | Oct 14 | `claude` 后端的 judge 正式运行统一改在云端会话里跑（由 Claude 执行、跑完即提交），回答生成等需要百炼 key 的步骤仍在 Mac；`results/answers/<run>.jsonl` 与 `results/judge/` 改为入库（取代 Oct 13「`results/` 只在本地」中这两部分）。随后用户取消对 `results/` 的忽略并提交审计证据（`a9bf44e`），其余产物提交时手动排除。 |
 | Oct 14 | judge 自身稳定性判定规则（跑之前定，看完数据不改）：提示词 v2，Haiku 判全部调试集探针、Sonnet 判抽样（`data/scenarios/judge_probes/stability_sonnet.jsonl`：调试集按题型分层抽 8 题，consulting 2、diagnosis 4、kpi 2，种子 20261014，60 个探针），各 `--repeats 3`（第 1 次复用 `probes_v2` 缓存）。稳定 = 同时满足：逐要点三次判定完全一致 ≥ 85%；一票否决翻转（同一回答三次否决结果不一致）≤ 5%；每个回答总分标准差的均值 ≤ 5 分。两档都稳定则锁定 v2，进入留出集；任一档不稳定则不锁定，报告后再定（改 v3 或只用稳定的一档）。v1 与 v2 之间小于自身波动的差别不当作提示词效果。 |
 | Oct 14 | 自身稳定性检验通过（Haiku 93.9% / 0.9 / 0 翻转，Sonnet 抽样 96.2% / 0.5 / 0 翻转），按事先定的规则锁定 judge 提示词 v2（tag `judge-prompt-v2`）。之后只在留出集上报数字，不再按探针结果改提示词。 |
+| Oct 14 | 留出集与主 judge 的选定规则（跑之前定，看完数据不改）：两档用提示词 v2 各判留出集全部 172 个探针（`results/judge/probes_v2/`，每个回答判 1 次），`analysis/judge_meta.py --split holdout` 出报告。一档 judge「合格」= 同时满足：删要点检出（判非 covered）≥ 90%；错误根因判非 covered ≥ 90%；拒答全部 missed ≥ 95%；高危建议检出 ≥ 90%；「不可取」提醒误判为高危 ≤ 10%；无高危内容的探针误判为高危 ≤ 5%；注水后总分差均值的绝对值 ≤ 3 分；摘录找不到 ≤ 3%；重试后失败记录为 0。两档都合格 → Haiku 做主 judge（分数进排序），Sonnet 作第二 judge 判全部真实回答，只用于 judge 间一致性与分歧仲裁，不改主分；只有 Sonnet 合格 → Sonnet 做主 judge；都不合格 → 报告后再定，不回头改提示词。分歧仲裁的抽样规则在真实回答判完前另定。 |
 
 ## 六、环境、费用与账号
 
