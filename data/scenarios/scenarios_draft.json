@@ -110,7 +110,7 @@
    "传输或 S1 问题：无传输告警，S1 链路正常。"
   ],
   "unverified_residuals": [
-   "T310 的 ms50 取值在 LTE 的 TS 36.331 枚举中存在，建议人工对照协议复核。",
+   "已核对（TS 36.331 V17.4.0）：§6.3.6 UE-TimersAndConstants 中 t310 枚举含 ms50 与 ms1000，n310 枚举含 n1 与 n4；§5.3.11.1 / §5.3.11.3 规定连续收到 N310 次 out-of-sync 后启动 T310，T310 超时判定 RLF，根因机理成立。",
    "重建被拒绝转为掉话的具体比例取决于邻区上下文准备情况，题中未量化，rubric 仅作定性。"
   ],
   "id": "SC-D01",
@@ -345,7 +345,7 @@
    "外部干扰：上行 RSSI 正常。"
   ],
   "unverified_residuals": [
-   "「模 3 同余在双端口 CRS 下导致端口 0 与端口 1 互相碰撞」的表述建议人工对照 TS 36.211 的 CRS 频移公式复核。"
+   "已核对（TS 36.211 V16.2.0）：§6.10.1.2 规定 k = 6m + (v + v_shift) mod 6、v_shift = N_ID^cell mod 6，l = 0 时端口 0 的 v = 0、端口 1 的 v = 3；PCI 157、160 的 v_shift 为 1、4，两小区端口 0 与端口 1 交叉重合，「模 3 同余在双端口 CRS 下端口 0 与端口 1 互相碰撞」成立；§6.10.1 规定 CRS 在所有下行子帧发送。"
   ],
   "id": "SC-D04",
   "source_draft": "diag-ran:4"
@@ -578,7 +578,7 @@
   ],
   "unverified_residuals": [
    "前导检测所需接收电平随带宽、噪声系数与检测门限而定，题中未给具体值，rubric 仅作定性判断。",
-   "preambleInitialReceivedTargetPower 的 -120 dBm 取值在协议枚举范围内，建议人工对照 TS 36.331 复核。"
+   "已核对（TS 36.331 V17.4.0）：§6.3.2 PowerRampingParameters 中 preambleInitialReceivedTargetPower 枚举为 dBm-120 至 dBm-90、步长 2 dB，-120（下限）与 -104 均在内。"
   ],
   "id": "SC-D07",
   "source_draft": "diag-ran:7"
@@ -4303,7 +4303,7 @@
    "全网性核心网故障：4G 与非 3GPP 忙时均正常，地址池利用率远低于 5G SA"
   ],
   "unverified_residuals": [
-   "5GSM 原因值 #26（资源不足）、#67（特定切片与 DNN 资源不足）编号需对照 TS 24.501 核验",
+   "已核对（TS 24.501 V17.9.0）：表 9.11.4.2.1 中 #26 为 Insufficient resources，#67 为 Insufficient resources for specific slice and DNN（#69 为不带 DNN 的 Insufficient resources for specific slice）。",
    "表中不含 SMF CPU、N4 会话数等指标，无法排除处理能力瓶颈是并行因素",
    "约 340 ms 时延的具体分解（隧道建立、N3IWF 处理或其他环节）表中无法确认，需信令核实"
   ],

@@ -4,6 +4,8 @@
    （data/scenarios/judge_probes/reference_gaps.md）。每处只补一两句，内容只取该要点自身的文字，
    不引入要点以外的新主张；要点、权重、扣分项、高危操作都不动。
 2. 待核验项分诊（data/scenarios/residuals_triage.csv）后的小修：只改不计分的 source_note。
+3. 分诊表中 4 条「建议核对」的协议取值已对照原文核对（Oct 14），对应 unverified_residuals 改写为核对结论
+   （分诊表 residual 列同步改）。unverified_residuals 不进 judge 缓存键与 ref_sha，不影响回答、判分和切分。
 
 用法：uv run python scripts/apply_freeze_fixes.py
 生成：data/scenarios/drafts/<batch>.v3.json（仅被改批次）；随后需重跑 merge_scenario_drafts.py，
@@ -16,7 +18,11 @@ DRAFTS = Path(__file__).resolve().parents[1] / "data/scenarios/drafts"
 
 
 def load(batch):
-    return json.loads((DRAFTS / f"{batch}.v2.json").read_text())
+    """读 v2；没有核验修订的批次（如 kpi-b）读 v1。"""
+    src = DRAFTS / f"{batch}.v2.json"
+    if not src.exists():
+        src = DRAFTS / f"{batch}.v1.json"
+    return json.loads(src.read_text())
 
 
 def save(batch, data):
@@ -37,6 +43,12 @@ def after(q, anchor, added, field="reference_answer"):
     q[field] = q[field].replace(anchor, anchor + added)
 
 
+def verified(q, i, old_head, new):
+    """把第 i 条待核验项改写为核对结论；old_head 校验改的是哪一条。"""
+    assert q["unverified_residuals"][i].startswith(old_head), q["unverified_residuals"][i]
+    q["unverified_residuals"][i] = new
+
+
 # ---------------- diag-ran：SC-D01 P8 / SC-D02 P8 / SC-D07 P8 ----------------
 d = load("diag-ran")
 after(Q(d, 1), "保留变更前后配置备份以便再次回退。",
@@ -45,6 +57,18 @@ after(Q(d, 2), "异常则删除新增邻区回退。",
       "流程上把新站开通的双向邻区核对纳入开通清单，必要时在受控范围内启用 ANR 并审核其结果。")
 after(Q(d, 7), "指标回升后再推开",
       "，用接入成功率、平均前导次数和上行 RSSI 的前后对比验证效果，并保留回退方案")
+# 协议取值核对（SC-D01 / SC-D04 / SC-D07）
+verified(Q(d, 1), 0, "T310 的 ms50 取值",
+         "已核对（TS 36.331 V17.4.0）：§6.3.6 UE-TimersAndConstants 中 t310 枚举含 ms50 与 ms1000，"
+         "n310 枚举含 n1 与 n4；§5.3.11.1 / §5.3.11.3 规定连续收到 N310 次 out-of-sync 后启动 T310，"
+         "T310 超时判定 RLF，根因机理成立。")
+verified(Q(d, 4), 0, "「模 3 同余在双端口 CRS 下",
+         "已核对（TS 36.211 V16.2.0）：§6.10.1.2 规定 k = 6m + (v + v_shift) mod 6、v_shift = N_ID^cell mod 6，"
+         "l = 0 时端口 0 的 v = 0、端口 1 的 v = 3；PCI 157、160 的 v_shift 为 1、4，两小区端口 0 与端口 1 交叉重合，"
+         "「模 3 同余在双端口 CRS 下端口 0 与端口 1 互相碰撞」成立；§6.10.1 规定 CRS 在所有下行子帧发送。")
+verified(Q(d, 7), 1, "preambleInitialReceivedTargetPower 的 -120 dBm",
+         "已核对（TS 36.331 V17.4.0）：§6.3.2 PowerRampingParameters 中 preambleInitialReceivedTargetPower "
+         "枚举为 dBm-120 至 dBm-90、步长 2 dB，-120（下限）与 -104 均在内。")
 save("diag-ran", d)
 
 # ---------------- diag-transport：SC-D16 P3 ----------------
@@ -90,4 +114,14 @@ after(Q(d, 4), "闲时资源充裕则正常。",
       "非 GBR 的缺省 5QI（通常为 5QI 9）没有每流保障，只受 Session-AMBR/UE-AMBR 上限约束。")
 save("supp-a", d)
 
-print("已生成 v3：diag-ran, diag-transport, diag-oam, cons-a, cons-b, supp-a")
+# ---------------- kpi-b：SC-K09 待核验项（协议取值核对，不计分） ----------------
+d = load("kpi-b")
+q = Q(d, 3)
+assert q["title"].startswith("分接入类型的会话建立成功率"), q["title"]
+verified(q, 0, "5GSM 原因值 #26",
+         "已核对（TS 24.501 V17.9.0）：表 9.11.4.2.1 中 #26 为 Insufficient resources，"
+         "#67 为 Insufficient resources for specific slice and DNN（#69 为不带 DNN 的 "
+         "Insufficient resources for specific slice）。")
+save("kpi-b", d)
+
+print("已生成 v3：diag-ran, diag-transport, diag-oam, cons-a, cons-b, supp-a, kpi-b")
