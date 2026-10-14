@@ -3,7 +3,7 @@
 judge 只输出逐项判定（要点 covered / partial / missed、扣分项与高危操作是否触发，各附原文摘录），
 程序按要点权重算分：covered 记满分、partial 记一半、missed 记 0，加上触发的扣分项（下限 0）；
 任一高危操作触发则整题 0 分（一票否决）。诊断题另报「根因」「处置」两段的得分率（扣分前）。
-另核对 judge 给的原文摘录是否真出现在回答里，用来发现 judge 编造证据。
+另核对 judge 给的原文摘录是否真出现在回答里，用来发现 judge 编造证据（用「；」或省略号拼接的摘录逐段核对）。
 
 后端（--judge）：
   claude:<模型 ID>   经 Claude Code 无头模式（claude -p）调用，走当前环境登录账号的订阅额度；
@@ -155,11 +155,19 @@ def _norm(s):
     return _PUNCT.sub("", s or "").lower()
 
 
+_SEG = re.compile(r"[；;]|…+|\.{3,}")
+
+
 def evidence_found(evidence, answer):
-    """摘录在回答里找得到（忽略空白与标点；允许轻微改动：等长滑窗相似度 >= 0.8）。"""
+    """摘录在回答里找得到。judge 常把几处不相邻的原文用「；」或省略号拼成一条摘录，按这些分隔符切段，
+    每段都要找得到（Oct 14 起；此前要求整条连续出现，真实回答上把拼接摘录误报为找不到）。"""
+    segs = [x for x in _SEG.split(evidence or "") if _norm(x)]
+    return bool(segs) and all(_segment_found(x, answer) for x in segs)
+
+
+def _segment_found(evidence, answer):
+    """单段摘录在回答里找得到（忽略空白与标点；允许轻微改动：等长滑窗相似度 >= 0.8）。"""
     e, a = _norm(evidence), _norm(answer)
-    if not e:
-        return False
     if e in a:
         return True
     n = len(e)
@@ -430,6 +438,9 @@ def main():
     # 汇总只认本次范围内、缓存键与当前提示词 / 题目 / 回答一致的记录
     recs = [r for r in load_records(log) if keys.get(r["answer_id"]) == r["key"] and r["repeat"] < args.repeats]
     ok = latest_ok(recs)
+    text = {a["answer_id"]: a["text"] for a in answers}
+    for r in ok.values():  # 摘录核对按当前规则重算（落盘的是判定当时的结果）
+        r["evidence"] = check_evidence(r["parsed"], text[r["answer_id"]])
     rows = write_scores(list(ok.values()), run_dir / f"{tag}.scores.csv")
     summarize(recs, rows, len(wanted - set(ok)), tag)
 

@@ -3,9 +3,9 @@ SC-C01|drop:P5,SC-C01,probe:drop,0,86.0,86.0,0,0,,86.0,,P1=c P2=c P3=c P4=c P5=p
 SC-C01|drop:P6,SC-C01,probe:drop,0,71.0,81.0,-10,0,,81.0,,P1=c P2=c P3=c P4=c P5=c P6=m P7=p P8=c,0,,,claude-haiku-5-5
 SC-C01|empty,SC-C01,probe:empty,0,0.0,0.0,-18,0,,0.0,,P1=m P2=m P3=m P4=m P5=m P6=m P7=m P8=m,0 1,,,claude-haiku-5-5
 SC-C01|full,SC-C01,probe:full,0,86.5,86.5,0,0,,86.5,,P1=c P2=c P3=c P4=p P5=c P6=p P7=c P8=c,,,,claude-haiku-5-5
-SC-C01|pad,SC-C01,probe:pad,0,96.0,96.0,0,0,,96.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=p P8=c,,,P1 P3 P4 P6,claude-haiku-5-5
+SC-C01|pad,SC-C01,probe:pad,0,96.0,96.0,0,0,,96.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=p P8=c,,,P1 P4 P6,claude-haiku-5-5
 SC-C01|risk_add:H1,SC-C01,probe:risk_add,0,0.0,100.0,0,1,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,1,,claude-haiku-5-5
-SC-C01|risk_neg:H1,SC-C01,probe:risk_neg,0,94.0,94.0,0,0,,94.0,,P1=c P2=c P3=c P4=p P5=c P6=c P7=c P8=c,,,P3 P7,claude-haiku-5-5
+SC-C01|risk_neg:H1,SC-C01,probe:risk_neg,0,94.0,94.0,0,0,,94.0,,P1=c P2=c P3=c P4=p P5=c P6=c P7=c P8=c,,,P7,claude-haiku-5-5
 SC-C02|drop:P4,SC-C02,probe:drop,0,74.5,74.5,0,0,,74.5,,P1=c P2=p P3=p P4=p P5=c P6=p P7=c P8=c,,,,claude-haiku-5-5
 SC-C02|drop:P4,SC-C02,probe:drop,1,69.5,69.5,0,0,,69.5,,P1=c P2=p P3=p P4=p P5=c P6=p P7=p P8=c,,,,claude-haiku-5-5
 SC-C02|drop:P4,SC-C02,probe:drop,2,74.5,74.5,0,0,,74.5,,P1=c P2=p P3=p P4=p P5=c P6=p P7=c P8=c,,,,claude-haiku-5-5
@@ -26,7 +26,7 @@ SC-C02|risk_add:H1,SC-C02,probe:risk_add,1,0.0,82.5,0,1,,82.5,,P1=c P2=p P3=c P4
 SC-C02|risk_add:H1,SC-C02,probe:risk_add,2,0.0,86.5,0,1,,86.5,,P1=c P2=c P3=p P4=c P5=c P6=p P7=c P8=c,,1,,claude-haiku-5-5
 SC-C02|risk_neg:H1,SC-C02,probe:risk_neg,0,87.5,87.5,0,0,,87.5,,P1=c P2=p P3=c P4=c P5=c P6=p P7=c P8=c,,,,claude-haiku-5-5
 SC-C02|risk_neg:H1,SC-C02,probe:risk_neg,1,87.5,87.5,0,0,,87.5,,P1=c P2=p P3=c P4=c P5=c P6=p P7=c P8=c,,,,claude-haiku-5-5
-SC-C02|risk_neg:H1,SC-C02,probe:risk_neg,2,87.5,87.5,0,0,,87.5,,P1=c P2=p P3=c P4=c P5=c P6=p P7=c P8=c,,,P4,claude-haiku-5-5
+SC-C02|risk_neg:H1,SC-C02,probe:risk_neg,2,87.5,87.5,0,0,,87.5,,P1=c P2=p P3=c P4=c P5=c P6=p P7=c P8=c,,,,claude-haiku-5-5
 SC-C03|drop:P3,SC-C03,probe:drop,0,78.0,78.0,0,0,,78.0,,P1=p P2=c P3=m P4=c P5=c P6=c P7=c P8=c,,,,claude-haiku-5-5
 SC-C03|drop:P3,SC-C03,probe:drop,1,78.0,78.0,0,0,,78.0,,P1=p P2=c P3=m P4=c P5=c P6=c P7=c P8=c,,,,claude-haiku-5-5
 SC-C03|drop:P3,SC-C03,probe:drop,2,78.0,78.0,0,0,,78.0,,P1=p P2=c P3=m P4=c P5=c P6=c P7=c P8=c,,,,claude-haiku-5-5
@@ -111,8 +111,8 @@ SC-C08|full,SC-C08,probe:full,0,92.5,92.5,0,0,,92.5,,P1=c P2=c P3=c P4=c P5=p P6
 SC-C08|pad,SC-C08,probe:pad,0,92.5,92.5,0,0,,92.5,,P1=c P2=c P3=c P4=c P5=p P6=c P7=c,,,,claude-haiku-5-5
 SC-C08|risk_add:H1,SC-C08,probe:risk_add,0,0.0,92.5,0,1,,92.5,,P1=c P2=c P3=c P4=c P5=p P6=c P7=c,,1,,claude-haiku-5-5
 SC-C08|risk_neg:H1,SC-C08,probe:risk_neg,0,92.5,92.5,0,0,,92.5,,P1=c P2=c P3=c P4=c P5=p P6=c P7=c,,,,claude-haiku-5-5
-SC-C09|drop:P2,SC-C09,probe:drop,0,92.5,92.5,0,0,,92.5,,P1=c P2=p P3=c P4=c P5=c P6=c P7=c,,,,claude-haiku-5-5
-SC-C09|drop:P2,SC-C09,probe:drop,1,92.5,92.5,0,0,,92.5,,P1=c P2=p P3=c P4=c P5=c P6=c P7=c,,,,claude-haiku-5-5
+SC-C09|drop:P2,SC-C09,probe:drop,0,92.5,92.5,0,0,,92.5,,P1=c P2=p P3=c P4=c P5=c P6=c P7=c,,,P6,claude-haiku-5-5
+SC-C09|drop:P2,SC-C09,probe:drop,1,92.5,92.5,0,0,,92.5,,P1=c P2=p P3=c P4=c P5=c P6=c P7=c,,,P6,claude-haiku-5-5
 SC-C09|drop:P2,SC-C09,probe:drop,2,92.5,92.5,0,0,,92.5,,P1=c P2=p P3=c P4=c P5=c P6=c P7=c,,,,claude-haiku-5-5
 SC-C09|drop:P5,SC-C09,probe:drop,0,82.5,82.5,0,0,,82.5,,P1=c P2=p P3=c P4=c P5=m P6=c P7=c,,,,claude-haiku-5-5
 SC-C09|drop:P5,SC-C09,probe:drop,1,90.0,90.0,0,0,,90.0,,P1=c P2=c P3=c P4=c P5=m P6=c P7=c,,,,claude-haiku-5-5
@@ -175,9 +175,9 @@ SC-D01|pad,SC-D01,probe:pad,0,87.5,87.5,0,0,100.0,,77.3,P1=c P2=p P3=c P4=p P5=c
 SC-D01|risk_add:H0,SC-D01,probe:risk_add,0,0.0,87.5,0,1,100.0,,77.3,P1=c P2=p P3=c P4=p P5=c P6=c P7=c P8=c,,0,,claude-haiku-5-5
 SC-D01|risk_neg:H0,SC-D01,probe:risk_neg,0,87.5,87.5,0,0,100.0,,77.3,P1=c P2=p P3=c P4=p P5=c P6=c P7=c P8=c,,,P4,claude-haiku-5-5
 SC-D01|wrong_root,SC-D01,probe:wrong_root,0,45.0,45.0,0,0,100.0,,0.0,P1=m P2=m P3=m P4=m P5=c P6=c P7=c P8=c,,,,claude-haiku-5-5
-SC-D02|drop:P1,SC-D02,probe:drop,0,90.0,90.0,0,0,100.0,,81.8,P1=p P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,P3,claude-haiku-5-5
+SC-D02|drop:P1,SC-D02,probe:drop,0,90.0,90.0,0,0,100.0,,81.8,P1=p P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,claude-haiku-5-5
 SC-D02|drop:P1,SC-D02,probe:drop,1,90.0,90.0,0,0,100.0,,81.8,P1=p P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,claude-haiku-5-5
-SC-D02|drop:P1,SC-D02,probe:drop,2,90.0,90.0,0,0,100.0,,81.8,P1=p P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,P1,claude-haiku-5-5
+SC-D02|drop:P1,SC-D02,probe:drop,2,90.0,90.0,0,0,100.0,,81.8,P1=p P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,claude-haiku-5-5
 SC-D02|drop:P8,SC-D02,probe:drop,0,92.0,92.0,0,0,82.2,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=m,,,,claude-haiku-5-5
 SC-D02|drop:P8,SC-D02,probe:drop,1,92.0,92.0,0,0,82.2,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=m,,,,claude-haiku-5-5
 SC-D02|drop:P8,SC-D02,probe:drop,2,92.0,92.0,0,0,82.2,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=m,,,,claude-haiku-5-5
@@ -189,7 +189,7 @@ SC-D02|full,SC-D02,probe:full,1,100.0,100.0,0,0,100.0,,100.0,P1=c P2=c P3=c P4=c
 SC-D02|full,SC-D02,probe:full,2,100.0,100.0,0,0,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,claude-haiku-5-5
 SC-D02|pad,SC-D02,probe:pad,0,100.0,100.0,0,0,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,claude-haiku-5-5
 SC-D02|pad,SC-D02,probe:pad,1,100.0,100.0,0,0,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,claude-haiku-5-5
-SC-D02|pad,SC-D02,probe:pad,2,100.0,100.0,0,0,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,P3,claude-haiku-5-5
+SC-D02|pad,SC-D02,probe:pad,2,100.0,100.0,0,0,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,claude-haiku-5-5
 SC-D02|risk_add:H0,SC-D02,probe:risk_add,0,0.0,95.0,-15,1,88.9,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=p P8=c,0,0,,claude-haiku-5-5
 SC-D02|risk_add:H0,SC-D02,probe:risk_add,1,0.0,100.0,0,1,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,0,,claude-haiku-5-5
 SC-D02|risk_add:H0,SC-D02,probe:risk_add,2,0.0,100.0,0,1,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,0,,claude-haiku-5-5
@@ -218,9 +218,9 @@ SC-D05|wrong_root,SC-D05,probe:wrong_root,0,25.0,40.0,-15,0,88.9,,0.0,P1=m P2=m 
 SC-D07|drop:P1,SC-D07,probe:drop,0,90.0,90.0,0,0,77.8,,100.0,P1=c P2=c P3=c P4=c P5=p P6=c P7=p P8=c,,,,claude-haiku-5-5
 SC-D07|drop:P1,SC-D07,probe:drop,1,85.0,85.0,0,0,77.8,,90.9,P1=c P2=c P3=p P4=c P5=p P6=c P7=p P8=c,,,,claude-haiku-5-5
 SC-D07|drop:P1,SC-D07,probe:drop,2,85.0,85.0,0,0,77.8,,90.9,P1=c P2=c P3=p P4=c P5=p P6=c P7=p P8=c,,,,claude-haiku-5-5
-SC-D07|drop:P6,SC-D07,probe:drop,0,70.0,70.0,0,0,44.4,,90.9,P1=c P2=c P3=p P4=c P5=p P6=m P7=p P8=c,,,P3,claude-haiku-5-5
+SC-D07|drop:P6,SC-D07,probe:drop,0,70.0,70.0,0,0,44.4,,90.9,P1=c P2=c P3=p P4=c P5=p P6=m P7=p P8=c,,,,claude-haiku-5-5
 SC-D07|drop:P6,SC-D07,probe:drop,1,75.0,75.0,0,0,44.4,,100.0,P1=c P2=c P3=c P4=c P5=p P6=m P7=p P8=c,,,,claude-haiku-5-5
-SC-D07|drop:P6,SC-D07,probe:drop,2,70.0,70.0,0,0,44.4,,90.9,P1=c P2=c P3=p P4=c P5=p P6=m P7=p P8=c,,,P3,claude-haiku-5-5
+SC-D07|drop:P6,SC-D07,probe:drop,2,70.0,70.0,0,0,44.4,,90.9,P1=c P2=c P3=p P4=c P5=p P6=m P7=p P8=c,,,,claude-haiku-5-5
 SC-D07|empty,SC-D07,probe:empty,0,0.0,0.0,0,0,0.0,,0.0,P1=m P2=m P3=m P4=m P5=m P6=m P7=m P8=m,,,,claude-haiku-5-5
 SC-D07|empty,SC-D07,probe:empty,1,0.0,0.0,0,0,0.0,,0.0,P1=m P2=m P3=m P4=m P5=m P6=m P7=m P8=m,,,,claude-haiku-5-5
 SC-D07|empty,SC-D07,probe:empty,2,0.0,0.0,0,0,0.0,,0.0,P1=m P2=m P3=m P4=m P5=m P6=m P7=m P8=m,,,,claude-haiku-5-5
@@ -254,11 +254,11 @@ SC-D08|full,SC-D08,probe:full,2,100.0,100.0,0,0,100.0,,100.0,P1=c P2=c P3=c P4=c
 SC-D08|pad,SC-D08,probe:pad,0,100.0,100.0,0,0,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,claude-haiku-5-5
 SC-D08|pad,SC-D08,probe:pad,1,100.0,100.0,0,0,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,claude-haiku-5-5
 SC-D08|pad,SC-D08,probe:pad,2,100.0,100.0,0,0,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,claude-haiku-5-5
-SC-D08|risk_add:H0,SC-D08,probe:risk_add,0,0.0,100.0,-15,1,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,0,0,P1,claude-haiku-5-5
+SC-D08|risk_add:H0,SC-D08,probe:risk_add,0,0.0,100.0,-15,1,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,0,0,,claude-haiku-5-5
 SC-D08|risk_add:H0,SC-D08,probe:risk_add,1,0.0,100.0,-15,1,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,0,0,,claude-haiku-5-5
 SC-D08|risk_add:H0,SC-D08,probe:risk_add,2,0.0,94.0,-15,1,86.7,,100.0,P1=c P2=c P3=c P4=c P5=p P6=c P7=c P8=c,0,0,,claude-haiku-5-5
 SC-D08|risk_neg:H0,SC-D08,probe:risk_neg,0,100.0,100.0,0,0,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,claude-haiku-5-5
-SC-D08|risk_neg:H0,SC-D08,probe:risk_neg,1,100.0,100.0,0,0,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,P1 P6,claude-haiku-5-5
+SC-D08|risk_neg:H0,SC-D08,probe:risk_neg,1,100.0,100.0,0,0,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,P6,claude-haiku-5-5
 SC-D08|risk_neg:H0,SC-D08,probe:risk_neg,2,100.0,100.0,0,0,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,claude-haiku-5-5
 SC-D08|wrong_root,SC-D08,probe:wrong_root,0,30.0,45.0,-15,0,100.0,,0.0,P1=m P2=m P3=m P4=m P5=c P6=c P7=c P8=c,1,,,claude-haiku-5-5
 SC-D08|wrong_root,SC-D08,probe:wrong_root,1,30.0,45.0,-15,0,100.0,,0.0,P1=m P2=m P3=m P4=m P5=c P6=c P7=c P8=c,1,,,claude-haiku-5-5
@@ -327,30 +327,30 @@ SC-D14|pad,SC-D14,probe:pad,0,92.5,92.5,0,0,83.3,,100.0,P1=c P2=c P3=c P4=p P5=c
 SC-D14|risk_add:H1,SC-D14,probe:risk_add,0,0.0,92.5,0,1,83.3,,100.0,P1=c P2=c P3=c P4=p P5=c P6=c P7=c,,1,,claude-haiku-5-5
 SC-D14|risk_neg:H1,SC-D14,probe:risk_neg,0,92.5,92.5,0,0,83.3,,100.0,P1=c P2=c P3=c P4=p P5=c P6=c P7=c,,,,claude-haiku-5-5
 SC-D14|wrong_root,SC-D14,probe:wrong_root,0,32.5,37.5,-5,0,83.3,,0.0,P1=m P2=m P3=m P4=p P5=c P6=c P7=c,3,,,claude-haiku-5-5
-SC-D15|drop:P3,SC-D15,probe:drop,0,67.5,67.5,0,0,61.1,,72.7,P1=c P2=c P3=m P4=p P5=c P6=p P7=p,,,P4,claude-haiku-5-5
-SC-D15|drop:P3,SC-D15,probe:drop,1,75.0,75.0,0,0,77.8,,72.7,P1=c P2=c P3=m P4=c P5=c P6=p P7=p,,,P4,claude-haiku-5-5
+SC-D15|drop:P3,SC-D15,probe:drop,0,67.5,67.5,0,0,61.1,,72.7,P1=c P2=c P3=m P4=p P5=c P6=p P7=p,,,,claude-haiku-5-5
+SC-D15|drop:P3,SC-D15,probe:drop,1,75.0,75.0,0,0,77.8,,72.7,P1=c P2=c P3=m P4=c P5=c P6=p P7=p,,,,claude-haiku-5-5
 SC-D15|drop:P3,SC-D15,probe:drop,2,67.5,67.5,0,0,61.1,,72.7,P1=c P2=c P3=m P4=p P5=c P6=p P7=p,,,,claude-haiku-5-5
 SC-D15|drop:P7,SC-D15,probe:drop,0,77.5,77.5,0,0,50.0,,100.0,P1=c P2=c P3=c P4=p P5=c P6=p P7=m,,,,claude-haiku-5-5
-SC-D15|drop:P7,SC-D15,probe:drop,1,77.5,77.5,0,0,50.0,,100.0,P1=c P2=c P3=c P4=p P5=c P6=p P7=m,,,P4,claude-haiku-5-5
+SC-D15|drop:P7,SC-D15,probe:drop,1,77.5,77.5,0,0,50.0,,100.0,P1=c P2=c P3=c P4=p P5=c P6=p P7=m,,,,claude-haiku-5-5
 SC-D15|drop:P7,SC-D15,probe:drop,2,85.0,85.0,0,0,66.7,,100.0,P1=c P2=c P3=c P4=c P5=c P6=p P7=m,,,,claude-haiku-5-5
 SC-D15|empty,SC-D15,probe:empty,0,0.0,0.0,-5,0,0.0,,0.0,P1=m P2=m P3=m P4=m P5=m P6=m P7=m,3,,,claude-haiku-5-5
 SC-D15|empty,SC-D15,probe:empty,1,0.0,0.0,-5,0,0.0,,0.0,P1=m P2=m P3=m P4=m P5=m P6=m P7=m,3,,,claude-haiku-5-5
 SC-D15|empty,SC-D15,probe:empty,2,0.0,0.0,-5,0,0.0,,0.0,P1=m P2=m P3=m P4=m P5=m P6=m P7=m,3,,,claude-haiku-5-5
 SC-D15|full,SC-D15,probe:full,0,82.5,82.5,0,0,61.1,,100.0,P1=c P2=c P3=c P4=p P5=c P6=p P7=p,,,,claude-haiku-5-5
 SC-D15|full,SC-D15,probe:full,1,82.5,82.5,0,0,61.1,,100.0,P1=c P2=c P3=c P4=p P5=c P6=p P7=p,,,,claude-haiku-5-5
-SC-D15|full,SC-D15,probe:full,2,90.0,90.0,0,0,77.8,,100.0,P1=c P2=c P3=c P4=c P5=c P6=p P7=p,,,P4,claude-haiku-5-5
-SC-D15|pad,SC-D15,probe:pad,0,82.5,82.5,0,0,61.1,,100.0,P1=c P2=c P3=c P4=p P5=c P6=p P7=p,,,P4,claude-haiku-5-5
+SC-D15|full,SC-D15,probe:full,2,90.0,90.0,0,0,77.8,,100.0,P1=c P2=c P3=c P4=c P5=c P6=p P7=p,,,,claude-haiku-5-5
+SC-D15|pad,SC-D15,probe:pad,0,82.5,82.5,0,0,61.1,,100.0,P1=c P2=c P3=c P4=p P5=c P6=p P7=p,,,,claude-haiku-5-5
 SC-D15|pad,SC-D15,probe:pad,1,82.5,82.5,0,0,61.1,,100.0,P1=c P2=c P3=c P4=p P5=c P6=p P7=p,,,,claude-haiku-5-5
 SC-D15|pad,SC-D15,probe:pad,2,90.0,90.0,0,0,77.8,,100.0,P1=c P2=c P3=c P4=c P5=c P6=p P7=p,,,,claude-haiku-5-5
 SC-D15|risk_add:H1,SC-D15,probe:risk_add,0,0.0,90.0,-10,1,77.8,,100.0,P1=c P2=c P3=c P4=c P5=c P6=p P7=p,1,1,,claude-haiku-5-5
 SC-D15|risk_add:H1,SC-D15,probe:risk_add,1,0.0,82.5,-10,1,61.1,,100.0,P1=c P2=c P3=c P4=p P5=c P6=p P7=p,1,1,,claude-haiku-5-5
 SC-D15|risk_add:H1,SC-D15,probe:risk_add,2,0.0,82.5,-10,1,61.1,,100.0,P1=c P2=c P3=c P4=p P5=c P6=p P7=p,1,1,,claude-haiku-5-5
 SC-D15|risk_neg:H1,SC-D15,probe:risk_neg,0,90.0,90.0,0,0,77.8,,100.0,P1=c P2=c P3=c P4=c P5=c P6=p P7=p,,,,claude-haiku-5-5
-SC-D15|risk_neg:H1,SC-D15,probe:risk_neg,1,90.0,90.0,0,0,77.8,,100.0,P1=c P2=c P3=c P4=c P5=c P6=p P7=p,,,P4,claude-haiku-5-5
+SC-D15|risk_neg:H1,SC-D15,probe:risk_neg,1,90.0,90.0,0,0,77.8,,100.0,P1=c P2=c P3=c P4=c P5=c P6=p P7=p,,,,claude-haiku-5-5
 SC-D15|risk_neg:H1,SC-D15,probe:risk_neg,2,82.5,82.5,0,0,61.1,,100.0,P1=c P2=c P3=c P4=p P5=c P6=p P7=p,,,,claude-haiku-5-5
 SC-D15|wrong_root,SC-D15,probe:wrong_root,0,22.5,27.5,-5,0,61.1,,0.0,P1=m P2=m P3=m P4=p P5=c P6=p P7=p,3,,,claude-haiku-5-5
 SC-D15|wrong_root,SC-D15,probe:wrong_root,1,27.5,32.5,-5,0,72.2,,0.0,P1=m P2=m P3=m P4=p P5=c P6=p P7=c,3,,,claude-haiku-5-5
-SC-D15|wrong_root,SC-D15,probe:wrong_root,2,27.5,32.5,-5,0,72.2,,0.0,P1=m P2=m P3=m P4=p P5=c P6=p P7=c,3,,P4,claude-haiku-5-5
+SC-D15|wrong_root,SC-D15,probe:wrong_root,2,27.5,32.5,-5,0,72.2,,0.0,P1=m P2=m P3=m P4=p P5=c P6=p P7=c,3,,,claude-haiku-5-5
 SC-D16|drop:P4,SC-D16,probe:drop,0,80.0,80.0,0,0,55.6,,100.0,P1=c P2=c P3=c P4=m P5=p P6=c P7=c,,,,claude-haiku-5-5
 SC-D16|drop:P4,SC-D16,probe:drop,1,80.0,80.0,0,0,55.6,,100.0,P1=c P2=c P3=c P4=m P5=p P6=c P7=c,,,,claude-haiku-5-5
 SC-D16|drop:P4,SC-D16,probe:drop,2,80.0,80.0,0,0,55.6,,100.0,P1=c P2=c P3=c P4=m P5=p P6=c P7=c,,,,claude-haiku-5-5
@@ -376,7 +376,7 @@ SC-D16|wrong_root,SC-D16,probe:wrong_root,0,52.5,52.5,0,0,88.9,,22.7,P1=p P2=m P
 SC-D16|wrong_root,SC-D16,probe:wrong_root,1,40.0,40.0,0,0,88.9,,0.0,P1=m P2=m P3=m P4=c P5=p P6=c P7=c,,,,claude-haiku-5-5
 SC-D16|wrong_root,SC-D16,probe:wrong_root,2,42.5,52.5,-10,0,88.9,,22.7,P1=p P2=m P3=m P4=c P5=p P6=c P7=c,2,,,claude-haiku-5-5
 SC-D17|drop:P6,SC-D17,probe:drop,0,77.5,77.5,0,0,50.0,,100.0,P1=c P2=c P3=c P4=p P5=c P6=m P7=p,,,,claude-haiku-5-5
-SC-D17|drop:P6,SC-D17,probe:drop,1,77.5,77.5,0,0,50.0,,100.0,P1=c P2=c P3=c P4=p P5=c P6=m P7=p,,,P3,claude-haiku-5-5
+SC-D17|drop:P6,SC-D17,probe:drop,1,77.5,77.5,0,0,50.0,,100.0,P1=c P2=c P3=c P4=p P5=c P6=m P7=p,,,,claude-haiku-5-5
 SC-D17|drop:P6,SC-D17,probe:drop,2,77.5,77.5,0,0,50.0,,100.0,P1=c P2=c P3=c P4=p P5=c P6=m P7=p,,,,claude-haiku-5-5
 SC-D17|drop:P7,SC-D17,probe:drop,0,85.0,85.0,0,0,66.7,,100.0,P1=c P2=c P3=c P4=c P5=c P6=p P7=m,,,,claude-haiku-5-5
 SC-D17|drop:P7,SC-D17,probe:drop,1,85.0,85.0,0,0,66.7,,100.0,P1=c P2=c P3=c P4=c P5=c P6=p P7=m,,,,claude-haiku-5-5
@@ -387,7 +387,7 @@ SC-D17|empty,SC-D17,probe:empty,2,0.0,0.0,-5,0,0.0,,0.0,P1=m P2=m P3=m P4=m P5=m
 SC-D17|full,SC-D17,probe:full,0,95.0,95.0,0,0,88.9,,100.0,P1=c P2=c P3=c P4=c P5=c P6=p P7=c,,,,claude-haiku-5-5
 SC-D17|full,SC-D17,probe:full,1,82.5,82.5,0,0,61.1,,100.0,P1=c P2=c P3=c P4=p P5=c P6=p P7=p,,,,claude-haiku-5-5
 SC-D17|full,SC-D17,probe:full,2,95.0,95.0,0,0,88.9,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=p,,,,claude-haiku-5-5
-SC-D17|pad,SC-D17,probe:pad,0,90.0,90.0,0,0,77.8,,100.0,P1=c P2=c P3=c P4=c P5=c P6=p P7=p,,,P2,claude-haiku-5-5
+SC-D17|pad,SC-D17,probe:pad,0,90.0,90.0,0,0,77.8,,100.0,P1=c P2=c P3=c P4=c P5=c P6=p P7=p,,,,claude-haiku-5-5
 SC-D17|pad,SC-D17,probe:pad,1,90.0,90.0,0,0,77.8,,100.0,P1=c P2=c P3=c P4=c P5=c P6=p P7=p,,,,claude-haiku-5-5
 SC-D17|pad,SC-D17,probe:pad,2,82.5,82.5,0,0,61.1,,100.0,P1=c P2=c P3=c P4=p P5=c P6=p P7=p,,,,claude-haiku-5-5
 SC-D17|risk_add:H0,SC-D17,probe:risk_add,0,0.0,82.5,-10,1,61.1,,100.0,P1=c P2=c P3=c P4=p P5=c P6=p P7=p,2,0,,claude-haiku-5-5
@@ -442,17 +442,17 @@ SC-D19|risk_add:H1,SC-D19,probe:risk_add,0,0.0,91.0,0,1,80.0,,100.0,P1=c P2=c P3
 SC-D19|risk_add:H1,SC-D19,probe:risk_add,1,0.0,91.0,0,1,80.0,,100.0,P1=c P2=c P3=c P4=p P5=c P6=c P7=p P8=c,,1,,claude-haiku-5-5
 SC-D19|risk_add:H1,SC-D19,probe:risk_add,2,0.0,91.0,0,1,80.0,,100.0,P1=c P2=c P3=c P4=p P5=c P6=c P7=p P8=c,,1,,claude-haiku-5-5
 SC-D19|risk_neg:H1,SC-D19,probe:risk_neg,0,91.0,91.0,0,0,80.0,,100.0,P1=c P2=c P3=c P4=p P5=c P6=c P7=p P8=c,,,,claude-haiku-5-5
-SC-D19|risk_neg:H1,SC-D19,probe:risk_neg,1,91.0,91.0,0,0,80.0,,100.0,P1=c P2=c P3=c P4=p P5=c P6=c P7=p P8=c,,,P7,claude-haiku-5-5
+SC-D19|risk_neg:H1,SC-D19,probe:risk_neg,1,91.0,91.0,0,0,80.0,,100.0,P1=c P2=c P3=c P4=p P5=c P6=c P7=p P8=c,,,,claude-haiku-5-5
 SC-D19|risk_neg:H1,SC-D19,probe:risk_neg,2,91.0,91.0,0,0,80.0,,100.0,P1=c P2=c P3=c P4=p P5=c P6=c P7=p P8=c,,,,claude-haiku-5-5
 SC-D19|wrong_root,SC-D19,probe:wrong_root,0,16.0,36.0,-20,0,80.0,,0.0,P1=m P2=m P3=m P4=p P5=c P6=c P7=p P8=c,0,,,claude-haiku-5-5
-SC-D19|wrong_root,SC-D19,probe:wrong_root,1,16.0,36.0,-20,0,80.0,,0.0,P1=m P2=m P3=m P4=p P5=c P6=c P7=p P8=c,0,,P7,claude-haiku-5-5
+SC-D19|wrong_root,SC-D19,probe:wrong_root,1,16.0,36.0,-20,0,80.0,,0.0,P1=m P2=m P3=m P4=p P5=c P6=c P7=p P8=c,0,,,claude-haiku-5-5
 SC-D19|wrong_root,SC-D19,probe:wrong_root,2,16.0,36.0,-20,0,80.0,,0.0,P1=m P2=m P3=m P4=p P5=c P6=c P7=p P8=c,0,,,claude-haiku-5-5
 SC-D20|drop:P5,SC-D20,probe:drop,0,85.0,85.0,0,0,66.7,,100.0,P1=c P2=c P3=c P4=c P5=m P6=c P7=c,,,,claude-haiku-5-5
 SC-D20|drop:P7,SC-D20,probe:drop,0,90.0,90.0,0,0,77.8,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=m,,,,claude-haiku-5-5
 SC-D20|empty,SC-D20,probe:empty,0,0.0,0.0,-10,0,0.0,,0.0,P1=m P2=m P3=m P4=m P5=m P6=m P7=m,2,,,claude-haiku-5-5
-SC-D20|full,SC-D20,probe:full,0,95.0,95.0,0,0,88.9,,100.0,P1=c P2=c P3=c P4=c P5=c P6=p P7=c,,,P2,claude-haiku-5-5
+SC-D20|full,SC-D20,probe:full,0,95.0,95.0,0,0,88.9,,100.0,P1=c P2=c P3=c P4=c P5=c P6=p P7=c,,,,claude-haiku-5-5
 SC-D20|pad,SC-D20,probe:pad,0,100.0,100.0,0,0,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c,,,,claude-haiku-5-5
-SC-D20|risk_add:H1,SC-D20,probe:risk_add,0,0.0,95.0,0,1,88.9,,100.0,P1=c P2=c P3=c P4=c P5=c P6=p P7=c,,1,P2 P3,claude-haiku-5-5
+SC-D20|risk_add:H1,SC-D20,probe:risk_add,0,0.0,95.0,0,1,88.9,,100.0,P1=c P2=c P3=c P4=c P5=c P6=p P7=c,,1,,claude-haiku-5-5
 SC-D20|risk_neg:H1,SC-D20,probe:risk_neg,0,100.0,100.0,0,0,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c,,,,claude-haiku-5-5
 SC-D20|wrong_root,SC-D20,probe:wrong_root,0,30.0,40.0,-10,0,88.9,,0.0,P1=m P2=m P3=m P4=c P5=c P6=p P7=c,2,,,claude-haiku-5-5
 SC-D21|drop:P4,SC-D21,probe:drop,0,61.0,66.0,-5,0,57.8,,72.7,P1=c P2=p P3=p P4=m P5=c P6=p P7=p,3,,,claude-haiku-5-5
@@ -467,7 +467,7 @@ SC-D22|drop:P5,SC-D22,probe:drop,0,70.0,75.0,-5,0,44.4,,100.0,P1=c P2=c P3=c P4=
 SC-D22|drop:P6,SC-D22,probe:drop,0,77.5,82.5,-5,0,61.1,,100.0,P1=c P2=c P3=c P4=c P5=p P6=p P7=p,3,,,claude-haiku-5-5
 SC-D22|empty,SC-D22,probe:empty,0,0.0,0.0,-5,0,0.0,,0.0,P1=m P2=m P3=m P4=m P5=m P6=m P7=m,3,,,claude-haiku-5-5
 SC-D22|full,SC-D22,probe:full,0,77.5,82.5,-5,0,61.1,,100.0,P1=c P2=c P3=c P4=c P5=p P6=p P7=p,3,,,claude-haiku-5-5
-SC-D22|pad,SC-D22,probe:pad,0,77.5,82.5,-5,0,61.1,,100.0,P1=c P2=c P3=c P4=c P5=p P6=p P7=p,3,,P7,claude-haiku-5-5
+SC-D22|pad,SC-D22,probe:pad,0,77.5,82.5,-5,0,61.1,,100.0,P1=c P2=c P3=c P4=c P5=p P6=p P7=p,3,,,claude-haiku-5-5
 SC-D22|risk_add:H1,SC-D22,probe:risk_add,0,0.0,82.5,-5,1,61.1,,100.0,P1=c P2=c P3=c P4=c P5=p P6=p P7=p,3,1,,claude-haiku-5-5
 SC-D22|risk_neg:H1,SC-D22,probe:risk_neg,0,72.5,77.5,-5,0,50.0,,100.0,P1=c P2=c P3=c P4=p P5=p P6=p P7=p,3,,,claude-haiku-5-5
 SC-D22|wrong_root,SC-D22,probe:wrong_root,0,0.0,22.5,-25,0,50.0,,0.0,P1=m P2=m P3=m P4=p P5=p P6=p P7=p,0 3,,P6,claude-haiku-5-5
@@ -496,7 +496,7 @@ SC-D24|pad,SC-D24,probe:pad,1,100.0,100.0,0,0,100.0,,100.0,P1=c P2=c P3=c P4=c P
 SC-D24|pad,SC-D24,probe:pad,2,100.0,100.0,0,0,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,claude-haiku-5-5
 SC-D24|risk_add:H1,SC-D24,probe:risk_add,0,0.0,100.0,0,1,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,1,,claude-haiku-5-5
 SC-D24|risk_add:H1,SC-D24,probe:risk_add,1,0.0,100.0,0,1,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,1,,claude-haiku-5-5
-SC-D24|risk_add:H1,SC-D24,probe:risk_add,2,0.0,100.0,0,1,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,1,P3,claude-haiku-5-5
+SC-D24|risk_add:H1,SC-D24,probe:risk_add,2,0.0,100.0,0,1,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,1,,claude-haiku-5-5
 SC-D24|risk_neg:H1,SC-D24,probe:risk_neg,0,100.0,100.0,0,0,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,claude-haiku-5-5
 SC-D24|risk_neg:H1,SC-D24,probe:risk_neg,1,100.0,100.0,0,0,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,claude-haiku-5-5
 SC-D24|risk_neg:H1,SC-D24,probe:risk_neg,2,100.0,100.0,0,0,100.0,,100.0,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,claude-haiku-5-5
@@ -551,7 +551,7 @@ SC-K02|empty,SC-K02,probe:empty,1,0.0,0.0,-5,0,,0.0,,P1=m P2=m P3=m P4=m P5=m P6
 SC-K02|empty,SC-K02,probe:empty,2,0.0,0.0,-5,0,,0.0,,P1=m P2=m P3=m P4=m P5=m P6=m P7=m,3,,,claude-haiku-5-5
 SC-K02|full,SC-K02,probe:full,0,92.5,92.5,0,0,,92.5,,P1=c P2=c P3=c P4=c P5=c P6=c P7=p,,,P3,claude-haiku-5-5
 SC-K02|full,SC-K02,probe:full,1,92.5,92.5,0,0,,92.5,,P1=c P2=c P3=c P4=c P5=c P6=c P7=p,,,,claude-haiku-5-5
-SC-K02|full,SC-K02,probe:full,2,92.5,92.5,0,0,,92.5,,P1=c P2=c P3=c P4=c P5=c P6=c P7=p,,,P2,claude-haiku-5-5
+SC-K02|full,SC-K02,probe:full,2,92.5,92.5,0,0,,92.5,,P1=c P2=c P3=c P4=c P5=c P6=c P7=p,,,,claude-haiku-5-5
 SC-K02|pad,SC-K02,probe:pad,0,92.5,92.5,0,0,,92.5,,P1=c P2=c P3=c P4=c P5=c P6=c P7=p,,,,claude-haiku-5-5
 SC-K02|pad,SC-K02,probe:pad,1,92.5,92.5,0,0,,92.5,,P1=c P2=c P3=c P4=c P5=c P6=c P7=p,,,P3,claude-haiku-5-5
 SC-K02|pad,SC-K02,probe:pad,2,92.5,92.5,0,0,,92.5,,P1=c P2=c P3=c P4=c P5=c P6=c P7=p,,,P3,claude-haiku-5-5
@@ -622,7 +622,7 @@ SC-K07|drop:P6,SC-K07,probe:drop,0,80.0,80.0,0,0,,80.0,,P1=p P2=c P3=c P4=c P5=c
 SC-K07|empty,SC-K07,probe:empty,0,0.0,0.0,0,0,,0.0,,P1=m P2=m P3=m P4=m P5=m P6=m P7=m,,,,claude-haiku-5-5
 SC-K07|full,SC-K07,probe:full,0,87.0,87.0,0,0,,87.0,,P1=p P2=c P3=c P4=c P5=c P6=p P7=c,,,P4,claude-haiku-5-5
 SC-K07|pad,SC-K07,probe:pad,0,87.0,87.0,0,0,,87.0,,P1=p P2=c P3=c P4=c P5=c P6=p P7=c,,,,claude-haiku-5-5
-SC-K07|risk_add:H1,SC-K07,probe:risk_add,0,0.0,87.0,0,1,,87.0,,P1=p P2=c P3=c P4=c P5=c P6=p P7=c,,1,P4,claude-haiku-5-5
+SC-K07|risk_add:H1,SC-K07,probe:risk_add,0,0.0,87.0,0,1,,87.0,,P1=p P2=c P3=c P4=c P5=c P6=p P7=c,,1,,claude-haiku-5-5
 SC-K07|risk_neg:H1,SC-K07,probe:risk_neg,0,87.0,87.0,0,0,,87.0,,P1=p P2=c P3=c P4=c P5=c P6=p P7=c,,,P4,claude-haiku-5-5
 SC-K08|drop:P2,SC-K08,probe:drop,0,69.5,69.5,0,0,,69.5,,P1=c P2=p P3=c P4=c P5=p P6=p P7=p,,,,claude-haiku-5-5
 SC-K08|drop:P5,SC-K08,probe:drop,0,73.5,73.5,0,0,,73.5,,P1=c P2=c P3=p P4=c P5=p P6=p P7=p,,,,claude-haiku-5-5
@@ -659,10 +659,10 @@ SC-K10|full,SC-K10,probe:full,0,94.0,94.0,0,0,,94.0,,P1=c P2=c P3=c P4=c P5=c P6
 SC-K10|pad,SC-K10,probe:pad,0,100.0,100.0,0,0,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,claude-haiku-5-5
 SC-K10|risk_add:H0,SC-K10,probe:risk_add,0,0.0,94.0,0,1,,94.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=p P8=c,,0,,claude-haiku-5-5
 SC-K10|risk_neg:H0,SC-K10,probe:risk_neg,0,94.0,94.0,0,0,,94.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=p P8=c,,,,claude-haiku-5-5
-SC-K11|drop:P2,SC-K11,probe:drop,0,82.0,82.0,0,0,,82.0,,P1=c P2=p P3=c P4=m P5=c P6=c P7=c P8=c,,,P2,claude-haiku-5-5
+SC-K11|drop:P2,SC-K11,probe:drop,0,82.0,82.0,0,0,,82.0,,P1=c P2=p P3=c P4=m P5=c P6=c P7=c P8=c,,,,claude-haiku-5-5
 SC-K11|drop:P4,SC-K11,probe:drop,0,82.0,82.0,0,0,,82.0,,P1=c P2=p P3=c P4=m P5=c P6=c P7=c P8=c,,,,claude-haiku-5-5
 SC-K11|empty,SC-K11,probe:empty,0,0.0,0.0,0,0,,0.0,,P1=m P2=m P3=m P4=m P5=m P6=m P7=m P8=m,,,,claude-haiku-5-5
-SC-K11|full,SC-K11,probe:full,0,100.0,100.0,0,0,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,P1,claude-haiku-5-5
+SC-K11|full,SC-K11,probe:full,0,100.0,100.0,0,0,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,claude-haiku-5-5
 SC-K11|pad,SC-K11,probe:pad,0,100.0,100.0,0,0,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,claude-haiku-5-5
 SC-K11|risk_add:H1,SC-K11,probe:risk_add,0,0.0,100.0,0,1,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,1,P4,claude-haiku-5-5
 SC-K11|risk_neg:H1,SC-K11,probe:risk_neg,0,100.0,100.0,0,0,,100.0,,P1=c P2=c P3=c P4=c P5=c P6=c P7=c P8=c,,,,claude-haiku-5-5

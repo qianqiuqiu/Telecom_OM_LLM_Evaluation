@@ -15,7 +15,7 @@
 - 高危：risk_add 中目标高危操作被触发的比例（检出率）；risk_neg 与其他不含高危建议的探针中
   任一高危被触发的比例（误报率，后者检验 judge 是否只认关键词）
 - 长度不变性：pad 与 full 的逐要点判定一致率、总分差
-- 摘录核对：judge 给的原文摘录在回答里找不到的比例
+- 摘录核对：judge 给的原文摘录在回答里找不到的比例（拼接摘录逐段核对，按当前规则重算）
 - 自身稳定性（有重复判定时）：同一回答多次判定的逐要点一致率、总分标准差、一票否决翻转率
 比例都附 Wilson 95% 区间。只统计缓存键与当前提示词 / 题目 / 回答一致的记录。
 
@@ -34,7 +34,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
-from judge_scenarios import OUT, PROMPTS, SCENARIOS, cache_key, latest_ok, load_records, load_split  # noqa: E402
+from judge_scenarios import (OUT, PROMPTS, SCENARIOS, cache_key, check_evidence, latest_ok,  # noqa: E402
+                             load_records, load_split)
 
 PROBES = ROOT / "data/scenarios/judge_probes/probes.jsonl"
 SPOTCHECK = ROOT / "data/scenarios/judge_probes/spotcheck_drop.csv"
@@ -116,7 +117,7 @@ def metrics(probes, scns, recs_by_answer, human=None):
                 for pid in v:
                     hit("pad_point_agree", v[pid] == bv[pid])
                 pad_pairs.append(r["score"]["total"] - base["score"]["total"])
-        ev = r["evidence"]
+        ev = check_evidence(r["parsed"], p["text"])  # 按当前核对规则重算
         c["evidence_missing"][0] += len(ev["missing"])
         c["evidence_missing"][1] += ev["checked"]
     return c, pad_pairs
