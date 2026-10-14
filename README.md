@@ -24,7 +24,7 @@ cp .env.example .env   # 填入百炼工作空间的 LLM_BASE_URL 与 LLM_API_KE
 | `configs/` | 被测模型清单、EvalScope 任务配置 |
 | `scripts/` | 数据审计、污染检测、追问施压、模型探测 |
 | `analysis/` | 统计检验、judge 元评测、回归门禁 |
-| `results/` | 原始请求与响应（不入库；例外：场景题回答 `answers/<run>.jsonl` 与 judge 判定 `judge/` 入库） |
+| `results/` | 原始请求与响应。不被 `.gitignore` 忽略；已入库 `answers/`、`judge/`、`audit/`，其余（横评 `evalscope/`、核验原始响应、`answers/raw/`）只在本地，提交时手动排除 |
 | `reports/` | 生成的报告与图表 |
 | `docs/` | 文档与历史版本 |
 
@@ -59,7 +59,7 @@ uv run python analysis/relevance_summary.py          # 相关度报告
 uv run python scripts/build_test_subset.py           # 最终测试子集 data/processed/teleqna_test_subset.csv
 ```
 
-复查原始输出与证据文字只在 `results/audit/answer_check_full/`（不入库）。
+复查原始输出与证据文字在 `results/audit/answer_check_full/`（已入库）。
 
 费用估算与客观题横评（7 模型 × 731 题 × 5 子集），按顺序执行：
 
