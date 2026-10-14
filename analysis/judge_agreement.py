@@ -10,13 +10,17 @@
 - 分歧仲裁抽样：总体 = 要点判档不同，或同一高危项 / 扣分项一档触发一档未触发；先全取高危项分歧
   （至多 20 个），余下名额从要点分歧中按被测模型分层等额抽，合计 60 个（扣分项分歧只计数，不抽）。
   仲裁材料盲化：两档判定随机标为 A / B，不显示模型名与 judge 名。
+- 仲裁结果（仲裁表填完后重跑）：揭盲统计两档各自判对的比例，按决定日志（Oct 14，`aef89ff`，揭盲前提交）定主分口径：
+  只有主 judge 触发的高危项被判错过半 → 一票否决改为同一高危项两档都触发才算；主 judge 判档更高的要点被判错过半
+  → 要点与扣分项改用第二 judge。最终分数写入 results/judge/<run>/final_scores.csv。
 
 只统计缓存键与当前提示词 / 题目 / 回答一致、且成功的第 0 次判定。
 
 用法：
   uv run python analysis/judge_agreement.py --run main_off --answers results/answers/main_off.jsonl
 输出（脚本生成，请勿手改；仲裁表的 human / note 两列由用户填写，重跑不覆盖已有的仲裁表）：
-  reports/judge/<run>_agreement.md                     一致性、名次与长度偏差检查
+  reports/judge/<run>_agreement.md                     一致性、名次、长度偏差检查、仲裁结果与最终主分
+  results/judge/<run>/final_scores.csv                  最终主分（仲裁表填完后才生成）
   data/scenarios/arbitration/<run>.md                  仲裁材料（题目、要点、参考答案、回答、A / B 判定与摘录）
   data/scenarios/arbitration/<run>.csv                 仲裁表：item、human（A / B / 都不对 / 判断不了）、note
   data/scenarios/arbitration/<run>_key.csv             A / B 与 judge 的对应（填完仲裁表前不要打开）
@@ -101,6 +105,88 @@ def length_bias(rows):
             perm[g] = ln[rng.permutation(g)]
         hits += rho(perm) >= obs
     return obs, (hits + 1) / (N_PERM + 1)
+
+
+def wilson(k, n, z=1.96):
+    if n == 0:
+        return "—"
+    p = k / n
+    d = 1 + z * z / n
+    c = (p + z * z / (2 * n)) / d
+    h = z * (p * (1 - p) / n + z * z / (4 * n * n)) ** 0.5 / d
+    return f"{p:.0%}（{k}/{n}，[{max(0, c - h):.0%}, {min(1, c + h):.0%}]）"
+
+
+def final_score(scn, pts_rec, m, s, veto_both):
+    """要点与扣分项取 pts_rec；一票否决：veto_both 时同一高危项两档都触发才算，否则取主 judge。"""
+    sc = pts_rec["score"]
+    if veto_both:
+        fs = flags(s, "high_risk")
+        veto = any(x["triggered"] and fs[x["index"]]["triggered"] for x in m["parsed"]["high_risk"])
+    else:
+        veto = m["score"]["veto"]
+    return 0.0 if veto else min(100.0, max(0.0, sc["raw"] + sc["deduction"])), veto
+
+
+def arbitration(sheet, key_path, M, S, both, ans, scns, models, rM, rS, args):
+    """揭盲统计仲裁结果，按决定日志（Oct 14，`aef89ff`，揭盲前提交）定主分口径，写最终分数表。"""
+    with sheet.open(encoding="utf-8") as f:
+        rows = list(csv.DictReader(f))
+    if not rows or any(r["human"].strip() not in ("A", "B", "都不对", "判断不了") for r in rows):
+        return ["## 分歧仲裁结果", "", "仲裁表未填完或有非法值，跳过。", ""]
+    with key_path.open(encoding="utf-8") as f:
+        key = {r["item"]: r for r in csv.DictReader(f)}
+    win, by_model = defaultdict(int), defaultdict(lambda: defaultdict(int))
+    hr_solo, pt_up, other = defaultdict(int), defaultdict(int), defaultdict(int)
+    for r in rows:
+        k, h = key[r["item"]], r["human"].strip()
+        main_is_a = k["A_is"] == "主"
+        vm, vs = (r["A"], r["B"]) if main_is_a else (r["B"], r["A"])
+        who = {"A": "主" if main_is_a else "第二", "B": "第二" if main_is_a else "主"}.get(h, h)
+        win[who] += 1
+        by_model[k["model"]][who] += 1
+        if r["point"].startswith("H"):
+            (hr_solo if vm == "触发" else other)[who] += 1
+        elif LEVELS[vm] > LEVELS[vs]:
+            pt_up[who] += 1
+        else:
+            other[who] += 1
+    n = len(rows)
+    n_hr, n_up = sum(hr_solo.values()), sum(pt_up.values())
+    veto_both = hr_solo["第二"] > n_hr / 2
+    use_second_pts = pt_up["第二"] > n_up / 2
+    L = ["## 分歧仲裁结果（揭盲）", "",
+         f"仲裁者为单一非专家（用户），对照参考答案判断；{n} 条中「都不对」{win['都不对']}、「判断不了」{win['判断不了']}。", "",
+         f"- 判对的比例：主 judge {wilson(win['主'], n)}，第二 judge {wilson(win['第二'], n)}。",
+         f"- 高危项只有主 judge 触发：{n_hr} 条，仲裁判主 judge 错 {hr_solo['第二']}、对 {hr_solo['主']}。",
+         f"- 要点主 judge 判档更高：{n_up} 条，仲裁判主 judge 对 {pt_up['主']}、错 {pt_up['第二']}。",
+         f"- 其余（第二 judge 独自触发高危、主 judge 判档更低）：主 judge 对 {other['主']}、第二 judge 对 {other['第二']}。",
+         "- 按被测模型（主 / 第二 判对）：" + "，".join(f"{m} {c['主']}/{c['第二']}" for m, c in sorted(by_model.items())) + "。", "",
+         "按事先定的规则：" + ("一票否决改为同一高危项两档都触发才算" if veto_both else "保留主 judge 的一票否决") + "；"
+         + ("要点与扣分项改用第二 judge" if use_second_pts else "要点与扣分项保留主 judge") + "。", ""]
+
+    out = args.out / args.run / "final_scores.csv"
+    fin, vetoed = {}, {}
+    with out.open("w", encoding="utf-8", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["answer_id", "scenario_id", "model", "total", "veto", "main_total", "second_total"])
+        for a in both:
+            m, s = M[a], S[a]
+            tot, veto = final_score(scns[ans[a]["scenario_id"]], s if use_second_pts else m, m, s, veto_both)
+            fin[a], vetoed[a] = tot, veto
+            w.writerow([a, ans[a]["scenario_id"], ans[a]["source"], round(tot, 1), int(veto),
+                        m["score"]["total"], s["score"]["total"]])
+    stats = {}
+    for src in models:
+        v = [fin[a] for a in both if ans[a]["source"] == src]
+        stats[src] = (statistics.mean(v), statistics.stdev(v) / len(v) ** 0.5)
+    order = sorted(models, key=lambda x: -stats[x][0])
+    L += ["## 最终主分", "", f"写入 `{out.relative_to(ROOT)}`。一票否决 {sum(vetoed.values())} 条"
+          f"（主 judge {sum(M[a]['score']['veto'] for a in both)}、第二 judge {sum(S[a]['score']['veto'] for a in both)}）。", "",
+          "| 名次 | 被测模型 | 最终均分 | 主 judge 名次 | 第二 judge 名次 |", "| --- | --- | --- | --- | --- |"]
+    L += [f"| {i} | {src} | {stats[src][0]:.1f} ± {stats[src][1]:.1f} | {rM[src]} | {rS[src]} |"
+          for i, src in enumerate(order, 1)]
+    return L + [""]
 
 
 def main():
@@ -238,14 +324,17 @@ def main():
           f"- 抽出 {len(sample)} 个：高危项 {len(hr_s)}，要点 {len(sample) - len(hr_s)}（按模型：" +
           "，".join(f"{s} {quota[s]}" for s in models) + "）。",
           f"- 仲裁材料 `data/scenarios/arbitration/{args.run}.md`，仲裁表 `{args.run}.csv`。", ""]
+
+    ARB.mkdir(parents=True, exist_ok=True)
+    sheet, key_path, pack = ARB / f"{args.run}.csv", ARB / f"{args.run}_key.csv", ARB / f"{args.run}.md"
+    if sheet.exists() and key_path.exists():
+        L += arbitration(sheet, key_path, M, S, both, ans, scns, models, rM, rS, args)
     REPORTS.mkdir(parents=True, exist_ok=True)
     rep = REPORTS / f"{args.run}_agreement.md"
     rep.write_text("\n".join(L), encoding="utf-8")
     print("\n".join(L))
     print(f"→ {rep}")
 
-    ARB.mkdir(parents=True, exist_ok=True)
-    sheet, key_path, pack = ARB / f"{args.run}.csv", ARB / f"{args.run}_key.csv", ARB / f"{args.run}.md"
     if sheet.exists():
         print(f"仲裁表已存在，不覆盖：{sheet}")
         return
