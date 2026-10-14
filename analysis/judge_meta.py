@@ -3,7 +3,11 @@
 读 build_judge_probes.py 生成的探针（带应得判定 expect）和 judge_scenarios.py 的判定记录，
 对一个 run 目录下的每个 judge 分别报：
 
-- 删要点检出：drop:Pk 中 Pk 判 missed 的比例（严格）；判为非 covered 的比例（宽松）
+- 删要点检出：drop:Pk 中 Pk 判为非 covered 的比例（宽松，主指标）；判 missed 的比例（严格，仅参考）。
+  人工抽查（spotcheck_drop.csv，Oct 14）：调试集 30 条 drop 探针里 0 条仍完整写到要点，11 条残留部分内容
+  （映射漏标 4、要点之间本身重叠 5、只剩零星痕迹 2），这些探针上 judge 判 partial 是合理的，所以严格口径
+  的真值约三分之一不成立。另报人工确认删净（human = N）的子集上的严格口径，样本小，只作参考。
+  提示词迭代不以严格口径为目标，否则会把 judge 调成无视回答里残留的内容。
 - 错误根因：wrong_root 中根因要点判为非 covered 的比例
 - 未改动要点保持：应得 covered 的要点判 covered 的比例（严格）/ 判为非 missed 的比例（宽松）。
   full 探针的应得判定来自映射模型，不完全是构造出来的，单列报告
@@ -20,6 +24,7 @@
 输出：reports/judge/<run>_<split>.md（脚本生成，请勿手改）
 """
 import argparse
+import csv
 import json
 import math
 import statistics
@@ -32,6 +37,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from judge_scenarios import OUT, PROMPTS, SCENARIOS, cache_key, latest_ok, load_records, load_split  # noqa: E402
 
 PROBES = ROOT / "data/scenarios/judge_probes/probes.jsonl"
+SPOTCHECK = ROOT / "data/scenarios/judge_probes/spotcheck_drop.csv"
 REPORTS = ROOT / "reports/judge"
 
 
@@ -45,12 +51,21 @@ def wilson(k, n, z=1.96):
     return f"{p:.1%}（{k}/{n}，[{max(0, c - h):.1%}, {min(1, c + h):.1%}]）"
 
 
+def load_spotcheck():
+    """drop 探针人工抽查：answer_id -> human（Y 仍写到 / N 删净 / ? 残留部分）。没填的不返回。"""
+    if not SPOTCHECK.exists():
+        return {}
+    with SPOTCHECK.open(encoding="utf-8") as f:
+        return {r["answer_id"]: r["human"].strip() for r in csv.DictReader(f) if r["human"].strip()}
+
+
 def kind_of(answer_id):
     return answer_id.split("|")[1].split(":")[0]
 
 
-def metrics(probes, scns, recs_by_answer):
-    """recs_by_answer: answer_id -> [记录（各重复）]。主指标只用第 0 次判定。"""
+def metrics(probes, scns, recs_by_answer, human=None):
+    """recs_by_answer: answer_id -> [记录（各重复）]。主指标只用第 0 次判定。human：load_spotcheck() 的结果。"""
+    human = human or {}
     c = defaultdict(lambda: [0, 0])  # 指标 -> [命中, 总数]
 
     def hit(name, ok):
@@ -67,10 +82,12 @@ def metrics(probes, scns, recs_by_answer):
         v = {x["id"]: x["verdict"] for x in r["parsed"]["points"]}
         hr = {str(x["index"]): x["triggered"] for x in r["parsed"]["high_risk"]}
         exp = p["expect"]
-        if kind == "drop":
+        if kind == "drop" and human.get(p["answer_id"]) != "Y":  # 人工判仍写到的探针真值不成立，不计
             pid = p["answer_id"].split("drop:")[1]
-            hit("drop_strict", v[pid] == "missed")
             hit("drop_lenient", v[pid] != "covered")
+            hit("drop_strict", v[pid] == "missed")
+            if human.get(p["answer_id"]) == "N":
+                hit("drop_strict_clean", v[pid] == "missed")
         if kind == "wrong_root":
             for pid in (q["id"] for q in scns[p["scenario_id"]]["rubric_points"] if q["stage"] == "root_cause"):
                 hit("wrong_root_lenient", v[pid] != "covered")
@@ -122,8 +139,9 @@ def stability(recs_by_answer):
 
 
 ROWS = [
-    ("drop_strict", "删要点检出（判 missed）", "高"),
-    ("drop_lenient", "删要点检出（判非 covered）", "高"),
+    ("drop_lenient", "删要点检出（判非 covered，主指标）", "高"),
+    ("drop_strict", "删要点检出（判 missed，仅参考：约 1/3 探针残留部分内容）", "高"),
+    ("drop_strict_clean", "删要点检出（判 missed，人工确认删净的抽查子集）", "高"),
     ("wrong_root_lenient", "错误根因：根因要点判非 covered", "高"),
     ("keep_constructed_strict", "未改动要点保持 covered（构造探针）", "高"),
     ("keep_constructed_lenient", "未改动要点判非 missed（构造探针）", "高"),
@@ -156,6 +174,7 @@ def main():
         probes = [p for p in probes if split.get(p["scenario_id"]) == args.split]
     probes = [p for p in probes if p["scenario_id"] in scns]
 
+    human = load_spotcheck()
     logs = sorted((args.out / args.run).glob("*.jsonl"))
     if not logs:
         raise SystemExit(f"{args.out / args.run} 下没有判定记录")
@@ -163,6 +182,11 @@ def main():
          "由 `analysis/judge_meta.py` 生成，请勿手改。比例附 Wilson 95% 区间；主指标只用每个回答的第 1 次判定。", "",
          f"探针 {len(probes)} 个，来自 {len({p['scenario_id'] for p in probes})} 道题。"
          "「方向」为高表示越高越好，为低表示越低越好。", ""]
+    if human:
+        hc = {k: sum(1 for v in human.values() if v == k) for k in ("N", "?", "Y")}
+        L += [f"删要点检出以「判非 covered」为主指标。人工抽查 {len(human)} 条 drop 探针：删净 {hc['N']}、"
+              f"残留部分内容 {hc['?']}、仍完整写到 {hc['Y']}（`spotcheck_drop.csv`），"
+              "残留部分内容的探针上判 partial 也合理，所以「判 missed」只作参考。", ""]
     for log in logs:
         recs = load_records(log)
         meta = next((r for r in reversed(recs) if r.get("ok")), None)
@@ -177,7 +201,7 @@ def main():
         for (aid, k, _), r in sorted(ok.items(), key=lambda kv: (kv[0][0], kv[0][1])):
             by_answer[aid].append(r)
         n_fail = sum(1 for r in recs if keys.get(r["answer_id"]) == r.get("key") and not r.get("ok"))
-        c, pad = metrics(probes, scns, by_answer)
+        c, pad = metrics(probes, scns, by_answer, human)
         agree, sds, flips = stability(by_answer)
         L += [f"## {meta['judge']}（effort {meta['effort']}，提示词 {meta['prompt']} / {meta['prompt_sha']}）", "",
               f"已判 {len(by_answer)}/{len(probes)} 个探针，失败记录 {n_fail} 条。", "",
