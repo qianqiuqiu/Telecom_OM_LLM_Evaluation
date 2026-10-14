@@ -1,0 +1,4184 @@
+[
+ {
+  "id": "question 4406",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What is the definition of a conventional network?",
+  "options": [
+   "A network that supports national and international roaming",
+   "A network where multiple serving operators share at least a radio access network",
+   "A network that consists of a core network only",
+   "A network that provides services to subscribers of other operators",
+   "A network that supports network sharing"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 35",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What is the definition of Operating Band?",
+  "options": [
+   "A group that does not have a pre-defined set of members.",
+   "Standardized Interface used by application/clients to access service capability features.",
+   "A frequency range in which E-UTRA operates with specific technical requirements.",
+   "The network where the calling party is located."
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 8013",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What is the definition of Fallback per band feature set?",
+  "options": [
+   "A feature set per band that has higher capabilities than the reported feature set per band.",
+   "A feature set per band that has lower capabilities than the reported feature set per band.",
+   "A feature set per band that includes only non-contiguous bands.",
+   "A feature set per band that is used for sidelink carriers only.",
+   "A feature set per band that supports the same or lower capabilities than the reported feature set per band."
+  ],
+  "gold": 5
+ },
+ {
+  "id": "question 536",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What is the measure of throughput called?",
+  "options": [
+   "PLMN Operator",
+   "Pilot Identity",
+   "Peak bit rate",
+   "PLMN Area",
+   "PLMN Operator"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 9",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What does the acronym VPN stand for?",
+  "options": [
+   "Voice Packet Network",
+   "Virtual Private Network",
+   "Visual Presentation Network",
+   "Voice and Picture Network",
+   "Video Protocol Network"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 460",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What is the GSM/EDGE Radio Access Network?",
+  "options": [
+   "The GSM core network infrastructure.",
+   "The GSM and GPRS backbone infrastructure.",
+   "A conceptual term for the BSCs and BTSs between A/Gb or Iu and Um interfaces.",
+   "The area where mobile cellular services are provided according to GSM standards.",
+   "The logical entity responsible for providing the group call service."
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 5722",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What is Delivered QoS?",
+  "options": [
+   "The requested QoS parameter values for a session.",
+   "The maximum achievable QoS parameter values for a session.",
+   "The average QoS parameter values for a session.",
+   "The minimum required QoS parameter values for a session.",
+   "The actual QoS parameter values with which the content was delivered over the lifetime of a QoS session."
+  ],
+  "gold": 5
+ },
+ {
+  "id": "question 8275",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What is the role of a Cell Radio Network Temporary Identifier (C-RNTI)?",
+  "options": [
+   "To indicate the general characteristics of a mobile station",
+   "To allocate UE identifiers unique within one cell controlled by the allocating CRNC",
+   "To monitor system information and paging information",
+   "To allow the transfer of information among service users without the need for end-to-end call establishment procedures",
+   "To format and transfer information related to a chargeable event"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 7840",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What does the acronym GNSS stand for?",
+  "options": [
+   "Global Network of Secure Satellites",
+   "General Navigation Support System",
+   "Global Navigation Satellite System",
+   "General Network of Secure Satellites"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 5438",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What does the acronym NANP stand for?",
+  "options": [
+   "North American Navigation Protocol",
+   "North American Network Provider",
+   "North American Number Portability",
+   "North American Numbering Plan"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 6789",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What does the acronym NA-ESRD stand for?",
+  "options": [
+   "North American Emergency Services Route Descriptor",
+   "North American External Services Routing Digits",
+   "North American Emergency Services Routing Digits",
+   "North American External Services Route Descriptor"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 776",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What is the radio access bearer?",
+  "options": [
+   "The service that the access stratum provides to the non-access stratum for transfer of user data between User Equipment and CN.",
+   "The mode of the cell, FDD or TDD.",
+   "Functionality supporting the exchange of information between peer application entities located in a GERAN or in a UTRAN access network.",
+   "Two or more CN operators share the same RAN.",
+   "Radio Network Signaling over the Iu."
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 9947",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What is the definition of 3GPP SSO Identity Provider?",
+  "options": [
+   "An entity that maintains Operator-controlled identity and credential information for a user, performs 3GPP SSO Authentication, and asserts the user's identity to a Data Application Provider",
+   "An entity that maintains identity and credential information (that is not Operator-controlled) for a user, performs authentication, and asserts the user's identity to a Data Application Provider",
+   "An entity that provides SSO Service",
+   "A service in which the user of a data application is authenticated once, and as a result of that authentication is provided with seamless and transparent access to multiple data applications offered by one or more Data Application Providers",
+   "Authentication performed between an SSO-capable UE and 3GPP SSO Identity Provider using Operator-controlled credentials and without requiring user involvement"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 2387",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What is the purpose of a GSM session?",
+  "options": [
+   "To establish an active group for data transfer",
+   "To provide coverage for GSM services",
+   "To allocate G-RNTI for MSs",
+   "To convert PDU's geographical area definition",
+   "To dedicate part of the card session to GSM operation"
+  ],
+  "gold": 5
+ },
+ {
+  "id": "question 4292",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What is a 3GPP System IC Card?",
+  "options": [
+   "Infrared Communication Card",
+   "Intelligent Communication Card",
+   "Interface Control Card",
+   "Integrated Circuit Card",
+   "Integrated Control Card"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 1816",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What is the meaning of IMS Multimedia Telephony?",
+  "options": [
+   "A service that allows multimedia conversational communications between two or more users",
+   "A service that provides real-time bidirectional conversational transfer of media",
+   "A service that includes Supplementary Services and takes account of regulatory requirements",
+   "All of the above"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 2445",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What is a Localised Service Area (LSA)?",
+  "options": [
+   "A specific location where logical resources are controlled by the RNC",
+   "An area in which the Core Network offers specific services",
+   "A network element that represents aggregations of network elements",
+   "The frequency reference point for transmitter and receiver requirements",
+   "The registration area where a UE registers its presence"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 5646",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What is a candidate peer mesh station (STA)?",
+  "options": [
+   "The process of changing the physical layer (PHY) protocol data unit (PPDU) using a beamforming steering matrix.",
+   "A station (STA) that receives a physical layer (PHY) protocol data unit (PPDU) using a beamforming steering matrix.",
+   "A neighbor mesh STA to which a mesh peering has not been established but meets eligibility requirements to become a peer mesh STA.",
+   "A station (STA) that transmits a physical layer (PHY) protocol data unit (PPDU) using a beamforming steering matrix.",
+   "A matrix that maps from space-time streams to transmit antennas to improve signal power or signal-to-noise ratio (SNR) at an intended receiver."
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 9274",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What does DM-RS stand for?",
+  "options": [
+   "Diffuse Modulation Reference Signal",
+   "Demodulation Reference Signal",
+   "Direct Modulation Reference Signal",
+   "Decentralized Modulation Reference Signal",
+   "Digital Modulation Reference Signal"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 9065",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What is network personalisation?",
+  "options": [
+   "A label used for identification of end users in a network",
+   "A refinement of network personalisation, limiting the usage of a mobile device to a subset of SIMs",
+   "A capability that allows a user to retain the same public telecommunication number when changing service providers",
+   "Allows the network operator to personalise a mobile device to be used with their SIMs only",
+   "A protocol independent model describing managed objects representing network resources"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 5709",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What is the definition of \"5G Access Network\"?",
+  "options": [
+   "A network that provides access to the internet using 5G technology.",
+   "A network that connects 5G devices to the 5G Core Network.",
+   "A network that allows 5G devices to connect to LAN-type services.",
+   "A network that connects 5G devices to non-3GPP access networks.",
+   "A network that provides private communication for 5G devices."
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 2532",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What is an Allowable PLMN?",
+  "options": [
+   "A defined set of procedures that is adopted at an interface at a specified reference point between a user and a network to enable the user to employ the services and/or facilities of that network",
+   "A PLMN that is not in the list of forbidden PLMN in the UE",
+   "A list stored in the UE containing the identities and associated PLMN identities of the CSGs to which the subscriber belongs",
+   "A cell that the UE may camp on to make emergency calls",
+   "A set of security attributes associated with a file"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 802",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What does the acronym NA-ESRK refer to?",
+  "options": [
+   "North American Emergency Services Routing Key",
+   "North American Emergency Services Routing Keyword",
+   "North American Emergency Services Routing Keypad",
+   "North American Emergency Services Routing Keypad"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 6075",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What is the phenomenon where light rays bend as they pass from one medium to another with different refractive indices?",
+  "options": [
+   "Reflection",
+   "Diffraction",
+   "Refraction",
+   "Dispersion"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 5585",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What is the definition of a cipher key?",
+  "options": [
+   "A logical association between several users",
+   "The modulated waveform conveying the physical channels",
+   "The combined losses of all transmission system components",
+   "A code used in conjunction with a security algorithm to encode and decode data",
+   "A link between the card and the external world"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 9420",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What is the definition of Protocol?",
+  "options": [
+   "A data unit specified in a protocol layer",
+   "A telecommunications network providing mobile cellular services",
+   "A measure of throughput",
+   "A physical form factor",
+   "A formal set of procedures adopted to ensure communication between functions"
+  ],
+  "gold": 5
+ },
+ {
+  "id": "question 6583",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What does E-RAB stand for?",
+  "options": [
+   "End-User Radio Access Bearer",
+   "Elementary Radio Access Bearer",
+   "Equivalent Radio Access Bearer",
+   "E-UTRAN Radio Access Bearer",
+   "Evolved Radio Access Bearer"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 3299",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What is a teleservice?",
+  "options": [
+   "A telecommunication service that uses short messages requiring a low transmission rate",
+   "A type of telecommunication service that provides complete capability for communication between users according to standardised protocols",
+   "A service offered by a PLMN operator or service provider to satisfy a specific telecommunication requirement",
+   "A type of telecommunication service that uses text conversation between users in at least two locations"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 4594",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What is the purpose of a trusted third party (TTP)?",
+  "options": [
+   "To reduce the number of frames sent to an access point (AP)",
+   "To classify traffic based on traffic identifiers (TIDs)",
+   "To generate a transmit signal from the digital baseband",
+   "To serve as an entity relied upon to vouch for two parties in a pairwise authentication protocol",
+   "To specify quality-of-service (QoS) characteristics of a data flow"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 1224",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What is the definition of \"UDM\"?",
+  "options": [
+   "Unified Data Model",
+   "User Data Management",
+   "Unified Device Management",
+   "User Device Management",
+   "Unified Data Management"
+  ],
+  "gold": 5
+ },
+ {
+  "id": "question 7639",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What is the definition of a multi-operator core network?",
+  "options": [
+   "A network sharing configuration in which parts of the core network are also shared",
+   "A network sharing configuration in which only the RAN is shared",
+   "A network sharing configuration in which both the core network and the RAN are shared",
+   "A network sharing configuration in which both the core network and the MSCs/SGSNs/MMEs are shared",
+   "A network sharing configuration in which both the core network and the BSC are shared"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 5530",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What is a mesh gate?",
+  "options": [
+   "A basic service set (BSS) that forms a self-contained network of mesh stations (STAs) that use the same mesh profile.",
+   "The set of all neighbor mesh stations (STAs) of a particular mesh STA.",
+   "A concatenated set of mesh links from a source mesh station (STA) to a destination mesh STA.",
+   "Any entity that has a mesh station (STA) function and a distribution system access function (DSAF) to provide access to a single distribution system for the mesh basic service set (MBSS).",
+   "A link from one mesh station (STA) to a neighbor mesh STA that have a mesh peering with each other."
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 1365",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What is prioritized quality of service (QoS) in IEEE 802.11?",
+  "options": [
+   "A mechanism to prevent network congestion",
+   "A feature that improves the reliability of the physical layer",
+   "A technique for selecting the best channel for transmission",
+   "A service that prioritizes higher priority data over lower priority data",
+   "A procedure for updating the network allocation vector (NAV)"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 957",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What is a Node B?",
+  "options": [
+   "An identification label used for end users in a network",
+   "A combination of a network subset code and the associated network code",
+   "A logical node responsible for radio transmission/reception",
+   "A unit of data passed between the user and the GPRS network",
+   "A protocol independent model describing managed objects representing network resources"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 9038",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What does AoA stand for?",
+  "options": [
+   "Angle of Action",
+   "Angle of Approach",
+   "Angle of Acceleration",
+   "Angle of Arrival",
+   "Angle of Adaptation"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 3674",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What are 'MBMS-service-associated signalling' used for?",
+  "options": [
+   "Improving the quality of the radio connection",
+   "Providing seamless handover",
+   "Managing a 3GPP System",
+   "Regulating the mandatory UE requirements",
+   "Associating M2AP messages to an MBMS service in eNB"
+  ],
+  "gold": 5
+ },
+ {
+  "id": "question 8720",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What is the definition of authenticator address (AA)?",
+  "options": [
+   "The medium access control (MAC) address of the IEEE 802.1X Authenticator’s STA.",
+   "An entity that provides an authentication service to an Authenticator.",
+   "The service used to establish the identity of one station (STA) as a member of the set of STAs authorized to associate with another STA.",
+   "The act of determining whether a particular right, such as access to a resource, is granted to an entity.",
+   "The horizontal orientation of the front surface of a station or of a radio antenna system’s main lobe measured clockwise from true north."
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 2856",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What is Location Registration (LR)?",
+  "options": [
+   "The control of logical resources owned by the RNC",
+   "The command/response communication context between the ME and the UICC",
+   "The process of a UE registering its presence in a specific area",
+   "The transfer of a specific type of information over the radio interface",
+   "The signalling associated with the control of logical resources"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 5999",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What do the abbreviations AUL-DFI and CAPC stand for?",
+  "options": [
+   "AUL-DFI: Autonomous Uplink\\_Download Feedback Indication, CAPC: Channel\\_Access Priority Class",
+   "AUL-DFI: Autonomous Uplink\\_Downlink Feedback Indication, CAPC: Channel\\_Access Point Control",
+   "AUL-DFI: Autonomous User\\_Device Feedback Indication, CAPC: Channel\\_Access Priority Class",
+   "AUL-DFI: Autonomous User\\_Device Feedback Indication, CAPC: Channel\\_Access Point Control",
+   "AUL-DFI: Autonomous Uplink\\_Downlink Feedback Indication, CAPC: Channel\\_Access Priority Class"
+  ],
+  "gold": 5
+ },
+ {
+  "id": "question 5855",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What is multi-user multiple input, multiple output (MU-MIMO) in IEEE 802.11-2020?",
+  "options": [
+   "A value generated by a cryptographic function that ensures message integrity.",
+   "A set of basic service sets (BSSs) within the same extended service set (ESS) that support fast BSS transitions.",
+   "The capability to advertise information for multiple BSSIDs using a single Beacon or Probe Response frame.",
+   "A technique by which multiple stations (STAs) either simultaneously transmit to a single STA or simultaneously receive from a single STA independent data streams over the same radio frequencies.",
+   "A framework used with admission control for the treatment of traffic streams based on precedence, which supports the preemption of an active traffic stream by a higher precedence traffic stream when resources are limited."
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 7213",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What is a fast basic service set (BSS) transition?",
+  "options": [
+   "Change of association from one BSS to another BSS within the same ESS",
+   "Change of association from one BSS to another BSS in a different ESS",
+   "Change of association from one channel to another channel",
+   "Change of association between STAs in a wireless network",
+   "Change of association between a fixed STA and a specific location"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 6534",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "What is the purpose of a traffic filtering service (TFS)?",
+  "options": [
+   "To reduce the number of frames sent to an access point (AP)",
+   "To identify specific allowed frames",
+   "To classify traffic based on traffic identifiers (TIDs)",
+   "To specify quality-of-service (QoS) characteristics of a data flow",
+   "To generate a transmit signal from the digital baseband"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 4676",
+  "category": "Lexicon",
+  "source": "random",
+  "question": "Which wireless technology is commonly used for long-range communication between mobile devices and cellular towers?",
+  "options": [
+   "Bluetooth",
+   "Wi-Fi",
+   "4G LTE",
+   "NFC"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 6509",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What is the purpose of route aggregation? [TCP/IP]",
+  "options": [
+   "To divide an IP packet into smaller packets",
+   "To combine multiple lower-level routes into a single high-level route",
+   "To determine the position of fragments in a fragmented packet",
+   "To identify participants on a network"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 557",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "Which protocol is used for calculating the tree structure in Spanning Tree Protocol (STP)? [IEEE 802.3]",
+  "options": [
+   "Parallel Redundancy Protocol (PRP)",
+   "Topology Change Notiﬁcation BPDU (TCN)",
+   "Topology Change Notiﬁcation Acknowledgement (TCA)",
+   "Media Redundancy Protocol (MRP)",
+   "Conﬁguration BPDU (CBPDU)"
+  ],
+  "gold": 5
+ },
+ {
+  "id": "question 2938",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "Which IEEE standard introduced the 10Base-T technology? [IEEE 802.3]",
+  "options": [
+   "IEEE802.3d",
+   "IEEE802.3e",
+   "IEEE802.3i",
+   "IEEE802.3j",
+   "IEEE802.3u"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 7409",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What is the purpose of QoS Monitoring in the enhancement of URLLC support in the 5G Core network? [3GPP Release 16]",
+  "options": [
+   "To measure packet delay between UE and PSA UPF",
+   "To calculate the core network Packet Delay Budget (CN PDB)",
+   "To provide support for up to eight simultaneously active semi-persistent scheduling (SPS) configurations",
+   "To support accurate reference timing delivery for Time Sensitive Communications",
+   "To enhance the inter UE transmission prioritization and multiplexing"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 7650",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What is the purpose of the User Identifier in the context of Network Slice-Specific Authentication and Authorization? [3GPP Release 16]",
+  "options": [
+   "To authenticate and authorize a UE for access to a specific network slice",
+   "To identify the existing identifiers relating to a 3GPP subscription or UE",
+   "To establish PDU Session(s) to the required Data network",
+   "To create and manage User Identities",
+   "To interwork the 3GPP system with an external entity for authentication and authorization"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 835",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What is the term used to describe an end user device replacing the UE that does not support 5G capabilities? [3GPP Release 16]",
+  "options": [
+   "Wireless and Wireline Convergence Enhancement",
+   "Trusted Non-3GPP Access Network",
+   "Wireline Access Gateway Function (W-AGF)",
+   "Fixed Wireless Access (FWA)",
+   "FN-RG"
+  ],
+  "gold": 5
+ },
+ {
+  "id": "question 783",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "In which release was enhanced-Licensed Assisted Access (eLAA) introduced?",
+  "options": [
+   "Rel-11",
+   "Rel-12",
+   "Rel-13",
+   "Rel-14",
+   "Rel-15"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 3934",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "How are IPv6 addresses represented? [TCP/IP]",
+  "options": [
+   "32 bits",
+   "64 bits",
+   "96 bits",
+   "128 bits"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 8654",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What is the purpose of provisioning GNSS (Global Navigation Satellite System) integrity information in 3GPP systems?",
+  "options": [
+   "To facilitate hybrid positioning methods",
+   "To increase the effective bandwidth",
+   "To improve the simplicity of angle estimation",
+   "To exchange anticipated event information that may compromise positioning",
+   "To detect line-of-sight/non-line-of-sight"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 4683",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What is the purpose of MBMS-APIs? [3GPP Release 14]",
+  "options": [
+   "To simplify the integration of third-party MBMS-aware applications",
+   "To define APIs for MBMS User Services",
+   "To establish connections between MBMS clients and media servers",
+   "To provide access to MBMS broadcast bearers",
+   "To control the media delivery format"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 5745",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "Which protocol is represented by the value '11h' in the Protocol field of the IP header? [TCP/IP]",
+  "options": [
+   "ICMP",
+   "TCP",
+   "UDP",
+   "Unknown protocol"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 9037",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What information is forwarded by the transport network for UAS (unmanned aircraft system) nodes in remote identification?",
+  "options": [
+   "UAV identity, its capability as a user equipment (UE), make and model, serial number, take-off weight, position, owner information, take-off location, mission type, flight data, and operation status.",
+   "Controller identity, its capability as a user equipment (UE), controller position, owner, operator and pilot information, and flight plan.",
+   "UAS identification and subscription information for discriminating between UAS capable UE and non-UAS capable, or regular, UEs.",
+   "Additional data that may be relevant to the UTM after successful authentication and authorization.",
+   "Live position information updates of the UAV and its controller."
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 3252",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What pins are used for bi-directional data transmission in Gigabit Ethernet? [IEEE 802.3]",
+  "options": [
+   "Pin 5 and 6",
+   "Pin 1 and 2",
+   "Pin 3 and 6",
+   "Pin 7 and 8"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 624",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "According to the Federal Communications Commission (FCC) regulations, what is the non-occupancy period if a radar signal is detected?",
+  "options": [
+   "10 minutes",
+   "20 minutes",
+   "30 minutes",
+   "40 minutes",
+   "50 minutes"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 2939",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What is threatened from a radio access perspective in the post-quantum era?",
+  "options": [
+   "Confidentiality and integrity of V2X devices connected to Base Stations",
+   "Confidentiality and integrity of user plane communication between the Base Stations and the core network",
+   "Both confidentiality and integrity of V2X devices connected to Base Stations and confidentiality and integrity of user plane communication between the Base Stations and the core network",
+   "Availability of V2X devices connected to Base Stations",
+   "Availability of user plane communication between the Base Stations and the core network"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 6425",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What is the purpose of UE history information in EN-DC? [3GPP Release 17]",
+  "options": [
+   "To optimize inter-system load balancing",
+   "To enhance coverage and cell edge interference",
+   "To avoid Ping Pong effect during handovers",
+   "To improve mobility optimization"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 319",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What is the main objective of intent driven management for service or network management? [3GPP Release 17]",
+  "options": [
+   "To support monitoring of the progress of file download in a downloading job",
+   "To provide detailed knowledge of the underlying network resources",
+   "To optimize the provisioning of management services for UEs in a specified area",
+   "To reduce the complexity of management for network resources",
+   "To enhance the support for the NSA in the service-based management architecture"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 37",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "Which NGAP procedure is used for inter-system load balancing? [3GPP Release 17]",
+  "options": [
+   "eNB Configuration Transfer",
+   "Downlink RAN Configuration Transfer",
+   "Uplink RAN Configuration Transfer",
+   "MME Configuration Transfer"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 9845",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "When was LTE defined from 3GPP?",
+  "options": [
+   "Rel-8",
+   "Rel-12",
+   "Rel-14",
+   "Rel-16"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 7764",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What important feature does IPv6 (Internet Protocol Version 6) have that enables it to assign multiple addresses to a single interface?",
+  "options": [
+   "Per-packet load balancing.",
+   "Coupled congestion schemes.",
+   "Network Ingress Filtering.",
+   "Support for multiple addresses per interface."
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 1184",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What is the purpose of load-balancing steering mode enhancements? [3GPP Release 17]",
+  "options": [
+   "To provide better network performance measurements",
+   "To prioritize non-3GPP access over 3GPP access in load balancing",
+   "To enable the UE and UPF to freely select split percentages for each access type",
+   "To enhance the functionality of the AMF"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 4058",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What category do the V2X configuration parameters fall under? [3GPP Release 14]",
+  "options": [
+   "V2X provisioning",
+   "V2X communication over PC5",
+   "V2X communication over LTE-Uu",
+   "All of the above",
+   "None of the above"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 3157",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What are the key issues related to energy consumption in a service provider network? [ETSI NFV Release 5]",
+  "options": [
+   "Component identification and power consumption data acquisition",
+   "Power state variation and mechanisms for power consumption change",
+   "Power distribution equipment and power supply units",
+   "All of the above"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 5911",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "Which NSI (network slice instance) supports infotainment applications in the V2X (vehicle to everything) system?",
+  "options": [
+   "uRLLC type NSI",
+   "eMBB type NSI",
+   "mMTC type NSI",
+   "All of the above",
+   "None of the above"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 5540",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "In what two modes can MulteFire send the DRS (Discovery Reference Signal)?",
+  "options": [
+   "During the serving cell DRS measurement and timing configuration (DMTC) window and during the downlink PDSCH",
+   "During the serving cell DRS measurement and timing configuration (DMTC) window and during the uplink PUSCH",
+   "During the downlink PDSCH and during the uplink PUSCH",
+   "During the serving cell DRS measurement and timing configuration (DMTC) window and during the LBT mechanism"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 1505",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "Which country has a maximum transmission power of 30 dBm in the frequency range of 5725-5850 MHz?",
+  "options": [
+   "China",
+   "United States",
+   "Canada",
+   "Brazil",
+   "Europe"
+  ],
+  "gold": 5
+ },
+ {
+  "id": "question 4093",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What is the purpose of file management in network management? [3GPP Release 17]",
+  "options": [
+   "To store and transfer data between network functions and management functions",
+   "To provide basic connectivity information to a NE after it is powered up",
+   "To support management of MDT measurement collection in UMTS, LTE, and 5G networks",
+   "To control and discover management data production and collection",
+   "To enable charging for roaming local breakout scenario"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 4842",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What is the vision for 6G networks?",
+  "options": [
+   "Higher data rates and system capacity",
+   "Higher spectrum efficiency",
+   "Significantly lower access latency",
+   "All of the above",
+   "None of the above"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 7421",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "Which type of protocol is TCP? [TCP/IP]",
+  "options": [
+   "Connection-oriented",
+   "Connectionless",
+   "Reliable",
+   "Unreliable"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 9333",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "Which IEEE standard introduced the Q tag with VLAN and priority information?",
+  "options": [
+   "IEEE802.3ab",
+   "IEEE802.3ac",
+   "IEEE802.3ae",
+   "IEEE802.3af",
+   "IEEE802.3aq"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 648",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What does the Rel. 16 feature of Subscription information allow? [3GPP Release 16]",
+  "options": [
+   "Indication of existing identifiers relating to a 3GPP subscription or UE",
+   "Selection of an AMF that supports the required Network Slices",
+   "Authentication and authorization of User Identity for a network slice",
+   "Indication of which S-NSSAIs are subject to Network Slice-Specific Authentication and Authorization",
+   "Creation and management of User Identities"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 2943",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What is the function of xAPPs?",
+  "options": [
+   "To collect RAN statistics for each slice",
+   "To provide programming capability for RAN components",
+   "To predict the future values of target parameters",
+   "To transport and process data from any source to any target",
+   "To configure O-Cloud"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 8658",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "How many slices can a UE (User Equipment) access at a time?",
+  "options": [
+   "Up to four slices",
+   "Up to six slices",
+   "Up to eight slices",
+   "Up to ten slices",
+   "Unlimited slices"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 5285",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What does a CIDR address contain? [TCP/IP]",
+  "options": [
+   "32-bit IP address and information about the number of bits in the network ID",
+   "32-bit IP address and information about the number of bits in the host ID",
+   "16-bit IP address and information about the number of bits in the network ID",
+   "16-bit IP address and information about the number of bits in the host ID"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 368",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What are the enhancements specified for the 3GPP Northbound APIs in Release 16? [3GPP Release 16]",
+  "options": [
+   "Optimization of APIs",
+   "Handling communication failure cases",
+   "HTTP-based protocol or OpenAPI file improvements",
+   "Additional deployment models",
+   "All of the above"
+  ],
+  "gold": 5
+ },
+ {
+  "id": "question 9162",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What is the primary challenge in designing a channel estimation method for short-packet CSs (communication systems)?",
+  "options": [
+   "Reducing transmission rate",
+   "Balancing delay requirements and transmission efficiency",
+   "Maximizing the use of known CSI",
+   "Reducing the impact of imperfect CSI"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 4034",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "Why is seamless and elastic integration between MEC (Multi-access Edge Computing) applications and the cloud crucial?",
+  "options": [
+   "To save back-haul capacity in the core network",
+   "To attract a large community of developers already used to programming client-server applications in the cloud",
+   "To ensure reliable connection to backend systems of car manufacturers and suppliers",
+   "All of the above"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 5437",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What is the impact of blocklength N on the average secrecy throughput T in the single-antenna AP (Access Point) case?",
+  "options": [
+   "T first increases and then decreases as N increases",
+   "T decreases as N increases",
+   "T increases as N increases",
+   "T remains constant regardless of N",
+   "T depends on other system parameters and is not affected by N"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 2549",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What does HTTPS stand for? [TCP/IP]",
+  "options": [
+   "Hypertext Transfer Protocol Secure",
+   "Hypertext Transfer Protocol Standard",
+   "Hypertext Transfer Protocol System",
+   "Hypertext Transfer Protocol Specification"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 7346",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What are the three aspects that voice and video enhancements in RAN2 and RAN3 focus on? [3GPP Release 14]",
+  "options": [
+   "RAN-assisted codec adaptation, VoLTE/ViLTE signalling optimization, and voice/video coverage enhancement",
+   "UL/DL bitrate recommendation, PUSCH enhancement mode, and multi-subframe channel estimation",
+   "RobVoLTE, QCI-1 bearer setup, and handover thresholds",
+   "LTE radio signal improvement, CS fallback, and UE-1MSC communication"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 688",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What does QCI-1 represent in LTE? [3GPP Release 14]",
+  "options": [
+   "Best effort",
+   "Real-time interactive",
+   "Streaming",
+   "Background",
+   "Signaling"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 2252",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "Which devices are commonly powered using IEEE802.3af Power over Ethernet? [IEEE 802.3]",
+  "options": [
+   "WLAN access points",
+   "Bluetooth access points",
+   "IP telephones",
+   "All of the above"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 3139",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What is the purpose of the charging extensions in the feature related to WLAN access in EPC? [3GPP Release 15]",
+  "options": [
+   "To enable QoS differentiation and better user experience",
+   "To integrate WLAN direct discovery technologies",
+   "To identify and charge for traffic transported over unlicensed access",
+   "To enhance LTE operation in unlicensed spectrum"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 1959",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What is the purpose of Generic Bootstrapping Architecture (GBA) in 5GC? [3GPP Release 17]",
+  "options": [
+   "To enable application functions to establish shared cryptographic material",
+   "To authenticate and authorize user equipment",
+   "To provide secure communication between UE and the network",
+   "To protect very low throughput MTC devices"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 8603",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What type of SNMP message is used to request the value of one or more variables? [TCP/IP]",
+  "options": [
+   "Get bulk request",
+   "Get next request",
+   "Get request",
+   "Set request",
+   "Inform request"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 8263",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What architecture enhancement work item is responsible for specifying V2X architectures and functional entities? [3GPP Release 14]",
+  "options": [
+   "V2XARC",
+   "V2XLTE",
+   "V2XCT",
+   "V2XLTE-Sec",
+   "V2X-CT"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 534",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What is the scope of VNF configuration? [ETSI NFV Release 5]",
+  "options": [
+   "Configuration of virtual resources only",
+   "Configuration of software resources only",
+   "Configuration of both software and virtual resources",
+   "Configuration of physical resources"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 959",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What type of arithmetic operations cause problems and implementation bottlenecks in the Quantum Resistant Security Algorithm?",
+  "options": [
+   "Addition operations",
+   "Multiplication operations",
+   "Subtraction operations",
+   "Division operations"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 3512",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What are the NFV management and orchestration capabilities that can be leveraged for applying energy efficiency policies? [ETSI NFV Release 5]",
+  "options": [
+   "There are no NFV management and orchestration capabilities that can be used for energy efficiency policies.",
+   "NFV management and orchestration capabilities can be used to adjust power states of NFVI resources.",
+   "NFV management and orchestration capabilities can be used to optimize VNF/NS placement based on power consumption savings.",
+   "Both option 2 and option 3 are correct."
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 4263",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What does the term 'NG-RAN' refer to? [ETSI NFV Release 5]",
+  "options": [
+   "New Generation Radio Access Network",
+   "Network Slice Subnet Management Function",
+   "Network Services",
+   "Network Slice Management Function",
+   "None of the above"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 5541",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "Which class uses the first bit of the first byte as 0? [TCP/IP]",
+  "options": [
+   "Class C",
+   "Class B",
+   "Class A",
+   "Class D"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 9602",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "Which scenarios are supported by the 5G-RG? [3GPP Release 16]",
+  "options": [
+   "Fixed Wireless Access (FWA) and Hybrid scenario",
+   "Wireline access and Trusted Non-3GPP access",
+   "Non-roaming architecture for FN-RG and 5G Core Network",
+   "Access Traffic Steering, Switch, and Splitting in the 5G system architecture",
+   "Support of BBF interaction with the Access Configuration System (ACS)"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 7410",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "According to the European Telecommunications Standards Institute (ETSI), what is the threshold for Clear Channel Assessment (CCA) in Europe?",
+  "options": [
+   "-73 dBm/MHz",
+   "-83 dBm/MHz",
+   "-93 dBm/MHz",
+   "-103 dBm/MHz",
+   "-113 dBm/MHz"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 5057",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "Which functionalities can be incorporated into a V2X (Vehicular-to-Everything) communications system using edge computing facilities?",
+  "options": [
+   "BBUs of C-RAN for access link termination",
+   "Core gateway functions for session management and routing of local traffic",
+   "Inter-operable and programmable computing environment for cloud-based vehicular applications",
+   "All of the above"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 1861",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What is UDP? [TCP/IP]",
+  "options": [
+   "A connection-oriented transport protocol",
+   "A connectionless transport protocol",
+   "A routing protocol",
+   "A security protocol",
+   "A session protocol"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 3297",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What is the impact of mobility between a 5G core network and an EPC (4G) on the user experience? [3GPP Release 15]",
+  "options": [
+   "Significant impact on the user experience",
+   "No impact on the user experience",
+   "Minimal impact on the user experience",
+   "Negative impact on the user experience",
+   "Neutral impact on the user experience"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 9043",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What is the main objective of the Rel-14 work in the context of Vehicle-to-Everything Communications (V2X)? [3GPP Release 15]",
+  "options": [
+   "To provide data transport service for basic road safety services",
+   "To enhance LTE technology for vehicle platooning",
+   "To support advanced driving and remote driving scenarios",
+   "To improve the perception of vehicle environment through extended sensors",
+   "To achieve full automation in driving"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 9318",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What is the main purpose of mode 2 resource allocation in NR-V2X?",
+  "options": [
+   "To allocate resources by a gNB for in-coverage UEs",
+   "To allocate resources autonomously by a UE based on a sensing procedure",
+   "To perform error correction through ARQ in SL communication",
+   "To provide prioritization between uplink and SL in a UE"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 4099",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What is the purpose of the computation method selection for a Quantum Resistant Security Algorithm in mobile nodes and mobile network applications?",
+  "options": [
+   "To reduce latency",
+   "To reduce computational burden on Network Equipments",
+   "To maximize space complexity",
+   "To improve post-quantum resistance"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 1687",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What are the three features specified in TS 23.304 for 5G ProSe Direct Communication over NR based PC5 reference point? [3GPP Release 17]",
+  "options": [
+   "Broadcast mode, Multicast mode, Unicast mode",
+   "Broadcast mode, Groupcast mode, Unicast mode",
+   "Broadcast mode, Groupcast mode, Multicast mode",
+   "Unicast mode, Groupcast mode, Multicast mode",
+   "Unicast mode, Multicast mode, Broadcast mode"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 7569",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What is SCMA (sparse code multiple access)?",
+  "options": [
+   "A type of channel model",
+   "A modulation technique",
+   "A multi-user detection algorithm",
+   "A grant-free orthogonal multiple access",
+   "A code-domain NOMA"
+  ],
+  "gold": 5
+ },
+ {
+  "id": "question 5105",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "How many bytes is the minimum length of the IP header? [TCP/IP]",
+  "options": [
+   "16 bytes",
+   "20 bytes",
+   "32 bytes",
+   "60 bytes"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 5099",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What does the Urgent Pointer field in the TCP header indicate? [TCP/IP]",
+  "options": [
+   "The position in the data field where urgent information starts",
+   "The maximum number of urgent information that can be sent",
+   "The expected sequence number of the urgent information",
+   "The length of the urgent information in bits"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 9907",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What is a user-centric ultra-dense network (UUDN)?",
+  "options": [
+   "A network where each user has their own dedicated cell",
+   "A network where multiple access points serve a single user",
+   "A network where users are given priority access to spectrum resources",
+   "A network where users have control over the network architecture",
+   "A network where users have high mobility between different cells"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 1909",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "How is a MAC address table updated in a bridge or switch? [IEEE 802.3]",
+  "options": [
+   "By sending requests to all devices on the network",
+   "By copying all MAC addresses from the relevant segment of the network",
+   "By manually inputting MAC addresses",
+   "By listening to network traffic and discovering MAC addresses"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 6310",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "Which subcarriers are assigned as pilot subcarriers? [IEEE 802.11]",
+  "options": [
+   "-21, -7, 7, and 21",
+   "-26, -7, 0, and 26",
+   "-21, -14, 14, and 21",
+   "-26, -14, 14, and 26"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 714",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What is the measure of how much extraneous information an amplifier introduces? [IEEE 802.11]",
+  "options": [
+   "Signal boost",
+   "Output power",
+   "Noise factor",
+   "Wavelength"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 3851",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What is the purpose of IGMP snooping? [TCP/IP]",
+  "options": [
+   "To configure multicast groups manually",
+   "To translate multicast IP addresses to multicast MAC addresses",
+   "To filter multicast messages in Layer 2-based networks",
+   "To improve network traffic predictability and reliability",
+   "To manage network traffic efficiently"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 759",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What is the role of the Near Real-Time RAN Intelligent Controller (Near-RT RIC)?",
+  "options": [
+   "To control the O-DUs through the E2 interface",
+   "To serve as the user categorization module",
+   "To compute the MAP vector for each O-RU",
+   "All of the above",
+   "None of the above"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 5991",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What advantages does MulteFire offer compared to Wi-Fi?",
+  "options": [
+   "Higher data rates",
+   "Higher capacity",
+   "Mobility management support",
+   "All of the above"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 5359",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What is the purpose of the enhancements for high capacity stationary wireless link and introduction of 1024 QAM for LTE DL? [3GPP Release 15]",
+  "options": [
+   "To improve network efficiency in small cell settings with higher SINR",
+   "To enhance spectral efficiency and peak data rates for DL channels",
+   "To support advanced antenna configurations for high capacity wireless connections",
+   "To reduce interference and improve link adaption in non-coherent joint transmission",
+   "None of the above"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 797",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What does MINT stand for? [3GPP Release 17]",
+  "options": [
+   "Maximum Internet Network Transmission",
+   "Minimization of Interruption Network Technology",
+   "Maximization of Internet Network Traffic",
+   "Minimization of Service Interruption",
+   "Maximum Internet Network Technology"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 192",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What is the length of the source MAC address field in an Ethernet frame? [IEEE 802.3]",
+  "options": [
+   "2 bytes",
+   "4 bytes",
+   "6 bytes",
+   "8 bytes"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 9786",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What is the purpose of the UxNB in the 3GPP network?",
+  "options": [
+   "To manage UAS node authentication and credential information",
+   "To establish C2 communications between the UAV and the ground control station",
+   "To extend the coverage and capacity of the cellular network",
+   "To support local routing and proximity-based services",
+   "To minimize RF interference in the network"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 8950",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "Which high level deployment configuration supports distributed algorithms for scheduling and interference management of V2V traffic? [3GPP Release 14]",
+  "options": [
+   "Configuration 1",
+   "Configuration 2",
+   "Both configurations",
+   "Neither configuration"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 1642",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What happens in the definitive cases of UE-initiated inter-slice switching?",
+  "options": [
+   "The UE chooses to switch slices definitely regardless of whether a suitable alternate slice is available in Allowed NSSAI.",
+   "The UE attempts to obtain a possible alternate slice in Allowed NSSAI through Registration for lower costs.",
+   "The UE releases its current session and stops receiving traffic from the current slice.",
+   "The UE decides to switch to an alternate slice that is already present in Allowed NSSAI.",
+   "The UE makes the final decision to switch slices after the successful completion of the Registration process."
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 2304",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "Which architectural framework uses microservices to decompose the SDN (software defined networking) controller and implement it as a set of distributed components?",
+  "options": [
+   "ETSI SDN-NFV MANO",
+   "ETSI GANA",
+   "3GPP-ETSI MEC Architecture",
+   "Microservices-based SDN Controller",
+   "Multi-Agent System (MAS)"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 1374",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What is the function of the window mechanism in TCP? [TCP/IP]",
+  "options": [
+   "To reserve buffer space",
+   "To guarantee complete reliability",
+   "To acknowledge the receipt of data",
+   "To set up a connection",
+   "To organize the data stream"
+  ],
+  "gold": 5
+ },
+ {
+  "id": "question 2659",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "Which procedures are impacted by MUSIM according to TS 23.502 and TS 23.401? [3GPP Release 17]",
+  "options": [
+   "Service Request",
+   "Registration / Attach / Tracking Area Update",
+   "N2 Paging / S1 Paging",
+   "All of the above",
+   "None of the above"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 4912",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What is the purpose of configuration management in Telecommunications Management Network (TMN) model? [ETSI NFV Release 5]",
+  "options": [
+   "To provide control over network elements",
+   "To collect data from network elements",
+   "To provide data to network elements",
+   "All of the above"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 4642",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What is the role of the service capability exposure function (SCEF) in the architectural framework of the use-case specific network slicing?",
+  "options": [
+   "To securely expose required services and capabilities to every US-NSI",
+   "To manage and orchestrate the US-NSIs",
+   "To dynamically request and lease resources from the operator",
+   "To provide policy rules to control plane functions",
+   "To forward and route packets between UEs and data network"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 2550",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What are the three typical scenarios that 5G networks are expected to satisfy?",
+  "options": [
+   "Gb/s-level data rates",
+   "Millisecond (ms) air interface latency",
+   "One million connections per square kilometer (1M/km^2)",
+   "All of the above",
+   "None of the above"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 177",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "How does packet duplication potentially reduce jitter?",
+  "options": [
+   "By providing frequency and path diversity",
+   "By avoiding retransmissions",
+   "By minimizing variance in latency",
+   "By improving handover performance",
+   "By improving throughput during TCP slow start phase"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 7815",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What is the purpose of packet duplication for mobility robustness?",
+  "options": [
+   "To split user data in multiple carriers",
+   "To perform make-before-break handover",
+   "To dynamically control packet duplication",
+   "To eliminate duplicate packets in the receiver",
+   "To improve the robustness of data and RRC signaling during handover"
+  ],
+  "gold": 5
+ },
+ {
+  "id": "question 1491",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "What technique is commonly used to solve the problems associated with a quiet guard time in OFDM? [IEEE 802.11]",
+  "options": [
+   "Padding",
+   "Convolution coding",
+   "Windowing",
+   "Cyclic extension"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 2243",
+  "category": "Standards overview",
+  "source": "random",
+  "question": "Which layer of the OSI model provides the mechanical, electrical or optical entities required to realize a physical connection? [IEEE 802.3]",
+  "options": [
+   "Physical Layer (layer 1)",
+   "Data Link Layer (layer 2)",
+   "Network Layer (layer 3)",
+   "Transport Layer (layer 4)",
+   "Session Layer (layer 5)"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 8601",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "Which sublayer is responsible for transfer of upper layer PDUs? [3GPP Release 18]",
+  "options": [
+   "MAC sublayer",
+   "RLC sublayer",
+   "PDCP sublayer",
+   "SDAP sublayer"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 4524",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the exemption provided for prioritized services during Control Plane Congestion and Overload Control? [3GPP Release 18]",
+  "options": [
+   "Exemption from RRC Connection Establishment prioritization",
+   "Exemption from session management congestion controls",
+   "Exemption from mobility management congestion controls",
+   "Exemption from QoS Flow load rebalancing",
+   "Exemption from IMC prioritization"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 295",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What does the SFD (Start Frame Delimiter) field in the PLCP framing indicate? [IEEE 802.11]",
+  "options": [
+   "The end of the preamble",
+   "The synchronization between the transmitter and receiver",
+   "The power level of the signal",
+   "The frequency of the incoming signal",
+   "The type of modulation scheme used"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 4920",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What are the two options for the PLCP framing in the HR/DSSS PHY? [IEEE 802.11]",
+  "options": [
+   "Long and short",
+   "Short and medium",
+   "Medium and long",
+   "Classic and advanced",
+   "Basic and enhanced"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 6100",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What key length does standardized WEP offer? [IEEE 802.11]",
+  "options": [
+   "40 bits",
+   "64 bits",
+   "128 bits",
+   "256 bits",
+   "512 bits"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 108",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the maximum number of PDU Sessions? [3GPP Release 17]",
+  "options": [
+   "128",
+   "32",
+   "8",
+   "256",
+   "64"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 2412",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What does the Average Queue Delay field represent? [IEEE 802.11]",
+  "options": [
+   "Delay exceeding the Delay Threshold",
+   "Delay between passing the MSDU to the MAC and the start of transmission",
+   "Average delay of the successfully transmitted frames",
+   "Number of MSDUs successfully transmitted",
+   "Average delay of the frames due to retransmissions"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 7868",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What does the Operator controlled signal threshold per access technology specify for network selection? [3GPP Release 18]",
+  "options": [
+   "The number of PLMNs to be selected",
+   "The order in which PLMNs are selected",
+   "The priority of different access technologies",
+   "The signal quality required for a PLMN to be selected",
+   "The coverage area of a PLMN"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 7622",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "In what scenarios may the network operator reduce network traffic further without reducing the Quality of Service (QoS)? [3GPP Release 17]",
+  "options": [
+   "Asset management services",
+   "Privacy Exception List",
+   "Value added services",
+   "Periodic location determination and reporting",
+   "Event-based or time-based decision process by the application"
+  ],
+  "gold": 5
+ },
+ {
+  "id": "question 8200",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What message does the AMF send to the NG-RAN during mobility registration, AM policy modification, and handover procedures? [3GPP Release 18]",
+  "options": [
+   "5G access stratum time distribution indication",
+   "Uu time synchronization error budget",
+   "Clock quality detail level",
+   "UE Context Modification Request",
+   "N2 connection"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 1191",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "Which satellite access network type has the lowest end-to-end latency requirement in a 5G system? [3GPP Release 17]",
+  "options": [
+   "GEO based satellite access",
+   "MEO based satellite access",
+   "LEO based satellite access",
+   "All have the same end-to-end latency requirement"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 8405",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What service does AF invoke to request the DNAI information? [3GPP Release 18]",
+  "options": [
+   "NEF service Nnef_DNAIMapping_Subscribe",
+   "Nudr_DM_Subscribe",
+   "UDR notifies the NEF",
+   "Nnef_DNAIMapping_Subscribe"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 636",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "How does the NWDAF collect information from the UPF? [3GPP Release 18]",
+  "options": [
+   "Via NEF(PFDF)",
+   "Via NRF",
+   "Via SMF",
+   "Directly from UPF"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 1703",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the capacity of eNB-ID in a Macro eNB? [3GPP Release 14]",
+  "options": [
+   "1.04 million",
+   "2.04 million",
+   "1024",
+   "256"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 149",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the purpose of interworking between a 5G core network and an EPC? [3GPP Release 17]",
+  "options": [
+   "To support home network provided data connectivity",
+   "To preserve IP address for PS service",
+   "To provide support for services in the home network",
+   "To support mobility procedures with minimum impact to the user experience"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 1383",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "How are the metrics related to the provided thresholds evaluated for WLAN BSS? [3GPP Release 17]",
+  "options": [
+   "The UE evaluates all metrics related to the provided thresholds.",
+   "The UE excludes the WLAN BSS if not all metrics related to the provided thresholds can be acquired.",
+   "The WLAN BSS is excluded if the UE cannot evaluate the provided thresholds.",
+   "The UE considers the metrics with unprovided thresholds as zero.",
+   "The UE considers the metrics with unprovided thresholds as infinite."
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 2079",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "Which connectivity model requires URSP rules for steering the mapping between UE applications and PDU Sessions? [3GPP Release 18]",
+  "options": [
+   "Distributed Anchor Point",
+   "Session Breakout",
+   "Multiple PDU Sessions",
+   "All of the above"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 7873",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "Which standard provides the specification for interworking between the IMS domain and the CS domain? [3GPP Release 17]",
+  "options": [
+   "RFC 3261",
+   "ITU-T Recommendation H.248",
+   "3GPP TS 23.228",
+   "ETSI TS 183 010"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 8634",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What triggers a Transmit Stream/Category Measurement report to be generated in the Average bit mode? [IEEE 802.11]",
+  "options": [
+   "The number of MSDUs for the TC or TS that are discarded out of the number of preceding MSDUs",
+   "The number of MSDUs for the TC or TS that are discarded in succession",
+   "The number of consecutive MSDUs for the TC or TS that experience a transmit delay",
+   "The value specified in the Delay Threshold subfield",
+   "The value specified in the Average Error Threshold field"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 8054",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What RRC states can additional resources be used for RRM measurements? [3GPP Release 16]",
+  "options": [
+   "RRC IDLE",
+   "RRC INACTIVE",
+   "RRC CONNECTED",
+   "All of the above",
+   "None of the above"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 4333",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What does the NAS protocol on N1 comprise of? [3GPP Release 18]",
+  "options": [
+   "NAS-MM and NAS-SM",
+   "NAS-LTE and NAS-3GPP",
+   "NAS-RAN and NAS-AN",
+   "NAS-UPF and NAS-SMF",
+   "NAS-NSA and NAS-SA"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 9513",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What does the PSF (PLCP Signaling) field in the PLCP header encode? [IEEE 802.11]",
+  "options": [
+   "The length of the MAC frame",
+   "The speed at which the payload MAC frame is transmitted",
+   "The frame check sequence",
+   "The data rate for the transmitted frame",
+   "The error check for the PLCP header"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 1847",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What can pointed contact with an energized, small diameter wire result in? [IEEE C95.1]",
+  "options": [
+   "Smaller tissue current density",
+   "Greater tissue current density",
+   "Increased contact current",
+   "Decreased contact current"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 5263",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "Which organization is responsible for regulating the use of the RF spectrum in the United States? [IEEE 802.11]",
+  "options": [
+   "Physical Medium Dependent (PMD)",
+   "Infrared Data Association (IrDA)",
+   "Federal Communications Commission (FCC)",
+   "Physical Layer Convergence Procedure (PLCP)",
+   "Physical Layer Architecture (PLA)"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 60",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What are DCI formats with CRC scrambled by MCCH-RNTI or G-RNTI referred to as? [3GPP Release 17]",
+  "options": [
+   "Multicast DCI formats",
+   "Broadcast DCI formats",
+   "Unicast DCI formats",
+   "PUCCH DCI formats"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 9656",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the purpose of suitable APIs for managing third-party owned applications in the operator's Service Hosting Environment? [3GPP Release 17]",
+  "options": [
+   "To monitor the network slice used for the third-party",
+   "To scale a network slice used for the third-party",
+   "To allow one type of traffic to/from a UE to be offloaded to a Service Hosting Environment close to the UE's location",
+   "To request appropriate QoE from the network",
+   "To manage the trusted third-party owned application(s) in the operator's Service Hosting Environment"
+  ],
+  "gold": 5
+ },
+ {
+  "id": "question 6463",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the purpose of the ARQ functionality in the RLC sublayer? [3GPP Release 17]",
+  "options": [
+   "Error detection",
+   "Segmentation of RLC SDUs",
+   "Sequence numbering",
+   "Flow control",
+   "Error correction"
+  ],
+  "gold": 5
+ },
+ {
+  "id": "question 5832",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What are the power components recommended to be considered for RRM measurement power saving evaluation in the IDLE/INACTIVE state? [3GPP Release 16]",
+  "options": [
+   "Loop convergence (AGC, TTL & FTL) / time-frequency tracking",
+   "SSB bursts used for Loop convergence",
+   "Paging",
+   "SIB1 decoding",
+   "Sleep"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 6204",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What does the uplink rate control function in the UE manage? [3GPP Release 18]",
+  "options": [
+   "The sharing of uplink resources between logical channels",
+   "The allocation of physical layer resources for the uplink and the downlink",
+   "The coordination of TDM and FDM cell resources between MAC in the gNB and the corresponding entity in the ng-eNB",
+   "The support for power-aware packet scheduling",
+   "The support for QoS-aware packet scheduling"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 3377",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "Under high network load conditions, how does the network protect itself? [3GPP Release 18]",
+  "options": [
+   "By restricting access attempts from UEs",
+   "By increasing resource allocation",
+   "By encrypting all data traffic",
+   "By prioritizing certain services",
+   "By disabling identification and authentication"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 1785",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the purpose of management data analytics capability? [3GPP Release 17]",
+  "options": [
+   "To provide authentication and authorization services",
+   "To discover management capabilities of MnS producers",
+   "To support access control in a multiple tenant environment",
+   "To improve network performance and efficiency through data analysis"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 7681",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "Which measurement is used to calculate the energy efficiency of MIoT network slice based on the number of active UEs? [3GPP Release 18]",
+  "options": [
+   "GTP.InDataOctN3UPF.SNSSAI",
+   "GTP.OutDataOctN3UPF.SNSSAI",
+   "RM.RegisteredSubNbrMax.SNSSAI",
+   "DRB.MeanActiveUeDl.SNSSAI"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 6912",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What are the possible classifications of OFDM symbols in a slot in a downlink frame? [3GPP Release 17]",
+  "options": [
+   "'downlink', 'flexible', or 'uplink'",
+   "'downlink' or 'flexible' symbols",
+   "'uplink' or 'flexible' symbols",
+   "'downlink' or 'uplink' symbols"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 2367",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What authentication method does the 5G system support for legacy non-3GPP devices accessing a 5G LAN-VN? [3GPP Release 17]",
+  "options": [
+   "Biometrics",
+   "Alternative authentication methods",
+   "3GPP credentials",
+   "Non-3GPP identities and credentials",
+   "EAP framework"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 6339",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the purpose of the Nmfaf_3daDataManagement service? [3GPP Release 18]",
+  "options": [
+   "To configure the MFAF to map data or analytics received by the MFAF to out-bound notification endpoints",
+   "To configure the MFAF to stop mapping data or analytics received by the MFAF to out-bound notification endpoints",
+   "To supply data or analytics from the MFAF to notification endpoints",
+   "To fetch data or analytics from the MFAF based on fetch instructions"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 7478",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What does NEF do after receiving the DNAI mapping information from UDR? [3GPP Release 18]",
+  "options": [
+   "Determines the DNN and/or S-NSSAI",
+   "Notifies the DNAI(s) to the AF",
+   "Determines the suitable DNAI(s)",
+   "Subscribes to DNAI mapping information for this DNN and/or S-NSSAI"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 8627",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the purpose of timing advance in uplink transmission? [3GPP Release 17]",
+  "options": [
+   "To advance/delay UE timings of transmissions to compensate for propagation delay",
+   "To synchronize UE transmissions with the receiver window of the eNB",
+   "To adjust the power spectral density of uplink transmissions",
+   "To select the appropriate modulation and channel coding rate",
+   "To allocate power to each carrier group in power control mode 1"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 8841",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is SAR in perfect adiabatic conditions? [IEEE C95.1]",
+  "options": [
+   "The rate of heat production in tissue exposed to RF energy",
+   "The rate of temperature change in tissue exposed to RF energy",
+   "The rate of RF energy absorption in tissue",
+   "The rate of heat loss in tissue exposed to RF energy",
+   "The specific heat capacity of tissue"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 5608",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "Besides the short service definition and description of normal operation, what other information is provided for each supplementary service? [3GPP Release 17]",
+  "options": [
+   "Exceptional operation or unsuccessful outcome",
+   "Interworking with other supplementary services",
+   "Interaction with PSTN/ISDN and CS mobile networks",
+   "Consideration for interworking with CS mobile and fixed services",
+   "Mandatory or optional support based on regulations"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 4530",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the purpose of the work item on Flexible eNB-ID and Cell-ID in E-UTRAN? [3GPP Release 14]",
+  "options": [
+   "To support more than 1.04 million eNBs in a PLMN and cells beyond 256 in an eNB",
+   "To enable operation of an LAA SCell on the UL in unlicensed spectrum",
+   "To define the requirements and signaling support for a new UE category with a single receiver",
+   "To improve mobility and throughput performance under high speed scenarios"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 2637",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What does the Channel Width subfield indicate in the VHT MIMO Control field? [IEEE 802.11]",
+  "options": [
+   "The number of columns in the compressed beamforming feedback matrix",
+   "The number of rows in the compressed beamforming feedback matrix",
+   "The width of the channel in which the measurement to create the compressed beamforming feedback matrix was made",
+   "The subcarrier grouping used for the compressed beamforming feedback matrix",
+   "The size of codebook entries"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 3884",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the purpose of the split between source and transmitter in data frames? [IEEE 802.11]",
+  "options": [
+   "To transmit data from one station to another",
+   "To acknowledge other frames without using separate acknowledgments",
+   "To identify the receiver and transmitter of the frame on the wireless medium",
+   "To send acknowledgments to the frame's transmitter and replies to the frame's source",
+   "To forward data to the appropriate location in the distribution system"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 9377",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "Which interface is used for communication between the HeNB and the Core Network? [3GPP Release 17]",
+  "options": [
+   "S1 interface",
+   "S5 interface",
+   "S-GW interface",
+   "X2 interface",
+   "SGi interface"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 4759",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "Which reference point replaces the Gz reference point within the common charging architecture? [3GPP Release 18]",
+  "options": [
+   "Gy",
+   "Rf",
+   "Gzn",
+   "Ro",
+   "Ga"
+  ],
+  "gold": 5
+ },
+ {
+  "id": "question 1497",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What functionality does LLDP provide in the TSN Transport Network? [3GPP Release 18]",
+  "options": [
+   "Dynamic address assignment",
+   "Stream management",
+   "Topology information exchange",
+   "Priority queueing"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 5947",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What does scheduling the periods of location monitoring and reporting help reduce? [3GPP Release 17]",
+  "options": [
+   "Quality of Service (QoS)",
+   "Network traffic",
+   "Asset management services",
+   "Privacy Exception List",
+   "PLMN operator services"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 3673",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the purpose of intra-level correlation? [3GPP Release 18]",
+  "options": [
+   "To include IOI identities within SIP signalling.",
+   "To combine charging events belonging to the same service generated by different CTFs.",
+   "To uniquely identify each operator for inter operator accounting purposes.",
+   "To enable operators involved in IMS sessions to identify each other.",
+   "To aggregate charging events belonging to the same charging session over a time period."
+  ],
+  "gold": 5
+ },
+ {
+  "id": "question 4",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "How does a supporting UE attach to the same core network operator from which it detached in a shared network? [3GPP Release 17]",
+  "options": [
+   "It requests the core network node to remember its previous selection.",
+   "It uses information stored in the UE when it was detached.",
+   "It relies on the SIM/USIM card for information.",
+   "It performs a fresh attach procedure."
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 1019",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the purpose of service management requirements? [3GPP Release 18]",
+  "options": [
+   "To enable the user to establish and maintain several connections simultaneously",
+   "To support the development of multimedia services",
+   "To enable control, creation, and subscription of service capabilities and services",
+   "To allow the home environment to be notified when a user has changed ME"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 2082",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What triggers the UE to send the RRCResumeRequest message? [3GPP Release 17]",
+  "options": [
+   "RNA update",
+   "DL data arrival",
+   "UL data arrival",
+   "RAN-based paging"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 8347",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What are the characteristics of the interfering signals for standalone NB-IoT? [3GPP Release 18]",
+  "options": [
+   "A PDSCH containing data and reference symbols",
+   "A PUSCH containing data and reference symbols",
+   "A NPUSCH containing data and reference symbols",
+   "A PRACH containing data and reference symbols"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 146",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the role of the bearer control function? [3GPP Release 18]",
+  "options": [
+   "To provide interfaces for supplementary services",
+   "To define the characteristics of bearers",
+   "To assign and release bearers for a call",
+   "To enable subscribers to control services",
+   "To adapt bearers for fixed network use"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 6097",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What does the Un interface in E-UTRAN support? [3GPP Release 17]",
+  "options": [
+   "Relaying between the RN and the DeNB",
+   "S1 and X2 user plane aspects",
+   "S1 and X2 control plane aspects",
+   "Radio protocol aspects",
+   "The termination of the E-UTRA radio protocols"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 2185",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "Which frequency range should the channel model support? [3GPP Release 18]",
+  "options": [
+   "Up to 2 GHz",
+   "Up to 6 GHz",
+   "Up to 10 GHz",
+   "Up to 50 GHz",
+   "Up to 100 GHz"
+  ],
+  "gold": 5
+ },
+ {
+  "id": "question 8403",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the purpose of the Advice of Charge (AoC) supplementary service? [3GPP Release 18]",
+  "options": [
+   "To distribute tariff information to network elements",
+   "To provide charging information for wholesale billing",
+   "To indicate the occurrence of new charges to the user",
+   "To administer on-line charging data stored in the network nodes",
+   "To determine network utilization charges for home subscribers"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 4620",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "Which interface is used to forward short messages in the network with the GLR in case of SMS transfer over GPRS? [3GPP Release 17]",
+  "options": [
+   "GLb-interface",
+   "GLg-interface",
+   "GLe-interface",
+   "GLf-interface",
+   "GLj-interface"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 7173",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "When is the location request processed with the highest priority level? [3GPP Release 17]",
+  "options": [
+   "For all location requests",
+   "Only for emergency services",
+   "Only for PLMN operator Services",
+   "For location requests towards the user’s Target UE",
+   "For location requests towards her own Target UE"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 5791",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "Which access class value is assigned to Multimedia Priority Service? [3GPP Release 18]",
+  "options": [
+   "Access Class 10",
+   "Access Class 11",
+   "Access Class 12",
+   "Access Class 13",
+   "Access Class 14"
+  ],
+  "gold": 5
+ },
+ {
+  "id": "question 8076",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What field in the TPA Request frame indicates the request/response transaction? [IEEE 802.11]",
+  "options": [
+   "Category",
+   "DMG Action",
+   "Dialog Token",
+   "Timing Offset"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 4782",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the maximum wake-up sequence length for unsynchronized transmission? [IEEE 802.15.4]",
+  "options": [
+   "macCslInterval",
+   "macCslFramePendingWait",
+   "macCslMaxPeriod",
+   "macCslPeriod",
+   "macCslFrame"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 8570",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What can the AF subscribe to from NEF to assist its application AI/ML operations? [3GPP Release 18]",
+  "options": [
+   "Session inactivity time monitoring event",
+   "Traffic volume exchanged between the UE and the AI/ML application server",
+   "Both session inactivity time monitoring event and traffic volume exchanged between the UE and the AI/ML application server",
+   "NEF monitoring events related to AI/ML operations",
+   "UE IP address"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 1640",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What happens if the SDT procedure is unsuccessful? [3GPP Release 18]",
+  "options": [
+   "The UE transitions to RRC_INACTIVE state.",
+   "The UE transitions to RRC_CONNECTED state.",
+   "The UE transitions to RRC_RELEASE state.",
+   "The UE transitions to RRC_SUSPEND state.",
+   "The UE transitions to RRC_IDLE state."
+  ],
+  "gold": 5
+ },
+ {
+  "id": "question 3519",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "When is the Connection Resume procedure used by a UE? [3GPP Release 18]",
+  "options": [
+   "When the UE is in CM-CONNECTED with RRC_INACTIVE state and upper layers or the AS requests the resumption of a suspended RRC connection",
+   "When the UE is in CM-IDLE with Suspend and user data transmission is required",
+   "When the UE is disconnected from the network and needs to establish a secure connection",
+   "When the UE is in CM-CONNECTED with RRC_CONNECTED state and the AMF requests the resumption of a secure connection"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 6040",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "Which of the following situations can lead to the MS being unable to obtain normal service from a PLMN or SNPN? [3GPP Release 18]",
+  "options": [
+   "Failure to find a suitable cell of the selected PLMN or SNPN",
+   "No SIM in the MS",
+   "A PLMN not allowed response in case of PLMN",
+   "An illegal ME response when an LR is received",
+   "MS supporting CAG is camped on a CAG cell"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 7804",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What action does the AMF take when the updated subscription data indicates that the UE is not allowed to roam in the network? [3GPP Release 18]",
+  "options": [
+   "Initiating an SMF initiated PDU Session Modification procedure",
+   "Initiating an AMF initiated Deregistration procedure",
+   "Updating UE context stored at RAN to modify the UE-Slice-MBR corresponding to an S-NSSAI",
+   "Initiating UE Configuration Update procedure"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 4351",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What can the DCCF do in the 5G system architecture? [3GPP Release 18]",
+  "options": [
+   "Retrieve management data from OAM",
+   "Collect data from NWDAF",
+   "Collect data from NF using Nnf services",
+   "Collect data using a messaging framework",
+   "All of the above"
+  ],
+  "gold": 5
+ },
+ {
+  "id": "question 9547",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What additional function does the eNB support in case of SIPTO@LN with stand-alone gateway? [3GPP Release 17]",
+  "options": [
+   "Transfer of the collocated L-GW IP address to the MME",
+   "Support for MME-triggered S-GW relocation",
+   "Signaling of its LHN ID to the MME",
+   "Support of basic P-GW functions in the stand-alone gateway",
+   "Activation of SIPTO@LN PDN for requested APN"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 4894",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "Which field is used to carry explicit feedback in the form of noncompressed beamforming feedback matrices? [IEEE 802.11]",
+  "options": [
+   "Power Constraint",
+   "Neighbor Report",
+   "Noncompressed Beamforming Report",
+   "Measurement Pilot Interval",
+   "QoS Capability"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 9487",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the sub-carrier spacing for the downlink transmission scheme based on conventional OFDM? [3GPP Release 17]",
+  "options": [
+   "15 kHz",
+   "7.5 kHz",
+   "2.5 kHz",
+   "1.25 kHz",
+   "0.37 kHz"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 7035",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What are the exposure limits on environmental electric fields intended to avoid? [IEEE C95.1]",
+  "options": [
+   "Synapse activity alteration",
+   "Unpleasant spark discharges",
+   "Painful contact currents",
+   "Nerve excitation",
+   "Cardiac excitation"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 6099",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the purpose of ciphering in NR connected to 5GC security? [3GPP Release 18]",
+  "options": [
+   "Ensures physical protection of data handling",
+   "Provides user data integrity protection",
+   "Provides signaling data confidentiality",
+   "Provides signaling data integrity protection",
+   "Provides user data confidentiality"
+  ],
+  "gold": 5
+ },
+ {
+  "id": "question 9061",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the purpose of the Direct event notification method in the PCC rule? [3GPP Release 18]",
+  "options": [
+   "To indicate that the AF should subscribe to QoS monitoring notifications",
+   "To provide the QoS monitoring parameters to the SMF",
+   "To indicate that both direct and PCF/SMF notifications are required",
+   "To activate N4 reporting for QoS monitoring results"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 3430",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "How should users be able to obtain service and use chargeable services with networks they have no direct commercial agreement with? [3GPP Release 18]",
+  "options": [
+   "By interworking directly with the serving network operators.",
+   "By negotiating commercial roaming agreements with serving network operators.",
+   "By using a trusted third party for interworking with serving network operators.",
+   "By routing registration requests through the home environment.",
+   "By using fraud and cost control mechanisms to ensure charges do not exceed credit limits."
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 4279",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is used in CCK to carry information and spread the signal? [IEEE 802.11]",
+  "options": [
+   "Static repeating code word",
+   "Barker word",
+   "Phase angles",
+   "Chip stream",
+   "Code symbol"
+  ],
+  "gold": 5
+ },
+ {
+  "id": "question 388",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "How is the modulation order (Qm) and target code rate (R) determined for PSSCH transmission? [3GPP Release 17]",
+  "options": [
+   "Based on the DM-RS configuration",
+   "Based on the MCS table",
+   "Based on the number of REs in the slot",
+   "Based on the redundancy version",
+   "Based on the number of DMRS port"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 9091",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "Which aspect of the 5G system covers network slicing, network capability exposure, scalability, and diverse mobility, security, efficient content delivery, and migration and interworking? [3GPP Release 18]",
+  "options": [
+   "Enhanced Mobile Broadband (eMBB)",
+   "Critical Communications (CC)",
+   "Ultra Reliable and Low Latency Communications (URLLC)",
+   "Massive Internet of Things (mIoT)",
+   "Flexible network operations"
+  ],
+  "gold": 5
+ },
+ {
+  "id": "question 1321",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the purpose of the N26 interface in the non-roaming architecture for interworking between 5GS and EPC? [3GPP Release 18]",
+  "options": [
+   "To enable interworking between EPC and the NG core",
+   "To support subset of the functionalities that are supported over S10",
+   "To provide inter-CN interface between the MME and 5GS AMF",
+   "To support interworking between EPC and NG-RAN"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 7095",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "Which architecture can support local breakout roaming? [3GPP Release 18]",
+  "options": [
+   "Roaming architecture with home-routed traffic",
+   "Non-roaming architecture",
+   "Local breakout roaming architecture for interworking between ePDG/EPC and 5GS",
+   "Local breakout roaming architecture for interworking between 5GS and EPC/E-UTRA"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 1030",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "Which type of reporting is supported for CLI measurements? [3GPP Release 18]",
+  "options": [
+   "Event triggered only",
+   "Periodic only",
+   "Both event triggered and periodic",
+   "Continuous",
+   "Manual"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 9549",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What additional information does the NWDAF collect for UPF load analytics? [3GPP Release 18]",
+  "options": [
+   "NF Instance IDs and NF Set IDs",
+   "UE trajectory input data and MDT input data",
+   "Analytics ID and Target of Analytics Reporting",
+   "Area of interest and list of analytics subsets",
+   "Preferred order of results and Reporting Threshold"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 4585",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is withdrawal in the context of the Target UE? [3GPP Release 17]",
+  "options": [
+   "An action to make the privacy exception list with its privacy classes available to a Target UE",
+   "An action taken by the service provider to remove an available privacy class from a target UE’s PEL",
+   "An action to invoke the LCS feature",
+   "An action to bar the Location Service of a specific user",
+   "An action to remove an available LCS feature from a target UE’s subscription profile"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 1736",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the suggested interim limit used by the U.S. Navy as a protective limit for RF burns? [IEEE C95.1]",
+  "options": [
+   "220 V rms",
+   "140 V rms",
+   "50 V rms",
+   "30 V rms"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 8959",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "If a coordinator receives a Beacon Request command in a beacon-enabled PAN, what should it do? [IEEE 802.15.4]",
+  "options": [
+   "Ignore the command and continue transmitting periodic beacons",
+   "Send a single Beacon frame using unslotted CSMA-CA",
+   "Send an acknowledgment and transmit periodic beacons",
+   "Stop transmitting periodic beacons and send a Beacon frame",
+   "Wait for a certain time and then send a Beacon frame"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 2430",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the definition of in-channel selectivity (ICS)? [3GPP Release 18]",
+  "options": [
+   "The measure of the receiver's ability to receive a wanted signal in the presence of an interfering signal in the received SAN channel bandwidth.",
+   "The measure of the receiver's ability to receive the wanted signal at its assigned channel frequency in the presence of an adjacent channel signal.",
+   "The measure of the receiver's ability to receive the wanted signal at its assigned resource block locations in the presence of an interfering signal at a larger power spectral density.",
+   "The measure of the receiver's ability to receive a wanted signal in the presence of a spurious emission.",
+   "The measure of the receiver's ability to receive a wanted signal in the presence of an unwanted interferer out of the operating band."
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 8965",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the default Traffic type of interest if not provided? [3GPP Release 18]",
+  "options": [
+   "Overall traffic",
+   "GBR traffic",
+   "Delay-critical GBR traffic",
+   "None of the above",
+   "Traffic type cannot be optional"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 4970",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the purpose of code-bit interleaving? [IEEE 802.15.4]",
+  "options": [
+   "To increase the data rate of the transmission",
+   "To improve the robustness of the transmission",
+   "To reduce the power consumption of the transmission",
+   "To ensure the synchronization of the transmitter and receiver",
+   "To mitigate the effects of fading and interference"
+  ],
+  "gold": 5
+ },
+ {
+  "id": "question 185",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "How does a non-supporting UE select a core network operator to serve it in a shared network? [3GPP Release 17]",
+  "options": [
+   "The UE selects an operator from the available CN operators.",
+   "The shared network selects an operator for the UE.",
+   "The RAN routes the UE to an available CN node.",
+   "The BSC/RNC/eNodeB relays the chosen operator to the core network node."
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 7773",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the process of verifying if a Service User is authorized for MPS called? [3GPP Release 18]",
+  "options": [
+   "End-to-End Priority Treatment",
+   "Service Invocation",
+   "Network Interconnection",
+   "Authorization"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 1207",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the on-duration of DRX? [3GPP Release 18]",
+  "options": [
+   "The duration that the UE monitors PDCCH",
+   "The duration until a retransmission can be expected",
+   "The duration that the UE waits for, after waking up, to receive PDCCHs",
+   "The total duration that the UE monitors PDCCH"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 5370",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the purpose of network exposure to the Edge Application Server (EAS)? [3GPP Release 18]",
+  "options": [
+   "To bypass the SMF and the PCF and report QoS monitoring directly to the EAS",
+   "To support low latency network exposure to local AF",
+   "To enable the local NEF to report QoS monitoring results to the AF",
+   "To trigger UE mobility and AF relocation"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 4282",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the purpose of the MPS system? [3GPP Release 18]",
+  "options": [
+   "To provide preferential treatment based on the subscription for MPS",
+   "To enable access and core network resources for MPS sessions",
+   "To assign priority levels to Service Users",
+   "To support Priority Data Bearer Service",
+   "To provide MPS for roaming Service Users"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 886",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "How can the MTLF determine ML Model degradation? [3GPP Release 18]",
+  "options": [
+   "By comparing predictions with ground truth data",
+   "By collecting feedback information from AnLF",
+   "Both option 1 and option 2",
+   "By reselecting a new ML model"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 7881",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "How does the gNB allocate downlink resources for initial HARQ transmissions to UEs? [3GPP Release 17]",
+  "options": [
+   "Through the scheduling request channel",
+   "Through power headroom reports",
+   "Through activation of configured downlink assignments",
+   "Through semi-persistent scheduling"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 2018",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the purpose of the ECAPC Policy element in frames? [IEEE 802.11]",
+  "options": [
+   "To indicate the ClusterMaxMem subfield",
+   "To enforce clustering policies in member APs or member PCPs",
+   "To transmit the MAC address of the CCSS",
+   "To schedule transmissions during a Beacon SP",
+   "To determine the Cluster Time Offset index"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 1029",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What should URSP rules based on AF guidance not be set as? [3GPP Release 18]",
+  "options": [
+   "Match all traffic descriptor",
+   "URSP rules with low priority",
+   "URSP rules without traffic descriptor",
+   "URSP rules for specific locations"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 966",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What does the ASEL Command subfield in the ASELC (Antenna Selection) subfield indicate? [IEEE 802.11]",
+  "options": [
+   "Transmit Antenna Selection Sounding Indication (TXASSI)",
+   "Transmit Antenna Selection Sounding Request (TXASSR) or Transmit ASEL Sounding Resumption",
+   "Receive Antenna Selection Sounding Indication (RXASSI)",
+   "Receive Antenna Selection Sounding Request (RXASSR)",
+   "None of the above"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 2542",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "Which of the following symptoms have been reported to be associated with RF exposure? [IEEE C95.1]",
+  "options": [
+   "Headache and fatigue",
+   "Hypersensitivity",
+   "Sleep disturbances",
+   "Blood pressure and heart rate changes",
+   "Cancer"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 6286",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the purpose of multiple USIMs in a MUSIM UE? [3GPP Release 18]",
+  "options": [
+   "To provide security features",
+   "To host multiple applications",
+   "To access the IMS services",
+   "To improve system performance and user experiences",
+   "To store provisioning parameters"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 44",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What are the most harmful RF exposure hazards? [IEEE C95.1]",
+  "options": [
+   "Localized RF heating effects",
+   "Whole-body heating effects",
+   "Microwave hearing effects",
+   "RF shocks and burns",
+   "Low-level effects"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 9781",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "Which relaxation criteria should be treated with higher priority in RRM measurement relaxation? [3GPP Release 16]",
+  "options": [
+   "UE mobility status and serving cell beam status",
+   "Link quality and UE mobility status",
+   "UE is not at cell edge and UE mobility status",
+   "UE mobility status and exact relaxation criteria",
+   "UE mobility status and UE type"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 717",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What happens when the Control Plane data back-off timer is running? [3GPP Release 18]",
+  "options": [
+   "The UE cannot initiate any data transfer via Control Plane CIoT 5GS Optimization",
+   "The AMF stops processing any further requests (except for exception reporting and paging response) for data transport via Control Plane Service Request from that UE",
+   "The UE is allowed to initiate Service Request procedures for activating User Plane connection",
+   "The UE is allowed to initiate Session Management procedures for emergency services"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 6109",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What type of link adaptation is performed in uplink transmission? [3GPP Release 17]",
+  "options": [
+   "Adaptive transmission bandwidth",
+   "Transmission power control",
+   "Adaptive modulation and channel coding rate",
+   "All of the above",
+   "None of the above"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 1318",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "Which access control mechanisms are supported by NG-RAN? [3GPP Release 18]",
+  "options": [
+   "RACH back off",
+   "RRC Connection Reject",
+   "RRC Connection Release",
+   "UE based access barring mechanisms",
+   "All of the above"
+  ],
+  "gold": 5
+ },
+ {
+  "id": "question 8912",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "Which type of control loop relies on periodic communication patterns? [3GPP Release 19]",
+  "options": [
+   "Open-loop control",
+   "Closed-loop control",
+   "Sequence control",
+   "Batch control",
+   "Deterministic aperiodic communication"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 6296",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "Which specification defines IMS support for 5GC? [3GPP Release 18]",
+  "options": [
+   "TS 23.040",
+   "TS 23.273",
+   "TS 23.502",
+   "TS 23.540",
+   "TS 23.228"
+  ],
+  "gold": 5
+ },
+ {
+  "id": "question 4873",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What type of uncertainty assessment is performed for the measurement uncertainty budget of UE RF testing methodology? [3GPP Release 18]",
+  "options": [
+   "Static propagation conditions",
+   "Multi-path fading propagation conditions",
+   "Uncertainty assessment",
+   "Polarization basis mismatch between the TE and DUT",
+   "Inter-band (FR2+FR2) CA"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 3704",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What does the BSSID field in the MAC header of a PS-Poll frame contain? [IEEE 802.11]",
+  "options": [
+   "The BSSID of the sender's access point",
+   "The BSSID of the receiver's access point",
+   "The BSSID of the wireless network interface",
+   "The BSSID of the network being sought",
+   "The BSSID of the BSS created by the access point"
+  ],
+  "gold": 5
+ },
+ {
+  "id": "question 6561",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What conclusion was reached regarding the possibility of adverse health effects from chronic low-level exposure? [IEEE C95.1]",
+  "options": [
+   "There is evidence of adverse effects below the levels specified in the standard.",
+   "Biophysical mechanisms have been scientifically validated for chronic low-level exposure.",
+   "No credible indication of adverse effects below the levels specified in the standard was found.",
+   "Adverse health effects have been scientifically validated for chronic low-level exposure.",
+   "Chronic low-level exposure is likely to cause adverse health effects."
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 5231",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "Who is responsible for error recovery in 802.11? [IEEE 802.11]",
+  "options": [
+   "Receiving station",
+   "Sending station",
+   "Access point",
+   "MAC layer"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 8695",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What does the low-frequency upturn in the U-shaped S-F curve indicate? [IEEE C95.1]",
+  "options": [
+   "The modification of the cell's resting potential due to depolarization.",
+   "The initiation of nerve excitation at a zero crossing of the sinusoidal waveform.",
+   "The slow rate of rise of the sinusoid allowing the nerve to accommodate to the stimulus.",
+   "The dependence of the induced field on the derivative of the environmental field.",
+   "The convergence of thresholds to a slope proportional to frequency for continued sinusoidal stimulation."
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 325",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the RRC buffer size for a UE? [3GPP Release 17]",
+  "options": [
+   "45 MB",
+   "45 KB",
+   "45 GB",
+   "45 TB",
+   "4500 KB"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 5341",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What are the three factors that govern the PDCCH monitoring activity of the UE in RRC connected mode? [3GPP Release 18]",
+  "options": [
+   "DRX, BA, and DCP",
+   "RRC_IDLE, RRC_INACTIVE, and RRM",
+   "MIMO, PUSCH, and CSI-RS",
+   "SSSG, BWP, and TRS"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 5982",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What capabilities should a Shared E-UTRAN/NG-RAN have? [3GPP Release 18]",
+  "options": [
+   "Differentiate traffic associated with individual Participating Operators",
+   "Conduct admission control based on allocated resources",
+   "Provide monitoring of resource usage",
+   "All of the above"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 9533",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the purpose of UE categories in NR? [3GPP Release 18]",
+  "options": [
+   "To define UE capabilities",
+   "To determine peak data rates",
+   "To signal to the network",
+   "To support different functionalities",
+   "To advertise alternative features"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 3838",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "When is the RTS/CTS clearing procedure used in 802.11? [IEEE 802.11]",
+  "options": [
+   "In low-capacity environments",
+   "In high-capacity environments",
+   "In infrastructure networks",
+   "In contention-free services"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 6714",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the purpose of Access Class 10? [3GPP Release 18]",
+  "options": [
+   "To differentiate between CS and PS domains",
+   "To indicate the network access for Emergency Calls",
+   "To control UE capabilities",
+   "To prevent overload of the access network and/or the core network",
+   "To specify the categories of subscribers who are barred from network access"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 2205",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What does a '0' value for the Wake-up indication bit, when reported to higher layers, indicate? [3GPP Release 17]",
+  "options": [
+   "To start the drx-onDurationTimer for the next long DRX cycle.",
+   "To not start the drx-onDurationTimer for the next long DRX cycle.",
+   "To activate the dormantBWP-Id for the UE.",
+   "To activate the firstOutsideActiveTimeBWP-Id for the UE."
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 6175",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What are the three types of bearer options in Dual Connectivity? [3GPP Release 17]",
+  "options": [
+   "MCG bearer, SCG bearer, and split bearer",
+   "Primary bearer, secondary bearer, and tertiary bearer",
+   "Single bearer, multiple bearer, and aggregated bearer",
+   "Control bearer, user bearer, and management bearer"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 7275",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the purpose of the S1G Sector Operation element in the Beacon frame? [IEEE 802.11]",
+  "options": [
+   "To indicate the duration of the current sector transmissions.",
+   "To provide information related to the type of sectorization operation.",
+   "To indicate if the Beacon frame is sectorized or not.",
+   "To identify the ID of the active sector.",
+   "To allocate a group ID to the STA for sectorization purposes."
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 135",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What does a UE determine when selecting a power for an S-SS/PSBCH block transmission occasion? [3GPP Release 17]",
+  "options": [
+   "Value of dl-P0-PSBCH-r16",
+   "Value of dl-Alpha-PSBCH",
+   "Number of resource blocks for a S-SS/PSBCH block transmission",
+   "Value of dl-P0-PSBCH-r17",
+   "Value of dl-P0-PSBCH-r16 if provided, else dl-Alpha-PSBCH"
+  ],
+  "gold": 5
+ },
+ {
+  "id": "question 3931",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the formula to compute the angle between the unit vectors of the GCS and the LCS? [3GPP Release 18]",
+  "options": [
+   "Angle = acos(u1*u2 + v1*v2 + w1*w2)",
+   "Angle = atan2(v2, v1)",
+   "Angle = atan2(u2, u1)",
+   "Angle = asin(w1*w2)"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 4378",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "Which message is used for the sidelink transfer of Paging message and System Information messages? [3GPP Release 17]",
+  "options": [
+   "NotificationMessageSidelink",
+   "RRCReconfigurationSidelink",
+   "UECapabilityEnquirySidelink",
+   "UuMessageTransferSidelink",
+   "MeasurementReportSidelink"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 5923",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the purpose of selecting an appropriate relay UE? [3GPP Release 17]",
+  "options": [
+   "To improve energy efficiency",
+   "To improve coverage",
+   "To improve energy efficiency and coverage",
+   "No specific purpose"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 2996",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the upper limit for brain temperature increase recommended by NRPB for limiting exposure to electromagnetic fields? [IEEE C95.1]",
+  "options": [
+   "0.5 °C",
+   "1 °C",
+   "1.2 °C",
+   "1.6 °C",
+   "2 °C"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 7657",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "Which component handles the request for prioritized QoS Flows for Mobile Originations? [3GPP Release 18]",
+  "options": [
+   "AMF",
+   "PCF",
+   "UPF",
+   "SMF",
+   "(R)AN"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 5467",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "How long can the SDT procedure last? [3GPP Release 18]",
+  "options": [
+   "As long as there is data to transmit.",
+   "Until the DL RSRP goes below a configured threshold.",
+   "Until a SDT failure detection timer expires.",
+   "Until the UE transitions to RRC_IDLE state.",
+   "Until the network sends an RRCRelease message."
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 4688",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What mobility is supported in handover with SRVCC operation? [3GPP Release 18]",
+  "options": [
+   "Inter RAT mobility",
+   "NR-E-UTRA mobility",
+   "NR-UTRA mobility",
+   "Intra 5GC mobility",
+   "Handover from 5GC to EPC"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 7370",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the maximum number of MR-DC combinations for IDC? [3GPP Release 17]",
+  "options": [
+   "256",
+   "64",
+   "512",
+   "128",
+   "1024"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 616",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "At what frequency does the effect associated with exposure to CW fields transition from electrostimulation to tissue heating? [IEEE C95.1]",
+  "options": [
+   "Below 100 kHz",
+   "Above 100 kHz",
+   "Between 100 kHz and 6 GHz",
+   "Above 6 GHz"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 3610",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "When does the transmission of the new mode PPDU start? [IEEE 802.15.4]",
+  "options": [
+   "Immediately after the mode switch PPDU",
+   "After the settling delay period",
+   "During the LIFS period",
+   "During the SIFS period",
+   "At the end of the mode switch PPDU"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 5706",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "How can analytics be exchanged between HPLMN and VPLMN in the roaming architecture? [3GPP Release 18]",
+  "options": [
+   "Via SEPPs",
+   "Via H-RE-NWDAF in HPLMN and V-RE-NWDAF in VPLMN",
+   "Via Nnwdaf interface",
+   "Via Nadrf service",
+   "Via Nmfaf_3daDataManagement interface"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 1673",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What events should the Hosting E-UTRAN/NG-RAN Operator collect for accounting purposes? [3GPP Release 18]",
+  "options": [
+   "Start of service for a UE",
+   "End of service for a UE",
+   "Both start and end of service for a UE",
+   "Signalling events for a UE"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 7853",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What inputs are required for the Nmfaf_3caDataManagement_Fetch service operation? [3GPP Release 18]",
+  "options": [
+   "Data Consumer or Analytics Consumer Information, Transaction Reference Id",
+   "Notification Correlation Information",
+   "Requested Data with timestamp or Analytics with timestamp, Fetch Instructions",
+   "Set of Fetch Correlation ID(s)"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 3604",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What information does a consumer of NWDAF analytics need to indicate in the request or subscription? [3GPP Release 18]",
+  "options": [
+   "Area of Interest",
+   "List of NF types",
+   "Load Level Threshold value",
+   "All of the above"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 6059",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the periodicity of half frames with SS/PBCH blocks for initial cell selection in an IAB-MT? [3GPP Release 17]",
+  "options": [
+   "4 frames",
+   "8 frames",
+   "12 frames",
+   "16 frames"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 1288",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What are the two main groups of logical channels in the MAC sublayer? [3GPP Release 17]",
+  "options": [
+   "Broadcast channels and Dedicated channels",
+   "Control channels and Traffic channels",
+   "Physical channels and Transport channels",
+   "Scheduling channels and Error correction channels",
+   "Primary channels and Secondary channels"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 8880",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What does the GID-H subfield contain when the unsolicited MFB is estimated from a VHT MU PPDU? [IEEE 802.11]",
+  "options": [
+   "The highest 3 bits of the group ID of the PPDU",
+   "All 1s",
+   "The coding type information (0 for BCC and 1 for LDPC) of the PPDU",
+   "Reserved"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 7767",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What does the Operating Class field indicate in a Directional Measurement report? [IEEE 802.11]",
+  "options": [
+   "The method used by the STA to carry out the measurement request",
+   "The channel set for which the measurement report applies",
+   "The duration of the measurement in each receiving direction",
+   "The channel number for which the measurement report applies",
+   "The spacing for the channel frequency"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 9344",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the purpose of the BEARER CONTEXT RELEASE REQUEST message in the gNB-CU-UP initiated bearer context release procedure? [3GPP Release 17]",
+  "options": [
+   "To release the bearer context in the gNB-CU-CP",
+   "To release the bearer context in the gNB-CU-UP",
+   "To request the release of the bearer context in the gNB-CU-CP",
+   "To request the release of the bearer context in the gNB-CU-UP"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 5912",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What does the FTM field being set to 1 indicate? [IEEE 802.11]",
+  "options": [
+   "The BSSID is including an MDE in its Beacon frames",
+   "The BSSID is an HT AP including the HT Capabilities element in its Beacons",
+   "The BSSID is a VHT AP",
+   "The BSSID has set the Fine Timing Measurement Responder field of the Extended Capabilities element to 1",
+   "The BSSID is not available"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 8657",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the purpose of the 5G VN Group management? [3GPP Release 18]",
+  "options": [
+   "To configure the External Group ID and Internal Group ID",
+   "To define the parameters of the 5G VN group data",
+   "To manage the identification and membership of 5G VN groups",
+   "To provide secondary authentication and authorization for the 5G VN group",
+   "To configure the Maximum Group Data Rate"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 5632",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What modulation schemes are supported for the PUCCH format 1? [3GPP Release 17]",
+  "options": [
+   "BPSK and QPSK.",
+   "BPSK and 16-QAM.",
+   "QPSK and 16-QAM.",
+   "QPSK and 64-QAM."
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 1274",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the SNR target for higher CBWs assuming 16 and 20 dB? [3GPP Release 18]",
+  "options": [
+   "14.4 dB",
+   "18.6 dB",
+   "16 dB",
+   "20 dB"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 2461",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is considered for evaluation purpose in the energy consumption modeling for a BS? [3GPP Release 18]",
+  "options": [
+   "Multiple power state(s)",
+   "Reference configuration",
+   "Scaling method",
+   "All of the above"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 7071",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "According to IEEE Std 802.11-2020, when can an S1G STA transmit a frame with LDPC coding? [IEEE 802.11]",
+  "options": [
+   "When the Rx LDPC subfield of the S1G Capabilities element contains a value of 1",
+   "When the dot11S1GLDPCCodingOptionActivated is true",
+   "When the TXVECTOR parameter FEC_CODING is set to LDPC_CODING",
+   "When the RA of the frame corresponds to an S1G STA",
+   "When the TXVECTOR parameter FORMAT is set to S1G"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 8988",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What rate selection rules apply to group addressed Data and Management frames transmitted by CMMG STAs? [IEEE 802.11]",
+  "options": [
+   "The MCS used for transmission should be an MCS common to the supported MCS sets of all receivers",
+   "The MCS used for transmission should be an MCS from the mandatory MCS set of the CMMG control or SC mode",
+   "The rate selection rules follow the same rules as individually addressed frames",
+   "The rate selection rules do not apply to group addressed frames"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 188",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What determines the energy detection threshold in channel access procedures? [3GPP Release 17]",
+  "options": [
+   "The maximum eNB/gNB output power in dBm for the channel",
+   "The single channel bandwidth in MHz",
+   "The absence of any other technology sharing the channel",
+   "All of the above"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 6750",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What type of data does NWDAF collect from AF? [3GPP Release 18]",
+  "options": [
+   "Application ID",
+   "Performance data",
+   "Network data",
+   "QoS profile",
+   "Service data"
+  ],
+  "gold": 5
+ },
+ {
+  "id": "question 3854",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "How does the UE report a change in its 3GPP PS Data Off status? [3GPP Release 18]",
+  "options": [
+   "Through the ATSSS Control procedure.",
+   "Through the non-Allowed Area reporting procedure.",
+   "Through the UE requested PDU Session Modification procedure.",
+   "Through the IMS domain enforcement procedure."
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 1581",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the purpose of the MnS discovery service? [3GPP Release 17]",
+  "options": [
+   "To enable MnS instances to be discovered by MnS consumers",
+   "To provide access control capabilities in a multiple tenant environment",
+   "To authenticate and authorize MnS consumers and producers",
+   "To provision management capabilities for MnS consumers"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 3066",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What do the reference architectures for supporting Edge Computing in 5GS build upon? [3GPP Release 18]",
+  "options": [
+   "Reference architectures for non-roaming and LBO roaming scenarios",
+   "Reference architectures for non-roaming, LBO roaming, and HR-SBO roaming scenarios",
+   "Reference architectures for LBO roaming and HR-SBO roaming scenarios",
+   "Reference architectures specified in TS 23.501"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 4548",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the potential impact of UE/TRP PCO errors on NR carrier phase positioning accuracy? [3GPP Release 18]",
+  "options": [
+   "PCO errors only impact carrier phase measurements but not positioning accuracy",
+   "PCO errors have a significant impact on positioning accuracy",
+   "PCO errors have a larger impact when using carrier phases from multiple carriers",
+   "PCO errors have a larger impact when using carrier phases from multiple subcarriers",
+   "PCO errors have a negligible impact on positioning accuracy"
+  ],
+  "gold": 5
+ },
+ {
+  "id": "question 2224",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What does the RA field represent in a frame? [IEEE 802.11]",
+  "options": [
+   "The immediate intended receiver of the frame",
+   "The address from the TA field of the previous frame",
+   "The address from the Address 2 field of the previous frame",
+   "The immediate intended receivers of the frame"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 8620",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What determines the MCS of the PUSCH transmission? [3GPP Release 17]",
+  "options": [
+   "The channel access type",
+   "The frequency hopping flag",
+   "The transport block size",
+   "The power of the PUSCH transmission",
+   "The first sixteen indexes of the applicable MCS index table for PUSCH"
+  ],
+  "gold": 5
+ },
+ {
+  "id": "question 2442",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What does the Power Of Two Horizontal Error field indicate? [IEEE 802.11]",
+  "options": [
+   "Vertical location error",
+   "Error between horizontal location and Latitude and Longitude fields",
+   "Relative horizontal error of greater than 32 m",
+   "Relative horizontal error",
+   "Usage rules of the reporting STA"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 855",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the maximum value of E-UTRA carrier frequency? [3GPP Release 17]",
+  "options": [
+   "262143",
+   "3279165",
+   "8",
+   "1280",
+   "512"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 5463",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the reference point for measurement of EVM? [3GPP Release 18]",
+  "options": [
+   "Before the FFT processing window in the receiver",
+   "After the FFT processing window and a zero-forcing (ZF) equalizer in the receiver",
+   "After the FFT processing window and a filtering operation in the receiver",
+   "Before the FFT processing window and a zero-forcing (ZF) equalizer in the receiver"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 6300",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What does AS stand for in the context of PLMN selection? [3GPP Release 17]",
+  "options": [
+   "Administrative System",
+   "Authentication Server",
+   "Application Server",
+   "Access Server",
+   "Availability System"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 6337",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the purpose of the Header Error Check (HEC) field in the PLCP header? [IEEE 802.11]",
+  "options": [
+   "To select the antenna with the strongest signal",
+   "To indicate the presence of an imminent frame",
+   "To adjust the receiver to the appropriate demodulation scheme",
+   "To measure the frequency of the incoming signal",
+   "To protect against errors in the PLCP header"
+  ],
+  "gold": 5
+ },
+ {
+  "id": "question 8096",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What can be used for intra-system inter-RAT handover if the UE is connected to the 5GC of the source E-UTRA cell? [3GPP Release 17]",
+  "options": [
+   "Delta configuration for PDCP and SDAP",
+   "Source RAT configuration",
+   "Reconfiguration message of target RAT",
+   "Re-establishment procedure",
+   "NULL algorithm for ciphering"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 3325",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "How are the fragments of a single MSDU or MMPDU transmitted? [IEEE 802.11]",
+  "options": [
+   "Sent as individual frames using the DCF",
+   "Sent as a burst in an EDCA or HCCA TXOP",
+   "Sent as a group addressed message into the BSS",
+   "Sent as a four-address frame using STBC",
+   "Sent as a non-STBC frame with Normal Ack ack policy"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 6599",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What was the threshold for Whole-Body Average Specific Absorption Rate (WBA SAR) in the ANSI C95.1-1982 standard? [IEEE C95.1]",
+  "options": [
+   "2 W/kg",
+   "4 W/kg",
+   "6 W/kg",
+   "8 W/kg"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 3615",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What information shall be provided to the LCS client? [3GPP Release 17]",
+  "options": [
+   "Originating party's serving cell id",
+   "Diverse positioning techniques",
+   "Quality of service parameters",
+   "All of the above"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 1273",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the purpose of guard bands in frequency allocation? [IEEE 802.11]",
+  "options": [
+   "To allocate frequencies for unlicensed use",
+   "To restrict the use of radio signals in certain areas",
+   "To prevent interference between licensed transmission bands",
+   "To regulate the power usage of radio transmissions"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 7775",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "Which of the following is a requirement for ensuring security in ranging services? [3GPP Release 17]",
+  "options": [
+   "Ensuring the use of Ranging is only permitted in network coverage under the full control of the operator.",
+   "Ensuring that user privacy is not violated during ranging.",
+   "Supporting mechanisms for a UE to discover other UEs supporting ranging.",
+   "Supporting mechanisms for a UE to assist another UE in performing ranging."
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 8795",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What are the TDL models constructed for? [3GPP Release 18]",
+  "options": [
+   "Simplified evaluations",
+   "MIMO simulations",
+   "Spatial filtering",
+   "Scaling delays"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 2633",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the purpose of the Beam Peak Search Grid? [3GPP Release 18]",
+  "options": [
+   "To calculate the CDF of the EIRP/EIS distribution in 3D",
+   "To determine the total power radiated by the DUT in the TX beam peak direction",
+   "To determine the TX and RX beam peak direction",
+   "To perform 3D EIRP scans for TX beam peak direction",
+   "To perform 3D Throughput/RSRP/EIS scans for RX beam peak direction"
+  ],
+  "gold": 3
+ },
+ {
+  "id": "question 2835",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the purpose of NWDAF in the 5G system architecture? [3GPP Release 18]",
+  "options": [
+   "To interact with different entities for data collection",
+   "To store and retrieve data from ADRF",
+   "To provide analytics to consumers",
+   "To exchange analytics and collect input data between PLMNs",
+   "To request and subscribe to trained ML model provisioning services"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 1160",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "Is supporting periodic location reporting a requirement for Emergency Services? [3GPP Release 17]",
+  "options": [
+   "Yes, it is a requirement",
+   "No, it is not a requirement",
+   "It depends on asset management services",
+   "It depends on the PLMN operator",
+   "It depends on the Privacy Exception List"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 7640",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "When does the gNB-CU trigger the UE Context Setup procedure? [3GPP Release 17]",
+  "options": [
+   "Inactive to Idle transitions",
+   "Inactive to active transitions excluding transitions due to signalling exchange only",
+   "Inactive to other RRC states transitions",
+   "Active to Inactive transitions"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 1751",
+  "category": "Standards specifications",
+  "source": "random",
+  "question": "What is the purpose of CDR generation in offline charging? [3GPP Release 18]",
+  "options": [
+   "To reserve credit from the subscriber account",
+   "To furnish charging information to the OCS/CCS for Credit-Control",
+   "To determine the amount of resources a user will consume",
+   "To supervise the actual network resource consumption",
+   "To transform charging information into CDRs for generating bills"
+  ],
+  "gold": 5
+ },
+ {
+  "id": "question 1143",
+  "category": "Standards specifications",
+  "source": "conflict",
+  "question": "What is the key characteristic of a roaming broker enabled Home Environment? [3GPP Release 18]",
+  "options": [
+   "It has a direct commercial agreement with different serving networks.",
+   "It interworks with one or more serving network operators.",
+   "It uses fraud and cost control mechanisms to ensure charges do not exceed credit limits.",
+   "It routes registration requests to its serving networks.",
+   "It is capable of operating as a roaming broker."
+  ],
+  "gold": 5
+ },
+ {
+  "id": "question 3663",
+  "category": "Standards overview",
+  "source": "conflict",
+  "question": "What is the purpose of the window mechanism in TCP for achieving reliability? [TCP/IP]",
+  "options": [
+   "To control the flow of data between sender and receiver",
+   "To encrypt the data being transmitted",
+   "To compress the data for efficient transmission",
+   "To prioritize certain types of data"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 4450",
+  "category": "Lexicon",
+  "source": "conflict",
+  "question": "What does the term 'NG-RAN' stand for?",
+  "options": [
+   "Next Generation Radio Access Network",
+   "Network Group - Radio Access Node",
+   "New Generation - Radio Access Node",
+   "Next Generation - Radio Access Node"
+  ],
+  "gold": 1
+ },
+ {
+  "id": "question 4536",
+  "category": "Standards specifications",
+  "source": "conflict",
+  "question": "What does DRL stand for in the context of the document? [IEEE C95.1]",
+  "options": [
+   "Dangerous Radiation Levels",
+   "Dose Rate Limit",
+   "Disaster Recovery Log",
+   "Data Retrieval Language",
+   "Digital Rights Licensing"
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 4588",
+  "category": "Standards specifications",
+  "source": "conflict",
+  "question": "What is a roaming broker enabled Home Environment? [3GPP Release 18]",
+  "options": [
+   "A home environment that has a direct commercial agreement with different serving networks.",
+   "A home environment that interworks with one or more serving network operators and negotiates a commercial roaming agreement.",
+   "A home environment that uses fraud and cost control mechanisms to ensure charges do not exceed credit limits.",
+   "A home environment that is capable of operating as a roaming broker.",
+   "A home environment that routes registration requests to its serving networks."
+  ],
+  "gold": 2
+ },
+ {
+  "id": "question 7935",
+  "category": "Standards specifications",
+  "source": "conflict",
+  "question": "What does NG-RAN stand for? [3GPP Release 17]",
+  "options": [
+   "Non-Geographical Radio Access Network",
+   "New Generation Radio Antenna Node",
+   "Network Gateway Radio Access Node",
+   "Next Generation Radio Access Network"
+  ],
+  "gold": 4
+ },
+ {
+  "id": "question 9424",
+  "category": "Standards specifications",
+  "source": "conflict",
+  "question": "What does DRL stand for? [IEEE C95.1]",
+  "options": [
+   "Duty Ratio Limit",
+   "Dosimetric Reference Limit",
+   "Depreciated Reference Level",
+   "Disrupted Radiation Level",
+   "Duty Field Limit"
+  ],
+  "gold": 2
+ }
+]

@@ -1,0 +1,192 @@
+You are an independent reviewer verifying the answer key of a telecom multiple-choice benchmark (TeleQnA, questions about 3GPP / IEEE / ETSI / IETF standards). For EACH question below, decide whether the MARKED correct answer is actually correct. An earlier screening raised doubts about every item in this list, but that doubt may be unfounded. Do your own research from scratch: do not reuse, copy or look up any previous answers, task results or files. Judge each item on its own.
+
+Verdicts:
+- "correct": the marked option is right and clearly the best option.
+- "wrong": the marked option is incorrect; give the correct option number (1-based) in correct_option (null if none of the options is correct).
+- "ambiguous": more than one option is defensible, or the question is underspecified/flawed so the marked answer can't be called uniquely right.
+- "unverifiable": you cannot establish the answer with reasonable confidence.
+
+Prefer primary sources: if you can search the web, check the relevant 3GPP TS/TR, IEEE standard, ETSI document or RFC when your own knowledge is not certain. Put a short justification (1-2 sentences) in "evidence" and the document / URL you relied on in "source" (write "own knowledge" if you did not consult a source). Keep research brief (a few lookups per question at most) so you do not run out of context. Do not guess: if unsure, use "unverifiable".
+
+Output: ONLY a JSON array, no other text, with exactly one object per question below, in the same order, copying each "id" exactly as written (e.g. "question 1234"):
+[{"id": "question 1234", "verdict": "correct|wrong|ambiguous|unverifiable", "correct_option": <int or null>, "evidence": "...", "source": "..."}]
+correct_option: for "correct" give the marked option number; for "wrong" the right option number or null; for "ambiguous"/"unverifiable" null. correct_option must be an integer option number, never option text.
+
+There are 18 questions. Questions (options are numbered from 1):
+
+### id: question 1185
+Question: What is the maximum number of CBR range configurations for sidelink communication congestion control? [3GPP Release 17]
+  1. 8
+  2. 7
+  3. 16
+  4. 15
+  5. 12
+MARKED answer: option 1
+
+
+### id: question 1196
+Question: Which standard defines the integration of the 5G System into a TSN data network (DN)? [3GPP Release 18]
+  1. TS 23.040
+  2. TS 23.273
+  3. TS 23.502
+  4. TS 23.540
+  5. IEEE Std 802.1Q
+MARKED answer: option 5
+
+
+### id: question 1226
+Question: What does the SMF do when it receives the enabling request for analytics information exposure from a UE? [3GPP Release 18]
+  1. Subscribes to the Analytics ID for the UE
+  2. Checks if it has already subscribed to the Analytics ID for other UEs
+  3. Unsubscribes from the Analytics ID for the UE
+  4. Requests analytics information from the NWDAF
+  5. Includes an Accept or Reject to the enabling request
+MARKED answer: option 2
+
+
+### id: question 1230
+Question: What does RLSS stand for?
+  1. Received Location Query Signal
+  2. Received Location Signal Strength
+  3. Registered Location Query Protocol
+  4. Registered Location Secure Server
+MARKED answer: option 4
+
+
+### id: question 1241
+Question: What does a '1' value for a bit in the TRS availability indication field indicate? [3GPP Release 17]
+  1. Change to a current assumption for the availability of TRS resource sets
+  2. No change to the availability of TRS resource sets
+  3. Unavailability of associated TRS resource sets
+  4. Validity of TRS resource sets
+  5. Presence of associated TRS resource sets
+MARKED answer: option 5
+
+
+### id: question 1244
+Question: What is the definition of an AI decision entity?
+  1. An entity that is either an ML model or contains an ML model and ML model related metadata
+  2. An entity that applies a non-ML based logic for making decisions
+  3. An entity that employs an ML model and/or AI decision entity to conduct inference
+  4. An entity that contains an AI model and AI model related metadata
+MARKED answer: option 2
+
+
+### id: question 1258
+Question: What is the purpose of the xMB API? [3GPP Release 16]
+  1. To define the reference point specification for MBMS
+  2. To handle packet losses in MBMS
+  3. To manage content providers in MBMS
+  4. To control MBMS delivery procedures
+  5. To provide extended control features for MC Services
+MARKED answer: option 4
+
+
+### id: question 1272
+Question: What is the role of a RLSS in the GDD system? [IEEE 802.11]
+  1. Providing GDBs with the current channel use information for all BSSs and IBSSs
+  2. Coordinating emissions footprints of white space systems with controllers
+  3. Sharing white space maps and channel utilization among GDD enabling STAs
+  4. Providing WSMs and current channel use information to GDD dependent STAs
+MARKED answer: option 1
+
+
+### id: question 1287
+Question: Which message contains the low layer configuration for the UE? [3GPP Release 17]
+  1. INITIAL UE MESSAGE
+  2. DL RRC MESSAGE TRANSFER
+  3. RRC CONNECTION SETUP COMPLETE
+  4. UL RRC MESSAGE TRANSFER
+  5. INITIAL UL RRC MESSAGE TRANSFER
+MARKED answer: option 5
+
+
+### id: question 1295
+Question: When a Beacon frame is received with macAutoRequest set to FALSE, how are the PAN descriptors sent to the higher layer? [IEEE 802.15.4]
+  1. Sent as part of the MLME-SCAN.confirm
+  2. Sent separately as MLME-BEACON-NOTIFY.indication primitives
+  3. Sent in the MLME-BEACON-NOTIFY.indication primitive together with a null PANDescriptorList
+  4. Sent in the MLME-BEACON-NOTIFY.indication primitive with the Beacon frame
+  5. Sent in the MLME-SCAN.confirm with the Beacon frame
+MARKED answer: option 2
+
+
+### id: question 1299
+Question: What is the purpose of the feature 'Multi-server bearer coordination' for MBMS usage in MC services? [3GPP Release 15]
+  1. Allowing a single MC service server to manage all MBMS media transmission
+  2. Activating an MBMS bearer and notifying relevant events
+  3. Application layer FEC to recover packet losses
+  4. Applying header compression over MBMS transmissions
+  5. Supporting multiple security domains
+MARKED answer: option 1
+
+
+### id: question 1309
+Question: What is a mandatory UE requirement?
+  1. A requirement specified by 3GPP
+  2. A regulatory requirement of a country/region
+  3. A requirement specific to macro cells
+  4. A requirement specific to micro cells
+MARKED answer: option 2
+
+
+### id: question 1330
+Question: Which VLANs limit the problem of broadcast messages? [IEEE 802.3]
+  1. VLANs organized by department
+  2. VLANs organized by hierarchy
+  3. VLANs organized by use
+  4. All VLANs
+MARKED answer: option 4
+
+
+### id: question 1355
+Question: What aspect does the CT Work Item "V8-CT" focus on? [3GPP Release 14]
+  1. Emergency call in Local breakout roaming architecture
+  2. Location determination at IMS entities in the HPLMN
+  3. Local number translation in VPLMN for legacy CS and Local Breakout
+  4. Fetching and providing necessary information for emergency call
+  5. Charging principles for S8HR roaming architecture
+MARKED answer: option 4
+
+
+### id: question 1380
+Question: What actions are taken when an AMF fails and is detected by the 5G-AN? [3GPP Release 18]
+  1. AMF is deregistered from NRF
+  2. AMF is marked as failed in the 5G-AN
+  3. NGAP UE-TNLA-binding is released for CM-CONNECTED UE(s)
+  4. Backup AMF is selected if available
+  5. Notification is sent to peer CP NFs about the AMF failure
+MARKED answer: option 2
+
+
+### id: question 1411
+Question: What does the NWDAF containing MTLF consider when using untrusted AF(s) as data sources? [3GPP Release 18]
+  1. The rating of untrusted AF(s)
+  2. The accuracy of ML models
+  3. Both option 1 and option 2
+  4. None of the above
+MARKED answer: option 1
+
+
+### id: question 1426
+Question: What does the 5G system need to support for the tactile and multi-modal communication service? [3GPP Release 17]
+  1. Ability to provide customized QoS handling for each communication mode
+  2. Support for synchronization between different media components
+  3. Ability to handle haptic data for touch-based communication
+  4. Provision of real-time sensor data for environment awareness
+  5. Capability to handle immersive VR applications with low latency
+MARKED answer: option 2
+
+
+### id: question 1445
+Question: What is the interaction between the 5GC NF(s) and the EASDF? [3GPP Release 18]
+  1. They do not interact within a PLMN
+  2. They interact using DNS messages
+  3. They interact to exchange DNS message handling rules
+  4. They interact for EASDF discovery and selection
+  5. None of the above
+MARKED answer: option 4
+
+
+Reminder: return a JSON array with exactly 18 objects, one per id above, copying ids exactly as written (e.g. "question 1185").
+(Reviewer id: inv1.)

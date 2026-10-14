@@ -1,0 +1,261 @@
+[
+{
+"id": "question 1721",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "Per 3GPP TS 48.052 (and TR 21.905), a Base Transceiver Station (BTS) is 'a network component which serves one cell, and is controlled by a Base Station Controller'.",
+"source": "3GPP TS 48.052"
+},
+{
+"id": "question 1724",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "Per 3GPP TR 21.917 (R17) on slice support: 'In order to support service continuity for specific slice(s), the NG-RAN node may use Multi-Carrier Resource Sharing or Resource Repartitioning to allocate resources to a slice in case of slice resources shortage.'",
+"source": "3GPP TR 21.917"
+},
+{
+"id": "question 1770",
+"verdict": "ambiguous",
+"correct_option": null,
+"evidence": "Per TS 23.501 5.2.5, the NG-RAN may initiate Unified Access Control when AMFs request load restriction (via OVERLOAD START), or when requested by OAM, or when triggered by NG-RAN itself. So options 1, 2, and 3 are all valid triggers - none is uniquely correct.",
+"source": "3GPP TS 23.501 5.2.5"
+},
+{
+"id": "question 1975",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "Per 3GPP TS 36.410, 'Two types of S1 interfaces are thus defined at the boundary depending on the EPC access point: S1-MME towards an MME and S1-U towards an S-GW.' eNodeB connects to EPC via S1-MME (control) and S1-U (user plane).",
+"source": "3GPP TS 36.410"
+},
+{
+"id": "question 2007",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "Per 3GPP TS 32.295 and TS 32.240, 'The Ga is the reference point from the Charging Data Function (CDF) to the Charging Gateway Function (CGF), which is intended for the transport of Charging Data Records (CDRs).'",
+"source": "3GPP TS 32.295"
+},
+{
+"id": "question 2050",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "Per 3GPP TS 28.310 / TS 32.551 definitions: 'ES activation: procedure to power down a cell or network function for energy saving purposes.' (ES deactivation is power up.)",
+"source": "3GPP TS 28.310, TS 32.551"
+},
+{
+"id": "question 2131",
+"verdict": "ambiguous",
+"correct_option": null,
+"evidence": "In 3GPP the abbreviation NSC stands for 'Network Slice Customer' (a role, per TS 28.530), not a 'network slice catalogue'. The slice-template concept is the NST/NEST (TS 28.530, GSMA NG.116) but no option cleanly maps to a 'catalogue' role.",
+"source": "3GPP TS 28.530"
+},
+{
+"id": "question 2278",
+"verdict": "wrong",
+"correct_option": 1,
+"evidence": "In EN-DC (NSA Option 3x), IMS signaling and IMS voice (VoLTE) are anchored on the LTE eNB (Master Node) using MCG bearer, not SCG bearer. The MN/eNB prevents the voice bearer (QCI1) from being configured as a split/SCG bearer; IMS signaling uses QCI5 default bearer on the LTE side.",
+"source": "3GPP TS 37.340, EN-DC voice guidelines"
+},
+{
+"id": "question 2355",
+"verdict": "wrong",
+"correct_option": 4,
+"evidence": "Per 3GPP TS 38.401 8.4.3: 'The CU of SN sends the UE CONTEXT MODIFICATION REQUEST message to the DU of SN to suspend the SCG of the UE before the UE enters into RRC_INACTIVE state'. The CU (not the DU) initiates the suspension.",
+"source": "3GPP TS 38.401 8.4.3"
+},
+{
+"id": "question 2380",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "Per TS 23.501 5.8.2 and Cisco 5G-UPF docs: 'N4 session management procedures are used to control the functionality of the UPF.' SMF creates, updates, and removes N4 session contexts in UPF.",
+"source": "3GPP TS 23.501 5.8.2"
+},
+{
+"id": "question 2396",
+"verdict": "ambiguous",
+"correct_option": null,
+"evidence": "Per TS 23.501 4.3.1, BOTH PGW-C+SMF AND UPF+PGW-U are dedicated for 5GS-EPC interworking. Option 2 (UPF+PGW-U) is one valid pair, option 3 (PGW-C+SMF) is the other valid pair - the question asks 'which entities' (plural) and only one pair is listed per option.",
+"source": "3GPP TS 23.501 4.3.1"
+},
+{
+"id": "question 2408",
+"verdict": "ambiguous",
+"correct_option": null,
+"evidence": "Per TS 22.228, HSS provides multiple functions: user identification/numbering/addressing, user security info, user location info, and user profile. Options 2, 3, 4, and 5 each describe a valid HSS function; option 1 ('support call control servers') appears in older TS 22.228 phrasing but is not uniquely the HSS's primary function.",
+"source": "3GPP TS 22.228"
+},
+{
+"id": "question 2488",
+"verdict": "wrong",
+"correct_option": 4,
+"evidence": "Per 3GPP TS 37.213 / 38.300 for NR-U, the contention window CWp is defined per Channel Access Priority Class (CAPC) 1-4, and CW adjustment on HARQ-ACK feedback operates per priority class. CW adjustment is not done across all priority classes.",
+"source": "3GPP TS 37.213"
+},
+{
+"id": "question 2570",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "Per IEEE 802.3 (10BASE-T 802.3i, 100BASE-TX 802.3u), 10/100Base-T uses 2 pairs: pair 2 (orange, pins 1-2) for transmit and pair 3 (green, pins 3-6) for receive.",
+"source": "IEEE 802.3"
+},
+{
+"id": "question 2608",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "Per 3GPP TS 23.288 5.7.19 (PDU Session Traffic Analytics): 'This procedure is used by the NWDAF service consumer (e.g. PCF) to subscribe or request PDU Session Traffic analytics'.",
+"source": "3GPP TS 23.288 5.7.19"
+},
+{
+"id": "question 2640",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "Per 3GPP TS 38.331 and patents on UE capability transfer: 'the gNB always requests the UE UTRA-FDD capabilities before handover to UTRA-FDD' to avoid START values desynchronisation and key replaying.",
+"source": "3GPP TS 38.331"
+},
+{
+"id": "question 2673",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "Per IEEE 802.3 (Perle Ethernet Basics reference): 'The MAU, developed for twisted pair, is equipped with 4 data pins: 2 for sending, 2 for receiving. This is the basis for full duplex Ethernet.' The MAU provides the physical attachment that enables simultaneous TX/RX.",
+"source": "IEEE 802.3"
+},
+{
+"id": "question 2771",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "Per 3GPP TS 23.501 5.22.4 (QoS Mechanisms applied to established QoS Flows): 'SMF: Congestion management procedures in the SMF will provide priority to QoS Flows established for sessions during periods of extreme overload.'",
+"source": "3GPP TS 23.501 5.22.4"
+},
+{
+"id": "question 3060",
+"verdict": "ambiguous",
+"correct_option": null,
+"evidence": "MIB purpose is described variously in standards: RFC 1155 says 'MIB defines the structure for the storage of network information' (option 1), while RFC 1213/IBM describe it as 'a database containing the information pertinent to network management' (option 5). Both descriptions are standard, making the marked answer ambiguous vs option 1.",
+"source": "RFC 1155, RFC 1213"
+},
+{
+"id": "question 3132",
+"verdict": "wrong",
+"correct_option": 4,
+"evidence": "O-RAN architecture includes O-CU, O-DU, O-RU, Near-RT RIC, Non-RT RIC, and SMO. Option 5 omits the Near-RT RIC, which is a core O-RAN component per O-RAN Alliance architecture documents.",
+"source": "O-RAN Alliance architecture documents (O-RAN.WG1, ITU JNL Vol4)"
+},
+{
+"id": "question 3143",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "For eSRVCC (emergency SRVCC), the source is IMS with an emergency session anchored at the EATF, the UE moves out of IMS coverage, and the session is handed over to a CS target of the same operator. Matches TS 23.167/23.237.",
+"source": "3GPP TS 23.167, TS 23.237"
+},
+{
+"id": "question 3391",
+"verdict": "wrong",
+"correct_option": 5,
+"evidence": "In continuous reporting, NWDAF generates new analytics periodically (or on threshold) and notifies the consumer via Nnwdaf_AnalyticsSubscription_Notify. Option 1 describes input-data sources, not how new analytics are delivered to the consumer.",
+"source": "3GPP TS 23.288 Section 6.1.1.1"
+},
+{
+"id": "question 3474",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "The S5 interface (S-GW to P-GW) uses GTP-U/GTP-C (or PMIP), not S1AP, X2AP, SGi, or a circular 'S5 protocol stack'. None of the listed options match.",
+"source": "3GPP TS 23.401 / TS 29.281"
+},
+{
+"id": "question 3529",
+"verdict": "wrong",
+"correct_option": 1,
+"evidence": "Per TS 28.533, NSSMF is the function for generating and managing network slice subnets (NSSIs) and provides NSSI management services. The closest option describing resource/subnet orchestration is 1; option 5 (FCAPS) is a generic management framework, not the NSSMF's defining purpose.",
+"source": "3GPP TS 28.533 Annex A.6"
+},
+{
+"id": "question 3585",
+"verdict": "wrong",
+"correct_option": 1,
+"evidence": "In PDU Session Traffic Analytics (TS 23.288 §6.20), the typical consumer and notified NF is the PCF (which may then derive URSP updates). URSP itself is a UE-side policy rule, not an NF to be notified.",
+"source": "3GPP TS 23.288 Section 6.20"
+},
+{
+"id": "question 3591",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "A half-duplex FDD UE in paired spectrum does not support simultaneous transmission and reception on a serving cell, per TS 38.300/TS 36.300.",
+"source": "3GPP TS 38.300, TS 36.300"
+},
+{
+"id": "question 3630",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "Per TS 38.331 5.4.3.5, when the UE attempts an E-UTRA cell after failed mobility from NR with voiceFallbacklndication and selects a suitable E-UTRA cell, the UE goes to RRC_IDLE with release cause 'RRC connection failure'.",
+"source": "3GPP TS 38.331 Section 5.4.3.5"
+},
+{
+"id": "question 3634",
+"verdict": "wrong",
+"correct_option": 3,
+"evidence": "Per TS 22.011 §4.1 Purpose, access classes exist primarily to enable barring of UE access during emergencies/congestion by indicating subscribers barred from network access. Option 5 only covers the special-classes (11-15) priority aspect, not the main purpose.",
+"source": "3GPP TS 22.011 Section 4.1 / 4.2"
+},
+{
+"id": "question 3877",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "In IEEE 802.11-2020, an AP sets the More Data subfield to 1 in Ack frames sent to a non-DMG/non-S1G STA when the AP has additional buffered MSDUs (pending transmission) for that STA, signalling the STA to remain awake.",
+"source": "IEEE Std 802.11-2020 Section 9.2.5.7/9.3.1.3"
+},
+{
+"id": "question 3883",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "Per TS 38.300 §9.3.1.2, inter-RAT mobility is characterised by: 'The Source RAT configures Target RAT measurement and reporting.' (Radio resources are prepared in the target RAT, in-sequence/lossless handover is supported for gNB-ng-eNB, and both Xn and NG based handover are supported.)",
+"source": "3GPP TS 38.300 Section 9.3.1.2"
+},
+{
+"id": "question 3899",
+"verdict": "ambiguous",
+"correct_option": null,
+"evidence": "VLAN trunking's primary purpose (per IEEE 802.1Q) is to carry traffic of multiple VLANs over a single link between switches. None of the options precisely match: option 3 implies L3 routing (trunking is L2 tagging), option 4 is about VLAN segmentation in general. The question is from IEEE 802.3 but trunking is actually defined in 802.1Q.",
+"source": "IEEE 802.1Q"
+},
+{
+"id": "question 3928",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "Per TS 38.331 5.4.3.5, when the UE is unable to comply with any part of the configuration in MobilityFromNRCommand, it 'revert[s] back to the configuration used in the source PCell' (and also initiates connection re-establishment).",
+"source": "3GPP TS 38.331 Section 5.4.3.5"
+},
+{
+"id": "question 3946",
+"verdict": "wrong",
+"correct_option": 1,
+"evidence": "Per TS 33.501 §16.3, NSSAA uses EAP between UE and an external AAA-Server; the NSSAAF (not AUSF) undertakes any AAA protocol interworking with the AAA-S (possibly via AAA-P). AUSF is part of primary authentication, not NSSAA. The closest procedural description is option 1 (AAA protocol exchange with external AAA Server).",
+"source": "3GPP TS 33.501 Section 16.3"
+},
+{
+"id": "question 4081",
+"verdict": "wrong",
+"correct_option": 2,
+"evidence": "Per TS 24.008 §9.4.5.2, 'Detach request (mobile originating detach) — This message is sent by the MS to request the release of a GMM context.' The MS sends MO (not MT) detach.",
+"source": "3GPP TS 24.008 Section 9.4.5.2"
+},
+{
+"id": "question 4197",
+"verdict": "wrong",
+"correct_option": null,
+"evidence": "Per TS 22.101, a 'Participating Operator' is 'Authorized operator that is USING Shared NG-RAN, E-UTRAN, GERAN or UTRAN resources provided by a Hosting RAN Operator.' The marked answer inverts the direction (PO provides to Hosting). None of the options accurately describe a Participating Operator's function; the closest descriptions (2-4) belong to IdP / credential holder / service provider roles.",
+"source": "3GPP TS 22.101, TR 22.852"
+},
+{
+"id": "question 4267",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "A per-vertical GN-NSI containing a family of S-NSIs corresponds to the Sub-Network Slicing approach, where the GN-NSI clusters multiple sub-network slice instances that share resources and governance for the vertical.",
+"source": "GSMA NG.116 / vertical-slice literature"
+},
+{
+"id": "question 4328",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "Per TS 23.501 §5.11.1, the Master RAN Node (where N2 terminates) 'performs all necessary N2 related functions such as mobility management, relaying of NAS signalling, etc. and manages the handling of user plane connection (e.g. transfer over N3)'. Option 3 matches this documented role.",
+"source": "3GPP TS 23.501 Section 5.11.1 / TS 37.340"
+}
+]

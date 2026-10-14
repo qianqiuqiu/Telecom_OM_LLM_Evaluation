@@ -1,0 +1,320 @@
+You are verifying the answer key of a telecom multiple-choice benchmark (TeleQnA, questions about 3GPP / IEEE / ETSI / IETF standards). For EACH question below, decide whether the MARKED correct answer is actually correct. An earlier screening raised doubts about every item in this list, but that doubt may be unfounded. Work independently and judge each item on its own.
+
+Verdicts:
+- "correct": the marked option is right and clearly the best option.
+- "wrong": the marked option is incorrect; give the correct option number (1-based) in correct_option (null if none of the options is correct).
+- "ambiguous": more than one option is defensible, or the question is underspecified/flawed so the marked answer can't be called uniquely right.
+- "unverifiable": you cannot establish the answer with reasonable confidence.
+
+Prefer primary sources: if you can search the web, check the relevant 3GPP TS/TR, IEEE standard, ETSI document or RFC when your own knowledge is not certain. Put a short justification (1-2 sentences) in "evidence" and the document / URL you relied on in "source" (write "own knowledge" if you did not consult a source). Do not guess: if unsure, use "unverifiable".
+
+Output: ONLY a JSON array, no other text, with exactly one object per question below, in the same order, copying each "id" exactly as written (e.g. "question 1234"):
+[{"id": "question 1234", "verdict": "correct|wrong|ambiguous|unverifiable", "correct_option": <int or null>, "evidence": "...", "source": "..."}]
+correct_option: for "correct" give the marked option number; for "wrong" the right option number or null; for "ambiguous"/"unverifiable" null.
+
+There are 36 questions. Questions (options are numbered from 1):
+
+### id: question 3
+Question: When are devices required to send the GTS Request command? [IEEE 802.15.4]
+  1. Only devices without a short address
+  2. Only devices using extended addressing
+  3. Only devices capable of sending it
+  4. All devices
+  5. None of the above
+MARKED answer: option 4
+
+### id: question 14
+Question: In online charging, how are chargeable events transformed into charging events? [3GPP Release 18]
+  1. By the CTF
+  2. By the OCF
+  3. By the CGF
+  4. By the CHF
+MARKED answer: option 2
+
+### id: question 21
+Question: Why does an originator regularly send a BlockAckReq frame in the GCR Block Ack retransmission policy? [IEEE 802.11]
+  1. To indicate the end of the transmission
+  2. To request acknowledgment from the group members
+  3. To synchronize the group members
+  4. To minimize buffering latency at the receivers
+MARKED answer: option 4
+
+### id: question 23
+Question: Which feature proposes to integrate selected WLAN direct discovery technologies as an alternative technology for ProSe Direct Discovery? [3GPP Release 15]
+  1. Unlicensed Spectrum Offloading System
+  2. Enhancements to LTE operation in unlicensed spectrum
+  3. Voice services over WLAN
+  4. WLAN Offloading System
+MARKED answer: option 4
+
+### id: question 45
+Question: What should the UE consider if it cannot detect any cell meeting the S criterion on a frequency for sidelink operation? [3GPP Release 17]
+  1. Out-of-coverage for sidelink operation on that frequency
+  2. Out-of-coverage for V2X sidelink communication on that frequency
+  3. Out-of-coverage for NR sidelink communication on that frequency
+  4. In-coverage for NR sidelink communication on that frequency
+  5. In-coverage for sidelink operation on that frequency
+MARKED answer: option 1
+
+### id: question 55
+Question: What is the definition of aggregate medium access control (MAC) protocol data unit (A-MPDU)?
+  1. The prevention of unauthorized usage of resources
+  2. An entity that contains one station and provides access to the distribution system services
+  3. A structure that contains one or more MSDUs and is transported within a single data MAC protocol data unit
+  4. A portion of an A-MPDU that contains a delimiter and optionally contains an MPDU plus any necessary padding
+  5. A portion of an A-MSDU that contains a header and associated MSDU
+MARKED answer: option 3
+
+### id: question 64
+Question: When can the unused portion of a polled TXOP be reallocated by the HC? [IEEE 802.11]
+  1. When a PHY-CCA.indication (BUSY) primitive occurs at the STA expecting the Ack frame
+  2. When the expected Ack frame is not received
+  3. When there is not enough time to transmit a QoS Null frame
+  4. When the STA ceases control of the channel
+  5. When there are no frames to be sent to the HC
+MARKED answer: option 5
+
+### id: question 87
+Question: Which 5G vertical domain is the maritime domain a part of? [3GPP Release 16]
+  1. Public safety domain
+  2. Automotive domain
+  3. Factory automation domain
+  4. Satellite industrial domain
+  5. None of the above
+MARKED answer: option 5
+
+### id: question 88
+Question: What is the maximum power spectrum density (PSD) allowed in the 5350-5470 MHz range in Europe?
+  1. 10 dBm/MHz
+  2. 11 dBm/MHz
+  3. 17 dBm/MHz
+  4. 23 dBm/MHz
+  5. 30 dBm/MHz
+MARKED answer: option 3
+
+### id: question 96
+Question: What is the purpose of the User Configuration mechanism in the IMS Multimedia Telephony service? [3GPP Release 17]
+  1. To support synchronization of communication logs between multiple devices
+  2. To indicate which identities are active or inactive on a specific UE
+  3. To provide user preferences for media handling capabilities
+  4. To modify the Caller Identity Analytics function
+MARKED answer: option 2
+
+### id: question 123
+Question: When can the V-SMF delete the DNS context from the selected V-EASDF? [3GPP Release 18]
+  1. When the request for HR-SBO is not authorized
+  2. When the V-SMF selects a new V-EASDF
+  3. When the UE initiates a Mobility Registration Update procedure
+  4. When the AF triggers EAS rediscovery
+MARKED answer: option 1
+
+### id: question 140
+Question: What is supported in enhanced TTI bundling compared to Rel-13 CE mode A in eMTC? [3GPP Release 14]
+  1. UL asynchronous HARQ transmission
+  2. Different repetition levels of scheduled PUSCH
+  3. Bundle frequency hopping
+  4. Multi-subframe channel estimation
+  5. HARQ process ID
+MARKED answer: option 2
+
+### id: question 143
+Question: What is the indication used to invoke the terminal application in the peer end of a multimedia call? [3GPP Release 18]
+  1. H.243 information
+  2. H.223 and H.245 information
+  3. Call Control Capabilities information
+  4. H.324 information
+MARKED answer: option 4
+
+### id: question 170
+Question: How does an AP set up the protection for the duration of the sectorized beam transmission in an SO frame exchange sequence? [IEEE 802.11]
+  1. By transmitting an ACK or Response frame after the omnidirectional beam transmission.
+  2. By setting the NAV for the duration of the sectorized beam transmission.
+  3. By transmitting a BF duration frame after the omnidirectional beam transmission.
+  4. By switching to the sectorized beam transmission after the omnidirectional preamble.
+  5. By transmitting a NAV protected frame after the omnidirectional beam transmission.
+MARKED answer: option 4
+
+### id: question 197
+Question: What is the definition of the Chip Rate field value '1'? [IEEE 802.15.4]
+  1. 300 kchip/s
+  2. 600 kchip/s
+  3. 800 kchip/s
+  4. 1 Mchips/s
+MARKED answer: option 2
+
+### id: question 203
+Question: What does the RRC protocol offer to upper layers? [3GPP Release 17]
+  1. Broadcast of common control information
+  2. Notification of UEs in RRC_IDLE
+  3. Transfer of dedicated signalling
+  4. Broadcast of positioning assistance data
+  5. Transfer of application layer measurement configuration and reporting
+MARKED answer: option 1
+
+### id: question 256
+Question: What can be queried from the management information base (MIB) in the 802.11 protocol? [IEEE 802.11]
+  1. Physical layer parameters
+  2. Actions to take place
+  3. Configuration settings
+  4. Status information
+MARKED answer: option 4
+
+### id: question 268
+Question: What criteria are considered for network broadcast geographic area coverage management? [3GPP Release 18]
+  1. OTT provider request and available network capacity
+  2. OTT provider request and number of users under broadcast network coverage
+  3. Location information of UE and number of users under broadcast network coverage
+  4. OTT provider request and location information of UE
+  5. Number of users under broadcast network coverage and available network capacity
+MARKED answer: option 2
+
+### id: question 279
+Question: What does the 5G system need to provide for mobile base station relays using 5G connectivity provided by a different MNO? [3GPP Release 17]
+  1. Separate network infrastructure for MNO-B to communicate with MNO-A through the relay
+  2. Specific QoS handling for traffic relayed through the MNO-B's network
+  3. Ability for MNO-A and MNO-B to share relay resources for UEs connected to the 5G network
+  4. Authorization from MNO-A for MNO-B to provide 5G connectivity through the relay
+  5. Ownership and control of the relay by MNO-A despite using connectivity from MNO-B
+MARKED answer: option 3
+
+### id: question 281
+Question: When can a UE apply Type 1 channel access procedures for a UL transmission(s)? [3GPP Release 17]
+  1. Before receiving the corresponding capability
+  2. After performing Type 2 channel access procedures
+  3. After receiving the corresponding capability
+  4. None of the above
+MARKED answer: option 3
+
+### id: question 296
+Question: What can be configured separately for each SPS configuration in LTE? [3GPP Release 18]
+  1. The time reference
+  2. The PDCP duplication settings
+  3. The cyclic shift for the UL Demodulation Reference Signal (DMRS)
+  4. The allocated RBs (Resource Blocks)
+MARKED answer: option 3
+
+### id: question 300
+Question: What is the data rate for each clock pulse in 100Base-T? [IEEE 802.3]
+  1. 1 bit
+  2. 2 bits
+  3. 4 bits
+  4. 8 bits
+MARKED answer: option 1
+
+### id: question 316
+Question: What power saving gain range is observed for the power saving scheme with UE adaptation to the number of antenna/MIMO layer? [3GPP Release 16]
+  1. 3% - 20%
+  2. 6% - 30%
+  3. 15% - 45%
+  4. 30% - 280%
+MARKED answer: option 2
+
+### id: question 338
+Question: What does the ECS provide to the EEC? [3GPP Release 18]
+  1. Edge configuration information
+  2. EAS configuration information
+  3. Network capability information
+  4. Application Data Traffic
+MARKED answer: option 1
+
+### id: question 369
+Question: When is the New Mode FEC field overridden in a mode switch PPDU? [IEEE 802.15.4]
+  1. When the New Mode FEC field has a value of zero
+  2. When the New Mode FEC field has a value of one
+  3. When the new mode packet has an SFD
+  4. When the new mode packet does not have FEC
+  5. When the Mode Switch field is set to zero
+MARKED answer: option 3
+
+### id: question 394
+Question: What is a characteristic of SCMA (sparse code multiple access) codebook design that limits its application in large-scale systems?
+  1. Lack of flexibility
+  2. High complexity
+  3. Insufficient capacity
+  4. Low transmit power
+  5. Lack of scalability
+MARKED answer: option 5
+
+### id: question 398
+Question: What inputs are required for the Nmfaf_3daDataManagement_Configure service operation? [3GPP Release 18]
+  1. Data Consumer or Analytics Consumer Information
+  2. Formatting Instructions, Processing Instructions, MFAF Notification Information, Transaction Reference Id, ADRF ID
+  3. Notification Correlation Information
+  4. Set of Fetch Correlation ID(s)
+MARKED answer: option 1
+
+### id: question 405
+Question: What are the enhanced RRM requirements in DRX in connected mode? [3GPP Release 14]
+  1. Reduced cell identification delay and measurement period.
+  2. Reduced cell detection delay, measurement period, and evaluation time.
+  3. Reduced cell identification delay, measurement period, and evaluation time.
+  4. Reduced cell detection delay and measurement period.
+MARKED answer: option 1
+
+### id: question 420
+Question: What does O-RAN define functional blocks that are used in CF (Cell-free) mMIMO (massive multiple-input-multiple-output) networks?
+  1. Precoding and combining.
+  2. Fronthaul and backhaul.
+  3. Local processing and central processing.
+  4. Antennas and CPUs.
+MARKED answer: option 1
+
+### id: question 421
+Question: What is the purpose of the Hop Dwell Time field in the Hopping Timing IE Content field? [IEEE 802.15.4]
+  1. To indicate the amount of time that has passed since the transmitting device hopped to the present channel.
+  2. To indicate the time interval between consecutive hops.
+  3. To indicate the number of channels hopped by the device.
+  4. To indicate the time interval for a single hop.
+MARKED answer: option 2
+
+### id: question 439
+Question: What are virtualisation-dependent items? [ETSI NFV Release 5]
+  1. Items whose value depends on NFV management functions
+  2. Items whose value depends on NFV infrastructure decisions
+  3. Items whose value depends on both NFV infrastructure and management functions
+  4. Items whose value depends on OSS/BSS
+MARKED answer: option 3
+
+### id: question 453
+Question: What is the function of the MAC sublayer in Ethernet? [IEEE 802.3]
+  1. Detecting collisions
+  2. Sending and receiving serial bit streams
+  3. Building data frames
+  4. Ensuring data reliability
+MARKED answer: option 1
+
+### id: question 454
+Question: What does the 5G system prevent in terms of privacy for UEs using 5G LAN-type service? [3GPP Release 17]
+  1. Sharing of UE's identifying information
+  2. Sharing of UE's IP address
+  3. Sharing of UE's location information
+  4. Sharing of UE's communication history
+  5. All of the above
+MARKED answer: option 1
+
+### id: question 467
+Question: What is the most sensitive region of the heart for inducing ventricular fibrillation (VF)? [IEEE C95.1]
+  1. Apex
+  2. Atria
+  3. Ventricles
+  4. Pulmonary artery
+MARKED answer: option 1
+
+### id: question 470
+Question: Which entities can consume Management Data Analytics Service (MDAS)? [3GPP Release 17]
+  1. MnFs, NFs, SON functions, SLS assurance functions, human operators, and AFs
+  2. MnS producers, NWDAF, network and service optimization tools/functions, and AFs
+  3. Producers and consumers of network and service management
+  4. MnFs, NFs, SON functions, and AFs
+MARKED answer: option 1
+
+### id: question 475
+Question: Which solutions in LTE support configurable reliability and latency combinations? [3GPP Release 18]
+  1. Semi-static CFI configuration and PDSCH repetition
+  2. UL SPS repetition and PDCP packet duplication
+  3. Granular time reference provision and PDCP packet duplication
+  4. PDSCH repetition and Granular time reference provision
+MARKED answer: option 1
+
+Reminder: return a JSON array with exactly 36 objects, one per id above.
+(Reviewer id: inv1.)

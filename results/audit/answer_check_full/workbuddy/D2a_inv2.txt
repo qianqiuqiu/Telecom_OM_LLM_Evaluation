@@ -1,0 +1,205 @@
+You are verifying the answer key of a telecom multiple-choice benchmark (TeleQnA, questions about 3GPP / IEEE / ETSI / IETF standards). For EACH question below, decide whether the MARKED correct answer is actually correct. An earlier screening raised doubts about every item in this list, but that doubt may be unfounded. Work independently and judge each item on its own.
+
+Verdicts:
+- "correct": the marked option is right and clearly the best option.
+- "wrong": the marked option is incorrect; give the correct option number (1-based) in correct_option (null if none of the options is correct).
+- "ambiguous": more than one option is defensible, or the question is underspecified/flawed so the marked answer can't be called uniquely right.
+- "unverifiable": you cannot establish the answer with reasonable confidence.
+
+Prefer primary sources: if you can search the web, check the relevant 3GPP TS/TR, IEEE standard, ETSI document or RFC when your own knowledge is not certain. Put a short justification (1-2 sentences) in "evidence" and the document / URL you relied on in "source" (write "own knowledge" if you did not consult a source). Keep research brief (a few lookups per question at most) so you do not run out of context. Do not guess: if unsure, use "unverifiable".
+
+Output: ONLY a JSON array, no other text, with exactly one object per question below, in the same order, copying each "id" exactly as written (e.g. "question 1234"):
+[{"id": "question 1234", "verdict": "correct|wrong|ambiguous|unverifiable", "correct_option": <int or null>, "evidence": "...", "source": "..."}]
+correct_option: for "correct" give the marked option number; for "wrong" the right option number or null; for "ambiguous"/"unverifiable" null.
+
+There are 19 questions. Questions (options are numbered from 1):
+
+### id: question 4399
+Question: What is the purpose of the SMF in a 5G VN group? [3GPP Release 18]
+  1. To manage the UE subscription data
+  2. To configure the External Group ID
+  3. To handle the user plane paths
+  4. To establish N19 tunnels between UPFs
+  5. To create VLAN tags for Ethernet PDU Sessions
+MARKED answer: option 3
+
+
+### id: question 4857
+Question: Which deployment scenario may require coverage recovery for Message 2 in the DL (downlink)?
+  1. Rural
+  2. Urban micro
+  3. Urban macro
+  4. Indoor
+  5. All of the above
+MARKED answer: option 2
+
+
+### id: question 4881
+Question: Which of the following is NOT supported by PDCP packet duplication? [3GPP Release 15]
+  1. Signalling Radio Bearers (SRBs) using RLC AM
+  2. Data Radio Bearers (DRBs) using RLC UM
+  3. Data Radio Bearers (DRBs) using RLC AM
+  4. Carrier Aggregation (CA) scenarios
+  5. Dual Connectivity (DC) scenarios
+MARKED answer: option 3
+
+
+### id: question 4949
+Question: What is the purpose of updating the NAV when receiving a PS-Poll frame? [IEEE 802.11]
+  1. To establish the identity of a network station
+  2. To prevent collisions with mobile stations
+  3. To update the association ID
+  4. To synchronize the transmission of ACK frames
+  5. To find frames buffered for the sender
+MARKED answer: option 4
+
+
+### id: question 4981
+Question: Which interface is not required in the roaming architecture for interworking between 5GS and EPC? [3GPP Release 18]
+  1. N26 interface
+  2. S9 interface
+  3. N9 interface
+  4. S10 interface
+MARKED answer: option 2
+
+
+### id: question 5087
+Question: Which of the following is true about cell reselection between NR RRC_IDLE and E-UTRA RRC_IDLE? [3GPP Release 17]
+  1. It is not supported
+  2. It is supported for handover to UTRA only
+  3. It is supported for both handover to UTRA and NR
+  4. It is supported for handover to NR only
+  5. It is supported for handover to E-UTRA only
+MARKED answer: option 3
+
+
+### id: question 5091
+Question: What message does the UE respond with after receiving the RRCSetup message? [3GPP Release 17]
+  1. RRC_CONNECTION_SETUP_COMPLETE
+  2. SecurityModeCommand
+  3. SecurityModeComplete
+  4. RRCReconfiguration
+  5. UE CONTEXT SETUP RESPONSE
+MARKED answer: option 3
+
+
+### id: question 5159
+Question: Which port range is reserved for dynamic and/or private ports? [TCP/IP]
+  1. 0 - 1023
+  2. 1024 - 49151
+  3. 49152 - 65535
+  4. 0xC000 - 0xFFFF
+  5. 1962
+MARKED answer: option 4
+
+
+### id: question 5165
+Question: What are the abilities provided by subscription-related priority mechanisms? [3GPP Release 18]
+  1. Invoking, modifying, and maintaining QoS Flows with priority
+  2. Classifying and differentiating specific services
+  3. Delivering QoS Flow packets according to the QoS characteristics
+  4. Establishing prioritized QoS Flows
+  5. Preserving differentiated treatment for prioritized QoS Flow and resource distribution prioritization
+MARKED answer: option 1
+
+
+### id: question 5477
+Question: What is the function of an eNodeB? [3GPP Release 17]
+  1. Control of one or more Node B
+  2. Communicating with Mobile Stations in a certain area
+  3. Serve one cell
+  4. Serve one or more E-UTRAN cells
+  5. Provide the E-UTRA user plane and control plane protocol terminations towards the UE
+MARKED answer: option 4
+
+
+### id: question 5601
+Question: What is supported for handover between gNB and ng-eNB? [3GPP Release 18]
+  1. In-sequence and lossless handover
+  2. Security procedures for handover to E-UTRA/EPC
+  3. Xn and NG based inter-RAT handover
+  4. Direct data forwarding path
+  5. All of the above
+MARKED answer: option 3
+
+
+### id: question 5684
+Question: What is the impact of voice call continuity on the quality of the voice service? [3GPP Release 18]
+  1. Voice call continuity may adversely impact the voice service quality
+  2. Voice call continuity improves the voice service quality
+  3. Voice call continuity has no impact on the voice service quality
+  4. Voice call continuity reduces the voice service quality
+MARKED answer: option 3
+
+
+### id: question 5710
+Question: What is the Duration/ID field value in a BlockAck frame that is not sent in response to a BlockAckReq frame or an implicit block ack request? [IEEE 802.11]
+  1. Estimated time to transmit the pending frame plus one CTS frame plus one Ack frame
+  2. Estimated time to transmit one Ack or BlockAck frame plus one SIFS
+  3. Estimated time to transmit the pending frame
+  4. Estimated time to transmit an Ack frame plus a SIFS
+  5. Estimated time to transmit the pending frame plus one CTS frame
+MARKED answer: option 4
+
+
+### id: question 5725
+Question: What action should the UE take if a cell is indicated as 'barred' for cell selection/reselection? [3GPP Release 17]
+  1. Exclude the barred cell as a candidate for cell selection/reselection for 300 seconds
+  2. Select another cell on the same frequency if the selection criteria are fulfilled
+  3. Select the same cell in normal coverage if able to acquire necessary information
+  4. Select the same cell in enhanced coverage if able to acquire necessary information
+  5. All of the above
+MARKED answer: option 5
+
+
+### id: question 5894
+Question: What is the definition of Soft Handover?
+  1. Handover with continuous monitoring of different network cells
+  2. Handover with the merging of multiple radio links
+  3. Handover without interruption of the radio connection
+  4. Handover with complete loss of the radio connection
+  5. Handover without perceptible interruption of the radio connection
+MARKED answer: option 5
+
+
+### id: question 5897
+Question: What are the two main phases of network slicing implementation?
+  1. Slice instantiation and resource orchestration
+  2. Resource modification and adaptation
+  3. Slice configuration and infrastructure allocation
+  4. Resource sharing and provisioning
+  5. Slice isolation and resource multiplexing
+MARKED answer: option 1
+
+
+### id: question 6057
+Question: Which logical channel can be mapped to DL-SCH in the downlink? [3GPP Release 18]
+  1. BCCH
+  2. PCCH
+  3. CCCH
+  4. All of the above
+MARKED answer: option 4
+
+
+### id: question 6061
+Question: What is the role of the serving core network operator in a shared network? [3GPP Release 17]
+  1. To conditionally accept handover requests
+  2. To broadcast multiple PLMN-id lists
+  3. To determine the operator selected by a supporting UE
+  4. To allocate the core network operator to a non-supporting UE
+  5. To allocate the core network operator to any UE in a shared network
+MARKED answer: option 5
+
+
+### id: question 6115
+Question: Which charging architecture is used for 5G Data Connectivity in Phase 1 of the 5G System Architecture? [3GPP Release 18]
+  1. NG-RAN
+  2. CHF
+  3. SMF
+  4. Nchf
+  5. None of the above
+MARKED answer: option 4
+
+
+Reminder: return a JSON array with exactly 19 objects, one per id above, copying ids exactly as written (e.g. "question 4399").
+(Reviewer id: inv2.)

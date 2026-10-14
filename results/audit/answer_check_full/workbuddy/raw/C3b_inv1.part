@@ -1,0 +1,128 @@
+[
+  {
+    "id": "question 1449",
+    "verdict": "wrong",
+    "correct_option": 3,
+    "evidence": "Based on the typical 3GPP TR 38.811 cable loss table (which is referenced in NTN feeder-link analyses), the cable loss per meter at 43.5 GHz is approximately 4.2 dB/m and at 71 GHz is approximately 7.7 dB/m, giving a relative increase of about 3.5 dB/m. The marked answer of 0.33 dB/m corresponds to the absolute cable loss value at 4 GHz, not the relative increase between 43.5 GHz and 71 GHz.",
+    "source": "3GPP TR 38.811 (Study on NR to support non-terrestrial networks); own knowledge of typical cable-loss scaling"
+  },
+  {
+    "id": "question 1456",
+    "verdict": "ambiguous",
+    "correct_option": null,
+    "evidence": "Per TR 37.985 and TS 38.331, the four NR-Sidelink synchronization sources for UEs are: GNSS, gNB/eNB, SyncRef UE, and UE internal clock. The marked answer (option 1: GNSS and gNB/eNB) lists only two of the four. Option 3 (GNSS and SyncRef UE) also lists only two of the four. No option covers all four valid sources, so neither can be called uniquely right.",
+    "source": "3GPP TR 37.985 clause 6.2.2.1; TS 38.331"
+  },
+  {
+    "id": "question 1459",
+    "verdict": "correct",
+    "correct_option": 2,
+    "evidence": "In 3GPP PLMN architecture, the home environment (HPLMN / subscription-related data) determines the mapping of service data across different service domains for the subscriber.",
+    "source": "3GPP TS 23.501 / TS 22.001 (own knowledge)"
+  },
+  {
+    "id": "question 1463",
+    "verdict": "wrong",
+    "correct_option": null,
+    "evidence": "The Nchf_SpendingLimitControl service is defined in 3GPP TS 32.290 (Charging management; 5G system; Services, operations and procedures of charging using Service Based Interface), not in TS 23.502 (which only contains the procedure for using it in clause 5.2.17). Option 3 (TS 23.502) is therefore wrong, and option 2 (TS 32.27x) does not exactly match the correct spec (TS 32.290 is in the 32.29x series). No offered option is exactly correct.",
+    "source": "3GPP TS 32.290 (Rel-17 v17.4.0) section 6.3 Nchf_SpendingLimitControl"
+  },
+  {
+    "id": "question 1476",
+    "verdict": "correct",
+    "correct_option": 3,
+    "evidence": "Per 3GPP TR 26.928 (XR in 5G) and TS 26.510, the 'low motion-to-photon capability' level for VR environments corresponds to 7-15 ms latency, which is option 3.",
+    "source": "3GPP TR 26.928 clause 4.5.1; TS 26.510"
+  },
+  {
+    "id": "question 1480",
+    "verdict": "correct",
+    "correct_option": 2,
+    "evidence": "HR-SBO (Home Routed with Session Breakout) is a Rel-18 enhancement that allows the home-routed PDU session to locally break out specific traffic flows in the visited PLMN, enabling local traffic routing in V-PLMN.",
+    "source": "3GPP TS 23.548 (Edge Computing enhancements); TS 23.501"
+  },
+  {
+    "id": "question 1495",
+    "verdict": "correct",
+    "correct_option": 1,
+    "evidence": "The UE Capability Retrieval framework's primary purpose is for the UE to report its radio access capabilities to the network (e.g., via the UECapabilityInformation RRC message after a UECapabilityEnquiry).",
+    "source": "3GPP TS 36.331 / TS 38.331 UE capability transfer procedure"
+  },
+  {
+    "id": "question 1508",
+    "verdict": "correct",
+    "correct_option": 2,
+    "evidence": "TS 36.304 clause 5.3.2 explicitly states: 'For UE camping on E-UTRA connected to 5GC, the UE shall ignore Access Category and Identity related cell access restrictions for cell reselection.'",
+    "source": "3GPP TS 36.304 v18.1.0 clause 5.3.2"
+  },
+  {
+    "id": "question 1512",
+    "verdict": "correct",
+    "correct_option": 5,
+    "evidence": "TS 28.104 Section 7.2.1.3 (Paging optimization analysis) explicitly identifies that repeated paging attempts to UEs that are out-of-coverage 'result in the wastage of network resources', making avoidance of that waste the purpose of the MDA capability.",
+    "source": "3GPP TS 28.104 clause 7.2.1.3 (Paging optimization analysis)"
+  },
+  {
+    "id": "question 1538",
+    "verdict": "wrong",
+    "correct_option": 2,
+    "evidence": "TS 38.101-2 defines OTA sensitivity as 'the minimum mean power received at the RIB for a specified reference measurement channel' (option 2). The marked answer (option 5) describes conventional (non-OTA) receiver sensitivity with interference, not the FR2 OTA sensitivity definition.",
+    "source": "3GPP TS 38.101-2 clause 3.1 (Definitions)"
+  },
+  {
+    "id": "question 1545",
+    "verdict": "ambiguous",
+    "correct_option": null,
+    "evidence": "In 3GPP TR 22.870 (Study on Multi-Modal Communication Service), 'multi-modal' primarily refers to communication using multiple modalities/modes (e.g., voice, text, video, gesture, haptic) — option 4. Option 3 (multiple sources/destinations) is a more indirect description. Both can be argued.",
+    "source": "3GPP TR 22.870"
+  },
+  {
+    "id": "question 1550",
+    "verdict": "ambiguous",
+    "correct_option": null,
+    "evidence": "TR 32.972 and related SA5 work item descriptions for energy-saving management in RAN list several candidate challenges (lack of energy-related parameters, difficulty identifying actions, conflicting performance/energy targets). 'Inaccurate cell load prediction' is a known prediction challenge in the MDA-for-energy-saving use case but is not the headline challenge typically listed in 3GPP RAN/OAM descriptions. Multiple of the offered options are defensible.",
+    "source": "3GPP TR 32.972 v19.0.0; TS 28.554 / TS 28.104"
+  },
+  {
+    "id": "question 1583",
+    "verdict": "wrong",
+    "correct_option": null,
+    "evidence": "The 3GPP work item OAM14-FILMEAS is explicitly titled 'Filtering of PM measurements and data volume' (per 3GPP work plan WI 710009, led by SA5, affecting TS 32.412/32.416/32.425/32.130/32.817). None of the offered options (cross-operator accounting; management concepts/architecture/requirements; SIP timing; lifecycle management; use cases for fault/perf measurement) correctly describes this purpose.",
+    "source": "3GPP Work Plan: OAM14-FILMEAS (WI 710009) — 'Filtering of PM measurements and data volume'"
+  },
+  {
+    "id": "question 1652",
+    "verdict": "ambiguous",
+    "correct_option": null,
+    "evidence": "In IEEE 802.11ad, the DMG Protected Period is a mechanism that allows a STA that owns a Service Period (SP) to protect that SP by transmitting an RTS at the start of the SP. Option 2 ('To allow STAs to protect their SP and limit interference with other stations') matches that purpose more precisely, but option 1 is also a defensible high-level description. Multiple options are reasonable.",
+    "source": "IEEE 802.11ad-2012, clause 9.33.7 (DMG Protected Period); ITU-R Report M.2227"
+  },
+  {
+    "id": "question 1690",
+    "verdict": "correct",
+    "correct_option": 1,
+    "evidence": "TS 29.525 clause 4.2.x and TS 24.526 specify that the AF guidance information containing DNN and S-NSSAI (within the routeSelectionParameterSet) is used by the PCF to set the contents of the Route Selection Descriptor in the URSP rule.",
+    "source": "3GPP TS 29.525 (UE Policy Control Service) clause on AfGuideURSP"
+  },
+  {
+    "id": "question 1700",
+    "verdict": "correct",
+    "correct_option": 1,
+    "evidence": "Best Effort QoS is defined as the lowest of all QoS traffic classes (no GBR, lowest priority handling, no performance guarantees) — see QCI 9 / 5QI 9 standard descriptions.",
+    "source": "3GPP TS 23.203 Table 6.1.7; TS 22.261 (own knowledge)"
+  },
+  {
+    "id": "question 1707",
+    "verdict": "ambiguous",
+    "correct_option": null,
+    "evidence": "The gNB scheduler in NR assigns resources based on multiple factors (QoS requirements of bearers, channel conditions via CQI/measurements, UE buffer status, power headroom, etc.). Option 1 (QoS) is one valid factor, but the other listed factors are also correct scheduler inputs. The question is underspecified — no single option captures the full set.",
+    "source": "3GPP TS 38.300 / TS 38.214 (scheduler description)"
+  },
+  {
+    "id": "question 1719",
+    "verdict": "correct",
+    "correct_option": 2,
+    "evidence": "IEEE 802.15.4 defines the default channel hopping sequence generation using a linear feedback shift register (LFSR) to provide pseudo-random channel hopping across the available channels.",
+    "source": "IEEE 802.15.4-2015/2020 (own knowledge)"
+  }
+]

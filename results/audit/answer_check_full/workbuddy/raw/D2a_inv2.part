@@ -1,0 +1,135 @@
+[
+  {
+    "id": "question 4399",
+    "verdict": "correct",
+    "correct_option": 3,
+    "evidence": "TS 23.501 §5.6.7 (5G VN group) and TS 28.822 §5.2.4.1.1 explicitly state that the SMF handles the user plane paths of the 5G VN group, including establishing N19 tunnels between PSA UPFs.",
+    "source": "TS 23.501 5.6.7; TS 28.822 5.2.4.1.1"
+  },
+  {
+    "id": "question 4857",
+    "verdict": "ambiguous",
+    "correct_option": null,
+    "evidence": "TR 38.921 covers the urban macro/dense urban/indoor scenarios but the question references Message 2 DL coverage recovery which I could not find explicitly stated for the Urban micro scenario alone. Could plausibly apply to multiple scenarios including rural, indoor and urban macro.",
+    "source": "TR 38.921 4.2 (own knowledge)"
+  },
+  {
+    "id": "question 4881",
+    "verdict": "wrong",
+    "correct_option": 1,
+    "evidence": "TS 38.323 §5.1.2 specifies that PDCP duplication is configured for radio bearers and is intended for DRBs to improve reliability. Per the spec, each PDCP entity for PDCP duplication is associated with N UM, 2*N UM, or N AM RLC entities — meaning both DRBs using RLC UM (option 2), DRBs using RLC AM (option 3), CA and DC scenarios are supported. PDCP duplication is NOT applicable to SRBs (option 1 is the right 'NOT supported' choice).",
+    "source": "TS 38.323 5.1.2"
+  },
+  {
+    "id": "question 4949",
+    "verdict": "ambiguous",
+    "correct_option": null,
+    "evidence": "Per IEEE 802.11, the PS-Poll's purpose itself is to retrieve buffered frames; the NAV is updated as a side effect ('stations receiving a PS-Poll frame update the NAV by the short interframe space plus the time required to transmit an ACK'). The marked option 'synchronize ACK frame transmission' doesn't directly map to either the PS-Poll purpose or the NAV update purpose — defensible answers could be options 2 or 5.",
+    "source": "IEEE 802.11"
+  },
+  {
+    "id": "question 4981",
+    "verdict": "correct",
+    "correct_option": 2,
+    "evidence": "TS 23.501 §4.3.2 explicitly states: 'S9 interface from EPC is not required since no known deployment exists.' S10 is MME-MME handover, N9 is between UPFs, N26 is AMF-MME — these are not flagged as 'not required.'",
+    "source": "TS 23.501 4.3.2"
+  },
+  {
+    "id": "question 5087",
+    "verdict": "wrong",
+    "correct_option": 5,
+    "evidence": "The question framing is awkward — 'cell reselection between NR RRC_IDLE and E-UTRA RRC_IDLE' implies inter-RAT reselection between NR and E-UTRA, which is supported (per TS 38.304 §5.2.4.5 and §5.2.4.6) and is not limited to UTRA or to NR only. Options mentioning UTRA or NR don't quite fit the NR↔E-UTRA scope; the closest defensible match would be 'handover to E-UTRA only' (option 5) given the E-UTRA target.",
+    "source": "TS 38.304 5.2.4.5, 5.2.4.6"
+  },
+  {
+    "id": "question 5091",
+    "verdict": "wrong",
+    "correct_option": 1,
+    "evidence": "Per TS 38.331 §5.3.3, the UE responds to an RRCSetup with RRCSetupComplete, not SecurityModeComplete. The legacy RRC_CONNECTION_SETUP_COMPLETE (option 1) is the closest analog (the 5G variant RRCSetupComplete is not listed). The UE only sends SecurityModeComplete in response to SecurityModeCommand.",
+    "source": "TS 38.331 5.3.3"
+  },
+  {
+    "id": "question 5159",
+    "verdict": "correct",
+    "correct_option": 4,
+    "evidence": "IANA registered ports are 0-1023; registered/dynamic ports are 49152-65535, which equals 0xC000-0xFFFF. Option 4 is a correct alternate form of option 3 and uniquely identifies the dynamic/private range.",
+    "source": "IANA Service Name and Transport Protocol Port Number Registry"
+  },
+  {
+    "id": "question 5165",
+    "verdict": "ambiguous",
+    "correct_option": null,
+    "evidence": "TS 22.261 §6.7.2 (priority/QoS/policy) lists multiple requirements for subscription-related priority mechanisms. The marking of option 1 is plausible but other options (4 'Establishing prioritized QoS Flows' and 5 'Preserving differentiated treatment') also reflect 5G priority treatment requirements. Could not uniquely identify the intended correct option without exact spec wording.",
+    "source": "TS 22.261 6.7.2"
+  },
+  {
+    "id": "question 5477",
+    "verdict": "ambiguous",
+    "correct_option": null,
+    "evidence": "TS 36.300 §4 starts with 'The E-UTRAN consists of eNBs, providing the E-UTRA user plane (PDCP/RLC/MAC/PHY) and control plane (RRC) protocol terminations towards the UE' which matches option 5. However, option 4 'Serve one or more E-UTRAN cells' is also widely used in TS 21.916 descriptions of eNodeB. Both options are reasonable as 'function of an eNodeB' depending on the reference section.",
+    "source": "TS 36.300 4.1; TS 21.916"
+  },
+  {
+    "id": "question 5601",
+    "verdict": "ambiguous",
+    "correct_option": null,
+    "evidence": "TS 38.401 specifies Xn-based and NG-based inter-RAT handover between gNB and ng-eNB (option 3 is supported). Additionally, in-sequence/lossless handover (option 1) is supported, and direct data forwarding path (option 4) is supported. Multiple of these features are simultaneously supported, making 'all of the above' (option 5) defensible.",
+    "source": "TS 38.401"
+  },
+  {
+    "id": "question 5684",
+    "verdict": "wrong",
+    "correct_option": 1,
+    "evidence": "Per TS 23.216 and TS 22.153, SRVCC voice call continuity can introduce some interruption and may adversely impact voice service quality during handover (option 1). It is not 'no impact' (option 3 is incorrect).",
+    "source": "TS 23.216; TS 22.153"
+  },
+  {
+    "id": "question 5710",
+    "verdict": "correct",
+    "correct_option": 4,
+    "evidence": "Per IEEE 802.11 §7.2.1.8: 'If the BlockAck frame is not sent in response to the BlockAckReq, the Duration/ID field value is greater than or equal to the time for transmission of an ACK frame plus a SIFS interval.' This matches option 4.",
+    "source": "IEEE 802.11 7.2.1.8"
+  },
+  {
+    "id": "question 5725",
+    "verdict": "wrong",
+    "correct_option": 1,
+    "evidence": "Per TS 38.331 §5.2.2.4.2 and TS 38.304 §5.3.1, when a cell is barred, the UE 'shall exclude the barred cell as a candidate for cell selection/reselection for 300 seconds' (option 1). Selecting the same barred cell (options 3, 4) is not allowed; whether the UE selects another cell on the same frequency depends on intraFreqReselection. 'All of the above' (option 5) is wrong because options 3, 4 are not true.",
+    "source": "TS 38.331 5.2.2.4.2; TS 38.304 5.3.1"
+  },
+  {
+    "id": "question 5894",
+    "verdict": "correct",
+    "correct_option": 5,
+    "evidence": "In 3GPP, soft handover is defined as a handover without perceptible interruption of the radio connection, where the UE maintains multiple radio links simultaneously. This matches option 5.",
+    "source": "TS 25.331/25.303 (general knowledge)"
+  },
+  {
+    "id": "question 5897",
+    "verdict": "ambiguous",
+    "correct_option": null,
+    "evidence": "TS 28.531 defines four lifecycle phases (Preparation, Commissioning, Operation, Decommissioning). The question wording 'two main phases' is ambiguous and could pair any two adjacent phases. The marked 'Slice instantiation and resource orchestration' (option 1) is a reasonable but not uniquely defensible pairing.",
+    "source": "TS 28.531"
+  },
+  {
+    "id": "question 6057",
+    "verdict": "wrong",
+    "correct_option": 1,
+    "evidence": "Per TS 38.300 §6.2.3: 'In Downlink, the following connections between logical channels and transport channels exist: BCCH can be mapped to BCH; BCCH can be mapped to DL-SCH; PCCH can be mapped to PCH; CCCH/DCCH/DTCH can be mapped to DL-SCH.' PCCH is mapped to PCH (not DL-SCH), so option 2 (PCCH) is incorrect and 'all of the above' (option 4) is wrong because PCCH is not mapped to DL-SCH. BCCH (option 1) is unambiguously mapped to DL-SCH.",
+    "source": "TS 38.300 6.2.3"
+  },
+  {
+    "id": "question 6061",
+    "verdict": "correct",
+    "correct_option": 5,
+    "evidence": "In a shared/hosted network (TS 23.251), the serving (hosting) CN operator is responsible for allocating the core network operator to UEs. The marked option 5 captures this general allocation role, though more precise wording could exist in TS 23.251.",
+    "source": "TS 23.251"
+  },
+  {
+    "id": "question 6115",
+    "verdict": "wrong",
+    "correct_option": 2,
+    "evidence": "TS 32.255 (5G Data Connectivity domain charging) and TS 32.290 (SBI for charging) define 5G Phase 1 charging architecture as the CHF (Charging Function). CHF is the architectural component; Nchf (option 4) is the interface. When the question asks 'which charging architecture is used', the architectural element is CHF (option 2), not the interface Nchf.",
+    "source": "TS 32.240; TS 32.255; TS 32.290"
+  }
+]

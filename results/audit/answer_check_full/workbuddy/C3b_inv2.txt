@@ -1,0 +1,189 @@
+You are an independent reviewer verifying the answer key of a telecom multiple-choice benchmark (TeleQnA, questions about 3GPP / IEEE / ETSI / IETF standards). For EACH question below, decide whether the MARKED correct answer is actually correct. An earlier screening raised doubts about every item in this list, but that doubt may be unfounded. Do your own research from scratch: do not reuse, copy or look up any previous answers, task results or files. Judge each item on its own.
+
+Verdicts:
+- "correct": the marked option is right and clearly the best option.
+- "wrong": the marked option is incorrect; give the correct option number (1-based) in correct_option (null if none of the options is correct).
+- "ambiguous": more than one option is defensible, or the question is underspecified/flawed so the marked answer can't be called uniquely right.
+- "unverifiable": you cannot establish the answer with reasonable confidence.
+
+Prefer primary sources: if you can search the web, check the relevant 3GPP TS/TR, IEEE standard, ETSI document or RFC when your own knowledge is not certain. Put a short justification (1-2 sentences) in "evidence" and the document / URL you relied on in "source" (write "own knowledge" if you did not consult a source). Keep research brief (a few lookups per question at most) so you do not run out of context. Do not guess: if unsure, use "unverifiable".
+
+Output: ONLY a JSON array, no other text, with exactly one object per question below, in the same order, copying each "id" exactly as written (e.g. "question 1234"):
+[{"id": "question 1234", "verdict": "correct|wrong|ambiguous|unverifiable", "correct_option": <int or null>, "evidence": "...", "source": "..."}]
+correct_option: for "correct" give the marked option number; for "wrong" the right option number or null; for "ambiguous"/"unverifiable" null. correct_option must be an integer option number, never option text.
+
+There are 18 questions. Questions (options are numbered from 1):
+
+### id: question 1449
+Question: What is the relative increase in cable loss per meter from 43.5 GHz to 71 GHz? [3GPP Release 18]
+  1. 0.33 dB
+  2. 0.9 dB
+  3. 3.5 dB
+  4. 7.7 dB
+MARKED answer: option 1
+
+
+### id: question 1456
+Question: Which synchronization sources can UEs (User Equipments) use in NR SL (Sidelink)?
+  1. GNSS and gNB/eNB
+  2. SynchRef UE and internal clock
+  3. GNSS and SynchRef UE
+  4. gNB/eNB and internal clock
+MARKED answer: option 1
+
+
+### id: question 1459
+Question: What determines the mapping between service data of different domains? [3GPP Release 18]
+  1. The visited network
+  2. The home environment
+  3. The roaming agreement
+  4. The capabilities of the visited network
+  5. The roaming subscriber
+MARKED answer: option 2
+
+
+### id: question 1463
+Question: Which specification defines the Nchf_SpendingLimitControl service? [3GPP Release 18]
+  1. TS 23.203
+  2. TS 32.27x
+  3. TS 23.502
+  4. TS 23.272
+MARKED answer: option 3
+
+
+### id: question 1476
+Question: What is the motion-to-photon latency range required to support VR environments with low motion-to-photon capabilities? [3GPP Release 17]
+  1. 1 ms to 5 ms
+  2. 5 ms to 10 ms
+  3. 7 ms to 15 ms
+  4. 15 ms to 20 ms
+MARKED answer: option 3
+
+
+### id: question 1480
+Question: What is the purpose of the HR-SBO PDU Session in roaming? [3GPP Release 18]
+  1. To establish a secure connection between the UE and the V-SMF
+  2. To enable local traffic routing in the visited PLMN
+  3. To provide access to the data network in the home PLMN
+  4. To support session breakout in V-PLMN based on the subscription
+MARKED answer: option 2
+
+
+### id: question 1495
+Question: What is the purpose of the UE Capability Retrieval framework? [3GPP Release 18]
+  1. To report the UE's radio access capabilities to the network
+  2. To request specific capabilities from the network
+  3. To optimize the UE's power consumption
+  4. To enable sidelink communication
+  5. All of the above
+MARKED answer: option 1
+
+
+### id: question 1508
+Question: What does the UE ignore regarding cell access restrictions for cell reselection when camping on E-UTRA connected to 5GC? [3GPP Release 17]
+  1. Access Class or ACDC category restrictions
+  2. Access Category and Identity restrictions
+  3. Emergency call restrictions
+  4. Cell status restrictions
+  5. Access restrictions for NAS initiated access attempts
+MARKED answer: option 2
+
+
+### id: question 1512
+Question: What is the MDA capability for paging optimization analysis used for? [3GPP Release 17]
+  1. Optimizing network resource usage
+  2. Predicting potential network failures
+  3. Analyzing service experience of end users
+  4. Analyzing handover performance
+  5. Avoiding wastage of network resources
+MARKED answer: option 5
+
+
+### id: question 1538
+Question: What is the definition of OTA sensitivity? [3GPP Release 18]
+  1. The receiver's ability to receive an unwanted signal in the presence of a wanted signal.
+  2. The minimum mean power received at the RIB for a specified reference measurement channel.
+  3. The receiver's ability to receive an OTA wanted signal at its assigned channel frequency.
+  4. The measure of the capability of the receiver unit to receive a wanted signal in the presence of an interfering signal.
+  5. The ability of the receiver to receive a wanted signal in the presence of an interfering signal.
+MARKED answer: option 5
+
+
+### id: question 1545
+Question: What is a multi-modal communication service? [3GPP Release 17]
+  1. Service that supports communication between different MNOs
+  2. Service that enables communication between different devices and networks
+  3. Service that allows input and output from multiple sources and destinations
+  4. Service that provides communication through multiple communication modes
+  5. Service that supports communication with multiple users simultaneously
+MARKED answer: option 3
+
+
+### id: question 1550
+Question: What is one of the challenges of energy saving schemes in the radio access network (RAN)? [3GPP Release 17]
+  1. Inaccurate cell load prediction
+  2. Lack of energy-saving related parameters
+  3. Difficulty in identifying energy-saving actions
+  4. Lack of feedback on energy efficiency
+  5. Conflicting targets between system performance and energy efficiency
+MARKED answer: option 1
+
+
+### id: question 1583
+Question: What is the purpose of the WI 'OAM14-FILMEAS'? [3GPP Release 14]
+  1. Management of measurements for cross-operator accounting
+  2. Management concepts, architecture, and requirements
+  3. Enabling the operator to provide maximum time between SIP request and response
+  4. Functions and solutions related to Lifecycle Management
+  5. Use cases and requirements for management of fault and performance measurements
+MARKED answer: option 1
+
+
+### id: question 1652
+Question: What is the purpose of the DMG protected period? [IEEE 802.11]
+  1. To minimize interference by limiting the transmission of frames during a specific period
+  2. To allow STAs to protect their SP and limit interference with other stations
+  3. To negotiate a bandwidth that can be used in the SP
+  4. To ensure both source and destination DMG STAs can receive frames from each other
+MARKED answer: option 1
+
+
+### id: question 1690
+Question: What parameter from the AF guidance is used to set the Route Selection Descriptor in the URSP rule? [3GPP Release 18]
+  1. DNN and S-NSSAI
+  2. Route Selection Precedence
+  3. Validation Criteria
+  4. Spatial Validity Condition
+MARKED answer: option 1
+
+
+### id: question 1700
+Question: What is best effort QoS?
+  1. The lowest of all QoS traffic classes
+  2. A service model which provides minimal performance guarantees
+  3. A transmission function requested by the UE to the network
+  4. The capabilities to allocate, release, and manage specific radio resources
+  5. A value denoting unidirectional distribution to all users
+MARKED answer: option 1
+
+
+### id: question 1707
+Question: How does the scheduler assign resources between UEs? [3GPP Release 18]
+  1. Based on the QoS requirements of each UE and associated radio bearers
+  2. Based on the radio conditions at the UE identified through measurements made at the gNB
+  3. Based on the UE buffer status
+  4. Based on the power headroom reports
+  5. Based on the measurements of a UEs radio environment
+MARKED answer: option 1
+
+
+### id: question 1719
+Question: How is the default hopping sequence generated? [IEEE 802.15.4]
+  1. Randomly shuffled set of channels
+  2. Linear feedback shift register
+  3. Monotonically increasing set of channels
+  4. Pseudo-random sequence
+MARKED answer: option 2
+
+Reminder: return a JSON array with exactly 18 objects, one per id above, copying ids exactly as written (e.g. "question 1449").
+(Reviewer id: inv2.)

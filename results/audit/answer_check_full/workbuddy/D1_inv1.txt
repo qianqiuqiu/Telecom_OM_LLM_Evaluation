@@ -1,0 +1,340 @@
+You are verifying the answer key of a telecom multiple-choice benchmark (TeleQnA, questions about 3GPP / IEEE / ETSI / IETF standards). For EACH question below, decide whether the MARKED correct answer is actually correct. An earlier screening raised doubts about every item in this list, but that doubt may be unfounded. Work independently and judge each item on its own.
+
+Verdicts:
+- "correct": the marked option is right and clearly the best option.
+- "wrong": the marked option is incorrect; give the correct option number (1-based) in correct_option (null if none of the options is correct).
+- "ambiguous": more than one option is defensible, or the question is underspecified/flawed so the marked answer can't be called uniquely right.
+- "unverifiable": you cannot establish the answer with reasonable confidence.
+
+Prefer primary sources: if you can search the web, check the relevant 3GPP TS/TR, IEEE standard, ETSI document or RFC when your own knowledge is not certain. Put a short justification (1-2 sentences) in "evidence" and the document / URL you relied on in "source" (write "own knowledge" if you did not consult a source). Do not guess: if unsure, use "unverifiable".
+
+Output: ONLY a JSON array, no other text, with exactly one object per question below, in the same order, copying each "id" exactly as written (e.g. "question 1234"):
+[{"id": "question 1234", "verdict": "correct|wrong|ambiguous|unverifiable", "correct_option": <int or null>, "evidence": "...", "source": "..."}]
+correct_option: for "correct" give the marked option number; for "wrong" the right option number or null; for "ambiguous"/"unverifiable" null.
+
+There are 37 questions. Questions (options are numbered from 1):
+
+### id: question 1721
+Question: What is the function of a Base Transceiver Station (BTS)? [3GPP Release 17]
+  1. Control of one or more BTS
+  2. Communicating with Mobile Stations in a certain area
+  3. Serve one cell
+  4. Serve one or more UTRAN cells
+  5. Provide the E-UTRA user plane and control plane protocol terminations towards the UE
+MARKED answer: option 3
+
+### id: question 1724
+Question: How is service continuity supported for specific slice(s)? [3GPP Release 17]
+  1. Through Multi-Carrier Resource Sharing or Resource Repartitioning
+  2. By monitoring and controlling the number of registered UEs per network slice
+  3. By enforcing the Slice MBR and the usage of Target NSSAI
+  4. By providing Target NSSAI and RFSP to RAN to steer the UE to another cell
+  5. By supporting slice specific RACH configuration
+MARKED answer: option 1
+
+### id: question 1770
+Question: When does the NG-RAN node initiate Unified Access Control? [3GPP Release 18]
+  1. When AMFs request load restriction
+  2. When OAM requests access control
+  3. When NG-RAN receives overload start messages
+  4. When UE indicates extended access barring
+  5. When NG-RAN is under lawful interception
+MARKED answer: option 3
+
+### id: question 1975
+Question: Which interfaces connect the eNodeBs to the EPC? [3GPP Release 17]
+  1. S1-MME and S1-U
+  2. Iu-CS and Iu-PS
+  3. A and Gb
+  4. S1 interface
+  5. None of the above
+MARKED answer: option 1
+
+### id: question 2007
+Question: The Ga reference point allows the sending of __________ from the CDF to the CGF. [3GPP Release 18]
+  1. Acknowledgements
+  2. CDRs
+  3. Charging events
+  4. Changeover mechanisms
+  5. Reliability mechanisms
+MARKED answer: option 2
+
+### id: question 2050
+Question: What is the definition of ES activation?
+  1. A procedure to power up a cell or network function.
+  2. A procedure to power down a cell or network function for energy-saving purposes.
+  3. A procedure executed by an ES probing capable cell triggered by Cell Activation procedure or ES deactivation procedure.
+  4. A procedure that changes a cell's configuration to remain powered on for compensating energy-saving activation on other cells.
+MARKED answer: option 2
+
+### id: question 2131
+Question: What is the role of the network slice catalogue (NSC)?
+  1. To identify all existing use cases
+  2. To design and upload the NST of every use case
+  3. To provision per-use-case NSIs
+  4. To quantify the performance, functional, and operational attributes of every use case
+  5. None of the above
+MARKED answer: option 2
+
+### id: question 2278
+Question: What type of bearer is used for IMS Signalling and IMS voice in the NSA architecture? [3GPP Release 15]
+  1. Master Cell Group bearer
+  2. Secondary Cell Group bearer
+  3. Split bearer
+  4. Primary Cell Group bearer
+  5. None of the above
+MARKED answer: option 2
+
+### id: question 2355
+Question: How is the SCG of the UE suspended in RRC_INACTIVE state? [3GPP Release 17]
+  1. The CU of SN sends the UE CONTEXT RELEASE COMMAND
+  2. The CU of SN sends the UE CONTEXT MODIFICATION RESPONSE
+  3. The DU of SN sends the UE CONTEXT MODIFICATION RESPONSE
+  4. The CU of SN sends the UE CONTEXT MODIFICATION REQUEST
+  5. The DU of SN sends the UE CONTEXT MODIFICATION REQUEST
+MARKED answer: option 5
+
+### id: question 2380
+Question: What is the purpose of N4 session management procedures? [3GPP Release 18]
+  1. To control the functionality of the SMF
+  2. To control the functionality of the UPF
+  3. To establish N4 sessions between the SMF and UPF
+  4. To report events from the UPF to the SMF
+  5. To release N4 session contexts in the UPF
+MARKED answer: option 2
+
+### id: question 2396
+Question: Which entities are dedicated for interworking between 5GS and EPC? [3GPP Release 18]
+  1. PGW and SMF/UPF
+  2. UPF and PGW-U
+  3. PGW-C and SMF
+  4. SMF and UPF
+MARKED answer: option 2
+
+### id: question 2408
+Question: What is the function of the Home Subscriber Server (HSS)? [3GPP Release 17]
+  1. To provide support to the call control servers.
+  2. To hold user identification and numbering information.
+  3. To generate user security information.
+  4. To support the authentication procedures.
+  5. To provide access to service profile data.
+MARKED answer: option 1
+
+### id: question 2488
+Question: What is the purpose of contention window adjustment procedures for UL transmissions? [3GPP Release 17]
+  1. To increase the contention window size for a specific priority class
+  2. To increase the contention window size for all priority classes
+  3. To decrease the contention window size for all priority classes
+  4. To adjust the contention window size for a specific priority class
+  5. To adjust the contention window size for all priority classes
+MARKED answer: option 5
+
+### id: question 2570
+Question: Which pairs of wires are used in 10/100Base-T? [IEEE 802.3]
+  1. Pair 1 and pair 2
+  2. Pair 2 and pair 3
+  3. Pair 3 and pair 4
+  4. Pair 4 and pair 1
+MARKED answer: option 2
+
+### id: question 2608
+Question: In the NWDAF providing PDU Session traffic analytics, who requests or subscribes to the NWDAF? [3GPP Release 18]
+  1. ULF
+  2. SMF
+  3. PCF
+  4. UPF
+MARKED answer: option 3
+
+### id: question 2640
+Question: When does the gNB request the UE UTRA-FDD capabilities? [3GPP Release 18]
+  1. During NAS signalling
+  2. Before handover to UTRAN
+  3. When responding to the gNB
+  4. When the capabilities are the same
+  5. During NR capabilities request
+MARKED answer: option 2
+
+### id: question 2673
+Question: What is the basis for full duplex Ethernet? [IEEE 802.3]
+  1. UTP cable
+  2. Twisted pair
+  3. MAU
+  4. Patch cable
+MARKED answer: option 3
+
+### id: question 2771
+Question: What mechanisms provide priority to QoS Flows established for sessions during periods of extreme overload? [3GPP Release 18]
+  1. (R)AN
+  2. SMF
+  3. AMF
+  4. UPF
+  5. PCF
+MARKED answer: option 2
+
+### id: question 3060
+Question: What is the purpose of the MIB in SNMP? [TCP/IP]
+  1. To define the structure for the storage of network information
+  2. To specify the format for communication between the manager and a network participant
+  3. To maintain and supply information about device status
+  4. To describe the exact information that every type of agent has to maintain
+  5. To define a database containing all variables for network management
+MARKED answer: option 5
+
+### id: question 3132
+Question: What are the components of the O-RAN architecture?
+  1. O-CU Control Plane (O-CU-CP), O-CU User Plane (O-CU-UP), Near-Real Time RAN Intelligent Controller (Near-RT RIC)
+  2. O-DU Control Plane (O-DU-CP), O-DU User Plane (O-DU-UP), O-RAN Intelligent Controller (Near-RT RIC)
+  3. O-DU Control Plane (O-DU-CP), O-DU User Plane (O-DU-UP), O-RU Control Plane (O-RU-CP)
+  4. O-RAN Central Unit (O-CU), O-RAN Distributed Unit (O-DU), O-RAN Radio Unit (O-RU), Near-Real Time RAN Intelligent Controller (Near-RT RIC)
+  5. O-RAN Central Unit (O-CU), O-RAN Distributed Unit (O-DU), O-RAN Radio Unit (O-RU)
+MARKED answer: option 5
+
+### id: question 3143
+Question: What conditions must be met for voice call continuity during emergency calls? [3GPP Release 18]
+  1. The source network is IMS, the user is moving out of coverage, and the target network belongs to the same operator
+  2. The source network is IMS, the target network supports emergency calls, and the user is moving into coverage
+  3. The source network is CS, the target network supports emergency calls, and the user is moving out of coverage
+  4. The source network is CS, the target network supports emergency calls, and the user is moving into coverage
+MARKED answer: option 1
+
+### id: question 3391
+Question: How does the NWDAF provide new analytics to the NF in continuous reporting? [3GPP Release 18]
+  1. By invoking OAM or NRF or UE Input data notification
+  2. By using Nnrf_NFManagement_NFStatusNotify service operation
+  3. By invoking Nnef_EventExposure_Subscribe or Naf_EventExposure_Subscribe service
+  4. By providing the Validity Period
+  5. By generating new analytics periodically
+MARKED answer: option 1
+
+### id: question 3474
+Question: Which protocol stack is used for the S5 interface? [3GPP Release 17]
+  1. S1AP protocol stack
+  2. X2AP protocol stack
+  3. SGi protocol stack
+  4. S5 protocol stack
+  5. None of the above
+MARKED answer: option 5
+
+### id: question 3529
+Question: What is the purpose of the network slice subnet management function (NSSMF)?
+  1. To manage and orchestrate P/V-NFs and their resources
+  2. To map and implement US-NSIs in an efficient manner
+  3. To report to the network slice management function (NSMF)
+  4. To provide policy rules to control plane functions
+  5. To manage fault, configuration, accounting, performance, and security (FCAPS)
+MARKED answer: option 5
+
+### id: question 3585
+Question: What does the NWDAF notify in the procedure of providing PDU Session traffic analytics? [3GPP Release 18]
+  1. PCF
+  2. URSP
+  3. UPF
+  4. SMF
+MARKED answer: option 2
+
+### id: question 3591
+Question: What is the behavior of a half-duplex UE (HD-UE) in paired spectrum with regards to simultaneous transmissions and receptions? [3GPP Release 17]
+  1. It supports simultaneous transmissions and receptions on a serving cell
+  2. It supports simultaneous transmissions and receptions on all cells
+  3. It does not support simultaneous transmissions and receptions on a serving cell
+  4. It does not support simultaneous transmissions and receptions on any cell
+  5. It supports simultaneous transmissions and receptions on unpaired spectrum cells but not on paired spectrum cells
+MARKED answer: option 3
+
+### id: question 3630
+Question: What release cause is indicated when the UE fails the mobility from NR procedure? [3GPP Release 17]
+  1. 'Handover failure'
+  2. 'RRC connection release'
+  3. 'RRC connection failure'
+  4. 'Mobility failure'
+  5. 'Other'
+MARKED answer: option 3
+
+### id: question 3634
+Question: What is the purpose of allocating UEs into different Access Classes? [3GPP Release 18]
+  1. To differentiate between CS and PS domains
+  2. To determine the home and visited PLMNs
+  3. To bar UEs from network access
+  4. To specify the categories of subscribers who are barred from network access
+  5. To assign specific priorities to UEs based on their special categories
+MARKED answer: option 5
+
+### id: question 3877
+Question: In IEEE Std 802.11-2020, when does an AP set the More Data subfield to 1 in Ack frames sent to a non-DMG and non-S1G STA? [IEEE 802.11]
+  1. When the Ack frame contains a QoS Capability element with the More Data Ack subfield equal to 1.
+  2. When the AP has a pending transmission for the STA.
+  3. When the STA is in PS mode.
+  4. When the AP receives a frame from the STA.
+MARKED answer: option 2
+
+### id: question 3883
+Question: What is the inter RAT mobility characteristic of handover from E-UTRA to NR? [3GPP Release 17]
+  1. Radio resources are prepared in the source RAT before the handover
+  2. In-sequence and lossless handover is supported
+  3. Both Xn and NG based inter-RAT handover are not supported
+  4. The source RAT configures Target RAT measurement and reporting
+  5. Inter RAT measurements are limited to E-UTRA
+MARKED answer: option 4
+
+### id: question 3899
+Question: What is the purpose of trunking in VLANs? [IEEE 802.3]
+  1. To add additional security
+  2. To limit network traffic
+  3. To route data traffic between different VLANs
+  4. To segment the network
+MARKED answer: option 3
+
+### id: question 3928
+Question: What does the UE do if it is unable to comply with any part of the configuration included in the MobilityFromNRCommand message? [3GPP Release 17]
+  1. Revert back to the configuration used in the source PCell
+  2. Stop all timers and release radio resources
+  3. Initiate the connection re-establishment procedure
+  4. Store handover failure information in VarRLF-Report
+  5. Attempt to select an E-UTRA cell
+MARKED answer: option 1
+
+### id: question 3946
+Question: What happens in the EAP-based Network Slice-Specific authentication procedure? [3GPP Release 16]
+  1. The AAA Server exchanges AAA protocol messages with a potential external AAA Server
+  2. The UE is authorized for a network slice or re-allocated to a different one
+  3. The AUSF exchanges AAA protocol messages with a potentially external AAA Server
+  4. The AAA Server triggers a re-authentication and re-authorization procedure
+  5. The AAA Proxy exchanges AAA protocol messages with the AUSF
+MARKED answer: option 3
+
+### id: question 4081
+Question: What message is sent by the MS to the network to request the release of a GMM context? [3GPP Release 18]
+  1. Detach request (mobile terminated detach)
+  2. Detach request (mobile originating detach)
+  3. Detach accept (mobile terminated detach)
+  4. Detach accept (mobile originating detach)
+MARKED answer: option 1
+
+### id: question 4197
+Question: What is the function of a Participating Operator in relation to a Hosting RAN Operator?
+  1. Provides shared resources to the Hosting RAN Operator
+  2. Asserts the user's identity to a Data Application Provider
+  3. Maintains Operator-controlled identity and credential information
+  4. Offers data application services to users
+MARKED answer: option 1
+
+### id: question 4267
+Question: Which approach provisions a per-vertical GN-NSI containing a family of S-NSIs?
+  1. Use-case Specific Network Slicing
+  2. Sub Network Slicing
+  3. Both of the above
+  4. None of the above
+  5. Not mentioned in the document
+MARKED answer: option 2
+
+### id: question 4328
+Question: What is the role of the Master RAN Node in Dual Connectivity? [3GPP Release 18]
+  1. Terminate the N2 connection with the UE
+  2. Relay NAS signaling between the UE and the core network
+  3. Handle the user plane connection for the UE
+  4. Exchange User Plane traffic of the UE with the Secondary RAN node
+  5. Set up a Dual Connectivity for the UE
+MARKED answer: option 3
+
+Reminder: return a JSON array with exactly 37 objects, one per id above.
+(Reviewer id: inv1.)

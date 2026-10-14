@@ -1,0 +1,254 @@
+[
+{
+"id": "question 1185",
+"verdict": "wrong",
+"correct_option": 3,
+"evidence": "The standard supports up to 16 CBR ranges for sidelink congestion control; the lookup table is described as 'up to 16 CBR ranges' in 3GPP working assumptions (R1-2004663) and confirmed by tutorial papers and patent literature on NR V2X mode 2.",
+"source": "3GPP TS 38.214 §8.1.6; 3GPP RAN1#101 R1-2004663 (working assumption 'Up to 16 CBR ranges are supported'); patent CN114071430B"
+},
+{
+"id": "question 1196",
+"verdict": "wrong",
+"correct_option": 3,
+"evidence": "The integration of 5GS into TSN is defined in 3GPP specs (TS 23.501 architecture clauses 4.4.8/5.27/5.28/Annex H/I; TS 23.502 procedures Annex F). IEEE 802.1Q defines VLAN/bridging generally, not the 5G-TSN integration. TS 23.540 is about SMS, not TSN. TS 23.501 is not in the options, leaving TS 23.502 (option 3) as the closest valid choice.",
+"source": "3GPP news article '5G for Industry 4.0' (lists TS 23.501 clauses and TS 23.502 Annex F for TSN); IEEE 802.1Q defines TSN bridges (not 5G integration); TS 23.540 = Service Based SMS"
+},
+{
+"id": "question 1226",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "Per TS 23.288 / patent US20250185086A1: 'If the authorization check is successful, the SMF may subscribe to the analytics information... if the SMF has not already subscribed to [Analytics ID] analytics for other UEs and/or itself'. The SMF checks existing subscriptions before subscribing to avoid duplicates.",
+"source": "3GPP TS 23.288 (UE analytics exposure procedure); US patent 20250185086A1 §0052"
+},
+{
+"id": "question 1230",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "IEEE 802.11 standard defines 'registered location secure server (RLSS): An entity that accesses and manages a database that organizes storage of information by geographic location and securely holds the location and some operating parameters of one or more basic service sets (BSSs).'",
+"source": "IEEE Std 802.11-2020 definitions; CN103918346B"
+},
+{
+"id": "question 1241",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "The TRS availability indication (e.g., via paging DCI / PEI bits or DCI format 2_5 for IAB) uses bits that indicate whether TRS resource sets are present/available; a '1' bit indicates the TRS resource set is present (available for use).",
+"source": "3GPP TS 38.213 / 38.331; EP4412137A1 (TRS availability indication bits = presence per resource set)"
+},
+{
+"id": "question 1244",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "3GPP TS 28.105 defines 'AI decision entity: an entity that applies a non-ML based logic for making AI decisions that can be managed as a single composite entity.' Option 2 matches this definition (minor wording difference: 'decisions' vs 'AI decisions').",
+"source": "3GPP TS 28.105 §3.1"
+},
+{
+"id": "question 1258",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "TS 26.348 / TS 29.116 define xMB as the 'Northbound Application Programming Interface (API) for MBMS at the xMB reference point' that allows content providers to provision and control broadcast services (i.e., control MBMS delivery procedures).",
+"source": "3GPP TS 26.348 (xMB API); TS 29.116 §5.1.0 'xMB API is a RESTful API that allows Content Providers to provision broadcast services'"
+},
+{
+"id": "question 1272",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "IEEE 802.11af defines RLSS as 'An entity that accesses and manages a database that organizes storage of information by geographic location and securely holds the location and some operating parameters of one or more basic service sets (BSSs)'; the role of RLSS is to provide channel-use / BSS information (derived from GDB) to GDD-enabling STAs. The marked option is the closest match in wording to this role.",
+"source": "IEEE 802.11af (RLSS definition); arXiv 1712.05003 §IEEE 802.11af architecture"
+},
+{
+"id": "question 1287",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "TS 38.401 §8.1: 'The gNB-DU includes the RRC message and, if the UE is admitted, the corresponding low layer configuration for the UE in the INITIAL UL RRC MESSAGE TRANSFER message and transfers to the gNB-CU.'",
+"source": "3GPP TS 38.401 §8.1 (UE Initial Access procedure, step 2)"
+},
+{
+"id": "question 1295",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "IEEE 802.15.4: 'If a beacon frame is received when macAutoRequest is set to FALSE, each recorded PAN descriptor is sent to the next higher layer in a separate MLME-BEACON-NOTIFY.indication primitive.'",
+"source": "IEEE 802.15.4-2003/2006 §7.5.2.1.2 / 7.1.5.1"
+},
+{
+"id": "question 1299",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "TR 21.915 §9.4.2 (MBMS_Mcservices summary): 'Multi-server bearer coordination: To avoid allocating duplicate bearers for an MBMS service area, a single MC service server may manage all the MBMS media transmission for all groups and users within a particular MBMS service area.' Specified in TS 23.280.",
+"source": "3GPP TR 21.915 §9.4.2; TS 23.280"
+},
+{
+"id": "question 1309",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "TS 36.101 §4.4: 'some RF requirements in later releases may be mandatory independent of whether the UE supports the bands specified in later releases or not. The set of requirements from later releases that is also mandatory for UEs conforming to the 3GPP release of the present document is determined by regional regulation.'",
+"source": "3GPP TS 36.101 §4.4 (RF requirements in later releases)"
+},
+{
+"id": "question 1330",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "All VLANs (regardless of organization) limit the scope of broadcast messages by creating separate Layer-2 broadcast domains. The fundamental purpose of any VLAN is broadcast domain segmentation, so all VLANs limit broadcast problems.",
+"source": "IEEE 802.1Q (VLAN standard); general networking references (Cisco, etc.)"
+},
+{
+"id": "question 1355",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "TR 21.914 (S8HR summary, V8 work item): 'Core network aspects (CT Work Item \"V8-CT\"). Most of the CT groups work was to add the new procedure to fetch and provide necessary information to establish emergency call.' This matches the marked option.",
+"source": "3GPP TR 21.914 S8HR summary; 3GPP work item 730024 (V8-CT) defined by CP-160479"
+},
+{
+"id": "question 1380",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "TS 23.501 §5.21.2.3: 'In the case that an AMF fails and the 5G-AN/peer CP NFs detect that the AMF has failed... following actions are taken: ... 5G-AN marks this AMF as failed and not consider the AMF for selection until explicitly notified.'",
+"source": "3GPP TS 23.501 §5.21.2.3 (AMF Auto-recovery)"
+},
+{
+"id": "question 1411",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "TS 23.288 / TR 23.700-81: 'the NWDAF containing MTLF may consider the rating of untrusted AF(s) when used as data sources'. The MTLF considers the rating of untrusted AFs.",
+"source": "3GPP TS 23.700-81 §6.34.2.2; US patent CN119895831A (rating of untrusted AF data sources)"
+},
+{
+"id": "question 1426",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "TS 22.261 §7.11 KPIs for tactile and multi-modal communication service define delay-difference thresholds across media components (e.g., visual-tactile sync <15/50ms, haptic 5ms, etc.). TR 23.700-60 §6.1 also emphasizes coordination of QoS across flows: 'The delay difference between two flows should be less than some values'. Synchronization between different media components is the key requirement.",
+"source": "3GPP TS 22.261 §7.11; TR 23.700-60 §6.1 (tactile and multi-modal communication service)"
+},
+{
+"id": "question 1445",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "TS 23.548 §5.1.2: 'EASDF Discovery and Selection: The EASDF discovery and selection is defined in clause 6.3 in TS 23.501.' The interactions between 5GC NF(s) and the EASDF take place within a PLMN for the purpose of EASDF discovery and selection (EASDF registers to NRF, SMF selects EASDF).",
+"source": "3GPP TS 23.548 §5.1.2; TS 23.501 §6.3"
+},
+{
+"id": "question 1449",
+"verdict": "wrong",
+"correct_option": 3,
+"evidence": "The figure 0.33 dB cited in 3GPP TR 38.884 §7.1 is explicitly the relative increase from 43.5 GHz to 48.2 GHz (band n259 -> n262 extension), not to 71 GHz. For 43.5 GHz to 71 GHz (FR2-2 n263), TR 38.884 §7.2.3 uses 10.3 dB cable loss at 1 m at 71 GHz while the 43.5 GHz base is roughly 6.8 dB/m, yielding a relative increase of roughly 3.5 dB/m (option 3).",
+"source": "3GPP TR 38.884 v18.0.0 §7.1 and §7.2.3 (TSGS#100-e RP-2007-08)"
+},
+{
+"id": "question 1456",
+"verdict": "wrong",
+"correct_option": null,
+"evidence": "3GPP TS 38.331/215 §5.8.5/5.8.6 and TR 37.985 §5.1.2.1 define four SL synchronization sources for NR SL: GNSS, gNB/eNB, SyncRef UE, and the UE's internal clock. None of the four options lists all four sources; the marked option only lists GNSS and gNB/eNB (the two highest-quality sources), which is incomplete.",
+"source": "3GPP TR 37.985 v19.0.0 §5.1.2.1; 3GPP TS 38.331 §5.8"
+},
+{
+"id": "question 1459",
+"verdict": "ambiguous",
+"correct_option": null,
+"evidence": "3GPP TS 22.245/23.002/TS 22.101 don't have a direct clause on 'mapping between service data of different domains' with the wording shown. The closest 3GPP statement is that the visited network handles certain mappings for service-based roaming, and the home environment manages subscriber services generally. The marked answer (home environment, option 2) is plausible but the 3GPP wording is not crisp enough to call it uniquely right.",
+"source": "own knowledge - no direct primary source found"
+},
+{
+"id": "question 1463",
+"verdict": "wrong",
+"correct_option": null,
+"evidence": "TS 32.291 v18.12.0 §5.1 Table 5.1-1 explicitly states: 'The \"Nchf_SpendingLimitControl\" service is defined in 29.594'. None of the listed options (TS 23.203, TS 32.27x, TS 23.502, TS 23.272) is TS 29.594, so no offered option is correct.",
+"source": "ETSI TS 132 291 V18.12.0 §5.1 (Table 5.1-1)"
+},
+{
+"id": "question 1476",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "3GPP TS 22.261 §7.6.1 explicitly states: 'To support VR environments with low motion-to-photon capabilities, the 5G system shall support: motion-to-photon latency in the range of 7 ms to 15 ms...'.",
+"source": "3GPP TS 22.261 v19.x §7.6.1 (also reproduced in TS 38.824 Annex A.1.4)"
+},
+{
+"id": "question 1480",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "3GPP-explorer glossary for HR-SBO (Release 18): 'In HR-SBO, the Protocol Data Unit (PDU) Session is still anchored at the Home UPF... However, the architecture introduces a key enhancement: the ability to create a local breakout path for specific, authorized traffic flows directly within the Visited PLMN (VPLMN).' Matches 'to enable local traffic routing in the visited PLMN'.",
+"source": "3GPP TS 23.548 (Rel-18 HR-SBO additions); 3GPP TS 29.512 v18 §HR-SBO"
+},
+{
+"id": "question 1495",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "3GPP TS 38.300 §7.5: 'The UE reports its UE radio access capabilities which are static at least when the network requests. The gNB can request what capabilities for the UE to report based on band information.' This directly matches option 1.",
+"source": "3GPP TS 38.300 §7.5"
+},
+{
+"id": "question 1508",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "3GPP TS 36.304 §5.3.2: 'For UE camping on E-UTRA connected to 5GC, the UE shall ignore Access Category and Identity related cell access restrictions for cell reselection. A change of the indicated access restriction shall not trigger cell reselection by the UE.'",
+"source": "3GPP TS 36.304 v15.8.0+ §5.3.2"
+},
+{
+"id": "question 1512",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "3GPP TS 28.104 §7.2.1.3 Paging optimization analysis description: 'This repetitive paging attempts result in the wastage of network resources... It is desirable to use MDAS (Management data analytic service) to optimize the current paging procedures... thereby ensuring the efficient paging procedures and optimal network resource utilization, as paging can be initiated only when there are more chances for it to be successful.' Matches 'Avoiding wastage of network resources'.",
+"source": "3GPP TS 28.104 v17.x §7.2.1.3"
+},
+{
+"id": "question 1538",
+"verdict": "wrong",
+"correct_option": 2,
+"evidence": "3GPP TS 38.101-2 (and -4/-5) repeatedly defines it as: 'OTA sensitivity is defined as the minimum mean power received at the RIB for a specified reference measurement channel' (i.e. the EIS at which a reference FRC achieves a target throughput). Options 4 and 5 describe selectivity/co-channel tolerance, not sensitivity. Marked option 5 is a misdefinition.",
+"source": "3GPP TS 38.101-2 §10.3.2; TS 38.101-5 §10.3.2; FR2-1 SNR derivation"
+},
+{
+"id": "question 1545",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "3GPP TR 22.847 §4.1 'Multi-modal service' states: 'With the benefit of combining input from more than one source and/or output to more than one destination...'. TeleQnA standard's specification excerpt also matches: 'a service that supports applications enabling input from more than one sources and/or output to more than one destinations'.",
+"source": "3GPP TR 22.847 (Rel-17/18) §4.1"
+},
+{
+"id": "question 1550",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "3GPP TR 37.817 (Rel-17 study on AI/ML for NG-RAN energy saving) lists 'Inaccurate cell load prediction' among the explicit challenges of RAN energy saving schemes; load-prediction errors cause ping-pong switch-on/off and neighbour overload. Marked option is a defensible cited challenge. (Note: option 5 'Conflicting targets...' is also listed, so the question is arguably multi-defensible; the marked answer is still defensible.)",
+"source": "3GPP TR 37.817 v17.0.0 §5.x energy-saving challenges"
+},
+{
+"id": "question 1583",
+"verdict": "wrong",
+"correct_option": 5,
+"evidence": "3GPP WI database: 'OAM14-FILMEAS – Filtering of PM measurements and data volume' (item 710009). It affects specs 32.130, 32.412, 32.416, 32.425 (all Performance Management / fault & performance measurement specs), not cross-operator accounting. Option 5 'Use cases and requirements for management of fault and performance measurements' matches 'PM measurements'. The marked option (cross-operator accounting) is unrelated.",
+"source": "3GPP Work Item 710009 OAM14-FILMEAS; WhatTheSpeeds / 3gpp.org WiCr--710009.htm"
+},
+{
+"id": "question 1652",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "IEEE 802.11-2016/802.11ad DMG clause: a DMG protected period is a time period during which other DMG STAs are restricted from transmitting so that the SP of an SP-owner STA is protected from interference. The purpose is to minimize interference through transmission restrictions during a specific period (option 1). Option 2 also captures the same idea more verbosely; option 1 is the closer standard-form paraphrase.",
+"source": "IEEE Std 802.11-2016 (DMG clause); 802.11ad/ay scheduling literature"
+},
+{
+"id": "question 1690",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "3GPP TS 29.525 §6.4.2.15 (AfGuideURSP): 'DNN (within the \"dnn\" attribute of the RouteSelectionParameterSet data type) and S-NSSAI (within the \"snssai\" attribute...) from the route selection parameter set are used to set the Route selection descriptor contents'. Matches option 1.",
+"source": "3GPP TS 29.525 v18.5.0 §6.4.2.15"
+},
+{
+"id": "question 1700",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "3GPP TR 21.905 vocabulary: 'Best effort QoS: The lowest of all QoS traffic classes.' Verbatim match with the marked option 1.",
+"source": "3GPP TR 21.905 (Vocabulary for 3GPP Specifications)"
+},
+{
+"id": "question 1707",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "3GPP TS 38.300 §10.1 'Basic Scheduler Operation': 'Taking into account the UE buffer status and the QoS requirements of each UE and associated radio bearers, schedulers assign resources between UEs'. The QoS-requirements aspect (option 1) is the primary, mandatory criterion.",
+"source": "3GPP TS 38.300 v18 §10.1"
+},
+{
+"id": "question 1719",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "IEEE 802.15.4e default hopping sequence: the SHUFFLE array used to build the default FHS is 'equivalent to the outputs of a 9-bit linear feedback shift register (LFSR) with polynomial x^9 + x^5 + 1'. So the default hopping sequence is generated via an LFSR. Marked option 2 is correct.",
+"source": "IEEE Std 802.15.4-2015/4e (TSCH default hopping sequence); US patent US9614579B2"
+}
+]

@@ -1,0 +1,331 @@
+You are verifying the answer key of a telecom multiple-choice benchmark (TeleQnA, questions about 3GPP / IEEE / ETSI / IETF standards). For EACH question below, decide whether the MARKED correct answer is actually correct. An earlier screening raised doubts about every item in this list, but that doubt may be unfounded. Work independently and judge each item on its own.
+
+Verdicts:
+- "correct": the marked option is right and clearly the best option.
+- "wrong": the marked option is incorrect; give the correct option number (1-based) in correct_option (null if none of the options is correct).
+- "ambiguous": more than one option is defensible, or the question is underspecified/flawed so the marked answer can't be called uniquely right.
+- "unverifiable": you cannot establish the answer with reasonable confidence.
+
+Prefer primary sources: if you can search the web, check the relevant 3GPP TS/TR, IEEE standard, ETSI document or RFC when your own knowledge is not certain. Put a short justification (1-2 sentences) in "evidence" and the document / URL you relied on in "source" (write "own knowledge" if you did not consult a source). Do not guess: if unsure, use "unverifiable".
+
+Output: ONLY a JSON array, no other text, with exactly one object per question below, in the same order, copying each "id" exactly as written (e.g. "question 1234"):
+[{"id": "question 1234", "verdict": "correct|wrong|ambiguous|unverifiable", "correct_option": <int or null>, "evidence": "...", "source": "..."}]
+correct_option: for "correct" give the marked option number; for "wrong" the right option number or null; for "ambiguous"/"unverifiable" null.
+
+There are 36 questions. Questions (options are numbered from 1):
+
+### id: question 483
+Question: What is the typical connection density in factory automation applications? [3GPP Release 17]
+  1. 10 connections per 10 m2
+  2. 1 connection per 100 m3
+  3. 10 connections per km2
+  4. 100 connections per factory hall
+  5. 1,000 connections per 1,000 m2
+MARKED answer: option 3
+
+### id: question 506
+Question: How are capability parameters signalled in the corresponding FSs for intra-band contiguous CA? [3GPP Release 18]
+  1. Per band
+  2. Per carrier
+  3. Per feature set
+  4. Per block of contiguous serving cells
+  5. Per duplex mode
+MARKED answer: option 4
+
+### id: question 547
+Question: What is the maximum transmission power for indoor use only in Canada?
+  1. 200 mW
+  2. 250 mW
+  3. 1 W
+  4. 23 dBm
+  5. 36 dBm
+MARKED answer: option 1
+
+### id: question 564
+Question: What are the management aspects addressed by the OAM_LTE_WLAN work item? [3GPP Release 16]
+  1. Energy efficiency
+  2. Network and service management
+  3. LTE and WLAN integration
+  4. Methodology for 5G management
+  5. Closed loop SLS assurance
+MARKED answer: option 3
+
+### id: question 576
+Question: What can be done with a private key from a key pair?
+  1. Create a new key pair
+  2. Decrypt a block of data
+  3. Obtain the public key
+  4. Divulge the public key
+  5. Encrypt a block of data
+MARKED answer: option 5
+
+### id: question 600
+Question: What is the purpose of the PCL (predictive closed loop) rAPP?
+  1. To collect RAN statistics for each slice
+  2. To provide programming capability for RAN components
+  3. To configure O-Cloud
+  4. To predict the future values of target parameters
+  5. To prepare the RAN slice descriptor based on inference for configuring network resources
+MARKED answer: option 5
+
+### id: question 612
+Question: Under what conditions should a DMG protected period be created by the source DMG STA? [IEEE 802.11]
+  1. If the source DMG STA is the AP or PCP of the BSS
+  2. If the ECAPC Policy Enforced subfield within the DMG Parameters field of the last DMG Beacon frame transmitted by the source DMG STA is equal to 1
+  3. If the Protected Period Enforced field within the ECAPC Policy Detail field of the last ECAPC Policy element transmitted by the source DMG STA is equal to 1
+  4. All of the above conditions
+MARKED answer: option 4
+
+### id: question 617
+Question: What is Evolved UTRA?
+  1. An evolution of the 3G UMTS radio-access technology
+  2. An evolution of the 3G UMTS radio-access network
+  3. A power saving feature
+  4. A high-data-rate, low-latency packet-optimized radio-access technology
+MARKED answer: option 1
+
+### id: question 715
+Question: What type of reports are used to support QoS-aware packet scheduling in the uplink? [3GPP Release 17]
+  1. Delay reports
+  2. Power headroom reports
+  3. Transmission reports
+  4. Uplink buffer status reports
+MARKED answer: option 4
+
+### id: question 756
+Question: What is unique about the population distribution in rural areas?
+  1. Uniformly populated
+  2. Densely populated
+  3. Scattered settlements
+  4. Clustered settlements
+  5. Spread out settlements
+MARKED answer: option 4
+
+### id: question 761
+Question: In a split gNB architecture, how is RACH configuration conflict resolved? [3GPP Release 17]
+  1. The gNB-CU reassigns a new PCI for NR cells suffering PCI conflict.
+  2. The gNB-DU reports RACH configuration conflict to the gNB-CU.
+  3. The gNB-DU signals the PRACH configuration per-cell to the gNB-CU.
+  4. The gNB-CU merges the outgoing RIM information received from its gNB-DUs.
+  5. The gNB-CU forwards neighbor cell's PRACH configurations to the gNB-DU.
+MARKED answer: option 5
+
+### id: question 806
+Question: Which component is responsible for configuring O-Cloud?
+  1. PCL rAPP
+  2. SDN-C/R
+  3. xAPP
+  4. AI Server
+  5. ONAP
+MARKED answer: option 2
+
+### id: question 813
+Question: When is DCP configured on the PCell? [3GPP Release 17]
+  1. When DRX is not configured
+  2. When BA is not configured
+  3. When CA is not configured
+  4. When BA and CA are not configured
+  5. When CA is configured
+MARKED answer: option 5
+
+### id: question 815
+Question: What is a requirement for clock synchronisation of the 5G system? [3GPP Release 19]
+  1. Support for IEEE 1588v2
+  2. Support for 3rd-party applications
+  3. Synchronize UEs with a working clock
+  4. Support for multiple sync domains
+  5. Interface for IEEE 802.1AS sync domains
+MARKED answer: option 5
+
+### id: question 820
+Question: What was the effect of RF exposure on the blood-brain barrier (BBB) permeability in rats? [IEEE C95.1]
+  1. Increased BBB permeability
+  2. Decreased BBB permeability
+  3. No effect on BBB permeability
+  4. Inconclusive results
+MARKED answer: option 1
+
+### id: question 856
+Question: What is the numerology based on for PSS, SSS, and PBCH? [3GPP Release 17]
+  1. Bandwidth-dependent sub-carrier spacing
+  2. Fixed sub-carrier spacing
+  3. Exponentially scalable sub-carrier spacing
+  4. Carrier-dependent sub-carrier spacing
+  5. Symbol duration
+MARKED answer: option 3
+
+### id: question 872
+Question: How does the NAV protect atomic operations? [IEEE 802.11]
+  1. By counting down from the NAV to 0
+  2. By setting the NAV to reserve the medium for a fixed time period
+  3. By indicating that the medium is busy
+  4. By ensuring that the medium is idle
+  5. By blocking access to the medium while the operation is being transmitted
+MARKED answer: option 5
+
+### id: question 888
+Question: What does the Robust Call Setup for VoLTE subscriber in LTE Work Item aim to address? [3GPP Release 14]
+  1. Improvement of LTE RSRP for VoLTE
+  2. Enhancement of voice and video for LTE
+  3. Provision of emergency call information
+  4. Reduction of roaming charges for VoLTE
+  5. Optimization of LTE data sessions for VoLTE
+MARKED answer: option 1
+
+### id: question 906
+Question: What is the purpose of architecture enhancements in supporting signal acquisition from multiple sources and sensor fusion?
+  1. To facilitate network-side positioning enhancements through tracking
+  2. To enable the use of low-cost vehicles for safety critical applications
+  3. To reduce the computational complexity at the device side
+  4. To validate the position derived and reported by the device
+  5. To enable fast access and exchange of sensor information
+MARKED answer: option 1
+
+### id: question 913
+Question: What is the purpose of Dual Connectivity in the RAN? [3GPP Release 18]
+  1. To increase the capacity of the core network nodes
+  2. To provide redundancy for the control plane path
+  3. To increase the capacity of the radio network nodes
+  4. To provide redundancy for the user plane path
+  5. To improve the signal quality of the radio network
+MARKED answer: option 4
+
+### id: question 923
+Question: What is the spacing between carriers for category M1? [3GPP Release 18]
+  1. 200 kHz
+  2. 100 kHz
+  3. 300 kHz
+  4. Depends on the deployment scenario
+  5. The same as the channel bandwidth
+MARKED answer: option 4
+
+### id: question 941
+Question: What kind of coordination communication is used in the RIM frameworks? [3GPP Release 18]
+  1. Wireless communication
+  2. Backhaul communication
+  3. Core network communication
+  4. Satellite communication
+  5. Fiber optic communication
+MARKED answer: option 2
+
+### id: question 955
+Question: What is the role of the home environment in the delegation of charging authority? [3GPP Release 18]
+  1. To handle cost control mechanisms
+  2. To process charging data in real time
+  3. To control fraud in the network
+  4. To authenticate users before they incur any charges
+MARKED answer: option 4
+
+### id: question 976
+Question: What is an acceptable cell? [3GPP Release 17]
+  1. A cell that provides limited service for emergency calls and notifications
+  2. A cell that provides normal service for public use
+  3. A cell that is not barred and fulfills cell selection criteria
+  4. A cell that is reserved for operator use
+MARKED answer: option 1
+
+### id: question 979
+Question: What can be achieved with semi-static TRP reduction in multi-TRP operation? [3GPP Release 18]
+  1. BS energy saving of 36.9%~41.6%
+  2. BS energy saving of 19.7%~28.7%
+  3. BS energy saving of 7.27%~22%
+  4. UE power savings of about 12%
+  5. UPT loss of 0.02%
+MARKED answer: option 1
+
+### id: question 1036
+Question: What does the LCS Server enable in terms of services? [3GPP Release 17]
+  1. Location-based services determined by users and service providers
+  2. Privacy control for location requests
+  3. Positioning for target UEs
+  4. Support for telecommunication services
+  5. Exchange of information through LCS messages
+MARKED answer: option 1
+
+### id: question 1037
+Question: In the context of LTE, what is the purpose of the Downlink Multiuser Superposition Transmission (MUST) feature? [3GPP Release 14]
+  1. To assist UE in cancelling inter-cell interference
+  2. To achieve interference cancellation within one cell
+  3. To enable switching between transmit diversity schemes
+  4. To support SRS switching on PUSCH-less TDD CCs
+  5. To define power control parameters for SRS transmission
+MARKED answer: option 2
+
+### id: question 1044
+Question: What is the default value for the sl-MaxCID-r16 parameter in SidelinkPreconfigNR-r16? [3GPP Release 17]
+  1. 1
+  2. 15
+  3. 1000
+  4. 16383
+MARKED answer: option 2
+
+### id: question 1066
+Question: How can power saving be enabled during active-time? [3GPP Release 18]
+  1. By enabling PDCCH monitoring
+  2. By eDRX configuration
+  3. By adapting the minimum scheduling offsets
+  4. By cross-slot scheduling
+MARKED answer: option 4
+
+### id: question 1071
+Question: Which component is responsible for collecting RAN (Radio Access Network) statistics for each slice?
+  1. AI Server
+  2. Non-RT RIC
+  3. O-RAN SC
+  4. ONAP
+  5. Virtual Event Streaming
+MARKED answer: option 5
+
+### id: question 1081
+Question: What needs to be taken into account upon deactivation of packet duplication in DC (dual connectivity)?
+  1. PDCP entity transmission
+  2. Path restriction
+  3. RLC entities maintenance
+  4. Split threshold
+MARKED answer: option 4
+
+### id: question 1096
+Question: In which scenarios does the consumer NF determine new QoS parameters? [3GPP Release 18]
+  1. When the Target of Analytics Reporting is 'any UE'
+  2. When multiple Network Slice instances are deployed
+  3. When the application SLA is not satisfied
+  4. When NWDAF provides Service Experience statistics
+  5. When AF provides Service Experience Information
+MARKED answer: option 3
+
+### id: question 1134
+Question: When does the NG-RAN perform NG-RAN paging before reporting the UE's location? [3GPP Release 18]
+  1. When the UE is in RRC_CONNECTED state
+  2. When the UE is in RRC_INACTIVE state
+  3. When the NG-RAN receives Location Reporting Control message indicating single stand-alone report
+  4. When the NG-RAN receives Location Reporting Control message indicating continuous reporting
+  5. When PSCell reporting is requested and the PSCell ID is known
+MARKED answer: option 3
+
+### id: question 1161
+Question: What is the purpose of fraud control in the home environment? [3GPP Release 18]
+  1. To collect charging information from serving networks
+  2. To notify the customer care centre about charge thresholds
+  3. To process charging information in real time
+  4. To set limits for accumulated charges
+MARKED answer: option 2
+
+### id: question 1168
+Question: What is UICC?
+  1. Universal Intermediate Control Center
+  2. Universal Subscriber Identity Card
+  3. Universal Subscriber Information Center
+  4. Universal Secure IC Card
+  5. Universal User Inquiry and Control
+MARKED answer: option 4
+
+### id: question 1174
+Question: What action does the network take if a QCI-1 bearer setup request for VoLTE is rejected during a terminating session? [3GPP Release 14]
+  1. The call will be dropped
+  2. The network will retry the call setup over CS domain
+  3. The call will fallback to 2/3G in weak coverage areas
+  4. The network will initiate a handover to a stronger LTE signal
+MARKED answer: option 2
+
+Reminder: return a JSON array with exactly 36 objects, one per id above.
+(Reviewer id: inv2.)

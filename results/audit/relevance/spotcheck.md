@@ -1,0 +1,221 @@
+# 相关度人工抽检（试标 200 题）
+
+判断标准：移动网络运维 / 优化工程师日常工作会不会用到这道题考的知识。规范见 docs/rubrics/ops_relevance_v2.md。
+
+**怎么做**：按 Haiku 给的等级分组列出（全量标注用的就是 Haiku）。逐组扫一眼，只需回复你**不同意**的题号和你认为的等级，例如“4317→2，1630→0”。
+标 ⚠ 的是 Haiku 与默认模型等级不同的题，优先看。
+
+## 3 直接相关（1 题）
+
+- **5487** [OAM] ⚠ 默认模型=2 — Which performance metrics related to slices are collected by the non-RT RIC (Radio Intelligent Controller)?
+
+## 2 间接相关（35 题）
+
+- **185** [CORE] — How does a non-supporting UE select a core network operator to serve it in a shared network? [3GPP Release 17]
+- **194** [CORE] — What does the home environment need to provide to the visited network when allowing a subscriber to roam to di
+- **282** [RAN] ⚠ 默认模型=1 — Which power saving scheme achieves power consumption reduction by potentially skipping PDCCH monitoring at sub
+- **873** [TRANSPORT] — Which IP address range belongs to Class C networks? [TCP/IP]
+- **1522** [TRANSPORT] ⚠ 默认模型=1 — What does address filtering in 802.11 refer to? [IEEE 802.11]
+- **1770** [RAN] ⚠ 默认模型=3 — When does the NG-RAN node initiate Unified Access Control? [3GPP Release 18]
+- **2032** [CORE] — Which procedure is used to update certain configurations at the UE (User Equipment) side, including the Allowe
+- **2160** [CORE] ⚠ 默认模型=1 — What is the purpose of the Slice-Maximum Bit Rate (S-MBR)? [3GPP Release 17]
+- **2364** [RAN] — What is an E-RAB?
+- **2614** [RAN] — What message does the gNB-CU send to establish the UE context in the gNB-DU? [3GPP Release 17]
+- **2623** [RAN] — What is the purpose of data split in DC (dual connectivity)?
+- **2783** [RAN] — What is the purpose of the periodic CSI-RS resource configuration indexes? [3GPP Release 17]
+- **2820** [RAN] ⚠ 默认模型=1 — What does the O-DU represent?
+- **3389** [RAN] ⚠ 默认模型=1 — Which power saving scheme can potentially reduce the UE power consumption by reducing the number of PDCCH blin
+- **3964** [SERVICE] — What happens when a call undergoes voice call continuity and becomes barred in the target domain/system? [3GPP
+- **4285** [TRANSPORT] — When is the CW reset to aCWmin? [IEEE 802.11]
+- **4317** [TRANSPORT] — What is the length of the UDP header? [TCP/IP]
+- **4718** [RAN] — What is the limitation of indirect data forwarding for the user plane in inter-System data forwarding from EPS
+- **4808** [TRANSPORT] — What does each port of a switch close? [IEEE 802.3]
+- **4918** [SECURITY] — Which entity takes precedence in determining the User Plane Security Policy? [3GPP Release 18]
+- **5485** [CORE] — What is the purpose of the N4 Session Establishment procedure? [3GPP Release 18]
+- **5663** [TRANSPORT] — How do stations remain synchronized with the global timing in an infrastructure network? [IEEE 802.11]
+- **5725** [RAN] — What action should the UE take if a cell is indicated as 'barred' for cell selection/reselection? [3GPP Releas
+- **5788** [RAN] — What does Dual Connectivity allow the Master RAN Node to do? [3GPP Release 18]
+- **6509** [TRANSPORT] — What is the purpose of route aggregation? [TCP/IP]
+- **6597** [SERVICE] ⚠ 默认模型=1 — Which network domain does MPS primarily operate in? [3GPP Release 18]
+- **6939** [RAN] — What is the purpose of the BEARER CONTEXT SETUP REQUEST message in the UE Initial Access procedure? [3GPP Rele
+- **7471** [RAN] — What message does the eNB send to perform redirection to another E-UTRAN frequency? [3GPP Release 14]
+- **7506** [RAN] — What is the purpose of Bandwidth Adaptation (BA)? [3GPP Release 18]
+- **7764** [TRANSPORT] — What important feature does IPv6 (Internet Protocol Version 6) have that enables it to assign multiple address
+- **8168** [CORE] — What is the purpose of the Control Plane Protocol Stack for the service-based interface? [3GPP Release 18]
+- **8680** [CORE] — What resources are released when a PDU (Protocol Data Unit) session is released?
+- **9129** [CORE] — When does a UE initiate reselection and registration on an alternative available PLMN? [3GPP Release 18]
+- **9650** [RAN] ⚠ 默认模型=1 — Which PDCP packet duplication is supported in LTE for improving reliability? [3GPP Release 18]
+- **9986** [CORE] — What functions are included in the Online Charging System (OCS)? [3GPP Release 18]
+
+## 1 弱相关（145 题）
+
+- **70** [CORE] — What kind of access can enterprise UEs have to non-public networks? [3GPP Release 17]
+- **89** [RAN] — Which technology was introduced in 3G systems to improve video and audio streaming capabilities?
+- **284** [OTHER] — What does the acronym EGNOS stand for?
+- **454** [SECURITY] — What does the 5G system prevent in terms of privacy for UEs using 5G LAN-type service? [3GPP Release 17]
+- **456** [SERVICE] — Which 3GPP specification specifies the architecture for enabling Edge Applications in 5GS? [3GPP Release 18]
+- **546** [OAM] — What is the definition of AI/ML inference function?
+- **551** [RAN] — What is the definition of radio interface?
+- **812** [RAN] — How many demodulation branches are the radiated performance requirements limited to for SAN type 1-O? [3GPP Re
+- **832** [RAN] — What are the requirements for relay UE selection for Evolved ProSe Remote UE access? [3GPP Release 17]
+- **837** [OAM] ⚠ 默认模型=0 — What is an important advantage of network resource sharing using NFV (Network Function Virtualization) and SDN
+- **966** [TRANSPORT] — What does the ASEL Command subfield in the ASELC (Antenna Selection) subfield indicate? [IEEE 802.11]
+- **1048** [TRANSPORT] — When does the AP or PCP start the Polling Period (PP)? [IEEE 802.11]
+- **1148** [RAN] — What does the Timing Delta MAC CE indicate to an IAB-node? [3GPP Release 17]
+- **1199** [RAN] — What is the purpose of the LTE-U Discovery Signal (LDS)?
+- **1224** [CORE] — What is the definition of "UDM"?
+- **1387** [RAN] — When does the NG-RAN initiate the Connection Inactive procedure with CN based MT communication handling? [3GPP
+- **1471** [SERVICE] — What is the purpose of the UE Identity Service specified in GS (Group Specifications) MEC (Multi-access Edge C
+- **1630** [RAN] — What is an ultra-dense network (UDN)?
+- **1644** [RAN] — What does PDSCH repetition improve in LTE? [3GPP Release 18]
+- **1682** [RAN] — What is the relation between the antenna element pattern in the GCS and the LCS? [3GPP Release 18]
+- **1724** [RAN] — How is service continuity supported for specific slice(s)? [3GPP Release 17]
+- **1825** [TRANSPORT] — What is the definition of unicast in the context of IEEE Std 802.11-2020?
+- **1856** [TRANSPORT] — What is a neighbor station (STA)?
+- **2057** [OAM] ⚠ 默认模型=2 — What functionality does Signalling Based Activation provide? [3GPP Release 17]
+- **2304** [OAM] — Which architectural framework uses microservices to decompose the SDN (software defined networking) controller
+- **2323** [TRANSPORT] — What is quadrature binary phase shift keying (QBPSK)?
+- **2357** [TRANSPORT] — What is Non-Seamless WLAN offload (NSWO) in the context of 5GS? [3GPP Release 17]
+- **2368** [TRANSPORT] — What is the definition of peer-to-peer traffic specification (PTP TSPEC)?
+- **2414** [CORE] — What should a 5G Visited Mobile Network have in order to allow a UE with a 5G subscription to roam into it? [3
+- **2445** [CORE] — What is a Localised Service Area (LSA)?
+- **2491** [CORE] — What is the release condition for SIPTO@LN PDN connection after handover with a stand-alone gateway? [3GPP Rel
+- **2659** [CORE] — Which procedures are impacted by MUSIM according to TS 23.502 and TS 23.401? [3GPP Release 17]
+- **2660** [OTHER] — What is the definition of User in the context of 3GPP System?
+- **2716** [RAN] — What parameters are specified for MBS broadcast MTCH configurations? [3GPP Release 17]
+- **2865** [TRANSPORT] — Under what conditions should each EDCAF report an internal collision? [IEEE 802.11]
+- **2891** [RAN] — What is the purpose of the prohibit timer in the network? [3GPP Release 14]
+- **3062** [RAN] — Which identity is used for filtering of packets at the physical layer of the receiver in NR sidelink communica
+- **3172** [SECURITY] — What is the definition of preshared key (PSK)?
+- **3254** [OTHER] — What is a frame?
+- **3312** [SERVICE] — How can the lists of 3GPP PS Data Off Exempt Services be provided to the UEs? [3GPP Release 18]
+- **3349** [RAN] — What does TsteeringWLAN represent? [3GPP Release 17]
+- **3399** [SERVICE] — Which service areas are considered for eMBB deployments in 5G? [3GPP Release 15]
+- **3459** [OAM] — What information does IEAF need to determine the S-NSSAI for the AIML Application Service Provider? [3GPP Rele
+- **3586** [CORE] — Which documents specify the information to be pre-configured or stored in USIM for Disaster Roaming service? [
+- **3693** [RAN] — What is the requirement for interruption time during handover of RT and NRT services in the Evolved Packet Sys
+- **3937** [SERVICE] — What is specified in TS 24.588 related to V2X services? [3GPP Release 17]
+- **3965** [CORE] — Does the 3GPP PS Data Off status affect data transfer over non-3GPP access? [3GPP Release 18]
+- **4099** [SECURITY] ⚠ 默认模型=0 — What is the purpose of the computation method selection for a Quantum Resistant Security Algorithm in mobile n
+- **4184** [OAM] — What can the MDA MnS consumer expect from the MDA producer regarding the network context? [3GPP Release 17]
+- **4338** [SERVICE] — What is the impact on line identification services during voice call continuity? [3GPP Release 18]
+- **4365** [SERVICE] — What is the purpose of the EVS Floating-point Conformance for Non Bit-Exact work item? [3GPP Release 16]
+- **4388** [OTHER] — What does the acronym 'LAN' stand for?
+- **4519** [RAN] — What session can be supported in real time for an Evolved ProSe Remote UE using Indirect 3GPP Communication? [
+- **4543** [TRANSPORT] ⚠ 默认模型=2 — What is the purpose of the DHCP (Dynamic Host Configuration Protocol) Server in Fog?
+- **4751** [SERVICE] — What is the definition of MPS session?
+- **4821** [SERVICE] — What is the purpose of the Traffic management requirements in the application layer architecture? [3GPP Releas
+- **5076** [TRANSPORT] — What does STA B do on receiving the sounding PPDU from STA A? [IEEE 802.11]
+- **5108** [SECURITY] — What is AKMA in the context of 5G security? [3GPP Release 17]
+- **5150** [OAM] ⚠ 默认模型=0 — During which network life cycle phase do mobile network operators compare network elements from various vendor
+- **5214** [TRANSPORT] — Which physical layer specified by the 802.11 standard is a high-rate, direct-sequence layer added by 802.11b? 
+- **5268** [TRANSPORT] — What is the maximum segment length for thin Ethernet (10Base2)? [IEEE 802.3]
+- **5438** [OTHER] — What does the acronym NANP stand for?
+- **5480** [SERVICE] — What is the definition of SDU transfer rate?
+- **5515** [TRANSPORT] — What information does the PTSF subfield in the APDI field of the NDP Paging frame represent? [IEEE 802.11]
+- **5521** [OTHER] ⚠ 默认模型=0 — What is the purpose of the O-RAN alliance?
+- **5585** [SECURITY] — What is the definition of a cipher key?
+- **5592** [CORE] — What is the purpose of the Nadrf_MLModelManagement_StorageRequest service operation? [3GPP Release 18]
+- **5621** [RAN] — What does BWP stand for?
+- **5624** [RAN] — What is the total layer 2 buffer size for NR SL? [3GPP Release 17]
+- **5760** [RAN] — What is the purpose of the PUCCH transmission with a link recovery request (LRR)? [3GPP Release 17]
+- **5787** [RAN] — What is EN-DC in the context of 5G? [3GPP Release 15]
+- **5827** [CORE] — What does redundant transmission on N3/N9 interfaces in URLLC aim to enhance? [3GPP Release 18]
+- **5872** [RAN] — What determines the starting PRB index of the DL PRS resource? [3GPP Release 17]
+- **5926** [RAN] — When does the UE ignore the scheduling DCI for the n-th triggered CSI report? [3GPP Release 17]
+- **6036** [RAN] — What determines if an IAB-DU cell can transmit or receive on a symbol configured as a soft type? [3GPP Release
+- **6073** [RAN] — What was one of the key design objectives in the RedCap (reduced capability) work item?
+- **6476** [SECURITY] — What security measure does the 3GPP system support to protect the transmission for a V2X application? [3GPP Re
+- **6579** [RAN] — What is the sub-carrier spacing for uplink transmission? [3GPP Release 17]
+- **6587** [OAM] ⚠ 默认模型=2 — What can influence the variations on per-instance NF load and resource usage? [3GPP Release 18]
+- **6663** [RAN] — What is the purpose of the Semi-static CFI configuration in LTE? [3GPP Release 18]
+- **6705** [SECURITY] — What does the second frame in a shared-key authentication exchange serve as? [IEEE 802.11]
+- **6734** [TRANSPORT] — What do operating classes with a value of 80 or 160 indicate in IEEE Std 802.11-2020? [IEEE 802.11]
+- **6760** [OAM] — What is dispersion analytics? [3GPP Release 18]
+- **6828** [RAN] — What does a UE do with a BWP inactivity timer for a cell when the timer is running? [3GPP Release 17]
+- **6860** [TRANSPORT] — Which element is present if dot11RMMeasurementPilotActivated is a value between 2 and 7? [IEEE 802.11]
+- **6901** [RAN] — When can the UE trigger reporting of its RLM and BFD relaxation status? [3GPP Release 17]
+- **6945** [TRANSPORT] — What is the Duration/ID field value in an NDP Ack frame with the Idle Indication field equal to 1? [IEEE 802.1
+- **7090** [SERVICE] — Which types of requirements are defined for Enhanced Mobile Broadband (eMBB) in 5G? [3GPP Release 15]
+- **7097** [OTHER] ⚠ 默认模型=0 — Which TSGs are responsible for the definition of terminals, interfaces, and capabilities?
+- **7148** [CORE] — In Rel-17, how are load-balancing split percentages determined? [3GPP Release 17]
+- **7166** [TRANSPORT] — What is the purpose of the Backbone Network Service? [3GPP Release 17]
+- **7171** [SERVICE] — Which 5G usage includes the operational aspects that apply to the wide range of IoT devices and services antic
+- **7180** [RAN] — What is the impact on latency with the reduction of antenna ports? [3GPP Release 18]
+- **7209** [CORE] — What is the purpose of the NSSRG information in UE subscription? [3GPP Release 17]
+- **7213** [TRANSPORT] — What is a fast basic service set (BSS) transition?
+- **7274** [RAN] — What can an NG-RAN node do with the paging enhancements mechanism? [3GPP Release 18]
+- **7310** [RAN] — What is the typical height of base stations in the UMi scenario? [3GPP Release 17]
+- **7370** [RAN] — What is the maximum number of MR-DC combinations for IDC? [3GPP Release 17]
+- **7383** [SERVICE] ⚠ 默认模型=2 — Which statement is true regarding the IMS Multimedia Telephony service? [3GPP Release 17]
+- **7463** [RAN] — What is the maximum inter-site distance supported by the 5G system for a stand-alone multicast/broadcast netwo
+- **7703** [RAN] — What does the term 'serving cell' refer to when the procedures are applied for MCG? [3GPP Release 17]
+- **7713** [RAN] ⚠ 默认模型=2 — What is the Handoff Gain/Loss (dB)?
+- **7742** [CORE] — What does a supporting UE display as the network name in a shared network? [3GPP Release 17]
+- **7762** [OAM] — What does the Ndccf_DataManagement_Notify service operation do? [3GPP Release 18]
+- **7767** [TRANSPORT] — What does the Operating Class field indicate in a Directional Measurement report? [IEEE 802.11]
+- **7952** [RAN] — In which 3GPP release was Licensed Assisted Access (LAA) standardized?
+- **8036** [RAN] — What is the composition of low and high loss dependent on? [3GPP Release 18]
+- **8082** [RAN] — What is the power saving gain range for the power saving schemes with UE adaptation to BWP switching? [3GPP Re
+- **8132** [OAM] — What is the purpose of tenant (t)-MANO?
+- **8255** [SECURITY] — What is an integrity group temporal key (IGTK) used for?
+- **8263** [SERVICE] — What architecture enhancement work item is responsible for specifying V2X architectures and functional entitie
+- **8272** [CORE] — What is the goal of the ETSUN (Enhancing Topology of SMF and UPF in 5G Networks) feature? [3GPP Release 16]
+- **8293** [SERVICE] — What are the requirements for Massive Internet of Things (mIoT) in the 5G system? [3GPP Release 15]
+- **8336** [RAN] — What is the potential effect of eDRX (extended DRX) on the battery lifetime of RedCap (reduced capability) dev
+- **8396** [RAN] — Where does AI/ML functionality reside within the current RAN architecture? [3GPP Release 17]
+- **8445** [SERVICE] — What does Edge Relocation refer to? [3GPP Release 18]
+- **8456** [RAN] — What is the priority of NG-RAN SA, EN-DC, and MR-DC in RAN3? [3GPP Release 17]
+- **8598** [SERVICE] — What is the maximum number of UEs that an RSU can communicate with according to requirement R.5.1-022? [3GPP R
+- **8624** [TRANSPORT] ⚠ 默认模型=2 — What should a STA do if a frame matches an entry in the cache? [IEEE 802.11]
+- **8641** [OAM] — What is the purpose of exposing monitoring and status information of an AI-ML session to a third-party AI/ML a
+- **8675** [CORE] — What are the two types of GN-NSIs?
+- **8694** [RAN] — What are the two types of reference points for SAN type 1-H? [3GPP Release 18]
+- **8737** [CORE] — What is the definition of 5GMM-CONNECTED mode?
+- **8774** [OAM] ⚠ 默认模型=2 — What does the 'Request-response' communication paradigm involve in management service interactions? [3GPP Rele
+- **8775** [RAN] — What is the definition of Shared E-UTRAN?
+- **8783** [RAN] — What is the energy detection threshold for CSAT (Carrier-Sensing Adaptive Transmission)?
+- **8828** [TRANSPORT] ⚠ 默认模型=2 — What is the purpose of SSH? [TCP/IP]
+- **8868** [SERVICE] — What is the purpose of Call Whisper in IP-PBX? [3GPP Release 17]
+- **8896** [SERVICE] — What is a MTC Device?
+- **9025** [RAN] — When does the UE use Listen-Before-Talk (LBT) for transmission on a cell with shared spectrum channel access? 
+- **9167** [RAN] — What factors can affect the accuracy of location services? [3GPP Release 17]
+- **9280** [RAN] — What does SCG stand for in the context of user plane in EN-DC? [3GPP Release 18]
+- **9394** [OTHER] ⚠ 默认模型=0 — What regulatory obligations can a Participating Operator have regarding PWS support? [3GPP Release 18]
+- **9432** [TRANSPORT] — What does an S1G STA do when it sends a Control frame in response to a frame carried in an S1G PPDU? [IEEE 802
+- **9555** [RAN] — Where are the RAT (Radio Access Technology) Specific Control Functions (RSCFs) located?
+- **9623** [RAN] — What problem does the PRACH enhancement feature in LTE address under high speed? [3GPP Release 14]
+- **9703** [OAM] — What is the required input for the Ndccf_DataManagement_Unsubscribe service operation? [3GPP Release 18]
+- **9738** [RAN] — What type of frequency hopping can improve positioning performance for RedCap UEs in FR2 InF-SH scenario? [3GP
+- **9776** [RAN] — Which penetration loss model is applicable to RMa? [3GPP Release 18]
+- **9880** [RAN] — What is the minimum user throughput required at the edge of coverage in the 5G system? [3GPP Release 17]
+- **9901** [CORE] ⚠ 默认模型=2 — What does the NEF (PFDF) distribute to the SMF(s) in the Nnef_PFD_Management_Notify message? [3GPP Release 18]
+- **9935** [RAN] — Which transmission numerology in NR corresponds to a sub-carrier spacing of 60 kHz?
+- **9984** [SERVICE] — Which 3GPP specification provides the security aspect for LTE support of V2X services? [3GPP Release 14]
+- **9987** [RAN] — Which resource channel is associated with the transmission of user data traffic in NR SL?
+- **9999** [RAN] — What are the physical-layer cell identities for 5G NR? [3GPP Release 17]
+
+## 0 无关（18 题）
+
+- **624** [OTHER] — According to the Federal Communications Commission (FCC) regulations, what is the non-occupancy period if a ra
+- **1736** [OTHER] — What is the suggested interim limit used by the U.S. Navy as a protective limit for RF burns? [IEEE C95.1]
+- **2806** [TRANSPORT] — What mechanism does Bluetooth use to avoid interference with WLAN? [Bluetooth - Overview]
+- **2982** [OTHER] — What is the safety factor for protection against thermal pain in skin above 6 GHz? [IEEE C95.1]
+- **3569** [OTHER] — How are charges paid to the adjacent party in the settlement of charges? [3GPP Release 18]
+- **4640** [TRANSPORT] — Which modulation schemes are supported by the HRP UWB PHY? [IEEE 802.15.4]
+- **5121** [OTHER] — What does Shannon's Channel Capacity represent in information theory?
+- **5743** [OTHER] — What is the unit of specific absorption rate (SAR)? [IEEE C95.1]
+- **6367** [TRANSPORT] — What happens in a successful data transmission in IEEE Std 802.15.4-2020? [IEEE 802.15.4]
+- **6599** [OTHER] — What was the threshold for Whole-Body Average Specific Absorption Rate (WBA SAR) in the ANSI C95.1-1982 standa
+- **7116** [OTHER] — When is it particularly hazardous for an electrical arc to occur between a high RF voltage source and the body
+- **7289** [OTHER] — What is the minimum change in presynaptic potential required to affect synaptic processes? [IEEE C95.1]
+- **7337** [OTHER] — What is the averaging time for rms current measurements according to the IEEE Std C95.1-2019? [IEEE C95.1]
+- **8524** [TRANSPORT] — In an enhanced active scan with an Enhanced Beacon Request, when should a DSME beacon respond? [IEEE 802.15.4]
+- **8916** [TRANSPORT] — What happens when the DSME GTS Notify command is not received within the expected time at the destination devi
+- **9220** [OTHER] — Who can submit comments for revision of IEEE Standards documents? [IEEE C95.1]
+- **9291** [OTHER] — What is the discipline that quantifies the relationship between external exposure quantities and internal dose
+- **9757** [OTHER] — What is the primary objective of source coding in data compression?
+
+## Haiku 漏标（按默认模型等级列出）
+
+- **5525** 默认模型=2 — What triggers a Probe Response from all 802.11 networks in the area? [IEEE 802.11]

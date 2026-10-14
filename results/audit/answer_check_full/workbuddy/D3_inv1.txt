@@ -1,0 +1,322 @@
+You are verifying the answer key of a telecom multiple-choice benchmark (TeleQnA, questions about 3GPP / IEEE / ETSI / IETF standards). For EACH question below, decide whether the MARKED correct answer is actually correct. An earlier screening raised doubts about every item in this list, but that doubt may be unfounded. Work independently and judge each item on its own.
+
+Verdicts:
+- "correct": the marked option is right and clearly the best option.
+- "wrong": the marked option is incorrect; give the correct option number (1-based) in correct_option (null if none of the options is correct).
+- "ambiguous": more than one option is defensible, or the question is underspecified/flawed so the marked answer can't be called uniquely right.
+- "unverifiable": you cannot establish the answer with reasonable confidence.
+
+Prefer primary sources: if you can search the web, check the relevant 3GPP TS/TR, IEEE standard, ETSI document or RFC when your own knowledge is not certain. Put a short justification (1-2 sentences) in "evidence" and the document / URL you relied on in "source" (write "own knowledge" if you did not consult a source). Do not guess: if unsure, use "unverifiable".
+
+Output: ONLY a JSON array, no other text, with exactly one object per question below, in the same order, copying each "id" exactly as written (e.g. "question 1234"):
+[{"id": "question 1234", "verdict": "correct|wrong|ambiguous|unverifiable", "correct_option": <int or null>, "evidence": "...", "source": "..."}]
+correct_option: for "correct" give the marked option number; for "wrong" the right option number or null; for "ambiguous"/"unverifiable" null.
+
+There are 35 questions. Questions (options are numbered from 1):
+
+### id: question 7471
+Question: What message does the eNB send to perform redirection to another E-UTRAN frequency? [3GPP Release 14]
+  1. GBR bearer message
+  2. RRC Connection Release message
+  3. Redirect message
+  4. Frequency update message
+  5. UE CONTEXT RELEASE REQUEST message
+MARKED answer: option 5
+
+### id: question 7481
+Question: What is true about the Client Server model? [TCP/IP]
+  1. Only one Server can be active at a time
+  2. A Client application waits passively on contact while a Server starts the communication actively
+  3. The Server software can always tell the application program when a request for communication has arrived
+  4. Both the Client and Server applications are active and passive at the same time
+MARKED answer: option 2
+
+### id: question 7515
+Question: What is the function of the Visitor Location Register (VLR)? [3GPP Release 17]
+  1. To hold subscriber data needed to handle packet data transfer.
+  2. To terminate the interface towards E-UTRAN.
+  3. To perform switching and signaling functions for mobile stations.
+  4. To route calls to the actual location of the mobile station.
+  5. To store International Mobile Subscriber Identities (IMSI).
+MARKED answer: option 4
+
+### id: question 7614
+Question: What criteria are considered for periodic network selection attempts? [3GPP Release 18]
+  1. Signal quality and coverage area
+  2. Priority and availability of PLMNs
+  3. User preferences and network agreements
+  4. Forbidden PLMNs and hysteresis function
+  5. Potential for PS services and PLMN restrictions
+MARKED answer: option 2
+
+### id: question 7998
+Question: Which logical channel is used for transmitting control information between UEs and the network? [3GPP Release 18]
+  1. BCCH
+  2. PCCH
+  3. CCCH
+  4. DCCH
+MARKED answer: option 3
+
+### id: question 8028
+Question: What determines the configuration of Dual Connectivity for a Data Radio Bearer? [3GPP Release 18]
+  1. RSN and/or PDU Session Pair ID
+  2. Network Slice that the PDU Session belongs to
+  3. Mobility Restriction List
+  4. QoS Flows of the PDU Session
+  5. Identity of the cell serving the UE
+MARKED answer: option 2
+
+### id: question 8092
+Question: What is the purpose of Logical O&M?
+  1. To enable a physical implementation independent management of a network.
+  2. To enable the control of logical resources owned by the Node B but physically implemented in the RNC.
+  3. To define an abstract view of a network or network element by means of information objects representing network element, aggregations of network elements, and topological relationships.
+  4. To provide specific services within a Localised Service Area (LSA).
+  5. To facilitate the exchange of information between the RNC and the Node B in relation to the logical resources.
+MARKED answer: option 5
+
+### id: question 8120
+Question: What main mechanism enables hosts to efficiently utilize different networks with Multipath TCP (Transmission Control Protocol)?
+  1. Coupled congestion schemes.
+  2. Address allocation.
+  3. Network Ingress Filtering.
+  4. Per-packet load balancing.
+MARKED answer: option 4
+
+### id: question 8265
+Question: Which layer of the OSI model is responsible for ensuring a reliable transmission of data with a logical point-to-point connection? [IEEE 802.3]
+  1. Physical Layer (layer 1)
+  2. Data Link Layer (layer 2)
+  3. Network Layer (layer 3)
+  4. Transport Layer (layer 4)
+  5. Session Layer (layer 5)
+MARKED answer: option 4
+
+### id: question 8361
+Question: What is the default media handling capability of the IMS Multimedia Telephony service? [3GPP Release 17]
+  1. Adding and removing individual media components in a communication
+  2. Supporting synchronized video and speech in real time
+  3. Full duplex speech and real-time text communication
+  4. Allowing users to add and delete identities for outgoing communications
+MARKED answer: option 1
+
+### id: question 8364
+Question: What function in NG-RAN supports the positioning functionality? [3GPP Release 17]
+  1. RACH Optimization Function
+  2. PCI Optimization Function
+  3. Support of dynamic PTP and PTM switching
+  4. Support for CCO
+  5. Support for NR MBS
+MARKED answer: option 4
+
+### id: question 8411
+Question: Which access control mechanism specifically applies to CSFB? [3GPP Release 18]
+  1. Access Class Barring
+  2. Service Specific Access Control
+  3. Extended Access Barring
+  4. Application Specific Congestion Control for Data Communication
+  5. Access Control for Indirect 3GPP Communications
+MARKED answer: option 1
+
+### id: question 8441
+Question: Which authentication process only proves the identity of one station? [IEEE 802.11]
+  1. Open-system authentication
+  2. Shared-key authentication
+  3. MAC address filtering
+  4. None of the above
+MARKED answer: option 1
+
+### id: question 8500
+Question: What is the purpose of the DHCP discover message? [TCP/IP]
+  1. To confirm the DHCP ACK from the server
+  2. To request an IP address from the DHCP server
+  3. To obtain lease time for the assigned IP address
+  4. To acknowledge the DHCP offer from the server
+  5. To inform the DHCP server about the host's IP data requirements
+MARKED answer: option 5
+
+### id: question 8636
+Question: What is the purpose of L2 measurement? [3GPP Release 17]
+  1. To optimize inter-system load balancing
+  2. To enhance energy efficiency
+  3. To measure PRB usage for MIMO
+  4. To improve mobility optimization
+MARKED answer: option 3
+
+### id: question 8745
+Question: What is an extension of the Rapid Spanning Tree Protocol (RSTP) used for faster recovery times in automation networks? [IEEE 802.3]
+  1. Fast Loop Detection
+  2. Fast Link Detection
+  3. Fast Network Detection
+  4. Fast Ring Detection
+  5. Fast Bridge Detection
+MARKED answer: option 4
+
+### id: question 8770
+Question: What does the AMF do after purging the subscriber data and MM context of a deregistered UE? [3GPP Release 18]
+  1. Initiates an AMF initiated Deregistration procedure
+  2. Unsubscribes to changes to subscription data using Nudm_SDM_Unsubscribe request operation
+  3. Updates UE context in UDR by Nudr_DM_Update (SUPI, Subscription Data)
+  4. Sets the UE Purged flag associated with the Access Type
+MARKED answer: option 2
+
+### id: question 8782
+Question: What does the RAT (Radio Access Technology) Agnostic Control Functions (RACFs) interface with?
+  1. Flow Controller and RSCFs
+  2. PCRF and UDF
+  3. MLMF and SMF
+  4. Service-based interfaces and RAT Specific Control Functions (RSCFs)
+  5. Data plane entities and IP addresses
+MARKED answer: option 1
+
+### id: question 8798
+Question: What is the purpose of the Inter-gNB-DU Conditional PSCell Change using MCG SRB without MN negotiation procedure? [3GPP Release 17]
+  1. To release the UE context in the target gNB-DU
+  2. To configure data bearers in the source gNB-DU
+  3. To stop the data transmission to the UE in the source gNB-DU
+  4. To send a MeasurementReport message from the UE
+  5. To establish a new RRC connection for the UE in the target gNB-DU
+MARKED answer: option 5
+
+### id: question 8808
+Question: What is the reference point between the PDG and a packet data network? [3GPP Release 17]
+  1. Gi reference point
+  2. GMLC - external LCS Client
+  3. Le reference point
+  4. Mm Reference Point
+  5. Wi reference point
+MARKED answer: option 5
+
+### id: question 8833
+Question: How are serving cells configured in terms of DRX groups? [3GPP Release 17]
+  1. One serving cell can belong to multiple DRX groups
+  2. Each serving cell is configured with its own DRX group
+  3. All serving cells belong to one DRX group
+  4. Two serving cells can share one DRX group
+  5. Each serving cell can belong to multiple DRX groups
+MARKED answer: option 3
+
+### id: question 9013
+Question: Which control mechanism allows the network to control the behavior of UEs in E-UTRAN in connected mode? [3GPP Release 18]
+  1. Access Class Barring
+  2. Service Specific Access Control
+  3. Extended Access Barring
+  4. Application Specific Congestion Control for Data Communication
+  5. Prevention of mobile-originating signalling and/or data traffic
+MARKED answer: option 5
+
+### id: question 9014
+Question: For the Analytics ID 'Network Performance', which Consumer NF may use it? [3GPP Release 16]
+  1. UDM
+  2. AMF
+  3. SMF
+  4. PCF
+MARKED answer: option 4
+
+### id: question 9050
+Question: Which interface is used by NWDAF to request subscription to data delivery? [3GPP Release 18]
+  1. Nnf interface
+  2. Nnwdaf interface
+  3. Ndccf interface
+  4. Nadrf interface
+  5. Nmfaf_3daDataManagement interface
+MARKED answer: option 1
+
+### id: question 9183
+Question: What is a Base Station Subsystem (BSS) responsible for?
+  1. Controlling the use and the integrity of the radio resources
+  2. Allocating, releasing, and managing specific radio resources
+  3. Terminating the Abis interface towards the 
+  4. Establishing means of connection between an MS and the GERAN
+  5. Controlling the transmission and reception in a set of cells
+MARKED answer: option 4
+
+### id: question 9237
+Question: In online charging with reservation, what happens if the resource usage execution fails? [3GPP Release 18]
+  1. The NE informs the OCS of the failure.
+  2. The OCS returns the reserved amount back to the subscriber account.
+  3. The OCS debits the reserved amount from the subscriber account.
+  4. The NE returns the failure to the OCS to initiate a refund for the original resource usage.
+MARKED answer: option 2
+
+### id: question 9277
+Question: What happens when the network cannot provide the required QoS for a data service? [3GPP Release 18]
+  1. The service will be provided with a reduced QoS
+  2. Both the originating and terminating application will be informed about the QoS configuration
+  3. The service delivery will be based on network conditions only
+  4. The requested service will not be provided
+  5. The service will be delivered over the PS CN domain
+MARKED answer: option 2
+
+### id: question 9359
+Question: What type of analytics can NWDAF generate? [3GPP Release 18]
+  1. Any type of analytics
+  2. Only specialized types of analytics
+  3. Subscriber-related analytics
+  4. Location information analytics
+  5. NF-related analytics
+MARKED answer: option 2
+
+### id: question 9516
+Question: What is the purpose of PLMN selection in the UE? [3GPP Release 17]
+  1. To identify the selected PLMN
+  2. To automatically connect to the strongest cell
+  3. To optimize PLMN search using stored information
+  4. To report available PLMNs to the NAS on request
+  5. To perform cell selection procedure for camp on
+MARKED answer: option 4
+
+### id: question 9664
+Question: What is the main guideline for 802.11a equipment in determining a busy channel? [IEEE 802.11]
+  1. Received signal strength thresholds
+  2. Packet Length field from the PLCP header
+  3. Physical parameters listed in Table 11-4
+  4. Extra radio bandwidth provided by the U-NII bands
+  5. Characteristics of the OFDM PHY
+MARKED answer: option 1
+
+### id: question 9728
+Question: What is the main purpose of the location registration function? [3GPP Release 18]
+  1. To allow fixed subscribers to call a UE irrespective of its location in the system area.
+  2. To allow UEs to access the system irrespective of their location.
+  3. To identify when a change in location area has taken place.
+  4. To provide continuity of service to UEs over the whole system area.
+  5. To initiate automatic location updating procedures.
+MARKED answer: option 4
+
+### id: question 9780
+Question: What is the behavior of a mobile station in state GMM-REGISTERED with substate NORMAL-SERVICE? [3GPP Release 18]
+  1. Not perform cell selection/reselection
+  2. Not send any user data
+  3. Not initiate normal routing area updating
+  4. Not respond to paging
+  5. Not transmit any signalling information
+MARKED answer: option 3
+
+### id: question 9831
+Question: What is the distribution system responsible for in an 802.11 network? [IEEE 802.11]
+  1. Tracking the physical location of stations
+  2. Providing mobility by connecting access points
+  3. Delivering frames to the right access point
+  4. Controlling the relaying of frames between network media
+MARKED answer: option 2
+
+### id: question 9834
+Question: Which identity is used for UE identification temporarily used for contention resolution purposes during the random access procedure? [3GPP Release 17]
+  1. CI-RNTI
+  2. RA-RNTI
+  3. Temporary C-RNTI
+  4. Random value for contention resolution
+  5. I-RNTI
+MARKED answer: option 4
+
+### id: question 9953
+Question: Which of the following is NOT a status assigned to a port in a network without loops? [IEEE 802.3]
+  1. ROOT
+  2. DESIGNATED
+  3. ALTERNATE
+  4. FORWARDING
+MARKED answer: option 4
+
+Reminder: return a JSON array with exactly 35 objects, one per id above.
+(Reviewer id: inv1.)

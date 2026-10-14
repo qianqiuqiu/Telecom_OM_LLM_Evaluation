@@ -4,14 +4,6 @@
 # 原始数据不重新分发（TeleQnA / TeleLogs 需同意使用条件）
 data/raw/
 
-# 运行产物：原始请求与响应体积大，只在本地保留。
-# 例外（Oct 14）：场景题回答与 judge 判定入库——judge 在云端会话里跑，回答要从 Mac 传上来，判定要在容器回收前保存。
-# 回答生成的原始调用缓存（含推理过程）仍不入库。
-results/*
-!results/answers/
-!results/judge/
-results/answers/raw/
-
 # Python
 __pycache__/
 *.pyc

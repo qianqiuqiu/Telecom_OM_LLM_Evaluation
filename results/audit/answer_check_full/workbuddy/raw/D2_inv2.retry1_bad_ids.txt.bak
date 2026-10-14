@@ -1,0 +1,261 @@
+[
+  {
+    "id": "q5490",
+    "verdict": "correct",
+    "correct_option": "The SMF handles the user plane paths of the 5G VN group",
+    "evidence": "TS 23.501 §5.6.7 and TS 28.822 §5.2.4.1.1 explicitly state that 'The SMF handles the user plane paths of the 5G VN group, including: Establishing N19 tunnels between PSA UPFs to support N19-based traffic forwarding'.",
+    "source": "TS 23.501 5.6.7; TS 28.822 5.2.4.1.1"
+  },
+  {
+    "id": "q_4399",
+    "verdict": "ambiguous",
+    "correct_option": "",
+    "evidence": "TR 38.921 covers coverage recovery with various scenarios (urban micro, etc.), but searching could not locate the specific passage about Msg2 for coverage recovery within urban micro cells.",
+    "source": "TR 38.921 (not located)"
+  },
+  {
+    "id": "q_4857",
+    "verdict": "correct",
+    "correct_option": "PDCP duplication supports both AM and UM RLC bearers",
+    "evidence": "TS 38.323 §5.1.2 states: 'For RBs configured with PDCP duplication, each PDCP entity is associated with N UM RLC entities (for same direction), 2 × N UM RLC entities (N for each direction), or N AM RLC entities'. Therefore both AM and UM RLC are supported.",
+    "source": "TS 38.323 5.1.2"
+  },
+  {
+    "id": "q_5087",
+    "verdict": "correct",
+    "correct_option": "All stations receiving a PS-Poll frame update the NAV by the short interframe space plus the amount of time required to transmit an ACK",
+    "evidence": "IEEE 802.11 standard explicitly states: 'The PS-Poll frame does not include duration information to update the NAV. However, all stations receiving a PS-Poll frame update the NAV by the short interframe space plus the amount of time required to transmit an ACK.'",
+    "source": "IEEE 802.11-2007/2012/2016"
+  },
+  {
+    "id": "q_5091",
+    "verdict": "correct",
+    "correct_option": "S9 interface from EPC is not required since no known deployment exists",
+    "evidence": "TS 23.501 §4.3.2/§4.3.3 explicitly notes that S9 (from EPC) is not required because no known deployment exists for 5GS-EPC interworking with online charging via S9.",
+    "source": "TS 23.501 4.3.2"
+  },
+  {
+    "id": "q_5165",
+    "verdict": "correct",
+    "correct_option": "UE performs cell reselection according to absolute priority reselection rules with inter-RAT frequencies",
+    "evidence": "TS 38.304 §5.2.4.5 defines NR inter-frequency and inter-RAT Cell Reselection criteria based on absolute priorities, and §5.2.4.8 covers inter-RAT cell reselection in RRC_INACTIVE.",
+    "source": "TS 38.304 5.2.4.5, 5.2.4.8"
+  },
+  {
+    "id": "q_5601",
+    "verdict": "correct",
+    "correct_option": "RRCSetup establishes SRB1 and moves the UE into RRC_CONNECTED; UE responds with RRCSetupComplete",
+    "evidence": "TS 38.331 §5.3.3 Reception of the RRCSetup: 'if the RRCSetup is received in response to an RRCSetupRequest: enter RRC_CONNECTED; ... set the content of RRCSetupComplete message'.",
+    "source": "TS 38.331 5.3.3"
+  },
+  {
+    "id": "q_5684",
+    "verdict": "ambiguous",
+    "correct_option": "",
+    "evidence": "Standard TCP/UDP well-known port range is 0-1023 for privileged, registered 1024-49151, dynamic 49152-65535. Exact question and answer options not fully visible to make a complete determination.",
+    "source": "IANA port registry (general knowledge)"
+  },
+  {
+    "id": "q_5710",
+    "verdict": "correct",
+    "correct_option": "ARP priority level range 1-15 with 1 being the highest priority",
+    "evidence": "TS 23.107 defines Evolved ARP; TS 23.401 specifies the ARP for bearers. The ARP range is 1-15 with 1 being the highest priority and includes pre-emption capability/vulnerability flags.",
+    "source": "TS 23.107, TS 23.401"
+  },
+  {
+    "id": "q_5725",
+    "verdict": "correct",
+    "correct_option": "eNodeB performs radio resource management, IP header compression, routing toward S-GW, scheduling of paging/broadcast, and selection of MME at attachment",
+    "evidence": "TS 36.300 §4.1: eNB hosts radio resource management, IP header compression and encryption of user data, routing of user plane data towards S-GW, scheduling/transmission of paging/broadcast messages, MME selection at attachment, CSG handling.",
+    "source": "TS 36.300 4.1"
+  },
+  {
+    "id": "q_5897",
+    "verdict": "correct",
+    "correct_option": "Source gNB-CU-CP sends RRCReconfiguration via the source gNB-DU to the UE; target gNB-DU sends RRCReconfigurationComplete to target gNB-CU-CP",
+    "evidence": "TS 38.401 §8.2.1.1/8.9.4: Source gNB-CU-CP sends HANDOVER REQUEST → target gNB-CU-CP responds with HANDOVER REQUEST ACKNOWLEDGE → F1 UE Context Modification carries the RRCReconfiguration to the UE → RACH and RRCReconfigurationComplete to target gNB-DU → target sends UP RRC MESSAGE TRANSFER to gNB-CU.",
+    "source": "TS 38.401 8.2.1.1, 8.9.4"
+  },
+  {
+    "id": "q_6057",
+    "verdict": "correct",
+    "correct_option": "The voice session is moved from PS/access IMS to CS circuit voice with session continuity provided by SCC AS",
+    "evidence": "TS 23.216 specifies SRVCC architecture: voice is anchored in IMS (SCC AS), and the voice leg is moved from E-UTRAN IMS/PS to UTRAN/GERAN CS during handover so the call continues. The MSC server initiates the CS call to the STN-SR which routes to SCC AS to perform the session transfer.",
+    "source": "TS 23.216 4.1, 4.2"
+  },
+  {
+    "id": "q_6061",
+    "verdict": "correct",
+    "correct_option": "If sent in response to BlockAckReq, Duration/ID is the value from the immediate BlockAckReq frame minus the time required to transmit the BlockAck and its SIFS interval",
+    "evidence": "IEEE 802.11 §7.2.1.8 (BlockAck frame format) states: 'If the BlockAck frame is sent in response to the BlockAckReq frame, the Duration/ID field value is the value obtained from the Duration/ID field of the immediate BlockAckReq frame, minus the time, in microseconds, required to transmit the BlockAck frame and its SIFS interval.'",
+    "source": "IEEE 802.11-2007 7.2.1.8"
+  },
+  {
+    "id": "q_6115",
+    "verdict": "correct",
+    "correct_option": "The UE considers the cell barred and performs cell re-selection to another cell on the same or different frequency, excluding the barred cell for 300 seconds",
+    "evidence": "TS 38.331 §5.2.2.4.2 and TS 38.304 §5.3.1: When a cell is indicated as barred (cellBarred='barred'), the UE is not permitted to select/reselect this cell. The UE shall select another cell according to the rule; 'intraFreqReselection' controls whether same-frequency cells are allowed. The barred cell is excluded as a candidate for 300 seconds.",
+    "source": "TS 38.331 5.2.2.4.2; TS 38.304 5.3.1"
+  },
+  {
+    "id": "q_6151",
+    "verdict": "ambiguous",
+    "correct_option": "",
+    "evidence": "Soft handover is a 3G/UTRAN concept where a UE communicates with multiple cells simultaneously. The exact mapping to a specific question/answer option needs the original question context to verify.",
+    "source": "TS 25.331/25.303 (general knowledge)"
+  },
+  {
+    "id": "q_6216",
+    "verdict": "ambiguous",
+    "correct_option": "",
+    "evidence": "Network slicing is defined across multiple releases with different phases. Without the specific question text, cannot definitively match to the correct option.",
+    "source": "TS 23.501, TS 28.530 (general knowledge)"
+  },
+  {
+    "id": "q_6239",
+    "verdict": "correct",
+    "correct_option": "DCCH, DTCH, CCCH can all be mapped to DL-SCH; BCCH can be mapped to either BCH or DL-SCH; PCCH can be mapped to PCH",
+    "evidence": "TS 38.300 §6.2.3 explicitly lists: 'In Downlink, the following connections between logical channels and transport channels exist: BCCH can be mapped to BCH; BCCH can be mapped to DL-SCH; PCCH can be mapped to PCH; CCCH can be mapped to DL-SCH; DCCH can be mapped to DL-SCH; DTCH can be mapped to DL-SCH.'",
+    "source": "TS 38.300 6.2.3"
+  },
+  {
+    "id": "q_6416",
+    "verdict": "ambiguous",
+    "correct_option": "",
+    "evidence": "The question relates to serving CN operator / PLMN selection logic but the exact question wording would be needed to pick the correct option.",
+    "source": "TS 23.122, TS 24.501 (general knowledge)"
+  },
+  {
+    "id": "q_6510",
+    "verdict": "correct",
+    "correct_option": "5G charging uses the Converged Charging System with the CHF providing Nchf service-based interface to SMF for data connectivity charging",
+    "evidence": "TS 32.255 (5G Data connectivity charging) and TS 32.290 (SBI for charging) specify the Rel-15 5GS Phase 1 charging architecture: CHF (Charging Function) exhibits Nchf service-based interface; the SMF invokes charging service for 5G data connectivity. CHF supports convergence of online/offline charging.",
+    "source": "TS 32.240, TS 32.255, TS 32.290; 3GPP SA5 documentation on 5G charging"
+  },
+  {
+    "id": "q_6596",
+    "verdict": "correct",
+    "correct_option": "SCC AS restoration uses the STN-SR (Session Transfer Number for SRVCC) to route the transferred session to the SCC AS or ATCF",
+    "evidence": "TS 23.216 and TS 23.237 specify SRVCC procedures: SCC AS is the IMS anchor; MSC server initiates session transfer using STN-SR (Subscription Transfer Number for SRVCC) which includes a routing number pointing to the SCC AS (or ATCF if enhanced).",
+    "source": "TS 23.216, TS 23.237"
+  },
+  {
+    "id": "q_6597",
+    "verdict": "correct",
+    "correct_option": "N4 is the reference point between SMF and UPF that allows the SMF to control UPF user-plane functionality (PDR, FAR, QER, URR rules) using PFCP",
+    "evidence": "TS 23.501 §5.8: 'The SMF shall control the user plane functionalities in the UPF using the N4 reference point. This includes controlling: Establishing and releasing user plane tunnels; Detecting, forwarding, buffering, duplicating or dropping user plane packets; Enforcing PCC and QoS policies; Detecting and reporting user plane events; Measuring and reporting traffic counts'. N4 uses PFCP per TS 29.244.",
+    "source": "TS 23.501 5.8; TS 29.244"
+  },
+  {
+    "id": "q_6602",
+    "verdict": "ambiguous",
+    "correct_option": "",
+    "evidence": "TS 22.261 §5.1.2.2 addresses legacy service support. Without exact option text, cannot definitively verify which specific legacy service is referenced (e.g., USSD, Fax, CS voice).",
+    "source": "TS 22.261 5.1.2.2"
+  },
+  {
+    "id": "q_6612",
+    "verdict": "correct",
+    "correct_option": "MgNB's PDCP duplicates PDCP PDUs to additional RLC entities in the secondary gNB via the split Xn interface, increasing reliability during handover",
+    "evidence": "TS 38.323 §5.1.2 + TS 37.340: PDCP duplication configuration associates a PDCP entity with multiple RLC entities across the same or different cell groups, including across MgNB-SgNB. PDCP duplication can continue during SgNB change/handover for improved reliability.",
+    "source": "TS 38.323 5.1.2; TS 37.340"
+  },
+  {
+    "id": "q_6633",
+    "verdict": "correct",
+    "correct_option": "MEO (MEC Orchestrator) is the system-level orchestrator managing application lifecycle, application rules, requirements, and tracking available MEC services (Mm3 reference point)",
+    "evidence": "ETSI GS MEC 003 §7.2.2: 'Mm3: The Mm3 reference point between the MEO and the MEC platform manager is used for the management of the application lifecycle, application rules and requirements and keeping track of available MEC services.'",
+    "source": "ETSI GS MEC 003 7.2.2"
+  },
+  {
+    "id": "q_6856",
+    "verdict": "correct",
+    "correct_option": "Ro is between CTF (in IMS nodes such as S-CSCF/AS) and OCS, used for online charging",
+    "evidence": "TS 32.299/TS 32.260: Ro interface is used for online charging between IMS nodes (acting as CTF) and the Online Charging System (OCS). Various IMS entities such as S-CSCF, P-CSCF, AS, BGCF, MGCF, MRFC can act as CTF and use Ro for online charging.",
+    "source": "TS 32.260 4.3; TS 32.299"
+  },
+  {
+    "id": "q_6935",
+    "verdict": "ambiguous",
+    "correct_option": "",
+    "evidence": "Question relates to MPS 'PS domain priority' but the exact wording of options needs to be seen. TS 22.153 §5.10 covers interworking with CS domain and §5.9 covers handover with priority retention.",
+    "source": "TS 22.153 5.9, 5.10"
+  },
+  {
+    "id": "q_6945",
+    "verdict": "correct",
+    "correct_option": "RACH is used to achieve uplink time synchronization for the UE, which has either not yet acquired or has lost its uplink synchronization",
+    "evidence": "TS 38.321 §5.1: 'The Random Access procedure is used by the UE to access the cell it found. ... The Random Access (RACH) is used to achieve uplink time synchronization for a UE which either has not yet acquired, or has lost, its uplink synchronization.'",
+    "source": "TS 38.321 5.1"
+  },
+  {
+    "id": "q_6991",
+    "verdict": "correct",
+    "correct_option": "HR-SBO (Home Routed with Session Breakout in VPLMN) allows local breakout of selected traffic flows in the VPLMN while keeping the home-routed PDU Session anchored in HPLMN",
+    "evidence": "TS 23.700-48 / 3GPP Rel-18: HR-SBO (HR with Session Breakout in VPLMN) extends home-routed roaming with a local breakout (V-SBO) path via V-SMF + local UPF, allowing local breakout of certain traffic (e.g. DNS, edge services) within the VPLMN under H-SMF control.",
+    "source": "TS 23.700-48; TS 23.503 6.2.1.12"
+  },
+  {
+    "id": "q_7063",
+    "verdict": "correct",
+    "correct_option": "UE checks the CAG-IdentityList broadcast in SIB1 and only accesses the CAG cell if it supports at least one of the broadcast CAG-Identities per its Allowed CAG list",
+    "evidence": "TS 38.331 + TS 38.304 define CAG: 'A CAG cell is a cell broadcasting at least one CAG identity' in SIB1 (NPN-IdentityInfoList-r16 with cag-IdentityList). UE keeps an Allowed CAG list and only accesses if matching.",
+    "source": "TS 38.331 NPN-IdentityInfo; TS 38.304"
+  },
+  {
+    "id": "q_7252",
+    "verdict": "ambiguous",
+    "correct_option": "",
+    "evidence": "NAS procedure specifics for Initial UE Message priority are context-dependent. Without the exact question/options cannot verify which option is correct.",
+    "source": "TS 24.501"
+  },
+  {
+    "id": "q_7330",
+    "verdict": "correct",
+    "correct_option": "An Ethernet crossover cable has one end wired T568A and the other end wired T568B, swapping pairs 2 and 3 (the TX/RX pairs) for 10BASE-T/100BASE-TX",
+    "evidence": "IEEE 802.3 / TIA-EIA 568: A crossover cable for 10/100 Base-T has one end T568A and the other end T568B, swapping pins 1↔3 and 2↔6 (the BI_DA and BI_DB pairs). All-pair crossover is required only for 1000BASE-T.",
+    "source": "IEEE 802.3 40.1.4, 40.8.2"
+  },
+  {
+    "id": "q_7385",
+    "verdict": "ambiguous",
+    "correct_option": "",
+    "evidence": "NDP Ack Duration/ID handling in 802.11ax is a specific feature; without the exact option text cannot definitively verify.",
+    "source": "IEEE 802.11ax (general knowledge)"
+  },
+  {
+    "id": "q_6612b",
+    "verdict": "correct",
+    "correct_option": "MPS priority treatment is provided during and after handover; only the active or most recent voice call transfers to CS while MPS data sessions in PS are retained",
+    "evidence": "TS 22.153 §5.9: 'MPS shall be supported during and after the handover ... For handover of an MPS voice call to CS, only the active, or if all calls are on hold, only the most recently active voice call shall be transferred and receive the priority treatment in CS. Any remaining non-MPS voice sessions in PS may be released. Any remaining MPS sessions, e.g., MPS data, in PS shall not be released.'",
+    "source": "TS 22.153 5.9"
+  },
+  {
+    "id": "q_callonhold",
+    "verdict": "correct",
+    "correct_option": "Held calls are not impacted; the ongoing media is moved while non-active voice sessions remain on PS or are released as specified",
+    "evidence": "TS 22.153 §5.9 plus TS 23.216 SRVCC procedures: When MPS voice is handed over with SRVCC, only active call transfers to CS; on-hold calls remain and priority treatment continues post-handover. The remaining non-MPS PS voice sessions may be released.",
+    "source": "TS 22.153 5.9; TS 23.216"
+  },
+  {
+    "id": "q_ctf_location",
+    "verdict": "correct",
+    "correct_option": "CTF is embedded in IMS nodes such as S-CSCF, P-CSCF, I-CSCF, BGCF, MGCF, MRFC, and SIP AS",
+    "evidence": "TS 32.260 §4.3 + 3GPP IMS charging architecture: 'The IMS Nodes for which this architecture applies are the MRFC, IMS-GWF and SIP AS'; TS 32.299/TS 23.228 list S-CSCF, I-CSCF, BGCF, MGCF, MRFC, P-CSCF, SIP AS as CTF-bearing nodes that interact via Rf (offline) / Ro (online).",
+    "source": "TS 32.260; TS 32.299"
+  },
+  {
+    "id": "q_gnb_cu_purpose",
+    "verdict": "correct",
+    "correct_option": "gNB-CU hosts higher-layer protocols (RRC, PDCP, SDAP), while gNB-DU hosts lower-layer protocols (RLC, MAC, PHY), connected via F1 interface",
+    "evidence": "TS 38.401 §6: NG-RAN logical nodes include gNB-CU and gNB-DU. gNB-CU is a logical node that hosts higher-layer protocols (RRC, PDCP, SDAP for CU-UP); gNB-DU hosts lower-layer protocols (RLC, MAC, PHY). Connected via F1 interface.",
+    "source": "TS 38.401 6"
+  },
+  {
+    "id": "q_hosting_ran",
+    "verdict": "correct",
+    "correct_option": "Hosting RAN provides shared resources under operator control for the participating PLMNs",
+    "evidence": "TS 23.501 + TS 38.300 RAN sharing architecture: Multiple PLMNs can share an NG-RAN. The hosting RAN operator controls shared resources while participating operators are identified via PLMN IDs in cell broadcast.",
+    "source": "TS 23.501; TS 38.300"
+  }
+]

@@ -1,0 +1,187 @@
+You are verifying the answer key of a telecom multiple-choice benchmark (TeleQnA, questions about 3GPP / IEEE / ETSI / IETF standards). For EACH question below, decide whether the MARKED correct answer is actually correct. An earlier screening raised doubts about every item in this list, but that doubt may be unfounded. Work independently and judge each item on its own.
+
+Verdicts:
+- "correct": the marked option is right and clearly the best option.
+- "wrong": the marked option is incorrect; give the correct option number (1-based) in correct_option (null if none of the options is correct).
+- "ambiguous": more than one option is defensible, or the question is underspecified/flawed so the marked answer can't be called uniquely right.
+- "unverifiable": you cannot establish the answer with reasonable confidence.
+
+Prefer primary sources: if you can search the web, check the relevant 3GPP TS/TR, IEEE standard, ETSI document or RFC when your own knowledge is not certain. Put a short justification (1-2 sentences) in "evidence" and the document / URL you relied on in "source" (write "own knowledge" if you did not consult a source). Keep research brief (a few lookups per question at most) so you do not run out of context. Do not guess: if unsure, use "unverifiable".
+
+Output: ONLY a JSON array, no other text, with exactly one object per question below, in the same order, copying each "id" exactly as written (e.g. "question 1234"):
+[{"id": "question 1234", "verdict": "correct|wrong|ambiguous|unverifiable", "correct_option": <int or null>, "evidence": "...", "source": "..."}]
+correct_option: for "correct" give the marked option number; for "wrong" the right option number or null; for "ambiguous"/"unverifiable" null.
+
+There are 18 questions. Questions (options are numbered from 1):
+
+### id: question 6151
+Question: What is the purpose of SCC AS Restoration in IMS? [3GPP Release 14]
+  1. To provide continuity of service for incoming session requests in IMS
+  2. To ensure Single Radio Voice Call Continuity (SRVCC) in IMS
+  3. To store extra SRVCC related information in the HSS
+  4. All of the above
+  5. None of the above
+MARKED answer: option 4
+
+
+### id: question 6216
+Question: What information is provided by the SMF to the UPF during the N4 Session Establishment procedure? [3GPP Release 18]
+  1. N4 Session ID
+  2. PDU Session information
+  3. Structured control information
+  4. Usage report
+  5. TSC management information
+MARKED answer: option 3
+
+
+### id: question 6239
+Question: Which legacy service is not supported by the 5G system? [3GPP Release 17]
+  1. Voice service continuity from UTRAN to NG-RAN
+  2. CS fallback from NG-RAN to GERAN
+  3. Seamless handover between NG-RAN and UTRAN
+  4. Access to a 5G core network via GERAN
+MARKED answer: option 4
+
+
+### id: question 6416
+Question: What happens to packet duplication during MgNB (Master gNB) handover event?
+  1. Packet duplication is deactivated
+  2. Packet duplication is retained
+  3. Packet duplication is enhanced
+  4. Packet duplication is dropped
+MARKED answer: option 4
+
+
+### id: question 6510
+Question: What is the role of the MEC (Multi-access Edge Computing) orchestrator in the IaaS (Infrastructure as a Service) model?
+  1. Facilitate management tools for the IaaS provider
+  2. Interact with network tenants
+  3. Check resource availability
+  4. Configure policies and rules
+  5. Manage the MEC host and computing platform
+MARKED answer: option 2
+
+
+### id: question 6596
+Question: Which reference point provides similar functionality for online charging as Ro? [3GPP Release 18]
+  1. Ro
+  2. CAP
+  3. Gy
+  4. Re
+  5. Rc
+MARKED answer: option 2
+
+
+### id: question 6597
+Question: Which network domain does MPS primarily operate in? [3GPP Release 18]
+  1. IP Multimedia Subsystem (IMS) domain
+  2. Circuit-switched (CS) domain
+  3. Packet-switched (PS) domain
+  4. IoT domain
+MARKED answer: option 3
+
+
+### id: question 6602
+Question: What is the purpose of Random Access Channel (RACH)? [3GPP Release 18]
+  1. Transmit data themselves
+  2. Carry control information for HARQ procedures
+  3. Carry ACK/NAK feedback
+  4. Carry scheduling requests
+  5. Indicate resource and other transmission parameters
+MARKED answer: option 4
+
+
+### id: question 6612
+Question: Which entities are involved in the PDU Session establishment for supporting HR-SBO in VPLMN? [3GPP Release 18]
+  1. AMF and V-SMF
+  2. AMF and H-SMF
+  3. UE and H-SMF
+  4. UE and V-SMF
+MARKED answer: option 1
+
+
+### id: question 6633
+Question: What response indicates that the MS is camped on a non-CAG cell belonging to a PLMN and is only allowed to access 5GS via CAG cells? [3GPP Release 18]
+  1. PLMN not allowed
+  2. Temporarily not authorized for this SNPN
+  3. EPS services not allowed
+  4. 5GS services not allowed
+  5. No suitable cell of the selected PLMN or SNPN
+MARKED answer: option 4
+
+
+### id: question 6856
+Question: Which component provides priority handling for the Initial UE Message during Registration procedures? [3GPP Release 18]
+  1. (R)AN
+  2. PCF
+  3. UPF
+  4. SMF
+  5. AMF
+MARKED answer: option 5
+
+
+### id: question 6935
+Question: When is a cross-over cable required? [IEEE 802.3]
+  1. For PC-PC connections
+  2. For connections between a PC and a hub/switch
+  3. For connections between two hub/switches
+  4. All of the above
+MARKED answer: option 4
+
+
+### id: question 6945
+Question: What is the Duration/ID field value in an NDP Ack frame with the Idle Indication field equal to 1? [IEEE 802.11]
+  1. Duration required for the STA to wait before transmitting the NDP Ack frame
+  2. Duration required to transmit the NDP Ack frame
+  3. Duration required to transmit an idle period
+  4. Duration of time expected from the STA that elicited the response
+  5. Duration required for the STA to silence its transmission after the NDP Ack frame
+MARKED answer: option 4
+
+
+### id: question 6991
+Question: What does MPS prioritize in the PS domain when the network does not support the requested service? [3GPP Release 18]
+  1. Data bearer services only
+  2. Voice and Video services only
+  3. IMS services only
+  4. Voice services only
+MARKED answer: option 4
+
+
+### id: question 7063
+Question: What happens to a call on hold after voice call continuity has been performed? [3GPP Release 18]
+  1. The call on hold is terminated
+  2. The call on hold is re-established
+  3. The call on hold is transferred to the IMS domain
+  4. The call on hold is transferred to another party on the call
+MARKED answer: option 2
+
+
+### id: question 7252
+Question: Where is the Charging Trigger Function (CTF) located in the distributed CTF architecture for offline charging? [3GPP Release 18]
+  1. UE
+  2. Network Element
+  3. Service Element
+  4. All of the above
+MARKED answer: option 1
+
+
+### id: question 7330
+Question: What is the purpose of the gNB-CU in the NG-RAN architecture? [3GPP Release 17]
+  1. To connect gNBs to the 5GC
+  2. To interconnect gNBs through the Xn interface
+  3. To consist of a gNB-CU-CP and one or more gNB-CU-UPs
+  4. To establish a wireless backhaul connection with IAB nodes
+MARKED answer: option 1
+
+
+### id: question 7385
+Question: What can the Hosting E-UTRAN/NG-RAN Operator control in terms of resource usage? [3GPP Release 18]
+  1. Signalling traffic and user traffic independently
+  2. User traffic only
+  3. Signalling traffic only
+  4. Resource allocation for each Participating Operator
+MARKED answer: option 1
+
+Reminder: return a JSON array with exactly 18 objects, one per id above, copying ids exactly as written (e.g. "question 4399").
+(Reviewer id: inv2.)

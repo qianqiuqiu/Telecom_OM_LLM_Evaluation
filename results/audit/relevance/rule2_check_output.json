@@ -1,0 +1,540 @@
+{
+  "summary": "Check 40 sampled Haiku labels that capped relevance via rule 2 (new/niche feature) for misapplication caused by release tags",
+  "agentCount": 2,
+  "logs": [],
+  "result": {
+    "checks": [
+      {
+        "id": "question 8683",
+        "feature_status": "new_or_niche",
+        "note": "UE capability signalling for receiving network exposure info at registration; Rel-18 5G-Advanced addition, not widely deployed.",
+        "checker": "c1"
+      },
+      {
+        "id": "question 2154",
+        "feature_status": "new_or_niche",
+        "note": "5G enhanced positioning area (TS 22.261 positioning service requirements, Rel-16/17); not commercially deployed.",
+        "checker": "c1"
+      },
+      {
+        "id": "question 8136",
+        "feature_status": "new_or_niche",
+        "note": "Tests SCG activation/deactivation via SN Addition Request; Rel-17 feature.",
+        "checker": "c1"
+      },
+      {
+        "id": "question 12",
+        "feature_status": "new_or_niche",
+        "note": "NEF DNAI determination/notification to AF for edge computing (TS 23.548 Rel-17/18 edge architecture).",
+        "checker": "c1"
+      },
+      {
+        "id": "question 9949",
+        "feature_status": "mainstream",
+        "note": "Network sharing: supporting UE in idle mode reading/providing PLMN-id; network sharing since Rel-6, widely deployed.",
+        "checker": "c1"
+      },
+      {
+        "id": "question 669",
+        "feature_status": "new_or_niche",
+        "note": "RedCap initial DL BWP; Rel-17 new feature.",
+        "checker": "c1"
+      },
+      {
+        "id": "question 9457",
+        "feature_status": "new_or_niche",
+        "note": "Disaster roaming (MINT); Rel-17 new feature.",
+        "checker": "c1"
+      },
+      {
+        "id": "question 6490",
+        "feature_status": "mainstream",
+        "note": "Inter-RAT handover source RAT role; long-established (Rel-99/Rel-8 onward).",
+        "checker": "c1"
+      },
+      {
+        "id": "question 4812",
+        "feature_status": "new_or_niche",
+        "note": "MUSIM network notification; Rel-17 new feature.",
+        "checker": "c1"
+      },
+      {
+        "id": "question 3845",
+        "feature_status": "new_or_niche",
+        "note": "EEC Context ID in edge application layer architecture (TS 23.558, Rel-17/18); in rule list.",
+        "checker": "c1"
+      },
+      {
+        "id": "question 8445",
+        "feature_status": "new_or_niche",
+        "note": "Edge relocation (EAS/PSA UPF change), edge enablement Rel-17/18; in rule list.",
+        "checker": "c1"
+      },
+      {
+        "id": "question 9570",
+        "feature_status": "mainstream",
+        "note": "User Data Convergence (UDC/UDR), TS 23.335 since Rel-9; widely deployed concept.",
+        "checker": "c1"
+      },
+      {
+        "id": "question 7709",
+        "feature_status": "new_or_niche",
+        "note": "Small Data Transmission over configured grant; Rel-17 new feature.",
+        "checker": "c1"
+      },
+      {
+        "id": "question 6651",
+        "feature_status": "mainstream",
+        "note": "DCP (DCI with power saving / wake-up) introduced in Rel-16 UE power saving; predates Rel-17 and not in rule list.",
+        "checker": "c1"
+      },
+      {
+        "id": "question 2197",
+        "feature_status": "new_or_niche",
+        "note": "RB-set based PUSCH allocation for NR-U shared spectrum (Rel-16 NR-U); niche, limited commercial deployment.",
+        "checker": "c1"
+      },
+      {
+        "id": "question 6806",
+        "feature_status": "mainstream",
+        "note": "Priority-based packet dropping under congestion (MPS/priority service handling), long-established QoS concept.",
+        "checker": "c1"
+      },
+      {
+        "id": "question 6237",
+        "feature_status": "new_or_niche",
+        "note": "DCCF Ndccf_ContextManagement service; Rel-17 eNA new feature.",
+        "checker": "c1"
+      },
+      {
+        "id": "question 7028",
+        "feature_status": "new_or_niche",
+        "note": "LTE slot/subslot PDSCH repetition (LTE short TTI/URLLC, Rel-15); essentially not deployed.",
+        "checker": "c1"
+      },
+      {
+        "id": "question 5675",
+        "feature_status": "mainstream",
+        "note": "gNB handling of UE radio capabilities (skipping UTRA-FDD capability upload), NR UE capability handling since Rel-15.",
+        "checker": "c1"
+      },
+      {
+        "id": "question 9974",
+        "feature_status": "new_or_niche",
+        "note": "NWDAF analytics/ML model accuracy monitoring; Rel-18 new feature.",
+        "checker": "c1"
+      },
+      {
+        "id": "question 7782",
+        "feature_status": "mainstream",
+        "note": "Feature set combination in NR UE capability structure; Rel-15, used in every NR UE.",
+        "checker": "c1"
+      },
+      {
+        "id": "question 7439",
+        "feature_status": "mainstream",
+        "note": "Network sharing CN operator selection by supporting UE; since Rel-6, widely deployed.",
+        "checker": "c1"
+      },
+      {
+        "id": "question 6135",
+        "feature_status": "mainstream",
+        "note": "Channel model calibration (TR 38.901, Rel-14); not a new feature, though a simulation detail.",
+        "checker": "c1"
+      },
+      {
+        "id": "question 6486",
+        "feature_status": "mainstream",
+        "note": "Maximum energy detection threshold for LBT in unlicensed access; from LAA Rel-13 (NR-U Rel-16), predates Rel-17.",
+        "checker": "c1"
+      },
+      {
+        "id": "question 6376",
+        "feature_status": "mainstream",
+        "note": "NWDAF Network Performance analytics consumers; introduced Rel-16, predates Rel-17.",
+        "checker": "c1"
+      },
+      {
+        "id": "question 4871",
+        "feature_status": "new_or_niche",
+        "note": "Small Data Transmission initiation; Rel-17 new feature.",
+        "checker": "c1"
+      },
+      {
+        "id": "question 6067",
+        "feature_status": "mainstream",
+        "note": "Allowed Delay in PFD management/provisioning via NEF/SCEF; since Rel-14/15.",
+        "checker": "c1"
+      },
+      {
+        "id": "question 2216",
+        "feature_status": "new_or_niche",
+        "note": "PRAS in Customer Premises Network (5G LAN/residential, Rel-17/18); niche.",
+        "checker": "c1"
+      },
+      {
+        "id": "question 9613",
+        "feature_status": "mainstream",
+        "note": "VarLogMeasConfig for logged MDT in idle mode; since Rel-10 LTE (NR Rel-16), widely used.",
+        "checker": "c1"
+      },
+      {
+        "id": "question 3788",
+        "feature_status": "new_or_niche",
+        "note": "Cyber-physical control via relay UE (indirect network connection); sidelink relay, Rel-19 - in rule list.",
+        "checker": "c1"
+      },
+      {
+        "id": "question 49",
+        "feature_status": "new_or_niche",
+        "note": "5G access stratum time distribution enable/disable by AMF; Rel-17/18 TSC time sync feature.",
+        "checker": "c1"
+      },
+      {
+        "id": "question 7753",
+        "feature_status": "mainstream",
+        "note": "5G usage requirement categories (eMBB, URLLC, etc.) from TS 22.261 Rel-15 basics.",
+        "checker": "c1"
+      },
+      {
+        "id": "question 7756",
+        "feature_status": "new_or_niche",
+        "note": "V2V relative velocity requirement (V2X, Rel-14+); V2X is in rule list.",
+        "checker": "c1"
+      },
+      {
+        "id": "question 9926",
+        "feature_status": "new_or_niche",
+        "note": "Fleet and asset management services (mission-critical/vertical service requirements); niche, not widely deployed.",
+        "checker": "c1"
+      },
+      {
+        "id": "question 3126",
+        "feature_status": "new_or_niche",
+        "note": "ChannelAccess-CPext for NR-U shared spectrum random access (Rel-16 NR-U); niche deployment.",
+        "checker": "c1"
+      },
+      {
+        "id": "question 96",
+        "feature_status": "mainstream",
+        "note": "IMS MMTel user configuration of active identities; long-established MMTel concept (pre-Rel-17).",
+        "checker": "c1"
+      },
+      {
+        "id": "question 4856",
+        "feature_status": "new_or_niche",
+        "note": "TSCTSF PTP instance initialization; Rel-17 time sync feature.",
+        "checker": "c1"
+      },
+      {
+        "id": "question 2009",
+        "feature_status": "new_or_niche",
+        "note": "RTT-based propagation delay compensation using DL PRS; Rel-17 new feature.",
+        "checker": "c1"
+      },
+      {
+        "id": "question 419",
+        "feature_status": "mainstream",
+        "note": "Supplementary service interaction rules in IMS MMTel; long-established (Rel-7/8 onward).",
+        "checker": "c1"
+      },
+      {
+        "id": "question 41",
+        "feature_status": "mainstream",
+        "note": "NWDAF prediction validity period; analytics framework from Rel-16, predates Rel-17.",
+        "checker": "c1"
+      },
+      {
+        "id": "question 8683",
+        "feature_status": "new_or_niche",
+        "note": "UE capability for receiving network-exposure info signalled at registration; appears to be a Rel-18 addition (low confidence).",
+        "checker": "c2"
+      },
+      {
+        "id": "question 2154",
+        "feature_status": "new_or_niche",
+        "note": "5G enhanced positioning area; Rel-16/17 positioning service requirements, not widely deployed.",
+        "checker": "c2"
+      },
+      {
+        "id": "question 8136",
+        "feature_status": "new_or_niche",
+        "note": "SCG activation/deactivation via SN Addition Request; introduced in Rel-17.",
+        "checker": "c2"
+      },
+      {
+        "id": "question 12",
+        "feature_status": "new_or_niche",
+        "note": "NEF/AF DNAI notification for EAS discovery; Rel-17/18 edge computing enhancement (edge architecture).",
+        "checker": "c2"
+      },
+      {
+        "id": "question 9949",
+        "feature_status": "mainstream",
+        "note": "Network sharing 'supporting UE' providing PLMN-id; RAN/network sharing since Rel-6.",
+        "checker": "c2"
+      },
+      {
+        "id": "question 669",
+        "feature_status": "new_or_niche",
+        "note": "RedCap initial DL BWP behaviour; Rel-17.",
+        "checker": "c2"
+      },
+      {
+        "id": "question 9457",
+        "feature_status": "new_or_niche",
+        "note": "Disaster roaming (MINT); Rel-17.",
+        "checker": "c2"
+      },
+      {
+        "id": "question 6490",
+        "feature_status": "mainstream",
+        "note": "Inter-RAT handover source RAT role; since Rel-99/Rel-8.",
+        "checker": "c2"
+      },
+      {
+        "id": "question 4812",
+        "feature_status": "new_or_niche",
+        "note": "MUSIM network notification; Rel-17.",
+        "checker": "c2"
+      },
+      {
+        "id": "question 3845",
+        "feature_status": "new_or_niche",
+        "note": "EEC Context ID, edge application layer architecture (TS 23.558); Rel-17/18.",
+        "checker": "c2"
+      },
+      {
+        "id": "question 8445",
+        "feature_status": "new_or_niche",
+        "note": "Edge relocation (EAS/PSA UPF change); Rel-17/18 edge architecture.",
+        "checker": "c2"
+      },
+      {
+        "id": "question 9570",
+        "feature_status": "mainstream",
+        "note": "User Data Convergence (UDR separation); introduced Rel-9, widely deployed.",
+        "checker": "c2"
+      },
+      {
+        "id": "question 7709",
+        "feature_status": "new_or_niche",
+        "note": "Small Data Transmission over CG; Rel-17.",
+        "checker": "c2"
+      },
+      {
+        "id": "question 6651",
+        "feature_status": "new_or_niche",
+        "note": "DCP (PS-RNTI wake-up DCI) with CA; Rel-16 UE power saving, limited deployment. Borderline: it predates Rel-17.",
+        "checker": "c2"
+      },
+      {
+        "id": "question 2197",
+        "feature_status": "new_or_niche",
+        "note": "RB-set PUSCH allocation tied to PRACH (msgA/NR-U shared spectrum); Rel-16 NR-U, not widely deployed.",
+        "checker": "c2"
+      },
+      {
+        "id": "question 6806",
+        "feature_status": "new_or_niche",
+        "note": "Media QoS flow priority dropping under congestion; appears to be Rel-18 media/AV production requirements (low confidence).",
+        "checker": "c2"
+      },
+      {
+        "id": "question 6237",
+        "feature_status": "new_or_niche",
+        "note": "DCCF Ndccf_ContextManagement; Rel-17 data collection coordination.",
+        "checker": "c2"
+      },
+      {
+        "id": "question 7028",
+        "feature_status": "new_or_niche",
+        "note": "LTE slot/subslot PDSCH repetition (LTE URLLC/sTTI); Rel-15, niche and barely deployed.",
+        "checker": "c2"
+      },
+      {
+        "id": "question 5675",
+        "feature_status": "mainstream",
+        "note": "gNB UE capability handling (skipping UTRA-FDD caps); Rel-15 NR capability transfer.",
+        "checker": "c2"
+      },
+      {
+        "id": "question 9974",
+        "feature_status": "new_or_niche",
+        "note": "NWDAF analytics/ML model accuracy monitoring; Rel-18.",
+        "checker": "c2"
+      },
+      {
+        "id": "question 7782",
+        "feature_status": "mainstream",
+        "note": "Feature set combination in UE capability; Rel-15 NR, used in all NR UEs.",
+        "checker": "c2"
+      },
+      {
+        "id": "question 7439",
+        "feature_status": "mainstream",
+        "note": "CN operator selection in shared network; network sharing since Rel-6.",
+        "checker": "c2"
+      },
+      {
+        "id": "question 6135",
+        "feature_status": "mainstream",
+        "note": "Channel model calibration (TR 38.901); Rel-14 simulation methodology, not a new feature. Low relevance for other reasons.",
+        "checker": "c2"
+      },
+      {
+        "id": "question 6486",
+        "feature_status": "new_or_niche",
+        "note": "Energy detection threshold for shared spectrum (LAA Rel-13/NR-U Rel-16); unlicensed operation is niche.",
+        "checker": "c2"
+      },
+      {
+        "id": "question 6376",
+        "feature_status": "mainstream",
+        "note": "NWDAF Network Performance analytics; Rel-16 NWDAF, not a Rel-17+ feature.",
+        "checker": "c2"
+      },
+      {
+        "id": "question 4871",
+        "feature_status": "new_or_niche",
+        "note": "Small Data Transmission initiation; Rel-17.",
+        "checker": "c2"
+      },
+      {
+        "id": "question 6067",
+        "feature_status": "mainstream",
+        "note": "PFD management Allowed Delay; PFDF since Rel-14, carried into 5GC in Rel-15/16.",
+        "checker": "c2"
+      },
+      {
+        "id": "question 2216",
+        "feature_status": "new_or_niche",
+        "note": "PRAS in Customer Premises Network; Rel-17/18 CPN/PIN.",
+        "checker": "c2"
+      },
+      {
+        "id": "question 9613",
+        "feature_status": "mainstream",
+        "note": "Logged MDT VarLogMeasConfig; Rel-10 (IDLE), INACTIVE added in Rel-16.",
+        "checker": "c2"
+      },
+      {
+        "id": "question 3788",
+        "feature_status": "new_or_niche",
+        "note": "Cyber-physical control over relay UE (indirect connection); ProSe relay, Rel-19.",
+        "checker": "c2"
+      },
+      {
+        "id": "question 49",
+        "feature_status": "new_or_niche",
+        "note": "5G access stratum time distribution control by AMF; Rel-17/18 time sensitive communication.",
+        "checker": "c2"
+      },
+      {
+        "id": "question 7753",
+        "feature_status": "mainstream",
+        "note": "5G usage scenario requirement categories (eMBB, URLLC, etc.); Rel-15 baseline.",
+        "checker": "c2"
+      },
+      {
+        "id": "question 7756",
+        "feature_status": "new_or_niche",
+        "note": "V2V relative velocity requirement; V2X is in the rule list.",
+        "checker": "c2"
+      },
+      {
+        "id": "question 9926",
+        "feature_status": "new_or_niche",
+        "note": "Fleet and asset management (mission critical/FRMCS); Rel-17 niche.",
+        "checker": "c2"
+      },
+      {
+        "id": "question 3126",
+        "feature_status": "new_or_niche",
+        "note": "ChannelAccess-CPext in NR-U RACH; Rel-16 shared spectrum, not widely deployed.",
+        "checker": "c2"
+      },
+      {
+        "id": "question 96",
+        "feature_status": "mainstream",
+        "note": "IMS MMTel User Configuration (multi-identity/multi-device); pre-Rel-17 (around Rel-13/14). Deployed by some operators, so not a Rel-17 feature.",
+        "checker": "c2"
+      },
+      {
+        "id": "question 4856",
+        "feature_status": "new_or_niche",
+        "note": "TSCTSF PTP instance initialisation; Rel-17/18 time synchronization.",
+        "checker": "c2"
+      },
+      {
+        "id": "question 2009",
+        "feature_status": "new_or_niche",
+        "note": "RTT-based propagation delay compensation with DL PRS; Rel-17.",
+        "checker": "c2"
+      },
+      {
+        "id": "question 419",
+        "feature_status": "mainstream",
+        "note": "MMTel supplementary service interactions; since Rel-7/8 IMS MMTel.",
+        "checker": "c2"
+      },
+      {
+        "id": "question 41",
+        "feature_status": "mainstream",
+        "note": "NWDAF prediction validity period; Rel-16 NWDAF analytics framework.",
+        "checker": "c2"
+      }
+    ]
+  },
+  "workflowProgress": [
+    {
+      "type": "workflow_phase",
+      "index": 1,
+      "title": "Check"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 1,
+      "label": "check:c1",
+      "phaseIndex": 1,
+      "phaseTitle": "Check",
+      "agentId": "a23dd8321a5c940bb",
+      "model": "claude-opus-5-5",
+      "state": "done",
+      "startedAt": 1791719173826,
+      "queuedAt": 1791719173816,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Read /Users/qianqiu/Desktop/project/Telecom_OM_LLM_Evaluation/results/audit/relevance/rule2_check.jsonl. Each line is a telecom question that a labeler capped at relevance 1 using this rule: \"questions about features not yet widely deployed in commercial networks — ProSe/sidelink relay, V2X, UAS, MBS, NTN, IAB, SIPTO@LN, PS Data Off, edge application layer architecture, and features newly introduc…",
+      "promptFramed": true,
+      "lastProgressAt": 1791719223383,
+      "tokens": 55070,
+      "toolCalls": 2,
+      "durationMs": 49557,
+      "resultPreview": "{\"checks\":[{\"id\":\"question 8683\",\"feature_status\":\"new_or_niche\",\"note\":\"UE capability signalling for receiving network exposure info at registration; Rel-18 5G-Advanced addition, not widely deployed.\"},{\"id\":\"question 2154\",\"feature_status\":\"new_or_niche\",\"note\":\"5G enhanced positioning area (TS 22.261 positioning service requirements, Rel-16/17); not commercially deployed.\"},{\"id\":\"question 8136…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 2,
+      "label": "check:c2",
+      "phaseIndex": 1,
+      "phaseTitle": "Check",
+      "agentId": "aa1195696c40ab310",
+      "model": "claude-opus-5-5",
+      "state": "done",
+      "startedAt": 1791719173826,
+      "queuedAt": 1791719173816,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Read /Users/qianqiu/Desktop/project/Telecom_OM_LLM_Evaluation/results/audit/relevance/rule2_check.jsonl. Each line is a telecom question that a labeler capped at relevance 1 using this rule: \"questions about features not yet widely deployed in commercial networks — ProSe/sidelink relay, V2X, UAS, MBS, NTN, IAB, SIPTO@LN, PS Data Off, edge application layer architecture, and features newly introduc…",
+      "promptFramed": true,
+      "lastProgressAt": 1791719221384,
+      "tokens": 55064,
+      "toolCalls": 2,
+      "durationMs": 46699,
+      "resultPreview": "{\"checks\":[{\"id\":\"question 8683\",\"feature_status\":\"new_or_niche\",\"note\":\"UE capability for receiving network-exposure info signalled at registration; appears to be a Rel-18 addition (low confidence).\"},{\"id\":\"question 2154\",\"feature_status\":\"new_or_niche\",\"note\":\"5G enhanced positioning area; Rel-16/17 positioning service requirements, not widely deployed.\"},{\"id\":\"question 8136\",\"feature_status\":…"
+    }
+  ],
+  "totalTokens": 110134,
+  "totalToolCalls": 4
+}

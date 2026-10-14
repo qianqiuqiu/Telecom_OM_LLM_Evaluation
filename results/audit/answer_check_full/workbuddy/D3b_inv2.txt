@@ -1,0 +1,183 @@
+You are an independent reviewer verifying the answer key of a telecom multiple-choice benchmark (TeleQnA, questions about 3GPP / IEEE / ETSI / IETF standards). For EACH question below, decide whether the MARKED correct answer is actually correct. An earlier screening raised doubts about every item in this list, but that doubt may be unfounded. Do your own research from scratch: do not reuse, copy or look up any previous answers, task results or files. Judge each item on its own.
+
+Verdicts:
+- "correct": the marked option is right and clearly the best option.
+- "wrong": the marked option is incorrect; give the correct option number (1-based) in correct_option (null if none of the options is correct).
+- "ambiguous": more than one option is defensible, or the question is underspecified/flawed so the marked answer can't be called uniquely right.
+- "unverifiable": you cannot establish the answer with reasonable confidence.
+
+Prefer primary sources: if you can search the web, check the relevant 3GPP TS/TR, IEEE standard, ETSI document or RFC when your own knowledge is not certain. Put a short justification (1-2 sentences) in "evidence" and the document / URL you relied on in "source" (write "own knowledge" if you did not consult a source). Keep research brief (a few lookups per question at most) so you do not run out of context. Do not guess: if unsure, use "unverifiable".
+
+Output: ONLY a JSON array, no other text, with exactly one object per question below, in the same order, copying each "id" exactly as written (e.g. "question 1234"):
+[{"id": "question 1234", "verdict": "correct|wrong|ambiguous|unverifiable", "correct_option": <int or null>, "evidence": "...", "source": "..."}]
+correct_option: for "correct" give the marked option number; for "wrong" the right option number or null; for "ambiguous"/"unverifiable" null. correct_option must be an integer option number, never option text.
+
+There are 17 questions. Questions (options are numbered from 1):
+
+### id: question 8798
+Question: What is the purpose of the Inter-gNB-DU Conditional PSCell Change using MCG SRB without MN negotiation procedure? [3GPP Release 17]
+  1. To release the UE context in the target gNB-DU
+  2. To configure data bearers in the source gNB-DU
+  3. To stop the data transmission to the UE in the source gNB-DU
+  4. To send a MeasurementReport message from the UE
+  5. To establish a new RRC connection for the UE in the target gNB-DU
+MARKED answer: option 5
+
+
+### id: question 8808
+Question: What is the reference point between the PDG and a packet data network? [3GPP Release 17]
+  1. Gi reference point
+  2. GMLC - external LCS Client
+  3. Le reference point
+  4. Mm Reference Point
+  5. Wi reference point
+MARKED answer: option 5
+
+
+### id: question 8833
+Question: How are serving cells configured in terms of DRX groups? [3GPP Release 17]
+  1. One serving cell can belong to multiple DRX groups
+  2. Each serving cell is configured with its own DRX group
+  3. All serving cells belong to one DRX group
+  4. Two serving cells can share one DRX group
+  5. Each serving cell can belong to multiple DRX groups
+MARKED answer: option 3
+
+
+### id: question 9013
+Question: Which control mechanism allows the network to control the behavior of UEs in E-UTRAN in connected mode? [3GPP Release 18]
+  1. Access Class Barring
+  2. Service Specific Access Control
+  3. Extended Access Barring
+  4. Application Specific Congestion Control for Data Communication
+  5. Prevention of mobile-originating signalling and/or data traffic
+MARKED answer: option 5
+
+
+### id: question 9014
+Question: For the Analytics ID 'Network Performance', which Consumer NF may use it? [3GPP Release 16]
+  1. UDM
+  2. AMF
+  3. SMF
+  4. PCF
+MARKED answer: option 4
+
+
+### id: question 9050
+Question: Which interface is used by NWDAF to request subscription to data delivery? [3GPP Release 18]
+  1. Nnf interface
+  2. Nnwdaf interface
+  3. Ndccf interface
+  4. Nadrf interface
+  5. Nmfaf_3daDataManagement interface
+MARKED answer: option 1
+
+
+### id: question 9183
+Question: What is a Base Station Subsystem (BSS) responsible for?
+  1. Controlling the use and the integrity of the radio resources
+  2. Allocating, releasing, and managing specific radio resources
+  3. Terminating the Abis interface towards the 
+  4. Establishing means of connection between an MS and the GERAN
+  5. Controlling the transmission and reception in a set of cells
+MARKED answer: option 4
+
+
+### id: question 9237
+Question: In online charging with reservation, what happens if the resource usage execution fails? [3GPP Release 18]
+  1. The NE informs the OCS of the failure.
+  2. The OCS returns the reserved amount back to the subscriber account.
+  3. The OCS debits the reserved amount from the subscriber account.
+  4. The NE returns the failure to the OCS to initiate a refund for the original resource usage.
+MARKED answer: option 2
+
+
+### id: question 9277
+Question: What happens when the network cannot provide the required QoS for a data service? [3GPP Release 18]
+  1. The service will be provided with a reduced QoS
+  2. Both the originating and terminating application will be informed about the QoS configuration
+  3. The service delivery will be based on network conditions only
+  4. The requested service will not be provided
+  5. The service will be delivered over the PS CN domain
+MARKED answer: option 2
+
+
+### id: question 9359
+Question: What type of analytics can NWDAF generate? [3GPP Release 18]
+  1. Any type of analytics
+  2. Only specialized types of analytics
+  3. Subscriber-related analytics
+  4. Location information analytics
+  5. NF-related analytics
+MARKED answer: option 2
+
+
+### id: question 9516
+Question: What is the purpose of PLMN selection in the UE? [3GPP Release 17]
+  1. To identify the selected PLMN
+  2. To automatically connect to the strongest cell
+  3. To optimize PLMN search using stored information
+  4. To report available PLMNs to the NAS on request
+  5. To perform cell selection procedure for camp on
+MARKED answer: option 4
+
+
+### id: question 9664
+Question: What is the main guideline for 802.11a equipment in determining a busy channel? [IEEE 802.11]
+  1. Received signal strength thresholds
+  2. Packet Length field from the PLCP header
+  3. Physical parameters listed in Table 11-4
+  4. Extra radio bandwidth provided by the U-NII bands
+  5. Characteristics of the OFDM PHY
+MARKED answer: option 1
+
+
+### id: question 9728
+Question: What is the main purpose of the location registration function? [3GPP Release 18]
+  1. To allow fixed subscribers to call a UE irrespective of its location in the system area.
+  2. To allow UEs to access the system irrespective of their location.
+  3. To identify when a change in location area has taken place.
+  4. To provide continuity of service to UEs over the whole system area.
+  5. To initiate automatic location updating procedures.
+MARKED answer: option 4
+
+
+### id: question 9780
+Question: What is the behavior of a mobile station in state GMM-REGISTERED with substate NORMAL-SERVICE? [3GPP Release 18]
+  1. Not perform cell selection/reselection
+  2. Not send any user data
+  3. Not initiate normal routing area updating
+  4. Not respond to paging
+  5. Not transmit any signalling information
+MARKED answer: option 3
+
+
+### id: question 9831
+Question: What is the distribution system responsible for in an 802.11 network? [IEEE 802.11]
+  1. Tracking the physical location of stations
+  2. Providing mobility by connecting access points
+  3. Delivering frames to the right access point
+  4. Controlling the relaying of frames between network media
+MARKED answer: option 2
+
+
+### id: question 9834
+Question: Which identity is used for UE identification temporarily used for contention resolution purposes during the random access procedure? [3GPP Release 17]
+  1. CI-RNTI
+  2. RA-RNTI
+  3. Temporary C-RNTI
+  4. Random value for contention resolution
+  5. I-RNTI
+MARKED answer: option 4
+
+
+### id: question 9953
+Question: Which of the following is NOT a status assigned to a port in a network without loops? [IEEE 802.3]
+  1. ROOT
+  2. DESIGNATED
+  3. ALTERNATE
+  4. FORWARDING
+MARKED answer: option 4
+
+Reminder: return a JSON array with exactly 17 objects, one per id above, copying ids exactly as written (e.g. "question 8798").
+(Reviewer id: inv2.)

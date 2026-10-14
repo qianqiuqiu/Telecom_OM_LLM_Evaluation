@@ -1,0 +1,203 @@
+You are an independent reviewer verifying the answer key of a telecom multiple-choice benchmark (TeleQnA, questions about 3GPP / IEEE / ETSI / IETF standards). For EACH question below, decide whether the MARKED correct answer is actually correct. An earlier screening raised doubts about every item in this list, but that doubt may be unfounded. Do your own research from scratch: do not reuse, copy or look up any previous answers, task results or files. Judge each item on its own.
+
+Verdicts:
+- "correct": the marked option is right and clearly the best option.
+- "wrong": the marked option is incorrect; give the correct option number (1-based) in correct_option (null if none of the options is correct).
+- "ambiguous": more than one option is defensible, or the question is underspecified/flawed so the marked answer can't be called uniquely right.
+- "unverifiable": you cannot establish the answer with reasonable confidence.
+
+Prefer primary sources: if you can search the web, check the relevant 3GPP TS/TR, IEEE standard, ETSI document or RFC when your own knowledge is not certain. Put a short justification (1-2 sentences) in "evidence" and the document / URL you relied on in "source" (write "own knowledge" if you did not consult a source). Keep research brief (a few lookups per question at most) so you do not run out of context. Do not guess: if unsure, use "unverifiable".
+
+Output: ONLY a JSON array, no other text, with exactly one object per question below, in the same order, copying each "id" exactly as written (e.g. "question 1234"):
+[{"id": "question 1234", "verdict": "correct|wrong|ambiguous|unverifiable", "correct_option": <int or null>, "evidence": "...", "source": "..."}]
+correct_option: for "correct" give the marked option number; for "wrong" the right option number or null; for "ambiguous"/"unverifiable" null. correct_option must be an integer option number, never option text.
+
+There are 19 questions. Questions (options are numbered from 1):
+
+### id: question 1721
+Question: What is the function of a Base Transceiver Station (BTS)? [3GPP Release 17]
+  1. Control of one or more BTS
+  2. Communicating with Mobile Stations in a certain area
+  3. Serve one cell
+  4. Serve one or more UTRAN cells
+  5. Provide the E-UTRA user plane and control plane protocol terminations towards the UE
+MARKED answer: option 3
+
+
+### id: question 1724
+Question: How is service continuity supported for specific slice(s)? [3GPP Release 17]
+  1. Through Multi-Carrier Resource Sharing or Resource Repartitioning
+  2. By monitoring and controlling the number of registered UEs per network slice
+  3. By enforcing the Slice MBR and the usage of Target NSSAI
+  4. By providing Target NSSAI and RFSP to RAN to steer the UE to another cell
+  5. By supporting slice specific RACH configuration
+MARKED answer: option 1
+
+
+### id: question 1770
+Question: When does the NG-RAN node initiate Unified Access Control? [3GPP Release 18]
+  1. When AMFs request load restriction
+  2. When OAM requests access control
+  3. When NG-RAN receives overload start messages
+  4. When UE indicates extended access barring
+  5. When NG-RAN is under lawful interception
+MARKED answer: option 3
+
+
+### id: question 1975
+Question: Which interfaces connect the eNodeBs to the EPC? [3GPP Release 17]
+  1. S1-MME and S1-U
+  2. Iu-CS and Iu-PS
+  3. A and Gb
+  4. S1 interface
+  5. None of the above
+MARKED answer: option 1
+
+
+### id: question 2007
+Question: The Ga reference point allows the sending of __________ from the CDF to the CGF. [3GPP Release 18]
+  1. Acknowledgements
+  2. CDRs
+  3. Charging events
+  4. Changeover mechanisms
+  5. Reliability mechanisms
+MARKED answer: option 2
+
+
+### id: question 2050
+Question: What is the definition of ES activation?
+  1. A procedure to power up a cell or network function.
+  2. A procedure to power down a cell or network function for energy-saving purposes.
+  3. A procedure executed by an ES probing capable cell triggered by Cell Activation procedure or ES deactivation procedure.
+  4. A procedure that changes a cell's configuration to remain powered on for compensating energy-saving activation on other cells.
+MARKED answer: option 2
+
+
+### id: question 2131
+Question: What is the role of the network slice catalogue (NSC)?
+  1. To identify all existing use cases
+  2. To design and upload the NST of every use case
+  3. To provision per-use-case NSIs
+  4. To quantify the performance, functional, and operational attributes of every use case
+  5. None of the above
+MARKED answer: option 2
+
+
+### id: question 2278
+Question: What type of bearer is used for IMS Signalling and IMS voice in the NSA architecture? [3GPP Release 15]
+  1. Master Cell Group bearer
+  2. Secondary Cell Group bearer
+  3. Split bearer
+  4. Primary Cell Group bearer
+  5. None of the above
+MARKED answer: option 2
+
+
+### id: question 2355
+Question: How is the SCG of the UE suspended in RRC_INACTIVE state? [3GPP Release 17]
+  1. The CU of SN sends the UE CONTEXT RELEASE COMMAND
+  2. The CU of SN sends the UE CONTEXT MODIFICATION RESPONSE
+  3. The DU of SN sends the UE CONTEXT MODIFICATION RESPONSE
+  4. The CU of SN sends the UE CONTEXT MODIFICATION REQUEST
+  5. The DU of SN sends the UE CONTEXT MODIFICATION REQUEST
+MARKED answer: option 5
+
+
+### id: question 2380
+Question: What is the purpose of N4 session management procedures? [3GPP Release 18]
+  1. To control the functionality of the SMF
+  2. To control the functionality of the UPF
+  3. To establish N4 sessions between the SMF and UPF
+  4. To report events from the UPF to the SMF
+  5. To release N4 session contexts in the UPF
+MARKED answer: option 2
+
+
+### id: question 2396
+Question: Which entities are dedicated for interworking between 5GS and EPC? [3GPP Release 18]
+  1. PGW and SMF/UPF
+  2. UPF and PGW-U
+  3. PGW-C and SMF
+  4. SMF and UPF
+MARKED answer: option 2
+
+
+### id: question 2408
+Question: What is the function of the Home Subscriber Server (HSS)? [3GPP Release 17]
+  1. To provide support to the call control servers.
+  2. To hold user identification and numbering information.
+  3. To generate user security information.
+  4. To support the authentication procedures.
+  5. To provide access to service profile data.
+MARKED answer: option 1
+
+
+### id: question 2488
+Question: What is the purpose of contention window adjustment procedures for UL transmissions? [3GPP Release 17]
+  1. To increase the contention window size for a specific priority class
+  2. To increase the contention window size for all priority classes
+  3. To decrease the contention window size for all priority classes
+  4. To adjust the contention window size for a specific priority class
+  5. To adjust the contention window size for all priority classes
+MARKED answer: option 5
+
+
+### id: question 2570
+Question: Which pairs of wires are used in 10/100Base-T? [IEEE 802.3]
+  1. Pair 1 and pair 2
+  2. Pair 2 and pair 3
+  3. Pair 3 and pair 4
+  4. Pair 4 and pair 1
+MARKED answer: option 2
+
+
+### id: question 2608
+Question: In the NWDAF providing PDU Session traffic analytics, who requests or subscribes to the NWDAF? [3GPP Release 18]
+  1. ULF
+  2. SMF
+  3. PCF
+  4. UPF
+MARKED answer: option 3
+
+
+### id: question 2640
+Question: When does the gNB request the UE UTRA-FDD capabilities? [3GPP Release 18]
+  1. During NAS signalling
+  2. Before handover to UTRAN
+  3. When responding to the gNB
+  4. When the capabilities are the same
+  5. During NR capabilities request
+MARKED answer: option 2
+
+
+### id: question 2673
+Question: What is the basis for full duplex Ethernet? [IEEE 802.3]
+  1. UTP cable
+  2. Twisted pair
+  3. MAU
+  4. Patch cable
+MARKED answer: option 3
+
+
+### id: question 2771
+Question: What mechanisms provide priority to QoS Flows established for sessions during periods of extreme overload? [3GPP Release 18]
+  1. (R)AN
+  2. SMF
+  3. AMF
+  4. UPF
+  5. PCF
+MARKED answer: option 2
+
+
+### id: question 3060
+Question: What is the purpose of the MIB in SNMP? [TCP/IP]
+  1. To define the structure for the storage of network information
+  2. To specify the format for communication between the manager and a network participant
+  3. To maintain and supply information about device status
+  4. To describe the exact information that every type of agent has to maintain
+  5. To define a database containing all variables for network management
+MARKED answer: option 5
+
+
+Reminder: return a JSON array with exactly 19 objects, one per id above, copying ids exactly as written (e.g. "question 1721").
+(Reviewer id: inv2.)

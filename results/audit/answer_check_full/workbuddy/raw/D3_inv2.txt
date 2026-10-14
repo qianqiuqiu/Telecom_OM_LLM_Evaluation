@@ -1,0 +1,247 @@
+[
+{
+"id": "question 7471",
+"verdict": "wrong",
+"correct_option": 2,
+"evidence": "Per 3GPP TS 36.331, the eNB uses the RRC Connection Release message with re-directedCarrierInfo IE to redirect a UE to another E-UTRAN frequency. UE CONTEXT RELEASE REQUEST (option 5) is sent eNB->MME for S1 release, not for inter-frequency redirection.",
+"source": "3GPP TS 36.331 (RRC Connection Release with re-directedCarrierInfo)"
+},
+{
+"id": "question 7481",
+"verdict": "wrong",
+"correct_option": 3,
+"evidence": "In TCP/IP, the server waits passively (binds and listens on a port) while the client actively initiates. Option 2 reverses these roles. Option 3 is correct: the server software does notify the application when a connection request arrives (via accept()).",
+"source": "IBM z/OS TCP/IP docs; standard client-server model"
+},
+{
+"id": "question 7515",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "Per 3GPP TS 23.002 V12.6.0 section 4.1.1.2, the VLR contains subscriber data needed for CS call handling, including the MSRN (Mobile Station Roaming Number) which is used to route calls to the actual current location of the MS. Other options describe different entities: option 1 (packet data) = SGSN; option 2 (E-UTRAN termination) = MME; option 3 (switching/signaling) = MSC; option 5 (IMSI storage) is partial.",
+"source": "3GPP TS 23.002 section 4.1.1.2"
+},
+{
+"id": "question 7614",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "Per 3GPP TS 22.011 section 3.2.2.5, periodic network selection attempts are based on PLMN priority - the UE looks for a higher priority PLMN of the same country as the currently received PLMN. 'Priority and availability of PLMNs' matches the criterion.",
+"source": "3GPP TS 22.011 section 3.2.2.5"
+},
+{
+"id": "question 7998",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "Per 3GPP TS 38.321 Table 4.5.3-1, the CCCH (Common Control Channel) is the bidirectional common control channel used for RRC messages between UE and network when no dedicated UE identity exists. BCCH (option 1) and PCCH (option 2) are downlink only.",
+"source": "3GPP TS 38.321 section 4.5.3"
+},
+{
+"id": "question 8028",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "Per 3GPP TS 23.501 section 5.11.1 NOTE 1: 'Subject to policies in the NG-RAN, configuration of Dual Connectivity for a Data Radio Bearer can also be based on the Network Slice that the PDU Session belongs to.'",
+"source": "3GPP TS 23.501 section 5.11.1"
+},
+{
+"id": "question 8092",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "Per 3GPP TS 25.430 section 5.2.2: 'Logical O&M is the signalling associated with the control of logical resources (channels, cells,...) owned by the RNC but physically implemented in the Node B. All messages needed to support this information exchange are classified as Logical O&M forming an integral part of NBAP.'",
+"source": "3GPP TS 25.430 section 5.2.2"
+},
+{
+"id": "question 8120",
+"verdict": "wrong",
+"correct_option": 1,
+"evidence": "Per RFC 6356, MPTCP's main mechanism is 'coupled congestion control' to achieve bottleneck fairness and resource pooling by linking subflow increase functions. Per-packet load balancing causes reordering issues and is NOT what MPTCP uses.",
+"source": "RFC 6356 'Coupled Congestion Control for Multipath Transport Protocols'"
+},
+{
+"id": "question 8265",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "The Transport Layer (OSI layer 4) provides reliable transmission (TCP with acknowledgments/retransmission) and end-to-end logical point-to-point connections via TCP sockets.",
+"source": "OSI model - Transport Layer (TCP) functions"
+},
+{
+"id": "question 8361",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "Per 3GPP TS 22.173 section 4.2 'Default media handling capabilities': 'The IMS Multimedia Telephony service shall support the following handling of media - Adding, removing and modifying individual media to/from a IMS Multimedia Telephony communication.'",
+"source": "3GPP TS 22.173 section 4.2"
+},
+{
+"id": "question 8364",
+"verdict": "wrong",
+"correct_option": null,
+"evidence": "Per 3GPP TS 38.401 section 7.6, 'The NG-RAN supports the positioning functionality' as its own dedicated function (Positioning). The listed options (RACH Optimization, PCI Optimization, PTP/PTM switching, CCO, NR MBS) do not include positioning. CCO (option 4) is for coverage/capacity optimization, not positioning.",
+"source": "3GPP TS 38.401 section 7.6"
+},
+{
+"id": "question 8411",
+"verdict": "wrong",
+"correct_option": null,
+"evidence": "Per 3GPP TS 22.011 section 4.3.3, 'Access Control for CSFB' is a distinct mechanism specifically for CSFB, but it is not listed in the options. While its criteria are equivalent to ACB (option 1), ACB applies generally to mobile-originated access, not specifically to CSFB. None of the options specifically applies to CSFB.",
+"source": "3GPP TS 22.011 section 4.3.3"
+},
+{
+"id": "question 8441",
+"verdict": "wrong",
+"correct_option": 2,
+"evidence": "Open-system authentication is a NULL algorithm - it provides no authentication, only identification via MAC address. Shared-key authentication proves the requesting station's knowledge of the shared secret (only the requester's identity is verified). 'Only proves the identity of one station' matches shared-key.",
+"source": "IEEE 802.11 wireless authentication (Microsoft Learn); MIT CSAIL PARANOIA paper"
+},
+{
+"id": "question 8500",
+"verdict": "wrong",
+"correct_option": 2,
+"evidence": "Per RFC 2131 Table 2: 'DHCPDISCOVER - Client broadcast to locate available servers.' Its main purpose is to request an IP address from available DHCP servers. Option 2 captures this standard description.",
+"source": "RFC 2131 section 3.1 (DHCP messages table)"
+},
+{
+"id": "question 8636",
+"verdict": "wrong",
+"correct_option": 1,
+"evidence": "Per 3GPP TS 36.314 section 4.1.1: 'The objective of the PRB usage measurements is to measure usage of time and frequency resources. A use case is cell load balancing.' L2 measurements support load balancing, not MIMO specifically. Option 1 is the closest purpose.",
+"source": "3GPP TS 36.314 section 4.1.1"
+},
+{
+"id": "question 8745",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "RSTP fast ring detection is a recognized RSTP extension used for faster recovery times in automation networks. Per Phoenix Contact FL SWITCH manual, it provides fast switch-over (100-500 ms) to a redundant path in ring configurations.",
+"source": "Phoenix Contact FL SWITCH documentation on RSTP Fast Ring Detection"
+},
+{
+"id": "question 8770",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "Per 3GPP TS 23.502 and Cisco AMF documentation: After purge timer expiry, AMF sends Nudm_SDM_Unsubscribe to UDM to unsubscribe from changes to subscription data, then sends Nudm_UECM_Deregistration. The unsubscribe step matches option 2.",
+"source": "3GPP TS 23.502; Cisco AMF Network-Initiated Deregistration Request docs"
+},
+{
+"id": "question 8782",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "Per IEEE P2061 / Frugal 5G architecture paper: 'The Flow Controller is an RACF that directly interfaces with the RSCFs.' The RAT Agnostic Control Functions (RACFs), including Flow Controller, interface with the RAT Specific Control Functions (RSCFs).",
+"source": "IEEE P2061 Frugal 5G Architecture paper (arXiv:1902.01367)"
+},
+{
+"id": "question 8798",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "TS 38.401 §8.2.2.3 defines the Inter-gNB-DU Conditional PSCell Change using MCG SRB without MN negotiation procedure. Step 5 states: 'The gNB-CU sends an UE CONTEXT SETUP REQUEST message to the candidate gNB-DU to create an UE context and setup one or more data bearers.' Option 5 'establish a new RRC connection for the UE in the target gNB-DU' is the closest match to setting up the UE context/bearers in the target gNB-DU. Although technically RRC resides at the MCG/MN level, the procedure does establish the UE's connection (UE context) at the target gNB-DU.",
+"source": "TS 38.401 v17.10.0 §8.2.2.3"
+},
+{
+"id": "question 8808",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "TS 23.002 §7.6 explicitly states: '7.6 Reference point PDG – packet data networks (Wi reference point) This is the reference point between the PDG and a packet data network.' Option 5 'Wi reference point' matches exactly.",
+"source": "TS 23.002 §7.6"
+},
+{
+"id": "question 8833",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "TS 38.321 §5.7 states: 'When RRC does not configure a secondary DRX group, there is only one DRX group and all Serving Cells belong to that one DRX group.' This is the default configuration. Options 1 and 5 (cell belongs to multiple groups) are false — each Serving Cell is uniquely assigned. Option 2 (each cell has own group) is false — cells can share a group.",
+"source": "TS 38.321 §5.7"
+},
+{
+"id": "question 9013",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "TS 22.011 §4.6 is titled exactly 'Prevention of mobile-originating signalling and/or data traffic' and states: 'The network shall be able to control the behavior of UEs in E-UTRAN in connected mode to prevent mobile originating signalling and/or data traffic, while the access barring mechanisms specified under Clause 4.3 are being applied to UEs in idle mode.' This matches option 5 verbatim. SSAC (§4.3.2) applies in both idle and connected mode but §4.6 is the specific mechanism described for connected-mode UE control.",
+"source": "TS 22.011 v18 §4.6"
+},
+{
+"id": "question 9014",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "TS 29.520 §4.3.1.3.2 (NF Service Consumers — PCF) explicitly states: 'The Policy Control Function (PCF): ... supports taking analytics information for network performance from the NWDAF'. PCF is listed as a known consumer of Nnwdaf_AnalyticsInfo for the Network Performance analytics ID.",
+"source": "TS 29.520 §4.3.1.3.2"
+},
+{
+"id": "question 9050",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "TS 23.288 §4.2.0 explicitly defines: 'The Nnf interface is defined for the NWDAF to request subscription to data delivery for a particular context, to cancel subscription to data delivery and to request a specific report of data for a particular context.' This is exactly option 1 'Nnf interface'.",
+"source": "TS 23.288 §4.2.0"
+},
+{
+"id": "question 9183",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "BSS (Base Station Subsystem) consists of BSC + BTS in GSM/GPRS. Per TS 43.050 and 3GPP BSS architecture description, BSS is responsible for the radio access network connecting MS to GERAN — i.e., 'establishing means of connection between an MS and the GERAN' (option 4). The other options describe sub-functions: option 1 (BSC radio resource integrity), option 2 (BSC radio resource allocation), option 3 (BSC terminates Abis toward BTS), option 5 (BTS transmission/reception control).",
+"source": "TS 43.050; 3GPP BSS architecture"
+},
+{
+"id": "question 9237",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "TS 32.296 §6.2.2.2.2 ('TariffRequest scenario with service denial or unsuccessful delivery') describes the reservation failure flow: 'Step 12: The SBCF performs final account control (i.e. releases account balance reservations)'. Step 9: SBCF sends TariffRequest with release instruction. The reserved (unused) units are returned back to the subscriber account, matching option 2 'The OCS returns the reserved amount back to the subscriber account'.",
+"source": "TS 32.296 §6.2.2.2.2"
+},
+{
+"id": "question 9277",
+"verdict": "unverifiable",
+"correct_option": null,
+"evidence": "I could not locate a definitive 3GPP standard text that uniquely matches one of the options. Behavior when the network cannot provide required QoS for a data service depends on the service type (bearer-level PDP/PDU session activation typically fails per TS 24.008/24.501; IMS sessions can be informed per TS 23.228). Option 4 ('service will not be provided') fits the bearer case; option 2 ('both applications informed') fits IMS. Without a single definitive source for the generic 'data service' phrasing, no verdict can be given confidently.",
+"source": "own knowledge (TS 23.107, TS 23.228, TS 24.008, TS 24.501 reviewed)"
+},
+{
+"id": "question 9359",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "TS 23.288 §4.1 states: 'An Analytics ID information element is used to identify the type of supported analytics that NWDAF can generate.' And §5.1: 'Different NWDAF instances may be present in the 5GC, with possible specializations per type of analytics.' NWDAF generates only the specialized/3GPP-defined analytics types, not arbitrary ones. Option 2 ('Only specialized types of analytics') is correct.",
+"source": "TS 23.288 §4.1, §5.1"
+},
+{
+"id": "question 9516",
+"verdict": "wrong",
+"correct_option": 1,
+"evidence": "Per TS 23.122 §3.1 and §4.4.3.1, the purpose of PLMN selection is to enable the UE to select a PLMN to register on. Option 1 'To identify the selected PLMN' correctly describes the selection purpose. Option 4 'To report available PLMNs to NAS on request' describes reporting (a NAS procedure) — not PLMN selection itself. Option 2 is cell selection; option 5 is cell selection for camping.",
+"source": "TS 23.122 §3.1, §4.4.3.1"
+},
+{
+"id": "question 9664",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "IEEE 802.11-2016 §17.3.10.5 (CCA for 802.11a, OFDM PHY): 'The start of a valid OFDM transmission at a receive level equal to or greater than the minimum 6-Mb/s sensitivity (-82 dBm) shall cause CCA to indicate busy with a probability > 90% within 4 µs. If the preamble portion was missed, the receiver shall hold the carrier sense (CS) signal busy for any signal 20 dB above the minimum 6-Mb/s sensitivity.' CCA is determined by RSS thresholds — option 1 is correct.",
+"source": "IEEE 802.11-2016 §17.3.10.5"
+},
+{
+"id": "question 9728",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "TS 23.012 §2.1: 'Location management means that the PLMNs keep track of where the MSs are located in the system area.' The purpose is to track UE location across the system area so that service delivery can be maintained regardless of UE location — i.e., 'To provide continuity of service to UEs over the whole system area' (option 4).",
+"source": "TS 23.012 §2.1"
+},
+{
+"id": "question 9780",
+"verdict": "wrong",
+"correct_option": null,
+"evidence": "Per TS 24.008 §4.7.5.1, in state GMM-REGISTERED.NORMAL-SERVICE the MS performs normal operations including cell reselection, sending user data, responding to paging, transmitting signalling, AND initiating normal RAU when triggered (e.g., 'when the MS enters GMM-REGISTERED.NORMAL-SERVICE and the TIN indicates GUTI'). All five 'Not…' options describe behaviors the MS does exhibit in NORMAL-SERVICE — therefore none are correct. The question is malformed. The marked answer (option 3 'Not initiate normal routing area updating') is wrong because the MS does initiate RAU in NORMAL-SERVICE.",
+"source": "TS 24.008 §4.7.5.1"
+},
+{
+"id": "question 9831",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "Per IEEE 802.11 architecture: the Distribution System (DS) is the architectural component that interconnects BSSs (Basic Service Sets) to form an Extended Service Set (ESS). Its purpose is to enable station mobility between APs/BSSs. Option 2 'Providing mobility by connecting access points' is the standard description of DS function. Option 3 (delivering frames to right AP) is a sub-function; options 1 and 4 are not DS functions.",
+"source": "IEEE 802.11-2016 §4 (Architecture)"
+},
+{
+"id": "question 9834",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "TS 38.321 §5.1.5 (Contention Resolution) for initial access: 'if the MAC PDU contains a UE Contention Resolution Identity MAC CE; and if the UE Contention Resolution Identity in the MAC CE matches the CCCH SDU transmitted in Msg3'. The UE Contention Resolution Identity is a 48-bit random value selected by the UE in Msg3 and echoed by the gNB in Msg4. Option 4 'Random value for contention resolution' matches. Temporary C-RNTI (option 3) is used for addressing but not the identity used in contention resolution matching.",
+"source": "TS 38.321 §5.1.5"
+},
+{
+"id": "question 9953",
+"verdict": "correct",
+"correct_option": null,
+"evidence": "Per IEEE 802.1D-2004 (and IEEE 802.1Q), spanning-tree port attributes are categorized into Roles (Root, Designated, Alternate, Backup, Master) and States (Disabled, Blocking, Listening, Learning, Forwarding in STP; Discarding, Learning, Forwarding in RSTP). If 'status' is interpreted as role/status (the typical STP terminology), then ROOT, DESIGNATED, ALTERNATE are all valid roles, while FORWARDING is a state — not a role/status. Thus FORWARDING is NOT a 'status' (in the sense of a port role). Option 4 is correct.",
+"source": "IEEE 802.1D-2004 §17"
+}
+]

@@ -1,0 +1,800 @@
+id,labeler,reason
+question 7383,default,"IMS MMTel service capabilities are architectural/service knowledge, not daily troubleshooting."
+question 5585,default,Definition of cipher key is a generic terminology item rarely used in operations.
+question 2323,default,"Physical-layer modulation definition in 802.11, standard detail."
+question 6945,default,Specific 802.11 frame field value encoding.
+question 8524,default,"802.15.4 DSME beacon timing detail, standard-writing level."
+question 3965,default,PS Data Off behaviour across access types is a functional/procedural concept for understanding network behaviour.
+question 5760,default,Purpose of a specific PUCCH LRR mechanism is protocol design detail (beam failure recovery for SCell).
+question 1148,default,"Specific MAC CE content for IAB timing, field-level detail."
+question 5076,default,"802.11 sounding/beamforming procedure step, physical-layer detail."
+question 7506,default,Purpose of BWP bandwidth adaptation is protocol-level design purpose; lower level chosen when uncertain.
+question 7463,default,"Requirement numeric value for MBS inter-site distance, spec detail."
+question 8598,default,"V2X requirement numeric value, standard-writing detail."
+question 7213,default,Basic Wi-Fi mobility (fast BSS transition) mechanism concept.
+question 624,default,"FCC regulatory DFS non-occupancy period, regulation."
+question 8694,default,"Satellite access node RF conformance reference points, standard detail."
+question 2891,default,Purpose of a specific prohibit timer is protocol design detail rarely used in operations.
+question 7097,default,"3GPP TSG organizational responsibility, unrelated to network operation."
+question 873,default,Basic IP addressing mechanism (TCP/IP basics).
+question 185,default,Network sharing CN operator selection is architecture/procedure knowledge.
+question 2660,default,"Generic definitional concept of 'User', no operational relevance."
+question 8680,default,PDU session release resources is session management procedure knowledge.
+question 8774,default,Management service interaction paradigm is management interface architecture concept.
+question 6939,default,"Signalling step in UE initial access across CU-CP/CU-UP, procedure knowledge."
+question 9986,default,OCS functional composition is network function architecture knowledge.
+question 6705,default,"Step of 802.11 shared-key authentication flow, procedure-level knowledge."
+question 1224,default,Abbreviation expansion (UDM); boundary rule fixes abbreviation questions at 1.
+question 3062,default,Physical-layer identity filtering detail in NR sidelink is standard-writing detail rarely used in operations.
+question 7289,default,"Biological effect threshold from IEEE C95.1 RF exposure standard, unrelated to network operations."
+question 1522,default,Basic Wi-Fi mechanism (MAC address filtering) needed to understand WLAN behavior.
+question 2414,default,"Stage-1 roaming prerequisite (commercial roaming agreement) is mostly business/requirement level, rarely used in daily O&M."
+question 5525,default,Basic 802.11 active scanning mechanism (broadcast Probe Request) for understanding WLAN behavior.
+question 5926,default,CSI report timing condition (Z'ref) is a physical-layer procedure detail.
+question 8783,default,Specific energy-detection threshold value for CSAT is a physical-layer parameter detail.
+question 1825,default,Standard terminology definition from 802.11-2020; definitional detail rather than an operational mechanism (lower level chosen when unsure).
+question 551,default,"Glossary definition of radio interface from UTRAN vocabulary, a standards-terminology detail."
+question 1644,default,"Design motivation of an LTE PDSCH repetition feature, a feature-design detail."
+question 8082,default,Study-item power-saving gain numbers for BWP switching are standard evaluation details.
+question 8132,default,"Tenant MANO for network slicing is a research-level concept in NFV management, rarely used in daily operations."
+question 2716,default,MBS broadcast MTCH configuration parameters are RRC IE-level specification details.
+question 2160,default,"Purpose of Slice-MBR is QoS mechanism knowledge at protocol design level, not a routinely tuned parameter."
+question 7090,default,"eMBB requirement categories are service requirement/design background, rarely used in O&M."
+question 7370,default,Maximum number of MR-DC combinations for IDC is an IE value-range detail.
+question 9025,default,LBT channel access behavior in shared spectrum is mechanism knowledge needed to understand cell behavior.
+question 3937,default,"Asks which TS specifies V2X UE policies, a spec-document detail."
+question 4821,default,Purpose of an edge application-layer architecture requirement is feature design motivation.
+question 5108,default,"What AKMA is reflects a newer security feature concept; uncertain between 1 and 2, so lower level taken."
+question 9167,default,Factors affecting location service accuracy help understand LCS/positioning behavior in the network.
+question 4099,default,Quantum-resistant algorithm computation selection is a pure academic concept unrelated to network O&M.
+question 8775,default,Shared E-UTRAN (RAN sharing) is an architecture concept relevant to understanding multi-operator network setup.
+question 8641,default,Purpose of exposing AI/ML session monitoring info is new-feature design motivation.
+question 5725,default,Cell barring behavior in selection/reselection is a common access/coverage troubleshooting item.
+question 9738,default,Physical-layer positioning study detail for RedCap in a specific scenario; rarely used in O&M.
+question 7171,default,5G usage category classification from requirements spec; standards-level concept.
+question 6760,default,NWDAF dispersion analytics concept; understanding analytics function rather than daily tuning.
+question 5787,default,"Abbreviation expansion question, capped at 1 per boundary rule."
+question 5788,default,Dual connectivity traffic steering architecture knowledge needed to understand network behavior.
+question 5268,default,"Legacy 10Base2 cabling parameter, rarely relevant to mobile network O&M."
+question 5592,default,Specific ADRF service operation purpose; standards detail of a new feature.
+question 4808,default,Basic Ethernet switching mechanism (collision domains).
+question 2982,default,"RF exposure/thermal pain safety factor, unrelated to network O&M."
+question 8868,default,"Enterprise IP-PBX supplementary feature detail, rarely used in mobile network O&M."
+question 9623,default,Design motivation of a Release 14 PRACH enhancement feature.
+question 3693,default,Requirements-spec reference for handover interruption time; standards writing detail.
+question 89,default,Historical technology introduced in 3G; general background knowledge.
+question 1770,default,UAC triggering on overload start relates directly to overload/congestion control handling.
+question 8293,default,High-level mIoT service requirements from requirements spec.
+question 5121,default,Pure information-theory academic concept.
+question 9935,default,Physical-layer numerology parameter mapping.
+question 2865,default,Detailed 802.11 EDCA internal collision rule; spec-level detail.
+question 1199,default,Design purpose of an LTE-U discovery signal; feature-design detail.
+question 7310,default,"Channel-model scenario parameter from simulation TR, not used in O&M."
+question 7767,default,Specific 802.11 report field meaning; field-encoding detail.
+question 9129,default,PLMN selection/registration procedure behavior; procedural knowledge rather than failure-cause troubleshooting.
+question 546,default,Definition of AI/ML inference function term; terminology detail.
+question 7764,default,Basic IPv6 addressing mechanism.
+question 5485,default,"Tests the purpose/step of the N4 session establishment procedure between SMF and UPF, a core signaling flow concept."
+question 8036,default,Building penetration loss model composition is a channel-modeling/physical-layer detail rarely used in operations.
+question 832,default,Relay UE selection criteria for ProSe is a feature design detail rarely used in daily O&M.
+question 5743,default,"SAR unit concerns RF human exposure, unrelated to network operations."
+question 6597,default,"Which domain MPS operates in is a service/standard detail rarely needed in operations; borderline 1-2, take lower."
+question 5521,default,"Purpose of the O-RAN Alliance is an industry/organizational fact, not operations knowledge."
+question 1682,default,GCS/LCS antenna pattern relation is a physical-layer modeling formula detail.
+question 6367,default,"Basic 802.15.4 MAC data transmission/ACK mechanism, a fundamental link-layer mechanism."
+question 282,default,Specific UE power saving scheduling scheme design in Rel-16 is a standard feature detail rarely tuned in operations.
+question 5214,default,Which PHY was added by 802.11b is a standard history/physical-layer detail.
+question 9291,default,"Dosimetry definition concerns RF exposure, unrelated to network operations."
+question 9776,default,Penetration loss model applicability to RMa is a channel-model parameter detail.
+question 284,default,Acronym expansion question; rule assigns 1.
+question 5150,default,"Network lifecycle phase for vendor energy-efficiency comparison is procurement-oriented, rarely used in daily operations."
+question 2445,default,Definition of a legacy Localised Service Area is a terminology detail rarely used in operations.
+question 4543,default,DHCP server function (IP address allocation) is basic IP networking mechanism.
+question 2368,default,Definition of an 802.11 PTP TSPEC term is a standard definition detail.
+question 9999,default,Number of NR PCIs is a physical-layer parameter value; PCI planning relevance noted but take lower level.
+question 2820,default,O-DU functional split and responsibilities are network element architecture knowledge.
+question 454,default,Privacy requirement for 5G LAN-type service is a stage-1 requirement detail rarely used in operations.
+question 8456,default,"RAN3 working group work prioritization is a standardization process fact, unrelated to operations."
+question 5827,default,Design motivation of N3/N9 redundant transmission for URLLC is a feature design purpose.
+question 837,default,Cost advantage of NFV/SDN resource sharing is a business/general concept.
+question 3586,default,Which spec numbers define USIM storage for Disaster Roaming is a standard document detail.
+question 8737,default,5GMM-CONNECTED mode definition is core mobility management state concept needed to read NAS signaling.
+question 456,default,Asks which spec number defines edge application architecture; standards-document trivia rarely used in operations.
+question 2614,default,F1AP UE context setup message between CU and DU is a signaling-flow step needed to read traces.
+question 3569,default,Settlement of charges between parties is a commercial/business matter unrelated to network operations.
+question 1856,default,"Basic WLAN concept definition of a neighbor STA, general Wi-Fi mechanism knowledge."
+question 6036,default,Detailed IAB soft-symbol availability rule is a physical-layer specification detail.
+question 5624,default,Layer 2 buffer size formula for NR sidelink is a standards/UE capability formula detail.
+question 8828,default,"Purpose of SSH is basic TCP/IP application knowledge; under the boundary rule for uncertain cases, the lower level is chosen."
+question 1736,default,"RF burn protective limits relate to human RF exposure safety, not network operations."
+question 9757,default,Source coding objective is a generic academic information-theory concept.
+question 6663,default,"Asks the design motivation of a specific LTE feature (semi-static CFI), a standards-level detail."
+question 4365,default,"Asks about the purpose of a Release work item on EVS conformance testing, which is standards-writing detail."
+question 4918,default,Which NF (UDM) determines the UP security policy reflects network function responsibilities.
+question 9703,default,Specific input parameter of a DCCF service operation is an information-element-level detail.
+question 1724,default,"Slice service continuity mechanisms are architecture/feature knowledge for understanding network behavior; under the boundary rule, the lower level is chosen."
+question 1048,default,802.11 DMG polling period timing conditions are detailed standard procedure specifics.
+question 8336,default,"eDRX effect on RedCap battery life is understanding a mechanism's purpose at the design level, not routine parameter tuning; the lower level is chosen."
+question 6509,default,Route aggregation is a basic IP routing mechanism.
+question 8272,default,"Asks the goal of a Release 16 feature (ETSUN), which is feature design motivation."
+question 6579,default,Uplink subcarrier spacing is a physical-layer parameter.
+question 7471,default,Redirection to another frequency via RRC release is a mobility/load-steering procedure used in daily optimization.
+question 7742,default,UE network name display in network sharing is architecture/behavior knowledge for shared networks.
+question 8168,default,The purpose of the SBI control plane protocol stack is protocol architecture knowledge.
+question 70,default,Enterprise UE access to NPN and PLMN is architectural deployment knowledge.
+question 8624,default,Duplicate-frame detection via the receive cache is a basic 802.11 MAC mechanism.
+question 5487,default,Collection of slice KPIs by the non-RT RIC is directly about performance monitoring.
+question 2304,default,Academic SDN controller architecture framework; rarely used in day-to-day mobile network O&M.
+question 7116,default,RF exposure/electrical arc hazard to the human body is unrelated to network operations.
+question 9650,default,Standard-level detail of which bearer types support PDCP duplication in LTE; rarely needed in O&M.
+question 5621,default,"Abbreviation expansion question, fixed at 1 by rule."
+question 9220,default,IEEE standards revision procedure is unrelated to network operations.
+question 812,default,"Satellite access node radiated conformance requirement detail, standard-writing level."
+question 6476,default,"Security feature design detail for V2X transmissions, rarely used in O&M."
+question 8896,default,"Terminology definition of MTC device, minimal operational use."
+question 7180,default,"Study-level evaluation of antenna port reduction impact on latency (network energy saving study), rarely used in O&M."
+question 4751,default,"Definition of MPS session terminology, standard-level knowledge."
+question 9394,default,"Regulatory obligations of operators regarding PWS, a regulatory topic."
+question 1387,default,Procedure trigger condition for RRC Inactive with CN-based MT handling and eDRX; signalling flow understanding.
+question 5480,default,"Definition of a QoS performance parameter (SDU transfer rate); conceptual QoS knowledge rather than a daily KPI counter, take lower level."
+question 7713,default,"Handoff gain in link budget/coverage planning; coverage-related but conceptual planning term, take lower level when unsure."
+question 3964,default,VCC behavior when call is barred in target domain; voice continuity procedure understanding.
+question 3399,default,"eMBB deployment scenario requirements from service requirement spec, rarely used in O&M."
+question 8255,default,WLAN key type (IGTK) purpose is protocol security detail.
+question 6073,default,"Design objective of a new feature (RedCap), rule maps to 1."
+question 6901,default,UE reporting trigger for RLM/BFD relaxation status is protocol detail for a new feature.
+question 4184,default,MDA management service consumer/producer behavior; management analytics concept rather than direct troubleshooting use.
+question 5663,default,Basic Wi-Fi TSF timing synchronization mechanism.
+question 5872,default,"Specific PRS configuration parameter field name, IE-level detail."
+question 4640,default,802.15.4 PHY modulation schemes are physical-layer details.
+question 9987,default,Sidelink physical channel identification is physical-layer detail.
+question 8263,default,Which work item specified V2X architecture is Release history detail.
+question 7762,default,Service-operation naming detail of DCCF; spec-writing detail rarely used in ops.
+question 3349,default,LTE-WLAN traffic steering timer is a configurable mobility/steering parameter tuned in optimization.
+question 9880,default,Requirement-level target value from the 5G service requirements spec; rarely used in daily ops.
+question 2623,default,Design purpose of DC data split; protocol-level purpose knowledge useful to understand network behavior.
+question 2659,default,Which signaling procedures MUSIM affects; procedure/architecture knowledge.
+question 4388,default,"Acronym expansion question, always 1."
+question 3459,default,Specific input parameter of a new Rel-18 IEAF feature; standard detail.
+question 9984,default,Spec-number lookup for V2X security; standards detail.
+question 7274,default,New Rel-18 paging enhancement feature capability; feature design detail.
+question 3312,default,How PS Data Off exempt service lists are provisioned to UEs; mechanism/flow knowledge.
+question 8916,default,Detailed 802.15.4 DSME primitive behavior; standard-writing detail.
+question 7952,default,Which release introduced LAA; release-history question.
+question 6587,default,NWDAF NF load analytics on per-instance load variation relates to load monitoring and capacity in ops.
+question 3172,default,"Basic Wi-Fi PSK concept, a basic WLAN security mechanism."
+question 8675,default,GSMA generic network slice template classification terminology; rarely used in ops.
+question 2057,default,Signalling-based MDT/trace activation for UE performance information is a direct ops tool.
+question 6828,default,MAC-level timer decrement procedural detail; spec-writing detail.
+question 9432,default,802.11 S1G TXVECTOR parameter setting detail; field-level standard detail.
+question 4338,default,Service behavior of line identification during VCC; IMS voice service flow knowledge.
+question 7148,default,"ATSSS load-balancing split determination via RTT; protocol-level mechanism, not an ops tuning knob per se, take lower."
+question 6860,default,802.11 MIB attribute to element presence mapping; encoding detail.
+question 9280,default,"Acronym expansion question, always 1."
+question 8445,default,Definition of edge relocation procedures (EAS change/PSA UPF relocation); architecture/procedure knowledge.
+question 7703,default,Spec terminology convention for 'serving cell' in MCG procedures; standard-writing detail.
+question 3254,default,Generic definition of 'frame' from 802.11 glossary; terminology detail.
+question 2357,default,"Defines NSWO as a UE capability to route IP flows via WLAN; architectural concept, not daily tuning."
+question 2806,default,"Basic Bluetooth coexistence mechanism (AFH); general mechanism knowledge, not mobile-network ops."
+question 7337,default,RF exposure standard averaging time; unrelated to network operations.
+question 7166,default,Definition detail of a legacy UMTS backbone bearer service; spec-writing detail rarely used in ops.
+question 2364,default,E-RAB bearer concept is needed to understand LTE bearers and signalling.
+question 2491,default,Niche SIPTO@LN release behaviour after handover; feature design detail rarely used in operations.
+question 2783,default,Specific configuration-index semantics for radio link monitoring CSI-RS; physical-layer parameter detail.
+question 8396,default,"Study-level statement about AI/ML function placement in RAN; design-level, not daily ops."
+question 9555,default,"Abstract architecture concept location of RSCFs; academic, rarely used in ops."
+question 194,default,Roaming requires home network to provide subscription data; architectural roaming knowledge.
+question 1471,default,Purpose of a specific ETSI MEC API service; standard detail rarely used by mobile network ops.
+question 6734,default,Meaning of specific 802.11 operating-class values; field/value encoding detail.
+question 966,default,Specific 802.11 ASEL subfield encoding; field-level detail.
+question 3389,default,Rel-16 UE power saving design feature (PDCCH skipping); feature design rather than ops tuning.
+question 5515,default,802.11 NDP paging subfield meaning; field encoding detail.
+question 4718,default,Specific limitation of indirect forwarding in EPS-to-5GS interworking; spec detail.
+question 4519,default,Supported service type for ProSe remote UE; niche feature detail.
+question 6599,default,"Historical SAR exposure threshold; RF exposure, unrelated to ops."
+question 5438,default,"Acronym expansion question, rated 1 per rule."
+question 2032,default,Identifying the UE Configuration Update procedure is main signalling procedure knowledge.
+question 4285,default,Basic Wi-Fi CSMA/CA contention window mechanism.
+question 4317,default,Basic TCP/IP knowledge (UDP header length) useful for reading traces.
+question 7209,default,Purpose of a specific subscription parameter NSSRG introduced in Rel-17; spec design detail.
+question 9901,default,Content of a specific service operation message; message-level detail.
+question 1630,default,"General conceptual definition of UDN; academic concept, borderline so lower level taken."
+question 7383,haiku,Feature-content detail of the IMS Multimedia Telephony service in a specific Release; operators rarely use it day to day.
+question 5585,haiku,"Generic cryptographic term definition, not an operations task."
+question 2323,haiku,"Physical-layer modulation detail of 802.11, which is a standards-level detail."
+question 6945,haiku,Field-level encoding detail of an 802.11 NDP Ack frame.
+question 8524,haiku,"802.15.4 MAC-level beacon timing detail, rarely used in operations."
+question 3965,haiku,Release 18 UE PS Data Off behavior detail; a feature-level standard rule with little daily operational use.
+question 5760,haiku,"Purpose of a specific PUCCH/LRR message in a new Release feature, a standards design detail."
+question 1148,haiku,"Field-level semantics of a Timing Delta MAC CE for IAB-nodes, a standards detail."
+question 5076,haiku,"802.11 sounding/beamforming step detail, a standards-level procedure rarely used in operations."
+question 7506,haiku,"Explains what Bandwidth Adaptation does for UE bandwidth, which helps read UE behavior but is not a routine tuning object."
+question 7463,haiku,"Specific numeric requirement value for a 5G MBS network, a standards spec figure."
+question 8598,haiku,"Numeric V2X RSU requirement value, a standards spec figure with little operations use."
+question 7213,haiku,"WLAN roaming concept (fast BSS transition) helps understand client mobility behavior, but is not a direct tuning target."
+question 624,haiku,"Regulatory DFS non-occupancy period, which falls under regulation rather than network operations knowledge."
+question 8694,haiku,"RF conformance reference point definitions for a specific SAN type, a standards detail."
+question 2891,haiku,"Purpose of a prohibit timer is a protocol-level design detail, not a routine operations task."
+question 7097,haiku,"Organizational structure of 3GPP TSGs, which is standards-body knowledge with no operational use."
+question 873,haiku,Basic IP addressing class ranges used in daily network configuration and troubleshooting.
+question 185,haiku,"Core-network operator selection for shared networks explains how UEs are routed to a CN operator, which aids troubleshooting."
+question 2660,haiku,Generic 3GPP terminology definition with no operational use.
+question 8680,haiku,Knowing which resources are released with PDU session release supports understanding session management behavior.
+question 8774,haiku,"Management-service interaction paradigm explains how network management interfaces work, which aids configuration and management understanding."
+question 6939,haiku,"A step in the UE initial access signalling flow, relevant to reading and troubleshooting call setup."
+question 9986,haiku,Charging system functional decomposition is a network element function and responsibility topic.
+question 6705,haiku,"Frame-level detail of the 802.11 shared-key authentication exchange, a standards-level detail."
+question 1224,haiku,"Acronym expansion for UDM (a 5GC function), which the guideline sets to 1."
+question 3062,haiku,Specific sidelink PHY identity used for packet filtering; a standard field-level detail rarely used in ops.
+question 7289,haiku,"Biological effect of RF exposure on presynaptic potential, unrelated to network operations."
+question 1522,haiku,"Basic 802.11 MAC-address filtering mechanism, useful for understanding WLAN behavior."
+question 2414,haiku,"Roaming prerequisite (VPLMN agreement) is largely a commercial/deployment precondition; borderline, so the lower level is taken."
+question 5525,haiku,"802.11 probe request/response scanning mechanism, a basic WLAN procedure that aids signaling comprehension."
+question 5926,haiku,"Detailed CSI reporting timing rule for DCI handling, a spec-level detail rarely needed in daily ops."
+question 8783,haiku,"Specific CSAT energy-detection threshold value, a parameter-value detail with limited daily ops use."
+question 1825,haiku,"Definition of unicast in IEEE 802.11 terminology, a general concept with little direct ops use."
+question 551,haiku,"Definition of the UTRAN radio interface, an interface/reference-point concept needed to read signaling."
+question 1644,haiku,Protocol-level purpose of PDSCH repetition (DL reliability); the feature itself is not a routine ops tuning object.
+question 8082,haiku,"Numeric power-saving gain range from BWP adaptation study results, a detail rarely used in ops."
+question 8132,haiku,"Role of tenant MANO in managing network slices, an architecture/function-responsibility concept."
+question 2716,haiku,"Spec-level parameter listing for MBS broadcast MTCH configuration, a field-level standard detail."
+question 2160,haiku,"S-MBR is an operator-configured slice rate limit tied to QoS and SLA management, used directly in slice operations."
+question 7090,haiku,"General 5G service-category requirement (eMBB), background concept with little direct ops use."
+question 7370,haiku,"Numeric limit on MR-DC combinations for IDC capability signaling, a spec value detail."
+question 9025,haiku,LBT channel-access rule for shared spectrum; a procedure that aids understanding of NR-U behavior but is not directly tuned.
+question 3937,haiku,"Mapping of which specification covers V2X UE policies, a standards-document detail."
+question 4821,haiku,"Application-layer requirement to monitor network status affecting app KPIs, relevant to understanding network-app interaction."
+question 5108,haiku,"Definition of AKMA, a security framework concept with little direct ops use."
+question 9167,haiku,General factors affecting location-service accuracy; background knowledge with limited direct ops use.
+question 4099,haiku,"Design rationale for computation-method selection in a post-quantum algorithm; protocol-design level, not routine ops."
+question 8775,haiku,"Definition of Shared E-UTRAN (network sharing term), a general concept with little daily ops use."
+question 8641,haiku,"Protocol-design purpose of exposing AI/ML session monitoring to third-party apps, not a routine ops task."
+question 5725,haiku,"UE behavior when a cell is barred affects cell selection and reselection, which engineers see through barring configuration, but the question is protocol behavior rather than a daily tuning task."
+question 9738,haiku,Tx/Rx frequency hopping for RedCap positioning in FR2 is a specialized standards detail rarely used in routine operations.
+question 7171,haiku,"Defines the mIoT usage scenario at a conceptual level, with little direct use in day-to-day operations."
+question 6760,haiku,"Defines one NWDAF-style analytics term about slice traffic patterns; it is a definition, not a routine monitoring or optimization task."
+question 5787,haiku,"Asks only for the expansion of the EN-DC abbreviation, which the guideline sets to level 1."
+question 5788,haiku,"Explains how dual connectivity routes DL user-plane traffic between master and secondary nodes, which helps in reading split-bearer behavior but is not a tuning object itself."
+question 5268,haiku,"Gives a physical-layer length limit for legacy 10Base2 Ethernet, which operations engineers almost never use."
+question 5592,haiku,"Tests the purpose of one ADRF service operation for ML model storage, a standards-interface detail with little operational use."
+question 4808,haiku,Basic Ethernet switching concept (switch ports bound collision domains) that helps in understanding LAN behavior.
+question 2982,haiku,RF human-exposure safety factor for thermal effects above 6 GHz is unrelated to network operations.
+question 8868,haiku,"Describes an IP-PBX supplementary voice feature (Call Whisper), a service-layer detail rarely used in network operations."
+question 9623,haiku,"Explains the design motivation of LTE PRACH enhancement for Doppler-induced detection ambiguity, which is protocol-design knowledge that supports understanding random-access failures."
+question 3693,haiku,"Concerns handover interruption-time requirements, which relate to mobility performance, but the question cites a requirement definition rather than an operational parameter."
+question 89,haiku,"A general historical description of W-CDMA's role in 3G streaming, with no direct operational use."
+question 1770,haiku,"Describes the trigger for NG-RAN Unified Access Control, which is related to overload control, but it is a standard procedure trigger rather than a routine operational task."
+question 8293,haiku,"States a high-level mIoT requirement (device density), a conceptual point with little operational use."
+question 5121,haiku,Shannon channel capacity is a pure information-theory concept with no direct role in routine network operations.
+question 9935,haiku,"Maps NR numerology 2 to 60 kHz subcarrier spacing, a physical-layer parameter detail that operations engineers rarely use."
+question 2865,haiku,"Gives the exact EDCA internal-collision condition in 802.11, a fine-grained MAC standard detail."
+question 1199,haiku,"Describes the purpose of the LTE-U discovery signal for measurement synchronization, a specific feature-design detail with limited operational use."
+question 7310,haiku,"Gives a channel-model assumption for UMi base station height, which is a simulation parameter rather than an operational tuning object."
+question 7767,haiku,"Asks about the meaning of one field in an 802.11k directional measurement report, a field-encoding detail."
+question 9129,haiku,"Describes when a UE triggers PLMN reselection and registration, which is a registration procedure that helps explain attach and registration failures."
+question 546,haiku,"Gives the definition of the AI/ML inference function, a standards terminology item with little direct operational use."
+question 7764,haiku,"Covers the IPv6 capability of multiple addresses per interface, a basic IP mechanism that supports understanding network behavior."
+question 5485,haiku,"N4 (SMF-UPF) session establishment is an interface procedure whose steps an engineer reads in signaling, but it is not a routine ops adjustment."
+question 8036,haiku,"Low/high building penetration loss composition is a channel-model parameter detail from TR 38.901, rarely used in daily ops."
+question 832,haiku,"Relay UE selection criteria for ProSe sidelink relay describe a procedure needed to understand relay behavior, not a directly tuned parameter."
+question 5743,haiku,"SAR unit belongs to RF human-exposure safety, unrelated to network operations."
+question 6597,haiku,Which domain MPS runs in is a service-level feature fact with little daily operational use.
+question 5521,haiku,"O-RAN Alliance purpose is a general organizational concept, not an operational skill."
+question 1682,haiku,GCS/LCS antenna element pattern derivation is a standards-level antenna modeling detail.
+question 6367,haiku,802.15.4 data transmission and acknowledgment is a basic MAC mechanism that aids understanding of link behavior.
+question 282,haiku,Multi-slot scheduling for PDCCH-skipping power saving is a feature design mechanism; taking the lower level as the guideline advises on the boundary with DRX tuning.
+question 5214,haiku,HR/DSSS PHY naming in 802.11b is historical standard detail with minimal operational use.
+question 9291,haiku,"Dosimetry is an RF exposure and biological-effect discipline, unrelated to network operations."
+question 9776,haiku,Applicability of low-loss penetration model to RMa is a channel-model parameter detail.
+question 284,haiku,"Acronym expansion (EGNOS), which the guideline fixes at level 1."
+question 5150,haiku,"Vendor comparison during the buy phase is procurement and business process, unrelated to operations."
+question 2445,haiku,LSA definition is a core-network service-area concept with little day-to-day operational use.
+question 4543,haiku,DHCP IP address allocation is a basic TCP/IP mechanism that helps in understanding network behavior.
+question 2368,haiku,PTP TSPEC is a definitional WLAN QoS term rather than an operational knob.
+question 9999,haiku,Count of 5G NR physical-layer cell identities is a physical-layer parameter detail; the guideline sets this at level 1.
+question 2820,haiku,"O-DU network function and split responsibilities are architecture knowledge needed to read the RAN, not a daily adjustment."
+question 454,haiku,Privacy protection for 5G LAN-type services is a security feature detail with little operational use.
+question 8456,haiku,"RAN3 work-item prioritization of NG-RAN SA, EN-DC and MR-DC is a standardization detail."
+question 5827,haiku,Redundant transmission on N3/N9 for URLLC is a reliability mechanism on core user-plane interfaces that aids understanding of network behavior.
+question 837,haiku,Reduced network cost from NFV/SDN sharing is a general concept rather than an operational skill.
+question 3586,haiku,Which TS documents specify USIM pre-configuration for disaster roaming is a standards reference detail.
+question 8737,haiku,5GMM-CONNECTED mode definition is a NAS state concept needed to read registration and connection signaling.
+question 456,haiku,"Asks which TS number defines the 5GS edge-application architecture; this is spec-identification detail, not something used in daily ops."
+question 2614,haiku,Names the F1AP UE context setup message from gNB-CU to gNB-DU; a main signaling-procedure step needed to read signaling traces.
+question 3569,haiku,Inter-operator charge settlement is a commercial and roaming-business topic with no operational use.
+question 1856,haiku,Defines a niche 802.11 term (neighbor STA); a standard definition rarely used in operations.
+question 6036,haiku,"Concerns IAB-DU hard/soft symbol availability rules, a detailed standard resource-configuration rule rarely used day to day."
+question 5624,haiku,"A formula for the NR sidelink layer-2 buffer size, a parameter-level standard detail."
+question 8828,haiku,SSH as a secure replacement for telnet/rlogin is basic protocol knowledge that underlies remote management of network elements.
+question 1736,haiku,RF exposure and human-safety voltage limit for RF burns; this is RF biological-exposure content with no operational relevance.
+question 9757,haiku,"Generic information-theory purpose of source coding, an academic concept unrelated to network operations."
+question 6663,haiku,"Asks the design motivation of the LTE semi-static CFI feature, which is a standard-level rationale rather than an operational adjustment."
+question 4365,haiku,"Describes the purpose of a specific EVS codec conformance work item, a release-history detail with little ops use."
+question 4918,haiku,"Identifies which entity takes precedence for the user-plane security policy, a detailed security-policy specification point."
+question 9703,haiku,"Input parameter of a DCCF data-management service operation, a protocol-level API detail."
+question 1724,haiku,"Explains how slice service continuity is supported across carriers, a slicing concept that requires understanding network behavior."
+question 1048,haiku,"Details when an 802.11 AP/PCP starts a polling period, a MAC-level standard detail."
+question 8336,haiku,"Concerns the battery effect of eDRX, a DRX-type power-saving mechanism that operators configure and adjust."
+question 6509,haiku,Route aggregation (summarization) is a basic IP routing concept that engineers apply when planning routes.
+question 8272,haiku,"States the goal of the ETSUN feature, a release-level design motivation rather than an operational procedure."
+question 6579,haiku,"Asks for the uplink subcarrier spacing value, a physical-layer parameter fact."
+question 7471,haiku,"Identifies the eNB message used in redirection to another E-UTRAN frequency, a step of a main RRC/S1 procedure."
+question 7742,haiku,"Asks which network name a UE displays in a shared network, a niche PLMN/operator-naming detail."
+question 8168,haiku,"Describes the role of the control-plane protocol stack on service-based interfaces, an interface-level architecture concept."
+question 70,haiku,"Describes enterprise UE access to NPN and PLMN, a network-access architecture concept needed to understand network behavior."
+question 8624,haiku,"A low-level 802.11 frame-cache handling rule, a MAC-level standard detail rarely used in ops."
+question 5487,haiku,"Non-RT RIC collects slice KPIs, and KPI and performance measurement is a core daily optimization and monitoring task."
+question 2304,haiku,"Microservice decomposition of an SDN controller is general control-plane architecture, which an ops engineer rarely touches directly."
+question 7116,haiku,"RF voltage arc hazard from IEEE C95.1 is RF human-exposure safety, unrelated to network operations."
+question 9650,haiku,Which bearer types support PDCP duplication is a specific Release 18 standard feature detail with little daily ops use.
+question 5621,haiku,"Pure abbreviation expansion (BWP = Bandwidth Part), which rule caps at 1."
+question 9220,haiku,"IEEE standards comment-submission process is a standards-body governance matter, not network operations."
+question 812,haiku,Radiated performance requirement limits on demodulation branches is a conformance-test detail rarely used in daily operations.
+question 6476,haiku,"Integrity protection for V2X transmissions is a standards-level security feature detail, not a routine ops task."
+question 8896,haiku,"Basic terminology definition of an MTC device, useful only as background for IoT terms."
+question 7180,haiku,"Latency effect of antenna port reduction is a Release-specific design-level point, with weak direct ops relevance."
+question 4751,haiku,"MPS session definition involves resource prioritization concepts, but it is a definitional point rather than a tunable ops mechanism."
+question 9394,haiku,"Regulatory obligations of participating operators for PWS are a legal/regulatory matter, which the guideline treats as unrelated."
+question 1387,haiku,"Detailed trigger conditions for the Connection Inactive procedure with eDRX are standards-level specifics, and the lower-bound rule applies."
+question 5480,haiku,"SDU transfer rate is a generic transfer-performance metric definition, sitting between KPI-level relevance and general concept, so the lower level is taken."
+question 7713,haiku,"Handoff gain/loss is a link-budget margin concept tied to cell-boundary reliability, indirectly relevant to coverage planning."
+question 3964,haiku,"Voice call continuity outcome when barred in the target domain describes a procedure result, indirectly useful for understanding IMS/SRVCC behavior."
+question 3399,haiku,Listing eMBB deployment area types is generic Release 15 background with little direct ops use.
+question 8255,haiku,"IGTK's role in protecting broadcast/multicast management frames is a WLAN security key detail, rarely used in operations."
+question 6073,haiku,"RedCap design objectives describe the motivation of a work item, which the guideline rates as relevance 1."
+question 6901,haiku,"UE reporting triggers for RLM/BFD relaxation status relate to radio link monitoring behavior, but the detail is standards-level."
+question 4184,haiku,"Network-context expectations on the MDA management service interface relate to management data analytics, which is an OAM concept but at the interface-spec level."
+question 5663,haiku,Local TSF timer synchronization in 802.11 is a basic WLAN mechanism that aids understanding of network behavior.
+question 5872,haiku,Naming of the parameter that sets DL PRS starting PRB is a configuration-field detail with little direct ops use.
+question 4640,haiku,"HRP UWB PHY modulation options are an 802.15.4 physical-layer detail, rarely needed in network operations."
+question 9987,haiku,"Mapping PSSCH to user data is a basic physical sidelink channel fact, and the lower-bound rule applies."
+question 8263,haiku,Naming of the V2X architecture work item is standards bookkeeping with minimal operational relevance.
+question 7762,haiku,"Describes the purpose of a specific DCCF service operation, an interface-level detail that operations engineers rarely use."
+question 3349,haiku,"Defines a timer in E-UTRAN/WLAN traffic steering rules, a steering parameter that is only indirectly relevant to daily operations."
+question 9880,haiku,"Recalls a standard 5G cell-edge throughput requirement value, which is design-level knowledge rarely used in operations."
+question 2623,haiku,"Data split is a dual-connectivity bearer mechanism whose thresholds operators tune, so its purpose is directly relevant to throughput optimization."
+question 2659,haiku,"Lists which signalling procedures MUSIM affects, which helps in understanding the signalling flows behind failures."
+question 4388,haiku,"Pure acronym expansion (LAN), which the guideline fixes at relevance 1."
+question 3459,haiku,"Specific input needed by IEAF to derive an S-NSSAI for an AI/ML application, a niche Rel-18 detail."
+question 9984,haiku,"Asks which specification number covers LTE V2X security, a standards-reference fact rarely needed in operations."
+question 7274,haiku,"Describes a paging enhancement procedure at the NG-RAN level, which is useful for understanding paging behaviour but not a daily tuning object."
+question 3312,haiku,"Covers how PS Data Off exempt-service lists are provisioned, a provisioning detail with little operational use."
+question 8916,haiku,"Covers an IEEE 802.15.4 DSME MAC failure notification, which is low-rate wireless protocol detail outside mobile network operations."
+question 7952,haiku,"Asks which release standardized LAA, a release-history fact with little operational value."
+question 6587,haiku,"Explains factors behind NF load variation in analytics, which is indirectly useful for load balancing and capacity analysis."
+question 3172,haiku,"Gives a generic definition of pre-shared key, a general security concept with little direct operational use."
+question 8675,haiku,"Asks the two categories of GN-NSI, a slicing classification term with little operational use."
+question 2057,haiku,Signalling-based activation of management services (MDT-style UE performance requests) is a direct OAM measurement and monitoring tool.
+question 6828,haiku,"Describes UE behaviour of a BWP inactivity timer, a configuration-level RAN mechanism that is only indirectly relevant to operations."
+question 9432,haiku,"Field-level TXVECTOR channel-width rule for 802.11ah control responses, which is standard-writing detail."
+question 4338,haiku,"Describes the calling-line identity behaviour during IMS voice call continuity, a service-procedure fact that aids understanding of signalling."
+question 7148,haiku,"Explains how ATSSS load-balancing split is determined, a multi-access steering mechanism that is useful background for traffic steering analysis."
+question 6860,haiku,"Asks which 802.11 element is present for a given MIB value, a field-level encoding detail."
+question 9280,haiku,"Abbreviation expansion (SCG as Secondary Cell Group), which the guideline fixes at relevance 1."
+question 8445,haiku,"Defines edge relocation as EAS change and PSA UPF relocation procedures, which helps in understanding the signalling behind edge-service changes."
+question 7703,haiku,"Defines the serving-cell term for MCG procedures in dual connectivity, a basic architecture concept needed to read DC signalling."
+question 3254,haiku,"Gives a generic definition of a frame as a protocol data unit, a general concept with little operational use."
+question 2357,haiku,"Explains a UE capability to route specific IP flows over WLAN in 5GS, a core-level offload concept needed to read signalling and traffic behavior."
+question 2806,haiku,Bluetooth AFH is a short-range radio coexistence mechanism that a mobile network O&M engineer rarely uses.
+question 7337,haiku,RF human exposure averaging time under IEEE C95.1 is unrelated to network operations.
+question 7166,haiku,Backbone Network Service is a legacy UMTS transport-layer detail with little day-to-day operational use.
+question 2364,haiku,"E-RAB is the bearer concept linking S1 bearer and DRB, which is needed to understand bearer-level troubleshooting."
+question 2491,haiku,"Describes a PDN connection release condition during handover, a signalling-flow step relevant to mobility troubleshooting."
+question 2783,haiku,"Periodic CSI-RS configuration is used for radio link quality measurement, which relates to RLF analysis but is a config-level detail."
+question 8396,haiku,"Covers where AI/ML functions sit in the RAN architecture, which informs understanding of network analytics and optimization deployment."
+question 9555,haiku,Architectural location of RSCFs is a standards-level detail rarely used in daily O&M.
+question 194,haiku,"Roaming architecture: the home network supplies subscription data to the visited network, a network-function responsibility concept."
+question 1471,haiku,"Specific ETSI MEC service detail on user-specific traffic rules, not commonly used in mobile network O&M."
+question 6734,haiku,Operating class value encoding in 802.11 is a field-level standards detail.
+question 966,haiku,ASEL command subfield semantics in 802.11 are field-level encoding details.
+question 3389,haiku,PDCCH skipping is a UE power-saving behavior; it is related to DRX tuning but is more of a protocol mechanism than a routine O&M knob.
+question 5515,haiku,PTSF subfield in the 802.11 NDP paging frame is a field-level encoding detail.
+question 4718,haiku,Limitation of indirect data forwarding during EPS-to-5GS handover relates to inter-system mobility procedures.
+question 4519,haiku,"Describes what a ProSe relay can support, a feature-level detail with little direct operational use."
+question 6599,haiku,Historical RF exposure SAR threshold under ANSI C95.1 is unrelated to network operations.
+question 5438,haiku,"Acronym expansion (NANP), which by rule is graded as 1."
+question 2032,haiku,"UE Configuration Update is a NAS procedure that updates Allowed NSSAI, a signalling flow step that helps read slicing and registration behavior."
+question 4285,haiku,CW reset after successful transmission is a basic Wi-Fi contention mechanism that helps explain WLAN throughput behavior.
+question 4317,haiku,UDP header length is a basic field-size detail rarely needed in daily O&M.
+question 7209,haiku,"NSSRG in subscription data defines which S-NSSAIs can be simultaneously allowed, a slicing concept relevant to slice configuration."
+question 9901,haiku,Specific NEF Nnef_PFD_Management_Notify message content is a service-API detail with little operational use.
+question 1630,haiku,"Defines ultra-dense networks by cell spatial density, a concept that informs coverage, capacity and interference planning."
+question 7383,default_v2,"Understanding IMS MMTel media capabilities is mainstream service knowledge, not a daily troubleshooting item."
+question 5585,default_v2,"Term definition question (rule 3), cipher key is not a core ops concept."
+question 2323,default_v2,"Definition of a Wi-Fi PHY modulation term (rule 3, physical-layer detail)."
+question 6945,default_v2,"Field value encoding in a niche 802.11 S1G NDP Ack frame (rule 4), not a basic capture field."
+question 8524,default_v2,IEEE 802.15.4 short-range technology is unrelated to mobile network ops (rule 1).
+question 3965,default_v2,PS Data Off is a niche feature capped at 1 (rule 2).
+question 5760,default_v2,PHY-level purpose of a specific PUCCH LRR transmission is standard detail rarely used in ops; uncertain so lower level.
+question 1148,default_v2,IAB-specific MAC CE is a niche feature capped at 1 (rule 2).
+question 5076,default_v2,"Detailed 802.11 sounding/steering PHY procedure, standard detail rarely used in ops. [ID 由 9076 更正为 5076：标注者抄错]"
+question 7506,default_v2,Bandwidth adaptation (BWP) is a widely deployed mechanism needed to understand NR behavior (rule 5 middle tier).
+question 7463,default_v2,"MBS requirement numeric value; niche feature and requirement metric (rules 2, 4)."
+question 8598,default_v2,"V2X RSU requirement value; niche feature and requirement number (rules 2, 4)."
+question 7213,default_v2,Definition of Wi-Fi fast BSS transition term (rule 3); unsure between 1 and 2 so lower.
+question 624,default_v2,FCC regulatory DFS timing is a regulatory matter unrelated to mobile network ops.
+question 8694,default_v2,"Satellite access node (NTN) RF reference points, niche feature capped at 1 (rule 2)."
+question 2891,default_v2,"Design purpose of a specific timer in a spec, standard detail rarely used in ops (rule 5 lowest tier)."
+question 7097,default_v2,3GPP TSG organizational responsibilities are unrelated to network operations.
+question 873,default_v2,Basic IP addressing knowledge used in understanding networks (TCP/IP basics).
+question 185,default_v2,Network sharing CN operator selection behavior is architecture/procedure knowledge for understanding network behavior.
+question 2660,default_v2,Term definition of 'User' in 3GPP (rule 3).
+question 8680,default_v2,PDU session release procedure and resources is main signaling procedure knowledge.
+question 8774,default_v2,"Conceptual management service interaction paradigm; relates to management interfaces but is conceptual, so lower level."
+question 6939,default_v2,E1 bearer context setup step in UE initial access is main signaling flow knowledge.
+question 9986,default_v2,OCS functional composition is network element/function knowledge for charging architecture.
+question 6705,default_v2,"Legacy WEP shared-key authentication frame detail, deprecated and rarely relevant to ops; uncertain so lower."
+question 1224,default_v2,Acronym expansion of UDM; rule 3 caps abbreviation questions at 1.
+question 3062,default_v2,NR sidelink identity used for PHY filtering; rule 2 caps sidelink features at 1.
+question 7289,default_v2,Biological effects of RF exposure (IEEE C95.1) are unrelated to network operations.
+question 1522,default_v2,Term-definition question about 802.11 address filtering; rule 3 gives 1.
+question 2414,default_v2,"Roaming agreement is a service-requirement/commercial prerequisite, rarely used in daily O&M."
+question 5525,default_v2,"Basic Wi-Fi active scanning mechanism (broadcast probe request), useful for understanding WLAN behaviour."
+question 5926,default_v2,Detailed PHY CSI report timing (Z'ref) is a spec-writing detail rarely used in operations.
+question 8783,default_v2,Asks a specific threshold value (-62 dBm); rule 4 gives 1.
+question 1825,default_v2,Term definition of unicast in 802.11; rule 3 gives 1.
+question 551,default_v2,Definition of radio interface; not one of the core-concept exceptions in rule 3.
+question 1644,default_v2,Rel-18 LTE PDSCH repetition feature; rule 2 caps Rel-17+ new features at 1.
+question 8082,default_v2,Study-item numeric power-saving gain range; rule 4 gives 1.
+question 8132,default_v2,"Tenant MANO for user-specific slices is a research-level design concept, rarely used in operations."
+question 2716,default_v2,MBS broadcast MTCH configuration; rule 2 caps MBS at 1.
+question 2160,default_v2,S-MBR is a Rel-17 slice QoS feature; rule 2 caps it at 1.
+question 7090,default_v2,High-level eMBB requirement categories from requirement specs are rarely used in operations.
+question 7370,default_v2,Asks a numeric capability limit for MR-DC IDC combinations; rule 4 gives 1.
+question 9025,default_v2,"LBT for shared-spectrum (NR-U) access is not widely deployed; between 1 and 2, so take the lower."
+question 3937,default_v2,Asks which spec covers V2X UE policies; V2X capped at 1 by rule 2.
+question 4821,default_v2,Edge application layer architecture requirements; rule 2 caps it at 1.
+question 5108,default_v2,AKMA is a Rel-17 feature definition; rules 2 and 3 cap it at 1.
+question 9167,default_v2,"Generic factors affecting location service accuracy; seldom used in daily O&M, so take the lower level."
+question 4099,default_v2,Quantum-resistant algorithm computation is a purely academic concept unrelated to network O&M.
+question 8775,default_v2,Term definition of Shared E-UTRAN; rule 3 gives 1.
+question 8641,default_v2,Rel-17 AI/ML-session exposure is a new-feature design purpose; rule 2 caps it at 1.
+question 5725,default_v2,Cell barring handling in cell selection/reselection is idle-mode procedure knowledge needed to understand UE behavior.
+question 9738,default_v2,"RedCap positioning with frequency hopping is a Rel-18 new feature, capped at 1."
+question 7171,default_v2,"Classification of 5G usage categories is service requirements background, rarely used in operations."
+question 6760,default_v2,Term definition of an NWDAF analytics type (rule 3); not a core daily ops concept.
+question 5787,default_v2,"Asks for the expansion/definition of EN-DC, so rule 3 gives 1."
+question 5788,default_v2,Dual connectivity user-plane traffic steering between master and secondary nodes is architecture knowledge for understanding network behavior.
+question 5268,default_v2,Asks for a numeric specification value of legacy Ethernet cabling (rule 4).
+question 5592,default_v2,"ADRF ML model storage service operation is a Rel-18 new feature, capped at 1."
+question 4808,default_v2,Switch ports separating collision domains is a basic Ethernet mechanism.
+question 2982,default_v2,RF exposure and thermal pain safety factors are unrelated to network operations.
+question 8868,default_v2,"IP-PBX call whisper is a niche enterprise service feature, rarely relevant to mobile network ops."
+question 9623,default_v2,"Asks about the design motivation of a PRACH enhancement feature (rule 5, lowest tier)."
+question 3693,default_v2,Asks for a requirement on handover interruption time from a requirements spec (rule 4).
+question 89,default_v2,"Historical knowledge about which technology 3G introduced, rarely used in operations."
+question 1770,default_v2,Unified access control triggered by AMF overload is congestion/overload control that ops monitors and handles directly.
+question 8293,default_v2,5G mIoT service requirements are standards-level requirement statements.
+question 5121,default_v2,Shannon capacity is a pure academic information-theory concept.
+question 9935,default_v2,Mapping numerology to subcarrier spacing is a physical-layer parameter detail.
+question 2865,default_v2,"EDCAF internal collision reporting conditions are 802.11 standard-writing detail, not basic mechanism."
+question 1199,default_v2,LTE-U discovery signal is a niche feature with little deployment; purpose is feature design detail.
+question 7310,default_v2,Base station height in a UMi simulation scenario is a parameter value (rule 4).
+question 7767,default_v2,"Meaning of a specific 802.11 measurement report field is information element detail, not a basic packet field."
+question 9129,default_v2,PLMN selection/reselection triggers are procedure knowledge for understanding UE registration behavior.
+question 546,default_v2,Term definition of AI/ML inference function (rule 3).
+question 7764,default_v2,Multiple IPv6 addresses per interface is a basic IP mechanism.
+question 5485,default_v2,Purpose of N4 session establishment (SMF-UPF) is a mainstream mechanism; under rule 5 that is 2.
+question 8036,default_v2,Building penetration loss model composition is a channel-model detail used in standard writing.
+question 832,default_v2,ProSe UE-to-Network relay is a niche sidelink feature; rule 2 caps it at 1.
+question 5743,default_v2,"SAR unit is about RF human exposure, which is unrelated to network O&M."
+question 6597,default_v2,"Which domain MPS runs in is niche service-feature knowledge; between 1 and 2, so take the lower."
+question 5521,default_v2,"The purpose of the O-RAN Alliance is industry-organization knowledge, not O&M."
+question 1682,default_v2,Antenna pattern GCS/LCS conversion is a physical-layer modeling detail.
+question 6367,default_v2,IEEE 802.15.4 is a non-cellular short-range technology; rule 1 gives 0.
+question 282,default_v2,"PDCCH-skipping power saving via multi-slot scheduling is a feature design detail, not daily tuning."
+question 5214,default_v2,Naming the 802.11b HR/DSSS PHY is standard history and physical-layer detail.
+question 9291,default_v2,Dosimetry belongs to RF exposure and biological-effects knowledge.
+question 9776,default_v2,Which penetration loss model applies to RMa is a channel-model parameter detail.
+question 284,default_v2,Acronym expansion; rule 3 gives 1.
+question 5150,default_v2,"Comparing vendors for energy efficiency in the buy phase is procurement and business, not O&M; unsure, so take the lower."
+question 2445,default_v2,Term definition (LSA) that is not a core O&M concept; rule 3 gives 1.
+question 4543,default_v2,DHCP address allocation is a basic TCP/IP mechanism needed to understand network behavior.
+question 2368,default_v2,Term definition (PTP TSPEC); rule 3 gives 1.
+question 9999,default_v2,Asks a numeric parameter range (1008 PCIs); rule 4 gives 1.
+question 2820,default_v2,"Asks what O-DU means, which is a term definition not on the core-concept exception list."
+question 454,default_v2,5G LAN-type service privacy is a niche feature not widely deployed; capped at 1.
+question 8456,default_v2,RAN3 work-item prioritization is a standardization-process detail.
+question 5827,default_v2,"URLLC redundant N3/N9 transmission is a niche feature's design purpose, so 1."
+question 837,default_v2,"The cost advantage of NFV/SDN sharing is a business-model point; unsure between 0 and 1, so take the lower."
+question 3586,default_v2,Disaster Roaming is a Rel-17 feature and the question asks for spec numbers; capped at 1.
+question 8737,default_v2,"Definition of a 5GMM state wording, not on the listed core-concept exceptions; unsure, so take the lower (1)."
+question 456,default_v2,Edge application layer architecture spec number; rule 2 caps niche/new features at 1.
+question 2614,default_v2,F1AP UE context setup is a main signaling procedure step between gNB-CU and gNB-DU.
+question 3569,default_v2,Charge settlement between parties is a commercial/business matter unrelated to network O&M.
+question 1856,default_v2,"Term definition of a WLAN neighbor STA, not a core ops concept (rule 3)."
+question 6036,default_v2,IAB soft-symbol resource details; IAB is capped at 1 by rule 2.
+question 5624,default_v2,NR sidelink L2 buffer formula; sidelink is niche (rule 2) and formula-level detail.
+question 8828,default_v2,"Purpose of SSH, a widely used basic TCP/IP mechanism (rule 5 middle tier)."
+question 1736,default_v2,"RF burn exposure limits are RF safety, unrelated to network O&M."
+question 9757,default_v2,"Generic academic concept of source coding, not network operations."
+question 6663,default_v2,"Design motivation of a specific LTE feature (semi-static CFI), rule 5 lowest tier."
+question 4365,default_v2,Purpose of a specific work item on EVS codec conformance testing; standardization detail.
+question 4918,default_v2,Which NF determines the UP security policy concerns network function roles.
+question 9703,default_v2,Input parameter of a DCCF service operation; new feature and parameter-level detail.
+question 1724,default_v2,"Rel-17 slice service continuity feature, capped at 1 by rule 2."
+question 1048,default_v2,"Detailed 802.11 DMG polling period timing, a standard detail rarely used in ops."
+question 8336,default_v2,"RedCap is a Rel-17 newly introduced feature, capped at 1 by rule 2."
+question 6509,default_v2,Route aggregation is a basic IP routing mechanism needed to understand network behavior.
+question 8272,default_v2,"Goal/design motivation of a Release feature (ETSUN), rule 5 lowest tier."
+question 6579,default_v2,"Physical layer parameter value (subcarrier spacing), rule 4."
+question 7471,default_v2,Messages used in the redirection procedure are signaling flow steps.
+question 7742,default_v2,UE display behavior in network sharing is a spec detail rarely used in ops; uncertain so lower level.
+question 8168,default_v2,SBI control plane protocol stack is architecture/interface knowledge.
+question 70,default_v2,Non-public network access is a not widely deployed newer feature; capped at 1.
+question 8624,default_v2,802.11 duplicate frame detection is a basic Wi-Fi MAC mechanism.
+question 5487,default_v2,Slice KPI collection by non-RT RIC relates to monitoring but O-RAN RIC is not mainstream; uncertain between 2 and 3 so lower.
+question 2304,default_v2,"Academic SDN controller architecture concept, rarely used in mobile network operations."
+question 7116,default_v2,RF exposure and human-body arc hazard (IEEE C95.1) is unrelated to network O&M.
+question 9650,default_v2,"Asks which bearer configuration supports PDCP duplication in LTE, a spec-level detail; when unsure between 1 and 2, the lower level applies."
+question 5621,default_v2,"Abbreviation expansion (BWP), rule 3."
+question 9220,default_v2,IEEE standards revision procedure is unrelated to network operations.
+question 812,default_v2,NTN satellite access node requirement value; niche feature and requirement number (rules 2 and 4).
+question 6476,default_v2,"V2X is a niche feature, so it is capped at 1 (rule 2)."
+question 8896,default_v2,"Term definition of MTC Device, which is not a core daily O&M concept (rule 3)."
+question 7180,default_v2,Rel-18 network energy saving study detail on antenna port reduction; new feature (rule 2).
+question 4751,default_v2,Term definition of MPS session (rule 3).
+question 9394,default_v2,"Asks about regulatory obligations for PWS support, which counts as regulation and is not O&M knowledge."
+question 1387,default_v2,Rel-18 CN-based MT handling with eDRX in RRC_INACTIVE is a newly introduced feature (rule 2).
+question 5480,default_v2,"Definition of a generic SDU transfer rate performance parameter; not among the core concepts listed in the rule 3 exception, so the lower level applies."
+question 7713,default_v2,"Asks the meaning of handoff gain/loss, which relates to the core handover concept (rule 3 exception)."
+question 3964,default_v2,Voice call continuity behavior when the target domain is barred; procedure knowledge needed to understand IMS voice behavior.
+question 3399,default_v2,"eMBB deployment-scenario requirement content from specs, rarely used in O&M."
+question 8255,default_v2,Purpose of a specific WLAN key type (IGTK); key-hierarchy detail rarely used in operations.
+question 6073,default_v2,Design objective of the Rel-17 RedCap feature (rules 2 and 5).
+question 6901,default_v2,Rel-17 RLM/BFD relaxation reporting is a new feature (rule 2).
+question 4184,default_v2,"Rel-17 MDA MnS is a newly introduced feature, so it is capped at 1 (rule 2)."
+question 5663,default_v2,"Basic Wi-Fi TSF timing synchronization mechanism, a basic WLAN mechanism (level 2)."
+question 5872,default_v2,Specific PRS configuration field name; field-level detail for a positioning feature (rules 2 and 4).
+question 4640,default_v2,IEEE 802.15.4 UWB PHY is a non-cellular short-range technology (rule 1).
+question 9987,default_v2,"NR sidelink channel is a niche feature, so it is capped at 1 (rule 2)."
+question 8263,default_v2,Asks which Release work item introduced V2X architecture; niche feature and release history.
+question 7762,default_v2,"Rule 2: DCCF service operation is a newly introduced (Rel-17/18) data collection feature, so it is capped at 1."
+question 3349,default_v2,Rule 4: asks the meaning of a timer parameter for LTE-WLAN traffic steering.
+question 9880,default_v2,Rule 4: a requirements-spec performance figure (cell-edge user throughput).
+question 2623,default_v2,Rule 5: purpose of a mainstream mechanism (DC data split) that is needed to understand network behavior.
+question 2659,default_v2,Rule 2: MUSIM is a Rel-17 feature that is not widely deployed.
+question 4388,default_v2,Rule 3: abbreviation expansion.
+question 3459,default_v2,Rule 2: IEAF and the AIML application service are Rel-18 new features.
+question 9984,default_v2,"Rule 2: V2X is a niche feature, and the question only asks which spec number covers it."
+question 7274,default_v2,Rule 2: the Rel-18 paging enhancement is a newly introduced feature.
+question 3312,default_v2,Rule 2: PS Data Off is listed as a niche feature that is capped at 1.
+question 8916,default_v2,Rule 1: IEEE 802.15.4 short-range technology is unrelated to operator mobile network O&M.
+question 7952,default_v2,Asks which Release introduced a feature (LAA).
+question 6587,default_v2,"NWDAF NF load analytics is used to monitor NF load; this is indirectly relevant, and the lower level was taken when unsure."
+question 3172,default_v2,Rule 3: term definition (PSK).
+question 8675,default_v2,Rule 3: a classification and definition detail of the generic network slice template concept.
+question 2057,default_v2,Signalling-based activation of management/trace services relates to MDT/QoE collection; chose 2 over 3 when unsure.
+question 6828,default_v2,A detail of standard timer handling (BWP inactivity timer decrement) that is rarely used in O&M.
+question 9432,default_v2,"A PHY parameter detail of niche 802.11ah S1G, not a basic Wi-Fi mechanism."
+question 4338,default_v2,A standard detail of supplementary service behavior under VCC that O&M rarely needs; lower level taken when unsure.
+question 7148,default_v2,Rule 2: RTT-based ATSSS load balancing is a Rel-17 new feature.
+question 6860,default_v2,A detail of 802.11 MIB attribute values and element presence conditions.
+question 9280,default_v2,Rule 3: abbreviation expansion (SCG).
+question 8445,default_v2,Rule 2: edge application relocation belongs to the edge application architecture feature.
+question 7703,default_v2,Rule 3: a term-definition convention in the spec.
+question 3254,default_v2,Rule 3: term definition (frame).
+question 2357,default_v2,"Definition question about NSWO in 5GS, a Rel-17 feature; rule 3 and rule 2 cap it at 1."
+question 2806,default_v2,Bluetooth is a non-cellular short-range technology (rule 1).
+question 7337,default_v2,RF exposure standard averaging time is unrelated to network O&M.
+question 7166,default_v2,"Asks about the purpose of the UMTS QoS-layering Backbone Network Service, a standard design detail rarely used in operations."
+question 2364,default_v2,"Asks the meaning of E-RAB, a core bearer concept, so the rule 3 exception gives 2."
+question 2491,default_v2,"SIPTO@LN is a niche feature, capped at 1 by rule 2."
+question 2783,default_v2,"Purpose of CSI-RS configured for radio link monitoring, a mainstream mechanism needed to understand RLF behaviour."
+question 8396,default_v2,"AI/ML for NG-RAN is a new Rel-17+ study feature, capped at 1."
+question 9555,default_v2,"Placement of RSCFs in an abstract architecture model; when unsure between levels, the lower one is chosen."
+question 194,default_v2,Roaming architecture knowledge (home network provides subscription data to the visited network).
+question 1471,default_v2,"Edge application layer (MEC API) service purpose, capped at 1 by rule 2."
+question 6734,default_v2,"Specific 802.11 field value meaning, which is encoding detail (rule 4)."
+question 966,default_v2,"802.11 ASEL subfield encoding detail, not a basic packet field."
+question 3389,default_v2,PDCCH skipping is a newer UE power-saving design feature that is not commonly tuned in live networks.
+question 5515,default_v2,"Obscure 802.11ah NDP Paging subfield meaning, which is encoding detail."
+question 4718,default_v2,EPS-to-5GS interworking data-forwarding procedure detail needed to understand inter-system handover behaviour.
+question 4519,default_v2,"ProSe UE-to-network relay is a niche feature, capped at 1."
+question 6599,default_v2,SAR threshold for RF exposure is unrelated to network O&M.
+question 5438,default_v2,Acronym expansion question (rule 3).
+question 2032,default_v2,Knowledge of the main 5GC signaling procedure (UE Configuration Update).
+question 4285,default_v2,Basic Wi-Fi channel access (contention window) mechanism.
+question 4317,default_v2,"Basic UDP header field used in packet capture analysis, so the rule 4 exception gives 2."
+question 7209,default_v2,"NSSRG is a Rel-17 newly introduced slicing feature, capped at 1."
+question 9901,default_v2,Step in the PFD management signaling flow between NEF and SMF.
+question 1630,default_v2,"Definition of a general term (UDN), rule 3."
+question 7383,haiku_v2,考 IMS 多媒体电话的业务能力细节（视频、文件传输），属于业务标准描述，运维日常较少直接用到。
+question 5585,haiku_v2,考密钥（cipher key）的术语定义，属于通用概念，非日常运维操作所需。
+question 2323,haiku_v2,考 QBPSK 调制的术语定义，属于 802.11 物理层标准细节，运维中极少用到。
+question 6945,haiku_v2,考 802.11 NDP Ack 帧中 Duration/ID 字段在特定指示位下的取值含义，属于标准字段编码细节。
+question 8524,haiku_v2,考 802.15.4（ZigBee 类短距技术）增强主动扫描的响应时机，属于非蜂窝短距技术，与运营商移动网运维无关。
+question 3965,haiku_v2,PS Data Off 属于小众/较新特性（边界规则 2），且只考其对非 3GPP 接入的影响，封顶为 1。
+question 5760,haiku_v2,考 Rel-17 链路恢复请求（LRR）在 PUCCH 上的用途，属于较新的物理层特性，按规则封顶为 1。
+question 1148,haiku_v2,考 IAB 节点的 Timing Delta MAC CE 含义，IAB 属于小众特性，封顶为 1。
+question 5076,haiku_v2,考 802.11 波束成形探测过程中某一步骤的动作细节，属于协议细节，运维中较少直接用到。
+question 7506,haiku_v2,考 NR 带宽自适应（BWP 宽度、位置与子载波间隔调整）的作用，是现网普遍使用、理解网络行为所需的机制。
+question 7463,haiku_v2,考独立组网多播广播网络的最大站间距指标数值，属于需求指标数值，且 MBS 为小众特性，封顶为 1。
+question 8598,haiku_v2,考 V2X 中 RSU 可服务 UE 数量的需求指标数值，V2X 为小众新特性，封顶为 1。
+question 7213,haiku_v2,考快速 BSS 切换的定义（Wi-Fi 漫游机制术语定义），按定义类题目取较低等级。
+question 624,haiku_v2,考 FCC 对雷达检测后的非占用时长规定，属于法规内容，与网络运维无直接关系。
+question 8694,haiku_v2,考 SAN 1-H 的参考点类型，属于卫星/NTN 接入的小众特性细节，封顶为 1。
+question 2891,haiku_v2,考 prohibit timer 的用途（限制频繁查询），属于定时器用途的标准描述，运维中较少直接调整。
+question 7097,haiku_v2,考 3GPP 各 TSG 的职责分工，属于标准化组织结构知识，属于标准编写层面的细节。
+question 873,haiku_v2,考 IP 地址分类及私网地址范围，属于 TCP/IP 基础知识，IP 地址规划与排障时常用。
+question 185,haiku_v2,考共享网络中非支持 UE 的核心网运营商选择流程，属于理解网络行为所需的流程知识。
+question 2660,haiku_v2,考 3GPP 系统中 User 术语的定义，属于通用概念定义，运维中用到较少。
+question 8680,haiku_v2,考 PDU 会话释放时涉及的资源，PDU 会话为核心运维概念，理解释放流程与资源回收属于主要流程知识。
+question 8774,haiku_v2,考管理服务中请求-响应交互范式的定义，属于通用概念定义，非核心运维概念。
+question 6939,haiku_v2,考 UE 初始接入流程中 BEARER CONTEXT SETUP REQUEST 消息的作用，属于主要信令流程的步骤细节。
+question 9986,haiku_v2,考在线计费系统（OCS）包含的功能实体，属于网元功能与职责知识，但与日常排障关系较间接。
+question 6705,haiku_v2,考 802.11 共享密钥认证中第二帧的角色，属于遗留认证机制的协议细节，运维中极少用到。
+question 1224,haiku_v2,"Asks for the expansion or definition of the acronym UDM, a 5GC network function name; boundary rule 3 caps definitions at 1."
+question 3062,haiku_v2,"NR sidelink physical-layer receiver filtering by Source Layer-2 ID is a Rel-18 sidelink feature not yet widely deployed, capped at 1 by rule 2."
+question 7289,haiku_v2,"Presynaptic potential thresholds from IEEE C95.1 concern RF human-exposure biological effects, which are unrelated to network operations."
+question 1522,haiku_v2,"MAC address filtering is a basic 802.11 WLAN mechanism that helps explain Wi-Fi network behavior, so it is indirectly relevant."
+question 2414,haiku_v2,"The roaming-agreement prerequisite for 5G roaming is a commercial and business precondition, seldom used in daily operations, and is tagged Rel-17; take the lower level."
+question 5926,haiku_v2,The precise timing condition under which a UE drops a scheduling DCI for a CSI report is a detailed standard rule with little day-to-day operational use.
+question 8783,haiku_v2,"The CSAT energy detection threshold value is a specific parameter number in the unlicensed-spectrum specification, covered by rule 4."
+question 1825,haiku_v2,"Asks for the definition of the generic term unicast in IEEE 802.11, which is a definitional question covered by rule 3."
+question 551,haiku_v2,"Asks for the definition of radio interface, a general term that is not one of the core operational concepts listed in rule 3."
+question 1644,haiku_v2,"PDSCH repetition for reliability is a Rel-18 enhancement, a new feature capped at 1 by rule 2."
+question 8082,haiku_v2,"Asks for the power-saving gain range numeric value from the specification, covered by rule 4 for metric values."
+question 8132,haiku_v2,"The purpose of tenant MANO in multi-tenant slice management is a niche vertical-slicing architecture concept, so take the lower level under the boundary rules."
+question 2716,haiku_v2,"MBS broadcast MTCH configuration parameters belong to the Rel-17 MBS feature, which is a new feature capped at 1 by rule 2."
+question 2160,haiku_v2,"Slice-MBR is a slice-level QoS rate-limiting policy that helps in understanding slice behavior, but it is not a routine monitoring object, so it is indirectly relevant."
+question 7090,haiku_v2,"The eMBB requirement categories are high-level 5G requirement specifications, covered by rule 4 for requirement indicators."
+question 7370,haiku_v2,"The maximum number of MR-DC combinations for in-device coexistence is a specific numeric parameter, covered by rule 4."
+question 9025,haiku_v2,"Listen-Before-Talk on shared-spectrum NR-U is a Rel-18 new feature not widely deployed, capped at 1 by rule 2."
+question 3937,haiku_v2,"TS 24.588 UE policies for V2X services is a V2X vertical-service specification, a niche and new feature capped at 1 by rule 2."
+question 4821,haiku_v2,"Traffic management requirements in the edge application layer architecture is a Rel-18 edge-application feature, capped at 1 by rule 2."
+question 5108,haiku_v2,"AKMA is a Rel-17 cellular-based application authentication feature, a new feature capped at 1 by rule 2."
+question 9167,haiku_v2,"Factors affecting location-service accuracy are general positioning concepts with limited direct daily operational use, so take the lower level."
+question 4099,haiku_v2,"Computation-method selection for a post-quantum security algorithm is a niche security design motivation, which rule 5 puts at 1."
+question 8775,haiku_v2,"Asks for the definition of Shared E-UTRAN, a general term not on the core operational concepts list, covered by rule 3."
+question 8641,haiku_v2,"Exposing AI/ML session monitoring to third-party applications is a Rel-17 new feature capped at 1 by rule 2, and it concerns NWDAF-style analytics."
+question 5725,haiku_v2,"Cell barred handling in cell selection/reselection is a UE mobility procedure that affects coverage and access troubleshooting, but the question is at procedure-detail level."
+question 9738,haiku_v2,"RedCap positioning frequency hopping in FR2 InF-SH is a Rel-17/18 niche feature, capped at 1 by the new-feature rule."
+question 7171,haiku_v2,Generic 5G usage-scenario classification (mIoT); general concept with little day-to-day ops use.
+question 6760,haiku_v2,"Dispersion analytics is a Rel-18 NWDAF analytics type, a new feature capped at 1 by rule 2."
+question 5787,haiku_v2,"Asks for the expansion/definition of EN-DC, an abbreviation-level definition rather than a core operational concept."
+question 5788,haiku_v2,Dual connectivity bearer/traffic routing between master and secondary nodes is a widely deployed NSA mechanism needed to understand network behavior.
+question 5268,haiku_v2,"10Base2 maximum segment length is a physical-medium parameter value, obsolete and rarely used in operations."
+question 5592,haiku_v2,"Specific SBI service operation of ADRF for ML model storage, a Rel-17+ new feature capped at 1."
+question 4808,haiku_v2,Switch port collision domain is a basic Ethernet mechanism that helps explain network behavior.
+question 2982,haiku_v2,"RF human exposure and thermal biological effects above 6 GHz, explicitly irrelevant to network operations."
+question 8868,haiku_v2,"Call Whisper is an enterprise IP-PBX supplementary service from Rel-17, a new feature capped at 1."
+question 9623,haiku_v2,"Asks which problem a feature addresses (Doppler-induced PRACH ambiguity), which is a design motivation rather than an operational object."
+question 3693,haiku_v2,"Asks for a handover interruption-time requirement reference, a requirement value rather than an operational parameter setting."
+question 89,haiku_v2,Historical fact about which 3G technology (W-CDMA) introduced streaming capability; release/history knowledge with little ops use.
+question 1770,haiku_v2,"Trigger condition for NG-RAN Unified Access Control on overload messages relates to load control, but the 5G access-control feature is less commonly used in day-to-day ops; borderline set to the lower level."
+question 8293,haiku_v2,"Lists mIoT requirement categories, a high-level service requirement concept with little direct troubleshooting use."
+question 5121,haiku_v2,Shannon channel capacity is a pure information-theory academic concept unrelated to operations.
+question 9935,haiku_v2,"NR numerology-to-subcarrier-spacing mapping is a physical-layer parameter value, used only in configuration detail."
+question 2865,haiku_v2,Specific 802.11 EDCA internal-collision condition is a standard-level detail rather than a commonly used Wi-Fi operations mechanism.
+question 1199,haiku_v2,Purpose of the LTE-U discovery signal is a niche unlicensed-band physical signal detail with limited ops use.
+question 7310,haiku_v2,Typical UMi base station height is a channel-model parameter value (rule 4).
+question 7767,haiku_v2,Meaning of a specific Wi-Fi directional measurement report field is frame-encoding detail.
+question 9129,haiku_v2,Trigger conditions for UE PLMN reselection and registration at switch-on or coverage recovery are procedure-level knowledge that helps explain registration behavior.
+question 546,haiku_v2,"Asks for the definition of an AI/ML inference function, a definition-level question on a Rel-17+ new framework."
+question 7764,haiku_v2,IPv6 support for multiple addresses per interface is basic IP addressing knowledge used when reading and configuring IP networks.
+question 5485,haiku_v2,"N4 session establishment is the SMF-UPF signaling procedure that engineers need to read when diagnosing session setup failures, so it is a flow-step and interface fact (level 2)."
+question 8036,haiku_v2,"Low/high penetration-loss model composition is a propagation-model parameter detail that a field engineer rarely uses directly (level 1, lower bound applied)."
+question 832,haiku_v2,"Evolved ProSe UE-to-Network relay selection is a Rel-17 sidelink feature not yet widely deployed, so the boundary rule caps it at 1."
+question 5743,haiku_v2,SAR is an RF human-exposure metric with no role in mobile network operations.
+question 6597,haiku_v2,Knowing that MPS runs in the PS domain is basic service-architecture context for understanding priority-service behavior in the network.
+question 5521,haiku_v2,The purpose of the O-RAN Alliance is an organizational/general concept that operators rarely need in daily work.
+question 1682,haiku_v2,"The GCS/LCS antenna element pattern relation is a physical-layer antenna modelling detail (formula/parameter level), rarely used in operations."
+question 6367,haiku_v2,"IEEE 802.15.4 is a non-cellular short-range technology, which the boundary rule 1 sets to 0."
+question 282,haiku_v2,"Multi-slot scheduling as a PDCCH-monitoring power-saving scheme is a mainstream NR mechanism whose behavior engineers need to understand, though it is not a primary tuning object (level 2, lower bound applied)."
+question 5214,haiku_v2,The naming of the 802.11b HR/DSSS PHY is a standard-level physical-layer detail with little operational use.
+question 9291,haiku_v2,Dosimetry is an RF exposure and biological-effect discipline unrelated to network operations.
+question 9776,haiku_v2,"Which penetration-loss model applies to RMa is a channel-model parameter detail, rarely used in daily operations."
+question 284,haiku_v2,"This is a pure acronym expansion (EGNOS), which boundary rule 3 caps at 1."
+question 5150,haiku_v2,"Vendor comparison in the buy phase of the network life cycle is a procurement concept, not a routine operations task."
+question 2445,haiku_v2,"This asks for the definition of LSA, a term definition that boundary rule 3 caps at 1."
+question 4543,haiku_v2,"Fog-computing DHCP server roles are a niche edge-architecture topic, capped at 1 under the new/niche feature rule."
+question 2368,haiku_v2,"PTP TSPEC is a term definition from the WLAN QoS standard, which boundary rule 3 caps at 1."
+question 9999,haiku_v2,"The number of NR physical-layer cell IDs is a parameter value/range, which rule 4 caps at 1."
+question 2820,haiku_v2,"O-DU's role as the distributed unit running RLC, MAC and part of PHY is a network-element function that engineers need to understand."
+question 454,haiku_v2,"The 5G LAN-type service privacy feature is a Rel-17 feature, which the niche/new-feature rule caps at 1."
+question 8456,haiku_v2,"The RAN3 internal prioritization of NG-RAN SA, EN-DC and MR-DC is a standardization-work detail with little operational use."
+question 5827,haiku_v2,"Redundant transmission on N3/N9 for URLLC is a Rel-17+ new feature, capped at 1 by the boundary rule."
+question 837,haiku_v2,The cost advantage of NFV/SDN resource sharing is a general architectural concept rather than an operational task.
+question 3586,haiku_v2,"USIM pre-configuration for Disaster Roaming is a Rel-17 feature, capped at 1 by the boundary rule."
+question 8737,haiku_v2,"This is a definition of a NAS mobility-management state, which rule 3 caps at 1 (lower bound applied)."
+question 456,haiku_v2,Rel-18 edge application layer architecture (TS 23.558) is a niche feature explicitly capped at 1 by rule 2.
+question 2614,haiku_v2,"F1AP UE context setup between gNB-CU and gNB-DU is a main signaling procedure step that helps interpret RAN behavior, but not a daily tuning object."
+question 3569,haiku_v2,Inter-operator charge settlement is a commercial and business-model topic unrelated to daily network O&M.
+question 1856,haiku_v2,"Asks for the definition of a 802.11 term (neighbor STA), which is a term definition under rule 3 and rarely used in O&M."
+question 6036,haiku_v2,"IAB-DU soft-symbol behavior belongs to IAB, a niche feature capped at 1 by rule 2."
+question 5624,haiku_v2,NR sidelink layer-2 buffer sizing is a sidelink feature (capped at 1 by rule 2) and a parameter formula.
+question 8828,haiku_v2,"Protocol purpose of SSH is general application-layer knowledge; borderline between 1 and 2, so the lower level is taken per rule 6."
+question 1736,haiku_v2,"RF burn exposure limit for human safety is RF biological-exposure content, which is irrelevant to network O&M."
+question 9757,haiku_v2,Source coding in data compression is a pure information-theory concept not tied to telecom network operations.
+question 6663,haiku_v2,Semi-static CFI in LTE is a Rel-18 feature (rule 2 caps Rel-17+ features at 1) and a physical-layer design detail.
+question 4365,haiku_v2,"Describes what a specific EVS codec work item introduced in a release, which is standards-history detail rarely used operationally."
+question 4918,haiku_v2,Identifying which network entity decides the user-plane security policy reflects network-function responsibility knowledge useful for understanding behavior.
+question 9703,haiku_v2,Input parameter of a Rel-18 DCCF data-management service operation is a niche API field detail capped at 1.
+question 1724,haiku_v2,Slice service continuity via multi-carrier resource sharing is a Rel-17 slicing feature capped at 1 and mainly concerns radio resource handling.
+question 1048,haiku_v2,Polling period start conditions in 802.11 SP/CBAP are detailed WLAN MAC procedure content rarely used by operators.
+question 8336,haiku_v2,"Battery effect of eDRX on RedCap devices concerns the Rel-17 RedCap feature, capped at 1 by rule 2."
+question 6509,haiku_v2,Route aggregation (summarization) is a widely deployed IP routing mechanism that engineers configure and need to understand network routing behavior.
+question 8272,haiku_v2,"States the design goal of the ETSUN feature, which is a feature design motivation and capped at 1 by rule 5."
+question 6579,haiku_v2,Uplink subcarrier spacing is a physical-layer parameter value and is rarely needed in daily O&M.
+question 7471,haiku_v2,Redirection to another E-UTRAN frequency is a common RRC/S1 signaling procedure that helps interpret load-balancing and handover behavior.
+question 7742,haiku_v2,UE display of the shared-network name is a UE UI and standards detail with little operational use.
+question 8168,haiku_v2,The control-plane protocol stack for 5GC service-based interfaces is interface and architecture knowledge needed to read core signaling.
+question 70,haiku_v2,"Enterprise UE access combinations to NPN and PLMN are a Rel-17 NPN feature, capped at 1 by rule 2."
+question 8624,haiku_v2,The STA cache-entry frame handling rule is a detailed 802.11 MAC behavior rarely used operationally.
+question 5487,haiku_v2,"Identifies KPIs as the slice performance metrics collected by non-RT RIC, which is direct performance-measurement knowledge used in daily monitoring."
+question 2304,haiku_v2,SDN controller microservice decomposition is a software design detail that operations engineers rarely use directly.
+question 7116,haiku_v2,"RF voltage arc hazard to the body is RF human-exposure safety, unrelated to network operations."
+question 9650,haiku_v2,Knowing which LTE bearer types (RLC AM vs TM) support PDCP duplication helps understand bearer configuration and reliability behavior; not capped since it is not a new feature.
+question 5621,haiku_v2,"Asks for the literal expansion of the abbreviation BWP, which is an acronym-expansion item."
+question 9220,haiku_v2,IEEE standards revision and comment process is an organizational matter unrelated to network operations.
+question 812,haiku_v2,"Asks for a radiated test requirement parameter value (demodulation branch limit) from the specification, a rarely used spec detail."
+question 6476,haiku_v2,V2X is a niche feature capped at 1 by rule 2; the question concerns a security protection measure.
+question 8896,haiku_v2,"A term definition (what an MTC device is), capped at 1 under the definition rule."
+question 7180,haiku_v2,A Rel-18 feature-level effect of antenna port reduction on latency; new-feature cap applies and it is a standard design detail.
+question 4751,haiku_v2,"A term definition of MPS session, which is a definition-level item rather than a daily operations concept."
+question 9394,haiku_v2,"Concerns regulatory obligations of participating operators for PWS, which is mainly a regulatory matter with little day-to-day operational use."
+question 1387,haiku_v2,"Rel-18 eDRX and RRC_INACTIVE connection-inactive procedure is a new feature, capped at 1."
+question 5480,haiku_v2,"A term definition of SDU transfer rate, capped at 1 under the definition rule."
+question 7713,haiku_v2,"A term definition of handoff gain/loss used in link budget design, capped at 1 under the definition rule."
+question 3964,haiku_v2,"Explains VCC behavior when the target domain bars the call, which indirectly relates to IMS voice continuity knowledge operators use when troubleshooting handover-type failures."
+question 3399,haiku_v2,A general high-level statement about eMBB deployment area types with little operational detail.
+question 8255,haiku_v2,"Asks which frames the IGTK key protects, a key-usage standard detail rather than a routine operations item."
+question 6073,haiku_v2,"RedCap is a Rel-17 new feature, capped at 1, and the question concerns its design objective."
+question 6901,haiku_v2,"RLM and BFD relaxation reporting is a Rel-17 new power-saving feature, capped at 1."
+question 4184,haiku_v2,"Management data analytics (MDA) MnS context detail is a Rel-17 new feature, capped at 1."
+question 5663,haiku_v2,"TSF timer synchronization is a basic 802.11 WLAN mechanism that helps in understanding Wi-Fi network behavior, so it is indirectly relevant."
+question 5872,haiku_v2,"Asks which parameter field determines the DL PRS starting PRB, a field-level detail of a positioning feature."
+question 4640,haiku_v2,"HRP UWB PHY modes in IEEE 802.15.4 are a non-cellular short-range technology, which is unrelated to mobile network operations."
+question 9987,haiku_v2,"NR sidelink channel roles are a sidelink feature, capped at 1 under the sidelink rule."
+question 8263,haiku_v2,"Names the V2X architecture work item, a niche V2X feature detail capped at 1 with standardization-only relevance."
+question 7762,haiku_v2,"Rel-18 DCCF data-management service operation; a new 5G analytics feature not yet widely deployed, capped at 1 by boundary rule 2."
+question 3349,haiku_v2,Asks for the meaning of a timer value for E-UTRAN/WLAN traffic steering; timer values are parameter-level detail (rule 4).
+question 9880,haiku_v2,Asks for a requirement-specification throughput value at coverage edge; numeric requirement targets are capped at 1 (rule 4).
+question 2623,haiku_v2,"Data split is a mainstream dual-connectivity mechanism whose throughput purpose helps explain network behavior, so 2 under rule 5."
+question 2659,haiku_v2,"MUSIM is a Rel-17 multi-USIM feature not yet widely deployed, capped at 1 by rule 2."
+question 4388,haiku_v2,"Plain acronym expansion of LAN, which rule 3 sets to 1."
+question 3459,haiku_v2,"Rel-18 IEAF/AIML service-provider S-NSSAI selection is a new analytics-exposure feature, capped at 1 by rule 2."
+question 9984,haiku_v2,"Asks which specification covers LTE V2X security; V2X is a niche vertical feature capped at 1 by rule 2, and this is spec-reference detail."
+question 7274,haiku_v2,"Rel-18 paging enhancement using SSB-restricted areas is a new feature not widely deployed, capped at 1 by rule 2."
+question 3312,haiku_v2,"PS Data Off exempt-service list provisioning is a niche Rel-18 feature, capped at 1 by rule 2."
+question 8916,haiku_v2,"IEEE 802.15.4 DSME GTS behaviour is a non-cellular short-range technology, so 0 under boundary rule 1."
+question 7952,haiku_v2,"Asks which release standardized LAA, which is release-history knowledge (rule '某 Release 引入了什么') rated 1."
+question 6587,haiku_v2,"NF load analytics factors from Rel-18 are a new analytics feature, capped at 1 by rule 2."
+question 3172,haiku_v2,"Plain definition of a preshared key, a generic term rated 1 under rule 3."
+question 8675,haiku_v2,"Classification of GN-NSI types is a standards-level terminology detail rarely used in daily operations, rated 1."
+question 2057,haiku_v2,"Rel-17 signalling-based activation of management services is a new OAM feature not widely deployed, capped at 1 by rule 2."
+question 6828,haiku_v2,"Timer counting behaviour for the BWP inactivity timer is a standards-level parameter detail, rated 1 under rule 4."
+question 9432,haiku_v2,"802.11 S1G TXVECTOR channel-width field setting is a PHY-level encoding detail, rated 1."
+question 4338,haiku_v2,"Line-identity behaviour during voice call continuity is a supplementary-service detail, and per rule 6 the lower level applies."
+question 7148,haiku_v2,"Rel-17 ATSSS load-balancing split determination is a new multi-access feature, capped at 1 by rule 2."
+question 6860,haiku_v2,"Presence condition of an 802.11 management element depending on a MIB attribute is a field-level encoding detail, rated 1."
+question 9280,haiku_v2,"Asks for the literal expansion of SCG, an abbreviation expansion rated 1 under rule 3."
+question 8445,haiku_v2,"Rel-18 edge relocation (EAS change and PSA UPF relocation) is an edge application architecture feature, capped at 1 by rule 2."
+question 7703,haiku_v2,"Defines the term serving cell for MCG, a terminology definition rated 1 under rule 3."
+question 3254,haiku_v2,"Generic definition of a frame as a unit of peer-exchanged data is a general concept definition, rated 1 under rule 3."
+question 2357,haiku_v2,"NSWO is a 5GS Rel-17 feature, which the guideline caps at 1; it concerns UE routing of IP flows over WLAN."
+question 2806,haiku_v2,"Bluetooth AFH is a non-cellular short-range technology, which the guideline sets to 0."
+question 7337,haiku_v2,"Averaging times for RF current exposure limits in IEEE C95.1 are RF human-exposure safety content, which is 0."
+question 7166,haiku_v2,"Backbone Network Service is a Rel-17 niche feature capped at 1, and the question asks about its L1/L2 role, a standards-level detail."
+question 2364,haiku_v2,"E-RAB is a core bearer concept and the question asks its meaning (S1 bearer plus DRB), which the guideline's core-concept exception rates 2."
+question 2491,haiku_v2,"SIPTO@LN is a niche feature listed in the guideline's cap-at-1 group, and the question concerns its release condition after handover."
+question 2783,haiku_v2,"Periodic CSI-RS configuration for radio link quality measurement is an RAN mechanism with indirect O&M relevance, rated 2 under the take-lower rule."
+question 8396,haiku_v2,"AI/ML placement in RAN architecture is a new-feature topic (Rel-17 and later) capped at 1, and the answer is a generic 'depends on deployment'."
+question 9555,haiku_v2,RSCF is an obscure architectural term with little use in routine operations; the guideline's take-lower rule applies.
+question 194,haiku_v2,"Home-network responsibilities for subscription data in roaming relate to network element functions that help explain roaming behaviour, rated 2."
+question 1471,haiku_v2,"ETSI MEC edge application architecture is a listed cap-at-1 topic, and this question concerns a MEC service function."
+question 6734,haiku_v2,"Operating class meaning for wide-bandwidth channel switch is a specific 802.11 encoding detail, rated 1."
+question 966,haiku_v2,"The ASEL command subfield in ASELC is an 802.11 field-level encoding detail, rated 1."
+question 3389,haiku_v2,"PDCCH skipping is a UE power-saving mechanism closely related to DRX, which is a commonly used mechanism, rated 2."
+question 5515,haiku_v2,"PTSF subfield in the NDP Paging frame APDI is a specialised 802.11 field encoding, not a base packet field, rated 1."
+question 4718,haiku_v2,"Limitations of indirect data forwarding during EPS-to-5GS handover are part of mobility procedure knowledge, rated 2 under the take-lower rule."
+question 4519,haiku_v2,"Evolved ProSe remote UE via relay is a sidelink feature not widely deployed, which the guideline caps at 1."
+question 6599,haiku_v2,"WBA SAR thresholds from ANSI C95.1 are RF exposure content, which is 0."
+question 5438,haiku_v2,"NANP is an acronym expansion, which the guideline rates 1."
+question 2032,haiku_v2,"UE Configuration Update is a 5GMM signalling procedure that updates the Allowed NSSAI, so it is an interface and procedure step rated 2."
+question 4285,haiku_v2,"CW reset after successful transmission is a basic CSMA/CA backoff mechanism common to all Wi-Fi networks, rated 2."
+question 4317,haiku_v2,"The UDP header length is a basic TCP/IP packet field that engineers see when analysing captures, which the guideline's exception rates 2."
+question 7209,haiku_v2,NSSRG is a Rel-17 slicing feature capped at 1 under the guideline.
+question 9901,haiku_v2,The PFDF PFD distribution in Nnef_PFD_Management_Notify is a Rel-18 feature capped at 1.
+question 1630,haiku_v2,"UDN is a general term definition that the guideline rates 1, and it is not in the core-concept exception list."
