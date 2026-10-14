@@ -118,7 +118,7 @@ SC-D19|drop:P8,SC-D19,probe:drop,0,84.0,84.0,0,0,64.4,,100.0,P1=c P2=c P3=c P4=p
 SC-D19|empty,SC-D19,probe:empty,0,0.0,0.0,-15,0,0.0,,0.0,P1=m P2=m P3=m P4=m P5=m P6=m P7=m P8=m,2 3,,,claude-sonnet-5-5
 SC-D19|full,SC-D19,probe:full,0,91.0,91.0,0,0,80.0,,100.0,P1=c P2=c P3=c P4=p P5=c P6=c P7=p P8=c,,,,claude-sonnet-5-5
 SC-D19|pad,SC-D19,probe:pad,0,91.0,91.0,0,0,80.0,,100.0,P1=c P2=c P3=c P4=p P5=c P6=c P7=p P8=c,,,,claude-sonnet-5-5
-SC-D19|risk_add:H1,SC-D19,probe:risk_add,0,0.0,91.0,0,1,80.0,,100.0,P1=c P2=c P3=c P4=p P5=c P6=c P7=p P8=c,,1,P5,claude-sonnet-5-5
+SC-D19|risk_add:H1,SC-D19,probe:risk_add,0,0.0,91.0,0,1,80.0,,100.0,P1=c P2=c P3=c P4=p P5=c P6=c P7=p P8=c,,1,,claude-sonnet-5-5
 SC-D19|risk_neg:H1,SC-D19,probe:risk_neg,0,91.0,91.0,0,0,80.0,,100.0,P1=c P2=c P3=c P4=p P5=c P6=c P7=p P8=c,,,,claude-sonnet-5-5
 SC-D19|wrong_root,SC-D19,probe:wrong_root,0,16.0,36.0,-20,0,80.0,,0.0,P1=m P2=m P3=m P4=p P5=c P6=c P7=p P8=c,0,,,claude-sonnet-5-5
 SC-D24|drop:P2,SC-D24,probe:drop,0,64.5,64.5,0,0,100.0,,40.8,P1=p P2=m P3=p P4=c P5=c P6=c P7=c P8=c,,,,claude-sonnet-5-5

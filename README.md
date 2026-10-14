@@ -95,6 +95,28 @@ uv run python scripts/judge_scenarios.py --answers data/scenarios/judge_probes/p
 uv run python analysis/judge_meta.py --run probes_v1 --split debug              # 元评测报告 → reports/judge/
 ```
 
+真实回答判分、两档对照与仲裁、场景题横评（云端会话）：
+
+```bash
+uv run python scripts/judge_scenarios.py --answers results/answers/main_off.jsonl \
+    --judge claude:claude-haiku-5-5 --prompt v2 --run main_off                   # Sonnet 同样再判一遍
+uv run python analysis/judge_agreement.py --run main_off --answers results/answers/main_off.jsonl
+    # 一致性、长度偏差、仲裁抽样 → data/scenarios/arbitration/；仲裁表填完后重跑 → 最终主分 final_scores.csv
+uv run python analysis/scenario_analysis.py --run main_off                      # 横评分档 → reports/scenarios/main_off_main.md
+```
+
+跨厂商 judge（Mac，百炼 key；规则见 STATUS 决定日志 Oct 14）：
+
+```bash
+uv run python scripts/judge_scenarios.py --answers results/answers/main_off.jsonl \
+    --judge bailian:deepseek-v4.1-flash --prompt v2 --run main_off --limit 2     # 先冒烟 2 条，看 jsonl 里 ok 与 parsed
+uv run python scripts/judge_scenarios.py --answers data/scenarios/judge_probes/probes.jsonl \
+    --judge bailian:deepseek-v4.1-flash --prompt v2 --run probes_v2 --split holdout --workers 4
+uv run python scripts/judge_scenarios.py --answers results/answers/main_off.jsonl \
+    --judge bailian:deepseek-v4.1-flash --prompt v2 --run main_off --workers 4
+git add results/judge/probes_v2/bailian_deepseek-v4.1-flash.* results/judge/main_off/bailian_deepseek-v4.1-flash.*
+```
+
 judge 后端：`claude:<模型 ID>` 经 Claude Code 无头模式（`claude -p`，订阅额度），`bailian:<模型 ID>` 经百炼。加 `--dry-run` 只看发送的提示，加 `--repeats 3` 测 judge 自身稳定性。判定记录在 `results/judge/<run>/`（入库）。
 
 **运行位置（Oct 14 起）**：`claude` 后端的 judge 一律在 Claude Code 云端会话里跑（仓库已带齐探针、题目、提示词与划分，容器自带已登录的 `claude`），每跑完一轮立即把 `results/judge/<run>/` 与 `reports/judge/` 提交推送，容器回收前没提交的会丢（缓存可续跑补回）。需要百炼 key（`.env`）的步骤仍在 Mac 上跑：回答生成、`build_judge_probes.py segment`、三票核验、`bailian:` judge；生成的 `results/answers/<run>.jsonl` 提交入库后再到云端判分。`results/` 其余内容（横评、核验原始响应、`results/answers/raw/`）仍只在 Mac 本地。**注意：三票在「标准条款引用」上误报率高，只作粗筛；改题前必须逐题人工/强 subagent 复核，TS 条款号需人工查证。**
