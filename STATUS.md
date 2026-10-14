@@ -106,6 +106,7 @@ D1（judge 模型）、D2（judge 验证方式）已于 Oct 13 定下，见第�
   - 「判 missed」的真值约三分之一不成立：? 为 11/30 = 37%（95% 区间约 22%–54%），这些探针上判 partial 也合理。
   - 逐条查了 `segments.json`，11 条分三类：映射漏标 4 条（#1 SC-C02 P4、#11 SC-D13 P4、#22 SC-K01 P2、#28 SC-K04 P1，带有 Pk 部分内容的片段只标给了别的要点）；要点之间本身重叠 5 条（#6 SC-C09 P2、#15 SC-D16 P4、#21 SC-D24 P7、#25 SC-K02 P7、#26 SC-K03 P1，同一句话同时属于两个要点）；只剩零星痕迹 2 条（#2 SC-C02 P5、#16 SC-D16 P5）。同题成对的 drop（SC-D15 P3/P7、SC-K03、SC-K09）互为镜像，删句本身切得准。
   - 处理：不重切、不改 rubric（v1.0 已冻结，重叠是 rubric 结构，重切去不掉）。`analysis/judge_meta.py` 以「判非 covered」为删要点检出主指标，「判 missed」降为参考，另报人工判 N 的子集上的「判 missed」（19 条，只作参考）；人工判 Y 的探针不计入删要点指标。
+- Haiku 判调试集探针（Oct 14，云端会话，提示词 v1，`results/judge/probes_v1/`，报告 `reports/judge/probes_v1_debug.md`）：165/165 成功、0 失败。删要点检出（判非 covered，主指标）97.7%（43/44）；判 missed 68.2%，人工确认删净子集 89.5%（17/19）；错误根因 100%（39/39）；未改动要点判非 missed 100%、判 covered 87.6%；拒答 100%；高危建议检出 100%（22/22），「不可取」提醒误报 1/22，无高危探针误报 3/121；注水加长逐要点一致 97.6%；摘录找不到 1.0%（10/1032）。Sonnet 同批待跑。
 
 ## 五、决定日志（按时间）
 
@@ -136,7 +137,7 @@ D1（judge 模型）、D2（judge 验证方式）已于 Oct 13 定下，见第�
 | Oct 13 | 天花板试跑结果：触顶 3/45，按事先定的规则照常定稿，不给触顶题加难度。 |
 | Oct 14 | 4 条协议取值对照原文核对全部成立，题目与权重不改；场景题定稿 v1.0，打 tag `scenarios-v1.0`，之后改题只出勘误版本。 |
 | Oct 14 | drop 探针人工抽查 30 条：N 19、? 11、Y 0。删要点检出改以「判非 covered」为主指标，「判 missed」只作参考、不作为提示词迭代目标；不重切、不改 rubric；Spec 升为 v2.5。（「超过 3 条先查映射」的门槛是看数据前提出的，但用户填表前未确认，不算事先定的规则；映射仍逐条查过。） |
-| Oct 14 | `claude` 后端的 judge 正式运行统一改在云端会话里跑（由 Claude 执行、跑完即提交），回答生成等需要百炼 key 的步骤仍在 Mac；`results/answers/<run>.jsonl` 与 `results/judge/` 改为入库（取代 Oct 13「`results/` 只在本地」中这两部分）。 |
+| Oct 14 | `claude` 后端的 judge 正式运行统一改在云端会话里跑（由 Claude 执行、跑完即提交），回答生成等需要百炼 key 的步骤仍在 Mac；`results/answers/<run>.jsonl` 与 `results/judge/` 改为入库（取代 Oct 13「`results/` 只在本地」中这两部分）。随后用户取消对 `results/` 的忽略并提交审计证据（`a9bf44e`），其余产物提交时手动排除。 |
 
 ## 六、环境、费用与账号
 
@@ -144,7 +145,7 @@ D1（judge 模型）、D2（judge 验证方式）已于 Oct 13 定下，见第�
 - 运行位置（Oct 14 起）：
   - 云端会话（Claude Code on the web）：`claude` 后端的 judge（调试集 / 留出集探针、正式判分）、`analysis/judge_meta.py`、代码与文档修改。容器自带已登录的 `claude`（Oct 14 实测：Haiku 判 1 个探针成功，返回模型 claude-haiku-5-5），`uv run` 自动装依赖。容器会回收，跑完一轮立即提交推送；会话只能推自己的分支（推 main 与 tag 返回 403），合入 main 走 PR。网络只放行 GitHub 与包管理器，连不上百炼。
   - Mac：需要百炼 key 的（回答生成、`build_judge_probes.py segment`、三票核验、`bailian:` judge）和依赖本地 `results/` 历史数据的（横评分析层、费用估算）。
-- 不入库、只在用户本地 Mac 的：`results/` 的大部分（25,585 次横评调用、核验原始输出、`results/answers/raw/` 生成缓存等）、`data/raw/`（TeleQnA、TeleLogs）、`.env`、`.venv`。云端会话里没有这些，跑不了依赖它们的脚本（横评分析层、费用估算等）。例外（Oct 14 起入库，`.gitignore` 已放行）：场景题回答 `results/answers/<run>.jsonl` 与 judge 判定 `results/judge/`。
+- `results/`：Oct 14 起 `.gitignore` 不再忽略 `results/`（用户改动，`a9bf44e`），已入库的有 `answers/`、`judge/`、`audit/`（审计证据）。其余运行产物（横评 `evalscope/` 的 25,585 次调用、`scenarios/` 核验原始响应、`answers/raw/` 生成缓存等）仍只在 Mac，未提交；它们不再被忽略，会出现在 `git status` 里，提交时要手动排除，不要 `git add -A` / `git add results`。`data/raw/`（TeleQnA、TeleLogs）、`.env`、`.venv` 仍被忽略。云端会话里没有这些本地文件，跑不了依赖它们的脚本（横评分析层、费用估算等）。
 - 原文与证据文字只放 `results/`、`data/raw/`；`data/processed/` 只放 ID 与标签。
 - 所有被测模型经阿里云百炼 OpenAI 兼容接口（`.env` 的 `LLM_BASE_URL`、`LLM_API_KEY`）。HF token 在用户 `~/.zshrc`。
 - 余额（Oct 13）：学生代金券约 ¥259.7，现金 ¥9.14。主实验实际消耗远低于估算（免费额度抵了大半，代金券只扣 ¥1 多）。
@@ -193,4 +194,4 @@ D1（judge 模型）、D2（judge 验证方式）已于 Oct 13 定下，见第�
 | `analysis/judge_meta.py` → `reports/judge/` | judge 元评测报告（探针检出率、误报率、稳定性） |
 | `scripts/generate_answers.py`、`configs/assistant/system_v1.md` | 场景题回答生成（试跑与正式生成共用，缓存续跑）与被测模型系统提示 |
 | `analysis/ceiling_pilot.py` → `reports/scenarios/` | 天花板试跑分析（按事先定的触顶规则出结论） |
-| `results/`（大部分只在本地） | 场景题回答（`answers/<run>.jsonl`，入库）与判定（`judge/`，入库）、横评逐题预测（`evalscope/objective/<模型>/`）、核验原始响应（`scenarios/{three_vote,perquestion}/`、`audit/`） |
+| `results/`（`answers/`、`judge/`、`audit/` 已入库，其余只在 Mac） | 场景题回答（`answers/<run>.jsonl`，入库）与判定（`judge/`，入库）、横评逐题预测（`evalscope/objective/<模型>/`）、核验原始响应（`scenarios/{three_vote,perquestion}/`、`audit/`） |
