@@ -20,10 +20,10 @@ cp .env.example .env   # 填入百炼工作空间的 LLM_BASE_URL 与 LLM_API_KE
 | --- | --- |
 | `data/raw/` | 原始数据集（不入库） |
 | `data/processed/` | 审计筛选后的题目 ID 清单 |
-| `data/scenarios/` | 自写中文场景题、rubric 与参考答案 |
+| `data/scenarios/` | 自写中文场景题、rubric 与参考答案；judge 探针（`judge_probes/`）、调试 / 留出划分、分歧仲裁表（`arbitration/`） |
 | `configs/` | 被测模型清单、EvalScope 任务配置 |
 | `scripts/` | 数据审计、污染检测、追问施压、模型探测 |
-| `analysis/` | 统计检验、judge 元评测、回归门禁 |
+| `analysis/` | 统计检验、judge 元评测与两档 / 跨厂商对照、场景题横评、回归门禁 |
 | `results/` | 原始请求与响应。不被 `.gitignore` 忽略；已入库 `answers/`、`judge/`、`audit/`，其余（横评 `evalscope/`、核验原始响应、`answers/raw/`）只在本地，提交时手动排除 |
 | `reports/` | 生成的报告与图表 |
 | `docs/` | 文档与历史版本 |
@@ -115,6 +115,15 @@ uv run python scripts/judge_scenarios.py --answers data/scenarios/judge_probes/p
 uv run python scripts/judge_scenarios.py --answers results/answers/main_off.jsonl \
     --judge bailian:deepseek-v4.1-flash --prompt v2 --run main_off --workers 4
 git add results/judge/probes_v2/bailian_deepseek-v4.1-flash.* results/judge/main_off/bailian_deepseek-v4.1-flash.*
+```
+
+跨厂商 judge 的分析（云端会话，只读入库数据）：
+
+```bash
+uv run python analysis/judge_meta.py --run probes_v2 --split holdout          # 三个 judge 的留出集探针元评测同表
+uv run python analysis/judge_agreement.py --run main_off --answers results/answers/main_off.jsonl \
+    --main bailian_deepseek-v4.1-flash --second claude_claude-haiku-5-5_medium --compare-only   # 对 Sonnet 同理
+uv run python analysis/judge_cross_vendor.py --run main_off --answers results/answers/main_off.jsonl   # 自家偏好检验
 ```
 
 judge 后端：`claude:<模型 ID>` 经 Claude Code 无头模式（`claude -p`，订阅额度），`bailian:<模型 ID>` 经百炼。加 `--dry-run` 只看发送的提示，加 `--repeats 3` 测 judge 自身稳定性。判定记录在 `results/judge/<run>/`（入库）。

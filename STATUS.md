@@ -2,7 +2,7 @@
 
 项目：通信网络运维助手 · 大模型选型评测。最后更新：2026-10-14。
 
-本文件是唯一的状态文档：现状、下一步、待定决定、决定日志、注意事项都在这里。方案只看 `通信网络运维助手 · 大模型选型评测 Spec.md`（v2.5），用法与命令看 `README.md`。接手顺序：本文件 → Spec → `CLAUDE.md` → `README.md`。用户用中文交流。
+本文件是唯一的状态文档：现状、下一步、待定决定、决定日志、注意事项都在这里。方案只看 `通信网络运维助手 · 大模型选型评测 Spec.md`（v2.6），用法与命令看 `README.md`。接手顺序：本文件 → Spec → `CLAUDE.md` → `README.md`。用户用中文交流。
 
 ## 一、现在在哪
 
@@ -10,12 +10,12 @@
 1 准备考卷（TeleQnA 审计与清洗）               已完成：客观题测试集 731 题
 2 客观题横评（7 模型 × 731 题 × 5 子集）        已完成：分析层 + 三方复核，reports/objective/objective_main.md
 3 出主观题（40–50 道中文场景题 + rubric）       已定稿 v1.0（tag `scenarios-v1.0`，45 题）
-4 阅卷（规则判分 + LLM judge）                 judge 工具链已就绪（见第四节第 4 项），未正式判分
-5 检验裁判（judge 元评测）                     探针部分已完成（Oct 14）：v2 锁定，留出集两档都合格，主 judge 定为 Haiku；真实回答上的 judge 间一致性与仲裁随第 6 步做
-6 出结论（横评、思考对照、追问施压、精度回归、选型报告） 进行中：场景题关思考横评已出（Oct 14，`reports/scenarios/main_off_main.md`）；下一步：跨厂商 judge（用户在 Mac 上跑）← 现在
+4 阅卷（规则判分 + LLM judge）                 已完成（Oct 14）：关思考 315 份经 Haiku、Sonnet 判分与 60 条仲裁定出最终主分
+5 检验裁判（judge 元评测）                     已完成（Oct 14）：探针（v2 锁定、留出集三个 judge 都合格）+ 真实回答两档一致性与仲裁 + 跨厂商对照与自家偏好检验
+6 出结论（横评、思考对照、追问施压、精度回归、选型报告） 进行中：场景题关思考横评已出（`reports/scenarios/main_off_main.md`）；下一步：第 7 步并行项与追问施压，思考对照放最后 ← 现在
 ```
 
-场景题已定稿 v1.0（Oct 14，tag `scenarios-v1.0`），之后改题只能出勘误版本。drop 探针人工抽查已完成（删要点检出改以宽松口径为主指标，见第四节第 4 项）。judge 探针元评测已完成（Oct 14）：提示词 v2 锁定，留出集上两档都合格，主 judge 定为 Haiku、Sonnet 作第二 judge（见决定日志）。7 模型关思考的 315 份回答已在 Mac 上生成并入库（Oct 14，`b07b877`，`results/answers/main_off.jsonl`，315/315 成功、0 失败、0 截断，见第四节第 5 项）。下一步：在云端会话里用锁定的 v2 提示词两档判全部 315 份回答。这一段是整个项目最容易返工的地方：场景题 → 模型回答 → judge 验证 → judge 提示词 → 全量判分环环相扣，上游一改，下游作废，所以按第二节的顺序走。
+场景题已定稿 v1.0（Oct 14，tag `scenarios-v1.0`），之后改题只能出勘误版本。Oct 14 一天内完成了 judge 这条线：提示词 v2 锁定（tag `judge-prompt-v2`）→ 留出集探针两档合格 → 7 模型关思考 315 份回答（Mac 生成）→ Haiku、Sonnet 全量判分 → 60 条分歧仲裁 → 最终主分（要点取 Haiku，一票否决须两档同一高危项都触发）→ 场景题横评分档 → 跨厂商 judge（deepseek-v4.1-flash）对照与自家偏好检验（未检出）。结果见第四节第 4、5 项。下一步：不依赖 judge 的并行项（第二节第 7 步，D3/D5 待定）与追问施压；思考对照（约 ¥144）按用户安排放在其余全部做完之后。
 
 ## 二、下一步（建议顺序）
 
@@ -26,9 +26,9 @@
 3. ~~**天花板试跑**~~（Oct 13 完成，报告 `reports/scenarios/ceiling_pilot.md`）：90 份回答（`e5c3f35`）全部判成，0 失败。触顶 **3/45**（SC-K02、SC-D26、SC-K01），未超过 15 → **照常定稿，不加难度**。均值 deepseek-v4.1-flash 62.7、qwen3.8-flash 47.9，单题 ≥85 的分别有 12 题、5 题。结论稳健：把一票否决和扣分全部去掉、只看要点原始分，触顶也只有 5 题，门槛降到 80 是 8 题，要降到 75 才到 16 题。需要留意：一票否决 22/90 条（qwen 14、deepseek 8），摘录核对找不到 19/657。这是未经验证的 Haiku v1 的判定，可能有误触发，留到第 5 步用探针检验，不据此改提示词。原计划：qwen3.8-flash、deepseek-v4.1-flash 关思考各答 45 题（`scripts/generate_answers.py`，90 次调用，粗估 ¥0.8），Haiku + 提示词 v1 判这 90 份（订阅额度），`analysis/ceiling_pilot.py` 按事先定的规则出结论：某题两个模型都 ≥ 85 分记为触顶，触顶超过 15 题（三分之一）就在定稿前给触顶题加难度，否则照常定稿（规则见第五节，跑之前入库）。Haiku v1 未经验证，只用来发现明显触顶；这批判定不拿来改 judge 提示词。客观题已有 440/731 题全员答对；场景题如果也全员高分，排序和 judge 验证都会失效，此时调难度比事后补救便宜。定稿不改题时，这 90 份回答在第 6 步直接复用。
 4. ~~**场景题定稿 v1.0**~~（Oct 14 完成，tag `scenarios-v1.0`）。之后改题只能出勘误版本，并标出受影响的回答和判分。定稿时只改了 4 条 `unverified_residuals` 的说明文字（不进 judge 缓存键与 `ref_sha`），切分与探针仍有效，不用重跑 `segment` / `build`。drop 探针人工抽查已完成（Oct 14，30 条，结果见第四节第 4 项）。
 5. ~~**judge 提示词迭代与探针元评测**~~（Oct 14 完成）：v1 → v2，v2 通过自身稳定性检验并锁定（tag `judge-prompt-v2`）；留出集 172 个探针两档都合格（`reports/judge/probes_v2_holdout.md`），按事先定的规则 Haiku 做主 judge、Sonnet 作第二 judge。删要点检出看「判非 covered」（主指标），「判 missed」只作参考。
-6. **生成与判分**：~~7 模型关思考 × 45 题~~ 已完成（Oct 14，`b07b877`，`results/answers/main_off.jsonl`，315/315 成功、0 失败、0 截断，实际 ¥16.81；详见第四节第 5 项）。判分已完成（Oct 14，`results/judge/main_off/`，报告 `reports/judge/main_off_agreement.md`，见第四节第 5 项）。仲裁已完成（Oct 14），按揭盲前定的规则：要点用 Haiku、一票否决须两档同一高危项都触发，最终主分 `results/judge/main_off/final_scores.csv`（见第四节第 5 项）。场景题横评已完成（`reports/scenarios/main_off_main.md`，见第四节第 5 项）。← 下一步：**跨厂商 judge**（用户在 Mac 上跑，命令见 README「跨厂商 judge」）：`bailian:deepseek-v4.1-flash`、提示词 v2，先 `--limit 2` 冒烟，再判留出集 172 个探针与 `main_off` 315 份，提交 `results/judge/{probes_v2,main_off}/bailian_deepseek-v4.1-flash.*`。粗估按日间价约 ¥12（每次调用输入约 7.5k、输出约 1.5k token；DeepSeek 夜间 22:00–08:00 半价约 ¥6），跑前用实测的前 2 条核一下。推上来后在云端出：探针元评测（`judge_meta.py --run probes_v2 --split holdout`）、对 Haiku / Sonnet 的对照（`judge_agreement.py --compare-only`）、自家偏好检验（规则见决定日志）。思考对照（约 ¥144）等其余全部做完再做（用户 Oct 14 定）。
-   - 判分时必须一并查「Haiku − Sonnet 总分差是否随回答长度上升」（第四节第 4 项末条预留的观察项）：7 个模型的真实回答字数差 1.7 倍（glm-5.2 2069 ↔ kimi-k3 3558），长度是模型属性而非随机注水，若 Haiku 确有加长偏差就会系统性偏向长回答的模型、足以改变排名，不能再当「门槛内可忽略」。
-   - 思考对照的回答（约 ¥144；Oct 12 按旧假设批的是 ¥130，费用已按场景题实测重算，尚未花）花钱前重新确认。
+6. ~~**生成与判分**~~（Oct 14 完成）：7 模型关思考 × 45 题（`b07b877`，`results/answers/main_off.jsonl`，315/315、实际 ¥16.81）；Haiku、Sonnet 全量判分（`results/judge/main_off/`，报告 `reports/judge/main_off_agreement.md`）；60 条分歧仲裁后按揭盲前定的规则得最终主分 `results/judge/main_off/final_scores.csv`；场景题横评 `reports/scenarios/main_off_main.md`；跨厂商 judge（`038dc9f`，用户在 Mac 上跑，按谷时价约 ¥2.3）对照与自家偏好检验 `reports/judge/main_off_cross_vendor.md`。详见第四节第 5 项。
+   - ~~长度偏差必查项~~：已按规则检验，未检出（ρ = −0.003，p = 0.57）。
+   - **思考对照**（约 ¥144；Oct 12 按旧假设批的是 ¥130，尚未花）：用户 Oct 14 定为其余全部做完后再做，花钱前重新确认；做时沿用 main_off 的判分流程（两档判分 + 同样的一票否决规则），D4 与开思考采样参数先定。
    - 分工不变：回答生成在 Mac 上跑（百炼 key 只在 `.env`），`results/answers/<run>.jsonl` 提交入库后由云端判分。
 7. **不依赖 judge 的并行项**：精度回归客观题部分（门禁阈值先提交打 tag，见 D3）、污染检测 TS-Guessing、TeleLogs 子集、干扰项质量抽查（72 对选项完全相同的非重复题）。
 8. 追问施压 → 选型报告、数据卡、回归报告 → 简历 bullet 与模拟面试。
@@ -96,7 +96,7 @@ D1（judge 模型）、D2（judge 验证方式）已于 Oct 13 定下，见第�
     另 1 条（SC-C05 绕行容量）是题干写明的保守假设，结论不受影响。c 类 10 条逐条看过，要点与扣分项都不罚考生提及这些因素，题干不用改。条号凭记忆的 SC-C10 source_note 已去掉条号。`check_scenarios.py` 会检查分诊表与 `unverified_residuals` 是否逐条对应。
 - 机器校验 `scripts/check_scenarios.py`：当前 0 错 0 警。
 
-### 4. judge 工具链（Oct 13，已冒烟测试，未正式运行）
+### 4. judge 工具链与探针元评测（Oct 13–14）
 
 - 设计见 Spec v2.5「Judge 元评测与提示词迭代」。judge 只输出逐项判定（要点 covered / partial / missed，扣分项、高危操作是否触发，各附原文摘录），程序按权重算总分（partial 记一半，扣分下限 0，高危一票否决），诊断题另报根因 / 处置两段得分率；程序核对摘录是否在回答里，用来发现编造证据。
 - 后端：`claude:<模型 ID>`（`claude -p` 无头调用，`--json-schema` 约束输出，记录实际返回的模型名）；`bailian:<模型 ID>`（关思考、温度 0）。逐条缓存（键 = 提示词 + judge + effort + 题目评分信息 + 回答文本），可断点续跑；额度用尽或限流时自动停止，重跑同一命令续上；判定校验不通过的记录落盘、计入失败率并在下次重试。
@@ -129,7 +129,7 @@ D1（judge 模型）、D2（judge 验证方式）已于 Oct 13 定下，见第�
   - 要留意：Haiku 的注水偏差在两个集上都略高于 Sonnet（调试 +0.5 / +0.2，留出 +1.3 / +0.5，个别题 +9.5），仍在门槛内。真实回答长度因模型而异，判完全部回答后查一下「Haiku − Sonnet 总分差」是否随回答长度上升；有的话写进报告。
   - **这一条已从「事后观察」提为判分阶段的必查项**（Oct 14）：315 份真实回答生成后实测各模型回答字数差 1.7 倍（glm-5.2 2069 ↔ kimi-k3 3558，见第四节第 5 项）。注水探针里长度是随机施加的，真实回答里长度是模型属性，所以一旦 Haiku 有加长偏差，它会系统性地偏向长回答的模型、足以改变排名，不再是「门槛内可忽略」。做法：按模型算注水探针的加分幅度，与该模型真实回答的字数做相关。
 
-### 5. 场景题回答生成（第 6 步前半，Oct 14，`b07b877`）
+### 5. 场景题回答生成、判分、仲裁、横评与跨厂商对照（第 6 步，Oct 14）
 
 - 命令 `uv run python scripts/generate_answers.py --run main_off --group main --mode off`：7 模型 × 45 题 × 1 次 = 315 次，`mode=off`（`enable_thinking: false`、`temperature: 0`）、`max_tokens=4096`、系统提示 v1、被测模型只看题干。90 份复用天花板试跑缓存（题目与 `system_v1.md` 相对 tag `scenarios-v1.0` 无差异，缓存键未变），新调用 225 次。
 - 结果 **315/315 成功、0 失败、0 截断**（`finish_reason` 全为 `stop`）。本次调用按原价 ¥16.81，含复用的 90 份共 ¥17.67。回答文件 `results/answers/main_off.jsonl`（1.9 MB，入库）；逐调用缓存 `results/answers/raw/`（只在 Mac，已加进 `.gitignore`）。
@@ -168,6 +168,13 @@ D1（judge 模型）、D2（judge 验证方式）已于 Oct 13 定下，见第�
   - 按规则分档：第 1 档 kimi-k3、deepseek-v4.1-flash、qwen3.8-max-0902；第 2 档其余 4 个。档是「与本档最高者分不开」，不是档间都显著：deepseek-v4.1-flash、qwen3.8-max 与第 2 档各模型之间也都不显著，报告里要这样写。
   - 描述项：按题型差异大（qwen3.7-plus 的 KPI 解读 38.7，远低于其余 64–82；kimi-k3 的方案咨询 56.7 不如 qwen3.8-max 60.9）；诊断题根因段 85–94、处置段 52–66，各模型都是处置段弱；一票否决率 4%–13%。
   - 稳健性：与 Sonnet 单独判名次完全一致（τ = 1.00），与 Haiku 单独 τ = 0.81，不计一票否决 τ = 0.71（qwen3.8-flash 由第 6 升到第 4、glm-5.2 降到第 7）。前三名在四种口径下都不变。
+- **跨厂商 judge**（Oct 14，`bailian:deepseek-v4.1-flash`，关思考、温度 0，提示词 v2；用户在 Mac 上跑，`038dc9f`，留出集 172 个探针与 main_off 315 份全部一次成功，按谷时价约 ¥2.3）：
+  - 留出集探针：全部门槛都过，且多项最好——删要点（主指标）、错误根因、拒答、高危检出均 100%，误报 0/23、0/126，注水后逐要点一致 98.9%、总分差 −0.7，删要点判 missed 91.3%（Haiku 69.6%、Sonnet 87.0%），摘录找不到 1.1%；只有「未改动要点判非 missed」为 99.3%（5/689 误判 missed），两档 Claude 是 100%。报告并入 `reports/judge/probes_v2_holdout.md`。
+  - 真实回答上与两档 Claude 的一致性更低：逐要点 78.8%（对 Haiku，kappa 0.63）、75.2%（对 Sonnet，kappa 0.59），两档 Claude 之间是 82.5%；总分 Spearman 0.71 / 0.72。整体偏宽：均分 62.5（Haiku 57.1、Sonnet 58.9），一票否决 49 条（Haiku 61、Sonnet 29、最终 27）；摘录找不到 3.1%（68/2169）。报告 `reports/judge/main_off_agreement_bailian_deepseek-v4.1-flash_vs_claude_claude-{haiku,sonnet}-5-5_medium.md`。
+  - 名次：前三名与主口径相同（kimi-k3、deepseek-v4.1-flash、qwen3.8-max-0902），与 Sonnet 的名次一致 20/21 对（τ = 0.90），与 Haiku 18/21（τ = 0.71）。前三名在五种口径下都不变。
+  - **自家偏好检验**（规则见决定日志，`analysis/judge_cross_vendor.py` → `reports/judge/main_off_cross_vendor.md`）：主口径（含一票否决的总分）每题自家 − 其余的 e 差均值 +0.7 分，单侧 p = 0.39 → **未检出**。不计一票否决的口径 +2.3 分、p = 0.056，接近但未到 0.05；各模型 e 均值（不计否决）deepseek-v4.1-flash +5.3、deepseek-v4-pro +3.6，其余 −0.2 到 +4.3（kimi-k3 +4.2、qwen3.8-max +4.3），看不出只偏向自家。报告写成「未检出，45 题下要点层面可能有约 2 分的偏向，分辨不出」，不写「没有自家偏好」。
+  - 仲裁样本对照（事后描述，规则里没有）：在 60 条两档 Claude 分歧项上，deepseek 的判定与仲裁认定的一方相同 65%（39/60，[52%, 76%]；高危 13/20、要点 26/40），高于 Haiku 52%、Sonnet 48%。这是挑出来的难项，第三个 judge 本来就有约一半机会站对边，不代表它更准，不据此换 judge。
+  - 对 Spec 问题 2 的补充：换一个厂商的 judge，前三名不变，要点层面的分歧比两档 Claude 之间更大；一票否决仍是各 judge 分歧最大、对排序影响最大的一环。
 
 ## 五、决定日志（按时间）
 
@@ -212,21 +219,23 @@ D1（judge 模型）、D2（judge 验证方式）已于 Oct 13 定下，见第�
 | Oct 14 | 仲裁揭盲：Haiku 独自触发的高危项 16/19 判错 → 一票否决改为同一高危项两档都触发才算；Haiku 判档更高的要点 27/32 判对 → 要点保留 Haiku。最终主分写入 `results/judge/main_off/final_scores.csv`，名次与 Sonnet 单独判一致。 |
 | Oct 14 | 场景题横评分析规则（做检验之前定，看完不改；Spec 写明 45 题只支撑分档、不做严格排序）：数据 `results/judge/main_off/final_scores.csv`。每个模型均分 + 按题 bootstrap 95% CI（B = 10000，种子 20261015）；21 对模型以题为单元做配对符号翻转置换检验（B = 10000），Holm 校正（α = 0.05），附每对 80% 功效的最小可检出差距（未校正 / Holm）。分档：均分最高的模型与所有和它差异不显著（Holm）的模型为第 1 档；剩下的模型里再取均分最高者及与其不显著的为下一档，依此类推。只作描述、不做检验：按题型（consulting / diagnosis / kpi）的均分，诊断题根因段与处置段得分率，一票否决率（Wilson 区间）。稳健性：Haiku 单独、Sonnet 单独、不计一票否决三种口径下的名次及与主口径的 Kendall τ；分档结论只在主口径上下。 |
 | Oct 14 | 跨厂商 judge（Mac 上跑，百炼）：`bailian:deepseek-v4.1-flash`（关思考、温度 0），提示词 v2，判 (1) 留出集 172 个探针（`--run probes_v2 --split holdout`），(2) `main_off` 全部 315 份（不再另抽验证子集：单价低，全量才够做自家偏好检验）。分析：探针元评测与两档 Claude 同表报告（门槛同留出集规则，只报告、不改主分）；与 Haiku、Sonnet、最终主分的逐要点一致率与 kappa、总分 Spearman。**自家偏好检验**：e = 跨厂商 judge 总分 − 最终主分；每题取 deepseek 两个被测模型（v4.1-flash、v4-pro）的 e 均值减其余 5 个模型的 e 均值，得 45 个值，单侧符号翻转置换检验（H1：> 0，B = 10000，种子 20261015），p < 0.05 判为有自家偏好；另报不计一票否决的同一检验与各模型 e 均值。跨厂商 judge 的结果不进主分。 |
+| Oct 14 | 跨厂商 judge 结果：留出集探针全部门槛都过；真实回答上与两档 Claude 的一致性低于两档 Claude 之间（78.8% / 75.2% vs 82.5%）；前三名不变。自家偏好按规则未检出（主口径 +0.7 分，p = 0.39；不计否决 +2.3 分，p = 0.056，报告如实写）。跨厂商 judge 不进主分，结论不改。 |
+| Oct 14 | 思考对照放到其余全部做完之后再做（用户定）；摘录核对改为按「；」与省略号分段核对（用户同意，只影响核对数字，不影响判定与分数）。 |
 | Oct 14 | `results/answers/raw/`（回答生成的逐调用缓存）加进 `.gitignore`：README 与决定日志已约定它不入库，但此前只是未跟踪状态，`git add .` 会误提交。 |
 
 ## 六、环境、费用与账号
 
-- 代码：GitHub `qianqiuqiu/Telecom_OM_LLM_Evaluation`（public）。场景题 v1.0 已合入 main（tag `scenarios-v1.0`）。
+- 代码：GitHub `qianqiuqiu/Telecom_OM_LLM_Evaluation`（public）。场景题 v1.0 已合入 main（tag `scenarios-v1.0`），judge 提示词 v2 打了 tag `judge-prompt-v2`。
 - 运行位置（Oct 14 起）：
-  - 云端会话（Claude Code on the web）：`claude` 后端的 judge（调试集 / 留出集探针、正式判分）、`analysis/judge_meta.py`、代码与文档修改。容器自带已登录的 `claude`（Oct 14 实测：Haiku 判 1 个探针成功，返回模型 claude-haiku-5-5），`uv run` 自动装依赖。容器会回收，跑完一轮立即提交推送；会话只能推自己的分支（推 main 与 tag 返回 403），合入 main 走 PR。网络只放行 GitHub 与包管理器，连不上百炼。
+  - 云端会话（Claude Code on the web）：`claude` 后端的 judge（调试集 / 留出集探针、正式判分）、`analysis/` 下只读入库数据的分析（`judge_meta.py`、`judge_agreement.py`、`judge_cross_vendor.py`、`scenario_analysis.py`）、代码与文档修改。容器自带已登录的 `claude`（Oct 14 实测：Haiku 判 1 个探针成功，返回模型 claude-haiku-5-5），`uv run` 自动装依赖。容器会回收，跑完一轮立即提交推送；会话只能推自己的分支（推 main 与 tag 返回 403），合入 main 走 PR。网络只放行 GitHub 与包管理器，连不上百炼。
   - Mac：需要百炼 key 的（回答生成、`build_judge_probes.py segment`、三票核验、`bailian:` judge）和依赖本地 `results/` 历史数据的（横评分析层、费用估算）。
 - `results/`：Oct 14 起 `.gitignore` 不再忽略 `results/`（用户改动，`a9bf44e`），已入库的有 `answers/`（`ceiling_pilot.jsonl`、`main_off.jsonl`）、`judge/`、`audit/`（审计证据）。其余运行产物（横评 `evalscope/` 的 25,585 次调用、`scenarios/` 核验原始响应等）仍只在 Mac，未提交；它们不再被忽略，会出现在 `git status` 里，提交时要手动排除，不要 `git add -A` / `git add results`。例外：`answers/raw/`（回答生成的逐调用缓存）已于 Oct 14 加进 `.gitignore`，不再出现在 `git status` 里。`data/raw/`（TeleQnA、TeleLogs）、`.env`、`.venv` 仍被忽略。云端会话里没有这些本地文件，跑不了依赖它们的脚本（横评分析层、费用估算等）。
 - 原文与证据文字只放 `results/`、`data/raw/`；`data/processed/` 只放 ID 与标签。
 - 所有被测模型经阿里云百炼 OpenAI 兼容接口（`.env` 的 `LLM_BASE_URL`、`LLM_API_KEY`）。HF token 在用户 `~/.zshrc`。
 - 余额（Oct 13 查）：学生代金券约 ¥259.7，现金 ¥9.14。主实验实际消耗远低于估算（免费额度抵了大半，代金券只扣 ¥1 多）。Oct 14 场景题生成按原价折算 ¥16.81，**实际扣了多少未查**（免费额度与代金券的抵扣顺序见下条），余额待下次登录百炼时核对；这次 225 次调用 0 失败、无 403，说明计费渠道没出问题。
 - 计费规则：免费额度优先于代金券；**代金券不能抵扣打折模型和厂商直供路由**，qwen3.7-plus 限时 8 折只扣现金（Oct 12 曾因现金欠费 ¥0.03 导致全部模型 403；再遇全模型 403 先查欠费）。不用带厂商前缀的路由（`kimi/`、`ZHIPU/` 等）。
-- 已定规模（`analysis/cost_estimate.py` → `reports/cost_estimate.md`；场景题口径 Oct 14 由假设改为逐模型实测）：主实验约 **¥44**（客观题横评 ¥26.5 + 场景题关思考 ¥17.7，两部分都已跑完）；思考对照约 **¥144**（Oct 12 按旧假设批的是 ¥130；依据 10 题试跑，花 ¥3.35：多数模型每题思考 1.1k–2.2k token，qwen3.8-flash 约 4.9k，glm-5.3 约 9.7k 且 16384 上限会截断。**尚未花，花钱前按新数重新确认**）。judge 与追问施压尚未估算；原来记的「剩余预算约 ¥80」是按旧估算推的，随这次上修已失效，需按实际扣费重新核。若 judge 走 Claude 订阅（D1），judge 不占百炼预算。
-- Claude 额度：Pro 订阅，额度紧张，大批量工作优先用便宜方式。judge 走订阅额度：冒烟实测 Haiku（effort medium）每次判定输出约 2.2k–3.5k token（含思考）、10–15 秒；调试集探针一轮约 165 次。脚本按 API 价目折算的金额只用来估算额度，订阅不按此计费。
+- 已定规模（`analysis/cost_estimate.py` → `reports/cost_estimate.md`；场景题口径 Oct 14 由假设改为逐模型实测）：主实验约 **¥44**（客观题横评 ¥26.5 + 场景题关思考 ¥17.7，两部分都已跑完）；思考对照约 **¥144**（Oct 12 按旧假设批的是 ¥130；依据 10 题试跑，花 ¥3.35：多数模型每题思考 1.1k–2.2k token，qwen3.8-flash 约 4.9k，glm-5.3 约 9.7k 且 16384 上限会截断。**尚未花，花钱前按新数重新确认**）。judge 已跑完：Claude 两档走 cloud credits（按 API 价目折算，探针各轮共约 $14、main_off 约 $10.4），跨厂商 deepseek 判 487 次按谷时价约 ¥2.3；追问施压尚未估算；原来记的「剩余预算约 ¥80」是按旧估算推的，随这次上修已失效，需按实际扣费重新核。若 judge 走 Claude 订阅（D1），judge 不占百炼预算。
+- Claude 额度：Pro 订阅，额度紧张，大批量工作优先用便宜方式。Oct 14 云端会话的 judge 运行走的是 Cloud session credits（用户的周额度当时用完），之后的运行也先确认用哪种额度。judge 走订阅额度时：冒烟实测 Haiku（effort medium）每次判定输出约 2.2k–3.5k token（含思考）、10–15 秒；调试集探针一轮约 165 次。脚本按 API 价目折算的金额只用来估算额度，订阅不按此计费。
 
 ## 七、工作约定与踩过的坑
 
@@ -251,7 +260,7 @@ D1（judge 模型）、D2（judge 验证方式）已于 Oct 13 定下，见第�
 
 | 文件 | 内容 |
 | --- | --- |
-| `通信网络运维助手 · 大模型选型评测 Spec.md` | 方案（v2.5） |
+| `通信网络运维助手 · 大模型选型评测 Spec.md` | 方案（v2.6） |
 | `configs/models.yaml` | 被测模型与思考开关参数 |
 | `data/processed/teleqna_test_subset.csv` | 客观题测试集（731 题） |
 | `data/processed/teleqna_{items,relevance,answer_decisions}.csv` | 审计标记 / 相关度 / 答案决定 |
@@ -263,10 +272,13 @@ D1（judge 模型）、D2（judge 验证方式）已于 Oct 13 定下，见第�
 | `scripts/merge_scenario_drafts.py`、`check_scenarios.py` | 合并草稿（读最高版本）；场景题机器校验 |
 | `scripts/verify_three_vote.py`、`consolidate_verification.py`、`apply_verification_fixes.py` | 三票核验、汇总分级、应用修订（→ v2） |
 | `scripts/apply_freeze_fixes.py`、`data/scenarios/residuals_triage.csv` | 定稿前修订（补参考答案缺口 → v3）；48 条待核验项分诊表 |
-| `scripts/judge_scenarios.py`、`configs/judge/judge_v1.md` | 场景题 judge（claude / bailian 两种后端）与提示词 v1 |
+| `scripts/judge_scenarios.py`、`configs/judge/judge_v{1,2}.md` | 场景题 judge（claude / bailian 两种后端）与提示词（v2 锁定，tag `judge-prompt-v2`） |
 | `scripts/make_judge_split.py` → `data/scenarios/judge_split.csv` | 调试集 / 留出集（按题划分，22 / 23 题） |
 | `scripts/build_judge_probes.py` → `data/scenarios/judge_probes/` | 切分映射与构造真值探针、参考答案缺口清单、drop 探针抽查表 |
 | `analysis/judge_meta.py` → `reports/judge/` | judge 元评测报告（探针检出率、误报率、稳定性） |
 | `scripts/generate_answers.py`、`configs/assistant/system_v1.md` | 场景题回答生成（试跑与正式生成共用，缓存续跑）与被测模型系统提示 |
 | `analysis/ceiling_pilot.py` → `reports/scenarios/` | 天花板试跑分析（按事先定的触顶规则出结论） |
+| `analysis/judge_agreement.py` → `reports/judge/<run>_agreement*.md`、`data/scenarios/arbitration/` | 真实回答上两档 judge 对照、长度偏差检验、仲裁抽样与揭盲、最终主分 `results/judge/<run>/final_scores.csv`；`--compare-only` 用于跨厂商对照 |
+| `analysis/judge_cross_vendor.py` → `reports/judge/<run>_cross_vendor.md` | 跨厂商 judge 自家偏好检验与仲裁样本对照 |
+| `analysis/scenario_analysis.py` → `reports/scenarios/<run>_main.md` | 场景题横评：均分、配对置换检验（Holm）、分档、描述项、稳健性 |
 | `results/`（`answers/`、`judge/`、`audit/` 已入库，其余只在 Mac） | 场景题回答（`answers/<run>.jsonl`，入库）与判定（`judge/`，入库）、横评逐题预测（`evalscope/objective/<模型>/`）、核验原始响应（`scenarios/{three_vote,perquestion}/`、`audit/`） |
