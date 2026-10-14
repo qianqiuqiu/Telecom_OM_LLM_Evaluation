@@ -4,6 +4,9 @@
 # 原始数据不重新分发（TeleQnA / TeleLogs 需同意使用条件）
 data/raw/
 
+# 回答生成的逐调用缓存（可续跑用，只在 Mac 本地；入库的是 results/answers/<run>.jsonl）
+results/answers/raw/
+
 # Python
 __pycache__/
 *.pyc

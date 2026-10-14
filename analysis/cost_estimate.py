@@ -8,7 +8,9 @@ token 假设（可改下面的常量后重算）：
   - 关思考输出：只答序号，5 token（kimi-k3 实测多几个字，取 10）
   - 开思考输出（思考 + 答案）：按 500 / 1500 / 3000 三档估算，另列试跑实测值（scripts/thinking_pilot.py，10 题 × 1 次，
     Oct 12；kimi-k3 未试跑，按 2000 假设；glm-5.3 只有 4 次成功且 2 次截断，实测值偏低）
-  - 场景题：输入 600、关思考输出 800、开思考额外思考 2000 token（均为假设）
+  - 场景题关思考：按 main_off 逐模型实测的输入 / 输出 token（SCEN_MEASURED，7 模型 × 45 题 = 315 次调用，Oct 14）；
+    原假设「输入 600、输出 800」偏小约 2 倍（实测总均值 409 / 1681），已弃用
+  - 场景题开思考：额外思考 2000 token（假设，未实测）
 
 用法：uv run python analysis/cost_estimate.py
 """
@@ -40,8 +42,25 @@ THINK_OUT = (500, 1500, 3000)
 THINK_MEASURED = {"qwen3.8-max-0902": 2042, "qwen3.7-plus": 563, "qwen3.8-flash": 4883,
                   "deepseek-v4-pro-0813": 2236, "deepseek-v4.1-flash": 1177, "glm-5.2": 2137,
                   "kimi-k3": 2000, "glm-5.3": 9727}
-SCEN_N, SCEN_IN, SCEN_OUT, SCEN_THINK = 45, 600, 800, 2000
+SCEN_N, SCEN_THINK = 45, 2000
+# 场景题关思考实测：每题平均 (输入, 输出) token，results/answers/raw/*__off.jsonl
+# （run main_off，7 模型 × 45 题 = 315 次调用，Oct 14，提交 b07b877；0 失败、0 截断）
+SCEN_MEASURED = {"qwen3.8-max-0902": (432, 1760), "qwen3.7-plus": (432, 1790),
+                 "qwen3.8-flash": (432, 1838), "deepseek-v4-pro-0813": (384, 1465),
+                 "deepseek-v4.1-flash": (385, 1634), "glm-5.2": (394, 1278),
+                 "kimi-k3": (401, 1998)}
+SCEN_FALLBACK = (409, 1681)   # 没跑过关思考的模型（glm-5.3）用 315 次调用的总均值
+SCEN_SPENT = 17.67            # main_off 实际花费（元，原价），用来核对下表「场景题 1 遍」一列
 CHARS_PER_TOKEN, TEMPLATE = 3.0, 10
+
+
+def scen_tokens(model):
+    return SCEN_MEASURED.get(model, SCEN_FALLBACK)
+
+
+def scen_cost(model, n_calls, extra_think=0):
+    tin, tout = scen_tokens(model)
+    return cost(model, n_calls, tin, tout + extra_think)
 
 
 def cost(model, n_calls, tin, tout):
@@ -63,14 +82,15 @@ def main():
     n = len(ids)
 
     obj = {m: cost(m, n * OBJ_RUNS, tin, OFF_OUT[m]) for m in MAIN}
-    scen = {m: cost(m, SCEN_N, SCEN_IN, SCEN_OUT) for m in MAIN}
-    think = {t: {m: cost(m, THINK_OBJ_N * THINK_RUNS, tin, t) + cost(m, SCEN_N * THINK_RUNS, SCEN_IN, SCEN_OUT + SCEN_THINK)
+    scen = {m: scen_cost(m, SCEN_N) for m in MAIN}
+    think = {t: {m: cost(m, THINK_OBJ_N * THINK_RUNS, tin, t) + scen_cost(m, SCEN_N * THINK_RUNS, SCEN_THINK)
                  for m in PRICE} for t in THINK_OUT}
     meas = {m: cost(m, THINK_OBJ_N * THINK_RUNS, tin, THINK_MEASURED[m])
-            + cost(m, SCEN_N * THINK_RUNS, SCEN_IN, SCEN_OUT + SCEN_THINK) for m in PRICE}
+            + scen_cost(m, SCEN_N * THINK_RUNS, SCEN_THINK) for m in PRICE}
 
     lines = ["# 跑模型费用估算", "", "由 `analysis/cost_estimate.py` 生成，请勿手改。百炼北京区原价；DeepSeek 按白天价（夜间半价）。", "",
-             f"客观题 {n} 题，平均输入约 {tin:.0f} token；横评每模型 {OBJ_RUNS} 遍（3 遍打乱 + 1 遍噪声底），关思考。", "",
+             f"客观题 {n} 题，平均输入约 {tin:.0f} token；横评每模型 {OBJ_RUNS} 遍（3 遍打乱 + 1 遍噪声底），关思考。",
+             f"场景题 {SCEN_N} 题的输入 / 输出 token 按 `main_off` 逐模型实测（Oct 14，315 次调用），不再是假设值。", "",
              "| 模型 | 客观题横评（关思考） | 场景题 1 遍（关思考） | 思考对照（开思考，思考 500 / 1500 / 3000 token） | 思考对照（按试跑实测） |",
              "| --- | --- | --- | --- | --- |"]
     for m in PRICE:
@@ -80,11 +100,15 @@ def main():
                      + f" | {meas[m]:.0f}（{THINK_MEASURED[m]} token） |")
     lines.append(f"| **合计** | **{sum(obj.values()):.1f}** | **{sum(scen.values()):.1f}** | **"
                  + " / ".join(f"{sum(think[t].values()):.0f}" for t in THINK_OUT) + f"** | **{sum(meas.values()):.0f}** |")
+    lines += ["", f"**场景题关思考已跑完（Oct 14，`b07b877`）**：315/315 成功、0 失败、0 截断，实际花费 ¥{SCEN_SPENT:.2f}；"
+              f"上表同口径估 ¥{sum(scen.values()):.1f}。原假设「输出 800 token」给出的是 ¥9.0，偏小约 2 倍"
+              "（实测平均输出 1681 token、输入 409），思考对照一列同样受影响，已随之上修。"]
     chosen = [m for m in PRICE if m != "kimi-k3"]
-    final = sum(cost(m, 150, tin, THINK_MEASURED[m]) + cost(m, SCEN_N * THINK_RUNS, SCEN_IN, SCEN_OUT + SCEN_THINK)
+    final = sum(cost(m, 150, tin, THINK_MEASURED[m]) + scen_cost(m, SCEN_N * THINK_RUNS, SCEN_THINK)
                 for m in chosen)
-    lines += ["", f"**定稿（Oct 12）**：思考对照 {len(chosen)} 个模型（去掉 kimi-k3）× 客观题 150 题 × 1 次 + 场景题 {SCEN_N} 题 × {THINK_RUNS} 次，"
-              f"按实测约 ¥{final:.0f}；主实验 ¥{sum(obj.values()) + sum(scen.values()):.0f}。"]
+    lines += ["", f"**定稿（Oct 12 定的方案，费用按 Oct 14 场景题实测重算）**：思考对照 {len(chosen)} 个模型（去掉 kimi-k3）"
+              f"× 客观题 150 题 × 1 次 + 场景题 {SCEN_N} 题 × {THINK_RUNS} 次，约 ¥{final:.0f}"
+              f"（Oct 12 按旧假设批的是 ¥130，尚未花，花钱前需重新确认）；主实验 ¥{sum(obj.values()) + sum(scen.values()):.0f}。"]
     lines += ["", f"上表思考对照（原方案）：{len(PRICE)} 个模型（含只能开思考的 glm-5.3）× 客观题 {THINK_OBJ_N} 题 + 场景题 {SCEN_N} 题，每题 {THINK_RUNS} 次；"
               "关思考一侧复用横评与场景题主实验的结果，不另计。", "",
               "未计入：judge 打分、追问施压、污染检测改写对照、试跑与重跑。", ""]
