@@ -39,3 +39,29 @@
 - 总体：要点判档分歧 416、高危项分歧 42、扣分项分歧 50（扣分项只计数，不抽）。
 - 抽出 60 个：高危项 20，要点 40（按模型：deepseek-v4-pro-0813:off 6，deepseek-v4.1-flash:off 6，glm-5.2:off 5，kimi-k3:off 6，qwen3.7-plus:off 5，qwen3.8-flash:off 6，qwen3.8-max-0902:off 6）。
 - 仲裁材料 `data/scenarios/arbitration/main_off.md`，仲裁表 `main_off.csv`。
+
+## 分歧仲裁结果（揭盲）
+
+仲裁者为单一非专家（用户），对照参考答案判断；60 条中「都不对」0、「判断不了」0。
+
+- 判对的比例：主 judge 52%（31/60，[39%, 64%]），第二 judge 48%（29/60，[36%, 61%]）。
+- 高危项只有主 judge 触发：19 条，仲裁判主 judge 错 16、对 3。
+- 要点主 judge 判档更高：32 条，仲裁判主 judge 对 27、错 5。
+- 其余（第二 judge 独自触发高危、主 judge 判档更低）：主 judge 对 1、第二 judge 对 8。
+- 按被测模型（主 / 第二 判对）：deepseek-v4-pro-0813:off 5/4，deepseek-v4.1-flash:off 6/1，glm-5.2:off 4/3，kimi-k3:off 4/4，qwen3.7-plus:off 3/6，qwen3.8-flash:off 4/9，qwen3.8-max-0902:off 5/2。
+
+按事先定的规则：一票否决改为同一高危项两档都触发才算；要点与扣分项保留主 judge。
+
+## 最终主分
+
+写入 `results/judge/main_off/final_scores.csv`。一票否决 27 条（主 judge 61、第二 judge 29）。
+
+| 名次 | 被测模型 | 最终均分 | 主 judge 名次 | 第二 judge 名次 |
+| --- | --- | --- | --- | --- |
+| 1 | kimi-k3:off | 72.5 ± 3.2 | 1 | 1 |
+| 2 | deepseek-v4.1-flash:off | 69.0 ± 3.5 | 2 | 2 |
+| 3 | qwen3.8-max-0902:off | 65.6 ± 3.7 | 3 | 3 |
+| 4 | deepseek-v4-pro-0813:off | 63.4 ± 3.4 | 5 | 4 |
+| 5 | glm-5.2:off | 60.9 ± 3.4 | 4 | 5 |
+| 6 | qwen3.8-flash:off | 59.6 ± 4.0 | 7 | 6 |
+| 7 | qwen3.7-plus:off | 58.9 ± 3.9 | 6 | 7 |
