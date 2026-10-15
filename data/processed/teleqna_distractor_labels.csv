@@ -1,0 +1,247 @@
+id,annotator,option_labels,eliminable_to_gold,gold_issue
+question 56,ann1,"{""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",yes,no
+question 56,ann2,"{""B"": ""eliminable"", ""C"": ""eliminable"", ""D"": ""plausible""}",yes,no
+question 149,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible""}",no,no
+question 149,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible""}",no,no
+question 256,ann1,"{""A"": ""overlaps_correct"", ""B"": ""plausible"", ""C"": ""overlaps_correct""}",no,yes
+question 256,ann2,"{""A"": ""overlaps_correct"", ""B"": ""plausible"", ""C"": ""overlaps_correct""}",no,yes
+question 534,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""D"": ""plausible""}",yes,no
+question 534,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""D"": ""plausible""}",no,no
+question 557,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",no,no
+question 557,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",no,no
+question 637,ann1,"{""A"": ""plausible"", ""C"": ""plausible"", ""D"": ""eliminable""}",yes,no
+question 637,ann2,"{""A"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",no,no
+question 721,ann1,"{""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",no,no
+question 721,ann2,"{""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",no,no
+question 776,ann1,"{""B"": ""eliminable"", ""C"": ""plausible"", ""D"": ""eliminable"", ""E"": ""plausible""}",no,no
+question 776,ann2,"{""B"": ""eliminable"", ""C"": ""plausible"", ""D"": ""eliminable"", ""E"": ""plausible""}",yes,no
+question 778,ann1,"{""A"": ""eliminable"", ""B"": ""eliminable"", ""D"": ""plausible""}",no,no
+question 778,ann2,"{""A"": ""eliminable"", ""B"": ""eliminable"", ""D"": ""plausible""}",no,no
+question 913,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""overlaps_correct"", ""E"": ""plausible""}",no,yes
+question 913,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""overlaps_correct"", ""E"": ""plausible""}",no,yes
+question 942,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible"", ""E"": ""plausible""}",no,no
+question 942,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible"", ""E"": ""overlaps_correct""}",no,yes
+question 990,ann1,"{""A"": ""eliminable"", ""B"": ""eliminable"", ""C"": ""eliminable"", ""D"": ""eliminable""}",yes,no
+question 990,ann2,"{""A"": ""eliminable"", ""B"": ""eliminable"", ""C"": ""eliminable"", ""D"": ""eliminable""}",yes,no
+question 1005,ann1,"{""A"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",no,no
+question 1005,ann2,"{""A"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",no,no
+question 1112,ann1,"{""B"": ""overlaps_correct"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""overlaps_correct""}",no,yes
+question 1112,ann2,"{""B"": ""overlaps_correct"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""overlaps_correct""}",no,yes
+question 1122,ann1,"{""A"": ""eliminable"", ""B"": ""plausible"", ""D"": ""plausible""}",no,no
+question 1122,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""D"": ""overlaps_correct""}",no,no
+question 1123,ann1,"{""A"": ""eliminable"", ""B"": ""overlaps_correct"", ""C"": ""eliminable"", ""E"": ""eliminable""}",no,yes
+question 1123,ann2,"{""A"": ""eliminable"", ""B"": ""overlaps_correct"", ""C"": ""eliminable"", ""E"": ""eliminable""}",no,yes
+question 1176,ann1,"{""A"": ""overlaps_correct"", ""B"": ""overlaps_correct"", ""C"": ""overlaps_correct"", ""D"": ""overlaps_correct""}",yes,no
+question 1176,ann2,"{""A"": ""overlaps_correct"", ""B"": ""overlaps_correct"", ""C"": ""overlaps_correct"", ""D"": ""overlaps_correct""}",yes,no
+question 1184,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""D"": ""plausible""}",no,no
+question 1184,ann2,"{""A"": ""plausible"", ""B"": ""eliminable"", ""D"": ""plausible""}",no,no
+question 1259,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""D"": ""plausible""}",no,no
+question 1259,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""D"": ""plausible""}",no,no
+question 1311,ann1,"{""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",no,no
+question 1311,ann2,"{""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",no,no
+question 1331,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",no,no
+question 1331,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",no,no
+question 1337,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",no,no
+question 1337,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",no,no
+question 1343,ann1,"{""A"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",yes,no
+question 1343,ann2,"{""A"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",yes,no
+question 1375,ann1,"{""A"": ""plausible"", ""B"": ""eliminable"", ""C"": ""plausible"", ""E"": ""plausible""}",no,no
+question 1375,ann2,"{""A"": ""plausible"", ""B"": ""eliminable"", ""C"": ""plausible"", ""E"": ""plausible""}",no,no
+question 1379,ann1,"{""A"": ""overlaps_correct"", ""B"": ""overlaps_correct"", ""C"": ""overlaps_correct""}",yes,no
+question 1379,ann2,"{""A"": ""overlaps_correct"", ""B"": ""overlaps_correct"", ""C"": ""overlaps_correct""}",no,no
+question 1389,ann1,"{""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",yes,no
+question 1389,ann2,"{""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",yes,no
+question 1436,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""D"": ""plausible"", ""E"": ""overlaps_correct""}",no,no
+question 1436,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""D"": ""plausible"", ""E"": ""overlaps_correct""}",no,yes
+question 1522,ann1,"{""A"": ""eliminable"", ""B"": ""plausible"", ""D"": ""eliminable""}",no,no
+question 1522,ann2,"{""A"": ""eliminable"", ""B"": ""plausible"", ""D"": ""eliminable""}",no,no
+question 1573,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""eliminable""}",no,no
+question 1573,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""eliminable""}",no,no
+question 1581,ann1,"{""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",yes,no
+question 1581,ann2,"{""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",yes,no
+question 1734,ann1,"{""A"": ""overlaps_correct"", ""B"": ""overlaps_correct"", ""C"": ""plausible""}",no,yes
+question 1734,ann2,"{""A"": ""overlaps_correct"", ""B"": ""overlaps_correct"", ""C"": ""plausible""}",no,yes
+question 2025,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",no,no
+question 2025,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",yes,no
+question 2057,ann1,"{""A"": ""plausible"", ""B"": ""eliminable"", ""C"": ""plausible"", ""E"": ""plausible""}",no,no
+question 2057,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible"", ""E"": ""plausible""}",no,no
+question 2190,ann1,"{""A"": ""eliminable"", ""B"": ""eliminable"", ""C"": ""eliminable""}",yes,no
+question 2190,ann2,"{""A"": ""eliminable"", ""B"": ""eliminable"", ""C"": ""eliminable""}",yes,no
+question 2264,ann1,"{""A"": ""overlaps_correct"", ""B"": ""eliminable"", ""D"": ""eliminable""}",no,yes
+question 2264,ann2,"{""A"": ""overlaps_correct"", ""B"": ""plausible"", ""D"": ""plausible""}",no,yes
+question 2590,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible"", ""E"": ""plausible""}",no,yes
+question 2590,ann2,"{""A"": ""overlaps_correct"", ""B"": ""eliminable"", ""C"": ""plausible"", ""E"": ""plausible""}",no,yes
+question 2652,ann1,"{""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",yes,no
+question 2652,ann2,"{""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",no,no
+question 2720,ann1,"{""A"": ""plausible"", ""C"": ""eliminable"", ""D"": ""eliminable"", ""E"": ""eliminable""}",no,no
+question 2720,ann2,"{""A"": ""plausible"", ""C"": ""eliminable"", ""D"": ""eliminable"", ""E"": ""eliminable""}",no,no
+question 2740,ann1,"{""B"": ""eliminable"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""eliminable""}",no,no
+question 2740,ann2,"{""B"": ""eliminable"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""eliminable""}",no,no
+question 2812,ann1,"{""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",no,no
+question 2812,ann2,"{""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",no,no
+question 2821,ann1,"{""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",no,no
+question 2821,ann2,"{""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",no,no
+question 2995,ann1,"{""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",no,no
+question 2995,ann2,"{""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",yes,no
+question 3080,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible"", ""E"": ""plausible""}",no,no
+question 3080,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible"", ""E"": ""plausible""}",no,no
+question 3180,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""D"": ""plausible""}",yes,no
+question 3180,ann2,"{""A"": ""eliminable"", ""B"": ""plausible"", ""D"": ""eliminable""}",no,no
+question 3286,ann1,"{""A"": ""plausible"", ""C"": ""overlaps_correct"", ""D"": ""plausible"", ""E"": ""plausible""}",no,yes
+question 3286,ann2,"{""A"": ""plausible"", ""C"": ""overlaps_correct"", ""D"": ""plausible"", ""E"": ""plausible""}",no,yes
+question 3497,ann1,"{""A"": ""plausible"", ""C"": ""eliminable"", ""D"": ""plausible"", ""E"": ""plausible""}",yes,no
+question 3497,ann2,"{""A"": ""plausible"", ""C"": ""eliminable"", ""D"": ""plausible"", ""E"": ""plausible""}",yes,no
+question 3519,ann1,"{""B"": ""overlaps_correct"", ""C"": ""plausible"", ""D"": ""plausible""}",no,yes
+question 3519,ann2,"{""B"": ""overlaps_correct"", ""C"": ""plausible"", ""D"": ""plausible""}",no,yes
+question 3540,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible""}",yes,no
+question 3540,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible""}",yes,no
+question 3688,ann1,"{""A"": ""plausible"", ""B"": ""eliminable"", ""C"": ""plausible""}",no,no
+question 3688,ann2,"{""A"": ""plausible"", ""B"": ""eliminable"", ""C"": ""plausible""}",no,no
+question 3692,ann1,"{""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",no,no
+question 3692,ann2,"{""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",no,no
+question 3704,ann1,"{""A"": ""overlaps_correct"", ""B"": ""overlaps_correct"", ""C"": ""plausible"", ""D"": ""plausible""}",no,yes
+question 3704,ann2,"{""A"": ""overlaps_correct"", ""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",no,yes
+question 3819,ann1,"{""B"": ""plausible"", ""C"": ""overlaps_correct"", ""D"": ""eliminable"", ""E"": ""eliminable""}",no,yes
+question 3819,ann2,"{""B"": ""plausible"", ""C"": ""overlaps_correct"", ""D"": ""eliminable"", ""E"": ""eliminable""}",no,yes
+question 3877,ann1,"{""A"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",no,no
+question 3877,ann2,"{""A"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",no,no
+question 3883,ann1,"{""A"": ""plausible"", ""B"": ""overlaps_correct"", ""C"": ""plausible"", ""E"": ""plausible""}",no,yes
+question 3883,ann2,"{""A"": ""plausible"", ""B"": ""overlaps_correct"", ""C"": ""plausible"", ""E"": ""plausible""}",no,yes
+question 3917,ann1,"{""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",no,no
+question 3917,ann2,"{""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",no,no
+question 4241,ann1,"{""A"": ""eliminable"", ""B"": ""eliminable"", ""C"": ""plausible"", ""E"": ""eliminable""}",yes,no
+question 4241,ann2,"{""A"": ""eliminable"", ""B"": ""eliminable"", ""C"": ""plausible"", ""E"": ""eliminable""}",yes,no
+question 4507,ann1,"{""B"": ""eliminable"", ""C"": ""eliminable"", ""D"": ""eliminable"", ""E"": ""eliminable""}",yes,no
+question 4507,ann2,"{""B"": ""eliminable"", ""C"": ""eliminable"", ""D"": ""eliminable"", ""E"": ""eliminable""}",yes,no
+question 4620,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible"", ""E"": ""plausible""}",no,no
+question 4620,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible"", ""E"": ""plausible""}",no,no
+question 4688,ann1,"{""A"": ""overlaps_correct"", ""B"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",no,no
+question 4688,ann2,"{""A"": ""overlaps_correct"", ""B"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",no,yes
+question 4738,ann1,"{""A"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",no,no
+question 4738,ann2,"{""A"": ""plausible"", ""C"": ""plausible"", ""D"": ""eliminable"", ""E"": ""plausible""}",no,no
+question 4906,ann1,"{""A"": ""overlaps_correct"", ""B"": ""overlaps_correct"", ""C"": ""overlaps_correct"", ""E"": ""eliminable""}",yes,no
+question 4906,ann2,"{""A"": ""overlaps_correct"", ""B"": ""overlaps_correct"", ""C"": ""overlaps_correct"", ""E"": ""eliminable""}",yes,no
+question 5285,ann1,"{""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",no,no
+question 5285,ann2,"{""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",no,no
+question 5354,ann1,"{""A"": ""eliminable"", ""C"": ""plausible"", ""D"": ""eliminable""}",no,no
+question 5354,ann2,"{""A"": ""eliminable"", ""C"": ""plausible"", ""D"": ""eliminable""}",no,no
+question 5361,ann1,"{""A"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",no,no
+question 5361,ann2,"{""A"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",no,no
+question 5363,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible"", ""E"": ""plausible""}",no,no
+question 5363,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible"", ""E"": ""plausible""}",no,no
+question 5557,ann1,"{""A"": ""eliminable"", ""C"": ""eliminable"", ""D"": ""plausible""}",yes,no
+question 5557,ann2,"{""A"": ""eliminable"", ""C"": ""eliminable"", ""D"": ""plausible""}",yes,no
+question 5668,ann1,"{""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",yes,no
+question 5668,ann2,"{""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",yes,no
+question 5782,ann1,"{""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",no,no
+question 5782,ann2,"{""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",no,no
+question 5804,ann1,"{""A"": ""eliminable"", ""B"": ""eliminable"", ""C"": ""eliminable"", ""D"": ""eliminable""}",yes,no
+question 5804,ann2,"{""A"": ""eliminable"", ""B"": ""eliminable"", ""C"": ""eliminable"", ""D"": ""eliminable""}",yes,no
+question 5817,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""overlaps_correct"", ""E"": ""plausible""}",no,yes
+question 5817,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible"", ""E"": ""plausible""}",no,no
+question 5841,ann1,"{""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",no,no
+question 5841,ann2,"{""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",no,no
+question 5909,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""D"": ""plausible""}",no,no
+question 5909,ann2,"{""A"": ""overlaps_correct"", ""B"": ""plausible"", ""D"": ""overlaps_correct""}",no,yes
+question 5970,ann1,"{""A"": ""eliminable"", ""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""eliminable""}",no,no
+question 5970,ann2,"{""A"": ""eliminable"", ""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""eliminable""}",no,no
+question 6099,ann1,"{""A"": ""eliminable"", ""B"": ""plausible"", ""C"": ""overlaps_correct"", ""D"": ""plausible""}",no,yes
+question 6099,ann2,"{""A"": ""eliminable"", ""B"": ""eliminable"", ""C"": ""overlaps_correct"", ""D"": ""eliminable""}",no,yes
+question 6107,ann1,"{""A"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",no,no
+question 6107,ann2,"{""A"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",no,no
+question 6484,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible""}",no,no
+question 6484,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible""}",no,no
+question 6602,ann1,"{""A"": ""eliminable"", ""B"": ""plausible"", ""C"": ""plausible"", ""E"": ""plausible""}",no,no
+question 6602,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible"", ""E"": ""plausible""}",no,no
+question 6604,ann1,"{""A"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",no,no
+question 6604,ann2,"{""A"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",no,no
+question 6628,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible"", ""E"": ""plausible""}",no,no
+question 6628,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible"", ""E"": ""plausible""}",no,no
+question 6816,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""D"": ""plausible"", ""E"": ""eliminable""}",no,no
+question 6816,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""D"": ""plausible"", ""E"": ""eliminable""}",no,no
+question 6963,ann1,"{""A"": ""plausible"", ""C"": ""eliminable"", ""D"": ""eliminable"", ""E"": ""plausible""}",no,no
+question 6963,ann2,"{""A"": ""plausible"", ""C"": ""eliminable"", ""D"": ""eliminable"", ""E"": ""eliminable""}",no,no
+question 7052,ann1,"{""A"": ""plausible"", ""C"": ""plausible"", ""D"": ""overlaps_correct"", ""E"": ""plausible""}",no,yes
+question 7052,ann2,"{""A"": ""plausible"", ""C"": ""overlaps_correct"", ""D"": ""overlaps_correct"", ""E"": ""plausible""}",no,yes
+question 7255,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible""}",no,no
+question 7255,ann2,"{""A"": ""plausible"", ""B"": ""overlaps_correct"", ""C"": ""plausible""}",no,no
+question 7268,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",no,no
+question 7268,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""eliminable""}",no,no
+question 7317,ann1,"{""B"": ""eliminable"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",yes,no
+question 7317,ann2,"{""B"": ""eliminable"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",yes,no
+question 7389,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",no,no
+question 7389,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",no,no
+question 7421,ann1,"{""B"": ""plausible"", ""C"": ""overlaps_correct"", ""D"": ""plausible""}",no,yes
+question 7421,ann2,"{""B"": ""plausible"", ""C"": ""overlaps_correct"", ""D"": ""plausible""}",no,yes
+question 7439,ann1,"{""A"": ""eliminable"", ""C"": ""plausible"", ""D"": ""plausible""}",no,no
+question 7439,ann2,"{""A"": ""eliminable"", ""C"": ""plausible"", ""D"": ""plausible""}",no,no
+question 7534,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible""}",no,no
+question 7534,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible""}",no,no
+question 7561,ann1,"{""A"": ""overlaps_correct"", ""C"": ""eliminable"", ""D"": ""eliminable""}",no,yes
+question 7561,ann2,"{""A"": ""plausible"", ""C"": ""eliminable"", ""D"": ""eliminable""}",no,no
+question 7579,ann1,"{""A"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",no,no
+question 7579,ann2,"{""A"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",no,no
+question 7580,ann1,"{""A"": ""plausible"", ""B"": ""eliminable"", ""D"": ""eliminable"", ""E"": ""plausible""}",no,no
+question 7580,ann2,"{""A"": ""plausible"", ""B"": ""eliminable"", ""D"": ""eliminable"", ""E"": ""eliminable""}",no,no
+question 7615,ann1,"{""A"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""eliminable""}",no,no
+question 7615,ann2,"{""A"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""eliminable""}",no,no
+question 7711,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",no,no
+question 7711,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",no,no
+question 7787,ann1,"{""A"": ""eliminable"", ""B"": ""plausible"", ""C"": ""plausible"", ""E"": ""eliminable""}",yes,no
+question 7787,ann2,"{""A"": ""eliminable"", ""B"": ""plausible"", ""C"": ""plausible"", ""E"": ""plausible""}",yes,no
+question 7901,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",no,no
+question 7901,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",no,no
+question 7911,ann1,"{""B"": ""eliminable"", ""C"": ""eliminable"", ""D"": ""plausible"", ""E"": ""plausible""}",no,no
+question 7911,ann2,"{""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",no,no
+question 7998,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""D"": ""overlaps_correct""}",no,yes
+question 7998,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""D"": ""overlaps_correct""}",no,yes
+question 8096,ann1,"{""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",no,no
+question 8096,ann2,"{""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",no,no
+question 8347,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""D"": ""plausible""}",no,no
+question 8347,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""D"": ""plausible""}",yes,no
+question 8362,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",yes,no
+question 8362,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",no,no
+question 8465,ann1,"{""A"": ""overlaps_correct"", ""B"": ""plausible"", ""C"": ""overlaps_correct""}",no,yes
+question 8465,ann2,"{""A"": ""overlaps_correct"", ""B"": ""plausible"", ""C"": ""overlaps_correct""}",no,yes
+question 8546,ann1,"{""A"": ""overlaps_correct"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",no,yes
+question 8546,ann2,"{""A"": ""overlaps_correct"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",no,yes
+question 8554,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""eliminable"", ""E"": ""plausible""}",yes,no
+question 8554,ann2,"{""A"": ""eliminable"", ""B"": ""plausible"", ""C"": ""eliminable"", ""E"": ""eliminable""}",yes,no
+question 8579,ann1,"{""A"": ""overlaps_correct"", ""B"": ""overlaps_correct"", ""C"": ""overlaps_correct"", ""D"": ""eliminable""}",yes,yes
+question 8579,ann2,"{""A"": ""overlaps_correct"", ""B"": ""overlaps_correct"", ""C"": ""overlaps_correct"", ""D"": ""eliminable""}",yes,yes
+question 8619,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",yes,no
+question 8619,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",yes,no
+question 8808,ann1,"{""A"": ""plausible"", ""B"": ""eliminable"", ""C"": ""plausible"", ""D"": ""plausible""}",no,no
+question 8808,ann2,"{""A"": ""plausible"", ""B"": ""eliminable"", ""C"": ""plausible"", ""D"": ""plausible""}",no,no
+question 9046,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",no,no
+question 9046,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",no,no
+question 9168,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible""}",no,yes
+question 9168,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible""}",no,yes
+question 9187,ann1,"{""B"": ""overlaps_correct"", ""C"": ""eliminable"", ""D"": ""eliminable""}",no,yes
+question 9187,ann2,"{""B"": ""overlaps_correct"", ""C"": ""eliminable"", ""D"": ""plausible""}",no,yes
+question 9255,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible"", ""E"": ""plausible""}",no,no
+question 9255,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible"", ""E"": ""plausible""}",no,no
+question 9263,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",no,no
+question 9263,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",no,no
+question 9359,ann1,"{""A"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",no,yes
+question 9359,ann2,"{""A"": ""plausible"", ""C"": ""overlaps_correct"", ""D"": ""overlaps_correct"", ""E"": ""overlaps_correct""}",no,yes
+question 9456,ann1,"{""A"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",no,no
+question 9456,ann2,"{""A"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",no,no
+question 9524,ann1,"{""B"": ""eliminable"", ""C"": ""eliminable"", ""D"": ""eliminable""}",yes,no
+question 9524,ann2,"{""B"": ""eliminable"", ""C"": ""eliminable"", ""D"": ""eliminable""}",yes,no
+question 9561,ann1,"{""A"": ""plausible"", ""B"": ""eliminable"", ""D"": ""plausible"", ""E"": ""plausible""}",no,no
+question 9561,ann2,"{""A"": ""plausible"", ""B"": ""eliminable"", ""D"": ""plausible"", ""E"": ""plausible""}",no,no
+question 9576,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",yes,no
+question 9576,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""D"": ""plausible"", ""E"": ""overlaps_correct""}",yes,no
+question 9613,ann1,"{""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",no,no
+question 9613,ann2,"{""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible"", ""E"": ""plausible""}",no,no
+question 9822,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible"", ""E"": ""plausible""}",no,no
+question 9822,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible"", ""E"": ""plausible""}",no,no
+question 9831,ann1,"{""A"": ""overlaps_correct"", ""C"": ""overlaps_correct"", ""D"": ""plausible""}",no,yes
+question 9831,ann2,"{""A"": ""plausible"", ""C"": ""overlaps_correct"", ""D"": ""plausible""}",no,yes
+question 9853,ann1,"{""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",no,no
+question 9853,ann2,"{""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",no,no
+question 9876,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""D"": ""plausible""}",no,no
+question 9876,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""D"": ""plausible""}",no,no
+question 9886,ann1,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",no,no
+question 9886,ann2,"{""A"": ""plausible"", ""B"": ""plausible"", ""C"": ""plausible"", ""D"": ""plausible""}",no,no

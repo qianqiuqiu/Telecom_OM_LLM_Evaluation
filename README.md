@@ -130,6 +130,33 @@ judge 后端：`claude:<模型 ID>` 经 Claude Code 无头模式（`claude -p`�
 
 **运行位置（Oct 14 起）**：`claude` 后端的 judge 一律在 Claude Code 云端会话里跑（仓库已带齐探针、题目、提示词与划分，容器自带已登录的 `claude`），每跑完一轮立即把 `results/judge/<run>/` 与 `reports/judge/` 提交推送，容器回收前没提交的会丢（缓存可续跑补回）。需要百炼 key（`.env`）的步骤仍在 Mac 上跑：回答生成、`build_judge_probes.py segment`、三票核验、`bailian:` judge；生成的 `results/answers/<run>.jsonl` 提交入库后再到云端判分。`results/` 其余内容（横评、核验原始响应、`results/answers/raw/`）仍只在 Mac 本地。**注意：三票在「标准条款引用」上误报率高，只作粗筛；改题前必须逐题人工/强 subagent 复核，TS 条款号需人工查证。**
 
+不依赖 judge 的并行项（Mac；规则见 STATUS 决定日志 Oct 15）：
+
+```bash
+uv run python analysis/distractor_audit.py prepare --out <scratchpad 目录>  # 干扰项抽查：抽样与标注批次（含原文，不入库）
+uv run python analysis/distractor_audit.py report                          # 读标注 data/processed/teleqna_distractor_labels.csv → reports/audit/teleqna_distractors.md
+uv run python scripts/contamination_ts_guessing.py --dry-run               # TS-Guessing：调用次数与粗估花费
+uv run python scripts/contamination_ts_guessing.py                         # 7 模型 × 727 题 → results/contamination/ts_guessing.csv
+uv run python analysis/ts_guessing_analysis.py                             # → reports/contamination/ts_guessing.md
+uv run python scripts/run_telelogs.py --dry-run                            # TeleLogs：200 题分层抽样（data/processed/telelogs_sample.csv）
+uv run python scripts/run_telelogs.py                                      # → results/telelogs/predictions.csv
+uv run python analysis/telelogs_analysis.py                                # → reports/telelogs/telelogs_main.md
+```
+
+两个脚本的逐调用缓存（`results/{contamination,telelogs}/raw/`）含原题文本，已加进 `.gitignore`；入库的是只有 ID 与指标的 csv。
+
+追问施压（10 个场景 × 3 轮写死的追问，第 1 轮复用 `main_off`；生成在 Mac，judge 走 `claude -p`）：
+
+```bash
+uv run python scripts/run_pressure.py --dry-run                            # 同时生成判分探针 data/scenarios/pressure/probes.jsonl
+uv run python scripts/run_pressure.py                                      # → results/answers/pressure_off.jsonl
+uv run python scripts/judge_pressure.py --answers data/scenarios/pressure/probes.jsonl \
+    --judge claude:claude-haiku-5-5 --run pressure_probes                  # 先判探针（Sonnet 同样再判一遍）
+uv run python scripts/judge_pressure.py --answers results/answers/pressure_off.jsonl \
+    --judge claude:claude-haiku-5-5 --run pressure_off                     # 真实对话（Sonnet 同样再判一遍）
+uv run python analysis/pressure_analysis.py                                # 探针合格检查 + 汇总 → reports/pressure/pressure_main.md
+```
+
 场景题回答生成与天花板试跑（被测模型只看题干，统一用中性系统提示 `configs/assistant/system_v1.md`）：
 
 ```bash

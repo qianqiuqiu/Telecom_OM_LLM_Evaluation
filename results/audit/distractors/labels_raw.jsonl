@@ -1,0 +1,246 @@
+{"id": "question 1379", "annotator": "ann1", "batch": "batch_00.json", "note": "A/B/C均为可请求内容，全选题；All of the above线索可直接猜中"}
+{"id": "question 9046", "annotator": "ann1", "batch": "batch_00.json", "note": "无"}
+{"id": "question 1184", "annotator": "ann1", "batch": "batch_00.json", "note": "无"}
+{"id": "question 8546", "annotator": "ann1", "batch": "batch_00.json", "note": "TS38.331中连接目标RAT失败(A)同样导致mobility from NR失败"}
+{"id": "question 56", "annotator": "ann1", "batch": "batch_00.json", "note": "A与题干data frames字面呼应，可直接选出"}
+{"id": "question 5361", "annotator": "ann1", "batch": "batch_00.json", "note": "无"}
+{"id": "question 8554", "annotator": "ann1", "batch": "batch_00.json", "note": "D与题干address mask request字面呼应；C描述的是类型字段非消息用途"}
+{"id": "question 2720", "annotator": "ann1", "batch": "batch_00.json", "note": "C/D/E与Channel Number字段名无关，可排除；A与B需领域知识"}
+{"id": "question 3286", "annotator": "ann1", "batch": "batch_00.json", "note": "CTS通过NAV同样起到预留介质作用，C也可算对"}
+{"id": "question 7268", "annotator": "ann1", "batch": "batch_00.json", "note": "无"}
+{"id": "question 1379", "annotator": "ann2", "batch": "batch_00.json", "note": "全选题，A/B/C各自都是正确内容的一部分"}
+{"id": "question 9046", "annotator": "ann2", "batch": "batch_00.json", "note": "无"}
+{"id": "question 1184", "annotator": "ann2", "batch": "batch_00.json", "note": "B说优先某接入，与题干负载均衡含义矛盾"}
+{"id": "question 8546", "annotator": "ann2", "batch": "batch_00.json", "note": "按38.331，连接目标RAT失败同样触发mobility from NR失败"}
+{"id": "question 56", "annotator": "ann2", "batch": "batch_00.json", "note": "只有A与题干data呼应，B/C明显不是数据功能"}
+{"id": "question 5361", "annotator": "ann2", "batch": "batch_00.json", "note": "无"}
+{"id": "question 8554", "annotator": "ann2", "batch": "batch_00.json", "note": "D原样复述题干address mask，A/C/E与掩码无关"}
+{"id": "question 2720", "annotator": "ann2", "batch": "batch_00.json", "note": "C/D/E与信道号无关，剩A/B需领域知识区分"}
+{"id": "question 3286", "annotator": "ann2", "batch": "batch_00.json", "note": "CTS也用于预约介质(NAV/CTS-to-self)，C同样正确"}
+{"id": "question 7268", "annotator": "ann2", "batch": "batch_00.json", "note": "D建立会话与题干移除切片方向相反"}
+{"id": "question 3497", "annotator": "ann1", "batch": "batch_01.json", "note": "B与题干Echo request/reply直接呼应；C描述Type字段而非消息用途"}
+{"id": "question 9822", "annotator": "ann1", "batch": "batch_01.json", "note": "无"}
+{"id": "question 1734", "annotator": "ann1", "batch": "batch_01.json", "note": "注册UE数来自AMF/NSACF，SMF提供PDU会话数，全选存疑"}
+{"id": "question 5804", "annotator": "ann1", "batch": "batch_01.json", "note": "SETUP REQUEST对应SETUP RESPONSE，按消息命名即可排除其余"}
+{"id": "question 1005", "annotator": "ann1", "batch": "batch_01.json", "note": "无"}
+{"id": "question 3704", "annotator": "ann1", "batch": "batch_01.json", "note": "PS-Poll由STA发往AP，A/B同指AP的BSSID，与E等价"}
+{"id": "question 7317", "annotator": "ann1", "batch": "batch_01.json", "note": "A与use-case specific呼应；B多用例与specific矛盾"}
+{"id": "question 1331", "annotator": "ann1", "batch": "batch_01.json", "note": "无"}
+{"id": "question 6604", "annotator": "ann1", "batch": "batch_01.json", "note": "无"}
+{"id": "question 1573", "annotator": "ann1", "batch": "batch_01.json", "note": "C“在MIMO层期间”语义不通，非时间概念"}
+{"id": "question 3497", "annotator": "ann2", "batch": "batch_01.json", "note": "B与题干Echo request字面呼应；C讲类型字段非用途"}
+{"id": "question 9822", "annotator": "ann2", "batch": "batch_01.json", "note": "无"}
+{"id": "question 1734", "annotator": "ann2", "batch": "batch_01.json", "note": "A/B为D子集；按TS23.288 SMF提供PDU会话数而非UE注册数，D存疑"}
+{"id": "question 5804", "annotator": "ann2", "batch": "batch_01.json", "note": "SETUP REQUEST对应SETUP RESPONSE，按名称配对即可排除"}
+{"id": "question 1005", "annotator": "ann2", "batch": "batch_01.json", "note": "无"}
+{"id": "question 3704", "annotator": "ann2", "batch": "batch_01.json", "note": "A发送STA所关联AP的BSSID与E实质相同"}
+{"id": "question 7317", "annotator": "ann2", "batch": "batch_01.json", "note": "A与题干use-case specific呼应；B多用例与specific矛盾"}
+{"id": "question 1331", "annotator": "ann2", "batch": "batch_01.json", "note": "无"}
+{"id": "question 6604", "annotator": "ann2", "batch": "batch_01.json", "note": "无"}
+{"id": "question 1573", "annotator": "ann2", "batch": "batch_01.json", "note": "C“在MIMO层期间”语义不通"}
+{"id": "question 6484", "annotator": "ann1", "batch": "batch_02.json", "note": "无"}
+{"id": "question 2740", "annotator": "ann1", "batch": "batch_02.json", "note": "B是框架、E是技术，都不是题干问的实体"}
+{"id": "question 6099", "annotator": "ann1", "batch": "batch_02.json", "note": "加密同样提供信令机密性，C也对；A物理保护答非所问"}
+{"id": "question 7911", "annotator": "ann1", "batch": "batch_02.json", "note": "B、C的“同一网络/同一小区内”与“inter system”字面矛盾"}
+{"id": "question 913", "annotator": "ann1", "batch": "batch_02.json", "note": "双连接主要目的是提升无线容量/吞吐，C同样对甚至更对"}
+{"id": "question 5354", "annotator": "ann1", "batch": "batch_02.json", "note": "缓存条目“无限多”明显不合理"}
+{"id": "question 7615", "annotator": "ann1", "batch": "batch_02.json", "note": "E收到join却删除成员，与题干矛盾"}
+{"id": "question 2821", "annotator": "ann1", "batch": "batch_02.json", "note": "无"}
+{"id": "question 8096", "annotator": "ann1", "batch": "batch_02.json", "note": "无"}
+{"id": "question 5557", "annotator": "ann1", "batch": "batch_02.json", "note": "释放后/调用前才优先明显荒谬；B最长且最完整"}
+{"id": "question 6484", "annotator": "ann2", "batch": "batch_02.json", "note": "无"}
+{"id": "question 2740", "annotator": "ann2", "batch": "batch_02.json", "note": "B为框架、E为技术，均非实体，与题干问实体不符"}
+{"id": "question 6099", "annotator": "ann2", "batch": "batch_02.json", "note": "加密即机密性属通用常识；NR加密也覆盖RRC信令，C同样正确"}
+{"id": "question 7911", "annotator": "ann2", "batch": "batch_02.json", "note": "无"}
+{"id": "question 913", "annotator": "ann2", "batch": "batch_02.json", "note": "DC主要目的是提升无线侧容量/吞吐，C可算对；D仅限冗余场景"}
+{"id": "question 5354", "annotator": "ann2", "batch": "batch_02.json", "note": "cache无限大与常识矛盾，A、D可排除"}
+{"id": "question 7615", "annotator": "ann2", "batch": "batch_02.json", "note": "收到join却删除参与者，与题干矛盾"}
+{"id": "question 2821", "annotator": "ann2", "batch": "batch_02.json", "note": "题干表述含糊，但答案对应规范原文"}
+{"id": "question 8096", "annotator": "ann2", "batch": "batch_02.json", "note": "无"}
+{"id": "question 5557", "annotator": "ann2", "batch": "batch_02.json", "note": "释放后/调用前才优先明显荒谬；B最长最完整"}
+{"id": "question 4738", "annotator": "ann1", "batch": "batch_03.json", "note": "无"}
+{"id": "question 534", "annotator": "ann1", "batch": "batch_03.json", "note": "C为A与B合并的“两者都”选项，应试线索明显"}
+{"id": "question 7580", "annotator": "ann1", "batch": "batch_03.json", "note": "B是小区模式、D是网络共享，实体类型不符"}
+{"id": "question 7787", "annotator": "ann1", "batch": "batch_03.json", "note": "只有D呼应订阅/通知；A无关，E是请求-响应模式"}
+{"id": "question 5841", "annotator": "ann1", "batch": "batch_03.json", "note": "无"}
+{"id": "question 1522", "annotator": "ann1", "batch": "batch_03.json", "note": "A与D同义且都不是地址，可直接排除"}
+{"id": "question 4507", "annotator": "ann1", "batch": "batch_03.json", "note": "错误选项为波形/损耗/频率等，与“呼叫”实体不符"}
+{"id": "question 7439", "annotator": "ann1", "batch": "batch_03.json", "note": "A说网络选择，与题干UE选择矛盾"}
+{"id": "question 637", "annotator": "ann1", "batch": "batch_03.json", "note": "offset与“位置”字面对应；D目的主机明显无关"}
+{"id": "question 5970", "annotator": "ann1", "batch": "batch_03.json", "note": "A循环作答不是线缆类型，D无线不是线缆"}
+{"id": "question 4738", "annotator": "ann2", "batch": "batch_03.json", "note": "D讲环网恢复时间，与VLAN优点答非所问"}
+{"id": "question 534", "annotator": "ann2", "batch": "batch_03.json", "note": "无"}
+{"id": "question 7580", "annotator": "ann2", "batch": "batch_03.json", "note": "B/D/E是小区模式、网络共享、Iu信令，不是承载定义"}
+{"id": "question 7787", "annotator": "ann2", "batch": "batch_03.json", "note": "D与题干subscribe-notify字面呼应；A鉴权与题无关"}
+{"id": "question 5841", "annotator": "ann2", "batch": "batch_03.json", "note": "无"}
+{"id": "question 1522", "annotator": "ann2", "batch": "batch_03.json", "note": "A网络名与D SSID同义，可互相排除"}
+{"id": "question 4507", "annotator": "ann2", "batch": "batch_03.json", "note": "B-E为波形、损耗、频率、卡接口，实体类型不符"}
+{"id": "question 7439", "annotator": "ann2", "batch": "batch_03.json", "note": "A说网络替UE选，与题干UE选择矛盾"}
+{"id": "question 637", "annotator": "ann2", "batch": "batch_03.json", "note": "无"}
+{"id": "question 5970", "annotator": "ann2", "batch": "batch_03.json", "note": "A Ethernet循环作答，D无线不是线缆"}
+{"id": "question 557", "annotator": "ann1", "batch": "batch_04.json", "note": "无"}
+{"id": "question 9255", "annotator": "ann1", "batch": "batch_04.json", "note": "无"}
+{"id": "question 3180", "annotator": "ann1", "batch": "batch_04.json", "note": "仅C的data stream与题干Flow呼应，可凭字面猜中"}
+{"id": "question 5817", "annotator": "ann1", "batch": "batch_04.json", "note": "O2主要是O-Cloud资源与部署管理，C部署应用也可算对，D片面"}
+{"id": "question 1311", "annotator": "ann1", "batch": "batch_04.json", "note": "无"}
+{"id": "question 6963", "annotator": "ann1", "batch": "batch_04.json", "note": "C高峰时段、D农村地区与题意无关明显荒谬"}
+{"id": "question 9456", "annotator": "ann1", "batch": "batch_04.json", "note": "无"}
+{"id": "question 2590", "annotator": "ann1", "batch": "batch_04.json", "note": "FBC按业务数据流计费，D表述含糊，A的QBC亦相关，答案存疑"}
+{"id": "question 3883", "annotator": "ann1", "batch": "batch_04.json", "note": "38.300规定支持有序无损切换，B同样正确"}
+{"id": "question 1112", "annotator": "ann1", "batch": "batch_04.json", "note": "36.304中RSRQ低/回传速率高/RSSI高均为有效条件，B、E也对"}
+{"id": "question 557", "annotator": "ann2", "batch": "batch_04.json", "note": "无"}
+{"id": "question 9255", "annotator": "ann2", "batch": "batch_04.json", "note": "无"}
+{"id": "question 3180", "annotator": "ann2", "batch": "batch_04.json", "note": "flow label 名称与版本、长度明显不对应，C 与 flow 呼应"}
+{"id": "question 5817", "annotator": "ann2", "batch": "batch_04.json", "note": "无；gold 对 O2 的概括偏窄但仍最贴近"}
+{"id": "question 1311", "annotator": "ann2", "batch": "batch_04.json", "note": "无"}
+{"id": "question 6963", "annotator": "ann2", "batch": "batch_04.json", "note": "是非题配高峰时段、农村地区、以上皆非等荒谬选项"}
+{"id": "question 9456", "annotator": "ann2", "batch": "batch_04.json", "note": "无"}
+{"id": "question 2590", "annotator": "ann2", "batch": "batch_04.json", "note": "B说QoS非计费；A与FBC同义重述，D笼统，答案有歧义"}
+{"id": "question 3883", "annotator": "ann2", "batch": "batch_04.json", "note": "TS 38.300 同列有序无损切换为特性，B 同样正确"}
+{"id": "question 1112", "annotator": "ann2", "batch": "batch_04.json", "note": "按36.304，B、E 条件同样属于 E-UTRAN→WLAN 条件"}
+{"id": "question 2652", "annotator": "ann1", "batch": "batch_05.json", "note": "Controller与Control字面呼应可直接选出"}
+{"id": "question 776", "annotator": "ann1", "batch": "batch_05.json", "note": "B讲小区模式、D讲RAN共享，均非承载定义"}
+{"id": "question 256", "annotator": "ann1", "batch": "batch_05.json", "note": "MIB也含配置与物理层参数，A/C同样可查"}
+{"id": "question 7711", "annotator": "ann1", "batch": "batch_05.json", "note": "无"}
+{"id": "question 9187", "annotator": "ann1", "batch": "batch_05.json", "note": "题干含request，AnalyticsInfo_Request也对；C非NWDAF、D是通知"}
+{"id": "question 2812", "annotator": "ann1", "batch": "batch_05.json", "note": "无"}
+{"id": "question 8362", "annotator": "ann1", "batch": "batch_05.json", "note": "全选项提示，All of the above可凭套路猜中"}
+{"id": "question 9263", "annotator": "ann1", "batch": "batch_05.json", "note": "无"}
+{"id": "question 5668", "annotator": "ann1", "batch": "batch_05.json", "note": "Configuration与答案configuration data字面呼应"}
+{"id": "question 942", "annotator": "ann1", "batch": "batch_05.json", "note": "无"}
+{"id": "question 2652", "annotator": "ann2", "batch": "batch_05.json", "note": "无"}
+{"id": "question 776", "annotator": "ann2", "batch": "batch_05.json", "note": "B讲小区模式、D讲RAN共享，均非承载定义；仅A呼应bearer传数据"}
+{"id": "question 256", "annotator": "ann2", "batch": "batch_05.json", "note": "MIB同时含配置与PHY参数，A、C也可算对"}
+{"id": "question 7711", "annotator": "ann2", "batch": "batch_05.json", "note": "无"}
+{"id": "question 9187", "annotator": "ann2", "batch": "batch_05.json", "note": "题干含request，AnalyticsInfo_Request也正确；C非NWDAF服务"}
+{"id": "question 2812", "annotator": "ann2", "batch": "batch_05.json", "note": "无"}
+{"id": "question 8362", "annotator": "ann2", "batch": "batch_05.json", "note": "无"}
+{"id": "question 9263", "annotator": "ann2", "batch": "batch_05.json", "note": "无"}
+{"id": "question 5668", "annotator": "ann2", "batch": "batch_05.json", "note": "仅A与题干Configuration呼应，可凭字面选出"}
+{"id": "question 942", "annotator": "ann2", "batch": "batch_05.json", "note": "MSDU交付属分布系统服务，E也可算对"}
+{"id": "question 3519", "annotator": "ann1", "batch": "batch_06.json", "note": "23.502另有CM-IDLE with Suspend的连接恢复流程，B也成立"}
+{"id": "question 9886", "annotator": "ann1", "batch": "batch_06.json", "note": "无"}
+{"id": "question 1123", "annotator": "ann1", "batch": "batch_06.json", "note": "A/C讲机密性、E物理保护与题干不符；NR完整性保护也覆盖用户面，B同样对"}
+{"id": "question 1389", "annotator": "ann1", "batch": "batch_06.json", "note": "只有A的power-aware与题干power headroom呼应"}
+{"id": "question 9853", "annotator": "ann1", "batch": "batch_06.json", "note": "无"}
+{"id": "question 778", "annotator": "ann1", "batch": "batch_06.json", "note": "A/B讲天线阵列，与认证无关"}
+{"id": "question 5363", "annotator": "ann1", "batch": "batch_06.json", "note": "无"}
+{"id": "question 6602", "annotator": "ann1", "batch": "batch_06.json", "note": "A的themselves语法接不上题干；D非RACH主用途但为最佳选项"}
+{"id": "question 9561", "annotator": "ann1", "batch": "batch_06.json", "note": "B说RTS用于应答RTS，与题干自相矛盾"}
+{"id": "question 6107", "annotator": "ann1", "batch": "batch_06.json", "note": "无"}
+{"id": "question 3519", "annotator": "ann2", "batch": "batch_06.json", "note": "23.502亦有CM-IDLE with Suspend的连接恢复流程，B也算对"}
+{"id": "question 9886", "annotator": "ann2", "batch": "batch_06.json", "note": "无"}
+{"id": "question 1123", "annotator": "ann2", "batch": "batch_06.json", "note": "A/C讲机密性答非所问，E荒谬；NR也有用户面完整性保护，B也对"}
+{"id": "question 1389", "annotator": "ann2", "batch": "batch_06.json", "note": "仅A含power与题干power headroom呼应"}
+{"id": "question 9853", "annotator": "ann2", "batch": "batch_06.json", "note": "无"}
+{"id": "question 778", "annotator": "ann2", "batch": "batch_06.json", "note": "A/B讲天线阵列，与认证无关"}
+{"id": "question 5363", "annotator": "ann2", "batch": "batch_06.json", "note": "无"}
+{"id": "question 6602", "annotator": "ann2", "batch": "batch_06.json", "note": "无"}
+{"id": "question 9561", "annotator": "ann2", "batch": "batch_06.json", "note": "B说RTS用于应答RTS，自相矛盾"}
+{"id": "question 6107", "annotator": "ann2", "batch": "batch_06.json", "note": "无"}
+{"id": "question 9359", "annotator": "ann1", "batch": "batch_07.json", "note": "NWDAF可生成多类分析，“仅特定类型”表述含糊，标准答案存疑"}
+{"id": "question 2057", "annotator": "ann1", "batch": "batch_07.json", "note": "B讲去激活，与题干“激活”功能相悖"}
+{"id": "question 7561", "annotator": "ann1", "batch": "batch_07.json", "note": "C缺推导步骤、D先推导后收集不合逻辑；A通用流程也可算对"}
+{"id": "question 4688", "annotator": "ann1", "batch": "batch_07.json", "note": "A异RAT移动性包含NR-UTRA，意思重叠"}
+{"id": "question 2025", "annotator": "ann1", "batch": "batch_07.json", "note": "无"}
+{"id": "question 721", "annotator": "ann1", "batch": "batch_07.json", "note": "无"}
+{"id": "question 8465", "annotator": "ann1", "batch": "batch_07.json", "note": "管理虚拟化层属VIM职责，非MEC编排器，“全选”存疑"}
+{"id": "question 1337", "annotator": "ann1", "batch": "batch_07.json", "note": "无"}
+{"id": "question 9613", "annotator": "ann1", "batch": "batch_07.json", "note": "无"}
+{"id": "question 8347", "annotator": "ann1", "batch": "batch_07.json", "note": "无"}
+{"id": "question 9359", "annotator": "ann2", "batch": "batch_07.json", "note": "NWDAF确实生成NF负载、位置等分析，C/D/E也对，B表述含糊"}
+{"id": "question 2057", "annotator": "ann2", "batch": "batch_07.json", "note": "无"}
+{"id": "question 7561", "annotator": "ann2", "batch": "batch_07.json", "note": "C缺少推导步骤，D先推导后收集数据，逻辑顺序自相矛盾"}
+{"id": "question 4688", "annotator": "ann2", "batch": "batch_07.json", "note": "NR-UTRA本身就是Inter RAT，A作为上位概念也算对"}
+{"id": "question 2025", "annotator": "ann2", "batch": "batch_07.json", "note": "题干temporarily与Temporary C-RNTI字面呼应"}
+{"id": "question 721", "annotator": "ann2", "batch": "batch_07.json", "note": "无"}
+{"id": "question 8465", "annotator": "ann2", "batch": "batch_07.json", "note": "B是VIM职责而非MEC编排器，All of the above不成立"}
+{"id": "question 1337", "annotator": "ann2", "batch": "batch_07.json", "note": "无"}
+{"id": "question 9613", "annotator": "ann2", "batch": "batch_07.json", "note": "无"}
+{"id": "question 8347", "annotator": "ann2", "batch": "batch_07.json", "note": "只有NPUSCH带N前缀与题干NB-IoT呼应"}
+{"id": "question 3877", "annotator": "ann1", "batch": "batch_08.json", "note": "无"}
+{"id": "question 8619", "annotator": "ann1", "batch": "batch_08.json", "note": "题干标签[IEEE 802.3]直接泄露答案"}
+{"id": "question 7421", "annotator": "ann1", "batch": "batch_08.json", "note": "TCP也是可靠协议，C同样正确"}
+{"id": "question 2995", "annotator": "ann1", "batch": "batch_08.json", "note": "无"}
+{"id": "question 9576", "annotator": "ann1", "batch": "batch_08.json", "note": "仅C呼应题干OSI模型分层，其余泛泛"}
+{"id": "question 5782", "annotator": "ann1", "batch": "batch_08.json", "note": "无"}
+{"id": "question 7901", "annotator": "ann1", "batch": "batch_08.json", "note": "无"}
+{"id": "question 8579", "annotator": "ann1", "batch": "batch_08.json", "note": "E照抄题干NR/E-UTRA；38.300中A/B/C场景也支持；D含UTRA不搭"}
+{"id": "question 7255", "annotator": "ann1", "batch": "batch_08.json", "note": "无"}
+{"id": "question 4906", "annotator": "ann1", "batch": "batch_08.json", "note": "A-C均为正确部署方式的子集；All of the above线索明显"}
+{"id": "question 3877", "annotator": "ann2", "batch": "batch_08.json", "note": "无"}
+{"id": "question 8619", "annotator": "ann2", "batch": "batch_08.json", "note": "题干标签[IEEE 802.3]直接泄露答案C"}
+{"id": "question 7421", "annotator": "ann2", "batch": "batch_08.json", "note": "TCP既面向连接也可靠，C同样正确"}
+{"id": "question 2995", "annotator": "ann2", "batch": "batch_08.json", "note": "题干notify与A的Notification字面呼应"}
+{"id": "question 9576", "annotator": "ann2", "batch": "batch_08.json", "note": "唯C呼应OSI分层；E泛泛而言也算对"}
+{"id": "question 5782", "annotator": "ann2", "batch": "batch_08.json", "note": "无"}
+{"id": "question 7901", "annotator": "ann2", "batch": "batch_08.json", "note": "无"}
+{"id": "question 8579", "annotator": "ann2", "batch": "batch_08.json", "note": "E复述题干；A/B/C为该重选支持的核心网场景亦正确；D是UTRA"}
+{"id": "question 7255", "annotator": "ann2", "batch": "batch_08.json", "note": "EPDCCH也可承载UL及SL授权，但PDCCH为标准表述"}
+{"id": "question 4906", "annotator": "ann2", "batch": "batch_08.json", "note": "A/B/C均为D组成部分；题问复数选项，E明显不合"}
+{"id": "question 3692", "annotator": "ann1", "batch": "batch_09.json", "note": "无"}
+{"id": "question 3080", "annotator": "ann1", "batch": "batch_09.json", "note": "无"}
+{"id": "question 9168", "annotator": "ann1", "batch": "batch_09.json", "note": "DCP在激活时间之外、on-duration前监听，金标含active-time有误"}
+{"id": "question 149", "annotator": "ann1", "batch": "batch_09.json", "note": "无"}
+{"id": "question 7052", "annotator": "ann1", "batch": "batch_09.json", "note": "D与B同义；connect后的UDP套接字在ss中可显示ESTAB，A也可算对"}
+{"id": "question 7579", "annotator": "ann1", "batch": "batch_09.json", "note": "无"}
+{"id": "question 3540", "annotator": "ann1", "batch": "batch_09.json", "note": "supplicant词义即请求者，仅凭英语即可选D"}
+{"id": "question 7389", "annotator": "ann1", "batch": "batch_09.json", "note": "无"}
+{"id": "question 1581", "annotator": "ann1", "batch": "batch_09.json", "note": "A与题干discovery直接呼应，可凭措辞选出"}
+{"id": "question 1343", "annotator": "ann1", "batch": "batch_09.json", "note": "B复述题干connect-streaming，可凭措辞选出"}
+{"id": "question 3692", "annotator": "ann2", "batch": "batch_09.json", "note": "无"}
+{"id": "question 3080", "annotator": "ann2", "batch": "batch_09.json", "note": "无"}
+{"id": "question 9168", "annotator": "ann2", "batch": "batch_09.json", "note": "DCP按38.321在Active Time之外、on-duration前监听，gold含active-time有误"}
+{"id": "question 149", "annotator": "ann2", "batch": "batch_09.json", "note": "无"}
+{"id": "question 7052", "annotator": "ann2", "batch": "batch_09.json", "note": "D与B同义；connect后的UDP套接字在Linux可显示ESTABLISHED"}
+{"id": "question 7579", "annotator": "ann2", "batch": "batch_09.json", "note": "无"}
+{"id": "question 3540", "annotator": "ann2", "batch": "batch_09.json", "note": "supplicant词义即请求者，只与D呼应"}
+{"id": "question 7389", "annotator": "ann2", "batch": "batch_09.json", "note": "无"}
+{"id": "question 1581", "annotator": "ann2", "batch": "batch_09.json", "note": "只有A与题干discovery呼应"}
+{"id": "question 1343", "annotator": "ann2", "batch": "batch_09.json", "note": "只有B与题干Connect-streaming字面呼应"}
+{"id": "question 990", "annotator": "ann1", "batch": "batch_10.json", "note": "只有E与题干SETUP REQUEST对应，其余为修改/释放消息"}
+{"id": "question 3819", "annotator": "ann1", "batch": "batch_10.json", "note": "PDCCH/PHICH是信道非层；36.201称PHY也接RRC"}
+{"id": "question 4620", "annotator": "ann1", "batch": "batch_10.json", "note": "无"}
+{"id": "question 3688", "annotator": "ann1", "batch": "batch_10.json", "note": "B为NEF检查自身授权，自相矛盾"}
+{"id": "question 2190", "annotator": "ann1", "batch": "batch_10.json", "note": "题干含voice，仅D呼应，其余答非所问"}
+{"id": "question 5909", "annotator": "ann1", "batch": "batch_10.json", "note": "A与D同义，EN-DC属NSA具体形态但非架构名"}
+{"id": "question 6628", "annotator": "ann1", "batch": "batch_10.json", "note": "无"}
+{"id": "question 2264", "annotator": "ann1", "batch": "batch_10.json", "note": "A优化RAN更像MDT通用目的；D数据采集不能提升信号"}
+{"id": "question 1122", "annotator": "ann1", "batch": "batch_10.json", "note": "A携带数据与management字面不符"}
+{"id": "question 9831", "annotator": "ann1", "batch": "batch_10.json", "note": "DS也负责追踪站点位置并投递帧，A/C同样对"}
+{"id": "question 990", "annotator": "ann2", "batch": "batch_10.json", "note": "唯一与题干SETUP REQUEST对应的响应消息，靠字面匹配可选出"}
+{"id": "question 3819", "annotator": "ann2", "batch": "batch_10.json", "note": "LTE物理层也与RRC有接口；PDCCH/PHICH是信道非协议层"}
+{"id": "question 4620", "annotator": "ann2", "batch": "batch_10.json", "note": "无"}
+{"id": "question 3688", "annotator": "ann2", "batch": "batch_10.json", "note": "NEF检查自身授权状态与题干主语矛盾"}
+{"id": "question 2190", "annotator": "ann2", "batch": "batch_10.json", "note": "题干已写voice，仅D含voice，其余答非所问"}
+{"id": "question 5909", "annotator": "ann2", "batch": "batch_10.json", "note": "EN-DC即E-UTRA-NR双连接，属NSA架构，与答案重叠"}
+{"id": "question 6628", "annotator": "ann2", "batch": "batch_10.json", "note": "无"}
+{"id": "question 2264", "annotator": "ann2", "batch": "batch_10.json", "note": "MDT本质用于网络优化，A同样合理；金标表述偏窄"}
+{"id": "question 1122", "annotator": "ann2", "batch": "batch_10.json", "note": "TIM缓存指示由Beacon管理帧承载，部分重叠"}
+{"id": "question 9831", "annotator": "ann2", "batch": "batch_10.json", "note": "DS负责将帧投递到正确AP，C同样是DS职能"}
+{"id": "question 7998", "annotator": "ann1", "batch": "batch_11.json", "note": "DCCH同样承载UE与网络间控制信息，题干未限定无RRC连接"}
+{"id": "question 9876", "annotator": "ann1", "batch": "batch_11.json", "note": "无"}
+{"id": "question 6816", "annotator": "ann1", "batch": "batch_11.json", "note": "E提及文档但题目无文档，答非所问"}
+{"id": "question 1375", "annotator": "ann1", "batch": "batch_11.json", "note": "B是实体对描述，非参考点名称，类型不符"}
+{"id": "question 1176", "annotator": "ann1", "batch": "batch_11.json", "note": "各项均为合理目标，全选项线索直指E"}
+{"id": "question 1259", "annotator": "ann1", "batch": "batch_11.json", "note": "无"}
+{"id": "question 7534", "annotator": "ann1", "batch": "batch_11.json", "note": "无"}
+{"id": "question 3917", "annotator": "ann1", "batch": "batch_11.json", "note": "无"}
+{"id": "question 8808", "annotator": "ann1", "batch": "batch_11.json", "note": "B是实体对描述，非参考点名称，类型不符"}
+{"id": "question 4241", "annotator": "ann1", "batch": "batch_11.json", "note": "A/B/E属建立或修改流程，与释放题干不呼应；收到RELEASE回COMPLETE有字面线索"}
+{"id": "question 7998", "annotator": "ann2", "batch": "batch_11.json", "note": "DCCH同样在UE与网络间传控制信息，题干未限定公共/专用"}
+{"id": "question 9876", "annotator": "ann2", "batch": "batch_11.json", "note": "无"}
+{"id": "question 6816", "annotator": "ann2", "batch": "batch_11.json", "note": "E为“文档未给出”，与本题无文档的语境不符"}
+{"id": "question 1375", "annotator": "ann2", "batch": "batch_11.json", "note": "B是实体对而非参考点名称，类型不符"}
+{"id": "question 1176", "annotator": "ann2", "batch": "batch_11.json", "note": "A-D均为合理目标，都包含在“以上全部”中，可直接推出E"}
+{"id": "question 1259", "annotator": "ann2", "batch": "batch_11.json", "note": "无"}
+{"id": "question 7534", "annotator": "ann2", "batch": "batch_11.json", "note": "无"}
+{"id": "question 3917", "annotator": "ann2", "batch": "batch_11.json", "note": "无"}
+{"id": "question 8808", "annotator": "ann2", "batch": "batch_11.json", "note": "B是实体对而非参考点名称，类型不符"}
+{"id": "question 4241", "annotator": "ann2", "batch": "batch_11.json", "note": "收到释放后回复Setup/Modification与题干不搭，只剩Release类"}
+{"id": "question 9524", "annotator": "ann1", "batch": "batch_12.json", "note": "B/C/D为空泛通用目标，只有A具体呼应互通用途"}
+{"id": "question 5285", "annotator": "ann1", "batch": "batch_12.json", "note": "无"}
+{"id": "question 1436", "annotator": "ann1", "batch": "batch_12.json", "note": "E的Delay Threshold是Delay触发条件的组成部分，与C部分重叠"}
+{"id": "question 9524", "annotator": "ann2", "batch": "batch_12.json", "note": "BCD为空泛通用目的套话，A唯一具体呼应互通"}
+{"id": "question 5285", "annotator": "ann2", "batch": "batch_12.json", "note": "无"}
+{"id": "question 1436", "annotator": "ann2", "batch": "batch_12.json", "note": "E的Delay Threshold子字段即定义连续延迟MSDU数，与C重叠"}
