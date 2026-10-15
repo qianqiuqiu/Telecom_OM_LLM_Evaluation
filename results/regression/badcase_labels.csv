@@ -1,0 +1,16 @@
+tier,id,dimension,category,definition,gold_issue,reason,agreed
+fp8,question 3883,RAN,同tier重跑不一致,量化tier在完全相同的输入上orig错、rep对，这次翻转落在该tier自身的非确定性噪声范围内，不是稳定的退化。,likely,FP8 orig错rep对，属噪声；38.300写明gNB与ng-eNB间支持按序无损切换，B也成立,False
+fp8,question 5903,CORE,顺序敏感翻转,BF16稳健（至少4/5对），量化tier在orig和rep都错且可复现，但打乱选项后至少2个子集恢复；知识大体还在，受选项排列影响，所选错项多为近名或部分成立的干扰项。,possible,FP8 orig/rep稳定选B，s1、s3恢复；B'为跨网呼叫生成CDR'确是GMSC职责，部分成立,False
+w4a16,question 384,CORE,顺序敏感翻转,BF16稳健（至少4/5对），量化tier在orig和rep都错且可复现，但打乱选项后至少2个子集恢复；知识大体还在，受选项排列影响，所选错项多为近名或部分成立的干扰项。,none,BF16/FP8 5/5，W4A16仅orig/rep选D，乱序3个子集全对，位置敏感,True
+w4a16,question 688,SERVICE,BF16自身边界题,BF16在5个子集中答对不超过3个，这道题对原模型本来就不稳，量化只是把orig这一格也推翻了，不应全部算作量化损伤。,possible,BF16仅orig/rep对；QCI-1实为会话语音，金标'实时交互'只是最接近的选项；W4A16选信令,True
+w4a16,question 1508,RAN,BF16自身边界题,BF16在5个子集中答对不超过3个，这道题对原模型本来就不稳，量化只是把orig这一格也推翻了，不应全部算作量化损伤。,none,BF16 3/5、FP8 1/5；所选A为EPC侧Access Class/ACDC，是4G/5G对应概念的近义干扰,True
+w4a16,question 3297,CORE,同tier重跑不一致,量化tier在完全相同的输入上orig错、rep对，这次翻转落在该tier自身的非确定性噪声范围内，不是稳定的退化。,none,W4A16 orig错rep对，落在自身噪声内；'无影响'与'最小影响'是程度近义的干扰项,True
+w4a16,question 3883,RAN,量化后跨子集系统失效,BF16稳健，量化tier在至少4/5子集答错，且所选选项与规范明显矛盾，是比较可信的知识退化。,possible,BF16 4/5，W4A16 4/5错；所选C'Xn/NG切换均不支持'与规范相反，是真实退化；B亦可辩护,True
+w4a16,question 3987,RAN,顺序敏感翻转,BF16稳健（至少4/5对），量化tier在orig和rep都错且可复现，但打乱选项后至少2个子集恢复；知识大体还在，受选项排列影响，所选错项多为近名或部分成立的干扰项。,none,BF16/FP8 5/5；W4A16混成VarLogMeasConfig（近名变量），s2、s3恢复,True
+w4a16,question 4146,OAM,多答案可辩护/金标存疑,量化tier所选选项按3GPP原文同样成立，题目实际有多个正确答案，翻转主要反映题目歧义，不是知识丢失。,likely,TS28.533把CM、PM、故障监控都列为管理服务示例，D与B同样正确；W4A16在s1、s2恢复,False
+w4a16,question 5302,RAN,顺序敏感翻转,BF16稳健（至少4/5对），量化tier在orig和rep都错且可复现，但打乱选项后至少2个子集恢复；知识大体还在，受选项排列影响，所选错项多为近名或部分成立的干扰项。,none,W4A16 s2、s3恢复；CSAT本质是占空比开关，On-Off是近义干扰；BF16和FP8在s1也错,True
+w4a16,question 5369,RAN,BF16自身边界题,BF16在5个子集中答对不超过3个，这道题对原模型本来就不稳，量化只是把orig这一格也推翻了，不应全部算作量化损伤。,possible,BF16 3/5、FP8 2/5；规范中映射对象是E-RAB而非DRB，金标措辞可疑；A本身错误,True
+w4a16,question 5679,RAN,输出格式失败,thinking已关闭，量化tier仍输出长段推理，没有给出可抽取的ANSWER字母，属于指令遵循失败，不是知识错误。,possible,orig转为长篇推理，没输出字母；LAA在Rel-13只有下行、到eLAA才有上行，金标依赖版本,True
+w4a16,question 7095,CORE,顺序敏感翻转,BF16稳健（至少4/5对），量化tier在orig和rep都错且可复现，但打乱选项后至少2个子集恢复；知识大体还在，受选项排列影响，所选错项多为近名或部分成立的干扰项。,possible,BF16/FP8 5/5，W4A16乱序全恢复；C是23.501中也存在的ePDG互通LBO架构，近名干扰,True
+w4a16,question 9129,CORE,BF16自身边界题,BF16在5个子集中答对不超过3个，这道题对原模型本来就不稳，量化只是把orig这一格也推翻了，不应全部算作量化损伤。,possible,BF16与FP8都只有orig/rep对，乱序全错，题目极脆弱；D'临时PLMN限制'也像是触发条件,True
+w4a16,question 9853,SERVICE,顺序敏感翻转,BF16稳健（至少4/5对），量化tier在orig和rep都错且可复现，但打乱选项后至少2个子集恢复；知识大体还在，受选项排列影响，所选错项多为近名或部分成立的干扰项。,none,BF16 5/5，W4A16 s1-s3恢复；'释放呼叫'是合理干扰项；FP8的rep也错过一次，说明处于临界,True

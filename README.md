@@ -157,6 +157,23 @@ uv run python scripts/judge_pressure.py --answers results/answers/pressure_off.j
 uv run python analysis/pressure_analysis.py                                # 探针合格检查 + 汇总 → reports/pressure/pressure_main.md
 ```
 
+精度回归（qwen3.8-27b BF16 / FP8 / W4A16，同卡同引擎；一次只起一档，`<档>` 取 bf16 / fp8 / w4a16）：
+
+```bash
+bash serve.sh <档>        # 把 scripts/regression/serve.sh 传到 AutoDL 上跑，起 SGLang（127.0.0.1:30000）
+ssh -f -N -L 30000:127.0.0.1:30000 -p <端口> root@connect.weste.seetacloud.com   # Mac 上开隧道
+uv run python scripts/run_objective.py --models qwen3.8-27b-<档> --batch 16      # 客观题 5 子集
+uv run python scripts/generate_answers.py --run regression_<档> \
+    --model qwen3.8-27b-<档> --mode off                                    # 场景题（BF16 加 --repeats 2 作噪声参照）
+uv run python scripts/run_pressure.py --model qwen3.8-27b-<档> \
+    --t1 results/answers/regression_<档>.jsonl --out results/answers/pressure_regression.jsonl
+uv run python scripts/judge_scenarios.py --answers results/answers/regression_<档>.jsonl \
+    --judge claude:claude-haiku-5-5 --prompt v2 --run regression            # Sonnet 同样再判一遍
+uv run python scripts/judge_pressure.py --answers results/answers/pressure_regression.jsonl \
+    --judge claude:claude-haiku-5-5 --prompt v1 --run pressure_regression   # Sonnet 同样再判一遍
+uv run python analysis/regression_gate.py                                  # 四条门禁 → reports/regression/regression_gate.md
+```
+
 场景题回答生成与天花板试跑（被测模型只看题干，统一用中性系统提示 `configs/assistant/system_v1.md`）：
 
 ```bash

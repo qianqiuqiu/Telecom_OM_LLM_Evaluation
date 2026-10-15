@@ -1,0 +1,8 @@
+{
+  "note": "取自 AutoDL 上 SGLang 日志 `/root/autodl-tmp/logs/serve_<档>.log`（Oct 15 晚，RTX 6000D 84GB，同一 serve.sh）。权重显存 = 「Load weight end」的 mem usage；KV cache 容量 = 按 --mem-fraction-static 0.85 分配后的 token 数；并发上限由 SGLang 按 mamba 状态缓存自动定（权重越小可开的并发越多，属于精度本身带来的差别）。吞吐 = 生成阶段 10–11 个请求同时解码时日志里 gen throughput 的中位数，只作量级参考（三档的客观题与场景题并发混跑，负载不完全相同）。",
+  "tiers": {
+    "qwen3.8-27b-bf16": {"weights": "Qwen/Qwen3.8-27B@1d4bf0f2", "weight_mem_gb": 51.05, "kv_tokens": 154435, "max_running": 11, "decode_tps": 125.8},
+    "qwen3.8-27b-fp8": {"weights": "Qwen/Qwen3.8-27B-FP8@017b9c7a", "weight_mem_gb": 28.47, "kv_tokens": 348276, "max_running": 26, "decode_tps": 318.0},
+    "qwen3.8-27b-w4a16": {"weights": "barrydeen/Qwen3.8-27B-AWQ-4bit@e6b4b8b0", "weight_mem_gb": 25.30, "kv_tokens": 376946, "max_running": 28, "decode_tps": 330.2}
+  }
+}

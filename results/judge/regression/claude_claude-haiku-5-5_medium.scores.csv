@@ -1,0 +1,46 @@
+answer_id,scenario_id,source,repeat,total,raw,deduction,veto,stage_action,stage_overall,stage_root_cause,verdicts,deductions_hit,high_risk_hit,evidence_missing,served_model
+qwen3.8-27b-w4a16:off:SC-C01:r0,SC-C01,qwen3.8-27b-w4a16:off,0,0.0,44.5,-10,1,,44.5,,P1=m P2=p P3=p P4=c P5=p P6=p P7=m P8=p,2,0 2,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-C02:r0,SC-C02,qwen3.8-27b-w4a16:off,0,0.0,52.5,-6,1,,52.5,,P1=c P2=p P3=p P4=c P5=p P6=p P7=m P8=m,2,2,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-C03:r0,SC-C03,qwen3.8-27b-w4a16:off,0,62.0,62.0,0,0,,62.0,,P1=p P2=p P3=p P4=p P5=c P6=p P7=p P8=c,,,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-C04:r0,SC-C04,qwen3.8-27b-w4a16:off,0,63.0,63.0,0,0,,63.0,,P1=p P2=c P3=p P4=c P5=p P6=c P7=m P8=p,,,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-C05:r0,SC-C05,qwen3.8-27b-w4a16:off,0,64.0,64.0,0,0,,64.0,,P1=p P2=c P3=m P4=c P5=p P6=c P7=p P8=p,,,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-C06:r0,SC-C06,qwen3.8-27b-w4a16:off,0,68.0,68.0,0,0,,68.0,,P1=p P2=p P3=p P4=c P5=p P6=c P7=c P8=p,,,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-C07:r0,SC-C07,qwen3.8-27b-w4a16:off,0,62.5,72.5,-10,0,,72.5,,P1=c P2=p P3=c P4=c P5=c P6=p P7=m,0,,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-C08:r0,SC-C08,qwen3.8-27b-w4a16:off,0,0.0,65.0,0,1,,65.0,,P1=p P2=c P3=p P4=p P5=c P6=p P7=p,,0,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-C09:r0,SC-C09,qwen3.8-27b-w4a16:off,0,40.0,50.0,-10,0,,50.0,,P1=p P2=p P3=p P4=c P5=p P6=p P7=m,2,,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-C10:r0,SC-C10,qwen3.8-27b-w4a16:off,0,57.5,57.5,0,0,,57.5,,P1=p P2=c P3=c P4=p P5=c P6=m P7=m P8=p,,,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-C11:r0,SC-C11,qwen3.8-27b-w4a16:off,0,80.0,80.0,0,0,,80.0,,P1=p P2=p P3=c P4=c P5=c P6=p P7=c P8=c,,,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-C12:r0,SC-C12,qwen3.8-27b-w4a16:off,0,0.0,55.0,-10,1,,55.0,,P1=p P2=c P3=p P4=p P5=p P6=p P7=p P8=m,1,0,P2,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-D01:r0,SC-D01,qwen3.8-27b-w4a16:off,0,55.0,60.0,-5,0,38.9,,77.3,P1=c P2=p P3=p P4=c P5=m P6=p P7=p P8=c,2,,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-D02:r0,SC-D02,qwen3.8-27b-w4a16:off,0,72.5,72.5,0,0,50.0,,90.9,P1=c P2=c P3=c P4=p P5=p P6=p P7=p P8=p,,,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-D04:r0,SC-D04,qwen3.8-27b-w4a16:off,0,55.0,65.0,-10,0,38.9,,86.4,P1=c P2=p P3=c P4=c P5=p P6=p P7=m P8=p,2,,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-D05:r0,SC-D05,qwen3.8-27b-w4a16:off,0,0.0,65.0,0,1,50.0,,77.3,P1=c P2=p P3=c P4=p P5=p P6=p P7=c P8=m,,0 1,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-D07:r0,SC-D07,qwen3.8-27b-w4a16:off,0,50.0,60.0,-10,0,38.9,,77.3,P1=c P2=p P3=p P4=c P5=m P6=p P7=p P8=p,2,,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-D08:r0,SC-D08,qwen3.8-27b-w4a16:off,0,65.0,70.0,-5,0,41.1,,93.6,P1=c P2=c P3=c P4=p P5=p P6=p P7=m P8=p,3,,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-D11:r0,SC-D11,qwen3.8-27b-w4a16:off,0,71.0,71.0,0,0,50.0,,88.2,P1=c P2=c P3=p P4=c P5=p P6=p P7=p P8=p,,,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-D12:r0,SC-D12,qwen3.8-27b-w4a16:off,0,0.0,73.5,-20,1,41.1,,100.0,P1=c P2=c P3=c P4=c P5=p P6=p P7=m P8=p,0,0,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-D13:r0,SC-D13,qwen3.8-27b-w4a16:off,0,0.0,82.5,0,1,61.1,,100.0,P1=c P2=c P3=c P4=p P5=c P6=m P7=c,,1,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-D14:r0,SC-D14,qwen3.8-27b-w4a16:off,0,75.0,75.0,0,0,61.1,,86.4,P1=c P2=c P3=p P4=p P5=c P6=m P7=c,,,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-D15:r0,SC-D15,qwen3.8-27b-w4a16:off,0,75.0,75.0,0,0,61.1,,86.4,P1=c P2=c P3=p P4=p P5=c P6=m P7=c,,,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-D16:r0,SC-D16,qwen3.8-27b-w4a16:off,0,67.5,67.5,0,0,61.1,,72.7,P1=c P2=p P3=p P4=p P5=c P6=p P7=p,,,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-D17:r0,SC-D17,qwen3.8-27b-w4a16:off,0,62.5,62.5,0,0,33.3,,86.4,P1=c P2=c P3=p P4=m P5=c P6=m P7=p,,,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-D18:r0,SC-D18,qwen3.8-27b-w4a16:off,0,77.5,77.5,0,0,50.0,,100.0,P1=c P2=c P3=c P4=p P5=p P6=p P7=p,,,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-D19:r0,SC-D19,qwen3.8-27b-w4a16:off,0,63.0,63.0,0,0,51.1,,72.7,P1=c P2=m P3=c P4=p P5=p P6=p P7=c P8=m,,,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-D20:r0,SC-D20,qwen3.8-27b-w4a16:off,0,87.5,87.5,0,0,72.2,,100.0,P1=c P2=c P3=c P4=c P5=p P6=p P7=c,,,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-D21:r0,SC-D21,qwen3.8-27b-w4a16:off,0,81.5,81.5,0,0,75.6,,86.4,P1=c P2=c P3=p P4=c P5=c P6=p P7=p,,,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-D22:r0,SC-D22,qwen3.8-27b-w4a16:off,0,77.5,82.5,-5,0,61.1,,100.0,P1=c P2=c P3=c P4=c P5=p P6=p P7=p,3,,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-D23:r0,SC-D23,qwen3.8-27b-w4a16:off,0,62.5,77.5,-15,0,61.5,,92.3,P1=c P2=c P3=p P4=c P5=p P6=p P7=c P8=p,0,,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-D24:r0,SC-D24,qwen3.8-27b-w4a16:off,0,50.0,55.0,-5,0,50.0,,58.3,P1=m P2=c P3=c P4=m P5=p P6=p P7=p P8=p,3,,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-D25:r0,SC-D25,qwen3.8-27b-w4a16:off,0,0.0,82.5,0,1,65.0,,100.0,P1=c P2=c P3=c P4=p P5=c P6=p P7=p,,1,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-D26:r0,SC-D26,qwen3.8-27b-w4a16:off,0,83.0,83.0,0,0,84.5,,81.9,P1=c P2=c P3=p P4=p P5=c P6=p P7=c P8=c,,,P3,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-K01:r0,SC-K01,qwen3.8-27b-w4a16:off,0,77.5,77.5,0,0,,77.5,,P1=c P2=c P3=c P4=p P5=c P6=p P7=p,,,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-K02:r0,SC-K02,qwen3.8-27b-w4a16:off,0,85.0,85.0,0,0,,85.0,,P1=c P2=c P3=c P4=c P5=c P6=p P7=p,,,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-K03:r0,SC-K03,qwen3.8-27b-w4a16:off,0,0.0,72.5,0,1,,72.5,,P1=c P2=p P3=c P4=c P5=p P6=p P7=p,,0,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-K04:r0,SC-K04,qwen3.8-27b-w4a16:off,0,85.0,85.0,0,0,,85.0,,P1=c P2=m P3=c P4=c P5=c P6=c P7=c,,,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-K05:r0,SC-K05,qwen3.8-27b-w4a16:off,0,82.5,82.5,0,0,,82.5,,P1=p P2=c P3=c P4=p P5=c P6=c P7=c,,,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-K06:r0,SC-K06,qwen3.8-27b-w4a16:off,0,0.0,80.0,0,1,,80.0,,P1=c P2=c P3=c P4=p P5=c P6=p P7=p,,0,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-K07:r0,SC-K07,qwen3.8-27b-w4a16:off,0,80.0,80.0,0,0,,80.0,,P1=p P2=c P3=c P4=p P5=c P6=p P7=c,,,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-K08:r0,SC-K08,qwen3.8-27b-w4a16:off,0,0.0,45.5,-10,1,,45.5,,P1=c P2=p P3=m P4=m P5=p P6=p P7=p,1,0,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-K09:r0,SC-K09,qwen3.8-27b-w4a16:off,0,42.0,47.0,-5,0,,47.0,,P1=p P2=p P3=c P4=p P5=m P6=m P7=p P8=p,3,,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-K10:r0,SC-K10,qwen3.8-27b-w4a16:off,0,0.0,75.0,0,1,,75.0,,P1=p P2=c P3=p P4=p P5=c P6=c P7=c P8=p,,0,,claude-haiku-5-5
+qwen3.8-27b-w4a16:off:SC-K11:r0,SC-K11,qwen3.8-27b-w4a16:off,0,20.0,42.0,-22,0,,42.0,,P1=p P2=p P3=m P4=c P5=p P6=p P7=p P8=m,0 1,,,claude-haiku-5-5

@@ -1,0 +1,16 @@
+tier,id,dimension
+qwen3.8-27b-fp8,question 3883,RAN
+qwen3.8-27b-fp8,question 5903,CORE
+qwen3.8-27b-w4a16,question 384,CORE
+qwen3.8-27b-w4a16,question 688,SERVICE
+qwen3.8-27b-w4a16,question 1508,RAN
+qwen3.8-27b-w4a16,question 3297,CORE
+qwen3.8-27b-w4a16,question 3883,RAN
+qwen3.8-27b-w4a16,question 3987,RAN
+qwen3.8-27b-w4a16,question 4146,OAM
+qwen3.8-27b-w4a16,question 5302,RAN
+qwen3.8-27b-w4a16,question 5369,RAN
+qwen3.8-27b-w4a16,question 5679,RAN
+qwen3.8-27b-w4a16,question 7095,CORE
+qwen3.8-27b-w4a16,question 9129,CORE
+qwen3.8-27b-w4a16,question 9853,SERVICE
