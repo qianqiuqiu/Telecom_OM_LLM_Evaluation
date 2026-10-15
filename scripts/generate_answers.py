@@ -28,15 +28,13 @@
 import argparse
 import hashlib
 import json
-import os
 import statistics
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
-import yaml
+from model_registry import entries, load_cfg, make_client, params as model_params
 from thinking_pilot import PRICE
-from verify_three_vote import load_env
 
 ROOT = Path(__file__).resolve().parents[1]
 SCENARIOS = ROOT / "data/scenarios/scenarios_draft.json"
@@ -52,22 +50,21 @@ GUESS = {"off": (800, 1500), "on": (800, 6000)}  # 粗估花费的（输入, 输
 # ---------- 模型与任务 ----------
 
 def resolve_models(cfg, args):
-    """返回 [(模型 ID, 该 mode 的参数)]；只认 configs/models.yaml 里的模型。"""
-    entries = {m["id"]: (g, m) for g in ("main", "thinking_only") for m in cfg[g]}
+    """返回 [(模型 ID, 该 mode 的参数)]；只认 configs/models.yaml 里的模型（含精度回归的 regression 组）。"""
+    reg = entries(cfg)
     ids = list(args.model or []) + [m["id"] for g in args.group or [] for m in cfg[g]]
-    unknown = [i for i in ids if i not in entries]
+    unknown = [i for i in ids if i not in reg]
     if unknown:
         raise SystemExit(f"不在 configs/models.yaml 里的模型：{unknown}")
     ids = [i for i in dict.fromkeys(ids) if i not in args.exclude]
     if args.mode == "off":
-        only_on = [i for i in ids if entries[i][0] == "thinking_only"]
+        only_on = [i for i in ids if reg[i][0] == "thinking_only"]
         if only_on:
             print(f"只能开思考，不跑 off：{only_on}")
         ids = [i for i in ids if i not in only_on]
     if not ids:
         raise SystemExit("没有要跑的模型（用 --model 或 --group 指定）")
-    return [(i, {**cfg["modes"][args.mode], **((entries[i][1].get("params") or {}).get(args.mode) or {})})
-            for i in ids]
+    return [(i, model_params(cfg, i, args.mode)) for i in ids]
 
 
 def cache_key(system, model, mode, params, max_tokens, prompt, repeat):
@@ -98,7 +95,7 @@ def tokens(usage):
 
 def cost(model, usage):
     tin, tout, _ = tokens(usage)
-    pi, po = PRICE[model]
+    pi, po = PRICE.get(model, (0, 0))  # 自部署模型不计费
     return round((tin * pi + tout * po) / 1e6, 5)
 
 
@@ -130,8 +127,9 @@ def call(client, model, params, max_tokens, system, prompt):
     return out
 
 
-def run_one(client, job, system, system_ver, attempts=3):
+def run_one(clients, job, system, system_ver, attempts=3):
     model, mode, params, max_tokens, scn, k, key = job
+    client = clients[model]
     rec = {"key": key, "model": model, "mode": mode, "params": params, "max_tokens": max_tokens,
            "system": system_ver, "scenario_id": scn["id"], "repeat": k}
     for a in range(1, attempts + 1):
@@ -182,7 +180,7 @@ def estimate(jobs, recs_by_model, models, mode):
         n = sum(1 for j in jobs if j[0] == model)
         ok = [r for r in recs_by_model[model] if r["ok"]]
         tin, tout = (statistics.mean(tokens(r["usage"])[i] for r in ok) for i in range(2)) if ok else GUESS[mode]
-        pi, po = PRICE[model]
+        pi, po = PRICE.get(model, (0, 0))
         c = n * (tin * pi + tout * po) / 1e6
         total += c
         print(f"  {model:<24} 待调用 {n:>4} 次，每次按输入 {tin:.0f} / 输出 {tout:.0f} token"
@@ -196,7 +194,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--run", required=True, help="导出文件名：results/answers/<run>.jsonl")
     ap.add_argument("--model", action="append", help="模型 ID，须在 configs/models.yaml 里；可重复")
-    ap.add_argument("--group", action="append", choices=["main", "thinking_only"], help="models.yaml 分组；可重复")
+    ap.add_argument("--group", action="append", choices=["main", "thinking_only", "regression"], help="models.yaml 分组；可重复")
     ap.add_argument("--exclude", action="append", default=[])
     ap.add_argument("--mode", required=True, choices=["off", "on"])
     ap.add_argument("--repeats", type=int, default=1)
@@ -210,7 +208,7 @@ def main():
     ap.add_argument("--export-only", action="store_true")
     args = ap.parse_args()
 
-    cfg = yaml.safe_load(MODELS.read_text(encoding="utf-8"))
+    cfg = load_cfg()
     models = resolve_models(cfg, args)
     if args.mode == "on" and any("temperature" not in p for _, p in models):
         print("注意：开思考的采样参数未在 configs/models.yaml 填写（STATUS D4），未填的模型用服务端默认值")
@@ -241,16 +239,14 @@ def main():
         return
 
     if todo and not args.export_only:
-        from openai import OpenAI
-        load_env()
-        client = OpenAI(base_url=os.environ["LLM_BASE_URL"], api_key=os.environ["LLM_API_KEY"])
+        clients = {m: make_client(cfg, m) for m, _ in models}
         (OUT / "raw").mkdir(parents=True, exist_ok=True)
         handles = {m: log_path(m, args.mode).open("a", encoding="utf-8") for m, _ in models}
         n_ok = n_err = 0
         spent = 0.0
         try:
             with ThreadPoolExecutor(args.workers) as ex:
-                futs = [ex.submit(run_one, client, j, system, args.system) for j in todo]
+                futs = [ex.submit(run_one, clients, j, system, args.system) for j in todo]
                 for fu in as_completed(futs):
                     rec = fu.result()
                     handles[rec["model"]].write(json.dumps(rec, ensure_ascii=False) + "\n")

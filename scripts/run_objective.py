@@ -7,6 +7,9 @@
 用法：
   uv run python scripts/run_objective.py --limit 3 --models qwen3.8-flash   # 冒烟测试
   uv run python scripts/run_objective.py                                   # 全部 7 个主实验模型
+  uv run python scripts/run_objective.py --models qwen3.8-27b-fp8          # 精度回归某一档（configs/models.yaml 的 regression 组）
+精度回归的模型经 SSH 隧道访问 AutoDL 上的 SGLang，结果写到 results/evalscope/regression/<模型>/，
+不进横评分析层（analysis/objective_analysis.py 只读 results/evalscope/objective/）。
 """
 
 import argparse
@@ -14,12 +17,12 @@ import os
 import sys
 from pathlib import Path
 
-import yaml
 from dotenv import load_dotenv
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 import evalscope_teleqna  # noqa: E402,F401  注册 teleqna_mcq
+from model_registry import is_local, load_cfg, params as model_params  # noqa: E402
 from evalscope import TaskConfig, run_task  # noqa: E402
 
 DATA = ROOT / "results/evalscope_data/teleqna_ops"
@@ -36,21 +39,23 @@ def main():
     args = parser.parse_args()
 
     load_dotenv(ROOT / ".env")
-    cfg = yaml.safe_load((ROOT / "configs/models.yaml").read_text(encoding="utf-8"))
+    from verify_three_vote import load_env
+    load_env()
+    cfg = load_cfg()
     models = args.models or [m["id"] for m in cfg["main"]]
-    off = cfg["modes"]["off"]
     for model in models:
-        tag = "smoke" if args.limit else "objective"
+        p = model_params(cfg, model, "off")
+        local = is_local(cfg, model)
+        tag = "smoke" if args.limit else ("regression" if local else "objective")
         work = ROOT / "results/evalscope" / tag / model
         task = TaskConfig(
             model=model,
-            api_url=os.environ["LLM_BASE_URL"],
-            api_key=os.environ["LLM_API_KEY"],
+            api_url=cfg["regression_base_url"] if local else os.environ["LLM_BASE_URL"],
+            api_key="EMPTY" if local else os.environ["LLM_API_KEY"],
             eval_type="openai_api",
             datasets=["teleqna_mcq"],
             dataset_args={"teleqna_mcq": {"local_path": str(DATA), "subset_list": args.subsets}},
-            generation_config={"temperature": off["temperature"], "max_tokens": MAX_TOKENS,
-                               "extra_body": {"enable_thinking": off["enable_thinking"]}},
+            generation_config={"temperature": p.pop("temperature"), "max_tokens": MAX_TOKENS, "extra_body": p},
             eval_batch_size=args.batch,
             work_dir=str(work),
             no_timestamp=True,

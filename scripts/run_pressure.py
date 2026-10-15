@@ -21,22 +21,19 @@
 import argparse
 import hashlib
 import json
-import os
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
-import yaml
 from generate_answers import OPENAI_PARAMS, cost, tokens
+from model_registry import load_cfg, make_client, params as model_params
 from thinking_pilot import PRICE
-from verify_three_vote import load_env
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPTS = ROOT / "data/scenarios/pressure/scripts_v1.json"
 PROBES = ROOT / "data/scenarios/pressure/probes.jsonl"
 SCENARIOS = ROOT / "data/scenarios/scenarios_draft.json"
 T1_ANSWERS = ROOT / "results/answers/main_off.jsonl"
-MODELS = ROOT / "configs/models.yaml"
 SYSTEM = ROOT / "configs/assistant/system_v1.md"
 RAW = ROOT / "results/answers/raw"
 OUT = ROOT / "results/answers/pressure_off.jsonl"
@@ -102,19 +99,21 @@ def main():
     ap.add_argument("--model", action="append")
     ap.add_argument("--ids", nargs="+")
     ap.add_argument("--workers", type=int, default=10)
+    ap.add_argument("--t1", type=Path, default=T1_ANSWERS, help="第 1 轮回答来源（精度回归用该档自己的场景题回答）")
+    ap.add_argument("--out", type=Path, default=OUT)
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
 
-    cfg = yaml.safe_load(MODELS.read_text(encoding="utf-8"))
+    cfg = load_cfg()
     models = args.model or [m["id"] for m in cfg["main"]]
-    params = cfg["modes"]["off"]
+    params_of = {m: model_params(cfg, m, "off") for m in models}
     system = SYSTEM.read_text(encoding="utf-8").strip()
     scripts = json.loads(SCRIPTS.read_text(encoding="utf-8"))
     scns = {q["id"]: q for q in json.loads(SCENARIOS.read_text(encoding="utf-8"))}
     build_probes(scripts, scns)
     if args.ids:
         scripts = [s for s in scripts if s["scenario_id"] in args.ids]
-    t1 = {(a["model"], a["scenario_id"]): a for a in map(json.loads, T1_ANSWERS.read_text(encoding="utf-8").splitlines())
+    t1 = {(a["model"], a["scenario_id"]): a for a in map(json.loads, args.t1.read_text(encoding="utf-8").splitlines())
           if a["mode"] == "off" and a["repeat"] == 0}
 
     convs = []
@@ -122,7 +121,7 @@ def main():
         for s in scripts:
             a = t1.get((m, s["scenario_id"]))
             if not a:
-                raise SystemExit(f"main_off 里缺 {m} 对 {s['scenario_id']} 的第 1 轮回答")
+                raise SystemExit(f"{args.t1.name} 里缺 {m} 对 {s['scenario_id']} 的第 1 轮回答")
             convs.append({"model": m, "script": s, "messages": [
                 {"role": "system", "content": system},
                 {"role": "user", "content": scns[s["scenario_id"]]["prompt"]},
@@ -132,12 +131,12 @@ def main():
         for r in load(RAW / f"pressure__{m}.jsonl"):
             if r.get("ok"):
                 recs[r["key"]] = r
-    print(f"{len(models)} 模型 × {len(scripts)} 场景 × 3 轮 = {len(convs) * 3} 次调用（第 1 轮复用 main_off）")
+    print(f"{len(models)} 模型 × {len(scripts)} 场景 × 3 轮 = {len(convs) * 3} 次调用（第 1 轮复用 {args.t1.name}）")
 
     if args.dry_run:
         total = 0.0
         for m in models:
-            pi, po = PRICE[m]
+            pi, po = PRICE.get(m, (0, 0))
             # 输入随轮次累积：粗估每轮输入 = 题干 + 已有各轮回答（每轮约 1700 token），输出每轮按 1200 token
             c = len(scripts) * sum(((450 + 1700 * k) * pi + 1200 * po) for k in (1, 2, 3)) / 1e6
             total += c
@@ -145,9 +144,7 @@ def main():
         print(f"  合计粗估 {total:.2f} 元（原价，未计缓存）")
         return
 
-    load_env()
-    from openai import OpenAI
-    client = OpenAI(base_url=os.environ["LLM_BASE_URL"], api_key=os.environ["LLM_API_KEY"])
+    clients = {m: make_client(cfg, m) for m in models}
     RAW.mkdir(parents=True, exist_ok=True)
     spent = 0.0
 
@@ -156,11 +153,11 @@ def main():
         new = []
         for t in TURNS:
             conv["messages"].append({"role": "user", "content": conv["script"][t]["text"]})
-            k = key_of(conv["model"], params, conv["messages"])
+            k = key_of(conv["model"], params_of[conv["model"]], conv["messages"])
             r = recs.get(k)
             if r is None:
                 r = {"key": k, "model": conv["model"], "scenario_id": conv["script"]["scenario_id"], "turn": t,
-                     **call(client, conv["model"], params, conv["messages"]), "ts": time.strftime("%Y-%m-%d %H:%M:%S")}
+                     **call(clients[conv["model"]], conv["model"], params_of[conv["model"]], conv["messages"]), "ts": time.strftime("%Y-%m-%d %H:%M:%S")}
                 new.append(r)
                 if not r["ok"]:
                     return new
@@ -187,11 +184,11 @@ def main():
     rows = [{"conv_id": f"{c['model']}:{c['script']['scenario_id']}", "scenario_id": c["script"]["scenario_id"],
              "model": c["model"], "messages": c["messages"][1:], "finish_reasons": c["finish"]} for c in done]
     # 合并已有文件里其他模型 / 场景的对话（只跑子集时不覆盖）
-    old = {r["conv_id"]: r for r in load(OUT)}
+    old = {r["conv_id"]: r for r in load(args.out)}
     old.update({r["conv_id"]: r for r in rows})
-    OUT.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in sorted(old.values(), key=lambda r: r["conv_id"])),
+    args.out.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in sorted(old.values(), key=lambda r: r["conv_id"])),
                    encoding="utf-8")
-    print(f"完成 {len(done)}/{len(convs)} 个对话；本次新调用按原价约 {spent:.2f} 元；→ {OUT.relative_to(ROOT)}（共 {len(old)} 个对话）")
+    print(f"完成 {len(done)}/{len(convs)} 个对话；本次新调用按原价约 {spent:.2f} 元；→ {args.out}（共 {len(old)} 个对话）")
     for m in models:
         cs = [c for c in done if c["model"] == m]
         if cs:

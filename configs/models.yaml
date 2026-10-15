@@ -16,3 +16,12 @@ thinking_only:        # 只能开启思考，仅参与思考模式对照实验�
 modes:                # 键名必须加引号：YAML 1.1 会把裸写的 on/off 解析成布尔值
   "off": {enable_thinking: false, temperature: 0}
   "on":  {enable_thinking: true}   # 采样参数用各厂商推荐值，正式实验前补齐
+
+# 精度回归（Spec「精度回归与发版门禁」，STATUS Oct 15）：同一模型 qwen3.8-27b 的三档精度，
+# AutoDL RTX 6000D 单卡上用 SGLang 自部署，一次只起一档，经 SSH 隧道（本机 30000 端口）走 OpenAI 兼容接口。
+# 不参与横评。关思考用 chat template 参数（SGLang 不认百炼的 enable_thinking 顶层参数），params 不与 modes 合并。
+regression_base_url: http://127.0.0.1:30000/v1
+regression:
+  - {id: qwen3.8-27b-bf16,  weights: "Qwen/Qwen3.8-27B@1d4bf0f2",               params: {"off": {temperature: 0, chat_template_kwargs: {enable_thinking: false}}}}
+  - {id: qwen3.8-27b-fp8,   weights: "Qwen/Qwen3.8-27B-FP8@017b9c7a",           params: {"off": {temperature: 0, chat_template_kwargs: {enable_thinking: false}}}}
+  - {id: qwen3.8-27b-w4a16, weights: "barrydeen/Qwen3.8-27B-AWQ-4bit@e6b4b8b0", params: {"off": {temperature: 0, chat_template_kwargs: {enable_thinking: false}}}}
