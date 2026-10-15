@@ -12,12 +12,14 @@
 3 出主观题（40–50 道中文场景题 + rubric）       已定稿 v1.0（tag `scenarios-v1.0`，45 题）
 4 阅卷（规则判分 + LLM judge）                 已完成（Oct 14）：关思考 315 份经 Haiku、Sonnet 判分与 60 条仲裁定出最终主分
 5 检验裁判（judge 元评测）                     已完成（Oct 14）：探针（v2 锁定、留出集三个 judge 都合格）+ 真实回答两档一致性与仲裁 + 跨厂商对照与自家偏好检验
-6 出结论（横评、思考对照、追问施压、精度回归、选型报告） 进行中：场景题横评、干扰项抽查、TS-Guessing、TeleLogs（5/7 模型）、追问施压已出（Oct 15）；下一步：用户定精度回归模型与 D3，补 TeleLogs 两个 qwen，再思考对照 ← 现在
+6 出结论（横评、思考对照、追问施压、精度回归、选型报告） 进行中：场景题横评、干扰项抽查、TS-Guessing、TeleLogs（5/7 模型）、追问施压已出（Oct 15）；精度回归门禁已定（tag `regression-gate-v1`），三档权重已下好并校验，卡在 GPU 不可用（D8）；之后思考对照 ← 现在
 ```
 
 场景题已定稿 v1.0（Oct 14，tag `scenarios-v1.0`），之后改题只能出勘误版本。Oct 14 一天内完成了 judge 这条线：提示词 v2 锁定（tag `judge-prompt-v2`）→ 留出集探针两档合格 → 7 模型关思考 315 份回答（Mac 生成）→ Haiku、Sonnet 全量判分 → 60 条分歧仲裁 → 最终主分（要点取 Haiku，一票否决须两档同一高危项都触发）→ 场景题横评分档 → 跨厂商 judge（deepseek-v4.1-flash）对照与自家偏好检验（未检出）。结果见第四节第 4、5 项。下一步：不依赖 judge 的并行项（第二节第 7 步，D3/D5 待定）与追问施压；思考对照（约 ¥144）按用户安排放在其余全部做完之后。
 
-Oct 15 按 D5（用户定）做完了不依赖 judge 的三项与追问施压（规则都在跑之前写进第五节并本地提交 `809b251`、`e7261f7`）：干扰项抽查（123 题两人独立标注）、TS-Guessing（7 模型 × 727 题）、TeleLogs（200 题，5 个走代金券的模型；qwen3.7-plus、qwen3.8-flash 只能扣现金，等用户确认余额再补）、追问施压（10 场景 × 7 模型，两档 judge）。结果见第四节第 6–9 项。精度回归用什么模型等用户看完汇报再定。
+Oct 15 按 D5（用户定）做完了不依赖 judge 的三项与追问施压（规则都在跑之前写进第五节并本地提交 `809b251`、`e7261f7`）：干扰项抽查（123 题两人独立标注）、TS-Guessing（7 模型 × 727 题）、TeleLogs（200 题，5 个走代金券的模型；qwen3.7-plus、qwen3.8-flash 只能扣现金，等用户确认余额再补）、追问施压（10 场景 × 7 模型，两档 judge）。结果见第四节第 6–9 项。
+
+Oct 15 晚：精度回归定为 qwen3.8-27b 三档（BF16 / FP8 / W4A16），门禁规则 D3 已提交并打 tag `regression-gate-v1`（`cc35192`）。三档权重已下到 AutoDL 数据盘并通过 sha256 校验。要开跑时，原来那台 RTX 6000D 主机的卡已被别人租走，无卡可开；用户问能否改用 vGPU-32GB 跑 FP8 / INT4、BF16 改用百炼 API，分析结论是两者都不建议（见 D8）。**接手第一件事：与用户定 D8，然后按第二节第 7 步「精度回归」的操作清单开跑。**
 
 ## 二、下一步（建议顺序）
 
@@ -34,7 +36,12 @@ Oct 15 按 D5（用户定）做完了不依赖 judge 的三项与追问施压（
    - 分工不变：回答生成在 Mac 上跑（百炼 key 只在 `.env`），`results/answers/<run>.jsonl` 提交入库后由云端判分。
 7. **不依赖 judge 的并行项**：~~干扰项质量抽查~~、~~污染检测 TS-Guessing~~、~~TeleLogs 子集~~（Oct 15 完成，见第四节第 6–8 项）。待办：
    - ~~TeleLogs 补 qwen3.7-plus、qwen3.8-flash~~：Oct 15 用户定为不补跑，报告写明只覆盖 5 个模型（两个打折模型因计费原因未跑）。
-   - 精度回归：模型定为 qwen3.8-27b（BF16 / FP8 / INT4 W4A16），三档都在 AutoDL RTX 6000D 84GB 单卡上用同一推理引擎跑（数据盘扩到约 200GB）。百炼 API 上已确认能关思考；下一步起草 D3 门禁规则与 AutoDL 运行脚本，门禁阈值先提交打 tag。开跑前在本地 vLLM 上再确认一次关思考（开源权重的 chat template）与官方权重、量化版本。
+   - **精度回归**：模型 qwen3.8-27b（BF16 / FP8 / W4A16），门禁 D3 已定（tag `regression-gate-v1`）。已完成：`configs/models.yaml` 的 `regression` 组、`scripts/model_registry.py`（regression 组走本地 SGLang，其余走百炼），`generate_answers.py`、`run_pressure.py`、`run_objective.py` 已支持该组；`scripts/regression/serve.sh`（`bash serve.sh bf16|fp8|w4a16`）、`scripts/regression/verify_weights.py`；三档权重在 AutoDL 数据盘 `/root/autodl-tmp/models/qwen3.8-27b-{bf16,fp8,w4a16}`，校验通过（见第五节 Oct 15 晚）。**阻塞：GPU 不可用（D8）。** 拿到卡后的操作清单：
+     1. 有卡模式开机，`bash /root/autodl-tmp/serve.sh bf16`（仓库里的 `scripts/regression/serve.sh` 需先 scp 上去，服务器上目前只有下载脚本和 `verify_weights.py`）；Mac 上开隧道 `ssh -N -L 30000:127.0.0.1:30000 -p <端口> root@<主机>`。
+     2. 冒烟：确认关思考生效（`reasoning_content` 为空、选择题输出几个 token）、记显存与吞吐。混合架构（Gated DeltaNet）+ Blackwell 卡上 SGLang 可能要调参数；某一档起不来先停下报告，不改方案。
+     3. 每档依次（一次只起一档）：客观题 `run_objective.py --models <id>`（731 × 5 子集）；场景题 `generate_answers.py --model <id>`（BF16 加 `--repeats 2`）；追问施压 `run_pressure.py --model <id> --t1 <该档场景题回答> --out <...>`。
+     4. 生成完即可关机。判分（场景题 judge v2、追问施压 pressure_v1，Haiku + Sonnet）不占卡；写 `analysis/regression_gate.py` 按 D3 出门禁结论，回归报告与 STATUS 更新。
+     5. 估时：占卡 1.5–2.5 小时（约 ¥10–16 @ ¥6.46/时），判分约 45 分钟，分析与报告约 30 分钟。
 8. ~~追问施压~~（Oct 15 完成，见第四节第 9 项）→ 思考对照 → 选型报告、数据卡、回归报告 → 简历 bullet 与模拟面试。
 
 ## 三、待定决定（需用户拍板）
@@ -55,6 +62,11 @@ D1（judge 模型）、D2（judge 验证方式）已于 Oct 13 定下，见第�
   4. 场景题：均分比 BF16 低 > 5 分，且题级配对置换检验 p < 0.05 → 不通过。
 - 另报、不作门禁：每条门禁的 80% 功效最小可检出差距（场景题约 10 分，见第四节第 5 项：只有大幅退化才拦得住，报告写明）；「对→错」的题抽 20 道逐条归因，类别按数据归纳；各档显存占用与吞吐。
 - 预期：27B 的 FP8 很可能全部通过，W4A16 也可能通过；「全部通过」本身是可报告的结论，但必须与最小可检出差距一起报。
+
+**D8. 精度回归的算力**（Oct 15 晚新增，待用户定）：原 RTX 6000D 主机的卡被租走，6000D 与 Pro6000 都无卡可开。用户提议改用 vGPU-32GB 跑 FP8 / INT4、BF16 用百炼 API。分析（按权重大小与架构估算，未实测）：
+- vGPU-32GB：FP8 权重 30.9GB，扣掉 CUDA 上下文与运行开销后 KV cache 与线性注意力状态几乎没有空间，跑不了；W4A16 27.8GB 能起但很紧（约 3–4GB 给 KV，上下文要缩到 16k 左右、降并发），与其他档参数不一致。
+- BF16 用百炼 API 不建议：①本地量化档与 API 的差混了精度、推理引擎、服务端默认设置，百炼服务端实际精度也未知，测出来不是量化损失；②门禁第 1、3 条的噪声底（BF16 自己跑两遍）会变成 API 抖动；③违背预注册（`regression-gate-v1` 写明基线是本地 BF16）。百炼 qwen3.8-27b 保持原定位：横评锚点与部署一致性对照，只作描述。
+- 建议顺序：①AutoDL「克隆实例」把实例连同数据盘迁到有空闲 6000D / Pro6000 的主机（不用重下权重），或等原主机有卡，方案不变；②只能用小卡时至少 48GB：能跑 FP8 与 W4A16，跑不了 BF16，门禁改为「W4A16 对本地 FP8」，FP8 不再过门禁——属偏离预注册，须先在第五节记录原因、打新 tag 再开跑，报告写明没有 BF16 基线；③不用 32GB。
 
 **D4. 思考对照的客观题抽样**：150 题 × 1 次，粗算 80% 功效下最小可检出差距约 7–9pt，而 440 题是全员答对的天花板题，大概率得到「不显著」。可选：接受并在报告写明可检出差距；或从 284 道有区分度的题里抽，但不能按「关思考时答错」选题（会有均值回归，重跑本身就会「变好」），要按跨模型区分度选，并以噪声底那一遍（rep）作对照。另外 `configs/models.yaml` 里开思考的采样参数还没填。
 
@@ -283,6 +295,7 @@ D1（judge 模型）、D2（judge 验证方式）已于 Oct 13 定下，见第�
 | Oct 15 | D7：不做客观题标准答案全量复核，作为数据集局限写进报告（用户定）。代金券实际扣了约 ¥63，与 Oct 15 原价合计相符；现金余额基本没变。 |
 | Oct 15 | TeleLogs 不补跑两个 qwen（用户定：结论不会因多两个点改变，现金留给思考对照里的 qwen3.7-plus）。精度回归改用 qwen3.8-27b（用户定，取代 Spec 原定的 4B–8B 小模型：27B 级是运营商单卡私有化部署的常见规模，且百炼上有同名 API 版可作横评锚点与部署一致性对照），8 位档用官方 FP8 而非 INT8，三档同在 RTX 6000D 84GB 上跑。百炼探测 qwen3.8-27b：`enable_thinking: false` 生效（思考 token 0，选择题输出 2 token；场景题 SC-D01 输出 1579 token、0 思考），`true` 时有思考内容（55 token），返回模型名与请求一致。 |
 | Oct 15 | D3 定下（用户确认）：精度回归门禁规则按第三节 D3，第 3 条高危错误用噪声底口径（B）；打 tag `regression-gate-v1`，跑之前提交，之后不改。INT4 档用社区现成的 W4A16（用户定：不自己量化，不偏离主线），选 `barrydeen/Qwen3.8-27B-AWQ-4bit`（纯 W4A16，不量化范围与官方 FP8 一致；`nicosuter` 版对 Gated DeltaNet 用 int8，属混合精度，不选）。AutoDL 社区镜像自带的 `/root/models/qwen38-27b` 权重是失效软链接，三档权重改为下到数据盘（BF16 / FP8 从 ModelScope、W4A16 从 HF，均按 HF 固定 commit 的 sha256 校验）。 |
+| Oct 15 晚 | 三档权重下载完成（17:41）：BF16 52G、FP8 29G、W4A16 26G。W4A16 第 3 个分片首次下载失败，`curl -C -` 续传补齐。`verify_weights.py` 校验：W4A16 13/13 一致；BF16、FP8 的全部权重分片、config、tokenizer 与 HF 固定 commit 一致，各有 `.gitattributes`、`LICENSE`、`README.md` 3 个文件大小不符（ModelScope 与 HF 的仓库元文件不同步，不参与加载，可忽略；脚本因此退出码 1）。随后原主机无卡可开，新增 D8（第三节）。 |
 
 ## 六、环境、费用与账号
 
@@ -292,6 +305,7 @@ D1（judge 模型）、D2（judge 验证方式）已于 Oct 13 定下，见第�
   - Mac：需要百炼 key 的（回答生成、`build_judge_probes.py segment`、三票核验、`bailian:` judge）和依赖本地 `results/` 历史数据的（横评分析层、费用估算）。
 - `results/`：Oct 14 起 `.gitignore` 不再忽略 `results/`（用户改动，`a9bf44e`），已入库的有 `answers/`（`ceiling_pilot.jsonl`、`main_off.jsonl`）、`judge/`、`audit/`（审计证据）。其余运行产物（横评 `evalscope/` 的 25,585 次调用、`scenarios/` 核验原始响应等）仍只在 Mac，未提交；它们不再被忽略，会出现在 `git status` 里，提交时要手动排除，不要 `git add -A` / `git add results`。例外：`answers/raw/`（回答生成的逐调用缓存）已于 Oct 14 加进 `.gitignore`，不再出现在 `git status` 里。`data/raw/`（TeleQnA、TeleLogs）、`.env`、`.venv` 仍被忽略。云端会话里没有这些本地文件，跑不了依赖它们的脚本（横评分析层、费用估算等）。
 - 原文与证据文字只放 `results/`、`data/raw/`；`data/processed/` 只放 ID 与标签。
+- AutoDL（精度回归）：实例 `ssh -p 11087 root@connect.weste.seetacloud.com`（本机免密，主机若迁移/克隆端口会变），数据盘 `/root/autodl-tmp`（约 200GB）：`models/qwen3.8-27b-{bf16,fp8,w4a16}`、`logs/`、下载脚本与 `verify_weights.py`。conda 环境 `qwen38`（SGLang 0.5.17）。无卡模式只能下载 / 校验（内存 2GB）。学术加速 `source /etc/network_turbo`。
 - 所有被测模型经阿里云百炼 OpenAI 兼容接口（`.env` 的 `LLM_BASE_URL`、`LLM_API_KEY`）。HF token 在用户 `~/.zshrc`。
 - 余额（Oct 13 查）：学生代金券约 ¥259.7，现金 ¥9.14。主实验实际消耗远低于估算（免费额度抵了大半，代金券只扣 ¥1 多）。Oct 14 场景题生成按原价折算 ¥16.81，**实际扣了多少未查**（免费额度与代金券的抵扣顺序见下条），余额待下次登录百炼时核对；这次 225 次调用 0 失败、无 403，说明计费渠道没出问题。
 - 计费规则：免费额度优先于代金券；**代金券不能抵扣打折模型和厂商直供路由**，qwen3.7-plus 限时 8 折只扣现金（Oct 12 曾因现金欠费 ¥0.03 导致全部模型 403；再遇全模型 403 先查欠费）。不用带厂商前缀的路由（`kimi/`、`ZHIPU/` 等）。
