@@ -9,7 +9,7 @@
 - 均分 + 按题 bootstrap 95% CI（B = 10000，percentile）。
 - 21 对模型以题为单元做配对符号翻转置换检验（B = 10000，双侧），Holm 校正（α = 0.05）；
   附每对 80% 功效的最小可检出差距（正态近似，未校正 / Holm 最严档）。不显著 ≠ 无差异。
-- 分档：均分最高者与所有和它差异不显著（Holm）的模型为第 1 档，剩下的模型里再取均分最高者及与其不显著的为下一档，依此类推。
+- 分档：均分最高者与所有和它差异不显著（Holm）的模型为第 1 档，剩下的模型里再取均分最高者及与其不显著的为下一档，依此类推（Oct 16 改为单调：按均分从高往低，遇到第一个与本档最高者显著不同的模型就开新档，均分低的不会进更靠前的档；见 STATUS 第五节）。
 - 只作描述：按题型均分、诊断题根因段与处置段得分率（扣分前）、一票否决率（Wilson 区间）。
 - 稳健性：Haiku 单独、Sonnet 单独、不计一票否决三种口径下的名次与主口径的 Kendall τ。
 
@@ -118,7 +118,12 @@ def main():
     tiers = []
     while left:
         top = left[0]
-        tier = [k for k in left if k == top or not sig[(top, k)]]
+        # 按均分往下走，遇到第一个与本档最高者显著不同的就开新档（单调：均分低的不会进更靠前的档）
+        tier = [top]
+        for k in left[1:]:
+            if sig[(top, k)]:
+                break
+            tier.append(k)
         tiers.append(tier)
         left = [k for k in left if k not in tier]
     tier_of = {k: t + 1 for t, tier in enumerate(tiers) for k in tier}
@@ -129,7 +134,7 @@ def main():
          f"{len(models)} 个模型 × {n} 题，关思考。主分 = 要点与扣分项取 Haiku，一票否决须同一高危项 Haiku 与 Sonnet 都触发"
          "（依据分歧仲裁，见 `reports/judge/main_off_agreement.md`）。45 题只支撑分档，不做严格排序。", "",
          "## 均分与分档", "",
-         "分档：均分最高者与所有和它差异不显著（配对置换检验，Holm 校正，α = 0.05）的模型为一档，剩下的依此类推。", "",
+         "分档：按均分从高往低，与本档最高者差异不显著（配对置换检验，Holm 校正，α = 0.05）的归入本档，遇到第一个显著不同的模型就开新档，依此类推。", "",
          "| 名次 | 模型 | 均分 | 95% CI（按题 bootstrap） | 档 |", "| --- | --- | --- | --- | --- |"]
     for i in sorted(range(len(models)), key=lambda k: r_main[k]):
         L.append(f"| {r_main[i]} | {models[i]} | {means[i]:.1f} | [{lo[i]:.1f}, {hi[i]:.1f}] | {tier_of[i]} |")
