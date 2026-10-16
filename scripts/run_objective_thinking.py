@@ -16,6 +16,8 @@
   uv run python scripts/run_objective_thinking.py --model glm-5.2 --model deepseek-v4.1-flash
   uv run python scripts/run_objective_thinking.py --model qwen3.8-flash --budget 3   # 扣现金的模型加花费上限
   uv run python scripts/run_objective_thinking.py --export-only
+  uv run python scripts/run_objective_thinking.py --model qwen3.8-flash-ocgo --mode off   # Go 上的关思考对照（max_tokens 256，同横评）
+Go 上的模型（configs/models.yaml 的 opencode_go 组）开、关都在本脚本跑：关思考记录在 raw/<模型>__off.jsonl，导出 answers_off_go.csv。
 """
 import argparse
 import csv
@@ -41,7 +43,7 @@ OUT = ROOT / "results/objective_thinking"
 SUBSETS = ["orig", "rep", "s1", "s2", "s3"]
 SEED = 20261015
 N_STRATUM = {"ceiling": 50, "other": 100}
-MAX_TOKENS = 16384
+MAX_TOKENS = {"on": 16384, "off": 256}  # off 与横评 run_objective.py 一致
 OPENAI_PARAMS = ("temperature", "top_p", "presence_penalty", "frequency_penalty", "seed")
 SPENT = {"cny": 0.0}
 LOCK = threading.Lock()
@@ -96,8 +98,8 @@ def build_sample(main_models):
 
 # ---------- 调用 ----------
 
-def cache_key(model, params, prompt):
-    blob = json.dumps([model, params, MAX_TOKENS, prompt], ensure_ascii=False, sort_keys=True)
+def cache_key(model, params, prompt, mode="on"):
+    blob = json.dumps([model, params, MAX_TOKENS[mode], prompt], ensure_ascii=False, sort_keys=True)
     return hashlib.sha256(blob.encode("utf-8")).hexdigest()[:16]
 
 
@@ -107,8 +109,8 @@ def extract(content, prompt):
     return "".join(sorted(parse_answers(state, completion=content)))
 
 
-def call(client, model, params, prompt):
-    req = {"model": model, "max_tokens": MAX_TOKENS, "stream": True, "stream_options": {"include_usage": True},
+def call(client, model, params, prompt, mode="on"):
+    req = {"model": model, "max_tokens": MAX_TOKENS[mode], "stream": True, "stream_options": {"include_usage": True},
            "messages": [{"role": "user", "content": prompt}],
            **{k: v for k, v in params.items() if k in OPENAI_PARAMS}}
     extra = {k: v for k, v in params.items() if k not in OPENAI_PARAMS}
@@ -127,16 +129,17 @@ def cost(model, usage):
     return round((tin * pi + tout * po) / 1e6, 5)
 
 
-def run_one(client, model, params, qid, item, key, budget, attempts=3):
+def run_one(client, model, params, qid, item, key, budget, mode="on", attempts=3):
     if budget is not None:
         with LOCK:
             if SPENT["cny"] >= budget:
                 return None
-    rec = {"key": key, "model": model, "params": params, "max_tokens": MAX_TOKENS, "id": qid, "gold": item["target"]}
+    rec = {"key": key, "model": model, "mode": mode, "params": params, "max_tokens": MAX_TOKENS[mode], "id": qid,
+           "gold": item["target"]}
     err = ""
     for a in range(1, attempts + 1):
         try:
-            res = call(client, model, params, item["prompt"])
+            res = call(client, model, params, item["prompt"], mode)
         except Exception as e:  # noqa: BLE001  限流、网络：退避重试，最后仍失败则落盘
             err = f"{type(e).__name__}: {e}"[:400]
             if a < attempts:
@@ -156,8 +159,12 @@ def run_one(client, model, params, qid, item, key, budget, attempts=3):
     return rec
 
 
-def load_records(model):
-    path = OUT / "raw" / f"{model}.jsonl"
+def raw_path(model, mode="on"):
+    return OUT / "raw" / (f"{model}.jsonl" if mode == "on" else f"{model}__off.jsonl")
+
+
+def load_records(model, mode="on"):
+    path = raw_path(model, mode)
     recs = []
     if path.exists():
         for line in path.read_text(encoding="utf-8").splitlines():
@@ -171,15 +178,20 @@ def load_records(model):
 # ---------- 导出 ----------
 
 def export(cfg, sample, prompts, main_models):
-    on_rows, models = [], [m["id"] for g in ("main", "thinking_only") for m in cfg[g]]
+    on_rows, models = [], [m["id"] for g in ("main", "thinking_only", "opencode_go") for m in cfg.get(g) or []]
     for m in models:
         recs = load_records(m)
         if not recs:
             continue
         p = model_params(cfg, m, "on")
         done = {r["key"]: r for r in recs if r["ok"]}
+        # 思考耗尽 max_tokens、没有给出答案的调用（STATUS Oct 15 晚偏离 ③）：不重跑，按截断记错
+        empty = {r["key"]: r for r in recs if not r["ok"] and r.get("finish_reason") == "length"}
         for s in sample:
-            r = done.get(cache_key(m, p, prompts[s["id"]]["prompt"]))
+            key = cache_key(m, p, prompts[s["id"]]["prompt"])
+            r = done.get(key)
+            if r is None and key in empty:
+                r = {**empty[key], "pred": ""}
             if r is None:
                 continue
             tin, tout, think = tokens(r["usage"])
@@ -213,6 +225,24 @@ def export(cfg, sample, prompts, main_models):
         w = csv.DictWriter(f, fieldnames=list(off_rows[0]))
         w.writeheader()
         w.writerows(off_rows)
+    go_off = []
+    for m in [e["id"] for e in cfg.get("opencode_go") or []]:
+        p = model_params(cfg, m, "off")
+        done = {r["key"]: r for r in load_records(m, "off") if r["ok"]}
+        for s in sample:
+            r = done.get(cache_key(m, p, prompts[s["id"]]["prompt"], "off"))
+            if r is None:
+                continue
+            tin, tout, _ = tokens(r["usage"])
+            go_off.append({"model": m, "id": s["id"], "stratum": s["stratum"], "dimension": s["dimension"], "gold": r["gold"],
+                           "pred": r["pred"], "correct": int(r["pred"] == r["gold"]), "finish_reason": r["finish_reason"],
+                           "prompt_tokens": tin, "completion_tokens": tout, "latency_s": r["latency_s"],
+                           "cost_cny": r["cost_cny"]})
+    if go_off:
+        with (OUT / "answers_off_go.csv").open("w", encoding="utf-8", newline="") as f:
+            w = csv.DictWriter(f, fieldnames=list(go_off[0]))
+            w.writeheader()
+            w.writerows(go_off)
     by = Counter(r["model"] for r in on_rows)
     print(f"导出：answers_on.csv {len(on_rows)} 行（" + "，".join(f"{m} {k}" for m, k in by.items()) + "）；off_orig.csv")
 
@@ -225,6 +255,7 @@ def main():
     ap.add_argument("--workers", type=int, default=8)
     ap.add_argument("--limit", type=int, help="只取前 N 题（冒烟用）")
     ap.add_argument("--budget", type=float, help="本次调用按原价累计的花费上限（元）")
+    ap.add_argument("--mode", choices=["on", "off"], default="on", help="off 只用于 Go 上的模型（百炼模型的关思考用横评结果）")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--export-only", action="store_true")
     args = ap.parse_args()
@@ -242,10 +273,10 @@ def main():
     items = sample[:args.limit] if args.limit else sample
 
     for m in args.model:
-        p = model_params(cfg, m, "on")
-        recs = load_records(m)
+        p = model_params(cfg, m, args.mode)
+        recs = load_records(m, args.mode)
         done = {r["key"] for r in recs if r["ok"]}
-        todo = [(s["id"], cache_key(m, p, prompts[s["id"]]["prompt"])) for s in items]
+        todo = [(s["id"], cache_key(m, p, prompts[s["id"]]["prompt"], args.mode)) for s in items]
         todo = [(q, k) for q, k in todo if k not in done]
         ok_prev = [r for r in recs if r["ok"]]
         est_out = sum(tokens(r["usage"])[1] for r in ok_prev) / len(ok_prev) if ok_prev else 2500
@@ -258,8 +289,8 @@ def main():
         (OUT / "raw").mkdir(parents=True, exist_ok=True)
         n_ok = n_err = n_skip = 0
         spent0 = SPENT["cny"]
-        with (OUT / "raw" / f"{m}.jsonl").open("a", encoding="utf-8") as h, ThreadPoolExecutor(args.workers) as ex:
-            futs = [ex.submit(run_one, client, m, p, q, prompts[q], k, args.budget) for q, k in todo]
+        with raw_path(m, args.mode).open("a", encoding="utf-8") as h, ThreadPoolExecutor(args.workers) as ex:
+            futs = [ex.submit(run_one, client, m, p, q, prompts[q], k, args.budget, args.mode) for q, k in todo]
             for fu in as_completed(futs):
                 rec = fu.result()
                 if rec is None:

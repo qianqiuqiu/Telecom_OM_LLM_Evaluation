@@ -31,7 +31,8 @@ PROMPT = ("Answer the following multiple-choice question about telecommunication
 # 元 / 百万 token（与 analysis/cost_estimate.py 一致）
 PRICE = {"qwen3.8-max-0902": (12, 36), "qwen3.7-plus": (2, 8), "qwen3.8-flash": (0.8, 2.7),
          "deepseek-v4-pro-0813": (9, 27), "deepseek-v4.1-flash": (2, 8), "glm-5.2": (8, 28),
-         "kimi-k3": (20, 100), "glm-5.3": (8, 28)}
+         "kimi-k3": (20, 100), "glm-5.3": (8, 28),
+         "qwen3.8-flash-ocgo": (0.8, 2.7)}  # Go 上按百炼同名模型价折算，只作量级参考，不是实际扣费
 
 
 def sample(n):

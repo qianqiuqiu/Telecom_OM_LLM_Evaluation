@@ -194,7 +194,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--run", required=True, help="导出文件名：results/answers/<run>.jsonl")
     ap.add_argument("--model", action="append", help="模型 ID，须在 configs/models.yaml 里；可重复")
-    ap.add_argument("--group", action="append", choices=["main", "thinking_only", "regression"], help="models.yaml 分组；可重复")
+    ap.add_argument("--group", action="append", choices=["main", "thinking_only", "regression", "opencode_go"], help="models.yaml 分组；可重复")
     ap.add_argument("--exclude", action="append", default=[])
     ap.add_argument("--mode", required=True, choices=["off", "on"])
     ap.add_argument("--repeats", type=int, default=1)

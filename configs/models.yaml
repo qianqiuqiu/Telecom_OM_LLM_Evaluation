@@ -27,3 +27,9 @@ regression:
   - {id: qwen3.8-27b-bf16,  weights: "Qwen/Qwen3.8-27B@1d4bf0f2",               params: {"off": {temperature: 0, chat_template_kwargs: {enable_thinking: false}}}}
   - {id: qwen3.8-27b-fp8,   weights: "Qwen/Qwen3.8-27B-FP8@017b9c7a",           params: {"off": {temperature: 0, chat_template_kwargs: {enable_thinking: false}}}}
   - {id: qwen3.8-27b-w4a16, weights: "barrydeen/Qwen3.8-27B-AWQ-4bit@e6b4b8b0", params: {"off": {temperature: 0, chat_template_kwargs: {enable_thinking: false}}}}
+
+# 思考对照（Oct 15 晚）：百炼现金不够跑 qwen3.8-flash，改经 OpenCode Go（Anthropic Messages 格式，用户接受部署差异与条款风险）。
+# 开、关两种形态都在 Go 上跑，这个模型的开关对比只在 Go 内部做；与百炼的 qwen3.8-flash 关思考结果另作部署一致性描述。
+opencode_go:
+  - {id: qwen3.8-flash-ocgo, api_model: qwen3.8-flash, vendor: qwen,
+     params: {"off": {temperature: 0, thinking: {type: disabled}}, "on": {temperature: 1.0, top_p: 0.95, top_k: 20}}}
