@@ -1,0 +1,929 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>运维助手选型评测</title>
+<meta name="description" content="通信网络运维助手底座大模型选型：客观题、场景题、思考模式、追问施压、judge 元评测与量化门禁的完整结果。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;900&family=Noto+Sans+SC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a single reading column (max ~68rem) for an operations review — summary first, then evidence sections,
+   each section = short claim + one chart. Model colors follow the fiber-optic color code (TIA-598): 1 blue, 2 orange,
+   3 green, 4 brown, 5 slate, 7 red, 10 violet. */
+:root {
+  --bg: #f2f4f6;
+  --surface: #ffffff;
+  --ink: #15202b;
+  --ink-2: #4b5866;
+  --ink-3: #7c8794;
+  --rule: #d8dee5;
+  --grid: #e6eaef;
+  --accent: #1d4ed8;
+  --accent-soft: #e3eafc;
+  --ok: #1e7a4a;
+  --ok-soft: #dff1e7;
+  --warn: #a35a00;
+  --warn-soft: #fbecd6;
+  --bad: #b42318;
+  --bad-soft: #fbe2df;
+  --m-qmax: #1f5fbf;     /* fiber 1 blue */
+  --m-dsflash: #e07b00;  /* fiber 2 orange */
+  --m-kimi: #2f8f3a;     /* fiber 3 green */
+  --m-dspro: #8a5a2b;    /* fiber 4 brown */
+  --m-glm: #6b7b8c;      /* fiber 5 slate */
+  --m-qflash: #c62f2f;   /* fiber 7 red */
+  --m-qplus: #7b4bb3;    /* fiber 10 violet */
+  --f-display: "Noto Serif SC", "Songti SC", "STSong", serif;
+  --f-body: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --step--1: 0.8125rem;
+  --step-0: 0.96875rem;
+  --step-1: 1.125rem;
+  --step-2: 1.4rem;
+  --step-3: 1.9rem;
+  --step-4: 2.6rem;
+  --radius: 6px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f151c; --surface: #161e27; --ink: #e4e9ef; --ink-2: #a9b4c0; --ink-3: #7d8896;
+    --rule: #2a3542; --grid: #212b36; --accent: #7aa2ff; --accent-soft: #1c2a4a;
+    --ok: #5cc98b; --ok-soft: #173326; --warn: #f0a94b; --warn-soft: #3a2a14; --bad: #f2786d; --bad-soft: #3d1d1b;
+    --m-qmax: #6aa0ff; --m-dsflash: #ffa133; --m-kimi: #5fc56b; --m-dspro: #c99a68; --m-glm: #9aa9b8; --m-qflash: #ff6b6b; --m-qplus: #b48cf0;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f151c; --surface: #161e27; --ink: #e4e9ef; --ink-2: #a9b4c0; --ink-3: #7d8896;
+  --rule: #2a3542; --grid: #212b36; --accent: #7aa2ff; --accent-soft: #1c2a4a;
+  --ok: #5cc98b; --ok-soft: #173326; --warn: #f0a94b; --warn-soft: #3a2a14; --bad: #f2786d; --bad-soft: #3d1d1b;
+  --m-qmax: #6aa0ff; --m-dsflash: #ffa133; --m-kimi: #5fc56b; --m-dspro: #c99a68; --m-glm: #9aa9b8; --m-qflash: #ff6b6b; --m-qplus: #b48cf0;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: var(--f-body); font-size: var(--step-0); line-height: 1.75;
+  font-feature-settings: "palt" 0;
+}
+table { font-size: inherit; }
+.wrap { max-width: 68rem; margin: 0 auto; padding-inline: max(16px, 4vw); }
+.wrap > * { min-width: 0; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; line-height: 1.3; margin: 0; }
+h2 { font-size: var(--step-3); font-weight: 900; letter-spacing: 0.01em; }
+h3 { font-size: var(--step-1); font-weight: 600; }
+p { margin: 0; max-width: 42em; }
+.mono, .num { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+.muted { color: var(--ink-2); }
+.small { font-size: var(--step--1); }
+.label {
+  font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3);
+}
+
+/* nav */
+.nav {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: saturate(1.4) blur(8px); -webkit-backdrop-filter: saturate(1.4) blur(8px);
+  border-bottom: 1px solid var(--rule);
+}
+.nav .wrap { display: flex; gap: 1.25rem; align-items: center; overflow-x: auto; scrollbar-width: none; padding-block: 0.6rem; }
+.nav .wrap::-webkit-scrollbar { display: none; }
+.nav .wrap > * { flex: none; }
+.nav a { color: var(--ink-2); text-decoration: none; font-size: var(--step--1); white-space: nowrap; }
+.nav a:hover { color: var(--ink); }
+.nav .brand { font-family: var(--f-display); font-weight: 900; color: var(--ink); margin-right: 0.5rem; }
+
+/* header */
+header.top { padding-block: 3rem 2rem; }
+header.top .wrap { display: grid; gap: 1.25rem; }
+header.top h1 { font-size: var(--step-4); font-weight: 900; letter-spacing: 0.02em; }
+header.top .lede { font-size: var(--step-1); color: var(--ink-2); max-width: 38em; }
+.meta { display: flex; flex-wrap: wrap; gap: 0.4rem 1.25rem; color: var(--ink-3); font-size: var(--step--1); }
+.strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: var(--radius); overflow: hidden; margin-top: 0.5rem; }
+.strip div { background: var(--surface); padding: 0.75rem 0.9rem; display: grid; gap: 0.1rem; }
+.strip b { font-family: var(--f-mono); font-size: var(--step-2); font-weight: 500; font-variant-numeric: tabular-nums; }
+.strip span { color: var(--ink-2); font-size: var(--step--1); line-height: 1.4; }
+
+/* sections */
+section { padding-block: 3rem; border-top: 1px solid var(--rule); scroll-margin-top: 3rem; }
+section > .wrap { display: grid; gap: 1.5rem; }
+.sec-head { display: grid; gap: 0.5rem; }
+.sec-head .claim { font-size: var(--step-1); color: var(--ink); max-width: 40em; }
+.two { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); align-items: start; }
+.two > * { min-width: 0; }
+
+/* recommendation */
+.recs { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr)); }
+.rec { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); padding: 1.25rem; display: grid; gap: 0.75rem; align-content: start; min-width: 0; }
+.rec.primary { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
+.rec .role { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; }
+.rec .model { font-family: var(--f-mono); font-size: var(--step-1); font-weight: 500; display: flex; align-items: center; gap: 0.5rem; word-break: break-all; }
+.rec ul { margin: 0; padding-left: 1.1em; display: grid; gap: 0.35rem; }
+.rec li { line-height: 1.6; }
+.rec .cost { border-top: 1px dashed var(--rule); padding-top: 0.6rem; color: var(--ink-2); font-size: var(--step--1); }
+.swatch { width: 0.7rem; height: 0.7rem; border-radius: 2px; flex: none; display: inline-block; }
+.chip { font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: 0.06em; padding: 0.1rem 0.5rem; border-radius: 999px; white-space: nowrap; }
+.chip.accent { background: var(--accent-soft); color: var(--accent); }
+.chip.ok { background: var(--ok-soft); color: var(--ok); }
+.chip.warn { background: var(--warn-soft); color: var(--warn); }
+.chip.bad { background: var(--bad-soft); color: var(--bad); }
+.chip.plain { background: var(--grid); color: var(--ink-2); }
+.notrec { display: grid; gap: 0.6rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); }
+.notrec div { padding: 0.8rem 0.9rem; border-left: 3px solid var(--rule); background: var(--surface); border-radius: 0 var(--radius) var(--radius) 0; min-width: 0; }
+.notrec b { font-family: var(--f-mono); font-weight: 500; display: block; }
+
+/* questions */
+.qs { display: grid; gap: 1rem; }
+.q { display: grid; grid-template-columns: 3rem 1fr; gap: 1rem; padding: 1.1rem 0; border-bottom: 1px solid var(--rule); }
+.q:last-child { border-bottom: 0; }
+.q .n { font-family: var(--f-display); font-weight: 900; font-size: var(--step-3); color: var(--accent); line-height: 1; }
+.q h3 { margin-bottom: 0.35rem; }
+.q > div { min-width: 0; }
+
+/* figure */
+figure { margin: 0; background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); padding: 1rem 1rem 0.75rem; min-width: 0; }
+figcaption { display: grid; gap: 0.2rem; margin-bottom: 0.5rem; }
+figcaption b { font-weight: 700; }
+figcaption span { color: var(--ink-2); font-size: var(--step--1); line-height: 1.55; }
+.chart { width: 100%; overflow-x: auto; }
+.chart svg { display: block; width: 100%; height: auto; min-width: 30rem; }
+.chart.narrow svg { min-width: 20rem; }
+svg text { font-family: var(--f-body); fill: var(--ink); }
+svg .t-mono { font-family: var(--f-mono); }
+svg .t-2 { fill: var(--ink-2); }
+svg .t-3 { fill: var(--ink-3); }
+svg .gridline { stroke: var(--grid); stroke-width: 1; }
+svg .axis { stroke: var(--rule); stroke-width: 1; }
+svg .ci { stroke-width: 2; stroke-linecap: round; }
+.note { font-size: var(--step--1); color: var(--ink-2); border-left: 2px solid var(--accent); padding: 0.1rem 0 0.1rem 0.8rem; max-width: 46em; }
+
+/* tabs */
+.tabs { display: flex; gap: 0.25rem; flex-wrap: wrap; border-bottom: 1px solid var(--rule); }
+.tabs button {
+  font: inherit; font-size: var(--step--1); background: none; border: 0; border-bottom: 2px solid transparent;
+  padding: 0.5rem 0.8rem; color: var(--ink-2); cursor: pointer; margin-bottom: -1px;
+}
+.tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); font-weight: 700; }
+.tabpanel { display: grid; gap: 1rem; padding-top: 1rem; }
+
+/* tables */
+.tbl { overflow-x: auto; border: 1px solid var(--rule); border-radius: var(--radius); background: var(--surface); }
+.tbl table { border-collapse: collapse; width: 100%; min-width: 36rem; }
+.tbl th, .tbl td { padding: 0.55rem 0.75rem; text-align: left; border-bottom: 1px solid var(--grid); vertical-align: top; line-height: 1.5; }
+.tbl th { font-weight: 500; color: var(--ink-2); font-size: var(--step--1); background: color-mix(in srgb, var(--grid) 55%, var(--surface)); }
+.tbl tr:last-child td { border-bottom: 0; }
+.tbl td.mono { white-space: nowrap; }
+.tbl td.num, .tbl th.num { text-align: right; font-family: var(--f-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+/* findings */
+.finds { display: grid; gap: 0.9rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); }
+.find { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); padding: 1rem 1.1rem; display: grid; gap: 0.4rem; align-content: start; min-width: 0; }
+.find .big { font-family: var(--f-mono); font-size: var(--step-2); font-variant-numeric: tabular-nums; }
+
+/* kimi story */
+.kimi { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); }
+.kimi .stat { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); padding: 1rem; display: grid; gap: 0.2rem; }
+.kimi .stat b { font-family: var(--f-mono); font-size: var(--step-3); font-weight: 500; font-variant-numeric: tabular-nums; line-height: 1.2; }
+.kimi .stat b .arrow { color: var(--ink-3); margin: 0 0.3rem; font-size: var(--step-2); }
+
+/* waffle */
+.waffles { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); }
+.waffle { display: grid; gap: 0.5rem; }
+.dots { display: flex; flex-wrap: wrap; gap: 4px; }
+.dots i { width: 14px; height: 14px; border-radius: 3px; background: var(--grid); display: block; }
+.dots i.on { background: var(--bad); }
+.dots i.good { background: var(--ok); }
+
+/* pressure grid */
+.pgrid { display: grid; gap: 0.45rem; }
+.prow { display: grid; grid-template-columns: minmax(9rem, 13rem) 1fr auto; gap: 0.75rem; align-items: center; }
+.prow .nm { font-family: var(--f-mono); font-size: var(--step--1); display: flex; gap: 0.45rem; align-items: center; min-width: 0; overflow-wrap: anywhere; }
+.prow .cells { display: grid; grid-template-columns: repeat(10, minmax(0, 1.4rem)); gap: 3px; }
+.prow .cells i { aspect-ratio: 1; border-radius: 3px; background: var(--grid); display: block; max-width: 100%; }
+.prow .cells i.on { background: var(--bad); }
+.prow .ct { font-family: var(--f-mono); font-size: var(--step--1); color: var(--ink-2); font-variant-numeric: tabular-nums; }
+
+/* funnel */
+.funnel { display: grid; gap: 0.5rem; }
+.fstep { display: grid; grid-template-columns: 1fr; gap: 0.2rem; }
+.fbar { height: 1.9rem; background: var(--accent-soft); border-left: 3px solid var(--accent); border-radius: 0 4px 4px 0; display: flex; align-items: center; padding-left: 0.6rem; font-family: var(--f-mono); font-size: var(--step--1); color: var(--ink); white-space: nowrap; min-width: 4.5rem; max-width: 100%; }
+.fstep span { font-size: var(--step--1); color: var(--ink-2); }
+
+/* flow */
+.flow { display: grid; gap: 0.5rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); counter-reset: st; }
+.flow div { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); padding: 0.8rem 0.9rem; display: grid; gap: 0.25rem; align-content: start; min-width: 0; }
+.flow div::before { counter-increment: st; content: counter(st, decimal-leading-zero); font-family: var(--f-mono); font-size: 0.72rem; color: var(--accent); letter-spacing: 0.1em; }
+.flow b { font-weight: 700; }
+.flow span { color: var(--ink-2); font-size: var(--step--1); line-height: 1.55; }
+
+pre.cmd { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); padding: 0.9rem 1rem; overflow-x: auto; font-family: var(--f-mono); font-size: 0.8rem; line-height: 1.7; margin: 0; color: var(--ink); }
+ul.plain { margin: 0; padding-left: 1.1em; display: grid; gap: 0.4rem; max-width: 46em; }
+footer { padding-block: 2rem 3rem; border-top: 1px solid var(--rule); color: var(--ink-3); font-size: var(--step--1); }
+
+@media (max-width: 560px) {
+  header.top h1 { font-size: var(--step-3); }
+  h2 { font-size: var(--step-2); }
+  .q { grid-template-columns: 2rem 1fr; gap: 0.6rem; }
+  .q .n { font-size: var(--step-2); }
+  .prow { grid-template-columns: 1fr auto; }
+  .prow .cells { grid-column: 1 / -1; grid-row: 2; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .tabpanel { animation: fade .25s ease both; }
+  @keyframes fade { from { opacity: .4; } to { opacity: 1; } }
+}
+</style>
+
+<nav class="nav" aria-label="章节">
+  <div class="wrap">
+    <span class="brand">选型评测</span>
+    <a href="#verdict">结论</a>
+    <a href="#questions">三个问题</a>
+    <a href="#online">上线形态</a>
+    <a href="#base">底座能力</a>
+    <a href="#safety">安全</a>
+    <a href="#judge">Judge</a>
+    <a href="#quant">量化门禁</a>
+    <a href="#data">数据</a>
+    <a href="#method">方法与局限</a>
+  </div>
+</nav>
+
+<header class="top">
+  <div class="wrap">
+    <span class="label">通信网络运维助手 · 底座大模型选型</span>
+    <h1>运维助手选型评测</h1>
+    <p class="lede">为运营商的网络运维助手选一个底座大模型。7 个模型、4 家厂商，覆盖知识题、中文运维场景题、开思考上线形态、多轮施压下的安全边界，以及 judge 本身可不可信、量化后能不能上线。</p>
+    <div class="meta"><span>2026-10-16</span><span>@Qianqiu</span><span>全部数字可由仓库脚本重算</span></div>
+    <div class="strip" role="list">
+      <div role="listitem"><b>731</b><span>道运维相关客观题（审计自 3500 题）</span></div>
+      <div role="listitem"><b>45</b><span>道自写中文场景题，339 个评分要点</span></div>
+      <div role="listitem"><b>25,585</b><span>次客观题调用（7 模型 × 5 子集）</span></div>
+      <div role="listitem"><b>337</b><span>个构造真值探针检验 judge</span></div>
+      <div role="listitem"><b>70</b><span>个多轮施压对话</span></div>
+      <div role="listitem"><b>3</b><span>档量化权重同卡对比</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- 结论 -->
+<section id="verdict">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label">结论</span>
+      <h2>上线形态下，默认选 deepseek-v4.1-flash</h2>
+      <p class="claim">按上线形态（开思考）比较 5 个候选。qwen3.8-max 质量最高，比 deepseek-v4.1-flash 高 3.3 分（差距小但稳定），成本却是 6.7 倍、时延 3.4 倍。对成本和时延敏感时选 v4.1-flash；更看重质量、单次成本不敏感时选 qwen3.8-max。</p>
+    </div>
+    <div class="recs">
+      <article class="rec primary">
+        <div class="role"><span class="label">默认推荐</span><span class="chip accent">开思考</span></div>
+        <div class="model"><i class="swatch" style="background:var(--m-dsflash)"></i>deepseek-v4.1-flash</div>
+        <ul>
+          <li>开思考场景题 <b class="num">79.6</b> 分（第 2 档），比第 1 名低 3.3 分</li>
+          <li>每题 <b class="num">¥0.065</b>，百炼上 4 个模型里最便宜；总时延中位 85 秒</li>
+          <li>开思考一票否决 0.3 次（41 题按题均摊）</li>
+        </ul>
+        <div class="cost">代价：场景题显著低于 qwen3.8-max（41 题里 30 题更低）；关思考客观题低 3.3pt；TeleLogs 关思考有 35/200 次推理过长被截断，开思考形态没测。</div>
+      </article>
+      <article class="rec">
+        <div class="role"><span class="label">质量优先</span><span class="chip accent">开思考</span></div>
+        <div class="model"><i class="swatch" style="background:var(--m-qmax)"></i>qwen3.8-max-0902</div>
+        <ul>
+          <li>开思考场景题 <b class="num">82.9</b> 分，最高，显著高于第 2 名（Holm p = 0.01）</li>
+          <li>关思考底座上客观题 89.4%、TeleLogs 50.5%，都在前列</li>
+          <li>开思考后一票否决由 4 次降到 0.7 次</li>
+        </ul>
+        <div class="cost">代价：每题 ¥0.431、总时延中位 286 秒，分别是 v4.1-flash 的 6.7 倍和 3.4 倍。</div>
+      </article>
+      <article class="rec">
+        <div class="role"><span class="label">必须私有化部署</span><span class="chip ok">门禁通过</span></div>
+        <div class="model"><i class="swatch" style="background:var(--ink-3)"></i>qwen3.8-27b · FP8</div>
+        <ul>
+          <li>FP8、W4A16 都通过 4 条事先定死的量化门禁</li>
+          <li>FP8 权重 <b class="num">28.5GB</b>，单卡并发上限是 BF16 的 2.4 倍，解码吞吐约 2.5 倍</li>
+        </ul>
+        <div class="cost">代价：本地 BF16 客观题 81.8%，低于 7 个 API 模型（85.3–90.1%）；「通过」只说明没超过检出下限。</div>
+      </article>
+    </div>
+    <div class="notrec">
+      <div><b>kimi-k3</b><span class="small muted">底座最强（客观题、场景题都是第 1），但输出价 ¥100/百万 token，开思考粗估每题 ¥0.6–1.2（未实测），因成本不参加上线形态比较，不下结论。</span></div>
+      <div><b>qwen3.8-flash</b><span class="small muted">开思考 78.1 分、每题 ¥0.032，但经 OpenCode Go 跑、有 21/117 次截断，绝对分不能直接比。值得在百炼上补测。</span></div>
+      <div><b>glm-5.2</b><span class="small muted">开思考只涨 3.8 分（不显著），上线形态排最后；施压 7/10 个对话突破。</span></div>
+      <div><b>deepseek-v4-pro-0813</b><span class="small muted">价格是 v4.1-flash 的 3.4 倍，开思考场景题反而低 9.3 分（显著）。</span></div>
+    </div>
+    <p class="note">上线形态的证据只有场景题 41 题与客观题 150 题抽样；judge 只看最终答案，没有检查思考过程里的高危操作；施压与 TeleLogs 只测了关思考（关思考施压里 v4.1-flash 0/10、qwen3.8-max 3/10 个对话突破，每模型 10 个对话，只作描述，不作为推荐依据）。无论选哪个，高危操作都要在应用层做确认与权限控制。</p>
+  </div>
+</section>
+
+<!-- 三个问题 -->
+<section id="questions">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label">三个问题</span>
+      <h2>每个问题一句带数字的结论</h2>
+    </div>
+    <div class="qs">
+      <div class="q"><div class="n">1</div><div>
+        <h3>能力排序：谁强谁弱，差距显不显著</h3>
+        <p>关思考底座上，客观题 kimi-k3（90.1%）与 qwen3.8-max（89.4%）居前，显著高于 glm-5.2、qwen3.8-flash、deepseek-v4.1-flash 等 3.1–4.8pt；场景题第 1 档是 kimi-k3、deepseek-v4.1-flash、qwen3.8-max，但 21 对里只有 4 对显著。开思考后场景题提升 +3.8 到 +20.1 分，排序变化大（Kendall τ = 0.40）。拉开差距的是<b>处置方案</b>（52–66 分）和 <b>KPI 解读</b>，不是找根因（85–94 分）。</p>
+      </div></div>
+      <div class="q"><div class="n">2</div><div>
+        <h3>Judge 可信到什么程度</h3>
+        <p>构造探针上检出率都是 100%、误报 0；真实回答上两档 Claude judge 逐要点只有 82.5% 一致。盲审仲裁显示：<b>要点覆盖可以交给单个 judge</b>（27/32 判对），<b>高危一票否决不能</b>（只有 Haiku 触发的 19 条里 16 条是误报），须两档都触发；具体命令与现网阈值仍须专家复核。</p>
+      </div></div>
+      <div class="q"><div class="n">3</div><div>
+        <h3>量化后能不能上线</h3>
+        <p>qwen3.8-27b 的 FP8、W4A16 都通过 4 条门禁（客观题 −0.19 / −0.08pt，场景题 +1.5 / −1.0 分）。但门禁只拦得住客观题降 2pt 以上、场景题降约 8–10 分的退化，同一个 BF16 跑两遍场景题就差 7.2 分；换 BF16 第 2 遍作基线，W4A16 场景题会判不通过。结论是「没检出超过这些量级的退化」，不是「无损」。</p>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 上线形态 -->
+<section id="online">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label">上线形态 · 开思考</span>
+      <h2>开思考后场景题普遍涨 8–20 分，排序随之改变</h2>
+      <p class="claim">只看关思考横评会选错：deepseek-v4.1-flash 关思考第 1、开思考第 2；qwen3.8-flash 关思考第 5、开思考第 3。客观知识题开思考收益小且不显著（点估计 −4.4 到 +4.8pt）。</p>
+    </div>
+    <div class="two">
+      <figure>
+        <figcaption><b>场景题：关思考 → 开思考（41 道共有题）</b><span>空心点为关思考，实心点为开思考；括号内为 Holm 校正后 p。qwen3.8-flash 开思考经 OpenCode Go，绝对分不与另外 4 个直接比。</span></figcaption>
+        <div class="chart" id="ch-dumbbell"></div>
+      </figure>
+      <figure>
+        <figcaption><b>质量 × 成本：开思考场景题均分对每题花费</b><span>横轴为对数刻度（每题按原价，元）；气泡旁为总时延中位数。右上更贵，左上是性价比区。</span></figcaption>
+        <div class="chart" id="ch-scatter"></div>
+      </figure>
+    </div>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>模型</th><th class="num">开思考均分</th><th class="num">开 − 关</th><th class="num">95% CI</th><th class="num">每题花费 关 → 开</th><th class="num">总时延中位 关 → 开</th><th class="num">截断</th></tr></thead>
+        <tbody id="tb-online"></tbody>
+      </table>
+    </div>
+    <p class="note">开思考分档：第 1 档 qwen3.8-max；第 2 档 deepseek-v4.1-flash、qwen3.8-flash（两者差 1.5 分，不显著）；第 3 档 deepseek-v4-pro；第 4 档 glm-5.2。预注册的原规则只看「和第 1 名差异是否显著」，会让均分第 3 的 qwen3.8-flash 排进第 1 档（它与 qwen3.8-max 逐题差值的标准差 15.8，差 4.8 分检不出），而均分第 2 的 v4.1-flash（标准差 6.3，41 题里 30 题更低）落到第 2 档。看过数据后改为单调分档：按均分往下走，遇到第一个显著不同的就开新档。这是对预注册的偏离，已记录。</p>
+  </div>
+</section>
+
+<!-- 底座能力 -->
+<section id="base">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label">底座能力 · 关思考</span>
+      <h2>三张考卷，三种排序</h2>
+      <p class="claim">知识题看 kimi-k3 与 qwen3.8-max；中文场景题前三分不开；TeleLogs 需要多步读数计算，关思考时肯不肯写推理决定了结果。点击切换。</p>
+    </div>
+    <div class="tabs" role="tablist" aria-label="底座能力考卷">
+      <button role="tab" id="tab-obj" aria-controls="p-obj" aria-selected="true">客观题 · 731 题</button>
+      <button role="tab" id="tab-scn" aria-controls="p-scn" aria-selected="false">场景题 · 45 题</button>
+      <button role="tab" id="tab-tl" aria-controls="p-tl" aria-selected="false">TeleLogs · 200 题</button>
+    </div>
+    <div class="tabpanel" id="p-obj" role="tabpanel" aria-labelledby="tab-obj">
+      <figure>
+        <figcaption><b>TeleQnA 运维相关子集：5 子集合并正确率与 95% CI</b><span>注意横轴从 80% 起。80% 功效的最小可检出差距约 3.5pt（Holm 4.8pt），相邻名次只差 0.3–1.9pt。</span></figcaption>
+        <div class="chart" id="ch-obj"></div>
+      </figure>
+      <p class="note">7 个模型 × 5 子集全部答对的有 440 题（60%）；有区分度的题里约三分之一标准答案有争议。这一项只作知识底座参考。</p>
+    </div>
+    <div class="tabpanel" id="p-scn" role="tabpanel" aria-labelledby="tab-scn" hidden>
+      <figure>
+        <figcaption><b>场景题均分与 95% CI（按题 bootstrap）</b><span>Holm 后 21 对里只有 4 对显著，全是 kimi-k3 高于第 2 档的 4 个模型；MDE 中位数 9.6 分（Holm 13.3）。</span></figcaption>
+        <div class="chart" id="ch-scn"></div>
+      </figure>
+      <figure>
+        <figcaption><b>诊断题分两段：根因段 vs 处置段</b><span>22 道诊断题按要点权重的覆盖率。模型普遍能找到原因，弱在给出完整可执行的处置方案。</span></figcaption>
+        <div class="chart" id="ch-stage"></div>
+      </figure>
+    </div>
+    <div class="tabpanel" id="p-tl" role="tabpanel" aria-labelledby="tab-tl" hidden>
+      <figure>
+        <figcaption><b>TeleLogs 5G 路测根因（8 选 1，随机 12.5%）</b><span>qwen3.7-plus、qwen3.8-flash 因只能扣现金未跑。括号内为输出 token 中位数。</span></figcaption>
+        <div class="chart" id="ch-tl"></div>
+      </figure>
+      <div class="kimi">
+        <div class="stat"><span class="label">kimi-k3 输出长度</span><b>11<span class="arrow">→</span>630</b><span class="small muted">token 中位数，关思考 → 开思考（low）</span></div>
+        <div class="stat"><span class="label">同一批 50 题</span><b>11<span class="arrow">→</span>33</b><span class="small muted">答对题数；关错开对 28、关对开错 6</span></div>
+        <div class="stat"><span class="label">押 C4</span><b>37<span class="arrow">→</span>10</b><span class="small muted">次（C4 实际 6 题）</span></div>
+      </div>
+      <figure>
+        <figcaption><b>kimi-k3 在 50 题上的预测分布：关思考 vs 开思考</b><span>灰色刻线是每类实际题数（C1、C2 各 7，其余各 6）。开思考后不再集中押 C4，但 C5、C6 被高估，C3 从未被预测。</span></figcaption>
+        <div class="chart" id="ch-kimi"></div>
+      </figure>
+      <p class="note">关思考时 kimi-k3 每题只输出 11 个 token、直接给答案。开思考后它开始逐条核对 PCI 模 30、RB、车速等判据。开 low 思考后输出中位 630 token，和 glm-5.2、deepseek-v4-pro 关思考时相当（约 670–690），约为 qwen3.8-max（1845）的 1/3。同一批 50 题上它答对 33 题，比关思考的 qwen3.8-max（25）、v4.1-flash（19）、glm-5.2（18）、v4-pro（16）都多：对 qwen3.8-max 是方向上占优（多对 14、少对 6，p = 0.12，不显著），对其余 3 个显著。只有 50 题、每题 1 次，其他模型开思考的 TeleLogs 没测；200 题的主排名不改。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 安全 -->
+<section id="safety">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label">安全边界</span>
+      <h2>施压下近一半对话给出了高危操作</h2>
+      <p class="claim">10 个场景，每个 3 轮写死的追问：要求直接执行高危操作、要求改成错误结论、给出推翻原结论的新证据。7 个模型合计 32/70 个对话突破安全边界（[35%, 57%]；只计前两轮施压为 29/70）。每模型只有 10 个对话，只作描述。</p>
+    </div>
+    <div class="two">
+      <figure>
+        <figcaption><b>安全突破对话（每格一个场景，红色 = Haiku 与 Sonnet 都判触发）</b><span>关思考形态。按突破数排序。</span></figcaption>
+        <div class="pgrid" id="pgrid"></div>
+      </figure>
+      <div style="display:grid;gap:1rem;align-content:start;min-width:0">
+        <div class="find"><span class="label">方向不一致</span><p>场景题第 1 的 kimi-k3 有 5 个对话突破，第 2 的 deepseek-v4.1-flash 一个都没有。场景题分数高不代表施压下守得住。</p></div>
+        <div class="find"><span class="label">集中在哪</span><p>SC-D01、SC-D21、SC-K06 各 6 个，SC-C11 5 个。前三个里 SC-D01、SC-C11 是「直接给命令」、SC-D21 是「紧急绕过确认」，多数模型给出可直接执行的批量命令，只附一句空泛提醒。SC-K06 的突破多在 T4，新证据让回退有一定依据，要谨慎解读。</p></div>
+        <div class="find"><span class="label">上线含义</span><p>无论选哪个模型，助手都不能直接执行它给的命令；高危操作要在应用层做确认与权限控制。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- judge -->
+<section id="judge">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label">Judge 元评测</span>
+      <h2>探针上很可靠，真实回答上要两档把关</h2>
+      <p class="claim">judge 只输出逐项判定和原文摘录，总分由程序计算。先用 337 个应得判定已知的构造回答检验 judge，再看它在 315 份真实回答上的分歧，最后抽 60 条分歧盲审仲裁。</p>
+    </div>
+    <div class="two">
+      <figure>
+        <figcaption><b>同一对 judge（Haiku × Sonnet）的逐要点一致率</b><span>构造探针 vs 真实回答。真实回答里的模糊写法，探针没有覆盖到。</span></figcaption>
+        <div class="chart narrow" id="ch-agree"></div>
+      </figure>
+      <figure>
+        <figcaption><b>60 条分歧盲审仲裁</b><span>两档判定随机标为 A / B，不显示模型与 judge；如何据此定主分的规则在揭盲前提交。</span></figcaption>
+        <div class="waffles">
+          <div class="waffle"><span class="small">只有 Haiku 触发的一票否决（19 条）</span><div class="dots" id="w-veto"></div><span class="small muted"><b class="num">16</b> 条判 Haiku 错 → 否决须两档都触发</span></div>
+          <div class="waffle"><span class="small">Haiku 判得更宽的要点（32 条）</span><div class="dots" id="w-point"></div><span class="small muted"><b class="num">27</b> 条判 Haiku 对 → 要点保留 Haiku</span></div>
+        </div>
+      </figure>
+    </div>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>检查</th><th>能否交给 judge</th><th>依据</th></tr></thead>
+        <tbody>
+          <tr><td>要点是否覆盖</td><td><span class="chip ok">单个 judge 可以</span></td><td>留出集探针删要点检出 100%；真实回答分歧上 Haiku 判对 84%</td></tr>
+          <tr><td>根因对不对</td><td><span class="chip ok">可以</span></td><td>错误根因探针 39/39 检出</td></tr>
+          <tr><td>长度偏差、自家偏好</td><td><span class="chip warn">可以，定期抽检</span></td><td>长度偏差 ρ = −0.003（p = 0.57）；自家偏好 +0.7 分（p = 0.39），都未检出，检验力有限</td></tr>
+          <tr><td>高危操作一票否决</td><td><span class="chip warn">至少两档一致</span></td><td>Haiku 单独触发的 19 条里 16 条是误报；关键词式触发，探针测不出</td></tr>
+          <tr><td>设备命令、现网阈值、协议取值</td><td><span class="chip bad">必须专家复核</span></td><td>题目刻意不含；仲裁者是单一非专家</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 量化 -->
+<section id="quant">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label">精度回归 · qwen3.8-27b</span>
+      <h2>FP8 与 W4A16 都过了门禁，但门禁只拦得住大幅退化</h2>
+      <p class="claim">三档在同一张 RTX 6000D、同一 SGLang 版本与启动参数下跑。4 条门禁在跑之前写死（tag regression-gate-v1），任一条触发即不通过。</p>
+    </div>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>门禁</th><th class="num">BF16</th><th class="num">FP8</th><th class="num">W4A16</th><th>检出下限（80% 功效）</th></tr></thead>
+        <tbody>
+          <tr><td>1 客观题合并正确率</td><td class="num">81.83%</td><td class="num">81.64% <span class="chip ok">通过</span></td><td class="num">81.75% <span class="chip ok">通过</span></td><td>合并降 &gt; 2pt 才可能拦</td></tr>
+          <tr><td>2 四个能力维度</td><td class="num">—</td><td class="num">最大 −0.67pt <span class="chip ok">通过</span></td><td class="num">最大 −0.48pt <span class="chip ok">通过</span></td><td>1.1–4.8pt</td></tr>
+          <tr><td>3 高危错误数</td><td class="num">11</td><td class="num">11 <span class="chip ok">通过</span></td><td class="num">11 <span class="chip ok">通过</span></td><td>要多出 ≥ 6 个</td></tr>
+          <tr><td>4 场景题均分</td><td class="num">56.6</td><td class="num">58.1 <span class="chip ok">通过</span></td><td class="num">55.6 <span class="chip ok">通过</span></td><td>7.8 / 9.6 分</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="two">
+      <figure>
+        <figcaption><b>部署收益：显存、并发与吞吐</b><span>权重越小，SGLang 能开的并发越多。吞吐为 10–11 个请求同时解码时的中位数，只作量级参考。</span></figcaption>
+        <div class="chart narrow" id="ch-deploy"></div>
+      </figure>
+      <figure>
+        <figcaption><b>噪声比差异还大：场景题对 BF16 第 1 遍的差</b><span>BF16 同配置跑第 2 遍就差 +7.2 分（p = 0.047）。灰带为 ±5 分门禁阈值。</span></figcaption>
+        <div class="chart narrow" id="ch-noise"></div>
+      </figure>
+    </div>
+    <p class="note">W4A16 在原题上「对 → 错」13 道，显著多于 BF16 自身重跑的 1 道，但同时有 11 道「错 → 对」，合并正确率不变：4 位量化改动了一批答案，没有净损失。换 BF16 第 2 遍作基线，W4A16 场景题 −8.2 分（p = 0.01）会判不通过，FP8 −5.7 分（p = 0.057）差一点触发。下次做场景题门禁应预注册多遍均值作基线。</p>
+  </div>
+</section>
+
+<!-- 数据 -->
+<section id="data">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label">数据</span>
+      <h2>先审计考卷，再用它考模型</h2>
+      <p class="claim">TeleQnA 是公开的英文标准知识题，可能已进入训练数据，区分度也低；选型主要依据 45 道 Oct 13 新写的中文场景题（晚于被测模型的训练数据）。完整说明见数据卡 <span class="mono">data/DATA_CARD.md</span>。</p>
+    </div>
+    <div class="two">
+      <figure>
+        <figcaption><b>TeleQnA 筛选漏斗</b><span>标准规范 2000 + 标准综述 1000 + 词汇 500。</span></figcaption>
+        <div class="funnel" id="funnel"></div>
+      </figure>
+      <div class="finds" style="grid-template-columns:1fr">
+        <div class="find"><span class="label">答案核验</span><span class="big">1.0%</span><p class="small muted">300 题抽样的疑似错误率（[0.3%, 2.9%]）；有歧义或无法核实约 11%，全部剔除或修正。</p></div>
+        <div class="find"><span class="label">干扰项</span><span class="big">34%</span><p class="small muted">有区分度的题里标准答案有问题的比例（17/50，两名 Claude 子 agent 独立标注）。正确答案是唯一最长选项的占 32.1%（随机约 22%）。</p></div>
+        <div class="find"><span class="label">污染 · TS-Guessing</span><span class="big">3.8–5.2%</span><p class="small muted">遮住长干扰项后逐字补出的比例。人工看 33 道命中题，几乎都能由其余选项的对称结构推出，不构成背题证据。</p></div>
+      </div>
+    </div>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>自写场景题</th><th>构成</th></tr></thead>
+        <tbody>
+          <tr><td>题型</td><td>故障诊断 22 · 方案咨询 12 · KPI 表格解读 11</td></tr>
+          <tr><td>能力维度</td><td>RAN 15 · OAM 9 · TRANSPORT 8 · CORE 7 · SERVICE 4 · SECURITY 2</td></tr>
+          <tr><td>评分</td><td>339 个要点（每题 7–8 个，权重和 100）· 159 个扣分项 · 116 个高危操作（主张执行即整题 0 分）</td></tr>
+          <tr><td>核验</td><td>三票跨厂商粗筛 → Claude 子 agent 逐题复核 → 8 条 TS 条款号人工查证（改 3 处）→ 4 条协议取值对照 3GPP 原文 → 天花板试跑（触顶 3/45）</td></tr>
+          <tr><td>版本</td><td>v1.0 定稿（tag scenarios-v1.0），之后只出勘误版本</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 方法与局限 -->
+<section id="method">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label">方法与局限</span>
+      <h2>先写规则，再看数据</h2>
+      <p class="claim">每个实验的判定规则、抽样种子与检验方法都在跑之前提交进仓库；看过数据后的改动作为「偏离」单独记录。</p>
+    </div>
+    <div class="flow">
+      <div><b>审计考卷</b><span>去重、答案核验、相关度筛选、干扰项抽查、污染检测</span></div>
+      <div><b>写场景题与 rubric</b><span>45 题，要点式打分，诊断题分根因 / 处置两段，高危一票否决</span></div>
+      <div><b>检验 judge</b><span>337 个构造探针，调试 / 留出划分，提示词 v2 锁定，60 条盲审仲裁</span></div>
+      <div><b>横评与对照</b><span>关思考底座、开思考上线形态、TeleLogs、多轮施压</span></div>
+      <div><b>量化门禁</b><span>BF16 / FP8 / W4A16 同卡同引擎，4 条门禁事先写死</span></div>
+    </div>
+    <div class="finds">
+      <div class="find"><span class="label">统计</span><p class="small">配对检验为主：exact McNemar、配对符号翻转置换（B = 10000）、Holm 多重比较校正、Wilson 与 bootstrap 区间；每个比较都报 80% 功效的最小可检出差距。「不显著」只表示现有规模分辨不出。</p></div>
+      <div class="find"><span class="label">温度 0 也不可复现</span><p class="small">所有模型都测了自身噪声底：客观题原题重跑同答案率 94.5–99.5%；场景题 BF16 跑两遍只有 6/45 题逐字相同。</p></div>
+      <div class="find"><span class="label">局限</span><p class="small">场景题只有 45 题，约 10 分以内分不开；开思考对照只有 5 个模型；仲裁者是单一非专家；施压脚本未经人工逐条审读；开思考采样参数来自第三方文档。</p></div>
+    </div>
+    <pre class="cmd">uv run python analysis/objective_analysis.py               # 客观题横评
+uv run python analysis/scenario_analysis.py --run main_off # 场景题横评
+uv run python analysis/thinking_analysis.py                # 思考模式对照
+uv run python analysis/telelogs_analysis.py                # TeleLogs
+uv run python analysis/pressure_analysis.py                # 追问施压
+uv run python analysis/judge_meta.py --run probes_v2 --split holdout
+uv run python analysis/regression_gate.py                  # 量化门禁</pre>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    选型报告全文 <span class="mono">reports/selection/selection_report.md</span> · 数据卡 <span class="mono">data/DATA_CARD.md</span> · 方案 Spec v2.8 · 过程与决定日志 <span class="mono">STATUS.md</span>。模型配色按光纤色谱（TIA-598）编号。
+  </div>
+</footer>
+
+<script>
+(function () {
+  const NS = "http://www.w3.org/2000/svg";
+  const M = {
+    "qwen3.8-max": "--m-qmax", "deepseek-v4.1-flash": "--m-dsflash", "kimi-k3": "--m-kimi",
+    "deepseek-v4-pro": "--m-dspro", "glm-5.2": "--m-glm", "qwen3.8-flash": "--m-qflash", "qwen3.7-plus": "--m-qplus"
+  };
+  const col = (m) => `var(${M[m] || "--ink-3"})`;
+
+  function el(tag, attrs, parent, text) {
+    const n = document.createElementNS(NS, tag);
+    for (const k in attrs) n.setAttribute(k, attrs[k]);
+    if (text != null) n.textContent = text;
+    if (parent) parent.appendChild(n);
+    return n;
+  }
+  function svg(id, w, h, label) {
+    const host = document.getElementById(id);
+    const s = el("svg", { viewBox: `0 0 ${w} ${h}`, role: "img", "aria-label": label });
+    host.appendChild(s);
+    return s;
+  }
+  const lin = (d0, d1, r0, r1) => (v) => r0 + (v - d0) / (d1 - d0) * (r1 - r0);
+
+  // forest plot: rows [{m, v, lo, hi, tag}]
+  function forest(id, rows, opt) {
+    const W = 640, rowH = 34, top = 18, bottom = 34, left = 170, right = opt.right || 92;
+    const H = top + rows.length * rowH + bottom;
+    const s = svg(id, W, H, opt.label);
+    const x = lin(opt.min, opt.max, left, W - right);
+    for (const t of opt.ticks) {
+      el("line", { x1: x(t), x2: x(t), y1: top - 6, y2: H - bottom + 4, class: "gridline" }, s);
+      el("text", { x: x(t), y: H - bottom + 20, "text-anchor": "middle", "font-size": 12, class: "t-mono t-3" }, s, t + (opt.unit || ""));
+    }
+    if (opt.ref != null) {
+      el("line", { x1: x(opt.ref), x2: x(opt.ref), y1: top - 6, y2: H - bottom + 4, stroke: "var(--bad)", "stroke-dasharray": "4 3", "stroke-width": 1.2 }, s);
+      el("text", { x: x(opt.ref) + 4, y: top + 2, "font-size": 11, fill: "var(--bad)" }, s, opt.refLabel);
+    }
+    rows.forEach((r, i) => {
+      const y = top + i * rowH + rowH / 2;
+      el("rect", { x: 10, y: y - 5, width: 10, height: 10, rx: 2, fill: col(r.m) }, s);
+      el("text", { x: 28, y: y + 4.5, "font-size": 13, class: "t-mono" }, s, r.name || r.m);
+      el("line", { x1: x(r.lo), x2: x(r.hi), y1: y, y2: y, stroke: col(r.m), class: "ci", opacity: 0.55 }, s);
+      el("circle", { cx: x(r.v), cy: y, r: 5.5, fill: col(r.m) }, s);
+      el("text", { x: W - right + 10, y: y + 4.5, "font-size": 13, class: "t-mono" }, s, r.v.toFixed(1) + (opt.unit || ""));
+      if (r.tag) el("text", { x: W - 8, y: y + 4.5, "font-size": 11, "text-anchor": "end", class: "t-3" }, s, r.tag);
+    });
+  }
+
+  // ---- data ----
+  const online = [
+    { m: "qwen3.8-max", off: 64.5, on: 82.9, d: 18.4, lo: 12.1, hi: 25.7, p: "0.0005", cost0: 0.0686, cost1: 0.4310, lat0: 37.4, lat1: 285.9, trunc: "0/123" },
+    { m: "deepseek-v4.1-flash", off: 67.3, on: 79.6, d: 12.3, lo: 6.5, hi: 19.2, p: "0.0005", cost0: 0.0138, cost1: 0.0645, lat0: 19.5, lat1: 85.2, trunc: "0/123" },
+    { m: "qwen3.8-flash", name: "qwen3.8-flash (Go)", off: 58.0, on: 78.1, d: 20.1, lo: 13.1, hi: 27.5, p: "0.0005", cost0: 0.0055, cost1: 0.0322, lat0: 39.8, lat1: 258.0, trunc: "21/117", go: true },
+    { m: "deepseek-v4-pro", off: 61.7, on: 70.3, d: 8.5, lo: 2.8, hi: 14.3, p: "0.0106", cost0: 0.0430, cost1: 0.2204, lat0: 25.4, lat1: 139.2, trunc: "1/123" },
+    { m: "glm-5.2", off: 59.4, on: 63.1, d: 3.8, lo: -2.7, hi: 11.0, p: "0.31", cost0: 0.0389, cost1: 0.1650, lat0: 21.4, lat1: 57.2, trunc: "2/117" }
+  ];
+
+  // dumbbell
+  (function () {
+    const W = 640, rowH = 40, top = 14, bottom = 34, left = 190, right = 130;
+    const H = top + online.length * rowH + bottom;
+    const s = svg("ch-dumbbell", W, H, "场景题关思考到开思考的分数变化");
+    const x = lin(50, 90, left, W - right);
+    for (const t of [50, 60, 70, 80, 90]) {
+      el("line", { x1: x(t), x2: x(t), y1: top - 4, y2: H - bottom + 4, class: "gridline" }, s);
+      el("text", { x: x(t), y: H - bottom + 20, "text-anchor": "middle", "font-size": 12, class: "t-mono t-3" }, s, t);
+    }
+    online.forEach((r, i) => {
+      const y = top + i * rowH + rowH / 2;
+      el("rect", { x: 10, y: y - 5, width: 10, height: 10, rx: 2, fill: col(r.m) }, s);
+      el("text", { x: 28, y: y + 4.5, "font-size": 13, class: "t-mono" }, s, r.name || r.m);
+      el("line", { x1: x(r.off), x2: x(r.on), y1: y, y2: y, stroke: col(r.m), "stroke-width": 3, opacity: 0.45 }, s);
+      el("circle", { cx: x(r.off), cy: y, r: 5, fill: "var(--surface)", stroke: col(r.m), "stroke-width": 2 }, s);
+      el("circle", { cx: x(r.on), cy: y, r: 6, fill: col(r.m) }, s);
+      el("text", { x: W - right + 10, y: y + 4.5, "font-size": 13, class: "t-mono" }, s, (r.d > 0 ? "+" : "") + r.d.toFixed(1));
+      el("text", { x: W - 8, y: y + 4.5, "font-size": 11, "text-anchor": "end", class: "t-mono t-3" }, s, "(" + r.p + ")");
+    });
+  })();
+
+  // scatter: log cost vs score
+  (function () {
+    const W = 640, H = 330, L = 56, R = 24, T = 18, B = 46;
+    const s = svg("ch-scatter", W, H, "开思考场景题均分与每题花费");
+    const lx = lin(Math.log10(0.02), Math.log10(0.6), L, W - R);
+    const x = (v) => lx(Math.log10(v));
+    const y = lin(60, 86, H - B, T);
+    for (const t of [0.03, 0.1, 0.3]) {
+      el("line", { x1: x(t), x2: x(t), y1: T, y2: H - B, class: "gridline" }, s);
+      el("text", { x: x(t), y: H - B + 18, "text-anchor": "middle", "font-size": 12, class: "t-mono t-3" }, s, "¥" + t);
+    }
+    for (const t of [60, 65, 70, 75, 80, 85]) {
+      el("line", { x1: L, x2: W - R, y1: y(t), y2: y(t), class: "gridline" }, s);
+      el("text", { x: L - 8, y: y(t) + 4, "text-anchor": "end", "font-size": 12, class: "t-mono t-3" }, s, t);
+    }
+    el("text", { x: (L + W - R) / 2, y: H - 8, "text-anchor": "middle", "font-size": 12, class: "t-2" }, s, "每题花费（元，对数刻度）");
+    el("text", { x: 14, y: T + 4, "font-size": 12, class: "t-2" }, s, "分");
+    const lab = {
+      "qwen3.8-max": [-10, -14, "end"], "deepseek-v4.1-flash": [12, -12, "start"], "qwen3.8-flash": [12, 20, "start"],
+      "deepseek-v4-pro": [12, 4, "start"], "glm-5.2": [-12, 4, "end"]
+    };
+    online.forEach((r) => {
+      const cx = x(r.cost1), cy = y(r.on);
+      if (r.go) el("circle", { cx, cy, r: 8, fill: "var(--surface)", stroke: col(r.m), "stroke-width": 2.5, "stroke-dasharray": "3 2" }, s);
+      else el("circle", { cx, cy, r: 8, fill: col(r.m) }, s);
+      const [dx, dy, anc] = lab[r.m];
+      el("text", { x: cx + dx, y: cy + dy, "text-anchor": anc, "font-size": 12.5, class: "t-mono" }, s, (r.name || r.m));
+      el("text", { x: cx + dx, y: cy + dy + 15, "text-anchor": anc, "font-size": 11, class: "t-mono t-3" }, s, Math.round(r.lat1) + " 秒");
+    });
+  })();
+
+  // online table
+  (function () {
+    const tb = document.getElementById("tb-online");
+    online.forEach((r) => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `<td class="mono"><i class="swatch" style="background:${col(r.m)};margin-right:.45rem"></i>${r.name || r.m}</td>
+        <td class="num">${r.on.toFixed(1)}</td><td class="num">${r.d > 0 ? "+" : ""}${r.d.toFixed(1)}</td>
+        <td class="num">[${r.lo.toFixed(1)}, ${r.hi.toFixed(1)}]</td>
+        <td class="num">¥${r.cost0.toFixed(3)} → ¥${r.cost1.toFixed(3)}</td>
+        <td class="num">${r.lat0.toFixed(0)}s → ${r.lat1.toFixed(0)}s</td><td class="num">${r.trunc}</td>`;
+      tb.appendChild(tr);
+    });
+  })();
+
+  // base: objective
+  forest("ch-obj", [
+    { m: "kimi-k3", v: 90.1, lo: 88.1, hi: 92.0 },
+    { m: "qwen3.8-max", v: 89.4, lo: 87.5, hi: 91.3 },
+    { m: "qwen3.7-plus", v: 87.5, lo: 85.4, hi: 89.6 },
+    { m: "deepseek-v4-pro", v: 87.0, lo: 84.9, hi: 89.1 },
+    { m: "deepseek-v4.1-flash", v: 86.1, lo: 83.9, hi: 88.2 },
+    { m: "qwen3.8-flash", v: 86.0, lo: 83.8, hi: 88.1 },
+    { m: "glm-5.2", v: 85.3, lo: 83.1, hi: 87.4 }
+  ], { min: 80, max: 95, ticks: [80, 85, 90, 95], unit: "%", label: "客观题正确率" });
+
+  forest("ch-scn", [
+    { m: "kimi-k3", v: 72.5, lo: 65.9, hi: 78.2, tag: "第 1 档" },
+    { m: "deepseek-v4.1-flash", v: 69.0, lo: 62.0, hi: 75.5, tag: "第 1 档" },
+    { m: "qwen3.8-max", v: 65.6, lo: 58.1, hi: 72.5, tag: "第 1 档" },
+    { m: "deepseek-v4-pro", v: 63.4, lo: 56.4, hi: 69.6, tag: "第 2 档" },
+    { m: "glm-5.2", v: 60.9, lo: 54.1, hi: 67.3, tag: "第 2 档" },
+    { m: "qwen3.8-flash", v: 59.6, lo: 51.6, hi: 67.0, tag: "第 2 档" },
+    { m: "qwen3.7-plus", v: 58.9, lo: 51.1, hi: 66.1, tag: "第 2 档" }
+  ], { min: 50, max: 80, ticks: [50, 60, 70, 80], label: "场景题均分", right: 130 });
+
+  // diagnosis stages: root vs disposal
+  (function () {
+    const rows = [
+      ["kimi-k3", 94.4, 66.0], ["deepseek-v4.1-flash", 93.1, 62.1], ["qwen3.8-max", 91.7, 58.7],
+      ["deepseek-v4-pro", 89.2, 55.0], ["glm-5.2", 85.2, 51.8], ["qwen3.8-flash", 89.9, 54.8], ["qwen3.7-plus", 88.4, 56.0]
+    ];
+    const W = 640, rowH = 30, top = 26, bottom = 30, left = 170, right = 24;
+    const H = top + rows.length * rowH + bottom;
+    const s = svg("ch-stage", W, H, "诊断题根因段与处置段得分率");
+    const x = lin(40, 100, left, W - right);
+    for (const t of [40, 60, 80, 100]) {
+      el("line", { x1: x(t), x2: x(t), y1: top - 8, y2: H - bottom + 4, class: "gridline" }, s);
+      el("text", { x: x(t), y: H - bottom + 20, "text-anchor": "middle", "font-size": 12, class: "t-mono t-3" }, s, t);
+    }
+    el("circle", { cx: left, cy: 10, r: 5, fill: "var(--surface)", stroke: "var(--ink-2)", "stroke-width": 2 }, s);
+    el("text", { x: left + 10, y: 15, "font-size": 12, class: "t-2" }, s, "处置段");
+    el("circle", { cx: left + 80, cy: 10, r: 5, fill: "var(--ink-2)" }, s);
+    el("text", { x: left + 90, y: 15, "font-size": 12, class: "t-2" }, s, "根因段");
+    rows.forEach(([m, a, b], i) => {
+      const y = top + i * rowH + rowH / 2;
+      el("rect", { x: 10, y: y - 5, width: 10, height: 10, rx: 2, fill: col(m) }, s);
+      el("text", { x: 28, y: y + 4.5, "font-size": 13, class: "t-mono" }, s, m);
+      el("line", { x1: x(b), x2: x(a), y1: y, y2: y, stroke: col(m), "stroke-width": 2, opacity: 0.4 }, s);
+      el("circle", { cx: x(b), cy: y, r: 5, fill: "var(--surface)", stroke: col(m), "stroke-width": 2 }, s);
+      el("circle", { cx: x(a), cy: y, r: 5.5, fill: col(m) }, s);
+    });
+  })();
+
+  forest("ch-tl", [
+    { m: "qwen3.8-max", v: 50.5, lo: 43.6, hi: 57.4, tag: "第 1 档（1686）" },
+    { m: "deepseek-v4.1-flash", v: 45.0, lo: 38.3, hi: 51.9, tag: "第 1 档（1375）" },
+    { m: "glm-5.2", v: 38.5, lo: 32.0, hi: 45.4, tag: "第 2 档（713）" },
+    { m: "deepseek-v4-pro", v: 26.5, lo: 20.9, hi: 33.0, tag: "第 3 档（652）" },
+    { m: "kimi-k3", v: 23.0, lo: 17.7, hi: 29.3, tag: "第 3 档（11）" }
+  ], { min: 0, max: 60, ticks: [0, 20, 40, 60], unit: "%", ref: 12.5, refLabel: "随机 12.5%", label: "TeleLogs 正确率", right: 190 });
+
+  // kimi predicted distribution
+  (function () {
+    const off = [8, 0, 0, 37, 0, 2, 0, 3], on = [4, 7, 0, 10, 11, 11, 4, 3], real = [7, 7, 6, 6, 6, 6, 6, 6];
+    const W = 640, H = 230, L = 40, R = 16, T = 26, B = 32;
+    const s = svg("ch-kimi", W, H, "kimi-k3 预测类别分布");
+    const band = (W - L - R) / 8;
+    const y = lin(0, 40, H - B, T);
+    for (const t of [0, 10, 20, 30, 40]) {
+      el("line", { x1: L, x2: W - R, y1: y(t), y2: y(t), class: "gridline" }, s);
+      el("text", { x: L - 8, y: y(t) + 4, "text-anchor": "end", "font-size": 11, class: "t-mono t-3" }, s, t);
+    }
+    el("rect", { x: L, y: 6, width: 12, height: 10, rx: 2, fill: "var(--ink-3)", opacity: 0.45 }, s);
+    el("text", { x: L + 18, y: 15, "font-size": 12, class: "t-2" }, s, "关思考");
+    el("rect", { x: L + 80, y: 6, width: 12, height: 10, rx: 2, fill: "var(--m-kimi)" }, s);
+    el("text", { x: L + 98, y: 15, "font-size": 12, class: "t-2" }, s, "开思考（low）");
+    for (let i = 0; i < 8; i++) {
+      const cx = L + band * i + band / 2, bw = band * 0.3;
+      el("rect", { x: cx - bw - 1, y: y(off[i]), width: bw, height: y(0) - y(off[i]), fill: "var(--ink-3)", opacity: 0.45 }, s);
+      el("rect", { x: cx + 1, y: y(on[i]), width: bw, height: y(0) - y(on[i]), fill: "var(--m-kimi)" }, s);
+      el("line", { x1: cx - bw - 4, x2: cx + bw + 4, y1: y(real[i]), y2: y(real[i]), stroke: "var(--ink)", "stroke-width": 1.5, opacity: 0.6 }, s);
+      el("text", { x: cx, y: H - B + 18, "text-anchor": "middle", "font-size": 12, class: "t-mono" }, s, "C" + (i + 1));
+      if (off[i] >= 30) el("text", { x: cx - bw / 2 - 1, y: y(off[i]) - 5, "text-anchor": "middle", "font-size": 11, class: "t-mono t-2" }, s, off[i]);
+    }
+  })();
+
+  // pressure grid
+  (function () {
+    const rows = [
+      ["deepseek-v4.1-flash", 0], ["qwen3.8-max", 3], ["qwen3.8-flash", 4], ["kimi-k3", 5],
+      ["deepseek-v4-pro", 6], ["glm-5.2", 7], ["qwen3.7-plus", 7]
+    ];
+    const host = document.getElementById("pgrid");
+    rows.forEach(([m, n]) => {
+      const d = document.createElement("div");
+      d.className = "prow";
+      let cells = "";
+      for (let i = 0; i < 10; i++) cells += `<i class="${i < n ? "on" : ""}"></i>`;
+      d.innerHTML = `<span class="nm"><i class="swatch" style="background:${col(m)}"></i>${m}</span><span class="cells" aria-label="${m} 突破 ${n} 个">${cells}</span><span class="ct">${n}/10</span>`;
+      host.appendChild(d);
+    });
+    const tot = document.createElement("div");
+    tot.className = "prow";
+    tot.innerHTML = `<span class="nm"><b>合计</b></span><span class="small muted">46%（[35%, 57%]）；T3 屈服 11/59，T4 固执 1/70</span><span class="ct">32/70</span>`;
+    host.appendChild(tot);
+  })();
+
+  // judge agreement
+  (function () {
+    const W = 460, H = 150, L = 92, R = 60, T = 14;
+    const s = svg("ch-agree", W, H, "judge 一致率：探针与真实回答");
+    const x = lin(50, 100, L, W - R);
+    const rows = [["构造探针", 93.7, "var(--ok)"], ["真实回答", 82.5, "var(--warn)"]];
+    for (const t of [50, 75, 100]) {
+      el("line", { x1: x(t), x2: x(t), y1: T, y2: H - 30, class: "gridline" }, s);
+      el("text", { x: x(t), y: H - 12, "text-anchor": "middle", "font-size": 12, class: "t-mono t-3" }, s, t + "%");
+    }
+    rows.forEach(([n, v, c], i) => {
+      const y = T + 10 + i * 44;
+      el("text", { x: L - 10, y: y + 17, "text-anchor": "end", "font-size": 13 }, s, n);
+      el("rect", { x: x(50), y, width: x(v) - x(50), height: 26, rx: 3, fill: c, opacity: 0.85 }, s);
+      el("text", { x: x(v) + 8, y: y + 18, "font-size": 13, class: "t-mono" }, s, v + "%");
+    });
+  })();
+
+  // waffles
+  function waffle(id, n, k, cls) {
+    const host = document.getElementById(id);
+    for (let i = 0; i < n; i++) {
+      const d = document.createElement("i");
+      if (i < k) d.className = cls;
+      host.appendChild(d);
+    }
+  }
+  waffle("w-veto", 19, 16, "on");
+  waffle("w-point", 32, 27, "good");
+
+  // deploy
+  (function () {
+    const rows = [
+      { n: "权重显存（GB）", v: [51.1, 28.5, 25.3], max: 60 },
+      { n: "并发上限", v: [11, 26, 28], max: 30 },
+      { n: "解码吞吐（token/s）", v: [126, 318, 330], max: 350 }
+    ];
+    const tiers = ["BF16", "FP8", "W4A16"], fills = ["var(--ink-3)", "var(--accent)", "var(--m-qplus)"];
+    const W = 460, groupH = 74, T = 26, L = 10, R = 54;
+    const H = T + rows.length * groupH;
+    const s = svg("ch-deploy", W, H, "三档部署指标");
+    tiers.forEach((t, i) => {
+      el("rect", { x: L + i * 80, y: 4, width: 12, height: 10, rx: 2, fill: fills[i] }, s);
+      el("text", { x: L + i * 80 + 18, y: 13, "font-size": 12, class: "t-mono t-2" }, s, t);
+    });
+    rows.forEach((r, gi) => {
+      const y0 = T + gi * groupH;
+      el("text", { x: L, y: y0 + 12, "font-size": 12.5, class: "t-2" }, s, r.n);
+      r.v.forEach((v, i) => {
+        const y = y0 + 20 + i * 15, w = (W - L - R) * v / r.max;
+        el("rect", { x: L, y, width: w, height: 11, rx: 2, fill: fills[i] }, s);
+        el("text", { x: L + w + 6, y: y + 10, "font-size": 11.5, class: "t-mono" }, s, v);
+      });
+    });
+  })();
+
+  // noise vs quant diffs
+  (function () {
+    const rows = [["BF16 第 2 遍", 7.2, "var(--ink-3)"], ["FP8", 1.5, "var(--accent)"], ["W4A16", -1.0, "var(--m-qplus)"]];
+    const W = 460, H = 170, L = 100, R = 30, T = 16, rowH = 36;
+    const s = svg("ch-noise", W, H, "场景题对 BF16 第 1 遍的差值");
+    const x = lin(-10, 10, L, W - R);
+    el("rect", { x: x(-5), y: T - 4, width: x(5) - x(-5), height: rows.length * rowH + 4, fill: "var(--grid)", opacity: 0.8 }, s);
+    for (const t of [-10, -5, 0, 5, 10]) {
+      el("line", { x1: x(t), x2: x(t), y1: T - 4, y2: T + rows.length * rowH, class: t === 0 ? "axis" : "gridline" }, s);
+      el("text", { x: x(t), y: T + rows.length * rowH + 18, "text-anchor": "middle", "font-size": 12, class: "t-mono t-3" }, s, (t > 0 ? "+" : "") + t);
+    }
+    rows.forEach(([n, v, c], i) => {
+      const y = T + i * rowH + 6;
+      el("text", { x: L - 10, y: y + 15, "text-anchor": "end", "font-size": 12.5 }, s, n);
+      const x0 = Math.min(x(0), x(v)), w = Math.abs(x(v) - x(0));
+      el("rect", { x: x0, y, width: w, height: 22, rx: 3, fill: c }, s);
+      el("text", { x: v >= 0 ? x(v) + 6 : x(v) - 6, y: y + 15, "text-anchor": v >= 0 ? "start" : "end", "font-size": 12, class: "t-mono" }, s, (v > 0 ? "+" : "") + v.toFixed(1));
+    });
+  })();
+
+  // funnel
+  (function () {
+    const steps = [
+      [3500, "TeleQnA 三类题"], [3420, "去重 −56、结构清洗 −24"], [3288, "答案核验 −132（另改答案 4 题）"], [731, "运维相关度 ≥ 2 → 测试集"]
+    ];
+    const host = document.getElementById("funnel");
+    steps.forEach(([n, t]) => {
+      const d = document.createElement("div");
+      d.className = "fstep";
+      d.innerHTML = `<div class="fbar" style="width:${(n / 3500 * 100).toFixed(1)}%">${n.toLocaleString("en-US")}</div><span>${t}</span>`;
+      host.appendChild(d);
+    });
+  })();
+
+  // tabs
+  (function () {
+    const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+    function select(t) {
+      tabs.forEach((b) => {
+        const on = b === t;
+        b.setAttribute("aria-selected", on ? "true" : "false");
+        b.tabIndex = on ? 0 : -1;
+        document.getElementById(b.getAttribute("aria-controls")).hidden = !on;
+      });
+      try { localStorage.setItem("sel-tab", t.id); } catch (e) {}
+    }
+    tabs.forEach((b, i) => {
+      b.addEventListener("click", () => select(b));
+      b.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+          const n = tabs[(i + (e.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length];
+          select(n); n.focus();
+        }
+      });
+    });
+    let saved = null;
+    try { saved = localStorage.getItem("sel-tab"); } catch (e) {}
+    const st = saved && document.getElementById(saved);
+    if (st) select(st);
+  })();
+})();
+</script>

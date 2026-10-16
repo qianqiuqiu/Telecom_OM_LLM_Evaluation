@@ -217,14 +217,19 @@ def scenario_section(scns, typ):
     while left:
         t += 1
         top = left[0]
-        tier = [k for k in left if k == top or not sig[(top, k)]]
+        tier = [top]  # 单调分档，同 scenario_analysis.py
+        for k in left[1:]:
+            if sig[(top, k)]:
+                break
+            tier.append(k)
         for k in tier:
             tier_of[k] = t
         left = [k for k in left if k not in tier]
     r_on, r_off = ranks(means_on), ranks([res[m]["off"] for m in models])
     tau = kendalltau(r_on, r_off).statistic if len(models) > 2 else float("nan")
     L += ["", "### 开思考形态内的排序与分档", "",
-          "分档规则同 `scenario_analysis.py`：均分最高者与所有和它差异不显著（配对置换，Holm）的为一档，依此类推。", "",
+          "分档规则同 `scenario_analysis.py`：按均分从高往低，与本档最高者差异不显著（配对置换，Holm）的归入本档，遇到第一个显著不同的就开新档。"
+          "Oct 16 由原规则（与最高者不显著的都进本档，可能出现均分低的反而档更靠前）改为此单调规则，见 STATUS 第五节。", "",
           "| 开思考名次 | 模型 | 开思考均分 | 档 | 关思考名次（同一批模型内） |", "| --- | --- | --- | --- | --- |"]
     for i in sorted(range(len(models)), key=lambda k: r_on[k]):
         L.append(f"| {r_on[i]} | {short(models[i])} | {means_on[i]:.1f} | {tier_of[i]} | {r_off[i]} |")

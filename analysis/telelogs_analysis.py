@@ -3,7 +3,7 @@
 口径见 STATUS 决定日志（Oct 15，跑之前定）：
 - 各模型正确率 + Wilson 95% 区间；对随机水平 12.5% 做单侧二项检验。抽取失败（含截断）记错并单列。
 - 21 对（实际跑了几个模型就是几对）exact McNemar + Holm（α = 0.05），附 80% 功效最小可检出差距（正态近似）。
-- 分档：正确率最高者与所有和它差异不显著（Holm）的模型为一档，剩下的依此类推（同场景题横评）。
+- 分档：正确率最高者与所有和它差异不显著（Holm）的模型为一档，剩下的依此类推（同场景题横评）（Oct 16 改为单调：按均分从高往低，遇到第一个与本档最高者显著不同的模型就开新档，均分低的不会进更靠前的档；见 STATUS 第五节）。
 - 只作描述：按 8 类根因的正确率；与场景题诊断题根因段得分率（Haiku，main_off）的 Spearman（7 个点，不做检验）。
 """
 import csv
@@ -112,10 +112,14 @@ def main():
     tiers, left = [], list(models)
     while left:
         top = left[0]
-        tier = [m for m in left if m == top or not sig[(top, m)]]
+        tier = [top]  # 单调分档，同 scenario_analysis.py
+        for m in left[1:]:
+            if sig[(top, m)]:
+                break
+            tier.append(m)
         tiers.append(tier)
         left = [m for m in left if m not in tier]
-    L += ["", "## 分档", "", "正确率最高者与所有和它差异不显著（exact McNemar，Holm 校正，α = 0.05）的模型为一档，剩下的依此类推。"
+    L += ["", "## 分档", "", "按正确率从高往低，与本档最高者差异不显著（exact McNemar，Holm 校正，α = 0.05）的归入本档，遇到第一个显著不同的就开新档，依此类推。"
           "档是「与本档最高者分不开」，不代表档间每对都显著。", ""]
     L += [f"- 第 {t + 1} 档：{'、'.join(tier)}" for t, tier in enumerate(tiers)]
     L += ["", "## 两两配对检验", "", "| 模型 A | 模型 B | A 对 B 错 | A 错 B 对 | p | Holm p | MDE（未校正） | MDE（Holm） |",

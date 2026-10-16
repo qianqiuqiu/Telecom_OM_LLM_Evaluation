@@ -12,7 +12,8 @@
 3 出主观题（40–50 道中文场景题 + rubric）       已定稿 v1.0（tag `scenarios-v1.0`，45 题）
 4 阅卷（规则判分 + LLM judge）                 已完成（Oct 14）：关思考 315 份经 Haiku、Sonnet 判分与 60 条仲裁定出最终主分
 5 检验裁判（judge 元评测）                     已完成（Oct 14）：探针（v2 锁定、留出集三个 judge 都合格）+ 真实回答两档一致性与仲裁 + 跨厂商对照与自家偏好检验
-6 出结论（横评、思考对照、追问施压、精度回归、选型报告） 进行中：场景题横评、干扰项抽查、TS-Guessing、TeleLogs（5/7 模型）、追问施压已出（Oct 15）；精度回归已出（Oct 15 晚，FP8、W4A16 四条门禁全部通过，`reports/regression/regression_gate.md`）；思考对照已出（Oct 16，5 个模型，`reports/thinking/thinking_main.md`）；TeleLogs kimi-k3 开思考对照已出（Oct 16，`reports/telelogs/kimi_k3_thinking.md`）；下一步选型报告、数据卡 ← 现在
+6 出结论（横评、思考对照、追问施压、精度回归、选型报告） 进行中：场景题横评、干扰项抽查、TS-Guessing、TeleLogs（5/7 模型）、追问施压已出（Oct 15）；精度回归已出（Oct 15 晚，FP8、W4A16 四条门禁全部通过，`reports/regression/regression_gate.md`）；思考对照已出（Oct 16，5 个模型，`reports/thinking/thinking_main.md`）；TeleLogs kimi-k3 开思考对照已出（Oct 16，`reports/telelogs/kimi_k3_thinking.md`）；选型报告、数据卡与展示网页已出（Oct 16，`reports/selection/`、`data/DATA_CARD.md`）
+7 简历 bullet 与模拟面试                         下一步 ← 现在
 ```
 
 场景题已定稿 v1.0（Oct 14，tag `scenarios-v1.0`），之后改题只能出勘误版本。Oct 14 一天内完成了 judge 这条线：提示词 v2 锁定（tag `judge-prompt-v2`）→ 留出集探针两档合格 → 7 模型关思考 315 份回答（Mac 生成）→ Haiku、Sonnet 全量判分 → 60 条分歧仲裁 → 最终主分（要点取 Haiku，一票否决须两档同一高危项都触发）→ 场景题横评分档 → 跨厂商 judge（deepseek-v4.1-flash）对照与自家偏好检验（未检出）。结果见第四节第 4、5 项。下一步：不依赖 judge 的并行项（第二节第 7 步，D3/D5 待定）与追问施压；思考对照（约 ¥144）按用户安排放在其余全部做完之后。
@@ -24,6 +25,8 @@ Oct 15 晚：精度回归跑完。qwen3.8-27b 三档（BF16 / FP8 / W4A16）在�
 Oct 15 晚（深夜）：思考对照只剩 qwen3.8-flash 在补跑（经 OpenCode Go，模型 ID 记为 `qwen3.8-flash-ocgo`；Mac 上四条命令串在两条线上：客观题 on → off、场景题 on → off）。**关思考一侧用户改为沿用百炼 `main_off`**，不再用 Go 的关思考结果——这样开关两侧的判分规则完全一致（理由与影响见第五节 Oct 15 晚一行）。Go 的关思考仍照跑但**不判分**，留着备用。开思考一侧跑完后按 `main_off` 的流程判分（Haiku + Sonnet 两档）。
 
 Oct 16：思考对照收尾——D9 残留选 A′（41 道共有题）、qwen3.8-flash（ocgo）开思考 129 份补判（Haiku + Sonnet，走 Pro 订阅），5 个模型都进了主表（第四节第 11 项）。TeleLogs kimi-k3 开思考 × 50 题经 OpenCode Go 跑完（`reasoning_effort = low`，$1.23），结果见第四节第 12 项。下一步：选型报告、数据卡。
+
+Oct 16（晚）：选型报告 `reports/selection/selection_report.md`、数据卡 `data/DATA_CARD.md`、展示网页 `reports/selection/index.html`（已发布为 Artifact）写完，经 4 个子 agent 对照分项报告逐数核对与业务视角复核后修订。推荐（上线形态）：默认 deepseek-v4.1-flash（成本与时延敏感），质量优先 qwen3.8-max-0902，私有化部署 qwen3.8-27b FP8；施压结果按预注册只作描述、不作推荐依据。核对中查出两处与 STATUS 原文不符的事实，见第五节 Oct 16（晚）一行。下一步：简历 bullet 与模拟面试。
 
 ## 二、下一步（建议顺序）
 
@@ -41,7 +44,7 @@ Oct 16：思考对照收尾——D9 残留选 A′（41 道共有题）、qwen3.
 7. **不依赖 judge 的并行项**：~~干扰项质量抽查~~、~~污染检测 TS-Guessing~~、~~TeleLogs 子集~~（Oct 15 完成，见第四节第 6–8 项）。待办：
    - ~~TeleLogs 补 qwen3.7-plus、qwen3.8-flash~~：Oct 15 用户定为不补跑，报告写明只覆盖 5 个模型（两个打折模型因计费原因未跑）。
    - ~~**精度回归**~~（Oct 15 晚完成，见第四节第 10 项）：qwen3.8-27b 三档，FP8、W4A16 四条门禁全部通过。复跑：`bash serve.sh <档>`（AutoDL）+ Mac 上开隧道后 `run_objective.py --models <id>`、`generate_answers.py --run regression_<档> --model <id> --mode off`（BF16 加 `--repeats 2`）、`run_pressure.py --model <id> --t1 results/answers/regression_<档>.jsonl --out results/answers/pressure_regression.jsonl`；判分 `judge_scenarios.py --run regression --prompt v2`、`judge_pressure.py --run pressure_regression --prompt v1`（Haiku + Sonnet）；`analysis/regression_gate.py` 出报告。
-8. ~~追问施压~~（Oct 15 完成，见第四节第 9 项）→ ~~精度回归~~（Oct 15 晚完成）→ ~~思考对照~~（Oct 16 完成，第四节第 11 项）→ 选型报告、数据卡 → 简历 bullet 与模拟面试。
+8. ~~追问施压~~（Oct 15 完成，见第四节第 9 项）→ ~~精度回归~~（Oct 15 晚完成）→ ~~思考对照~~（Oct 16 完成，第四节第 11 项）→ ~~选型报告、数据卡~~（Oct 16 完成，`reports/selection/`、`data/DATA_CARD.md`）→ 简历 bullet 与模拟面试。
 9. ~~**TeleLogs 开思考对照（kimi-k3 × 50 题子样本；Oct 16 用户定，规则 Oct 16 写死、跑之前提交 `a3062a4`）**~~（Oct 16 完成，见第四节第 12 项）：第四节第 8 项观察到 kimi-k3 关思考下 200 题输出恒为 11 token、78%（156/200）押 C4、正确率 23.0% 垫底。用户的判断是这更像**过度遵循输出指令**而不是能力不足——kimi-k3 在客观题横评里同样「不解释直接给字母」（输出中位 10 token，七个模型都在 3–10 token）却排第一，场景题里它输出最长（1998 token / 3558 字）也是第一。**只做开思考单臂**：
    - ~~**A. 强制极简**（5 模型同题、追加「只输出 `\boxed{Cx}`，不要任何其他文字」）~~：**Oct 16 用户否决，不做**。理由：本任务是多跳长链、**必须读数算数**的问题（题面 40 余行路测表 + 6 条判据，要从 8 个候选中排除 7 个），在这种任务上「强制不许算」不是一个有意义的对照——结果几乎注定是全体塌到随机水平附近，测出来的是「人为削弱之后还剩多少」，不是任何待解释量的证据。
    - **B. kimi-k3 开思考 × 50 题（定案）**：同一批 50 题只改思考开关；关思考一侧**复用已有结果**逐题配对（`results/telelogs/predictions.csv`），不重跑。
@@ -284,8 +287,8 @@ D1（judge 模型）、D2（judge 验证方式）已于 Oct 13 定下，见第�
 ### 11. 思考模式对照（Oct 15–16，`analysis/thinking_analysis.py` → `reports/thinking/thinking_main.md`）
 
 - 5 个模型：qwen3.8-max、deepseek-v4-pro、glm-5.2、deepseek-v4.1-flash（百炼），qwen3.8-flash（开思考经 OpenCode Go、关思考沿用百炼 `main_off`，差值含部署差异，绝对分不与另外 4 个比）。
-- 场景题（A′：41 道共有题，剔除 qwen3.8-max 整题缺失的 SC-D23–D26）开 − 关：qwen3.8-max +18.4、qwen3.8-flash(Go) +20.1、deepseek-v4.1-flash +12.3、deepseek-v4-pro +8.5（Holm 均 < 0.05）、glm-5.2 +3.8（p = 0.31）；MDE 约 10–13 分。qwen3.8-flash 开思考截断 21/117（记 0 分，提升可能被低估）。开思考形态内排序与关思考的 Kendall τ = 0.40。
-- 分档的已知怪处：沿用 `scenario_analysis.py` 的贪心分档（最高者与所有和它不显著的为一档），qwen3.8-flash（均分第 3）与 qwen3.8-max 同在第 1 档，deepseek-v4.1-flash（均分第 2）因与第 1 名差异显著落到第 2 档。规则与主横评相同、未改；写选型报告时须说明或改用其他分档方式（待用户定）。
+- 场景题（A′：41 道共有题，剔除 qwen3.8-max 整题缺失的 SC-D23–D26）开 − 关：qwen3.8-max +18.4、qwen3.8-flash(Go) +20.1、deepseek-v4.1-flash +12.3、deepseek-v4-pro +8.5（Holm 均 < 0.05）、glm-5.2 +3.8（p = 0.31）；MDE 约 10–13 分。qwen3.8-flash 开思考截断 21/117（**实际按已写出的部分照常判分**，均分 66.7、未截断的 82.4；不是此前写的「记 0 分」，见第五节 Oct 16（晚）；提升可能被低估）。开思考形态内排序与关思考的 Kendall τ = 0.40。
+- 分档的已知怪处：沿用 `scenario_analysis.py` 的贪心分档（最高者与所有和它不显著的为一档），qwen3.8-flash（均分第 3）与 qwen3.8-max 同在第 1 档，deepseek-v4.1-flash（均分第 2）因与第 1 名差异显著落到第 2 档。原因（复算）：qwen3.8-max 对 deepseek-v4.1-flash 的逐题差值标准差 6.3（41 题里 30 高 7 低），对 qwen3.8-flash 是 15.8（26 高 12 低）。**Oct 16（夜）用户定改为单调分档**（见决定日志）：改后 qwen3.8-max 第 1 档；deepseek-v4.1-flash、qwen3.8-flash 第 2 档（两者差 1.5 分，不显著）；deepseek-v4-pro 第 3 档；glm-5.2 第 4 档。
 - 客观题（150 题分层抽样，731 题加权）：deepseek-v4.1-flash +4.8、qwen3.8-flash(Go) +4.4、qwen3.8-max +2.8、deepseek-v4-pro +2.8、glm-5.2 −4.4，Holm 后都不显著；天花板层几乎不动，变化来自其余 291 题。
 - 局限：qwen3.7-plus、glm-5.3、kimi-k3 未参加；开思考采样参数来自第三方部署文档；judge 只看最终答案。
 
@@ -367,6 +370,8 @@ D1（judge 模型）、D2（judge 验证方式）已于 Oct 13 定下，见第�
 | Oct 16 | **qwen3.8-flash（ocgo）开思考 129 份补判**：另外 4 个模型的开思考判分已于 Oct 15 晚判完并随 `d95a255` 入库，ocgo 因排在最后、经 Go 生成，当时没判，报告只写了「判分缺失」。本次在 Mac 上经 Claude Code 无头模式走用户 Pro 订阅判（judge v2、effort medium，同前 4 个模型）：Haiku 129/129、Sonnet 129/129，0 失败，按 API 价目折合 $0.51 + $6.26；Pro 用量 5 小时窗口 8% → 35%、周额度 42% → 46%（含本会话自身用量）。`merge_thinking_runs.py` 合并后重出报告：5 个模型都在主表。 |
 | Oct 16 | **TeleLogs kimi-k3 开思考改经 OpenCode Go、`reasoning_effort = low`**（用户定，跑之前提交；规则见第二节第 9 项）。试跑 3 题（缓存键与正式相同、复用）：每题输出 368–957 token（思考 178–834），约 $0.013 / 题，3 题都正常结束、可抽取。另：Go 额度据文档措辞应为**各模型共用一个百分比计量表**、每个模型的花费按自己的月度上限折算（kimi-k3 Go 档月 $15，qwen3.8-flash $30），不是各模型独立；见第六节。 |
 | Oct 16 | **TeleLogs kimi-k3 开思考 50 题跑完**（$1.23，花费上限设为 $3）。**抽取器事后修正**（看过结果后，用户事先未定）：8 个回答写成 `\boxed{\text{C4}}` 这类嵌套，原正则抽不到；`run_telelogs.py` 改为允许一层嵌套并去掉 `\text` / `\mathrm` 等包装。修正前后主实验全部原始回答抽取结果一致（逐条核对），所以只影响本对照：主口径 33/50，跑之前定的严格口径 27/50，两者都在报告里。 |
+| Oct 16（晚） | **选型报告与数据卡**（`reports/selection/selection_report.md`、`data/DATA_CARD.md`、展示网页 `reports/selection/index.html`）。① 推荐以上线形态为准（Oct 11 决定）：默认 deepseek-v4.1-flash，质量优先 qwen3.8-max-0902，私有化 qwen3.8-27b FP8；追问施压每模型 10 个对话、只测了关思考，按预注册只作描述，**不作为推荐依据**。② 思考对照分档怪处：初稿保留预注册规则，Oct 16（夜）用户改定为单调分档（见下一行）。③ 核对中查出两处与本文件原文不符的事实（只改文字，不改分析）：(a) 思考对照场景题撞 16384 上限的回答**实际按已写出的部分照常判分**（无内容的得 0 分），不是偏离 ③ 写的「记 0 分」——qwen3.8-flash-ocgo 的 21 次截断均分 66.7，glm-5.2 2 次、deepseek-v4-pro 1 次同理；客观题一侧按截断记错不变。是否按「记 0 分」重算待用户定（会使 ocgo 的开思考分更低）。(b) `results/audit/` 自 `a9bf44e` 入库后，审计批次文件逐字含约 3400 道 TeleQnA 题的题干与选项（部分含答案），不止 Oct 13 那 150 条证据文字；TeleQnA 为 MIT，可再分发，数据卡已如实写明，`README.md`「仓库不重新分发」只对 `data/raw/` 成立。 |
+| Oct 16（夜） | **分档改为单调（用户定，看过数据后的偏离）**：原规则「均分最高者与所有和它不显著的为一档」让思考对照里均分第 3 的 qwen3.8-flash-ocgo 排进第 1 档、均分第 2 的 deepseek-v4.1-flash 落第 2 档。新规则：按均分从高往低，与本档最高者不显著的归入本档，遇到第一个显著不同的就开新档。`scenario_analysis.py`、`thinking_analysis.py`、`telelogs_analysis.py` 三处统一改，重跑后只有 qwen3.8-flash-ocgo 的开思考档 1 → 2 变化，关思考场景题与 TeleLogs 分档不变，`results/` 下数据不变。截断回答维持照常判分、不按「记 0 分」重算（用户选 A，未选重算）。另：TeleLogs kimi-k3 开思考（输出中位 630 token）与其余 4 个关思考模型（670–1850 token，都写了分析）按「开销相近」作对照，报告写成「同 50 题答对最多，对 qwen3.8-max 方向占优（14 / 6，p = 0.12）、未达显著」。 |
 
 ## 六、环境、费用与账号
 
@@ -441,4 +446,6 @@ D1（judge 模型）、D2（judge 验证方式）已于 Oct 13 定下，见第�
 | `data/scenarios/pressure/`、`scripts/run_pressure.py`、`scripts/judge_pressure.py`、`configs/judge/pressure_v1.md`、`analysis/pressure_analysis.py` → `reports/pressure/pressure_main.md` | 追问施压：脚本与探针、对话生成（`results/answers/pressure_off.jsonl`）、judge（`results/judge/pressure_{probes,off}/`）、汇总 |
 | `scripts/thinking_pilot.py`、`scripts/run_objective_thinking.py`、`scripts/generate_answers.py`（`--run thinking_on_<模型>`）、`analysis/thinking_analysis.py` → `reports/thinking/thinking_main.md` | 思考模式对照：客观题分层抽样（`data/processed/thinking_mcq_sample.csv`）逐模型跑开/关思考 → `results/objective_thinking/{answers_on,answers_off_go,off_orig}.csv`；场景题开思考 45 题 × 3 次（`results/answers/thinking_on_<模型>.jsonl`）与两档判分（`results/judge/thinking_on_<模型>/`）；关思考取 `main_off`；开销 `results/thinking/scenario_calls.csv` |
 | `scripts/merge_thinking_runs.py` | 把按模型分开产出的思考对照回答与判分合并成 `results/answers/thinking_on.jsonl` 与 `results/judge/thinking_on/`（`analysis/thinking_analysis.py` 读的是这两个合并路径；按 `answer_id` 去重，可重复运行） |
+| `reports/selection/selection_report.md`、`reports/selection/index.html` | 选型报告（人工撰写的汇总，结论在前）与展示网页（单文件 HTML，已发布为 Artifact https://claude.ai/artifact/YLGFPqgJ7AWmctbPuGXgRT） |
+| `data/DATA_CARD.md` | 数据卡：来源、许可、筛选漏斗、审计结果、污染检测、自写数据的编写与核验、入库范围 |
 | `analysis/telelogs_thinking.py` | TeleLogs kimi-k3 开思考对照（`scripts/run_telelogs.py --thinking` 的产出 `results/telelogs/predictions_thinking.csv` + 主实验 `predictions.csv`）→ `reports/telelogs/kimi_k3_thinking.md` |
