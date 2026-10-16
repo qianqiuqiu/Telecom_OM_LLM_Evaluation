@@ -57,6 +57,10 @@ THINK_MAX_TOKENS = 16384
 REASONING_EFFORT = "low"
 
 _BOXED = re.compile(r"\\boxed\{+\s*([^{}]*?)\s*\}+")
+# Oct 16 事后修正（看过 kimi-k3 开思考结果后）：允许 \boxed 里嵌一层花括号，如 \boxed{\text{C4}}、\boxed{\mathrm{C2}}；
+# 原正则不认嵌套，这类答案被记为抽取失败。已核对主实验全部原始回答（5 个模型 × 200 题，另有两个 qwen 的试跑），改前改后抽取结果完全一致。
+_BOXED_NESTED = re.compile(r"\\boxed\{((?:[^{}]|\{[^{}]*\})*)\}")
+_WRAP = re.compile(r"\\(?:text|mathrm|textbf|mathbf)\{([^{}]*)\}")
 
 
 def sample():
@@ -97,11 +101,12 @@ def gold_of(it):
     return f"C{m.group(1)}"
 
 
-def extract(text):
-    hits = _BOXED.findall(text or "")
+def extract(text, strict=False):
+    """strict=True 是跑之前定的原规则（不认嵌套），只用于开思考对照的敏感性分析。"""
+    hits = (_BOXED if strict else _BOXED_NESTED).findall(text or "")
     if not hits:
         return None
-    m = re.search(r"C?\s*([1-8])\b", hits[-1], re.I)
+    m = re.search(r"C?\s*([1-8])\b", _WRAP.sub(r"\1", hits[-1]), re.I)
     return f"C{m.group(1)}" if m else None
 
 
@@ -349,9 +354,10 @@ def run_thinking(args, items, picked):
         if not r:
             continue
         pred = extract(r["content"])
+        strict = extract(r["content"], strict=True)
         rows.append({"model": model, "idx": i, "gold": g, "pred": pred or "", "correct": int(pred == g),
-                     "extract_fail": int(pred is None), "finish_reason": r["finish_reason"],
-                     "output_tokens": r["usage"]["output"], "reasoning_tokens": r["usage"]["reasoning"],
+                     "extract_fail": int(pred is None), "pred_strict": strict or "", "correct_strict": int(strict == g),
+                     "finish_reason": r["finish_reason"], "output_tokens": r["usage"]["output"], "reasoning_tokens": r["usage"]["reasoning"],
                      "input_tokens": r["usage"]["input"], "cost_usd": round(go_cost(model, r["usage"]), 5),
                      "latency_s": r.get("latency_s"), "served_model": r.get("served_model")})
     print(f"完成 {len(rows)}/{len(sub)}，正确 {sum(x['correct'] for x in rows)}，"
