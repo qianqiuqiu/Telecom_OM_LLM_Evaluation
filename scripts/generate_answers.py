@@ -22,6 +22,7 @@
       --model qwen3.8-flash --model deepseek-v4.1-flash --mode off            # 天花板试跑
   ... --run main_off --group main --mode off                                  # 正式：7 模型关思考
   ... --run thinking_on --group main --group thinking_only --exclude kimi-k3 --mode on --repeats 3
+  ... --budget 6         # 本次调用按原价累计到 6 元就不再发新请求（扣现金的模型用，防欠费）；在途请求照常完成
   ... --dry-run          # 只打印将发送的提示、调用次数与粗估花费，不调用
   ... --export-only      # 不调用，只按已落盘记录重新导出回答文件与汇总
 """
@@ -29,11 +30,12 @@ import argparse
 import hashlib
 import json
 import statistics
+import threading
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
-from model_registry import entries, load_cfg, make_client, params as model_params
+from model_registry import stream_chat, entries, load_cfg, make_client, params as model_params
 from thinking_pilot import PRICE
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -106,28 +108,26 @@ def call(client, model, params, max_tokens, system, prompt):
            "messages": [{"role": "system", "content": system}, {"role": "user", "content": prompt}],
            **{k: v for k, v in params.items() if k in OPENAI_PARAMS}}
     extra = {k: v for k, v in params.items() if k not in OPENAI_PARAMS}
-    out = {"content": "", "reasoning": "", "finish_reason": None, "served_model": None, "usage": None,
-           "ttft_s": None, "ttfa_s": None}
-    t0 = time.monotonic()
-    for chunk in client.chat.completions.create(**req, extra_body=extra):
-        out["served_model"] = chunk.model or out["served_model"]
-        if chunk.usage:
-            out["usage"] = chunk.usage.model_dump()
-        for ch in chunk.choices:
-            c, r = ch.delta.content or "", getattr(ch.delta, "reasoning_content", None) or ""
-            now = round(time.monotonic() - t0, 2)
-            if (c or r) and out["ttft_s"] is None:
-                out["ttft_s"] = now  # 首 token（含推理）
-            if c and out["ttfa_s"] is None:
-                out["ttfa_s"] = now  # 首个答案 token：用户看到回答开始的时间
-            out["content"] += c
-            out["reasoning"] += r
-            out["finish_reason"] = ch.finish_reason or out["finish_reason"]
-    out["latency_s"] = round(time.monotonic() - t0, 2)
-    return out
+    return stream_chat(client, req, extra)
 
 
-def run_one(clients, job, system, system_ver, attempts=3):
+SPENT = {"cny": 0.0}
+SPENT_LOCK = threading.Lock()
+
+
+def run_one(clients, job, system, system_ver, attempts=3, budget=None):
+    model, mode, params, max_tokens, scn, k, key = job
+    if budget is not None:
+        with SPENT_LOCK:
+            if SPENT["cny"] >= budget:
+                return None  # 到预算上限：不发请求、不落盘，下次运行照常补
+    rec = _run_one(clients, job, system, system_ver, attempts)
+    with SPENT_LOCK:
+        SPENT["cny"] += rec["cost_cny"]
+    return rec
+
+
+def _run_one(clients, job, system, system_ver, attempts=3):
     model, mode, params, max_tokens, scn, k, key = job
     client = clients[model]
     rec = {"key": key, "model": model, "mode": mode, "params": params, "max_tokens": max_tokens,
@@ -194,7 +194,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--run", required=True, help="导出文件名：results/answers/<run>.jsonl")
     ap.add_argument("--model", action="append", help="模型 ID，须在 configs/models.yaml 里；可重复")
-    ap.add_argument("--group", action="append", choices=["main", "thinking_only", "regression"], help="models.yaml 分组；可重复")
+    ap.add_argument("--group", action="append", choices=["main", "thinking_only", "regression", "opencode_go"], help="models.yaml 分组；可重复")
     ap.add_argument("--exclude", action="append", default=[])
     ap.add_argument("--mode", required=True, choices=["off", "on"])
     ap.add_argument("--repeats", type=int, default=1)
@@ -204,6 +204,7 @@ def main():
     ap.add_argument("--ids", nargs="+", help="只答这些题")
     ap.add_argument("--limit", type=int, help="只取前 N 题（冒烟用）")
     ap.add_argument("--workers", type=int, default=8)
+    ap.add_argument("--budget", type=float, help="本次调用按原价累计的花费上限（元），到了就不再发新请求")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--export-only", action="store_true")
     args = ap.parse_args()
@@ -242,13 +243,16 @@ def main():
         clients = {m: make_client(cfg, m) for m, _ in models}
         (OUT / "raw").mkdir(parents=True, exist_ok=True)
         handles = {m: log_path(m, args.mode).open("a", encoding="utf-8") for m, _ in models}
-        n_ok = n_err = 0
+        n_ok = n_err = n_skip = 0
         spent = 0.0
         try:
             with ThreadPoolExecutor(args.workers) as ex:
-                futs = [ex.submit(run_one, clients, j, system, args.system) for j in todo]
+                futs = [ex.submit(run_one, clients, j, system, args.system, budget=args.budget) for j in todo]
                 for fu in as_completed(futs):
                     rec = fu.result()
+                    if rec is None:
+                        n_skip += 1
+                        continue
                     handles[rec["model"]].write(json.dumps(rec, ensure_ascii=False) + "\n")
                     handles[rec["model"]].flush()
                     spent += rec["cost_cny"]
@@ -260,7 +264,8 @@ def main():
         finally:
             for h in handles.values():
                 h.close()
-        print(f"本次：成功 {n_ok}，失败 {n_err}，本次调用按原价约 {spent:.3f} 元")
+        print(f"本次：成功 {n_ok}，失败 {n_err}，本次调用按原价约 {spent:.3f} 元"
+              + (f"；到预算上限 {args.budget} 元未发 {n_skip} 个" if n_skip else ""))
         recs_by_model = {m: load_records(log_path(m, args.mode)) for m, _ in models}
         done = {r["key"]: r for rs in recs_by_model.values() for r in rs if r["ok"]}
 

@@ -17,3 +17,4 @@ __pycache__/
 # TS-Guessing / TeleLogs 的逐调用缓存（含原题文本，不重新分发；入库的是逐题指标 csv）
 results/contamination/raw/
 results/telelogs/raw/
+results/objective_thinking/raw/

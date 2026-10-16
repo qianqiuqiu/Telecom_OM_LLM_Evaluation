@@ -21,6 +21,8 @@ Oct 15 按 D5（用户定）做完了不依赖 judge 的三项与追问施压（
 
 Oct 15 晚：精度回归跑完。qwen3.8-27b 三档（BF16 / FP8 / W4A16）在用户另找的一台 RTX 6000D 上同卡同引擎跑（数据盘只有 85GB，W4A16 放内存盘 `/dev/shm`），门禁按跑之前提交的 D3（tag `regression-gate-v1`）与实现细节（`2ac8243`）判定：**FP8、W4A16 四条门禁全部通过**。要和最小可检出差距一起读：客观题合并正确率降 2pt 以内的拦不住，场景题只能拦住约 8–10 分的下降；BF16 同配置跑两遍，场景题均分就差 7.2 分（p = 0.047）、一票否决 7 对 2。场景题门禁对基线选哪一遍敏感：换 BF16 r1 作基线，W4A16 −8.2 分（p = 0.01）会判不通过。结果见第四节第 10 项。下一步：思考对照（花钱前重新确认 ¥144）。
 
+Oct 15 晚（深夜）：思考对照只剩 qwen3.8-flash 在补跑（经 OpenCode Go，模型 ID 记为 `qwen3.8-flash-ocgo`；Mac 上四条命令串在两条线上：客观题 on → off、场景题 on → off）。**关思考一侧用户改为沿用百炼 `main_off`**，不再用 Go 的关思考结果——这样开关两侧的判分规则完全一致（理由与影响见第五节 Oct 15 晚一行）。Go 的关思考仍照跑但**不判分**，留着备用。开思考一侧跑完后按 `main_off` 的流程判分（Haiku + Sonnet 两档）。
+
 ## 二、下一步（建议顺序）
 
 每一步定稿后打 git tag，下游只认 tag。花钱或大批量调用前先列清单确认。
@@ -32,7 +34,7 @@ Oct 15 晚：精度回归跑完。qwen3.8-27b 三档（BF16 / FP8 / W4A16）在�
 5. ~~**judge 提示词迭代与探针元评测**~~（Oct 14 完成）：v1 → v2，v2 通过自身稳定性检验并锁定（tag `judge-prompt-v2`）；留出集 172 个探针两档都合格（`reports/judge/probes_v2_holdout.md`），按事先定的规则 Haiku 做主 judge、Sonnet 作第二 judge。删要点检出看「判非 covered」（主指标），「判 missed」只作参考。
 6. ~~**生成与判分**~~（Oct 14 完成）：7 模型关思考 × 45 题（`b07b877`，`results/answers/main_off.jsonl`，315/315、实际 ¥16.81）；Haiku、Sonnet 全量判分（`results/judge/main_off/`，报告 `reports/judge/main_off_agreement.md`）；60 条分歧仲裁后按揭盲前定的规则得最终主分 `results/judge/main_off/final_scores.csv`；场景题横评 `reports/scenarios/main_off_main.md`；跨厂商 judge（`038dc9f`，用户在 Mac 上跑，按谷时价约 ¥2.3）对照与自家偏好检验 `reports/judge/main_off_cross_vendor.md`。详见第四节第 5 项。
    - ~~长度偏差必查项~~：已按规则检验，未检出（ρ = −0.003，p = 0.57）。
-   - **思考对照**（约 ¥144；Oct 12 按旧假设批的是 ¥130，尚未花）：用户 Oct 14 定为其余全部做完后再做，花钱前重新确认；做时沿用 main_off 的判分流程（两档判分 + 同样的一票否决规则），D4 与开思考采样参数先定。
+   - **思考对照**（约 ¥144；Oct 12 按旧假设批的是 ¥130，尚未花）：用户 Oct 14 定为其余全部做完后再做，花钱前重新确认；做时沿用 main_off 的判分流程（两档判分 + 同样的一票否决规则），D4 与开思考采样参数先定。qwen3.8-flash 的**关思考一侧 Oct 15 晚改为沿用百炼 `main_off`**，不再用 Go 的关思考结果（见第五节 Oct 15 晚一行）。
    - 分工不变：回答生成在 Mac 上跑（百炼 key 只在 `.env`），`results/answers/<run>.jsonl` 提交入库后由云端判分。
 7. **不依赖 judge 的并行项**：~~干扰项质量抽查~~、~~污染检测 TS-Guessing~~、~~TeleLogs 子集~~（Oct 15 完成，见第四节第 6–8 项）。待办：
    - ~~TeleLogs 补 qwen3.7-plus、qwen3.8-flash~~：Oct 15 用户定为不补跑，报告写明只覆盖 5 个模型（两个打折模型因计费原因未跑）。
@@ -71,13 +73,24 @@ D1（judge 模型）、D2（judge 验证方式）已于 Oct 13 定下，见第�
 - BF16 用百炼 API 不建议：①本地量化档与 API 的差混了精度、推理引擎、服务端默认设置，百炼服务端实际精度也未知，测出来不是量化损失；②门禁第 1、3 条的噪声底（BF16 自己跑两遍）会变成 API 抖动；③违背预注册（`regression-gate-v1` 写明基线是本地 BF16）。百炼 qwen3.8-27b 保持原定位：横评锚点与部署一致性对照，只作描述。
 - 建议顺序：①AutoDL「克隆实例」把实例连同数据盘迁到有空闲 6000D / Pro6000 的主机（不用重下权重），或等原主机有卡，方案不变；②只能用小卡时至少 48GB：能跑 FP8 与 W4A16，跑不了 BF16，门禁改为「W4A16 对本地 FP8」，FP8 不再过门禁——属偏离预注册，须先在第五节记录原因、打新 tag 再开跑，报告写明没有 BF16 基线；③不用 32GB。
 
-**D4. 思考对照的客观题抽样**：150 题 × 1 次，粗算 80% 功效下最小可检出差距约 7–9pt，而 440 题是全员答对的天花板题，大概率得到「不显著」。可选：接受并在报告写明可检出差距；或从 284 道有区分度的题里抽，但不能按「关思考时答错」选题（会有均值回归，重跑本身就会「变好」），要按跨模型区分度选，并以噪声底那一遍（rep）作对照。另外 `configs/models.yaml` 里开思考的采样参数还没填。
+~~**D4. 思考对照的客观题抽样**~~：Oct 15 定（用户让直接开跑，按建议取分层加权方案），见第五节「思考对照预注册」。
 
 ~~**D5. 提前降级**~~：Oct 15 用户按建议定下（见第五节）。
 
 ~~**D7. 客观题标准答案的复核范围**~~：Oct 15 用户定为不做全量复核，在报告里写明局限（非天花板题约三分之一标准答案有争议，客观题横评的区分度部分来自答案噪声）。
 
-**D6. 版本梯度的口径**：见第四节第 2 项「版本梯度」。补置换检验，或把措辞改为「未见显著版本梯度（探索性）」。修改 `analysis/objective_analysis.py` 的说明文字后需在本地 Mac 上重新生成报告（`results/` 只在本地）。
+~~**D6. 版本梯度的口径**~~：Oct 15 用户定为视作噪声、不补检验，报告写「未见版本梯度（探索性）」，已改 `analysis/objective_analysis.py` 说明并重新生成报告。
+
+**D9. 场景题检验的模型纳入口径**（Oct 15 晚用户选 A「与预注册一致」，已实现）：
+
+原判据 `models = [m for m in on if all(len(on[m][q]) == 3 for q in ids)]` 要求每题齐 3 次，把 glm-5.2（129/135）、qwen3.8-max（123/135）、qwen3.8-flash-ocgo（129/135）全部排除，主表只剩 deepseek 两个模型，与预注册「5 个模型 Holm」及偏离 ②「每题按已有次数取均值」矛盾。
+
+已按 **A** 改为 `all(len(on[m][q]) >= 1 for q in ids)`，按已有次数取均值；连带改三处口径使其自洽：题内标准差只计 ≥ 2 次的题、一票否决的「开」改为按题均摊（原固定除以 3）、截断列分母改为该模型实际次数。效果：**glm-5.2 纳入**，主表 3 个模型。
+
+**残留（待用户定）**：**qwen3.8-max 仍进不了检验**。它差的 12 次不是「某道题少跑几次」，而是 **4 道整题完全没有记录**——SC-D23、SC-D24、SC-D25、SC-D26 各 0 次（生成在超支时停住，正好停在这 4 道之前），其余 41 题都是 3 次。整题没有任何观测，就既没有「已有次数」可均值，也构造不出该题的配对差（开 − 关），预注册那句「每题按已有次数取均值」套不上它。
+
+- 选 A′（要 5 个模型都在）：改成**各模型只在共有题目集上比较**——intersection 为 41 题（掉这 4 道），5 个模型（含判分后的 ocgo）都能进检验。代价是主估计量的题目范围由 45 题变 41 题，属对预注册的偏离，须记录。
+- 选 B′（维持现状）：qwen3.8-max 单列不作检验，报告写明它缺 4 道整题；预注册的「5 个模型 Holm」实际落到 4 个模型（ocgo 判分后）。
 
 ## 四、已完成部分的关键结果（都可脚本复算）
 
@@ -102,7 +115,7 @@ D1（judge 模型）、D2（judge 验证方式）已于 Oct 13 定下，见第�
 - 噪声底：orig 与 rep 逐题同答案率 94.5–99.5%（glm-5.2 最低，rep 差 1.37pt）。
 - 打乱掉分（free 667 题）：+0.45 ~ +1.60pt。
 - 区分度：35 次判定全对 440/731 题、全错 7 题，区分度偏低本身是可报告的负结果。
-- **版本梯度（口径有问题，待处理，见 D6）**：Rel-18 打乱掉分 +2.17%，Rel-17 +0.39%（各约 173 / 147 道 free 题）。报告与旧进展文档写的是「越新的 Release 越可能进预训练语料、方向符合预期」，但 Spec 事先写的是「看信号是否随版本变新而**减弱**」，方向相反，属于看完数据改假设。差值没做显著性检验，粗估其标准误约 2pt，差值在噪声范围内；两组金标位置分布接近（前两位占比 0.49 vs 0.50），位置偏置解释不了，也撑不起显著性。补检验前只作探索性观察，不当发现写进报告。
+- **版本梯度（Oct 15 定为噪声，D6）**：Rel-18 打乱掉分 +2.17%，Rel-17 +0.39%（各约 173 / 147 道 free 题），未做显著性检验，粗估标准误约 2pt。Spec 事先的假设方向（随版本变新而减弱）与旧报告写的相反；按用户决定视为噪声，报告写「未见版本梯度（探索性）」，不作为污染证据。
 
 ### 3. 场景题初稿（第 3 阶段，Oct 13）
 
@@ -321,6 +334,12 @@ D1（judge 模型）、D2（judge 验证方式）已于 Oct 13 定下，见第�
 | Oct 15 晚 | `serve.sh` 改一处（三档相同，任何一档开跑之前改）：新机器上 FlashInfer 对 SM120 的 JIT 编译失败（系统 CUDA 12.8 不够；换环境里的 CUDA 13 又与其自带 cccl 头文件冲突），注意力改 `--attention-backend triton`、采样改 `--sampling-backend pytorch`。只换算子实现，不改精度与解码设置；温度 0 是贪心，采样后端不影响结果。 |
 | Oct 15 晚 | **门禁实现细节**（`analysis/regression_gate.py`，FP8 / W4A16 开跑之前提交，看完数据不改；D3 原文没写明的地方按下面执行）：①门禁 1「对→错显著多于噪声底」：两个计数都以 BF16 orig 答对的题为底，精确条件二项检验（H0 下本档对→错数 ~ Binomial(两数之和, 0.5)，单侧）；另报配对口径（同一批题上「BF16 rep 错」与「本档 orig 错」的单侧 McNemar）作敏感性，不进门禁。McNemar 用双侧 exact。②门禁 2、4 的置换检验都用双侧（B = 10000，种子由 20261015 与检验名派生），判不通过还要求方向为下降。③场景题主分：要点与扣分项取 Haiku，一票否决须同一高危项两档都触发（同 `main_off`）；判分在 Mac 上 `claude -p` 跑，三档同一环境，绝对分数不与云端判的 `main_off` 直接比。④追问施压安全突破 = 同一轮同一高危项两档都触发（同 `pressure_main`）；第 1 轮用该档自己的场景题 r0 回答。⑤badcase 归因：把 FP8、W4A16 两档 orig 上「BF16 对 → 本档错」的题合成一个池（`results/regression/objective_flips_orig.csv`），按 `random.Random(20261015).sample` 抽 20 道（不足 20 全取），逐条分类，类别按数据归纳。 |
 | Oct 15 晚 | 精度回归结果：按 D3 与实现细节，FP8、W4A16 四条门禁全部通过（第四节第 10 项）。W4A16 的 orig 对→错显著多于噪声底，但正确率差与 McNemar 不成立，按「三项同时成立才不通过」判通过，报告写明「答案有变动、无净损失」。BF16 场景题两遍差 7.2 分（p = 0.047），按规则只作噪声参照、不改门禁；独立复算 0 差异，代码审查指出判定对基线敏感（换 BF16 r1 时 W4A16 门禁 4 会不通过），报告加了换基线敏感性、各门禁检出下限（门禁 1 实际下限是合并降 2pt）与「通过 ≠ 无损」的说明，判定不改。下次做场景题类门禁应预注册多遍均值作基线。badcase 池子 15 道不足 20，按规则全取。Spec 升为 v2.8（精度回归按实际方案改写）。 |
+| Oct 15 晚 | **思考对照预注册**（用户定：去掉 glm-5.3，思考太长、不具备运维助手价值；kimi-k3 原已不参加；qwen3.8-flash 扣现金、最后跑；跑之前提交）。① 模型：qwen3.8-max-0902、deepseek-v4-pro-0813、glm-5.2、deepseek-v4.1-flash、qwen3.8-flash（5 个；qwen3.7-plus 与 qwen3.8-flash 都只能扣现金，现金只有 ¥8，用户定 qwen3.7-plus 不跑，报告写明），开思考（`enable_thinking: true`），采样参数取厂商推荐值：Qwen 温度 1.0 / top_p 0.95 / top_k 20，DeepSeek 1.0 / 1.0，GLM 1.0 / 0.95（来源分别为 Unsloth Qwen3.8 指南、vLLM DeepSeek-V4 recipe、Together GLM-5.3 文档，都不是官方模型卡，报告写明）；max_tokens 16384（同思考试跑）；judge 只看最终答案。② 客观题（D4）：731 题分「天花板（横评 35 次全对，440 题）/ 其余（291 题）」两层，天花板层抽 50、其余层抽 100，层内按维度按比例分配，种子 20261015（`data/processed/thinking_mcq_sample.csv`）；提示与横评 orig 完全相同，每题 1 次，抽不出答案记错；关思考一侧用横评 orig。主估计量：731 题上的正确率变化 = Σ 层权重（440/731、291/731）× 层内「开 − 关」均值；检验：分层的配对符号翻转置换检验（双侧，B = 10000），5 个模型 Holm；分层 bootstrap 95% CI；两层分别另报。③ 场景题：45 题 × 3 次（温度 1.0），每题开思考得分 = 3 次均值，关思考 = `main_off` 最终主分（1 次）；最终分规则同 `main_off`（要点与扣分取 Haiku，一票否决须 Haiku、Sonnet 同一高危项都触发）；检验：题级配对符号翻转置换检验（双侧，B = 10000），5 个模型 Holm；按题 bootstrap 95% CI；开思考形态内的分档沿用 `scenario_analysis.py` 的规则；开、关两种形态的排序比较用 Kendall τ。另报：3 次之间的题内标准差、按题型（方案咨询 / 故障诊断 / KPI 解读）与诊断题根因 / 处置两段的变化、一票否决数（开思考按 3 次平均）、每题平均输出 / 思考 token、按原价的花费、首答案时延与总时延。④ 失败与截断：答案为空落盘为失败、重跑补齐；截断照常判分并计数。④' 冒烟：开跑前 4 个代金券模型各答了前 4 道抽样题（15 次成功，结果只看了是否能抽出答案），这些记录缓存键与正式运行相同、直接复用。qwen3.8-flash 最后跑，客观题与场景题都加 `--budget` 硬上限（合计不超过 ¥7）。⑤ 没做的：推理过程里的高危操作检查（Spec 写了单独记录）本轮不做，报告写明；追问施压的开思考版（余力扩展）不做。 |
+| Oct 15 晚 | **思考对照的偏离与补救**（跑 qwen3.8-flash 之前提交）。① 超支：开思考实测输出远超估算（场景题每次思考约 6,400 token，原按 2,000；qwen3.8-max 场景题每次输出约 1.2 万 token），且只给扣现金的模型设了花费上限、4 个走代金券的模型并行跑没设总上限，按原价花了约 ¥170，代金券用完并欠费 ¥8，发现后停掉。教训：并行批量调用一律设总花费上限，先跑 1 个模型测实际单价再放量。② qwen3.8-max 场景题停在 123/135，不补：每题按已有次数取均值，缺的次数在报告列出。③ 思考耗尽 16384 token、没给出答案的调用不重跑（glm-5.2 客观题 17、场景题 6，deepseek-v4-pro 客观题 6，deepseek-v4.1-flash 客观题 1）：按截断处理，客观题记错、场景题记 0 分，各模型次数单列。理由：温度 1.0 下只对失败项重抽会偏向成功样本；思考不完给不出答案是上线形态的真实结果。这与预注册 ④「答案为空重跑补齐」不同，属偏离。④ qwen3.8-flash 改经 OpenCode Go（用户定，接受部署差异与条款风险）：开、关两种形态都在 Go 上跑（关思考 `thinking: {type: disabled}`、温度 0，客观题 max_tokens 256、场景题 4096，同横评；开思考不传 thinking，服务端默认开、无预算上限，采样参数同百炼的 Qwen），模型 ID 记为 `qwen3.8-flash-ocgo`；它的开、关对比只在 Go 内部做，Go 关思考与百炼 `main_off` 的差作为部署一致性描述；它的绝对分数不与另外 4 个模型直接比。⑤ qwen3.7-plus 不跑（用户定）。 |
+| Oct 15 晚 | **qwen3.8-flash（ocgo）的关思考一侧改为沿用百炼 `main_off`**（用户定，判分开始之前；这是对 Oct 15 晚预注册 ④「开、关两种形态都在 Go 上跑」的修改）。① 理由：Go 与百炼的部署差异不在研究范围内，用户不接受为量化/控制它再付判分成本。② 为什么沿用百炼而不是「off 侧只跑 Haiku」：沿用百炼时开关两侧的判分规则完全一致（要点与扣分取 Haiku、一票否决须 Haiku 与 Sonnet 同一高危项都触发）；而「off 只跑 Haiku」会让「开 − 关」被**系统性高估 6–9 分**——实测只用 Haiku 判分比官方两档规则低 5.7–9.4 分（deepseek-v4-pro −9.0、deepseek-v4.1-flash −6.8、glm-5.2 −5.7、kimi-k3 −2.4、qwen3.7-plus −8.2、qwen3.8-flash −9.4、qwen3.8-max −8.8；否决数 3→9、6→12 等），差别**全部来自一票否决**（Haiku 偏严，单独否决数约为两档交集的两倍），可用 `results/judge/main_off/final_scores.csv` 的 `total` 与 `main_total` 两列复算；该偏差量级与待测效应同阶，故不采用。③ 后果：该模型的「开 − 关」差值**含 Go 与百炼的部署差异**，属已知偏离，报告必须写明；它的绝对分数仍不与另外 4 个模型直接比。④ 客观题同理：off 一侧沿用横评 orig；Go 的关思考客观题仍照跑（精确匹配判分、零成本）但**不用于正式分析**（用户定：不出「Go vs 百炼部署差」这一项）。⑤ Go 的场景题关思考 45 份照跑、**不判分**，留着以后想量化场景题部署差时补判（45 × 2 档 ≈ $1.6）。⑥ ~~**待办（代码，跑分析之前必须做）**~~ **已完成（Oct 15 晚，见下方「别名映射与文件合并」一行）**：`analysis/thinking_analysis.py` 以 `results/judge/main_off/final_scores.csv` 的 `model.split(":")[0]` 为 off 基线的键，得到 `qwen3.8-flash`；而开思考一侧的模型 ID 是 `qwen3.8-flash-ocgo`，场景题一节（`X_off`）与客观题一节（`off_orig.csv`）都会 KeyError，需加模型别名映射（`qwen3.8-flash-ocgo` → `qwen3.8-flash`）。另外该脚本读的是**合并后**的单文件 `results/answers/thinking_on.jsonl` 与单目录 `results/judge/thinking_on/`（第 39–40 行；第 112 行的读取没有 exists 保护），而实际运行是**按模型分开**产出 `thinking_on_<模型>.jsonl` / `thinking_on_<模型>/`，所以还需要一步把 5 个模型的文件合并。⑦ 单 judge 口径的稳健性不用另跑判分：`thinking_analysis.py` 已有「主口径 / Haiku 单独 / Sonnet 单独」三列的稳健性表，开关两侧同口径。 |
+| Oct 15 晚 | **qwen3.8-flash（ocgo）场景题截断照报、不改口径**（用户定，分析之前）。① 事实：该模型场景题开思考 94 次里 **21 次撞 16384 上限**（`finish_reason = length`，22.3%，其中 5 次内容为空），是各模型里唯一的异常点——deepseek-v4.1-flash 0/135、qwen3.8-max 0/123、deepseek-v4-pro 1/135（0.7%）、glm-5.2 8/135（5.9%）。客观题侧 14/150（9.3%），与 glm-5.2（19/150，12.7%）相当，不算异常。② 口径：照预注册偏离 ③ 处理（思考耗尽、没给出答案的按截断记错 / 记 0 分），**不剔除、不重跑、不提高上限**。③ 报告必须写明：该模型开思考侧被这批截断压低，它的「开 − 关」偏低甚至为负**不能读作「思考无用」**；它的关思考侧用百炼 `main_off`，一次截断都没有，两侧不对称。④ 已有支撑：`analysis/thinking_analysis.py` 的场景题表（第 159、168 行）与客观题表（第 282、288 行）**都已有「截断」列**，无需改代码。⑤ 原因未做归因：可能是模型在这批题上思考本就更长，也可能是 Go 侧服务端默认思考预算与百炼不同，本轮只报现象。 |
+| Oct 15 晚 | **代码就绪：别名映射 + 文件合并**（跑分析之前）。① `analysis/thinking_analysis.py` 加 `OFF_ALIAS = {"qwen3.8-flash-ocgo": "qwen3.8-flash"}` 与 `with_aliases()`，在场景题（`final_scores.csv`）、场景题分段（Haiku `scores.csv`）、客观题（`off_orig.csv`）三处关思考基线字典上补别名键；另把客观题开销表取关思考行的写法从 `r["model"] == m` 改为按别名匹配（否则 ocgo 取不到百炼那一行，该表显示 nan）。② 新增 `scripts/merge_thinking_runs.py`：把按模型分开跑出的 `results/answers/thinking_on_<模型>.jsonl` 与 `results/judge/thinking_on_<模型>/` 合并成分析脚本要读的 `results/answers/thinking_on.jsonl`（651 行）与 `results/judge/thinking_on/`（两个 judge 各 522 行，另合并同名 scores.csv）；按 `answer_id` 去重、可重复运行。③ 报告头部的模型说明改写：qwen3.8-flash 开思考经 Go、关思考沿用百炼 `main_off`，绝对分不与前四个直接比。④ 分析跑通（退出码 0），报告 `reports/thinking/thinking_main.md`；**客观题表 5 个模型都在**（ocgo +4.4pt，95% CI [+0.8, +8.4]，Holm p = 0.22 不显著，截断 14/150）。⑤ **暴露新问题，记入第三节 D9**：场景题的判据要求「每题齐 3 次」，把 glm-5.2（129/135）、qwen3.8-max（123/135）、ocgo（129/135）全部排除，主表只剩 deepseek 两个模型，与预注册「5 个模型 Holm」及偏离 ②「每题按已有次数取均值」矛盾，待用户拍板。 |
+| Oct 15 晚 | **D9 定：场景题纳入判据放宽（用户选 A「与预注册一致」），已实现并重跑**。① 改动：`all(len(on[m][q]) == 3)` → `all(len(on[m][q]) >= 1)`，按已有次数取均值；连带三处口径使其自洽——题内标准差只计 ≥ 2 次的题、一票否决的「开」改为按题均摊（原固定除以 3）、截断列分母改为该模型实际次数；报告小标题与表头同步改写。② 效果：**glm-5.2（129/135）纳入**，场景题主表由 2 个模型变 3 个——deepseek-v4.1-flash +11.4（Holm p = 0.0003）、deepseek-v4-pro +8.6（0.0038）、glm-5.2 +4.0（0.229，不显著）；MDE 约 9–11 分。③ **qwen3.8-max 仍被排除**（与 A 的预期不符，原因已查明）：它差的 12 次是 SC-D23 / D24 / D25 / D26 **四道整题没有任何记录**（生成在超支处停住，正好停在这 4 道之前），其余 41 题各 3 次；整题没有观测，既取不了「已有次数的均值」，也构造不出该题的配对差。是否改为「各模型只在共有题目集上比较」（41 题）见第三节 D9 的残留项，待用户定。④ 分析重跑通过（退出码 0），报告 `reports/thinking/thinking_main.md` 已更新。 |
 | Oct 16 | 观察到 kimi-k3 在 TeleLogs 关思考下输出恒为 11 token、78%（156/200）押 C4、正确率垫底（第四节第 8 项）；复核横评与场景题后确认「不解释」本身不构成解释（横评里七个模型都只输出 3–10 token，kimi-k3 仍第一）。用户提出这更像**过度遵循输出指令**而非能力不足，并用 50 题子样本试水。**用户定**：只做**开思考单臂**（kimi-k3 × 50 题，8 类分层每类 6–7 题，种子 20261016，关思考一侧复用已有结果逐题配对）；跑之前查余额并加花费上限。**否决「强制极简」对照**——本任务是多跳长链算数题，「强制不许算」不是有意义的对照，其结果几乎注定是全体塌到随机水平附近，测不出待解释的量。规则细节（提示词版本、`max_tokens` 16384 属偏离、判定标准、n = 50 的 MDE 17.7–30.7pt 与「不作显著性结论」）见第二节第 9 项，写完提交再跑。 |
 
 ## 六、环境、费用与账号
@@ -331,7 +350,7 @@ D1（judge 模型）、D2（judge 验证方式）已于 Oct 13 定下，见第�
   - Mac：需要百炼 key 的（回答生成、`build_judge_probes.py segment`、三票核验、`bailian:` judge）和依赖本地 `results/` 历史数据的（横评分析层、费用估算）。
 - `results/`：Oct 14 起 `.gitignore` 不再忽略 `results/`（用户改动，`a9bf44e`），已入库的有 `answers/`（`ceiling_pilot.jsonl`、`main_off.jsonl`）、`judge/`、`audit/`（审计证据）。其余运行产物（横评 `evalscope/` 的 25,585 次调用、`scenarios/` 核验原始响应等）仍只在 Mac，未提交；它们不再被忽略，会出现在 `git status` 里，提交时要手动排除，不要 `git add -A` / `git add results`。例外：`answers/raw/`（回答生成的逐调用缓存）已于 Oct 14 加进 `.gitignore`，不再出现在 `git status` 里。`data/raw/`（TeleQnA、TeleLogs）、`.env`、`.venv` 仍被忽略。云端会话里没有这些本地文件，跑不了依赖它们的脚本（横评分析层、费用估算等）。
 - 原文与证据文字只放 `results/`、`data/raw/`；`data/processed/` 只放 ID 与标签。
-- AutoDL（精度回归，Oct 15 晚实际用的）：`ssh -p 53384 root@connect.weste.seetacloud.com`（本机免密），RTX 6000D 84GB、内存 754GB、数据盘 85GB：BF16、FP8 在 `/root/autodl-tmp/models/`，W4A16 在 `/dev/shm/qwen3.8-27b-w4a16`（`models/` 下软链过去；**关机或重启后内存盘清空，要重跑 W4A16 得先按 `download_w4a16_shm.sh` 重下并校验**）；SGLang 日志 `/root/autodl-tmp/logs/serve_<档>.log`。原定实例 `ssh -p 11087 root@connect.weste.seetacloud.com`（本机免密，主机若迁移/克隆端口会变），数据盘 `/root/autodl-tmp`（约 200GB）：`models/qwen3.8-27b-{bf16,fp8,w4a16}`、`logs/`、下载脚本与 `verify_weights.py`。conda 环境 `qwen38`（SGLang 0.5.17）。无卡模式只能下载 / 校验（内存 2GB）。学术加速 `source /etc/network_turbo`。
+- AutoDL（精度回归，Oct 15 晚实际用的，跑完后用户已关机，内存盘里的 W4A16 已清空）：`ssh -p 53384 root@connect.weste.seetacloud.com`（本机免密），RTX 6000D 84GB、内存 754GB、数据盘 85GB：BF16、FP8 在 `/root/autodl-tmp/models/`，W4A16 在 `/dev/shm/qwen3.8-27b-w4a16`（`models/` 下软链过去；**关机或重启后内存盘清空，要重跑 W4A16 得先按 `download_w4a16_shm.sh` 重下并校验**）；SGLang 日志 `/root/autodl-tmp/logs/serve_<档>.log`。原定实例 `ssh -p 11087 root@connect.weste.seetacloud.com`（本机免密，主机若迁移/克隆端口会变），数据盘 `/root/autodl-tmp`（约 200GB）：`models/qwen3.8-27b-{bf16,fp8,w4a16}`、`logs/`、下载脚本与 `verify_weights.py`。conda 环境 `qwen38`（SGLang 0.5.17）。无卡模式只能下载 / 校验（内存 2GB）。学术加速 `source /etc/network_turbo`。
 - 所有被测模型经阿里云百炼 OpenAI 兼容接口（`.env` 的 `LLM_BASE_URL`、`LLM_API_KEY`）。HF token 在用户 `~/.zshrc`。
 - 余额（Oct 13 查）：学生代金券约 ¥259.7，现金 ¥9.14。主实验实际消耗远低于估算（免费额度抵了大半，代金券只扣 ¥1 多）。Oct 14 场景题生成按原价折算 ¥16.81，**实际扣了多少未查**（免费额度与代金券的抵扣顺序见下条），余额待下次登录百炼时核对；这次 225 次调用 0 失败、无 403，说明计费渠道没出问题。
 - 计费规则：免费额度优先于代金券；**代金券不能抵扣打折模型和厂商直供路由**，qwen3.7-plus 限时 8 折只扣现金（Oct 12 曾因现金欠费 ¥0.03 导致全部模型 403；再遇全模型 403 先查欠费）。不用带厂商前缀的路由（`kimi/`、`ZHIPU/` 等）。
@@ -393,3 +412,5 @@ D1（judge 模型）、D2（judge 验证方式）已于 Oct 13 定下，见第�
 | `scripts/run_telelogs.py`、`analysis/telelogs_analysis.py` → `reports/telelogs/telelogs_main.md` | TeleLogs 子集（抽样 `data/processed/telelogs_sample.csv`，逐题 `results/telelogs/predictions.csv`） |
 | `scripts/regression/serve.sh`、`verify_weights.py`、`analysis/regression_gate.py` → `reports/regression/regression_gate.md` | 精度回归：SGLang 起服务、权重校验、门禁判定；回答 `results/answers/regression*.jsonl`、`pressure_regression.jsonl`，判定 `results/judge/{regression,pressure_regression}/`，逐题对错、场景题主分、badcase 标注与部署指标 `results/regression/` |
 | `data/scenarios/pressure/`、`scripts/run_pressure.py`、`scripts/judge_pressure.py`、`configs/judge/pressure_v1.md`、`analysis/pressure_analysis.py` → `reports/pressure/pressure_main.md` | 追问施压：脚本与探针、对话生成（`results/answers/pressure_off.jsonl`）、judge（`results/judge/pressure_{probes,off}/`）、汇总 |
+| `scripts/thinking_pilot.py`、`scripts/run_objective_thinking.py`、`scripts/generate_answers.py`（`--run thinking_on_<模型>`）、`analysis/thinking_analysis.py` → `reports/thinking/thinking_main.md` | 思考模式对照：客观题分层抽样（`data/processed/thinking_mcq_sample.csv`）逐模型跑开/关思考 → `results/objective_thinking/{answers_on,answers_off_go,off_orig}.csv`；场景题开思考 45 题 × 3 次（`results/answers/thinking_on_<模型>.jsonl`）与两档判分（`results/judge/thinking_on_<模型>/`）；关思考取 `main_off`；开销 `results/thinking/scenario_calls.csv` |
+| `scripts/merge_thinking_runs.py` | 把按模型分开产出的思考对照回答与判分合并成 `results/answers/thinking_on.jsonl` 与 `results/judge/thinking_on/`（`analysis/thinking_analysis.py` 读的是这两个合并路径；按 `answer_id` 去重，可重复运行） |
