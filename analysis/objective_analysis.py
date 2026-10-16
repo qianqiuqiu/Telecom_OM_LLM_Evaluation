@@ -285,7 +285,10 @@ def main() -> None:
     L.append(f"- 全错题维度分布：{dw}")
 
     L.append("\n## 版本梯度（按 3GPP Release 标签分组）\n")
-    L.append("全模型 pooled 正确率与 free 题打乱掉分。污染信号若存在，越新的 Release（越可能进预训练语料）掉分应越大。\n")
+    L.append("全模型 pooled 正确率与 free 题打乱掉分，只作探索性描述。Spec 事先的假设是污染信号随版本变新而**减弱**；"
+             "各组 free 题只有一两百道，组间差值（Rel-18 与 Rel-17 约差 1.8pt）未做显著性检验，粗估标准误约 2pt，"
+             "按 Oct 15 的决定视为噪声：**未见版本梯度**，不作为污染证据（新模型因选项顺序打乱就答不出原题的可能性本身很小，"
+             "这一检验预期灵敏度低）。\n")
     L.append("| 版本 | n | 其中 free | pooled 正确率 | 平均打乱掉分 |")
     L.append("| --- | --- | --- | --- | --- |")
     for g in rel_groups:

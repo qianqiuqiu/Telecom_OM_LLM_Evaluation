@@ -2,20 +2,22 @@
 # 所有模型经百炼 OpenAI 兼容接口调用；有带日期快照的一律用快照。
 
 main:                 # 横评主实验：关闭思考
-  - {id: qwen3.8-max-0902,     vendor: qwen,     tier: large}
-  - {id: qwen3.7-plus,         vendor: qwen,     tier: medium}
-  - {id: qwen3.8-flash,        vendor: qwen,     tier: small}
-  - {id: deepseek-v4-pro-0813, vendor: deepseek, tier: large}
-  - {id: deepseek-v4.1-flash,  vendor: deepseek, tier: small}
-  - {id: glm-5.2,              vendor: zhipu}
+  - {id: qwen3.8-max-0902,     vendor: qwen,     tier: large,  params: {"on": {temperature: 1.0, top_p: 0.95, top_k: 20}}}
+  - {id: qwen3.7-plus,         vendor: qwen,     tier: medium, params: {"on": {temperature: 1.0, top_p: 0.95, top_k: 20}}}
+  - {id: qwen3.8-flash,        vendor: qwen,     tier: small,  params: {"on": {temperature: 1.0, top_p: 0.95, top_k: 20}}}
+  - {id: deepseek-v4-pro-0813, vendor: deepseek, tier: large,  params: {"on": {temperature: 1.0, top_p: 1.0}}}
+  - {id: deepseek-v4.1-flash,  vendor: deepseek, tier: small,  params: {"on": {temperature: 1.0, top_p: 1.0}}}
+  - {id: glm-5.2,              vendor: zhipu,                  params: {"on": {temperature: 1.0, top_p: 0.95}}}
   - {id: kimi-k3,              vendor: moonshot}
 
 thinking_only:        # 只能开启思考，仅参与思考模式对照实验的上线形态排名
-  - {id: glm-5.3,              vendor: zhipu}
+  - {id: glm-5.3,              vendor: zhipu,                  params: {"on": {temperature: 1.0, top_p: 0.95}}}
 
 modes:                # 键名必须加引号：YAML 1.1 会把裸写的 on/off 解析成布尔值
   "off": {enable_thinking: false, temperature: 0}
-  "on":  {enable_thinking: true}   # 采样参数用各厂商推荐值，正式实验前补齐
+  "on":  {enable_thinking: true}   # 采样参数在各模型条目的 params.on 里（Oct 15 定，见 STATUS 决定日志）：
+                                   # Qwen 1.0/0.95/top_k 20（Unsloth Qwen3.8 指南）、DeepSeek 1.0/1.0（vLLM DeepSeek-V4 recipe）、
+                                   # GLM 1.0/0.95（Together GLM-5.3 文档）；均非官方模型卡，报告写明
 
 # 精度回归（Spec「精度回归与发版门禁」，STATUS Oct 15）：同一模型 qwen3.8-27b 的三档精度，
 # AutoDL RTX 6000D 单卡上用 SGLang 自部署，一次只起一档，经 SSH 隧道（本机 30000 端口）走 OpenAI 兼容接口。
