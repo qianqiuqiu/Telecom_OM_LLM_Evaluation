@@ -148,19 +148,25 @@ def scenario_section(scns, typ):
     off = {(r["model"].split(":")[0], r["scenario_id"]): r for r in off_fin}
     off_pts = {(r["source"].split(":")[0], r["scenario_id"]): r for r in read_csv(OFF_HAIKU) if r["repeat"] == "0"}
     off, off_pts = with_aliases(off), with_aliases(off_pts)
-    ids = sorted(scns)
+    # 题目范围（STATUS D9 残留选 A′，Oct 16 用户定）：各模型只在共有题目集上比较——只保留每个模型都至少有
+    # 1 次开思考判分的题，题内按已有次数取均值。qwen3.8-max 有 4 道整题（SC-D23–D26）没有任何记录，
+    # 这 4 题对所有模型都剔除，5 个模型都进检验。原 D9 选 A 时的判据是「整题没答的模型不进检验」。
+    all_ids = sorted(scns)
+    ids = [q for q in all_ids if all(len(on[m][q]) >= 1 for m in list(on))]
+    dropped = [q for q in all_ids if q not in ids]
     n = len(ids)
-    # 纳入判据（STATUS D9 选 A，与预注册「5 个模型 Holm」和偏离 ②「每题按已有次数取均值」一致）：
-    # 每题至少有 1 次开思考即可进检验，按已有次数取均值；只有整题完全没答的模型才落到「未齐」。
-    models = [m for m in on if all(len(on[m][q]) >= 1 for q in ids)]
-    partial = {m: sum(len(on[m][q]) for q in ids) for m in on if m not in models}
+    models = list(on)
     reps = {m: sum(len(on[m][q]) for q in ids) for m in models}
-    L = ["## 1. 场景题（45 题；开思考每题按已有次数取均值，关思考 = main_off 1 次）", ""]
-    if partial or missing:
-        L += ["未齐的模型（有整题没答，不进检验）：" + "，".join(f"{m} {k}/{3 * n}" for m, k in partial.items()) +
-              ("；判分缺失：" + "，".join(f"{m} {k}" for m, k in missing.items()) if missing else ""), ""]
+    L = [f"## 1. 场景题（{n} 题；开思考每题按已有次数取均值，关思考 = main_off 1 次）", ""]
+    if dropped:
+        L += [f"题目范围：各模型只在共有题目集上比较（STATUS D9 残留选 A′）。剔除 {len(dropped)} 题（"
+              + "、".join(dropped) + "），原因是有模型在这些题上没有任何开思考记录（"
+              + "，".join(f"{m} 缺 {sum(1 for q in dropped if not on[m][q])} 题" for m in models
+                         if any(not on[m][q] for q in dropped)) + "）；剔除对所有模型同时生效，属对预注册 45 题的偏离。", ""]
+    if missing:
+        L += ["判分缺失（不进检验）：" + "，".join(f"{m} {k}" for m, k in missing.items()), ""]
     if any(v < 3 * n for v in reps.values()):
-        L += ["每题次数不足 3 的模型（按已有次数取均值，缺的次数见下）：" +
+        L += [f"每题次数不足 3 的模型（在这 {n} 题上按已有次数取均值）：" +
               "，".join(f"{m} {v}/{3 * n}" for m, v in sorted(reps.items()) if v < 3 * n), ""]
     if not models:
         return L + ["开思考判分未完成，待跑。", ""], {}
@@ -177,7 +183,8 @@ def scenario_section(scns, typ):
                   "veto_off": sum(int(off[(m, q)]["veto"]) for q in ids),
                   "veto_on": sum(sum(x[1] for x in on[m][q]) / len(on[m][q]) for q in ids),
                   "reps": reps[m],
-                  "trunc": sum(1 for a in answers if a["model"] == m and a.get("finish_reason") == "length")}
+                  "trunc": sum(1 for a in answers if a["model"] == m and a["scenario_id"] in ids
+                               and a.get("finish_reason") == "length")}
     for m, a in zip(models, holm([res[m]["p"] for m in models])):
         res[m]["p_holm"] = a
     z_h = norm.ppf(1 - ALPHA / (2 * len(models)))
