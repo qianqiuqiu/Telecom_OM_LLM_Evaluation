@@ -1,0 +1,4 @@
+model,idx,gold,pred,correct,extract_fail,finish_reason,output_tokens,reasoning_tokens,input_tokens,cost_usd,latency_s,served_model
+kimi-k3-ocgo,11,C4,C4,1,0,stop,480,287,1700,0.0123,5.43,kimi-k3
+kimi-k3-ocgo,34,C3,C5,0,0,stop,368,178,1926,0.0113,7.02,kimi-k3
+kimi-k3-ocgo,41,C2,C2,1,0,stop,957,834,1833,0.01968,21.83,kimi-k3

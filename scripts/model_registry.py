@@ -102,7 +102,9 @@ def stream_chat(client, req, extra, stall_s=STALL_S, total_s=TOTAL_S):
             if chunk.usage:
                 out["usage"] = chunk.usage.model_dump()
             for ch in chunk.choices:
-                c, r = ch.delta.content or "", getattr(ch.delta, "reasoning_content", None) or ""
+                # 百炼的推理字段是 reasoning_content；OpenCode Go 的 Chat Completions 是 reasoning
+                c = ch.delta.content or ""
+                r = getattr(ch.delta, "reasoning_content", None) or getattr(ch.delta, "reasoning", None) or ""
                 now = time.monotonic()
                 if c or r:
                     last[0] = now
