@@ -423,6 +423,8 @@ D1（judge 模型）、D2（judge 验证方式）已于 Oct 13 定下，见第�
 | `data/processed/teleqna_{items,relevance,answer_decisions}.csv` | 审计标记 / 相关度 / 答案决定 |
 | `docs/rubrics/ops_relevance_v{1,2,3}.md` | 相关度标注规范 |
 | `reports/audit/*.md`、`reports/cost_estimate.md` | 审计与费用报告（脚本生成） |
+| `scripts/probe_models.py` → `results/probe/<时间戳>.jsonl` | 模型可用性与思考开关探测的原始请求/响应（Oct 11：`011014` 为 glm-5.3 两次调用均报参数错误，`011023` 为 7 个模型 × 开/关思考共 14 次全部成功；PRB 题 54 token 用于费用估算的输入标定） |
+| `scripts/thinking_pilot.py` → `results/pilot/thinking_<时间戳>.jsonl` | 思考模式试跑原始请求/响应（Oct 12，10 道 TeleQnA 题 × 7 个模型开思考，共 70 次；glm-5.3 6/10 失败），`analysis/cost_estimate.py` 读取它作实测输出 token |
 | `analysis/objective_analysis.py` → `reports/objective/objective_main.md` | 横评分析层与报告（脚本生成） |
 | `data/scenarios/scenarios_draft.json` | 场景题初稿（45 题，稳定 ID，脚本生成） |
 | `data/scenarios/drafts/<批次>.v{0,1,2,3}.json` | 场景题分批草稿（v2 = 核验修订后，v3 = 定稿前修订） |
